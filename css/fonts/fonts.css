@@ -1,0 +1,18 @@
+
+@font-face {
+	font-family: 'Conv_MyriadPro-Regular';
+	src: url('MyriadPro-Regular.eot');
+	src: local('☺'), url('MyriadPro-Regular.woff') format('woff'), url('MyriadPro-Regular.ttf') format('truetype'), url('MyriadPro-Regular.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Conv_ROCK';
+	src: url('ROCK.eot');
+	src: local('☺'), url('ROCK.woff') format('woff'), url('ROCK.ttf') format('truetype'), url('ROCK.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+

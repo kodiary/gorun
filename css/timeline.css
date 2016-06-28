@@ -1,0 +1,139 @@
+#timelineblock .date-new{ background: #3169B1; color: #FFF; font-size: 12px; font-weight: bold; padding:5px 10px; border-radius:5px; text-align: center;} 
+.date-new{left:240px !important; width: 102px !important;}
+.date-hidden{ visibility: hidden; height: 50px;}
+.block .thumbnail{ height: 67px; width: auto; }
+.block .thumbnail img{ height:100%; width: 100%;}
+.block .desc h2 a{ font-size: 12px; font-family: verdana, arial; font-weight: bold; margin-bottom: 4px; line-height: 14px; display:block;}
+ .block .desc .postedDate, .block .desc p{ font-size: 12px; font-family: verdana, arial;  margin-bottom: 4px; line-height: 14px; display:block; padding:0;}
+.block .desc h2 span, .block .deesc h2 p{font-size: 12px; font-family: verdana, arial; margin-bottom: 6px; line-height: 14px;}
+img {position: relative;margin : 0px;padding: 0px;}
+
+.block .desc{ width: 158px; float: right;}
+/***** MAIN CONTAINER *****/
+
+.maincontainer {
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/***** END MAIN CONTAINER *****/
+
+/***** TOP BANNER CONTAINER *****/
+
+.topcontainer {
+	width: 100%;
+	height: 150px;
+}
+
+/***** END TOP BANNER CONTAINER *****/
+
+/***** TIMELINE CONTAINER *****/
+
+.timelinecontainer {
+	position: relative;
+	width: 100%;	
+	margin-top: 10px;
+}
+
+.timeline {
+	margin-left: 50%;
+	height: 99%;
+	width: 3px;
+	background: #3169B1;	
+	position: absolute;
+}
+
+.timeline:hover {
+	cursor: pointer;
+}
+
+#timelineblock {
+	position: relative;
+	padding: 0;
+	margin: 0px;
+	margin-top: 0;
+	list-style-type: none;
+	width:600px;		
+	
+}
+
+
+.block {
+	padding: 10px;
+	margin: 0px;
+	width: 266px !important;
+    background: #CCE5F3;
+    -moz-border-radius:3px; 
+	border-radius:3px; 
+	-webkit-border-radius:3px; 
+}
+
+/**
+ * .block:hover {
+ * 	border: 1px solid #9fafd0;
+ * }
+ */
+/***** END TIMELINE CONTAINER *****/
+
+
+
+/***** ARROW EDGES *****/
+
+#loading-more, .loadMorePosts{ position:relative; margin-left:240px;}
+#edge {
+	position: absolute;
+	padding: 0px;
+}
+
+.redge {
+	display: block;
+	margin:0px;
+	margin-left: 276px;
+
+	width:32px;
+	height:15px;
+	background: url(../images/right.png);
+}
+
+.ledge {
+	display: block;
+	margin:0px;
+	margin-left: -42px;
+
+	width:32px;
+	height:15px;
+	background: url(../images/left.png);
+}
+
+.redge_h {
+	background: url(../images/right.png) 21px;
+}
+
+.ledge_h {
+	background: url(../images/left.png) 23px;
+}
+
+
+/***** END ARROW EDGES  *****/
+
+
+/*****  TIMELINE CONTENTS *****/
+
+
+
+
+.pic {
+	width: 310px;
+	margin: 5px 0 0 10px;
+	height: 210px;
+	padding: 3px;
+}
+
+/***** END  TIMELINE CONTENTS *****/
+
+
+.borders {
+	border: 1px solid #000;
+}
+

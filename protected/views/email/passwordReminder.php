@@ -1,0 +1,15 @@
+<strong>Hello <?php echo $name;?>,</strong>
+<br />
+<div style="margin:0; padding:0;">
+	<div style="font-size:13px; font-family:Arial, Helvetica, sans-serif; margin-top:20px;">You have recently requested a password reminder on the EXSA website.</div>
+    <div style="font-family:Arial, Helvetica, sans-serif; font-size:13px; margin-bottom:10px;">Please find your login details below: </div>
+    
+    <div style="font-family:Arial, Helvetica, sans-serif; font-size:13px; margin-bottom:5px;">E-mail: <?php echo $email_add;?></div>
+    <div style="font-family:Arial, Helvetica, sans-serif; font-size:13px; margin-bottom:5px;">Password: <?php echo $password;?></div>
+        
+    <div style="font-family:Arial, Helvetica, sans-serif; font-size:13px; margin-top:20px; margin-bottom:5px;">Kind Regards</div>
+    <div style="font-family:Arial, Helvetica, sans-serif; font-size:13px;">The EXSA Team</div>
+
+    <div style="font-family:Arial, Helvetica, sans-serif; font-size:13px; margin-top:20px; margin-bottom:5px;"><a href="<?php echo $this->createAbsoluteUrl('/');?>" target="_blank"><img src="<?php echo $this->createAbsoluteUrl('/images/email_logo.png');?>" alt="<?php echo $this->createAbsoluteUrl('/');?>" border="0" /></a></div>
+    <div style="font-family:Arial, Helvetica, sans-serif; margin-bottom:5px; font-size:13px;"><a style="color:#005FA5; font-size:13px;" href="<?php echo $this->createAbsoluteUrl('/');?>" target="_blank"><?php echo $this->createAbsoluteUrl('/');?></a></div>
+</div>

@@ -1,0 +1,1 @@
+<?php echo Banner::Image($model->image, $model->alt_tag);?>

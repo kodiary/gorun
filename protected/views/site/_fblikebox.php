@@ -1,0 +1,1 @@
+<div class="fb-like-box" data-href="http://www.facebook.com/pages/Exhibitions-Events-Association-of-Southern-Africa-EXSA/350682401664996" data-width="360" data-show-faces="true" data-stream="true" data-show-border="true" data-header="true"></div>
