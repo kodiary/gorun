@@ -40,7 +40,7 @@ img{max-width:100%;}
 .sidebar{padding-left:0;padding-right:0;}
 .sidebar h2{background:#FFF;text-transform: uppercase;padding: 8px 0 8px 20px;color: #555;font-size:17px;margin-bottom:0;font-weight:bold;}
 .filter{background:#43C0F6;padding:20px;}
-.filter .fil-group{display:block;width:178px;background:#EDEFEC;margin-bottom:8px;border-left:1px solid #43C0F6;}
+.filter .fil-group{display:block;width:100%;background:#EDEFEC;margin-bottom:8px;border-left:1px solid #43C0F6;}
 .filter .fil-group ul{display:none;}
 .filter .fil-group ul li{background:#F3F3F3;border-bottom:#ddd solid 1px;}
 .filter .fil-group ul li a{text-decoration:none;color:#555;font-size:14px;padding: 5px;display:block;}
@@ -126,7 +126,7 @@ img{max-width:100%;}
 .distance{background:#DF0269;color:#FFF;font-weight:bold;display:inline-block;font-size:13px;padding:1px 8px;border-radius:10px;margin-right:10px;margin-top:8px;}
 .calendar-view{display:block;background:#FFF;color:#555;text-transform:uppercase;padding-left:15px;font-size:16px;padding: 8px 8px 8px 20px;text-decoration: none;}
 .calendar-view:hover{text-decoration:none;}
-.submit-event{display:block;background:#EB0067;color:#FFF;text-transform:uppercase;padding-left:15px;font-size:16px;padding: 8px 8px 8px 20px;text-decoration: none;}
+.submit-event{display:block;background:#EB0067;color:#FFF;font-weight:800;padding-left:15px;font-size:14px;padding: 7px 7px 7px 20px;text-decoration: none;}
 .submit-event:hover{text-decoration:none;}
 .loadmore{border:1px solid #AAA;}
 .footer{border-top:#07A1E7 10px solid;background:#2A303E;padding:20px 0;margin: 20px 0 0 0;}
