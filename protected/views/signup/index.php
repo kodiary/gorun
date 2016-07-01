@@ -72,7 +72,19 @@
         <div class="form-group col-md-12">
             <input type="submit" value="Go!" class="btn btn-default bgblue btn-lg fullwidth" />
         </div>
-        
+        <div class="clearfix"></div>
+        <hr />
+        <div class="center col-md-12">
+        By creating an account, I have read and agreed to the <a href="" class="blue">Terms and conditions</a> 
+        </div>
+        <div class="clearfix"></div>
+        <hr />
+        <div class="center col-md-12">
+        <a href="#"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/googlesign.png" /></a><br /><br />
+        <a href="#"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/fbsign.png" /></a>
+        </div>
+        <div class="clearfix"></div>
+        <hr />
     </div>
     <div class="col-md-4">
         <h2>Password reset</h2>
