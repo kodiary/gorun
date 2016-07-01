@@ -127,6 +127,9 @@
             <div class="clearfix"></div>
         </div>
     </div>
+    <div class="footer-low">
+        <div class="footer-low-in">Copyright 2016 - Designed and developed by In-Detail Advertising - Contact us for advertising opportunities.</div>
+    </div>
 </div>
 </div>
 <!-- Modal -->
