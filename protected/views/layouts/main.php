@@ -141,12 +141,40 @@
         <h4 class="modal-title" id="myModalLabel">Member Login</h4>
       </div>
       <div class="modal-body">
+      
+        <!-- Normal -->      
         <div class="form-group">
             <label class="col-md-12">Email</label>
             <div class="col-md-12"><input type="text" name="email" placeholder="Email or Username" class="form-control" /></div>
             <div class="clearfix"></div>           
             
         </div>
+        
+        <!-- Success -->
+        <div class="form-group has-success has-feedback">
+            <label class="control-label col-sm-12" for="inputSuccess3">Email</label>
+            <div class="col-sm-12">
+              <input type="text" class="form-control" name="email" placeholder="Email or Username" id="inputSuccess3" aria-describedby="inputSuccess3Status">
+              <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+              <span id="helpBlock2" class="help-block">Email or Username is not valid.</span>
+              <span id="inputSuccess3Status" class="sr-only">(success)</span>
+            </div>
+            <div class="clearfix"></div>  
+          </div>
+         <!--Error --> 
+        <div class="form-group has-error has-feedback">
+            <label class="control-label col-sm-12" for="inputError3">Email</label>
+            <div class="col-sm-12">
+              <input type="text" class="form-control" name="email" placeholder="Email or Username" id="inputError3" aria-describedby="inputError3Status">
+              <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+              <span id="helpBlock2" class="help-block">Email or Username is not valid.</span>
+              <span id="inputError3Status" class="sr-only">(error)</span>
+            </div>
+            <div class="clearfix"></div>  
+          </div>
+          
+        
+          
         
         <div class="form-group">
             <label class="col-md-12">Password</label>
