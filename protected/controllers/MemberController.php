@@ -39,7 +39,11 @@ class MemberController extends Controller
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
-				$this->redirect(array('/member/info'));
+            {
+                //$this->redirect(array('/member/info'));
+                echo "OK";
+            }
+				
 		}
         if(isset($_POST['btnRemindPass']))
 		{
@@ -61,7 +65,7 @@ class MemberController extends Controller
                 }
             }
 		// display the login form
-        $this->render('index',array('model'=>$model,'model2'=>$model2));
+        //$this->render('index',array('model'=>$model,'model2'=>$model2));
 	}
     public function actionLogout()
 	{
@@ -71,8 +75,10 @@ class MemberController extends Controller
     
 	public function actionIndex()
 	{
+	   die('2');
         if(Yii::app()->user->id)
         {
+            
             Yii::app()->user->logout();
         }
 		$model = new Company('signup'); //signup scenario
