@@ -134,6 +134,7 @@
 </div>
 <!-- Modal -->
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<form class="member_login" method="post">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -143,29 +144,32 @@
       <div class="modal-body">
       
         <!-- Normal -->      
-        <div class="form-group">
+        <div class="form-group main_email">
             <label class="col-md-12">Email</label>
-            <div class="col-md-12"><input type="text" name="email" placeholder="Email or Username" class="form-control" /></div>
+            <div class="col-md-12">
+                <input type="email"  required="required" placeholder="Email or Username" class="form-control" />
+                
+            </div>
             <div class="clearfix"></div>           
             
         </div>
         
         <!-- Success -->
-        <div class="form-group has-success has-feedback">
+        <div class="form-group has-success has-feedback success_email" style="display: none;">
             <label class="control-label col-sm-12" for="inputSuccess3">Email</label>
             <div class="col-sm-12">
-              <input type="text" class="form-control" name="email" placeholder="Email or Username" id="inputSuccess3" aria-describedby="inputSuccess3Status">
+              <input type="email" class="form-control email" name="email" placeholder="Email or Username" id="inputSuccess3" aria-describedby="inputSuccess3Status">
               <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-              <span id="helpBlock2" class="help-block">Email or Username is not valid.</span>
+              
               <span id="inputSuccess3Status" class="sr-only">(success)</span>
             </div>
             <div class="clearfix"></div>  
           </div>
          <!--Error --> 
-        <div class="form-group has-error has-feedback">
+        <div class="form-group has-error has-feedback failed_email" style="display: none;">
             <label class="control-label col-sm-12" for="inputError3">Email</label>
             <div class="col-sm-12">
-              <input type="text" class="form-control" name="email" placeholder="Email or Username" id="inputError3" aria-describedby="inputError3Status">
+              <input type="email" class="form-control email" placeholder="Email or Username" id="inputError3" aria-describedby="inputError3Status">
               <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
               <span id="helpBlock2" class="help-block">Email or Username is not valid.</span>
               <span id="inputError3Status" class="sr-only">(error)</span>
@@ -176,12 +180,24 @@
         
           
         
-        <div class="form-group">
+        <div class="form-group has-feedback password">
             <label class="col-md-12">Password</label>
-            <div class="col-md-12"><input type="password" name="password" placeholder="Password" class="form-control" /></div>
+            <div class="col-md-12">
+                <input type="password" name="password" required="required" placeholder="Password" class="form-control password" /></div>
+                
             <div class="clearfix"></div>            
             
         </div>
+         <div class="form-group has-error has-feedback failed_pwd" style="display: none;">
+            <label class="control-label col-sm-12" for="inputError3">Password</label>
+            <div class="col-sm-12">
+              <input type="password"  placeholder="Password" class="form-control password"  />
+            
+             <span id="helpBlock2" class="help-block">Password is required.</span>
+              
+            </div>
+            <div class="clearfix"></div>  
+          </div>
         
         <div class="form-group">
             
@@ -200,6 +216,77 @@
       </div>
     </div>
   </div>
+  </form>
 </div>
 </body>
 </html>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var elements = document.getElementsByTagName("INPUT");
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].oninvalid = function(e) {
+            
+            e.target.setCustomValidity("");
+            if (!e.target.validity.valid) {
+                if(e.target.getAttribute('type')=='password')
+                {
+                   $('.password').hide();
+                   $('.failed_pwd').show();
+                   $('.password').find('input').removeAttr('required');
+                   $('.password, .failed_pwd').find('input').val(e.target.value);
+                }
+               
+                //e.target.setCustomValidity("This field cannot be left blank");
+                
+            }
+            else
+            {
+                
+            }
+        };
+        elements[i].oninput = function(e) {
+            e.target.setCustomValidity("");
+            if (!e.target.validity.valid) {
+                if(e.target.getAttribute('type')=='email')
+                {
+                   
+                    $('.failed_email').show();
+                    $('.failed_email').find('input').focus();
+                    $('.main_email').find('input').attr('disabled','disabled');
+                    $('.main_email, .success_email').find('input').removeAttr('required');
+                    $('.failed_email, .success_email').find('input').val(e.target.value);
+                    $('.main_email').hide();
+                    $('.success_email').hide();
+                    
+                }
+                
+                
+                //e.target.setCustomValidity("This field cannot be left blank");
+                
+            }
+            else
+            {
+                
+                if(e.target.getAttribute('type')=='email')
+                {
+                    $('.main_email').find('input').attr('disabled','disabled');
+                    $('.success_email').show();
+                    $('.success_email').find('input').focus();
+                    $('.failed_email').hide();
+                    $('.main_email').hide();
+                    $('.main_email, .failed_email').find('input').removeAttr('required');
+                    $('.failed_email, .success_email').find('input').val(e.target.value);
+                }
+            }
+        };
+    }
+})
+$(function(){
+    $('.member_login').submit(function(){
+        
+        $.ajax({
+            
+        })
+    })
+})
+</script>
