@@ -1,0 +1,12 @@
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .header {
+        width: 100%;
+    }
+    .logo{width:100%;text-align:center;}
+    .navigations{width:100%;}
+    .subnav{float:left;padding-left:0;}
+    .anchors{width:100%;}
+    .maindiv{width:100%;}
+    .footerin{width:100%;}
+}
