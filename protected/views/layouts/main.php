@@ -21,9 +21,9 @@
 
 <div class="wrapper">
     <div class="header">
-        <div class="logo">
+        <a class="logo" href="<?php echo Yii::app()->request->baseUrl; ?>">
             <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo.png" alt="LOGO" />
-        </div>
+        </a>
         <div class="left navigations">
         
         <div class="nav col-md-6">
@@ -49,7 +49,7 @@
             -->
             
         <!-- IF not logged in -->
-        <div class="registration">Not a member? <a href="#" class="blue">Join now</a> <a href="#" class="btn btn-default bgblue ml15" data-toggle="modal" data-target="#loginModal">Login</a></div>
+        <div class="registration">Not a member? <a href="<?php echo Yii::app()->request->baseUrl; ?>/signup" class="blue">Join now</a> <a href="#" class="btn btn-default bgblue ml15" data-toggle="modal" data-target="#loginModal">Login</a></div>
         </div>
         
         
@@ -196,7 +196,7 @@
         
       </div>
       <div class="modal-footer">
-        Not a member yet? <a href="#" class="blue">Join now for free.</a>
+        Not a member yet? <a href="<?php echo Yii::app()->request->baseUrl; ?>/signup" class="blue">Join now for free.</a>
       </div>
     </div>
   </div>

@@ -3,7 +3,7 @@
                 <div class="fil-group">
                 <a href="javascript:void(0)" class="fil">
                 Race type
-                 <span class="fa fa-caret-down"></span>
+                 <span class="fa fa-sort"></span>
                 </a>
                 <ul class="option">
                     <li><a href="javascript:void(0);">Option 1</a></li>
@@ -12,7 +12,7 @@
                 </ul>
                 </div>
                 <div class="fil-group">
-                    <a href="javascript:void(0)" class="fil">All Provinces <span class="fa fa-caret-down"></span></a>
+                    <a href="javascript:void(0)" class="fil">All Provinces <span class="fa fa-sort"></span></a>
                     <ul class="option">
                     <li><a href="javascript:void(0)">Option 1</a></li>
                     <li><a href="javascript:void(0)">Option 2</a></li>
@@ -20,7 +20,7 @@
                     </ul>
                 </div>
                 <div class="fil-group">
-                    <a href="javascript:void(0)" class="fil">All Distances <span class="fa fa-caret-down"></span></a>
+                    <a href="javascript:void(0)" class="fil">All Distances <span class="fa fa-sort"></span></a>
                     <ul class="option">
                     <li><a href="javascript:void(0)">Option 1</a></li>
                     <li><a href="javascript:void(0)">Option 2</a></li>
@@ -28,7 +28,7 @@
                     </ul>
                 </div>
                 <div class="fil-group">
-                    <a href="javascript:void(0)" class="fil">All Months <span class="fa fa-caret-down"></span></a>
+                    <a href="javascript:void(0)" class="fil">All Months <span class="fa fa-sort"></span></a>
                     <ul class="option">
                     <li><a href="javascript:void(0)">Option 1</a></li>
                     <li><a href="javascript:void(0)">Option 2</a></li>
@@ -36,7 +36,7 @@
                     </ul>
                 </div>
                 <div class="fil-group">
-                    <a href="javascript:void(0)" class="fil">2015 <span class="fa fa-caret-down"></span></a>
+                    <a href="javascript:void(0)" class="fil">2015 <span class="fa fa-sort"></span></a>
                     <ul class="option">
                     <li><a href="javascript:void(0)">Option 1</a></li>
                     <li><a href="javascript:void(0)">Option 2</a></li>
