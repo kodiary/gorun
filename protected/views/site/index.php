@@ -1,4 +1,104 @@
-<?php $this->breadcrumbs=array('Welcome to the exhibition and event association of southern africa');?>
+<div class="sidebar col-md-3">
+          <?php echo $this->renderPartial('/site/_filter', false, true); ?>
+        </div>
+        <div class="col-md-9 right-content">
+            <div class="banner">
+                <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/banner.jpg" />
+            </div>
+            <div class="listing">
+                <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/events/noimg.png"/></div>
+                <div class="txt">
+                    <h3>BROOK'S DARK RUN, THE RUN DEAD NIGHT TRAIL RUN - 8 & 4 KM</h3>
+                    <span class="datetime">Thurs <strong>24 July, 2016</strong></span> 
+                    <span class="racetag">GP</span>
+                    <div class="clearfix"></div>
+                    <span class="distance">5k</span><span class="distance">32k</span><span class="distance">160k</span>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="listing">
+                <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/events/noimg.png"/></div>
+                <div class="txt">
+                    <h3>BROOK'S DARK RUN, THE RUN DEAD NIGHT TRAIL RUN - 8 & 4 KM</h3>
+                    <span class="datetime">Thurs <strong>24 July, 2016</strong></span> 
+                    <span class="racetag">GP</span>
+                    <div class="clearfix"></div>
+                    <span class="distance">5k</span><span class="distance">32k</span><span class="distance">160k</span>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="listing">
+                <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/events/noimg.png"/></div>
+                <div class="txt">
+                    <h3>BROOK'S DARK RUN, THE RUN DEAD NIGHT TRAIL RUN - 8 & 4 KM</h3>
+                    <span class="datetime">Thurs <strong>24 July, 2016</strong></span> 
+                    <span class="racetag">GP</span>
+                    <div class="clearfix"></div>
+                    <span class="distance">5k</span><span class="distance">32k</span><span class="distance">160k</span>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="listing">
+                <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/events/noimg.png"/></div>
+                <div class="txt">
+                    <h3>BROOK'S DARK RUN, THE RUN DEAD NIGHT TRAIL RUN - 8 & 4 KM</h3>
+                    <span class="datetime">Thurs <strong>24 July, 2016</strong></span> 
+                    <span class="racetag">GP</span>
+                    <div class="clearfix"></div>
+                    <span class="distance">5k</span><span class="distance">32k</span><span class="distance">160k</span>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="listing">
+                <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/events/noimg.png"/></div>
+                <div class="txt">
+                    <h3>BROOK'S DARK RUN, THE RUN DEAD NIGHT TRAIL RUN - 8 & 4 KM</h3>
+                    <span class="datetime">Thurs <strong>24 July, 2016</strong></span> 
+                    <span class="racetag">GP</span>
+                    <div class="clearfix"></div>
+                    <span class="distance">5k</span><span class="distance">32k</span><span class="distance">160k</span>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="listing">
+                <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/events/noimg.png"/></div>
+                <div class="txt">
+                    <h3>BROOK'S DARK RUN, THE RUN DEAD NIGHT TRAIL RUN - 8 & 4 KM</h3>
+                    <span class="datetime">Thurs <strong>24 July, 2016</strong></span> 
+                    <span class="racetag">GP</span>
+                    <div class="clearfix"></div>
+                    <span class="distance">5k</span><span class="distance">32k</span><span class="distance">160k</span>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="listing">
+                <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/events/noimg.png"/></div>
+                <div class="txt">
+                    <h3>BROOK'S DARK RUN, THE RUN DEAD NIGHT TRAIL RUN - 8 & 4 KM</h3>
+                    <span class="datetime">Thurs <strong>24 July, 2016</strong></span> 
+                    <span class="racetag">GP</span>
+                    <div class="clearfix"></div>
+                    <span class="distance">5k</span><span class="distance">32k</span><span class="distance">160k</span>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="listing">
+                <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/events/noimg.png"/></div>
+                <div class="txt">
+                    <h3>BROOK'S DARK RUN, THE RUN DEAD NIGHT TRAIL RUN - 8 & 4 KM</h3>
+                    <span class="datetime">Thurs <strong>24 July, 2016</strong></span> 
+                    <span class="racetag">GP</span>
+                    <div class="clearfix"></div>
+                    <span class="distance">5k</span><span class="distance">32k</span><span class="distance">160k</span>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <hr />
+            <a class="btn btn-default btn-lg loadmore">Load More</a>
+            
+        </div>
+        <div class="clearfix"></div>
+<?php /*$this->breadcrumbs=array('Welcome to the exhibition and event association of southern africa');?>
 <div id="fb-root"></div>
  <?php
     if($sliders)
@@ -72,4 +172,4 @@
 <?php $this->renderPartial('_squareBanner');?>
 </div><!--#body_content_right-->
 <div class="clear"></div>
-<!-- Rght side bar end -->
+<!-- Rght side bar end --><?php */?>
