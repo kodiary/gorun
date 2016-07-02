@@ -75,7 +75,7 @@ class MemberController extends Controller
     
 	public function actionIndex()
 	{
-	   die('2');
+	   
         if(Yii::app()->user->id)
         {
             
