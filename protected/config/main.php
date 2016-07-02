@@ -158,6 +158,7 @@ return array(
             'events/search'=>'events/search',
             'events/search/showall'=>'events/search/showall',
             'events/<slug>'=>'events/view/slug/<slug>',
+            'dashboard'=>'dashboard/index',
             
             '<controller:\w+>/<id:\d+>'=>'<controller>/view',
 			'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',

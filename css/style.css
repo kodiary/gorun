@@ -1,6 +1,7 @@
 @import url("fonts/fonts.css");
 body{font-family: 'Open Sans', sans-serif;margin:4px 0;background:#F4F4F4;}
 h3{font-size:17px;}
+h1{margin-top:0;font-size:30px;}
 img{max-width:100%;}
 .left{float:left;}
 .right{float:right;}
@@ -163,7 +164,20 @@ img{max-width:100%;}
 .right-point_w{height:24px;}
 
 .registration h2{color:#666;text-align:center;}
-.dobs select{height:30px;}
+.dobs select,.profile_detail select{height:30px;}
 .whitebg{background:#FFF;border:1px solid #AAA;}
 .fullwidth{width:100%;}
 .center{text-align:center;}
+
+.dashboard_menu{background:#27A8E2;}
+.dashboard_menu ul{margin:0;padding:0;list-style:none;}
+.dashboard_menu a{color:#FFF;font-weight:600;display:block;padding:7px 10px 7px 20px;border-bottom:1px solid #FFF;}
+.dashboard_menu a:hover{text-decoration:none;border-bottom:1px solid #333;background:#000;}
+.dashboard_menu a.active{border-bottom:1px solid #333;background:#000;}
+.race_wallet{display:block;background:#FFF;color:#555;text-transform:uppercase;padding-left:15px;font-size:16px;padding: 8px 8px 8px 20px;text-decoration: none;font-weight: 600;}
+.race_wallet:hover{text-decoration:none;}
+.profile_detail label{font-weight: normal;}
+span.required{color:#D10404;}
+.profilepic .btn{min-width:100px;margin-bottom:10px;}
+.profile_img{background:#FFF;border:5px solid #DDD;height: 245px;width:215px;height:215px;float:left;padding-right:15px;}
+.picact{margin-top:50px}

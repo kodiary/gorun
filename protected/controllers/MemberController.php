@@ -69,6 +69,7 @@ class MemberController extends Controller
 		$this->redirect(Yii::app()->homeUrl);
 	}
     
+    
 	public function actionIndex()
 	{
         if(Yii::app()->user->id)
