@@ -134,7 +134,7 @@
 </div>
 <!-- Modal -->
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-<form class="member_login" method="post">
+<form class="login-form" method="post">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -158,7 +158,7 @@
         <div class="form-group has-success has-feedback success_email" style="display: none;">
             <label class="control-label col-sm-12" for="inputSuccess3">Email</label>
             <div class="col-sm-12">
-              <input type="email" class="form-control email" name="email" placeholder="Email or Username" id="inputSuccess3" aria-describedby="inputSuccess3Status">
+              <input type="email" class="form-control email" id="LoginForm_username" name="LoginForm[username]" placeholder="Email or Username" id="inputSuccess3" required="required" aria-describedby="inputSuccess3Status">
               <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
               
               <span id="inputSuccess3Status" class="sr-only">(success)</span>
@@ -183,24 +183,25 @@
         <div class="form-group has-feedback password">
             <label class="col-md-12">Password</label>
             <div class="col-md-12">
-                <input type="password" name="password" required="required" placeholder="Password" class="form-control password" /></div>
-                
+                <input type="password" id="LoginForm_password" name="LoginForm[password]" required="required" placeholder="Password" class="form-control password" />
+                <span  class="failed_pwd help-block" style="display: none;">Password is required.</span>
+            </div>
             <div class="clearfix"></div>            
             
         </div>
-         <div class="form-group has-error has-feedback failed_pwd" style="display: none;">
-            <label class="control-label col-sm-12" for="inputError3">Password</label>
-            <div class="col-sm-12">
-              <input type="password"  placeholder="Password" class="form-control password"  />
+         <div class="form-group has-error has-feedback error-login" style="display: none;">
             
-             <span id="helpBlock2" class="help-block">Password is required.</span>
+            <div class="col-sm-12">
+              
+              <span class="help-block">Invalid Username/Email or Password.</span>
               
             </div>
             <div class="clearfix"></div>  
           </div>
+       
         
         <div class="form-group">
-            
+            <input type="hidden" name="ajax" value="login-form"/>
             <div class="col-md-12"><input type="submit" name="submit" value="Login to your account" class="form-control btn btn-default bgblue" /></div>
             <div class="clearfix"></div>
             <div class="remember">
@@ -209,6 +210,7 @@
             <div class="clearfix"></div>            
             
         </div>
+       
         
       </div>
       <div class="modal-footer">
@@ -228,12 +230,23 @@ document.addEventListener("DOMContentLoaded", function() {
             
             e.target.setCustomValidity("");
             if (!e.target.validity.valid) {
+                if(e.target.getAttribute('type')=='email')
+                {
+                   
+                    $('.failed_email').show();
+                    $('.failed_email').find('input').focus();
+                    $('.main_email').find('input').attr('disabled','disabled');
+                    $('.main_email, .success_email').find('input').removeAttr('required');
+                    $('.failed_email, .success_email').find('input').val(e.target.value);
+                    $('.main_email').hide();
+                    $('.success_email').hide();
+                    
+                }
                 if(e.target.getAttribute('type')=='password')
                 {
-                   $('.password').hide();
+                   $('.password').addClass('has-error');
                    $('.failed_pwd').show();
-                   $('.password').find('input').removeAttr('required');
-                   $('.password, .failed_pwd').find('input').val(e.target.value);
+                  
                 }
                
                 //e.target.setCustomValidity("This field cannot be left blank");
@@ -241,7 +254,12 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             else
             {
-                
+                if(e.target.getAttribute('type')=='password')
+                {
+                   $('.password').removeClass('has-error');
+                   $('.failed_pwd').hide();
+                  
+                }
             }
         };
         elements[i].oninput = function(e) {
@@ -258,6 +276,12 @@ document.addEventListener("DOMContentLoaded", function() {
                     $('.main_email').hide();
                     $('.success_email').hide();
                     
+                }
+                if(e.target.getAttribute('type')=='password')
+                {
+                   $('.password').addClass('has-error');
+                   $('.failed_pwd').show();
+                  
                 }
                 
                 
@@ -277,15 +301,36 @@ document.addEventListener("DOMContentLoaded", function() {
                     $('.main_email, .failed_email').find('input').removeAttr('required');
                     $('.failed_email, .success_email').find('input').val(e.target.value);
                 }
+                if(e.target.getAttribute('type')=='password')
+                {
+                    $('.password').removeClass('has-error');
+                    $('.failed_pwd').hide();
+                }
             }
         };
     }
 })
 $(function(){
-    $('.member_login').submit(function(){
+    $('.login-form').submit(function(event){
+        event.preventDefault();
+        var data = $(this).serialize();
         
         $.ajax({
-            
+            type:"post",
+            url:"<?php echo Yii::app()->request->baseUrl; ?>/member/login",
+            data:data,
+            success: function(msg){
+                       if(msg=='{"LoginForm_password":["Incorrect username or password."]}')
+                       {
+                       
+                            $('.error-login').show();
+                            //$('.error-login').html('Invalid Username/Email or Password');
+                       }
+                       else
+                       {
+                           window.location.href ="<?php echo Yii::app()->request->baseUrl; ?>/member";
+                       }
+            }
         })
     })
 })

@@ -40,7 +40,7 @@
  * @property string $total_logins
  * @property string $editor_type
  */
-class Company extends CActiveRecord
+class Member extends CActiveRecord
 {
     public $basic_editor;
     public $repeat_password;
@@ -59,7 +59,7 @@ class Company extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'tbl_company';
+		return 'tbl_members';
 	}
 
 	/**
