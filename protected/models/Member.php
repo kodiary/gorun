@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "tbl_company".
+ * This is the model class for table "tbl_member".
  *
- * The followings are the available columns in table 'tbl_company':
+ * The followings are the available columns in table 'tbl_member':
  * @property integer $id
  * @property string $name
  * @property string $contact_person
@@ -71,15 +71,15 @@ class Member extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			//array('name, contact_person, number, email, password, password_real, fax, website, twitter, facebok, pinterest, google, tagline, detail, logo, display_address, street_add, suburb, province, latitude, longitude, status, slug, date_added, date_updated, seo_title, seo_desc, seo_keywords', 'required'),
-            array('name,tagline,number,email,detail,province,street_add,postal_address,display_address','required','on'=>'companyInfo'),
-            array('contact_person,opentimes_type,opentimes,latitude,longitude,logo,fax,slug,status,suburb,seo_title,seo_desc,seo_keywords,date_added,date_updated','safe','on'=>'companyInfo'),
+            array('fname,tagline,number,email,detail,province,dob,street_add,postal_address,display_address','required','on'=>'companyInfo'),
+            array('lname,opentimes_type,opentimes,latitude,longitude,logo,fax,slug,status,suburb,seo_title,seo_desc,seo_keywords,date_added,date_updated','safe','on'=>'companyInfo'),
             array('email','email','on'=>'companyInfo,signup,editlogin,adminSignup'),
             array('email','unique','on'=>'companyInfo,signup,editlogin,adminSignup'),
-            array('name','unique','on'=>'signup,adminSignup'),
+            array('fname','unique','on'=>'signup,adminSignup'),
             array('website,twitter,facebook,pinterest,google','url', 'defaultScheme' => 'http','on'=>'companyInfo'),
             array('status,rigger,valid_until,never_expire','safe','on'=>'updatestatus'),
             array('seo_title,seo_desc,seo_keywords,id','safe','on'=>'seo'),
-            array('name,contact_person,password_real,password,number,email','required','on'=>'signup,adminSignup,editlogin'),
+            array('fname,lname,password_real,password,number,email','required','on'=>'signup,adminSignup,editlogin'),
             array('repeat_password', 'compare', 'compareAttribute'=>'password_real','on'=>'signup,adminSignup,editlogin'),
 			array('province, status', 'numerical', 'integerOnly'=>true),
 			array('latitude, longitude', 'numerical'),
@@ -110,8 +110,8 @@ class Member extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Company Name',
-			'contact_person' => 'Contact Person',
+			'fname' => 'First Name',
+			'lname' => 'Last Name',
 			'number' => 'Contact Number',
 			'email' => 'Contact E-mail',
 			'password' => 'Password',
@@ -163,8 +163,8 @@ class Member extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('contact_person',$this->contact_person,true);
+		$criteria->compare('fname',$this->fname,true);
+		$criteria->compare('lname',$this->lname,true);
 		$criteria->compare('number',$this->number,true);
 		$criteria->compare('email',$this->email,true);
 		$criteria->compare('password',$this->password,true);
@@ -208,10 +208,10 @@ class Member extends CActiveRecord
     public function getAll()
     {
         $criteria = new CDbCriteria;
-        $criteria->select = array('id, name');
-        $criteria->order = 'name asc';
+        $criteria->select = array('id, fname');
+        $criteria->order = 'fname asc';
         $rests = Company::model()->findAll($criteria);
-        return CHtml::listData($rests, 'id', 'name');
+        return CHtml::listData($rests, 'id', 'fname');
     }
     
     public function createSeo($name,$desc,$address='')
@@ -354,8 +354,8 @@ class Member extends CActiveRecord
     public function getAllCompany()
     {
         $criteria = new CDbCriteria;
-        $criteria->select = array('id, name');
-        $criteria->order = 'name asc';
+        $criteria->select = array('id, fname');
+        $criteria->order = 'fname asc';
         $company = Company::model()->findAll($criteria);
         return $company;
     }

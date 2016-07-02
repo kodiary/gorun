@@ -18,6 +18,27 @@ class MemberController extends Controller
 			),
 		);
 	}
+    public function actionSignup()
+    {
+        $member = new Member;
+        if(isset($_POST['signup']))
+        {
+            $member->fname = $_POST['fname'];
+            $member->lname = $_POST['lname'];
+            $member->email = $_POST['email'];
+            $member->dob = $_POST['y_ob']."-".$_POST['m_ob']."-".$_POST['d_ob'];
+            $member->password_real = $_POST['password_signup'];
+            $member->password = sha1($_POST['password_signup']);
+            if($member->save())
+            {
+                die('ok');
+                 Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - A new event has been added successfully!');
+				$this->redirect(array('index'));
+            }
+         
+        }
+        
+    }
     public function actionLogin()
 	{
         if(Yii::app()->user->id)
@@ -27,21 +48,29 @@ class MemberController extends Controller
         $model=new LoginForm('login');
         $model2=new LoginForm('passwordReminder');
 		// if it is ajax validation request
-		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
+		/*if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
-		}
+		}*/
 
 		// collect user input data
 		if(isset($_POST['login']))
 		{
-			$model->attributes=$_POST['LoginForm'];
+			//$model->attributes=$_POST['LoginForm'];
+            $model->username = $_POST['LoginForm_username'];
+            $model->password = $_POST['LoginForm_password'];
+            if(isset($_POST['remember']))
+                $model->rememberMe = $_POST['remember'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
             {
                 //$this->redirect(array('/member/info'));
                 echo "OK";
+            }
+            else
+            {
+                echo "Error";
             }
 				
 		}

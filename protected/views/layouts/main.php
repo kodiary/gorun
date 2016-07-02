@@ -11,6 +11,8 @@
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/responsive.css" rel="stylesheet" type="text/css" />
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.js" type="text/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/filter.js" type="text/javascript"></script>
+    
+   
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/bmodal.js" type="text/javascript"></script>
 	<title>Home - GoRun</title>
@@ -134,7 +136,7 @@
 </div>
 <!-- Modal -->
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-<form class="login-form" method="post">
+<form class="login-form" method="post" novalidate="novalidate">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -147,43 +149,17 @@
         <div class="form-group main_email">
             <label class="col-md-12">Email</label>
             <div class="col-md-12">
-                <input type="email"  required="required" placeholder="Email or Username" class="form-control" />
+                <input type="email" id="LoginForm_username" name="LoginForm_username"  placeholder="Email or Username" class="form-control" />
                 
             </div>
             <div class="clearfix"></div>           
             
         </div>
         
-        <!-- Success -->
-        <div class="form-group has-success has-feedback success_email" style="display: none;">
-            <label class="control-label col-sm-12" for="inputSuccess3">Email</label>
-            <div class="col-sm-12">
-              <input type="email" class="form-control email" id="LoginForm_username" name="LoginForm[username]" placeholder="Email or Username" id="inputSuccess3" required="required" aria-describedby="inputSuccess3Status">
-              <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-              
-              <span id="inputSuccess3Status" class="sr-only">(success)</span>
-            </div>
-            <div class="clearfix"></div>  
-          </div>
-         <!--Error --> 
-        <div class="form-group has-error has-feedback failed_email" style="display: none;">
-            <label class="control-label col-sm-12" for="inputError3">Email</label>
-            <div class="col-sm-12">
-              <input type="email" class="form-control email" placeholder="Email or Username" id="inputError3" aria-describedby="inputError3Status">
-              <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-              <span id="helpBlock2" class="help-block">Email or Username is not valid.</span>
-              <span id="inputError3Status" class="sr-only">(error)</span>
-            </div>
-            <div class="clearfix"></div>  
-          </div>
-          
-        
-          
-        
         <div class="form-group has-feedback password">
             <label class="col-md-12">Password</label>
             <div class="col-md-12">
-                <input type="password" id="LoginForm_password" name="LoginForm[password]" required="required" placeholder="Password" class="form-control password" />
+                <input type="password" id="LoginForm_password" name="LoginForm_password"  placeholder="Password" class="form-control password" />
                 <span  class="failed_pwd help-block" style="display: none;">Password is required.</span>
             </div>
             <div class="clearfix"></div>            
@@ -202,7 +178,8 @@
         
         <div class="form-group">
             <input type="hidden" name="ajax" value="login-form"/>
-            <div class="col-md-12"><input type="submit" name="submit" value="Login to your account" class="form-control btn btn-default bgblue" /></div>
+            <div class="col-md-12">
+                <input type="submit" name="login" value="Login to your account" class="form-control btn btn-default bgblue" /></div>
             <div class="clearfix"></div>
             <div class="remember">
                 <input type="checkbox" name="remember" /> Remember Me
@@ -220,9 +197,11 @@
   </div>
   </form>
 </div>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.validate.js" type="text/javascript"></script>
 </body>
 </html>
 <script>
+/*
 document.addEventListener("DOMContentLoaded", function() {
     var elements = document.getElementsByTagName("INPUT");
     for (var i = 0; i < elements.length; i++) {
@@ -309,29 +288,95 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         };
     }
-})
+})*/
 $(function(){
-    $('.login-form').submit(function(event){
-        event.preventDefault();
-        var data = $(this).serialize();
+    $.validator.setDefaults({
+		submitHandler: function() {
+			
+		}
+	});
+    
+    $( ".login-form" ).validate( {
+				rules: {
+				
+					LoginForm_password: "required",
+				
+					LoginForm_username: {
+						required: true,
+						email: true
+					},
+					
+				},
+				messages: {
+					LoginForm_password: {
+						required: "Please provide a password",
+						
+					},
+				
+					LoginForm_username: "Email or Username is not valid.",
+					
+				},
+				errorElement: "em",
+				errorPlacement: function ( error, element ) {
+					// Add the `help-block` class to the error element
+					error.addClass( "help-block" );
+
+					// Add `has-feedback` class to the parent div.form-group
+					// in order to add icons to inputs
+					element.parents( ".form-group" ).addClass( "has-feedback" );
+
+					if ( element.prop( "type" ) === "checkbox" ) {
+						error.insertAfter( element.parent( "label" ) );
+					} else {
+						error.insertAfter( element );
+					}
+
+					// Add the span element, if doesn't exists, and apply the icon classes to it.
+					if ( !element.next( "span" )[ 0 ] ) {
+						$( "<span class='glyphicon glyphicon-remove form-control-feedback'></span>" ).insertAfter( element );
+					}
+				},
+				success: function ( label, element ) {
+					// Add the span element, if doesn't exists, and apply the icon classes to it.
+					if ( !$( element ).next( "span" )[ 0 ] ) {
+						$( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
+					}
+				},
+				highlight: function ( element, errorClass, validClass ) {
+					$( element ).parents( ".form-group" ).addClass( "has-error" ).removeClass( "has-success" );
+					$( element ).next( "span" ).addClass( "glyphicon-remove" ).removeClass( "glyphicon-ok" );
+				},
+				unhighlight: function ( element, errorClass, validClass ) {
+					$( element ).parents( ".form-group" ).addClass( "has-success" ).removeClass( "has-error" );
+					$( element ).next( "span" ).addClass( "glyphicon-ok" ).removeClass( "glyphicon-remove" );
+				}
+		,
+            submitHandler: function(form) {
+                      var data = $(form).serialize();
+                    
+                    $.ajax({
+                        type:"post",
+                        url:"<?php echo Yii::app()->request->baseUrl; ?>/member/login",
+                        data:data,
+                        success: function(msg){
+                                   if(msg=='OK')
+                                   {
+                                   
+                                        //window.location.href ="<?php echo Yii::app()->request->baseUrl; ?>/member";
+                                        //$('.error-login').html('Invalid Username/Email or Password');
+                                   }
+                                   else
+                                   {
+                                        $('.error-login').show();
+                                       
+                                   }
+                        }
+                    })
+                }
+           	}
+             );
+	
         
-        $.ajax({
-            type:"post",
-            url:"<?php echo Yii::app()->request->baseUrl; ?>/member/login",
-            data:data,
-            success: function(msg){
-                       if(msg=='{"LoginForm_password":["Incorrect username or password."]}')
-                       {
-                       
-                            $('.error-login').show();
-                            //$('.error-login').html('Invalid Username/Email or Password');
-                       }
-                       else
-                       {
-                           window.location.href ="<?php echo Yii::app()->request->baseUrl; ?>/member";
-                       }
-            }
-        })
-    })
-})
+    
+});
 </script>

@@ -7,6 +7,7 @@
 </div>
 <div class="content registration">
     <div class="col-md-4">
+    <form id="signupForm" novalidate="novalidate" method="post" action="<?php echo Yii::app()->request->baseUrl;?>/member/signup">
         <h2>Register now for free</h2>
         <hr />
         <div class="form-group col-md-12">
@@ -19,16 +20,16 @@
             <input type="text" name="email" placeholder="Your email" class="form-control" />
         </div>
         <div class="form-group col-md-12">
-            <input type="password" name="fname" placeholder="Create Password" class="form-control" />
+            <input type="password" name="password_signup" id="password_signup" placeholder="Create Password" class="form-control" />
         </div>
         <div class="form-group col-md-12">
-            <input type="password" name="fname" placeholder="Repeat Password" class="form-control" />
+            <input type="password" name="confirm_password" placeholder="Repeat Password" class="form-control" />
         </div>
         <div class="form-group dobs">
             <div><label class="control-label col-md-12">Date of Birth</label></div>
             <div class="col-sm-12">
-            <select name="day_ob" class="col-md-4">
-            <option value="">Day</option>
+            <select name="d_ob" class="col-md-4">
+            <option value="">DAY</option>
                 <?php
                 for($i=1;$i<32;$i++)
                 {
@@ -38,8 +39,8 @@
                 }
                 ?>
             </select> 
-            <select name="day_ob" class="col-md-4">
-            <option value="">Month</option>
+            <select name="m_ob" class="col-md-4">
+            <option value="">MONTH</option>
                 <?php
                 for($i=1;$i<13;$i++)
                 {
@@ -49,8 +50,8 @@
                 }
                 ?>
             </select> 
-            <select name="day_ob" class="col-md-4">
-            <option value="">Year</option>
+            <select name="y_ob" class="col-md-4 y_ob">
+            <option value="">YEAR</option>
                 <?php
                 for($i=(date('Y')-100);$i<date('Y');$i++)
                 {
@@ -61,18 +62,21 @@
                 ?>
             </select> 
             <div class="clearfix"></div>
+            
             </div>
             <div class="clearfix"></div>
         </div>
         <div class="form-group col-md-12">
-            <div class="col-md-6 whitebg"><input type="radio" name="gender" value="male" /> Male</div>
-            <div class="col-md-6 whitebg"><input type="radio" name="gender" value="female" /> Female</div>
+            <div class="col-md-6 whitebg"><input type="radio" name="gender" value="male"  /> Male</div>
+            <div class="col-md-6 whitebg f_gender"><input type="radio" name="gender" value="female"  /> Female</div>
             <div class="clearfix"></div>
+            
         </div>
         <div class="form-group col-md-12">
-            <input type="submit" value="Go!" class="btn btn-default bgblue btn-lg fullwidth" />
+            <input type="submit" name="signup" value="Go!" class="btn btn-default bgblue btn-lg fullwidth" />
         </div>
         <div class="clearfix"></div>
+        </form>
         <hr />
         <div class="center col-md-12">
         By creating an account, I have read and agreed to the <a href="" class="blue">Terms and conditions</a> 
@@ -287,4 +291,81 @@ $this->breadcrumbs=array(
 </div>
 <div class="clear"></div>
 </div>*/?>
+
+<script type="text/javascript">
+	$( function () {
+		  
+			$( "#signupForm" ).validate( {
+				rules: {
+					fname: "required",
+					lname: "required",
+                    d_ob: "required",
+                    m_ob: "required",
+                    y_ob: "required",
+                    gender: "required",
+					password_signup: {
+						required: true,
+						minlength: 5
+					},
+					confirm_password: {
+						required: true,
+						minlength: 5,
+						equalTo: "#password_signup"
+					},
+					email: {
+						required: true,
+						email: true
+					},
+					agree: "required"
+				},
+                groups: {
+                    y_ob: "d_ob m_ob y_ob"
+                },
+				messages: {
+					fname: "Input a firstname",
+					lname: "Input a lastname/Surname",
+					password_signup: {
+						required: "Input a password you will remember",
+						minlength: "Your password must be at least 5 characters long"
+					},
+					confirm_password: {
+						required: "Please provide a password",
+						minlength: "Your password must be at least 5 characters long",
+						equalTo: "Please enter the same password as above"
+					},
+					email: "Input a valid email address",
+					agree: "Please accept our policy",
+                    y_ob: "Please select a date of birth",
+                    m_ob: "Please select a date of birth",
+                    d_ob: "Please select a date of birth",
+                    gender: "Please select a gender"
+				},
+				errorElement: "em",
+				errorPlacement: function ( error, element ) {
+					// Add the `help-block` class to the error element
+                    
+					error.addClass( "help-block" );
+
+					if ( element.attr( "name" ) == "d_ob" || element.attr( "name" ) == "m_ob" || element.attr( "name" ) == "y_ob" ) {
+						error.insertAfter( ".y_ob" );
+					}
+                    else if(element.prop('type')=== 'radio')
+                    {
+                        error.insertAfter( ('.f_gender'));
+                    }
+                     else {
+						error.insertAfter( element );
+					}
+				},
+				highlight: function ( element, errorClass, validClass ) {
+					$( element ).parents( ".col-md-12, .dobs" ).addClass( "has-error" ).removeClass( "has-success" );
+				},
+				unhighlight: function (element, errorClass, validClass) {
+					$( element ).parents( ".col-md-12, .dobs" ).addClass( "has-success" ).removeClass( "has-error" );
+				}
+			} );
+
+			
+		} );
+	</script>
 
