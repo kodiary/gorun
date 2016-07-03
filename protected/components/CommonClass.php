@@ -330,7 +330,7 @@ class CommonClass extends CComponent
 		if($fromName!="" && $fromEmail!="")
 			$from = $fromName."<".$fromEmail.">";
 		else
-			$from = 'Exsa.co.za<info@exsa.co.za>';//email sent from the site
+			$from = 'gorun.co.za<info@gorun.co.za>';//email sent from the site
         
         $email = Yii::app()->email;
         $email->from = $from;
@@ -737,5 +737,16 @@ class CommonClass extends CComponent
         else
             return '0';
     }
+    //genertare random strings
+    public function randomString($length = 6) {
+	$str = "";
+	$characters = array_merge(range('A','Z'),range('0','9'),range('a','z') );
+	$max = count($characters) - 1;
+	for ($i = 0; $i < $length; $i++) {
+		$rand = mt_rand(0, $max);
+		$str .= $characters[$rand];
+	}
+	return $str;
+}
 }
 ?>

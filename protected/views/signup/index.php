@@ -67,8 +67,8 @@
             <div class="clearfix"></div>
         </div>
         <div class="form-group col-md-12">
-            <div class="col-md-6 whitebg"><input type="radio" name="gender" value="male"  /> Male</div>
-            <div class="col-md-6 whitebg f_gender"><input type="radio" name="gender" value="female"  /> Female</div>
+            <div class="col-md-6 whitebg"><input type="radio" name="gender" value="1"  /> Male</div>
+            <div class="col-md-6 whitebg f_gender"><input type="radio" name="gender" value="0"  /> Female</div>
             <div class="clearfix"></div>
             
         </div>
@@ -166,6 +166,44 @@
     </div>
     <div class="clearfix"></div>
 </div>
+<a class="btn btn-default bgblue verify_popup" data-target="#verify_user" data-toggle="modal" href="#" style="">verify</a>
+<div class="modal in" id="verify_user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<form class="verify_user" method="post" novalidate="novalidate" action="">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!--button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button-->
+        <h4 class="modal-title" id="myModalLabel"></h4>
+      </div>
+      <div class="modal-body">
+      <?php if (Yii::app()->user->hasFlash('error')): ?>
+<div class="flash-error">
+    <?php echo CHtml::encode(Yii::app()->user->getFlash('error')); ?>
+</div><!-- /.flash-success -->
+<?php endif; ?>
+         <div class="form-group">
+            <label class="col-md-12">Pin</label>
+            <div class="col-md-12">
+                <input type="text" id="code" name="code"  placeholder="Pin from email" class="form-control" required="required" />
+                
+            </div>
+            <div class="clearfix"></div>           
+            
+        </div>
+            <div class="form-group">
+            
+            <div class="col-md-12">
+                <input type="submit" name="Verify" value="Verify" class="form-control btn btn-default bgblue" /></div>
+            <div class="clearfix"></div>
+            
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+</div>
+    
+      
 
 <?php /*<script type="text/javascript" src="<?php echo Yii::app()->baseUrl.'/js/jquery-ui.js';?>"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->baseUrl.'/js/jquery.ui.touch.js';?>"></script>
@@ -294,7 +332,15 @@ $this->breadcrumbs=array(
 
 <script type="text/javascript">
 	$( function () {
-		  
+	   <?php if(Yii::app()->controller->action->id=='confirmation')
+       {?>
+            $('#verify_user').addClass('show');
+            $('body').addClass('modal-open');
+       <?php 
+       }
+       ?>
+	    
+		  $('.verify_user').validate();
 			$( "#signupForm" ).validate( {
 				rules: {
 					fname: "required",

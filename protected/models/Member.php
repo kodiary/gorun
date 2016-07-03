@@ -38,7 +38,7 @@
  * @property string $seo_keywords
  * @property string $contact_clicked
  * @property string $total_logins
- * @property string $editor_type
+ * @property string $is_verified
  */
 class Member extends CActiveRecord
 {
@@ -71,8 +71,8 @@ class Member extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			//array('name, contact_person, number, email, password, password_real, fax, website, twitter, facebok, pinterest, google, tagline, detail, logo, display_address, street_add, suburb, province, latitude, longitude, status, slug, date_added, date_updated, seo_title, seo_desc, seo_keywords', 'required'),
-            array('fname,tagline,number,email,detail,province,dob,street_add,postal_address,display_address','required','on'=>'companyInfo'),
-            array('lname,opentimes_type,opentimes,latitude,longitude,logo,fax,slug,status,suburb,seo_title,seo_desc,seo_keywords,date_added,date_updated','safe','on'=>'companyInfo'),
+            array('fname,tagline,number,email,detail,province,dob,gender,street_add,postal_address,display_address','required','on'=>'companyInfo'),
+            array('lname,opentimes_type,gender,opentimes,latitude,longitude,logo,fax,slug,status,suburb,seo_title,seo_desc,seo_keywords,date_added,date_updated','safe','on'=>'companyInfo'),
             array('email','email','on'=>'companyInfo,signup,editlogin,adminSignup'),
             array('email','unique','on'=>'companyInfo,signup,editlogin,adminSignup'),
             array('fname','unique','on'=>'signup,adminSignup'),
@@ -83,7 +83,7 @@ class Member extends CActiveRecord
             array('repeat_password', 'compare', 'compareAttribute'=>'password_real','on'=>'signup,adminSignup,editlogin'),
 			array('province, status', 'numerical', 'integerOnly'=>true),
 			array('latitude, longitude', 'numerical'),
-            array('contact_clicked,date_updated,editor_type','safe'),
+            array('contact_clicked,date_updated,is_verified','safe'),
 		);
 	}
 
@@ -117,6 +117,7 @@ class Member extends CActiveRecord
 			'password' => 'Password',
 			'password_real' => 'Password',
             'repeat_password'=>'Repeat Password',
+            'gender' => 'Gender',
 			'fax' => 'Fax Number',
 			'website' => 'Website',
 			'twitter' => 'Twitter',
@@ -147,7 +148,7 @@ class Member extends CActiveRecord
             'opentimes'=>'',
             'contact_clicked'=>'Total Contact Clicked',
             'total_logins' => 'Total Logins',
-            'editor_type' => 'Editor Type'
+            'is_verified' => 'Editor Type'
 		);
 	}
 
@@ -193,7 +194,7 @@ class Member extends CActiveRecord
 		$criteria->compare('seo_keywords',$this->seo_keywords,true);
         $criteria->compare('contact_clicked',$this->contact_clicked,true);
         $criteria->compare('total_logins',$this->total_logins,true);
-        $criteria->compare('editor_type',$this->editor_type,true);
+        $criteria->compare('is_verified',$this->is_verified,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

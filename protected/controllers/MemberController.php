@@ -1,7 +1,7 @@
 <?php
 class MemberController extends Controller
 {
-    public $layout='//layouts/column2';
+    //public $layout='//layouts/column2';
 
     public function actions()
 	{
@@ -29,14 +29,58 @@ class MemberController extends Controller
             $member->dob = $_POST['y_ob']."-".$_POST['m_ob']."-".$_POST['d_ob'];
             $member->password_real = $_POST['password_signup'];
             $member->password = sha1($_POST['password_signup']);
+            $member->gender = $_POST['gender'];
             if($member->save())
             {
-                die('ok');
+                $id = $member->id;
+                $pin = CommonClass::randomString('8');
+                Yii::app()->session["pin_$id"] = $pin;
+                $url = Yii::app()->request->baseUrl."/member/confirmation/hash/".sha1($member->email)."acef".$id;
+                $msg = "Hi ".ucfirst($_POST['fname'])." ".ucfirst($_POST['lname']);
+                $msg .= "<br/><br/> Thankyou for creating an account on the Go Run SA website.<br/><br/>
+                        Verify your regestration by clicking on the link below or by copying and pasting this link on tyhe browser.
+                        <br/>When prompted please enter the following One Time Pin: ".$pin;
+                $msg .= "<br/><br/>Verification link:<br/>
+                        <a href='".$url."' taget='_blank'>".$url."</a>";
+                echo $msg; 
+                    CommonClass::sendEmail("","",$member->email,"Confirmation Email",$msg);     
                  Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - A new event has been added successfully!');
-				$this->redirect(array('index'));
+				//$this->redirect(array('index'));
             }
          
         }
+        
+    }
+    public function actionConfirmation($hash="")
+    {
+        
+        $m = explode('acef',$hash);
+        $id = $m[1];
+        $member =  Member::model()->findByPk($id);
+        if(Yii::app()->session['pin_'.$id]){
+        if(isset($_POST['Verify'])){
+            if(Yii::app()->session['pin_'.$id]==$_POST['code'])
+            {
+                Yii::app()->user->setFlash('error', '<strong>Success - </strong>.');
+                if($m[0] == sha1($member->email))
+                {
+                    $member->saveAttributes(['is_verified'=>1]);
+                       
+                    unset(Yii::app()->session['pin_'.$id]);
+                }
+            }
+            else
+            {
+                
+                Yii::app()->user->setFlash('error', '<strong>Error - </strong> The Pin didnot match.Please try later.');
+                 //$this->redirect(Yii::app()->request->urlReferrer);
+            }
+        }
+        $this->render('/signup/index',array('member'=>$member));
+        }
+        else
+            $this->redirect(Yii::app()->request->baseUrl);
+        
         
     }
     public function actionLogin()

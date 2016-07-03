@@ -104,6 +104,9 @@ return array(
             'gii'=>'gii',
             'emailtosubscriber'=>'emailtosubscriber/index',
             
+            //'confirmation/hash/<hash>'=>'member/confirmation/<hash>',
+            
+            
             'directory/contact'=>'directory/contact',
             'directory/countContact'=>'directory/countContact',
             'directory/organisers'=>'directory/index/filter/organisers',
@@ -229,6 +232,6 @@ return array(
         'image_size' => '10',   //image upload size in MB
         'audio_size' => '10',   //audio upload size in MB
         'doc_size' => '10',   //document upload size in MB
-        'site_name'=>'Exhibition &amp; Event Association Of Southern Africa'
+        'site_name'=>'Go Run South Africa'
 	),
 );
