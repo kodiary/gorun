@@ -1,5 +1,5 @@
 <div class="sidebar col-md-3">
-          <?php echo $this->renderPartial('/dashboard/_menu', false, true); ?>
+          <?php echo $this->renderPartial('/sidebar/_menu', false, true); ?>
         </div>
         <div class="col-md-9 right-content profile_detail">
             <div class="col-md-12">

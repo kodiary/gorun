@@ -4,7 +4,7 @@
         <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard" class="active">Profile Details</a></li>
         <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard">Password</a></li>
         <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard">Settings</a></li>
-        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard">Your Clubs</a></li>
+        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/club">Your Clubs</a></li>
         <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard">Your Resuts</a></li>
         <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard">Your Race Reviews</a></li>
     </ul>
