@@ -3,7 +3,7 @@
 <div class="row" style="margin-bottom: 10px;">
     
     <div class="image_rows">
-    <?php echo CHtml::activeHiddenField($model, "[0]name")?>
+    <?php //echo CHtml::activeHiddenField($model, "[0]name")?>
      
     <div id="upimage_0" style="width: 80px;height:80px; margin-right: 15px;" class="thumbnail"></div>
      
@@ -33,7 +33,7 @@
     </div>
 	<div class="row upldPhoto">
 		
-		<?php echo CHtml::activeTextArea($model, "[0]caption")?>
+		<?php //echo CHtml::activeTextArea($model, "[0]caption")?>
         <p class="gray" style="margin-top: 6px;">Add a OPTIONAL description for this image</p>
 	</div>
  <ul id="uploadList"></ul>

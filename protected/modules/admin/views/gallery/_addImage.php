@@ -1,5 +1,5 @@
 <script type="text/javascript">
-$(document).ready(function(){
+$(function(){
    $('.qq-upload-button').each(function(){
         var index=$(this).attr('id');
         initiateUpload(index);
@@ -47,7 +47,7 @@ function initiateUpload(index)
 
 	<?php $this->renderPartial('application.modules.admin.views.gallery._form',array('model'=>$model));?>
     <div class="line"></div>
-    <?php echo CHtml::activeHiddenField($model, "[0]id");?>
+    <?php //echo CHtml::activeHiddenField($model, "[0]id");?>
 	<div>
 	<?php $this->widget('bootstrap.widgets.BootButton', array(
 		'buttonType'=>'submit',

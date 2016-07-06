@@ -71,8 +71,8 @@ class Member extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			//array('name, contact_person, number, email, password, password_real, fax, website, twitter, facebok, pinterest, google, tagline, detail, logo, display_address, street_add, suburb, province, latitude, longitude, status, slug, date_added, date_updated, seo_title, seo_desc, seo_keywords', 'required'),
-            array('fname,tagline,number,email,detail,province,dob,gender,street_add,postal_address,display_address','required','on'=>'companyInfo'),
-            array('lname,opentimes_type,gender,opentimes,latitude,longitude,logo,fax,slug,status,suburb,seo_title,seo_desc,seo_keywords,date_added,date_updated','safe','on'=>'companyInfo'),
+            array('fname,tagline,number,email,detail,username,mobile,sa_identity_no,championchip,tracetec,province,dob,gender,street_add,postal_address,display_address','required','on'=>'companyInfo,dashboard.index'),
+            array('lname,opentimes_type,gender,username,mobile,sa_identity_no,championchip,tracetec,opentimes,latitude,longitude,logo,fax,slug,status,suburb,seo_title,seo_desc,seo_keywords,date_added,date_updated','safe','on'=>'companyInfo,index'),
             array('email','email','on'=>'companyInfo,signup,editlogin,adminSignup'),
             array('email','unique','on'=>'companyInfo,signup,editlogin,adminSignup'),
             array('fname','unique','on'=>'signup,adminSignup'),
@@ -112,6 +112,7 @@ class Member extends CActiveRecord
 			'id' => 'ID',
 			'fname' => 'First Name',
 			'lname' => 'Last Name',
+            'username' =>'Username',
 			'number' => 'Contact Number',
 			'email' => 'Contact E-mail',
 			'password' => 'Password',

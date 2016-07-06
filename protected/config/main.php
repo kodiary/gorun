@@ -46,7 +46,7 @@ return array(
         'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
-            'loginUrl'=>array('/company/login'),
+            'loginUrl'=>array('/member/login'),
 		),
         'email'=>array(
         'class'=>'application.extensions.email.Email',

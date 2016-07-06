@@ -17,7 +17,7 @@
             <input type="text" name="lname" placeholder="Your last name/Surname" class="form-control" />
         </div>
         <div class="form-group col-md-12">
-            <input type="text" name="email" placeholder="Your email" class="form-control" />
+            <input type="text" name="email" placeholder="Your email" class="form-control register_email" />
         </div>
         <div class="form-group col-md-12">
             <input type="password" name="password_signup" id="password_signup" placeholder="Create Password" class="form-control" />
@@ -166,7 +166,7 @@
     </div>
     <div class="clearfix"></div>
 </div>
-<a class="btn btn-default bgblue verify_popup" data-target="#verify_user" data-toggle="modal" href="#" style="">verify</a>
+<a class="btn btn-default bgblue verify_popup" data-target="#verify_user" data-toggle="modal" href="#" style="display:none">verify</a>
 <div class="modal in" id="verify_user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 <form class="verify_user" method="post" novalidate="novalidate" action="">
   <div class="modal-dialog modal-sm" role="document">
@@ -177,9 +177,9 @@
       </div>
       <div class="modal-body">
       <?php if (Yii::app()->user->hasFlash('error')): ?>
-<div class="flash-error">
-    <?php echo CHtml::encode(Yii::app()->user->getFlash('error')); ?>
-</div><!-- /.flash-success -->
+        <div class="flash-error">
+            <?php echo CHtml::encode(Yii::app()->user->getFlash('error')); ?>
+        </div><!-- /.flash-success -->
 <?php endif; ?>
          <div class="form-group">
             <label class="col-md-12">Pin</label>
@@ -202,145 +202,23 @@
   </div>
 </form>
 </div>
-    
-      
 
-<?php /*<script type="text/javascript" src="<?php echo Yii::app()->baseUrl.'/js/jquery-ui.js';?>"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->baseUrl.'/js/jquery.ui.touch.js';?>"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->baseUrl.'/js/QapTcha.jquery.js';?>"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->baseUrl.'/css/QapTcha.jquery.css';?>" media="screen" />
-
-<?php
-$this->breadcrumbs=array(
-	'list your company',
-);?>
-
-<div id="sign-up">
-<div class="body_content_left signupPage">
-<?php $this->widget('bootstrap.widgets.BootAlert'); ?>
-    <h1>Apply for Membership Now!</h1>
-    <h2>Join EXSA and enjoy all the benefits as well as listing your company on the website.</h2>
-<h4><strong>Why join EXSA?</strong></h4>
-<ul style="margin-bottom: 20px;">
-<li>&gt; The Industry Association for South African</li>
-<li>&gt; Resource Guide / Diary</li>
-<li>&gt; Skills Development</li>
-</ul>
-
-<div class="lists-signup">
-<div class="sigContainer fl_left">
-    <div class="sigContImg fl_left">
-<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/credability.png" alt="exsa.co.za" />
-    </div><!-- sigContImg -->
-    <div class="signContTxt fl_right">
-        <p><strong>Credability - </strong>
-        If you were looking for a supplier in the exhibition & event industry on the internet you search under EXSA - of course!
-        </p>
-    </div><!-- sigContText -->
-    <div class="clear"></div>
-</div><!-- sigContainer -->
-
-<div class="sigContainer fl_right">
-    <div class="sigContImg fl_left">
-<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/events.png" alt="exsa.co.za" />
-    </div><!-- sigContImg -->
-    <div class="signContTxt fl_right">
-        <p><strong>Events & Exhibitions - </strong>
-        Events & exhibitions will be advertised free of charge on the website. Easy to create and it includes venue, days, times and a google map.
-        </p>
-    </div><!-- sigContText -->
-    <div class="clear"></div>
-</div><!-- sigContainer -->
-
-
-<div class="clear"></div>
-
-
-<div class="sigContainer fl_left">
-    <div class="sigContImg fl_left">
-<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/updated.png" alt="exsa.co.za" />
-    </div><!-- sigContImg -->
-    <div class="signContTxt fl_right">
-         <p><strong>Keep it updated -</strong>
-         Keep your company details updated by logging on. You can update every element of your page, including all text, pictures, specials, events and videos.
-         </p>
-    </div><!-- sigContText -->
-    <div class="clear"></div>
-</div><!-- sigContainer -->
-
-<div class="sigContainer fl_right">
-    <div class="sigContImg fl_left">
-<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/smile.png" alt="exsa.co.za" />
-    </div><!-- sigContImg -->
-    <div class="signContTxt fl_right">
-        <p><strong>Simple to Use -</strong>
-        We give you all the power in the admin panel, so it is easy to manage your company listing.
-        </p>
-    </div><!-- sigContText -->
-    <div class="clear"></div>
-</div><!-- sigContainer -->
-<div class="clear"></div>
-</div>
-
-        <div class="signup-bigimage"> 
-      <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/big.png" alt="http://exsa.co.za/" />
-  </div>
-
-
-      <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/create.png" alt="http://exsa.co.za/" />
-
-<div class="clear"></div>
-</div>
-
-<div class="body_content_right">
-<div class="signup-form">
-
-<div class="all_f_left signupRight">
-  <p class="blue"><a href="mailto:info@exsa.co.za"><img src="http://localhost/gorun/Button.jpg" alt="" name="SignUp" width="301" height="282" id="dasdas" /></a>
-    <?php $form=$this->beginWidget('bootstrap.widgets.BootActiveForm',array(
-    'id'=>'company-form',
-    'type'=>'horizontal',
-    'enableAjaxValidation'=>false,
-    'enableClientValidation'=>true,
-    'clientOptions'=>array(
-        'validateOnSubmit'=>true,
-    ),
-)); ?>
-</p>
-  <div class="inputs">
-    <?php if(CCaptcha::checkRequirements()): ?>
-	</div>
-  <div class="control-group captcha">
-    <div class="fl_left">
-            <div class="margintop5" style="color: #006EB4; font-size: 15px; font-weight:bold;"></div>
-            <div class="clear"></div>
-		</div>
-        <div class="fl_right">
-		</div>
-        <div class="clear"></div>
-	</div>
-    
-	<?php endif; ?>
-    <?php $this->endWidget(); ?>
-</div>
-
-</div>
-<div class="member-signup"><a href="<?php echo $this->createUrl('/company/login') ?>"><strong>ALREADY A MEMBER?</strong><br />Click here to login to the <strong>EXSA Member Area</strong></a></div>
-</div>
-<div class="clear"></div>
-</div>*/?>
 
 <script type="text/javascript">
 	$( function () {
+	   
 	   <?php if(Yii::app()->controller->action->id=='confirmation')
        {?>
+              
+            $('.verify_popup').click();
             $('#verify_user').addClass('show');
-            $('body').addClass('modal-open');
+            $('.verify_user').validate();
+            
        <?php 
        }
        ?>
 	    
-		  $('.verify_user').validate();
+		  
 			$( "#signupForm" ).validate( {
 				rules: {
 					fname: "required",
@@ -360,8 +238,18 @@ $this->breadcrumbs=array(
 					},
 					email: {
 						required: true,
-						email: true
-					},
+						email: true,
+                        remote: {
+                            url: "<?php echo Yii::app()->request->baseUrl;?>/member/checkemail?type=email",
+                            type: "post",
+                            data: {
+                              email: function() {
+                                return $( ".register_email" ).val();
+                                }
+
+					       }
+                        }
+                    },
 					agree: "required"
 				},
                 groups: {
@@ -379,7 +267,11 @@ $this->breadcrumbs=array(
 						minlength: "Your password must be at least 5 characters long",
 						equalTo: "Please enter the same password as above"
 					},
-					email: "Input a valid email address",
+					email: {
+					   required:"Input an email address",
+                        email: "Input a valid email address",
+                        remote: $.validator.format("{0} is already taken.")
+                    },
 					agree: "Please accept our policy",
                     y_ob: "Please select a date of birth",
                     m_ob: "Please select a date of birth",
@@ -408,7 +300,10 @@ $this->breadcrumbs=array(
 				},
 				unhighlight: function (element, errorClass, validClass) {
 					$( element ).parents( ".col-md-12, .dobs" ).addClass( "has-success" ).removeClass( "has-error" );
-				}
+				},
+                submitHandler: function(event) {
+                  
+                    }
 			} );
 
 			

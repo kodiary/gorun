@@ -24,7 +24,7 @@ class UserIdentity extends CUserIdentity
         else
         {
             $this->_id=$record->id;
-            $this->setState('name', $record->name);
+            $this->setState('name', $record->fname);
             $this->setState('email', $record->email);
             $this->errorCode=self::ERROR_NONE;
             $record->total_logins=$record->total_logins+1;

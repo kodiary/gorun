@@ -11,10 +11,9 @@
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/responsive.css" rel="stylesheet" type="text/css" />
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.js" type="text/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/filter.js" type="text/javascript"></script>
-    
-   
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/bmodal.js" type="text/javascript"></script>
+    
+    
 	<title>Home - GoRun</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet"> 
 </head>
@@ -40,18 +39,21 @@
         </div>
        
         <div class="subnav col-md-6 right">
-         <!--IF logged in have the code below uncommented -->
-        <!--
-            <ul>
-                <li><a href="#">My profile</a></li>
-                <li><a href="#">My results <span class="blue">45</span></a></li>
-                <li><a href="#">Credits <span class="blue">0.00</span></a></li>
-                <li class="last"><a href="#">Logout</a></li>
-            </ul>
-            -->
-            
+        <?php if(Yii::app()->user->isGuest){?>   
         <!-- IF not logged in -->
         <div class="registration">Not a member? <a href="<?php echo Yii::app()->request->baseUrl; ?>/signup" class="blue">Join now</a> <a href="#" class="btn btn-default bgblue ml15" data-toggle="modal" data-target="#loginModal">Login</a></div>
+        <?php }else
+        {?>
+         <!--IF logged in have the code below uncommented -->
+        
+            <ul>
+                <li><a href="<?php echo Yii::app()->request->baseUrl;?>/dashboard">My profile</a></li>
+                <li><a href="#">My results <span class="blue">45</span></a></li>
+                <li><a href="#">Credits <span class="blue">0.00</span></a></li>
+                <li class="last"><a href="<?php echo Yii::app()->request->baseUrl;?>/member/logout">Logout</a></li>
+            </ul>
+          <?php }?>
+        
         </div>
         
         
@@ -78,6 +80,16 @@
         </ul>
     </div>
     <div class="row maindiv">
+      <?php if (Yii::app()->user->hasFlash('error')): ?>
+        <div class="flash-error">
+            <?php echo CHtml::encode(Yii::app()->user->getFlash('error')); ?>
+        </div><!-- /.flash-error -->
+         <?php endif;
+          if(Yii::app()->user->hasFlash('success')): ?>
+        <div class="flash-success">
+            <?php echo CHtml::encode(Yii::app()->user->getFlash('success')); ?>
+        </div><!-- /.flash-success -->
+        <?php endif;?>
     <?php echo $content; ?>
         
     </div>
@@ -290,6 +302,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 })*/
 $(function(){
+    //alert("<?php echo Yii::app()->controller->id;?>");
     $.validator.setDefaults({
 		submitHandler: function() {
 			
@@ -362,7 +375,7 @@ $(function(){
                                    if(msg=='OK')
                                    {
                                    
-                                        //window.location.href ="<?php echo Yii::app()->request->baseUrl; ?>/member";
+                                        window.location.href ="<?php echo Yii::app()->request->baseUrl; ?>/dashboard";
                                         //$('.error-login').html('Invalid Username/Email or Password');
                                    }
                                    else

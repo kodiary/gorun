@@ -18,9 +18,39 @@ class MemberController extends Controller
 			),
 		);
 	}
+    public function actionCheckemail()
+    {
+        $member = new Member;
+        $cond = '';
+        if(isset($_GET['type']))
+        {
+            if(isset(Yii::app()->user->id))
+                $cond = 'id <> '.Yii::app()->user->id;
+            if($_GET['type']=='email')
+            {
+                if($member->findByAttributes(['email'=>$_POST['email']],$cond))
+                {
+                   echo "false";
+                }
+                else
+                    echo "true";
+            }
+            else
+            {
+                 if($member->findByAttributes(['username'=>$_POST['username']],$cond))
+                {
+                   echo "false";
+                }
+                else
+                    echo "true";
+            }
+            die();
+        }
+    }
     public function actionSignup()
     {
         $member = new Member;
+        
         if(isset($_POST['signup']))
         {
             $member->fname = $_POST['fname'];

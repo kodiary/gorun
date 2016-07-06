@@ -8,16 +8,16 @@
             </div>
             <div class="clearfix"></div>
             <hr />
-            <form action="">
+            <form action="<?php echo Yii::app()->request->baseUrl;?>/dashboard" id="profile-detail" method="post">
                 <div class="form-group">
                     <label class="col-md-2">First Name<span class="required">*</span></label>
-                    <div class="col-md-8"><input type="text" class="form-control" placeholder="Your First Name" name="fname" /></div>
+                    <div class="col-md-8"><input type="text" class="form-control" placeholder="Your First Name" name="fname" value="<?php echo $member->fname;?>" /></div>
                     <div class="clearfix"></div>
                 </div>
                 
                 <div class="form-group">
                     <label class="col-md-2">Last Name<span class="required">*</span></label>
-                    <div class="col-md-8"><input type="text" class="form-control" placeholder="Your Last Name" name="lname" /></div>
+                    <div class="col-md-8"><input type="text" class="form-control" placeholder="Your Last Name" name="lname" value="<?php echo $member->lname;?>" /></div>
                     <div class="clearfix"></div>
                 </div>
                 
@@ -25,7 +25,7 @@
                 
                 <div class="form-group">
                     <label class="col-md-2">Username<span class="required">*</span></label>
-                    <div class="col-md-8"><input type="text" class="form-control" placeholder="Username" name="username" /></div>
+                    <div class="col-md-8"><input type="text" class="form-control username" placeholder="Username" name="username" value="<?php echo $member->username;?>" /></div>
                     <div class="clearfix"></div>
                 </div>
                 
@@ -39,7 +39,7 @@
                 
                 <div class="form-group">
                     <label class="col-md-2">Email<span class="required">*</span></label>
-                    <div class="col-md-8"><input type="text" class="form-control" placeholder="Your Email Address" name="email" /></div>
+                    <div class="col-md-8"><input type="text" class="form-control profile_email" placeholder="Your Email Address" name="email" value="<?php echo $member->email;?>" /></div>
                     <div class="clearfix"></div>
                 </div>
                 
@@ -53,7 +53,7 @@
                 
                 <div class="form-group">
                     <label class="col-md-2">Mobile</label>
-                    <div class="col-md-8"><input type="text" class="form-control" placeholder="Your Mobile Number" name="mobile" /></div>
+                    <div class="col-md-8"><input type="text" class="form-control" placeholder="Your Mobile Number" name="mobile" value="<?php echo $member->mobile;?>" /></div>
                     <div class="clearfix"></div>
                 </div>
                 
@@ -64,39 +64,39 @@
                 </div>
                 
                 <hr />
-                
-                <div class="form-group">
+                <?php $date = explode("-",$member->dob);?>
+                <div class="form-group dobs">
                     <label class="col-md-2">Date of Birth<span class="required">*</span></label>
                     <div class="col-md-8">
-                        <select name="day_ob" class="col-md-4">
+                        <select name="d_ob" class="col-md-4">
                             <option value="">Day</option>
                             <?php
                             for($i=1;$i<32;$i++)
                             {
                                 ?>
-                                <option value="<?php echo $i;?>"><?php echo $i;?></option>
+                                <option value="<?php echo $i;?>" <?php if($date[2]==$i)echo "selected='selected'";?>><?php echo $i;?></option>
                                 <?php
                             }
                             ?>
                         </select> 
-                        <select name="day_ob" class="col-md-4">
+                        <select name="m_ob" class="col-md-4">
                             <option value="">Month</option>
                             <?php
                             for($i=1;$i<13;$i++)
                             {
                                 ?>
-                                <option value="<?php echo $i;?>"><?php echo $i;?></option>
+                                <option value="<?php echo $i;?>" <?php if($date[1]==$i)echo "selected='selected'";?>><?php echo $i;?></option>
                                 <?php
                             }
                             ?>
                         </select> 
-                        <select name="day_ob" class="col-md-4">
+                        <select name="y_ob" class="col-md-4 y_ob">
                             <option value="">Year</option>
                             <?php
                             for($i=(date('Y')-100);$i<date('Y');$i++)
                             {
                                 ?>
-                                <option value="<?php echo $i;?>"><?php echo $i;?></option>
+                                <option value="<?php echo $i;?>" <?php if($date[0]==$i)echo "selected='selected'";?>><?php echo $i;?></option>
                                 <?php
                             }
                             ?>
@@ -108,8 +108,8 @@
                  <div class="form-group">
                     <label class="col-md-2">Gender<span class="required">*</span></label>
                     <div class="col-md-8">
-                        <div class="col-md-6 whitebg"><input type="radio" name="gender" value="male" /> Male</div>
-                        <div class="col-md-6 whitebg"><input type="radio" name="gender" value="female" /> Female</div>
+                        <div class="col-md-6 whitebg"><input type="radio" name="gender" value="1" <?php if($member->gender == '1')echo "checked='checked'";?> /> Male</div>
+                        <div class="col-md-6 whitebg"><input type="radio" name="gender" value="0" <?php if($member->gender == '0')echo "checked='checked'";?> /> Female</div>
                         <div class="clearfix"></div>
                     </div>
                     <div class="clearfix"></div>
@@ -120,13 +120,48 @@
                 <div class="form-group">
                     <label class="col-md-2">Profile Photo</label>
                     <div class="col-md-8 profilepic">
-                    <div class="profile_img">
-                    
+                    <div class="profile_img" id="upimage_0">
+                    <?php
+                    if(file_exists(Yii::app()->basePath.'/../images/frontend/thumb/'.$member->logo))
+                    {
+                        $img_url=Yii::app()->baseUrl.'/images/frontend/thumb/'.$member->logo;
+                    }
+                    else
+                    {
+                        $img_url=Yii::app()->baseUrl.'/images/noimage.jpg';    
+                    }
+                    ?>
+                        <img src="<?php echo $img_url;?>"/>
                     </div>
                     <div class="col-md-6 picact">
-                        <a href="javascript:void(0)" class="btn btn-primary">Upload</a><br />
-                        <a href="javascript:void(0)" class="btn btn-default">Crop</a><br />
-                        <a href="javascript:void(0)" class="btn btn-danger">Remove</a><br />
+                    <?php echo $this->renderPartial('application.views.gallery._addImage',array('member'=>$member)); ?>
+                        
+                      
+            <?php
+                        
+            //crop button
+             echo CHtml::ajaxButton('Crop',
+                        $this->createUrl('gallery/cropPhoto'),
+                         array( //ajax options
+                         'data'=>array('fileName'=>"js:function(){ return $('.uploaded_image').val()}",'id'=>$member->id),
+                         'type'=>'POST',
+                        'success'=>"js:function(data){
+                                    if(data!=''){
+                                        $('#cropModal').html(data).dialog('open'); return false;
+                                    }
+                                    else
+                                        alert('No Image selected');
+                                    }",
+                        'complete'=>"js:function(){
+                                      $('#crop_".$member->id."').val('Crop');
+                                    }",
+                        ),
+                        array('id'=>'crop_'.$member->id,'class'=>'btn btn-default','onclick'=>'$("#crop_'.$member->id.'").val("loading...");')//html options
+            );
+            ?><br />
+            
+                        
+                        <a href="javascript:void(0)" class="btn btn-danger" onclick="return confirm_delete('Are you sure that you want to remove the image?'); ">Remove</a><br />
                     </div>
                         
                     </div>
@@ -137,7 +172,7 @@
                 
                 <div class="form-group">
                     <label class="col-md-2">SA Identity No.</label>
-                    <div class="col-md-8"><input type="text" class="form-control" placeholder="Your SA Identity Number" name="sa_identity_no" /></div>
+                    <div class="col-md-8"><input type="text" class="form-control" placeholder="Your SA Identity Number" name="sa_identity_no" value="<?php echo $member->sa_identity_no;?>" /></div>
                     <div class="clearfix"></div>
                 </div>
                 
@@ -151,7 +186,7 @@
                 
                 <div class="form-group">
                     <label class="col-md-2">Championchip</label>
-                    <div class="col-md-8"><input type="text" class="form-control" placeholder="Your Championchip Number" name="championchip" /></div>
+                    <div class="col-md-8"><input type="text" class="form-control" placeholder="Your Championchip Number" name="championchip" value="<?php echo $member->championchip;?>" /></div>
                     <div class="clearfix"></div>
                 </div>
                 
@@ -165,7 +200,7 @@
                 
                 <div class="form-group">
                     <label class="col-md-2">TraceTec</label>
-                    <div class="col-md-8"><input type="text" class="form-control" placeholder="Your TraceTec Number" name="tracetec" /></div>
+                    <div class="col-md-8"><input type="text" class="form-control" placeholder="Your TraceTec Number" name="tracetec" value="<?php echo $member->tracetec;?>"  /></div>
                     <div class="clearfix"></div>
                 </div>
                 
@@ -178,13 +213,35 @@
                 <hr />
                 
                 <div class="form-group">
-                <input type="submit" value="Save Changes" class="btn btn-default bgblue btn-lg" />
+                <input type="submit" name="submit" value="Save Changes" class="btn btn-default bgblue btn-lg" />
                 </div>
                 
             </form>
             
         </div>
         <div class="clearfix"></div>
+<?php
+    $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
+        'id'=>'cropModal',
+        'options'=>array(
+            'width'=>'auto',
+            'height'=>'auto',
+            'autoOpen'=>false,
+            'resizable'=>false,
+            'modal'=>true,
+            'overlay'=>array(
+                'backgroundColor'=>'#000',
+                'opacity'=>'0.5'
+            ),
+            'close'=>"js:function(e,ui){ // to overcome multiple submission problem
+                $('#cropModal').empty();
+            }",
+        ),
+    ));
+    //modal dialog content here
+    
+    $this->endWidget('zii.widgets.jui.CJuiDialog');
+?>
 <?php /*$this->breadcrumbs=array('Welcome to the exhibition and event association of southern africa');?>
 <div id="fb-root"></div>
  <?php
@@ -260,3 +317,122 @@
 </div><!--#body_content_right-->
 <div class="clear"></div>
 <!-- Rght side bar end --><?php */?>
+    <script>
+    function confirm_delete(ques)
+    {
+        if(confirm(ques))
+        {
+            $('.profile_img').html('');
+            $('.image_rows input').val('');
+        }
+        else
+            return false;
+    }
+    $(function(){
+			$( "#profile-detail" ).validate( {
+			 onkeyup: false,
+				rules: {
+					fname: "required",
+					lname: "required",
+                    d_ob: "required",
+                    m_ob: "required",
+                    y_ob: "required",
+                    gender: "required",
+                    username: 'required',
+					password_signup: {
+						required: true,
+						minlength: 5
+					},
+					confirm_password: {
+						required: true,
+						minlength: 5,
+						equalTo: "#password_signup"
+					},
+					email: {
+						required: true,
+						email: true,
+                        remote: {
+                            url: "<?php echo Yii::app()->request->baseUrl;?>/member/checkemail?type=email",
+                            type: "post",
+                            data: {
+                              email: function() {
+                                return $( ".profile_email" ).val();
+                                }
+
+					       }
+                        }
+                    },
+                    username: {
+                        required: true,
+                        remote: {
+                            url: "<?php echo Yii::app()->request->baseUrl;?>/member/checkemail?type=username",
+                            type: "post",
+                            data: {
+                              username: function() {
+                                return $( ".username" ).val();
+                                }
+
+					       }
+                        }
+                    },
+					agree: "required"
+				},
+                groups: {
+                    y_ob: "d_ob m_ob y_ob"
+                },
+				messages: {
+					fname: "Input a firstname",
+					lname: "Input a lastname/Surname",
+					password_signup: {
+						required: "Input a password you will remember",
+						minlength: "Your password must be at least 5 characters long"
+					},
+					confirm_password: {
+						required: "Please provide a password",
+						minlength: "Your password must be at least 5 characters long",
+						equalTo: "Please enter the same password as above"
+					},
+					email: {
+					    required:"Input an email address",
+                        email: "Input a valid email address",
+                        remote: $.validator.format("{0} is already taken.")
+                    },
+                	username: {
+					    required:"Input a username",
+                        remote: $.validator.format("{0} is already taken.")
+                    },
+					agree: "Please accept our policy",
+                    y_ob: "Please select a date of birth",
+                    m_ob: "Please select a date of birth",
+                    d_ob: "Please select a date of birth",
+                    gender: "Please select a gender"
+				},
+				errorElement: "em",
+				errorPlacement: function ( error, element ) {
+					// Add the `help-block` class to the error element
+                    
+					error.addClass( "help-block" );
+
+					if ( element.attr( "name" ) == "d_ob" || element.attr( "name" ) == "m_ob" || element.attr( "name" ) == "y_ob" ) {
+						error.insertAfter( ".y_ob" );
+					}
+                    else if(element.prop('type')=== 'radio')
+                    {
+                        error.insertAfter( ('.f_gender'));
+                    }
+                     else {
+						error.insertAfter( element );
+					}
+				},
+				highlight: function ( element, errorClass, validClass ) {
+					$( element ).parents( ".form-group, .dobs" ).addClass( "has-error" ).removeClass( "has-success" );
+				},
+				unhighlight: function (element, errorClass, validClass) {
+					$( element ).parents( ".form-group, .dobs" ).addClass( "has-success" ).removeClass( "has-error" );
+				},
+                
+			} );
+
+			
+		} );
+	</script>
