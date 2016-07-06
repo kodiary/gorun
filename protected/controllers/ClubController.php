@@ -39,7 +39,8 @@ class ClubController extends Controller
 	}
     public function actionIndex()
 	{
-	   $this->render('index');
+	   $member = Member::model()->findByPk(Yii::app()->user->id);
+	   $this->render('index', array('member'=>$member));
     }
  }
  ?>

@@ -3,15 +3,15 @@
         </div>
         <div class="col-md-9 right-content profile_detail">
             <div class="col-md-12">
-                <h1>YOUR PROFILE DETAIL</h1>
-                <strong><span class="blue">Private and Confidential.</span> All information here is not openly shared.</strong>
+                <h1>ADD YOUR CLUB</h1>
+                <strong><span class="blue">Add Your Club.</span> </strong>
             </div>
             <div class="clearfix"></div>
             <hr />
             <form action="<?php echo Yii::app()->request->baseUrl;?>/dashboard" id="profile-detail" method="post">
                 <div class="form-group">
-                    <label class="col-md-2">First Name<span class="required">*</span></label>
-                    <div class="col-md-8"><input type="text" class="form-control" placeholder="Your First Name" name="fname" value="<?php echo $member->fname;?>" /></div>
+                    <label class="col-md-2">Club Name<span class="required">*</span></label>
+                    <div class="col-md-8"><input type="text" class="form-control" placeholder="Club Name..." name="fname" value="<?php echo $member->fname;?>" /></div>
                     <div class="clearfix"></div>
                 </div>
                 
