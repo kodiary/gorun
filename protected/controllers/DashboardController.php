@@ -88,6 +88,25 @@ class DashboardController extends Controller
         
 	}
     
+    public function actionPassword()
+    {
+        
+        $member = Member::model()->findByPk(Yii::app()->user->id);
+        $pass = CommonClass::encoded_password($member->password_real);
+        if(isset($_POST['submit']))
+        {
+            $member->password_real = $_POST['password'];
+            $member->password = sha1($_POST['password']);
+            if($member->save())
+            {
+                Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - Your password has been updated successfully!');
+            }
+        }
+        $this->render('password',['password'=>$pass]);
+
+    }
+    
+    
 
     
 }
