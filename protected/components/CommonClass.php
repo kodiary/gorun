@@ -770,6 +770,12 @@ class CommonClass extends CComponent
 		$str .= $characters[$rand];
 	}
 	return $str;
-}
+    }
+    
+    public function encoded_password($string)
+    {
+        $s = substr($string,strlen($string)-3,3);
+        return "****".$s;
+    }
 }
 ?>

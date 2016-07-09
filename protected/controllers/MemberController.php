@@ -79,6 +79,11 @@ class MemberController extends Controller
             }
          
         }
+        if(!Yii::app()->user->isGuest)
+        {
+            $this->redirect(Yii::app()->request->baseUrl.'/dashboard');
+        }
+       
         
     }
     public function actionConfirmation($hash="")
@@ -97,6 +102,7 @@ class MemberController extends Controller
                     $member->saveAttributes(['is_verified'=>1]);
                        
                     unset(Yii::app()->session['pin_'.$id]);
+                    $this->redirect('/member/login');
                 }
             }
             else
@@ -117,7 +123,7 @@ class MemberController extends Controller
 	{
         if(Yii::app()->user->id)
         {
-            $this->redirect(array('/member/info'));
+            $this->redirect(array('/dashboard'));
         }
         $model=new LoginForm('login');
         $model2=new LoginForm('passwordReminder');
@@ -148,6 +154,9 @@ class MemberController extends Controller
             }
 				
 		}
+        else{
+            $this->render('login');
+        }
         if(isset($_POST['btnRemindPass']))
 		{
             
@@ -168,7 +177,7 @@ class MemberController extends Controller
                 }
             }
 		// display the login form
-        //$this->render('index',array('model'=>$model,'model2'=>$model2));
+        
 	}
     public function actionLogout()
 	{
