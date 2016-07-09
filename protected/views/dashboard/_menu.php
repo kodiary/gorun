@@ -10,4 +10,4 @@
     </ul>
 </div>
 <a href="#" class="race_wallet">RACE WALLET - <span class="blue">R0.00</span></a>
-<a href="#" class="submit-event">Submit your event &nbsp; <span class="fa fa-plus"></span></a>
+<a href="#" class="submit-event">Submit your event &nbsp; <span class="fa fa-plus"></span></a> 

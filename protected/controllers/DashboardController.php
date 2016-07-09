@@ -3,7 +3,7 @@ class DashboardController extends Controller
 {
     public $layout='//layouts/column2';
     
-    public function init()
+    public function init() 
     {
        
         if(Yii::app()->user->isGuest)
