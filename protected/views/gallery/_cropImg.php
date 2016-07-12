@@ -12,6 +12,7 @@
                 }',
                 'success'=>"js:function(data){
                     $('.cropIt').val('Crop');
+                    $('#upimage_0').html('');
                     $('#upimage_0').html('<img src=\"'+data+'\"/>');
                     var filename = data.split('thumb/');
                     $('.main_logo').val(filename[1]);

@@ -379,7 +379,7 @@ class GalleryController extends Controller
             $temp->delete();
        }
        
-       echo $imgPath;
+       echo $imgPath."?rand=".rand();
     }
     
     public function actionSortImage()

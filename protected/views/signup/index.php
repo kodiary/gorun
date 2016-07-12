@@ -301,9 +301,7 @@
 				unhighlight: function (element, errorClass, validClass) {
 					$( element ).parents( ".col-md-12, .dobs" ).addClass( "has-success" ).removeClass( "has-error" );
 				},
-                submitHandler: function(event) {
-                  
-                    }
+                
 			} );
 
 			

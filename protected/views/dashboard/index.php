@@ -122,16 +122,14 @@
                     <div class="col-md-8 profilepic">
                     <div class="profile_img" id="upimage_0">
                     <?php
-                    if(file_exists(Yii::app()->basePath.'/../images/frontend/thumb/'.$member->logo))
+                    if($member->logo && (Yii::app()->basePath.'/../images/frontend/thumb/'.$member->logo))
                     {
                         $img_url=Yii::app()->baseUrl.'/images/frontend/thumb/'.$member->logo;
+                        echo '<img src="'.$img_url.'"/>';
                     }
-                    else
-                    {
-                        $img_url=Yii::app()->baseUrl.'/images/noimage.jpg';    
-                    }
+                    
                     ?>
-                        <img src="<?php echo $img_url;?>"/>
+                        
                     </div>
                     <div class="col-md-6 picact">
                     <?php echo $this->renderPartial('application.views.gallery._addImage',array('member'=>$member)); ?>

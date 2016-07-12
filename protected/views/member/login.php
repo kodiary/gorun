@@ -4,38 +4,18 @@
 <div class="col-md-9 right-content profile_detail">
     <div class="col-md-12">
         <h1>Email Address Confirmed Successfully.</h1>
-        <strong><span class="blue">Your email has been verified.</span> </strong>
+        <strong><span class="blue">Your email address has been verified.</span> </strong>
         <br/>
         Please use the form to login for the first time.
     </div>
     <div class="clearfix"></div>
-    <hr />
-      <form action="<?php echo Yii::app()->request->baseUrl;?>/dashboard/password" id="login" method="post">
-        
-        <div class="form-group ">
-            <label class="col-md-4">Email <span class="required">*</span></label>
-            <div class="col-md-6">
-                <input type="text" name="email" id="email" placeholder="Email or Username" class="form-control" />
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-4">Password <span class="required">*</span></label>
-                <div class="col-md-6">
-                    <input type="password" name="password" placeholder=" Password" class="form-control" />
-                </div>
-                <div class="clearfix"></div>
-            
-        </div>
-    <hr />
-    
-    <div class="form-group">
-
-        <input type="submit" name="submit" value="Save Changes" class="btn btn-default bgblue " />
-        <input type="button" value="Cancel" class="btn btn-default " />
- 
-    </div>
+   
+    <div class="col-md-6">
+      <form class="login-form" method="post" novalidate="novalidate">
+        <hr />
+        <?php $this->renderPartial('/common/login');?>
     </form>
+    </div>
 </div>
 <script>
 $(function(){

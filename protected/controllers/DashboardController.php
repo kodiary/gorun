@@ -17,6 +17,8 @@ class DashboardController extends Controller
             
             if($member->is_verified=='0')
             {
+                //Yii::app()->user->logout();
+                Yii::app()->session->open();
                 Yii::app()->user->setFlash('error', '<strong>Error - </strong> Please verify your email and try to login.');
                 $this->redirect(Yii::app()->request->baseUrl);
             }
@@ -63,6 +65,8 @@ class DashboardController extends Controller
             
             if($_POST['logo']!='')
             {
+                $logo = explode("?rand",$_POST['logo']);
+                $_POST['logo'] = $logo[0];
                 @copy(Yii::app()->basePath.'/../images/temp/full/'.$_POST['logo'],Yii::app()->basePath.'/../images/frontend/full/'.$_POST['logo']);
                 @copy(Yii::app()->basePath.'/../images/temp/main/'.$_POST['logo'],Yii::app()->basePath.'/../images/frontend/main/'.$_POST['logo']);
                 @copy(Yii::app()->basePath.'/../images/temp/thumb/'.$_POST['logo'],Yii::app()->basePath.'/../images/frontend/thumb/'.$_POST['logo']);

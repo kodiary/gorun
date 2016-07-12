@@ -2,7 +2,7 @@
 class MemberController extends Controller
 {
     //public $layout='//layouts/column2';
-
+    public $username;
     public function actions()
 	{
 		return array(
@@ -18,11 +18,12 @@ class MemberController extends Controller
 			),
 		);
 	}
-    public function actionCheckemail()
+    public function actionCheckemail($username='')
     {
+        
         $member = new Member;
         $cond = '';
-        if(isset($_GET['type']))
+        if(isset($_GET['type']) || $username!='')
         {
             if(isset(Yii::app()->user->id))
                 $cond = 'id <> '.Yii::app()->user->id;
@@ -37,14 +38,30 @@ class MemberController extends Controller
             }
             else
             {
-                 if($member->findByAttributes(['username'=>$_POST['username']],$cond))
+                if($username == '')
+                    $username = $_POST['username'];
+                    
+                 if($m = $member->findByAttributes(['username'=>$username],$cond))
                 {
-                   echo "false";
+                    
+                    if($username!='')
+                        self::actionCheckemail($username.rand(0,1000));
+                    else
+                        echo "false";
                 }
                 else
-                    echo "true";
+                {
+                    //echo $n = $username;
+                    if($username!=""){
+                        //die('s');
+                         $this->username =$username;
+                         
+                        }
+                    else
+                        echo "true";
+                }
             }
-            die();
+            $this->renderPartial('_ajaxContent', '', false, false);//die();
         }
     }
     public function actionSignup()
@@ -60,9 +77,14 @@ class MemberController extends Controller
             $member->password_real = $_POST['password_signup'];
             $member->password = sha1($_POST['password_signup']);
             $member->gender = $_POST['gender'];
+            $username = $_POST['fname'].$_POST['lname'];
+            $this->actionCheckemail($username);
+            $member->username =  $this->username;
+            
             if($member->save())
             {
                 $id = $member->id;
+                
                 $pin = CommonClass::randomString('8');
                 Yii::app()->session["pin_$id"] = $pin;
                 $url = Yii::app()->request->baseUrl."/member/confirmation/hash/".sha1($member->email)."acef".$id;
@@ -96,13 +118,13 @@ class MemberController extends Controller
         if(isset($_POST['Verify'])){
             if(Yii::app()->session['pin_'.$id]==$_POST['code'])
             {
-                Yii::app()->user->setFlash('error', '<strong>Success - </strong>.');
+                Yii::app()->user->setFlash('error', '<strong>Success - </strong>.Your email has been verified. You may now login.');
                 if($m[0] == sha1($member->email))
                 {
                     $member->saveAttributes(['is_verified'=>1]);
                        
                     unset(Yii::app()->session['pin_'.$id]);
-                    $this->redirect('/member/login');
+                    $this->redirect(Yii::app()->request->baseUrl.'/member/login');
                 }
             }
             else
@@ -150,6 +172,7 @@ class MemberController extends Controller
             }
             else
             {
+                
                 echo "Error";
             }
 				

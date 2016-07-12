@@ -16,11 +16,16 @@ class UserIdentity extends CUserIdentity
     private $_id;
     public function authenticate()
     {
+        
         $record=member::model()->findByAttributes(array('email'=>$this->username));
         if($record===null)
             $this->errorCode=self::ERROR_USERNAME_INVALID;
         else if($record->password!==sha1($this->password))
             $this->errorCode=self::ERROR_PASSWORD_INVALID;
+        else if($record->is_verified == '0')
+        {
+            die("Not Verified");
+        }
         else
         {
             $this->_id=$record->id;
