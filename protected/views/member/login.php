@@ -2,7 +2,7 @@
   
 </div>
 <div class="col-md-9 right-content profile_detail">
-    <div class="col-md-12">
+    <div class="col-md-12 verified" <?php echo (Yii::app()->user->hasFlash('notverified'))?'':'style="display: none;"';?>>
         <h1>Email Address Confirmed Successfully.</h1>
         <strong><span class="blue">Your email address has been verified.</span> </strong>
         <br/>

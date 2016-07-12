@@ -78,7 +78,7 @@ class MemberController extends Controller
             $member->password = sha1($_POST['password_signup']);
             $member->gender = $_POST['gender'];
             $username = $_POST['fname'].$_POST['lname'];
-            $this->actionCheckemail($username);
+            $this->actionCheckemail(CommonClass::getSlug($username));
             $member->username =  $this->username;
             
             if($member->save())
@@ -118,12 +118,13 @@ class MemberController extends Controller
         if(isset($_POST['Verify'])){
             if(Yii::app()->session['pin_'.$id]==$_POST['code'])
             {
-                Yii::app()->user->setFlash('error', '<strong>Success - </strong>.Your email has been verified. You may now login.');
+                //Yii::app()->user->setFlash('error', '<strong>Success - </strong>.Your email has been verified. You may now login.');
                 if($m[0] == sha1($member->email))
                 {
                     $member->saveAttributes(['is_verified'=>1]);
                        
                     unset(Yii::app()->session['pin_'.$id]);
+                    Yii::app()->user->setFlash('notverified','ok');
                     $this->redirect(Yii::app()->request->baseUrl.'/member/login');
                 }
             }
