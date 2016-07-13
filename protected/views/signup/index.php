@@ -109,56 +109,8 @@
     <div class="col-md-4">
         <h2>Member Login</h2>
         <hr />
-        <div class="form-group">
-            <label class="control-label col-md-12">Email</label>
-            <div class="col-sm-12"><input type="text" name="email" placeholder="Email or Username" class="form-control" /></div>
-            <div class="clearfix"></div>           
-            
-        </div>
+        <?php $this->renderPartial('/common/login');?>
         
-        <!-- Success -->
-        <div class="form-group has-success has-feedback">
-            <label class="control-label  col-md-12" for="inputSuccess3">Email</label>
-            <div class="col-sm-12">
-              <input type="text" class="form-control" name="email" placeholder="Email or Username" id="inputSuccess3" aria-describedby="inputSuccess3Status">
-              <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-              <span id="helpBlock2" class="help-block">Email or Username is not valid.</span>
-              <span id="inputSuccess3Status" class="sr-only">(success)</span>
-            </div>
-            <div class="clearfix"></div>  
-          </div>
-         <!--Error --> 
-        <div class="form-group has-error has-feedback">
-            <label class="control-label  col-md-12" for="inputError3">Email</label>
-            <div class="col-sm-12">
-              <input type="text" class="form-control" name="email" placeholder="Email or Username" id="inputError3" aria-describedby="inputError3Status">
-              <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-              <span id="helpBlock2" class="help-block">Email or Username is not valid.</span>
-              <span id="inputError3Status" class="sr-only">(error)</span>
-            </div>
-            <div class="clearfix"></div>  
-          </div>
-          
-        
-          
-        
-        <div class="form-group">
-            <label class=" col-md-12">Password</label>
-            <div class=" col-md-12"><input type="password" name="password" placeholder="Password" class="form-control" /></div>
-            <div class="clearfix"></div>            
-            
-        </div>
-        
-        <div class="form-group  col-md-12">
-            
-            <div class=""><input type="submit" name="submit" value="Login to your account" class="btn btn-default bgblue btn-lg fullwidth" /></div>
-            <div class="clearfix"></div>
-            <div class="remember">
-                <input type="checkbox" name="remember" /> Remember Me
-            </div>
-            <div class="clearfix"></div>            
-            
-        </div>
       <div class="center"> 
         Not a member yet? <a href="#" class="blue">Join now for free.</a> 
       </div>

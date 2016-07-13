@@ -15,7 +15,11 @@
         <hr />
         <?php $this->renderPartial('/common/login');?>
     </form>
+    <div class="center"> 
+        Not a member yet? <a href="#" class="blue">Join now for free.</a> 
+      </div>
     </div>
+    
 </div>
 <script>
 $(function(){
