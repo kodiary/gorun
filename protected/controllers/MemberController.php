@@ -39,9 +39,10 @@ class MemberController extends Controller
             else
             {
                 if($username == '')
-                    $username = $_POST['username'];
-                    
-                 if($m = $member->findByAttributes(['username'=>$username],$cond))
+                    $username1 = $_POST['username'];
+                else
+                	$username1 = $username;    
+                 if($m = $member->findByAttributes(['username'=>$username1],$cond))
                 {
                     
                     if($username!='')
@@ -66,6 +67,7 @@ class MemberController extends Controller
     }
     public function actionSignup()
     {
+        echo $this->createAbsoluteUrl('test/test');die();
         $member = new Member;
         
         if(isset($_POST['signup']))
@@ -87,7 +89,7 @@ class MemberController extends Controller
                 
                 $pin = CommonClass::randomString('8');
                 Yii::app()->session["pin_$id"] = $pin;
-                $url = Yii::app()->request->baseUrl."/member/confirmation/hash/".sha1($member->email)."acef".$id;
+                $url =  $this->createAbsoluteUrl("member/confirmation/hash/".sha1($member->email)."acef".$id);
                 $msg = "Hi ".ucfirst($_POST['fname'])." ".ucfirst($_POST['lname']);
                 $msg .= "<br/><br/> Thankyou for creating an account on the Go Run SA website.<br/><br/>
                         Verify your regestration by clicking on the link below or by copying and pasting this link on tyhe browser.
@@ -96,8 +98,8 @@ class MemberController extends Controller
                         <a href='".$url."' taget='_blank'>".$url."</a>";
                 echo $msg; 
                     CommonClass::sendEmail("","",$member->email,"Confirmation Email",$msg);     
-                 Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - A new event has been added successfully!');
-				//$this->redirect(array('index'));
+                // Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - A new event has been added successfully!');
+				$this->redirect(Yii::app()->request->baseUrl);
             }
          
         }

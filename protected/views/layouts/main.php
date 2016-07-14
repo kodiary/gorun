@@ -80,16 +80,21 @@
         </ul>
     </div>
     <div class="row maindiv">
+    <?php if (Yii::app()->user->hasFlash('error') || Yii::app()->user->hasFlash('success')){?>
+    
+    <div class="col-md-12" style="margin-top: 10px;">
       <?php if (Yii::app()->user->hasFlash('error')): ?>
-        <div class="flash-error">
-            <?php echo CHtml::encode(Yii::app()->user->getFlash('error')); ?>
+        <div class="alert alert-danger" role="alert">
+            <?php echo Yii::app()->user->getFlash('error'); ?>
         </div><!-- /.flash-error -->
          <?php endif;
           if(Yii::app()->user->hasFlash('success')): ?>
-        <div class="flash-success">
-            <?php echo CHtml::encode(Yii::app()->user->getFlash('success')); ?>
+        <div class="alert alert-success" role="alert">
+            <?php echo Yii::app()->user->getFlash('success'); ?>
         </div><!-- /.flash-success -->
         <?php endif;?>
+    </div>
+    <?php }?>
     <?php echo $content; ?>
         
     </div>
