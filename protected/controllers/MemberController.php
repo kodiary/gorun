@@ -70,7 +70,7 @@ class MemberController extends Controller
         echo $this->createAbsoluteUrl('test/test');die();
         $member = new Member;
         
-        if(isset($_POST['signup']))
+        if(isset($_POST['fname']))
         {
             $member->fname = $_POST['fname'];
             $member->lname = $_POST['lname'];
@@ -90,13 +90,7 @@ class MemberController extends Controller
                 $pin = CommonClass::randomString('8');
                 Yii::app()->session["pin_$id"] = $pin;
                 $url =  $this->createAbsoluteUrl("member/confirmation/hash/".sha1($member->email)."acef".$id);
-                $msg = "Hi ".ucfirst($_POST['fname'])." ".ucfirst($_POST['lname']);
-                $msg .= "<br/><br/> Thankyou for creating an account on the Go Run SA website.<br/><br/>
-                        Verify your regestration by clicking on the link below or by copying and pasting this link on tyhe browser.
-                        <br/>When prompted please enter the following One Time Pin: ".$pin;
-                $msg .= "<br/><br/>Verification link:<br/>
-                        <a href='".$url."' taget='_blank'>".$url."</a>";
-                echo $msg; 
+                $msg = $this->renderPartial('application.views.email.signup', array('fname'=>ucfirst($_POST['fname']),'lname'=>ucfirst($_POST['lname']),'pin'=>$pin,'url'=>$url), true);
                     CommonClass::sendEmail("","",$member->email,"Confirmation Email",$msg);     
                 // Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - A new event has been added successfully!');
 				$this->redirect(Yii::app()->request->baseUrl);
