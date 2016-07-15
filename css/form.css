@@ -162,7 +162,7 @@ div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
 .login_forms{width:400px; margin:30px auto 0 auto;}
 .login_body_content{width:978px; border:1px solid #CCC; min-height:500px;}
 .login_tops{height:27px; background:#000; display:block; width:980px; margin:0 auto 6px auto;}
-.adminLogin{width:260px; margin:auto; margin-top:40px;}
+.adminLogin{width:390px; margin:auto; margin-top:40px;}
 .adminLogin h1{text-align:center;}
 .adminLogin label{margin-top:5px;}
 .adminLogin .well{-webkit-box-shadow: 1px 1px 5px 5px rgba(200, 200, 200, 0.7);-moz-box-shadow: 1px 1px 5px 5px rgba(200, 200, 200, 0.7);box-shadow: 1px 1px 5px 5px rgba(200, 200, 200, 0.7); }

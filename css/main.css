@@ -1049,9 +1049,11 @@ textarea.autotextarea{ width: 590px !important; min-height: 180px !important;}
 /*NEWELY ADDED*/
 .pad15{padding:15px !important;}
 #page{width:980px!important; position:relative; padding:0 8px; background: #F6F6F6;} 
-.header_blocks{height:27px; display:block; background:#A0C627;}
+.header_blocks{background: #22202E none repeat scroll 0 0;
+    display: block;
+    height: 15px;}
 .top_head_sections{border:1px solid #CCC; margin:6px 0; background:#FFF;}
-#admin_header .nav{margin-bottom:10px!important;}
+#admin_header .nav{margin-top:5px!important;}
 #admin_header .nav li{margin-right:3px;}
 .admin_logo{width:196px; float:left; border-right:1px solid #CCC;}
 .admin_logo h1{background:url(../images/admin-logo.gif) no-repeat; width:318px; height:57px; text-indent:-999px; overflow:hidden;}
@@ -1063,9 +1065,8 @@ textarea.autotextarea{ width: 590px !important; min-height: 180px !important;}
 .admin_area .nav-pills > .active > a, .nav-pills > .active > a:hover{ background:#1C5EA8;}
 .admin_area h1{font-family:"myriad Pro", tahoma, verdana; color:#263E53; font-size:24px; font-weight:normal; padding-top:10px; text-align:center;}
 .nav-pills > li > a{background:#fff; color:#000!important;}
-.nav-pills > .active > a, .nav-pills > .active > a:hover {background:#1C5EA8!important; color:#FFF!important;}
-.admin_area .nav-pills > .active > a,.admin_area .nav-pills > .active > a:hover{ background: none !important; color:#CF2F2F !important;}
-.admin_setting_nav .nav>li>a:hover { background:#1C5EA8; color:#FFF;}
+.nav-pills > .active > a, .nav-pills > .active > a:hover {color:#CB3C42!important;}
+.admin_area .nav-pills > .active > a,.admin_area .nav-pills > .active > a:hover{ background: none !important; color:#CB3C42 !important;}
 .admin_setting_nav .nav-pills > li > a{ color:#FFF !important;}
 .admin_body_content{background:#FFF; border:1px solid #CCC; padding:10px 8px; min-height:500px;}
 .admin_body_content h1{font-size:17px; color:#000; font-weight:normal; margin:10px 0;}
@@ -1566,3 +1567,25 @@ a.net{ color: #333 !important;}
 .post-fb a.posted{ background-position:0 -114px;width: 47px; height: 42px;}
 .post-twt a.posted{ background-position:-52px -114px;width: 47px; height: 42px;}
 .sidebar-social > p{ margin:16px 0 0; text-align:center; font-size:13px;}
+.logo_admin{background:#22202E;text-align:center;}
+.logo_admin a{color: #fff;
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    height: 45px;
+    padding-top: 15px;
+    text-decoration: none;}
+.nav-admin{font-size:15px;}
+.nav-admin ul{margin-bottom:0!important;}
+.nav-admin a{text-decoration:none;}
+.nav-admin a:hover{color: #CB3C42!important;}
+.nav-admin .active a{text-decoration:none;}
+.btn{text-decoration:none!important;}
+.top_head_sections .btn{margin-top:5px}
+.text-right{text-align:right;}
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+  color: #CB3C42;
+  background-color: #FFF!important;
+}

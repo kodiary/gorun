@@ -7,7 +7,6 @@ $this->breadcrumbs=array(
 
 <div class="adminLogin">
 <h1>LOGIN</h1>
-<div class="seperatorline"></div>
 <?php /** @var BootActiveForm $form */
 $form = $this->beginWidget('bootstrap.widgets.BootActiveForm', array(
     'id'=>'verticalForm',
@@ -17,11 +16,20 @@ $form = $this->beginWidget('bootstrap.widgets.BootActiveForm', array(
 		'validateOnSubmit'=>true,
 	),
 )); ?>
- 
-<?php echo $form->textFieldRow($model, 'username', array('class'=>'span3')); ?>
-<?php echo $form->passwordFieldRow($model, 'password', array('class'=>'span3')); ?>
-<div class="seperatorline"></div>
-<?php $this->widget('bootstrap.widgets.BootButton', array('buttonType'=>'submit', 'icon'=>'arrow-right', 'label'=>'Login')); ?>
+<div class="form-group"> 
+    <label class="col-md-3">Username</label>
+    <div class="col-md-9"><?php echo $form->textField($model, 'username', array('class'=>'form-control')); ?></div>
+    <div class="clearfix"></div>
+</div>
+<div class="form-group"> 
+    <label class="col-md-3">Password</label>
+    <div class="col-md-9"><?php echo $form->passwordField($model, 'password', array('class'=>'form-control')); ?></div>
+    <div class="clearfix"></div>
+</div>
+<hr/>
+<div class="form-group">
+    <input type="submit" value="Login" class="btn btn-default" />
+</div>
 
 <?php $this->endWidget(); ?>
 </div><!-- form -->
