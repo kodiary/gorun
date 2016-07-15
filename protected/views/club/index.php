@@ -7,30 +7,133 @@
                 <strong><span class="blue">Add Your Club.</span> </strong>
             </div>
             <div class="clearfix"></div>
+            
             <hr />
+            
             <form action="<?php echo Yii::app()->request->baseUrl;?>/dashboard" id="profile-detail" method="post">
                 <div class="form-group">
-                    <label class="col-md-2">Club Name<span class="required">*</span></label>
-                    <div class="col-md-8"><input type="text" class="form-control" placeholder="Club Name..." name="fname" value="<?php echo $member->fname;?>" /></div>
-                    <div class="clearfix"></div>
-                </div>
-                
-                <div class="form-group">
-                    <label class="col-md-2">Last Name<span class="required">*</span></label>
-                    <div class="col-md-8"><input type="text" class="form-control" placeholder="Your Last Name" name="lname" value="<?php echo $member->lname;?>" /></div>
+                    <label class="col-md-2">Club Name<span class="required"></span></label>
+                    <div class="col-md-8"><input type="text" class="form-control" placeholder="Club Name..." name="name" value="<?php //echo $member->fname;?>" /></div>
                     <div class="clearfix"></div>
                 </div>
                 
                 <hr />
                 
                 <div class="form-group">
-                    <label class="col-md-2">Username<span class="required">*</span></label>
-                    <div class="col-md-8"><input type="text" class="form-control username" placeholder="Username" name="username" value="<?php echo $member->username;?>" /></div>
+                    <label class="col-md-12">Club Description <span class="blue">- Provide a description of the club</span><span class="required"></span></label>
+                    <div class="col-md-12"> <textarea class="form-control username" placeholder="Club description..." name="username"> </textarea></div>
                     <div class="clearfix"></div>
                 </div>
                 
+                <hr />
+                
                 <div class="form-group">
-                    <label class="col-md-2">Example</label>
+                    <label class="col-md-12">Club Logo <span class="blue">- Include an club logo or photo (Optional)</span></label>
+                    
+            
+                    <div class="col-md-8 profilepic">
+                    <div class="profile_img" id="upimage_0">
+                    <?php
+                    if(file_exists(Yii::app()->basePath.'/../images/frontend/thumb/'.$member->logo))
+                    {
+                        $img_url=Yii::app()->baseUrl.'/images/frontend/thumb/'.$member->logo;
+                    }
+                    else
+                    {
+                        $img_url=Yii::app()->baseUrl.'/images/noimage.jpg';    
+                    }
+                    ?>
+                        <img src="<?php echo $img_url;?>"/>
+                    </div>
+                    <div class="col-md-6 picact">
+                    <?php echo $this->renderPartial('application.views.gallery._addImage',array('member'=>$member)); ?>
+                        
+                      
+            <?php
+                        
+            //crop button
+             echo CHtml::ajaxButton('Crop',
+                        $this->createUrl('gallery/cropPhoto'),
+                         array( //ajax options
+                         'data'=>array('fileName'=>"js:function(){ return $('.uploaded_image').val()}",'id'=>$member->id),
+                         'type'=>'POST',
+                        'success'=>"js:function(data){
+                                    if(data!=''){
+                                        $('#cropModal').html(data).dialog('open'); return false;
+                                    }
+                                    else
+                                        alert('No Image selected');
+                                    }",
+                        'complete'=>"js:function(){
+                                      $('#crop_".$member->id."').val('Crop');
+                                    }",
+                        ),
+                        array('id'=>'crop_'.$member->id,'class'=>'btn btn-default','onclick'=>'$("#crop_'.$member->id.'").val("loading...");')//html options
+            );
+            ?><br />
+            
+                        
+                        <a href="javascript:void(0)" class="btn btn-danger" onclick="return confirm_delete('Are you sure that you want to remove the image?'); ">Remove</a><br />
+                    </div>
+                        
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                                                                                                                                                                                                                                                                                                                                                                                
+                <hr />
+                
+                <div class="form-group">
+                    <label class="col-md-2"> <strong>Club Type</strong> </label>
+                    <div class="col-md-8">
+                        <input type="checkbox" name="" value="Running" />Running
+                        <input type="checkbox" name="" value="Canoe" />Canoe <br />
+                        <input type="checkbox" name="" value="Swimming" />Swimming
+                        <input type="checkbox" name="" value="Cross Country" />Cross Country<br />
+                        <input type="checkbox" name="" value="Cycling" />Cycling
+                        <input type="checkbox" name="" value="Dog Allowed" />Dogs Allowed<br />
+                        <input type="checkbox" name="" value="Duathlon" />Duathlon
+                        <input type="checkbox" name="" value="Fun Run" />Fun Run<br />
+                        <input type="checkbox" name="" value="Mountain Biking" />Mountain Biking
+                        <input type="checkbox" name="" value="Road Run" />Road Run <br />
+                        <input type="checkbox" name="" value="Triathlon" />Triathlon<br />
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                
+                <hr />
+                 
+                <div class="form-group">
+                <label class="col-md-12"><strong>Location</strong> <span class="blue">-Where is this club located?</span></label>
+                </div>
+                
+                <hr />
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     <div class="col-md-8"><strong><span class="required">http://www.gorun.co.za/username</span></strong></div>
                     <div class="clearfix"></div>
                 </div>
