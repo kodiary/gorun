@@ -1,34 +1,33 @@
-<div class="sidebar col-md-3">
-          <?php echo $this->renderPartial('/sidebar/_menu', false, true); ?>
-        </div>
-        <div class="col-md-9 right-content profile_detail"> 
-            <div class="col-md-12">
-                <h1>YOUR PROFILE DETAIL</h1>
-                <strong><span class="blue">Private and Confidential.</span> All information here is not openly shared.</strong>
-            </div>
-            <div class="clearfix"></div>
-            <hr />
-            <form action="<?php echo Yii::app()->request->baseUrl;?>/dashboard" id="profile-detail" method="post">
+<form action="<?php echo Yii::app()->request->baseUrl;?>/dashboard" id="profile-detail" method="post">
                 <div class="form-group">
-                    <label class="col-md-2">First Name<span class="required">*</span></label>
-                    <div class="col-md-9"><input type="text" class="form-control" placeholder="Your First Name" name="fname" value="<?php echo $member->fname;?>" /></div>
-                    <div class="clearfix"></div>
-                </div>
-                
-                <div class="form-group">
-                    <label class="col-md-2">Last Name<span class="required">*</span></label>
-                    <div class="col-md-9"><input type="text" class="form-control" placeholder="Your Last Name" name="lname" value="<?php echo $member->lname;?>" /></div>
+                    <label class="col-md-2">Event title<span class="required">*</span></label>
+                    <div class="col-md-9"><input type="text" class="form-control" placeholder="Your Event Title" name="title" value="<?php echo $model->title;?>" /></div>
                     <div class="clearfix"></div>
                 </div>
                 
                 <hr />
                 
                 <div class="form-group">
-                    <label class="col-md-2">Username<span class="required">*</span></label>
-                    <div class="col-md-9"><input type="text" class="form-control username" placeholder="Username" name="username" value="<?php echo $member->username;?>" /></div>
+                    <label class="col-md-2">Event Date<span class="required">*</span></label>
+                    <div class="col-md-9"><input type="checkbox" name="is_multiple_date" value="1" /> &nbsp; Multiple Date Event</div>
                     <div class="clearfix"></div>
                 </div>
-                
+               
+                <div class="form-group">
+                    <label class="col-md-2">Event Date<span class="required">*</span></label>
+                    <div class="col-md-4"><input type="text" class="form-control datepicker" placeholder="Start Date" id="start_date" name="start_date" value="<?php echo $model->start_date;?>" /></div>
+                    <div class="col-md-1"><span class="fa fa-arrow-circle-right icon-circle"></span></div>
+                    <div class="col-md-4"><input type="text" class="form-control datepicker" placeholder="End Date" id="end_date" name="end_date" value="<?php echo $model->end_date;?>" /></div>
+                    <div class="clearfix"></div>
+                </div>
+                <hr />
+                <div class="form-group">
+                    <label class="col-md-2">Event Times<span class="required">*</span></label>
+                    <div class="col-md-9"><input type="checkbox" class="include_times" name="include_times" value="1" /> &nbsp; Include Times</div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="load_time" style="display: none;"></div>
+                <?php /*
                 <div class="form-group">
                     <label class="col-md-2">Example</label>
                     <div class="col-md-9"><strong><span class="required">http://www.gorun.co.za/username</span></strong></div>
@@ -209,228 +208,117 @@
                 </div>
                 
                 <hr />
-                
+                <?php */?>
                 <div class="form-group">
                 <input type="submit" name="submit" value="Save Changes" class="btn btn-default bgblue btn-lg" />
                 </div>
                 
             </form>
-            
-        </div>
-        <div class="clearfix"></div>
-<?php
-    $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
-        'id'=>'cropModal',
-        'options'=>array(
-            'width'=>'auto',
-            'height'=>'auto',
-            'autoOpen'=>false,
-            'resizable'=>false,
-            'modal'=>true,
-            'overlay'=>array(
-                'backgroundColor'=>'#000',
-                'opacity'=>'0.5'
-            ),
-            'close'=>"js:function(e,ui){ // to overcome multiple submission problem
-                $('#cropModal').empty();
-            }",
-        ),
-    ));
-    //modal dialog content here
-    
-    $this->endWidget('zii.widgets.jui.CJuiDialog');
-?>
-<?php /*$this->breadcrumbs=array('Welcome to the exhibition and event association of southern africa');?>
-<div id="fb-root"></div>
- <?php
-    if($sliders)
+
+<script>
+  function validate_date(s,e)
+  {
+    var s_arr = s.split(',');
+    var y = s_arr[1].replace(' ','');
+    var m_d_arr = s_arr[0].split(' ');
+    var m = get_month_by_name(m_d_arr[0]);
+    var d = m_d_arr[1];
+    if(parseFloat(d) < 10)
     {
-    ?>
-      <div class="slider">
-        <?php $this->renderPartial('_slider',array('sliders'=>$sliders));?>
-            <div class="clear"></div>
-      </div>
-      <!--slider-->
-    <?php
+        d = '0'+d;
     }
-?>
-<div class="body_content_left">
-<?php
-    if($model)
-    {
-    ?>
-        <div class="home-desc"><?php echo $model->desc;?></div>
-    <?php
-    }
-?>
-<div class="latest-news-new">
-    <div class="fl_left">Latest News</div>
-    <div class="fl_right"><a href="<?php echo $this->createUrl('/news'); ?>">View More</a></div>
-    <div class="clear"></div>
-</div>
- <?php $this->widget('bootstrap.widgets.BootListView',array(
-	'dataProvider'=>$articlesData,
-    'pager' => array(
-        'class'=>'bootstrap.widgets.BootPager',
-        'maxButtonCount'=>5,
-    ),
-	'itemView'=>'_articles',
-    'summaryText'=>'',
-	'emptyText'=>'',
-    'viewData'=>array('section'=>'articles') 
-)); ?>
-
-<div style="margin-top:6px;">
-    <div class="floatLeft"><a  style=" font-size: 17px; color:#666666; margin-top:5px; display:inline-block; margin-top:4px;" href="<?php echo $this->createUrl('/news'); ?>" class="viewMoreArticles">View More Articles</a></h2></div>
-    <div class="floatRight"><a  href="<?php echo $this->createUrl('/news'); ?>" class="btn btn-info">View More</a></div>
-    <div class="clear"></div>
-</div>
-
-
-<!-- bottom banner-->
-<?php $this->renderPartial('_bottomBanner');?>
-</div><!--#body_content_left-->
-
-<div class="body_content_right">
-<!-- Right side bar -->
-<?php $this->renderPartial('_eventCalender');?>
-
-
-<div class="subNewsletter">
-    <h2>FRESH INDUSTRY NEWS!</h2>
-    <div class="line"></div>
+    var num_date1 = y+m+d;
+    num_date1 = parseFloat(num_date1);
     
-    <div class="sub-content">Would you like the latest industry news served fresh to your inbox? Enter your details below.</div>
-    <div class="line"></div>
-    <div id="subscriptionLink"><a href="<?php echo $this->createUrl('/subscribers')?>">SUBSCRIBE NOW <i class="icon-circle-arrow-right"></i></a></div>
-</div> 
-
-<?php $this->renderPartial('_patron_members', array('patronslider'=>$patronslider));?>
-
-<div class="like_box">
-<?php echo $this->renderPartial('_fblikebox')?>
-</div>
-
-<?php $this->renderPartial('_squareBanner');?>
-</div><!--#body_content_right-->
-<div class="clear"></div>
-<!-- Rght side bar end --><?php */?>
-    <script>
-    function confirm_delete(ques)
+    var e_arr = e.split(',');
+    var y2 = e_arr[1].replace(' ','');
+    var m_d2_arr = e_arr[0].split(' ');
+    var m2 = get_month_by_name(m_d2_arr[0]);
+    var d2 = m_d2_arr[1];
+    if(parseFloat(d2) < 10)
     {
-        if(confirm(ques))
+        d2 = '0'+d2;
+    }
+    var num_date2 = y2+m2+d2;
+    num_date2 = parseFloat(num_date2);
+    
+    if(num_date1>num_date2)
+    {
+        //alert(num_date1);
+        return false;
+    }
+    else
+    {
+        alert(num_date2);
+        load_time(num_date1,num_date2);
+        return true;
+    }
+  } 
+  function get_month_by_name(name)
+  {
+    var months = ['January','February','March','April','May','June','July','August','September','August','September','October','November','December'];
+    var i = months.indexOf(name); 
+    var i = parseFloat(i)+1;
+    if(parseFloat(i) < 10)
+    {
+        i = '0'+i;
+    }
+    return i;
+  }
+  function load_time(s,e)
+  {
+    $.ajax({
+        url:'<?php echo $this->createUrl('/events/loadTime');?>',
+        type:'get',
+        data:'s='+s+'&e='+e,
+        success:function(res)
         {
-            $('.profile_img').html('');
-            $('.image_rows input').val('');
+            $('.load_time').html(res);
+            $('.timepicker').each(function(){
+        	   $(this).timepicki(); 
+        	})
         }
-        else
-            return false;
+    })
+  }
+  $( function() {
+    if($('.include_times').is(':checked'))
+    {
+        $('.load_time').show();
     }
-    $(function(){
-			$( "#profile-detail" ).validate( {
-			 onkeyup: false,
-				rules: {
-					fname: "required",
-					lname: "required",
-                    d_ob: "required",
-                    m_ob: "required",
-                    y_ob: "required",
-                    gender: "required",
-                    username: 'required',
-					password_signup: {
-						required: true,
-						minlength: 5
-					},
-					confirm_password: {
-						required: true,
-						minlength: 5,
-						equalTo: "#password_signup"
-					},
-					email: {
-						required: true,
-						email: true,
-                        remote: {
-                            url: "<?php echo Yii::app()->request->baseUrl;?>/member/checkemail?type=email",
-                            type: "post",
-                            data: {
-                              email: function() {
-                                return $( ".profile_email" ).val();
-                                }
+    $('.include_times').change(function(){
+    if($(this).is(':checked'))
+    {
+        $('.load_time').show();
+    }
+    })
+    $('.datepicker').each(function(){
+        $(this).datepicker({dateFormat: 'MM d, yy'});
+    });
+    $('#end_date').change(function(){
+        var start_d = $('#start_date').val();
+        var end_d = $('#end_date').val();
+        if(!validate_date(start_d,end_d))
+        {
+            alert('Start Date can\'t be greater than End Daate');
+            $('#end_date').focus();
+            $('#end_date').val('');
+            $('#end_date').parent().addClass('has-error');
+        }
+        
+    });
+    
+    $('.timepicker').each(function(){
+	   $(this).timepicki(); 
+	})
+	
+    
+  } );
+</script>
 
-					       }
-                        }
-                    },
-                    username: {
-                        required: true,
-                        remote: {
-                            url: "<?php echo Yii::app()->request->baseUrl;?>/member/checkemail?type=username",
-                            type: "post",
-                            data: {
-                              username: function() {
-                                return $( ".username" ).val();
-                                }
 
-					       }
-                        }
-                    },
-					agree: "required"
-				},
-                groups: {
-                    y_ob: "d_ob m_ob y_ob"
-                },
-				messages: {
-					fname: "Input a firstname",
-					lname: "Input a lastname/Surname",
-					password_signup: {
-						required: "Input a password you will remember",
-						minlength: "Your password must be at least 5 characters long"
-					},
-					confirm_password: {
-						required: "Please provide a password",
-						minlength: "Your password must be at least 5 characters long",
-						equalTo: "Please enter the same password as above"
-					},
-					email: {
-					    required:"Input an email address",
-                        email: "Input a valid email address",
-                        remote: $.validator.format("{0} is already taken.")
-                    },
-                	username: {
-					    required:"Input a username",
-                        remote: $.validator.format("{0} is already taken.")
-                    },
-					agree: "Please accept our policy",
-                    y_ob: "Please select a date of birth",
-                    m_ob: "Please select a date of birth",
-                    d_ob: "Please select a date of birth",
-                    gender: "Please select a gender"
-				},
-				errorElement: "em",
-				errorPlacement: function ( error, element ) {
-					// Add the `help-block` class to the error element
-                    
-					error.addClass( "help-block" );
 
-					if ( element.attr( "name" ) == "d_ob" || element.attr( "name" ) == "m_ob" || element.attr( "name" ) == "y_ob" ) {
-						error.insertAfter( ".y_ob" );
-					}
-                    else if(element.prop('type')=== 'radio')
-                    {
-                        error.insertAfter( ('.f_gender'));
-                    }
-                     else {
-						error.insertAfter( element );
-					}
-				},
-				highlight: function ( element, errorClass, validClass ) {
-					$( element ).parents( ".form-group, .dobs" ).addClass( "has-error" ).removeClass( "has-success" );
-				},
-				unhighlight: function (element, errorClass, validClass) {
-					$( element ).parents( ".form-group, .dobs" ).addClass( "has-success" ).removeClass( "has-error" );
-				},
-                
-			} );
 
-			
-		} );
-	</script>
+
+
+
+

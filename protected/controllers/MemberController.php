@@ -67,7 +67,7 @@ class MemberController extends Controller
     }
     public function actionSignup()
     {
-        echo $this->createAbsoluteUrl('test/test');die();
+        //echo $this->createAbsoluteUrl('test/test');die();
         $member = new Member;
         
         if(isset($_POST['fname']))

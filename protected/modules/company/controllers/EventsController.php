@@ -27,7 +27,7 @@ class EventsController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'users'=>array('@'),
+				'users'=>array('*'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -52,6 +52,7 @@ class EventsController extends Controller
 	 */
 	public function actionCreate()
 	{
+	   die('here');
 	   $company_id=Yii::app()->user->getId();
 		
 		// Uncomment the following line if AJAX validation is needed
