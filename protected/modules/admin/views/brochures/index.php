@@ -1,12 +1,12 @@
 <?php echo $this->renderPartial('/company/_companyHeader', array('model'=>$company)); ?>
 <div class="company-bottom">
-<div class="left_body">
+<div class="col-md-8">
 <?php $this->renderPartial('application.modules.admin.views.brochures._indexlist',array(
     'dataProvider'=>$dataProvider
 )); ?>
 </div>
 
-<div class="right_body">
+<div class="col-md-4">
     <?php $this->renderPartial('_sidebar');?>
 </div>
 <div class="clear"></div>

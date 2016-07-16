@@ -1,4 +1,4 @@
-<div class="left_body">
+<div class="col-md-8">
     <?php $this->widget('bootstrap.widgets.BootAlert'); ?>
     <?php $form=$this->beginWidget('bootstrap.widgets.BootActiveForm',array(
     	'id'=>'accounts-form',
@@ -94,7 +94,7 @@
 	)); ?>
 <?php $this->endWidget(); ?>
 </div>
-<div class="right_body">
+<div class="col-md-4">
     <?php $this->widget('bootstrap.widgets.BootButton', array(
         //'fn'=>'ajaxLink',
         'url' => array('/admin/contents/index'),

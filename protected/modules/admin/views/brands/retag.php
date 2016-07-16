@@ -1,5 +1,5 @@
 <h3 class="admin_top_list_headings">List of <span class="bold">Brands - Retag Brands</span></h3>
-<div class="left_body restaurant_menus_wrapper">
+<div class="col-md-8 restaurant_menus_wrapper">
 <form method="post">
 <div class="well">
     <div class="control-group ">
@@ -46,10 +46,10 @@
 </form>
 <div class="clear"></div>
         
-</div><!--#left_body-->
+</div><!--#col-md-8-->
 
-<div class="right_body">
+<div class="col-md-4">
     <div> <a class="btn" href="<?php echo $this->createUrl('/admin/brands');?>">Cancel</a></div>
-</div><!--#right_body-->
+</div><!--#col-md-4-->
 
 <div class="clear"></div>

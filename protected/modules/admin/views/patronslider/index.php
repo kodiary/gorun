@@ -1,4 +1,4 @@
-<aside class="left_body">
+<aside class="col-md-8">
 <div class="line"></div>
 <h2>Patron Members - <span class="blue">Add/Edit Patron Members logos here</span></h2>
 <div class="line"></div>
@@ -46,7 +46,7 @@
         <?php $this->endWidget(); ?>
 
 </aside><!--leftCOntainer-->
-<aside class="right_body">
+<aside class="col-md-4">
 <?php echo CHtml::button('+Add Slide', array('class' => 'btn image-add'));?>
 </aside><!--rightCOntainer-->
 <div class="clear"></div>

@@ -6,7 +6,7 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<aside class="left_body">
+<aside class="col-md-8">
 <div class="line"></div>
 <h2>Advertising Banners - <span class="blue">Add or Edit Banners Here</span></h2>
 <div class="line"></div>
@@ -39,7 +39,7 @@ $this->breadcrumbs=array(
 </div>
 </aside>
 
-<aside class="right_body">
+<aside class="col-md-4">
 <div class="right_btns">
 <?php $this->widget('bootstrap.widgets.BootButton', array(
                 'label'=>'Back to List',

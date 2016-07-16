@@ -1,4 +1,4 @@
-<aside class="left_body floatLeft addArticles">
+<aside class="col-md-8 floatLeft addArticles">
 <div class="line"></div>
 <?php 
     if($model->is_approved==0){?>
@@ -40,7 +40,7 @@
 </aside>
 <!--addArticles-->
 
-<aside class="right_body floatRight">
+<aside class="col-md-4 floatRight">
   <?php 
   if(isset($_GET['id'])) {
     $this->renderPartial('_social'); 

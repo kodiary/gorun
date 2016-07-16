@@ -1,4 +1,4 @@
-<aside class="left_body adminemail">
+<aside class="col-md-8 adminemail">
 <div class="line"></div>
 <h1>Admin Emails - <span class="blue">Who will receive enquiries and notifications</span></h1>
 <div class="line"></div>
@@ -38,7 +38,7 @@
 <?php $this->endWidget(); ?>
 </aside>
 
-<aside class="right_body">
+<aside class="col-md-4">
 <!-- notification settings -->
 <?php
 $this->renderPartial('application.modules.admin.views.config._form',array('configModel'=>$configModel));

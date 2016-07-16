@@ -5,14 +5,14 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<aside class="left_body addArticles contentPage">
+<aside class="col-md-8 addArticles contentPage">
 <div class="line"></div>
 <h1>ADD/EDIT CONTENTS PAGE</h1>
 <div class="line"></div>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
 </aside>
-<aside class="right_body floatRight">
+<aside class="col-md-4 floatRight">
   
     <?php $this->widget('bootstrap.widgets.BootButton', array(
                     //'fn'=>'ajaxLink',

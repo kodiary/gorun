@@ -6,7 +6,7 @@ if(isset($_GET['id']))$id=$_GET['id'];
 ?>
 <?php $this->widget('bootstrap.widgets.BootAlert'); ?>
 <div class="company-bottom">
-<div class="left_body"> 
+<div class="col-md-8"> 
 <div class="restaurant_menus_wrapper"> 
 <h2>Exhibitions &amp; Events - <span class="blue"> List your exhibitions or events here
   <?php 
@@ -56,7 +56,7 @@ if($dataProvider->totalItemCount>10 && !isset($_GET['showall'])){
 <div class="clear"></div>
 </div>
 </div>
-<div class="right_body">
+<div class="col-md-4">
      <?php $this->widget('bootstrap.widgets.BootButton', array(
                     //'fn'=>'ajaxLink',
                     'url' => array('member/events/create','id'=>$id),

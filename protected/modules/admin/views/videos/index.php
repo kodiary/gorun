@@ -1,6 +1,6 @@
 <?php $this->renderPartial('/company/_companyHeader',array('model'=>$cmodel));?>
 <div class="company-bottom">
-<div class="left_body">
+<div class="col-md-8">
     <div class="restaurant_menus_wrapper">
     
         <h2>Company Videos - <span>Showcase videos of your company - Use YouTube Videos</span></h2>
@@ -28,7 +28,7 @@
      
     </div>
 </div>
-<div class="right_body">
+<div class="col-md-4">
    <div class="line" style="margin-top: -3px;"></div>
     <?php $this->renderPartial('_form',array('model'=>$model));?>
     

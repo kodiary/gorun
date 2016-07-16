@@ -1048,7 +1048,7 @@ textarea.autotextarea{ width: 590px !important; min-height: 180px !important;}
 /*============================admin css=================================*/
 /*NEWELY ADDED*/
 .pad15{padding:15px !important;}
-#page{width:980px!important; position:relative; padding:0 8px; background: #F6F6F6;} 
+#page{width:1110px!important; position:relative; padding:0 8px; background: #F6F6F6;} 
 .header_blocks{background: #22202E none repeat scroll 0 0;
     display: block;
     height: 15px;}
@@ -1237,8 +1237,8 @@ table.table  td{font-size:12px; color:#000;}
 table.table tr td:first-child{font-weight:bold;}
 .admin_setting_nav{margin:5px;}
 .portlet-content .admin_extra02 li{margin-right:2px;}
-.portlet-content .admin_extra02 li a{background:#98C132; color:#FFF !important;}
-.subMenu .portlet-content .nav-pills > li > a:hover{ background: #1C5EA8  !important;}
+.portlet-content .admin_extra02 li a{background:#01A5EC; color:#FFF !important;}
+.subMenu .portlet-content .nav-pills > li > a:hover{ background: #22202E  !important;}
 .portlet-content .admin_extra01 li a{background:#FFF;}
 table.no_bold td{font-weight:normal!important;}
 table.no_bold td ul, table.no_bold td ol{margin-left:20px; margin-top:10px; margin-bottom:10px;}
@@ -1570,12 +1570,12 @@ a.net{ color: #333 !important;}
 .logo_admin{background:#22202E;text-align:center;}
 .logo_admin a{color: #fff;
     display: block;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 500;
     height: 45px;
     padding-top: 15px;
     text-decoration: none;}
-.nav-admin{font-size:15px;}
+.nav-admin{font-size:17.5px;}
 .nav-admin ul{margin-bottom:0!important;}
 .nav-admin a{text-decoration:none;}
 .nav-admin a:hover{color: #CB3C42!important;}
@@ -1583,9 +1583,12 @@ a.net{ color: #333 !important;}
 .btn{text-decoration:none!important;}
 .top_head_sections .btn{margin-top:5px}
 .text-right{text-align:right;}
-.nav-pills > li.active > a,
-.nav-pills > li.active > a:hover,
-.nav-pills > li.active > a:focus {
+.nav-admin .nav-pills > li.active > a,
+.nav-admin .nav-pills > li.active > a:hover,
+.nav-admin .nav-pills > li.active > a:focus {
   color: #CB3C42;
   background-color: #FFF!important;
 }
+.subMenu a{text-decoration:none;color:#FFF!important;font-size:15px!important;padding:8px!important;}
+.subMenu .active{background:#22202E;border-radius: 4px;}
+.subMenu .active a{background:#22202E!important;}

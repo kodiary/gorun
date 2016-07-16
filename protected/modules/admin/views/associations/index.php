@@ -1,5 +1,5 @@
 <h3 class="admin_top_list_headings">List of <span class="bold">Associations</span></h3>
-<div class="left_body">
+<div class="col-md-8">
 <?php $this->widget('bootstrap.widgets.BootAlert'); ?>
 <?php 
 $itemsCount = Yii::app()->params['items_pers_page'];
@@ -35,9 +35,9 @@ if(!$pages && $dataProvider->totalItemCount>$itemsCount){
 </div>
 <div class="clear"></div>
         
-</div><!--#left_body-->
+</div><!--#col-md-8-->
 
-<div class="right_body">
+<div class="col-md-4">
 	<div class="well">
     <div class="img_upload_form">
     
@@ -115,7 +115,7 @@ if(!$pages && $dataProvider->totalItemCount>$itemsCount){
 </div>
 </div>
 </div>
-</div><!--#right_body-->
+</div><!--#col-md-4-->
 
 <div class="clear"></div>
 

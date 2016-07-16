@@ -1,13 +1,13 @@
-<div class="left_body">
+<div class="col-md-8">
     <div class="line"></div>
     <h1>Add/Edit Resources - <span class="blue">Add new or edit existing resource here</span></h1>
     <div class="line"></div>
     <div class="clear"></div>
         
     <?php $this->renderPartial('_form',array('model'=>$model,'categoryModel'=>$categoryModel)); ?>
-</div><!--#left_body-->
+</div><!--#col-md-8-->
 
-<div class="right_body">
+<div class="col-md-4">
   <div class="mar-bot-10">
       <?php
         $this->widget('bootstrap.widgets.BootButton', array(
@@ -19,5 +19,5 @@
         ));
       ?>
   </div>
-</div><!--#right_body-->
+</div><!--#col-md-4-->
 <div class="clear"></div>

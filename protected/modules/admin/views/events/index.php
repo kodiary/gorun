@@ -3,7 +3,7 @@ $this->breadcrumbs=array(
     'events',
 );?>
 
-<aside class="left_body floatLeft">
+<aside class="col-md-8 floatLeft">
 <div class="line"></div>
     <?php
     if(isset($_GET['filter']))
@@ -58,7 +58,7 @@ $this->breadcrumbs=array(
 </div>
 <div class="clear"></div>
 </aside>
-<aside class="right_body floatRight">
+<aside class="col-md-4 floatRight">
   <div class="mar-bot-10">
     <?php $this->widget('bootstrap.widgets.BootButton', array(
                     //'fn'=>'ajaxLink',

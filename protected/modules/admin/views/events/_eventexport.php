@@ -1,4 +1,4 @@
-<div class="left_body">
+<div class="col-md-8">
     <div class="line"></div>
     <h1>Export - <span class="blue">Export events to an Excel document</span></h1>
     <div class="line"></div>
@@ -65,6 +65,6 @@
 
     </div>
 </div>
-<div class="right_body">
+<div class="col-md-4">
 </div>
 <div class="clear"></div>

@@ -1,4 +1,4 @@
-<div class="left_body">
+<div class="col-md-8">
 <?php $this->widget('bootstrap.widgets.BootAlert'); ?>
 <div class="line"></div>
 <h1>Search Engine Optimisation</h1>
@@ -19,7 +19,7 @@
 </div>
 
 </div>
-	<div class="right_body">
+	<div class="col-md-4">
     	<div class="right_btns">
         <div class=" mar-bot-10">
         <a href="#" class="btn">Site Map Download</a>

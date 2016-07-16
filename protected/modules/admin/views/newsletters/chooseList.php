@@ -1,4 +1,4 @@
-<aside class="left_body newsletters">
+<aside class="col-md-8 newsletters">
 <?php $this->renderPartial('_newslettermenu');?>
 <div class="line"></div>
 <h1>Mailing List - <span class="blue">Select One or More lists to send to - (Required)</span></h1><!-- &nbsp; &nbsp; &nbsp; <a href="javascript:void(0)" class="btn all-none">All/None</a>-->
@@ -51,7 +51,7 @@ if($list)
 ?>
 <div class="clear"></div>
 </aside>
-<aside class="right_body addArticles">
+<aside class="col-md-4 addArticles">
     <?php $this->renderPartial('_sidebar'); ?>
 </aside>
 <div class="clear"></div>

@@ -1,6 +1,6 @@
 <?php if(!$section)$this->renderPartial('/company/_companyHeader',array('model'=>$cmodel));?>
 <div class="company-bottom">
-<div class="left_body">
+<div class="col-md-8">
 <div class="restaurant_menus_wrapper">
 <h2>Statistics - <span>How your listing has done since it has listed</span></h2>
 <div class="line"></div>
@@ -68,7 +68,7 @@ foreach($weeks as $val)
 </div>
 
 
-<div class="right_body">
+<div class="col-md-4">
 <?php $this->renderPartial('application.modules.admin.views.statistics._sidebar');?>
 </div>
 <div class="clear"></div>

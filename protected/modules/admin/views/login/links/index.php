@@ -37,7 +37,7 @@ foreach($provinces as $key=>$val){
 <div class="clear"></div>
 </div>
 
-<div class="left_body">
+<div class="col-md-8">
     <?php
     if(isset($_GET['province']))
     {
@@ -62,7 +62,7 @@ foreach($provinces as $key=>$val){
         echo CHtml::link('Show All', $this->createUrl('links/index/showall'), array('class'=>'btn btn-info'));?>
 
 </div>
-<div class="right_body">
+<div class="col-md-4">
 <?php echo CHtml::link('+ Add Link',array('create'),array('class'=>'btn')); ?>
 </div>
 <div class="clear"></div>

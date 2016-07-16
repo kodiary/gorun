@@ -23,7 +23,7 @@ $(function(){
     
 });
 </script>
-<aside class="left_body addContentArea">
+<aside class="col-md-8 addContentArea">
 
 <div class="line"></div>
 <h1>Add/Edit Events Type- <span class="blue">Create or Edit an Event Type here.</span></h1>
@@ -111,7 +111,7 @@ $(function(){
 </aside>
 
 
-<div class="left_body">
+<div class="col-md-8">
 <div class="wide-form">
 
    
@@ -121,7 +121,7 @@ $(function(){
 </div>
 
 
-</div><!--#left_body-->
+</div><!--#col-md-8-->
 
 <div class="clear"></div>
 

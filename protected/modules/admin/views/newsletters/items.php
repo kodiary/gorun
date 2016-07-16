@@ -1,4 +1,4 @@
-<aside class="left_body addArticles addNewsletterItems">
+<aside class="col-md-8 addArticles addNewsletterItems">
   <?php $this->renderPartial('_newslettermenu');?>
   <?php $this->widget('bootstrap.widgets.BootAlert'); ?>
   <div class="addContentArea"> 
@@ -112,7 +112,7 @@
   </div>
 
 </aside>
-<aside class="right_body addArticles">
+<aside class="col-md-4 addArticles">
     <?php $this->renderPartial('_sidebar'); ?>
 </aside>
 <div class="clear"></div>

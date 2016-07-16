@@ -1,4 +1,4 @@
-<div class="left_body">
+<div class="col-md-8">
 <div class="line"></div>
 <?php $this->widget('bootstrap.widgets.BootAlert'); ?>
     <h2>Background Banners</h2>
@@ -78,7 +78,7 @@
         <div class="ind_text">Indicates Inactive background banners</div>
     </div>
 </div>
-<div class="right_body">
+<div class="col-md-4">
 <a class="btn" href="<?php echo $this->createUrl('/admin/banner/addBackground')?>">+ Add Background Banner</a>
 </div>
 <div class="clear"></div>

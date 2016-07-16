@@ -1,4 +1,4 @@
-<aside class="left_body">
+<aside class="col-md-8">
 <div class="line"></div>
 <h1>Advertising Banners - <span class="blue">Add or Edit Banners Here</span></h1>
 <div class="line"></div>
@@ -30,7 +30,7 @@
 <?php }?>
 </aside>
 
-<aside class="right_body">
+<aside class="col-md-4">
 <div class="right_btns">
 <?php $this->widget('bootstrap.widgets.BootButton', array(
                 'label'=>'+Add New Banner',

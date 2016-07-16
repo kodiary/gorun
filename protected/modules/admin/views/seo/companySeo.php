@@ -1,4 +1,4 @@
-    <div class="left_body">
+    <div class="col-md-8">
         <?php $this->widget('bootstrap.widgets.BootAlert'); ?>
         <?php $form=$this->beginWidget('bootstrap.widgets.BootActiveForm',array(
         	'id'=>'seo-form',
@@ -41,7 +41,7 @@
         
         <?php $this->endWidget(); ?>
     </div>
-	<div class="right_body">
+	<div class="col-md-4">
     	<div class="right_btns">
             <?php $this->renderPartial('_bypage'); ?>
         </div>

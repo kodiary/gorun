@@ -1,7 +1,7 @@
 <?php Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/player/mediaelement-and-player.min.js');?>
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/mediaelementplayer.min.css" />
 
-<aside class="left_body floatLeft preview addArticles">
+<aside class="col-md-8 floatLeft preview addArticles">
 <div class="line"></div>
 <?php $this->renderPartial('_articlesmenu');?>
   <div class="line"></div>

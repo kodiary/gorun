@@ -1,7 +1,7 @@
 <?php $this->renderPartial('/company/_companyHeader',array('model'=>$cmodel));?>
 <?php $this->widget('bootstrap.widgets.BootAlert'); ?>
 <div class="company-bottom"> 
-<div class="left_body">
+<div class="col-md-8">
 <div class="restaurant_menus_wrapper">
 
 <h2>Gallery - <span>Use this to share photos or images - MAX 25 photos</span></h2>
@@ -40,7 +40,7 @@ $this->endWidget('zii.widgets.jui.CJuiDialog');
 </div>
 </div>
 
-<div class="right_body">
+<div class="col-md-4">
    <div>
     <?php echo $this->renderPartial('_addImage',array('model'=>$model)); ?>
     </div>

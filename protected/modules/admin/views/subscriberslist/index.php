@@ -1,4 +1,4 @@
-<div class="left_body">
+<div class="col-md-8">
 <div class="line"></div>
 <h1>Subscriber Lists - <span class="blue"><?php if(isset($_GET['keyword'])){ echo 'Results for "'.$_GET['keyword'].'"';}else{?>Manage subscriber lists here<?php } ?></span></h1>
 <div class="line"></div>
@@ -42,7 +42,7 @@ if(!$pages && $dataProvider->totalItemCount>$itemsCount){
 <div class="clear"></div>
 </div>
 
-<div class="right_body">
+<div class="col-md-4">
 <div class="mar-bot-10">
     <?php 
         $this->widget('bootstrap.widgets.BootButton', array(

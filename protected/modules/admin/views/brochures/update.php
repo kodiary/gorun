@@ -2,7 +2,7 @@
 <div id="msg"></div>
 <?php echo $this->renderPartial('/company/_companyHeader', array('model'=>$company));?>
 <div class="company-bottom">
-<div class="left_body">
+<div class="col-md-8">
 <div class="restaurant_menus_wrapper">
 
 <?php
@@ -17,7 +17,7 @@ $this->breadcrumbs=array(
 <?php echo $this->renderPartial('_form',array('model'=>$model)); ?>
 </div>
 </div>
-<div class="right_body" style="margin-top: 45px;">
+<div class="col-md-4" style="margin-top: 45px;">
 <?php $this->renderPartial('_sidebar');?>
 </div>
 <div class="clear"></div>

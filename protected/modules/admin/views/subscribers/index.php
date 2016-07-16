@@ -1,4 +1,4 @@
-<aside class="left_body floatLeft articles">
+<aside class="col-md-8 floatLeft articles">
  <div class="line"></div>
 <h1> Subscribers - <span class="blue"><?php if(isset($_GET['keyword'])){ echo 'Results for "'.$_GET['keyword'].'"';}else{?>Add, Edit or Delete newsletter subscribers here<?php } ?></span></h1>
 <div class="line"></div>
@@ -42,7 +42,7 @@ if(!$pages && $dataProvider->totalItemCount>$itemsCount){
 </div>
 <div class="clear"></div>
 </aside>
-<aside class="right_body floatRight">
+<aside class="col-md-4 floatRight">
  <div style="margin-bottom:10px;"> 
     <?php $this->widget('bootstrap.widgets.BootButton', array(
                     //'fn'=>'ajaxLink',
