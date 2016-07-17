@@ -1,4 +1,4 @@
-<aside class="left_body">
+<aside class="col-md-8">
 <div class="line"></div>
 <h2>Slide Show - <span class="blue">Add/Edit landing slider here</span></h2>
 <div class="line"></div>
@@ -41,7 +41,7 @@
         <?php $this->endWidget(); ?>
 
 </aside><!--leftCOntainer-->
-<aside class="right_body">
+<aside class="col-md-4">
 <?php echo CHtml::button('+Add Slide', array('class' => 'btn image-add'));?>
 </aside><!--rightCOntainer-->
 <div class="clear"></div>

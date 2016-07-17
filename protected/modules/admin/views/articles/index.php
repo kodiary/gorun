@@ -3,7 +3,7 @@ $this->breadcrumbs=array(
 	'Articles',
 );?>
 
-<aside class="left_body left_body articles">
+<aside class="col-md-8 col-md-8 articles">
 <div class="line"></div>
     <?php if(Yii::app()->controller->action->id == 'approval'){ ?>
         <h1>Pending Articles - <span class="blue">List of Articles Pending</span></h1>
@@ -56,7 +56,7 @@ if(!$pages && $dataProvider->totalItemCount>$itemsCount){
 </div>
 <div class="clear"></div>
 </aside>
-<aside class="right_body">
+<aside class="col-md-4">
   <div class="mar-bot-10">
   <?php
     $this->widget('bootstrap.widgets.BootButton', array(

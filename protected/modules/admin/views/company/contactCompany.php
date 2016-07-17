@@ -1,5 +1,5 @@
 <?php $this->widget('bootstrap.widgets.BootAlert'); ?>
- <div class="left_body">
+ <div class="col-md-8">
 <div class="restaurant_menus_wrapper">
 <div class="line"></div>
     <h2>Contact Webmaster - <span>Have a question - send it to us here</span> <?php echo $company?></h2>
@@ -31,7 +31,7 @@
     <?php $this->endWidget();?>
 </div>
 </div>
-    <div class="right_body">
+    <div class="col-md-4">
     <?php
       $url=array('/admin/company/update/id/'.$_GET['id']);  
     ?>

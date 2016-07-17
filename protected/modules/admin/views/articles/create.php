@@ -9,7 +9,7 @@ else
     $number=Articles::findmaxnumber()+1;
 }
 ?>
-<aside class="left_body floatLeft addArticles">
+<aside class="col-md-8 floatLeft addArticles">
 <div class="line"></div>
   <h1>Add/Edit News - <a href="#">Create or Edit an Article Here</a></h1>
   <div class="line"></div>
@@ -50,6 +50,6 @@ else
 </aside>
 <!--addArticles-->
 
-<aside class="right_body floatRight"></aside>
+<aside class="col-md-4 floatRight"></aside>
 <!--rigtCOntainer-->
 <div class="clear"></div>

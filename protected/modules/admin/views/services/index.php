@@ -21,7 +21,7 @@ $(function(){
     
 });
 </script>
-<div class="left_body">
+<div class="col-md-8">
 <div class="line"></div>
 <h1>Service Categories</span> - <span class="blue">Create or Edit Service Categories here</span></h1>
 <div class="line"></div>
@@ -70,13 +70,13 @@ $(function(){
 )); ?>
 <div class="clear"></div>
         
-</div><!--#left_body-->
+</div><!--#col-md-8-->
 
-<div class="right_body">
+<div class="col-md-4">
 
     <div><?php $this->renderPartial('_search');?></div>
     <?php /* ?><div> <a class="btn" href="<?php echo $this->createUrl('/admin/services/retag');?>">+ReTag Service</a></div> <?php */?>
-</div><!--#right_body-->
+</div><!--#col-md-4-->
 
 <div class="clear"></div>
 

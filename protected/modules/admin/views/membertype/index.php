@@ -21,7 +21,7 @@ $(function(){
     
 });
 </script>
-<div class="left_body">
+<div class="col-md-8">
 <div class="line"></div>
 <h1>Member Types - <span class="blue">Create or Edit Member Types here</span></h1>
 <div class="line"></div>
@@ -71,11 +71,11 @@ $(function(){
 
 <div class="clear"></div>
         
-</div><!--#left_body-->
+</div><!--#col-md-8-->
 
-<div class="right_body">
+<div class="col-md-4">
 
-</div><!--#right_body-->
+</div><!--#col-md-4-->
 
 <div class="clear"></div>
 

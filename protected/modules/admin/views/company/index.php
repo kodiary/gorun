@@ -1,4 +1,4 @@
-<div class="left_body">
+<div class="col-md-8">
 <div class="line"></div>
 <h1>Members - <span class="blue">Manage members Here</span></h1>
 <div class="line"></div>
@@ -65,7 +65,7 @@ if(!$pages && $dataProvider->totalItemCount>$itemsCount){
 </div>
 
 
-<div class="right_body">
+<div class="col-md-4">
 <div class="add_parts">
 	<a href="<?php echo $this->createUrl('/admin/company/addBlank')?>" class="btn">+Add Company</a>
 </div>

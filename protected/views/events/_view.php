@@ -1,35 +1,67 @@
-
-<div class=" laout_5 directory_listing">
-<a href="<?php echo $this->createUrl('events/'.$data->slug)?>" class="event-list" >
 <?php 
-if(file_exists(Yii::app()->basePath.'/../images/frontend/main/'.$data->logo) && $data->logo)
-    $imagefile = Yii::app()->baseUrl.'/images/frontend/main/'.$data->logo;
+if($data->visible==1) 
+    $calss="";
 else
-    $imagefile = Yii::app()->request->baseUrl."/images/events_fallback_main.png";
-
-$venue_id=$data->venue_id;
-
-if($venue_id=="0")
-{
-    $venue=Venues::model()->findByAttributes(array('event_id'=>$data->id));
-    $venue_location=$venue->title.", ".$venue->address;
-}
-else
-{
-    $venue=Company::model()->findByPk($venue_id);
-    $venue_location=$venue->name;
-}
-?>
-<div class="left thumbnail">
-<img src="<?php echo $imagefile;?>" />
+    $class='in_active';
+    ?>
+<div class="border_line <?php echo $class; ?>" id="<?php echo $data->id?>">
+	<div class="text_desc_l ">
+    <p class="f17">
+    <?php echo CHtml::encode($data->title); ?>
+    <span class="f15 blue">
+    <?php if($data->start_date!= '0000-00-00') echo date('d F Y', strtotime($data->start_date)); ?>
+    <?php if($data->end_date!=null && $data->end_date != '0000-00-00' && $data->end_date == '1970-01-01'){?><?php echo " - ".date('d F Y',strtotime($data->start_date));?><?php } 
+    else{ echo " - ".date('d F Y',strtotime($data->end_date));}?>
+    </span>
+    </p>
+    </div>
+    <div class="text_desc_r">
+        <?php $this->widget('bootstrap.widgets.BootButton', array(
+        'label'=>'Delete',
+        'type'=>'danger', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+        //'size'=>'small', // '', 'large', 'small' or 'mini'
+        'htmlOptions'=>array('id'=>'delete_'.$data->id,
+        'onClick'=>'$("#show_'.$data->id.'").show(400);'),
+    )); ?>
+    <?php echo CHtml::link('Edit',array('/company/events/update/id/'.$data->id),array('class'=>'btn btn-info'))?>
+    </div>
+    <div class="clear"></div>
 </div>
 
-
-<div class="texts_right">
-      <h2><?php echo $data->title; ?></h2>
-      <span class="postedDate green f16"><?php echo CommonClass::formatDate($data->start_date, 'd F Y').(($data->start_date!=$data->end_date && $data->end_date!="0000-00-00")?(" - ".CommonClass::formatDate($data->end_date, 'd F Y')):"");?></span>
-      <p><?php echo $venue_location;?></p>
-</div> 
-<div class="clear"></div>   
-</a>     
+<div style="display: none;" id="show_<?php echo $data->id?>" class="alert">
+    <div class="floatLeft margintop5">
+         <?php
+         //check for newsletter before deleting news article 
+         $check = NewsletterItems::model()->findAll(array('condition'=>"item_type = 2 AND item_id = '$data->id'"));
+         if($check)
+         {
+            ?>
+            WARNING! The item has been assigned to newsletter. Remove the item from newsletter first to delete the item.<br/>
+            <?php
+         }else{ ?>
+            Warning: This cannot be undone. Are you sure?
+         <?php } ?>
+    </div>
+    <div class="floatRight">
+      <?php if(!$check){ ?>
+      <?php 
+          $this->widget('bootstrap.widgets.BootButton', array(
+                    'type'=>'danger',
+                    //'size'=>'', // '', 'large', 'small' or 'mini'
+                    'url'=>array('delete', 'id'=>$data->id),
+                    'label'=>'Delete',
+          ));?>
+      <?php } ?>
+      <?php
+            $this->widget('bootstrap.widgets.BootButton', array(
+    			'buttonType'=>'cancel',
+    			//'type'=>'', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+                //'size'=>'', // '', 'large', 'small' or 'mini',
+    			'label'=>'Cancel',
+                'htmlOptions'=>array('id'=>'delete_'.$data->id,            
+                'onClick'=>'$("#show_'.$data->id.'").hide(400);'),            
+    	));?>
+      <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
 </div>

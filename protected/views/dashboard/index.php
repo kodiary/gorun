@@ -11,13 +11,13 @@
             <form action="<?php echo Yii::app()->request->baseUrl;?>/dashboard" id="profile-detail" method="post">
                 <div class="form-group">
                     <label class="col-md-2">First Name<span class="required">*</span></label>
-                    <div class="col-md-8"><input type="text" class="form-control" placeholder="Your First Name" name="fname" value="<?php echo $member->fname;?>" /></div>
+                    <div class="col-md-9"><input type="text" class="form-control" placeholder="Your First Name" name="fname" value="<?php echo $member->fname;?>" /></div>
                     <div class="clearfix"></div>
                 </div>
                 
                 <div class="form-group">
                     <label class="col-md-2">Last Name<span class="required">*</span></label>
-                    <div class="col-md-8"><input type="text" class="form-control" placeholder="Your Last Name" name="lname" value="<?php echo $member->lname;?>" /></div>
+                    <div class="col-md-9"><input type="text" class="form-control" placeholder="Your Last Name" name="lname" value="<?php echo $member->lname;?>" /></div>
                     <div class="clearfix"></div>
                 </div>
                 
@@ -25,13 +25,13 @@
                 
                 <div class="form-group">
                     <label class="col-md-2">Username<span class="required">*</span></label>
-                    <div class="col-md-8"><input type="text" class="form-control username" placeholder="Username" name="username" value="<?php echo $member->username;?>" /></div>
+                    <div class="col-md-9"><input type="text" class="form-control username" placeholder="Username" name="username" value="<?php echo $member->username;?>" /></div>
                     <div class="clearfix"></div>
                 </div>
                 
                 <div class="form-group">
                     <label class="col-md-2">Example</label>
-                    <div class="col-md-8"><strong><span class="required">http://www.gorun.co.za/username</span></strong></div>
+                    <div class="col-md-9"><strong><span class="required">http://www.gorun.co.za/username</span></strong></div>
                     <div class="clearfix"></div>
                 </div>
                 
@@ -39,13 +39,13 @@
                 
                 <div class="form-group">
                     <label class="col-md-2">Email<span class="required">*</span></label>
-                    <div class="col-md-8"><input type="text" class="form-control profile_email" placeholder="Your Email Address" name="email" value="<?php echo $member->email;?>" /></div>
+                    <div class="col-md-9"><input type="text" class="form-control profile_email" placeholder="Your Email Address" name="email" value="<?php echo $member->email;?>" /></div>
                     <div class="clearfix"></div>
                 </div>
                 
                  <div class="form-group">
                     <label class="col-md-2"></label>
-                    <div class="col-md-8"><span class="blue">Your e-mail address is used for your login - <strong>Input carefully</strong></span></div>
+                    <div class="col-md-9"><span class="blue">Your e-mail address is used for your login - <strong>Input carefully</strong></span></div>
                     <div class="clearfix"></div>
                 </div>
                 
@@ -53,13 +53,13 @@
                 
                 <div class="form-group">
                     <label class="col-md-2">Mobile</label>
-                    <div class="col-md-8"><input type="text" class="form-control" placeholder="Your Mobile Number" name="mobile" value="<?php echo $member->mobile;?>" /></div>
+                    <div class="col-md-9"><input type="text" class="form-control" placeholder="Your Mobile Number" name="mobile" value="<?php echo $member->mobile;?>" /></div>
                     <div class="clearfix"></div>
                 </div>
                 
                  <div class="form-group">
                     <label class="col-md-2"></label>
-                    <div class="col-md-8"><span class="blue">Used for password reminder - <strong>Optional</strong></span></div>
+                    <div class="col-md-9"><span class="blue">Used for password reminder - <strong>Optional</strong></span></div>
                     <div class="clearfix"></div>
                 </div>
                 
@@ -67,7 +67,7 @@
                 <?php $date = explode("-",$member->dob);?>
                 <div class="form-group dobs">
                     <label class="col-md-2">Date of Birth<span class="required">*</span></label>
-                    <div class="col-md-8">
+                    <div class="col-md-9">
                         <select name="d_ob" class="col-md-4">
                             <option value="">Day</option>
                             <?php
@@ -107,7 +107,7 @@
                 
                  <div class="form-group">
                     <label class="col-md-2">Gender<span class="required">*</span></label>
-                    <div class="col-md-8">
+                    <div class="col-md-9">
                         <div class="col-md-6 whitebg"><input type="radio" name="gender" value="1" <?php if($member->gender == '1')echo "checked='checked'";?> /> Male</div>
                         <div class="col-md-6 whitebg"><input type="radio" name="gender" value="0" <?php if($member->gender == '0')echo "checked='checked'";?> /> Female</div>
                         <div class="clearfix"></div>
@@ -119,7 +119,7 @@
                 
                 <div class="form-group">
                     <label class="col-md-2">Profile Photo</label>
-                    <div class="col-md-8 profilepic">
+                    <div class="col-md-9 profilepic">
                     <div class="profile_img" id="upimage_0">
                     <?php
                     if($member->logo && (Yii::app()->basePath.'/../images/frontend/thumb/'.$member->logo))
@@ -170,13 +170,13 @@
                 
                 <div class="form-group">
                     <label class="col-md-2">SA Identity No.</label>
-                    <div class="col-md-8"><input type="text" class="form-control" placeholder="Your SA Identity Number" name="sa_identity_no" value="<?php echo $member->sa_identity_no;?>" /></div>
+                    <div class="col-md-9"><input type="text" class="form-control" placeholder="Your SA Identity Number" name="sa_identity_no" value="<?php echo $member->sa_identity_no;?>" /></div>
                     <div class="clearfix"></div>
                 </div>
                 
                  <div class="form-group">
                     <label class="col-md-2"></label>
-                    <div class="col-md-8"><span class="blue">Input your <strong>SA Identity Number</strong> to track your results - <strong>Optional</strong></span></div>
+                    <div class="col-md-9"><span class="blue">Input your <strong>SA Identity Number</strong> to track your results - <strong>Optional</strong></span></div>
                     <div class="clearfix"></div>
                 </div>
                 
@@ -184,13 +184,13 @@
                 
                 <div class="form-group">
                     <label class="col-md-2">Championchip</label>
-                    <div class="col-md-8"><input type="text" class="form-control" placeholder="Your Championchip Number" name="championchip" value="<?php echo $member->championchip;?>" /></div>
+                    <div class="col-md-9"><input type="text" class="form-control" placeholder="Your Championchip Number" name="championchip" value="<?php echo $member->championchip;?>" /></div>
                     <div class="clearfix"></div>
                 </div>
                 
                  <div class="form-group">
                     <label class="col-md-2"></label>
-                    <div class="col-md-8"><span class="blue">Input your <strong>Championchip Number</strong> to track your results - <strong>Optional</strong></span></div>
+                    <div class="col-md-9"><span class="blue">Input your <strong>Championchip Number</strong> to track your results - <strong>Optional</strong></span></div>
                     <div class="clearfix"></div>
                 </div>
                 
@@ -198,13 +198,13 @@
                 
                 <div class="form-group">
                     <label class="col-md-2">TraceTec</label>
-                    <div class="col-md-8"><input type="text" class="form-control" placeholder="Your TraceTec Number" name="tracetec" value="<?php echo $member->tracetec;?>"  /></div>
+                    <div class="col-md-9"><input type="text" class="form-control" placeholder="Your TraceTec Number" name="tracetec" value="<?php echo $member->tracetec;?>"  /></div>
                     <div class="clearfix"></div>
                 </div>
                 
                  <div class="form-group">
                     <label class="col-md-2"></label>
-                    <div class="col-md-8"><span class="blue">Input your <strong>TraceTec Number</strong> to track your results - <strong>Optional</strong></span></div>
+                    <div class="col-md-9"><span class="blue">Input your <strong>TraceTec Number</strong> to track your results - <strong>Optional</strong></span></div>
                     <div class="clearfix"></div>
                 </div>
                 

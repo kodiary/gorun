@@ -1,4 +1,4 @@
-<aside class="left_body addArticles">
+<aside class="col-md-8 addArticles">
 <div class="line"></div>
 <h1>Newsletters Templates - <span class="green">Add or Edit Templates Here</span></h1>
 <div class="line"></div>
@@ -96,7 +96,7 @@
 <?php $this->endWidget(); ?>
 </aside><!-- form -->
 
-<aside class="right_body">
+<aside class="col-md-4">
         <?php
         $cancel_url = Yii::app()->createUrl('/admin/newslettertemplate/index'); 
             $this->widget('bootstrap.widgets.BootButton', array(

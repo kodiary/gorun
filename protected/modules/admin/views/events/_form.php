@@ -1,7 +1,7 @@
 <link href="<?php echo Yii::app()->request->baseUrl; ?>/js/selectbox/jquery.selectBox.css" rel="stylesheet" type="text/css" />
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/selectbox/jquery.selectBox.js" type="text/javascript"></script>
 
-<input type="hidden" class="moduleType" value="<?php echo $this->module->getName(); ?>"/>
+<input type="hidden" class="moduleType" value="<?php echo Yii::app()->controller->module->id; ?>"/>
 <?php $form = $this->beginWidget('bootstrap.widgets.BootActiveForm', array(
     'id' => 'events-form',
     'enableAjaxValidation' => false,
@@ -134,7 +134,7 @@ if (isset($id)) {
     
     <li class="left">  Event Description - <span class="blue f12">Provide a description of the event- try to keep it short.</span></li>
     <li class="break">
-        <?php if($this->module->getName()=='company'){ ?>
+        <?php if(Yii::app()->controller->module->id==''){ ?>
             <?php $this->renderPartial('application.modules.admin.views.common.autotextarea'); ?>
             <?php
                 $model->description = trim(strip_tags($model->description));

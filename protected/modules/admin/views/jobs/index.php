@@ -1,4 +1,4 @@
-<div class="left_body">
+<div class="col-md-8">
 <div class="line"></div>
 <h1>Jobs - <span class="blue"><?php if(isset($_GET['keyword'])){ echo 'Results for "'.$_GET['keyword'].'"';}else{?>List of Jobs<?php } ?></span></h1>
 <div class="line"></div>
@@ -89,7 +89,7 @@ if(!$pages && $dataProvider->totalItemCount>$itemsCount){
 <div class="clear"></div>
 </div>
 
-<div class="right_body">
+<div class="col-md-4">
 <?php $this->renderPartial('_sidebar')?>
 </div>
 <div class="clear"></div>

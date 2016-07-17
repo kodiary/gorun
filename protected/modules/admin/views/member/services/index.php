@@ -5,7 +5,7 @@ if(isset($_GET['id']))$id=$_GET['id'];
 ?>
 <?php $this->widget('bootstrap.widgets.BootAlert'); ?>
 <div class="company-bottom">
-<div class="left_body">
+<div class="col-md-8">
     <?php echo $this->renderPartial('application.modules.admin.views.company._servicelist', array(
                 'model'=>$model,
                 'products'=>$products,
@@ -16,7 +16,7 @@ if(isset($_GET['id']))$id=$_GET['id'];
     )); ?>
 </div>
 
-<div class="right_body">
+<div class="col-md-4">
     <?php $this->renderPartial('application.modules.admin.views.company._savePopUp');?>
     
 

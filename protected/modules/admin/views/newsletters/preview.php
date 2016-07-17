@@ -1,4 +1,4 @@
-<aside class="left_body addArticles">
+<aside class="col-md-8 addArticles">
 <?php $this->renderPartial('_newslettermenu');?>
 
 <div class="addContentArea">

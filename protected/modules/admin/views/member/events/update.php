@@ -7,13 +7,13 @@ echo "here";die();
 if(isset($_GET['id']))$id=$_GET['id'];
 ?>
 <?php $this->widget('bootstrap.widgets.BootAlert'); ?>
-<div class="left_body">
+<div class="col-md-8">
 
 <h1>Update Events <?php echo $event_model->id; ?></h1>
 
 <?php echo $this->renderPartial('application.modules.admin.views.events._form',array('model'=>$event_model,'venue'=>$venue)); ?>
 </div>
-<div class="right_body">
+<div class="col-md-4">
     
     <div style="display: none;" id="applyDiv" class="conforminations_toos">
     <div class="lefts">Confirm Apply</div>

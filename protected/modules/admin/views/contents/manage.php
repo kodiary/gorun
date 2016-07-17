@@ -24,7 +24,7 @@ jQuery(function($){
     });
 });
 </script>
-<aside class="left_body floatLeft">
+<aside class="col-md-8 floatLeft">
 <div class="line"></div>
 <h1>Pages -<span class="green"> List of pages </span></h1>
 <div class="line"></div>
@@ -95,7 +95,7 @@ if(is_array($pages))
 
 
 
-<aside class="right_body floatRight" >
+<aside class="col-md-4 floatRight" >
 	<a href="<?php echo $this->createUrl('/admin/contents/create')?>" class="btn">+Add Page</a>
 </aside>
 

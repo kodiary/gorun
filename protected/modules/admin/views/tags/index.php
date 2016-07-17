@@ -2,7 +2,7 @@
 $this->breadcrumbs=array(
 	'Tag'
 );?>
-<aside class="left_body addContentArea">
+<aside class="col-md-8 addContentArea">
 <div class="line"></div>
 <h1>List of Common Tags</h1>
 <div class="line"></div>
@@ -108,7 +108,7 @@ Topic
 </aside>
 
 
-<div class="left_body">
+<div class="col-md-8">
 <div class="wide-form">
 
    
@@ -118,7 +118,7 @@ Topic
 </div>
 
 
-</div><!--#left_body-->
+</div><!--#col-md-8-->
 
 <div class="clear"></div>
 

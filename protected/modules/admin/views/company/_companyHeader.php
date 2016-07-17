@@ -1,5 +1,5 @@
 <div class="s_height_d">
-    <div class="left_body">
+    <div class="col-md-8">
     <div class="line"></div>
        <div class="companyList " style="margin:10px 0 0 0;">	
         	<div class="home left" > <a style="padding: 6px; margin-right: 10px;" href="<?php echo $this->createUrl('/admin/company');?>" class="btn"><i class="icon-home"></i></a> </div>
@@ -79,7 +79,7 @@
            </div>
     </div>
     </div>
-    <div class="right_body memtype">
+    <div class="col-md-4 memtype">
         <div class="fl_right" style="margin-left:5px;">
             <a class="btn" href="<?php echo $this->createUrl('company/contact/id/'.$model->id); ?>">Contact</a>
         </div>

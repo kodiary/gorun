@@ -5,6 +5,8 @@
 	<meta name="language" content="en" />
     <meta name="robots" content="index,nofollow"/>
     	<!-- blueprint CSS framework -->
+    <link href="<?php echo Yii::app()->request->baseUrl; ?>/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo Yii::app()->request->baseUrl; ?>/fa/css/font-awesome.css" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />
 	<!--[if lt IE 8]>
@@ -23,15 +25,15 @@
     <!-- load header -->
     <div id="admin_header" class="">
     <div class="top_head_sections">
-    	<div class="logo_left">
-        	<div class="admin_logo">
-				<a href="<?php echo $this->createAbsoluteUrl('/');?>" target="_blank"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/admin/admin-logo.gif"></a>
-            </div>
-            <div class="admin_area">
+        <div class="col-md-1 logo_admin">
+        <a href="#">ADMIN</a>
+        </div>
+    	<div class="col-md-9 nav-admin">
+            
             <?php if(!Yii::app()->user->isGuest) $this->widget('AdminMenu'); ?>
-            </div> 
+             
    		</div>
-        <div class="logo_right">
+        <div class="col-md-2 text-right">
     			<?php echo CHtml ::link('Log Out',array('/admin/logout'),array('class'=>'btn btn-info'))?>
         </div>
         <div class="clear"></div>

@@ -5,10 +5,10 @@ if(isset($_GET['id']))$id=$_GET['id'];
 ?>
 <?php $this->widget('bootstrap.widgets.BootAlert'); ?>
 <div class="company-bottom">
-<div class="left_body">
+<div class="col-md-8">
     <?php echo $this->renderPartial('_form',array('model'=>$model,'tradinghours'=>$tradinghours)); ?>
 </div>
-<div class="right_body">
+<div class="col-md-4">
     
     <div style="display: none;" id="applyDiv" class="conforminations_toos">
     <div class="lefts">Confirm Apply</div>

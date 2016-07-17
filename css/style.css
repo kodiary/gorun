@@ -238,4 +238,5 @@ a.ui-dialog-titlebar-close{width:35px!important; height:35px!important; z-index:
 .outer_popups .pop_up_forms .flt_frms{margin-bottom:10px;}
 .outer_popups .pop_up_forms{width:415px;}
 .outer_popups .pop_up_forms input[type="text"]{width:255px;}
-
+.icon-circle{color:#049DDC;font-size:33px;text-align:center;}
+.center-align{text-align: center;}

@@ -3,7 +3,7 @@ $this->breadcrumbs=array(
 	'Newsletters Templates',
 );
 ?>
-<aside class="left_body floatLeft">
+<aside class="col-md-8 floatLeft">
     <div class="line"></div>
 <h1>Newsletters Templates - <span class="blue">Add or Edit Templates Here</span></h1>
 <div class="line"></div>
@@ -68,7 +68,7 @@ $this->breadcrumbs=array(
 
 </aside>
 
-<aside class="right_body floatRight">
+<aside class="col-md-4 floatRight">
 	<a href="<?php echo $this->createUrl('/admin/newslettertemplate/create')?>" class="btn">+Add Template</a>
 </aside>
 

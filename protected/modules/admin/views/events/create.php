@@ -1,4 +1,4 @@
-<aside class="left_body floatLeft">
+<aside class="col-md-8 floatLeft">
 <div class='line'></div>
   <h1>Add/Edit Event - <span class="blue">Create or Edit Events here.</span></h1>
 <div class='line'></div>
@@ -8,7 +8,7 @@
 <?php echo $this->renderPartial('_form', array('model'=>$model,'venue'=>$venue,'org'=>$org,'events_link'=>$events_link)); ?>
 <div class="clear"></div>
 </aside>
-<aside class="right_body floatRight">
+<aside class="col-md-4 floatRight">
 <div class="mar-bot-10">  
     <?php $this->widget('bootstrap.widgets.BootButton', array(
                     //'fn'=>'ajaxLink',

@@ -4,7 +4,7 @@ if(isset($_GET['id']))$id=$_GET['id'];
 ?>
 <?php $this->widget('bootstrap.widgets.BootAlert'); ?>
 <div class="company-bottom">
-<div class="left_body">
+<div class="col-md-8">
 <div class="restaurant_menus_wrapper">
 <h2>Resources - <span class="blue">EXSA Member resource documents and information</span></h2>
 <div class="line"></div>
@@ -14,7 +14,7 @@ if(isset($_GET['id']))$id=$_GET['id'];
     )); ?>
 </div>
 </div>
-<div class="right_body">
+<div class="col-md-4">
     
 </div>
 <div class="clear"></div>

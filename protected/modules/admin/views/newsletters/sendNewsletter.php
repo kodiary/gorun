@@ -1,4 +1,4 @@
-<aside class="left_body floatLeft newsletters">
+<aside class="col-md-8 floatLeft newsletters">
 <div class="line"></div>
 <h1>Send Newsletters - <span class="blue">Send your newsletter here</span></h1>
 <div class="line"></div>
@@ -37,7 +37,7 @@ if(!$pages && $dataProvider->totalItemCount>10){
 <div class="clear"></div>
 </aside>
 
-<aside class="right_body floatRight">
+<aside class="col-md-4 floatRight">
 <a href="<?php echo $this->createUrl('/admin/newsletters/create')?>" class="btn">+Add Newsletters</a></h1>
 </aside>
 <div class="clear"></div>

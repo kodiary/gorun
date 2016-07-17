@@ -1,6 +1,6 @@
 <?php $this->renderPartial('/company/_companyHeader',array('model'=>$cmodel));?>
 <div class="company-bottom">
-<div class="left_body">
+<div class="col-md-8">
 <div class="restaurant_menus_wrapper">
 <h2>Statistics - <span>How your listing has done since it has listed</span></h2>
 <!-- monthly report-->
@@ -58,7 +58,7 @@ if($months)
 
 
 <!-- right sidebar-->
-<div class="right_body">
+<div class="col-md-4">
 <?php $this->renderPartial('_sidebar');?>
 </div>
 <div class="clear"></div>

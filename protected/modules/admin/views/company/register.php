@@ -1,4 +1,4 @@
-<div class="left_body">
+<div class="col-md-8">
 <div class="line"></div>
     <h1>Add Company</h1>
     <div class="line"></div>
@@ -36,7 +36,7 @@
   
 <?php $this->endWidget(); ?> 
 </div>
-    <div class="right_body">
+    <div class="col-md-4">
       <div><a class="btn" href="<?php echo $this->createUrl('/admin/company');?>">Cancel</a></div> 
     </div>
     <div class="clear"></div>

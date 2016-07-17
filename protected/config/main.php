@@ -40,6 +40,16 @@ return array(
 
 	// application components
 	'components'=>array(
+        'clientScript' => array(
+        
+                // disable default yii scripts
+                'scriptMap' => array(
+                    'jquery.js'     => false,
+                    'jquery.min.js' => false,
+                    'jquery-ui.min.js' => false,
+                    'jquery-ui-i18n.min.js'=>false
+                ),
+                ),
 	'swiftMailer' => array(
             'class' => 'ext.swiftMailer.SwiftMailer',
         ),
@@ -160,6 +170,8 @@ return array(
             'events/showall'=>'events/index/showall',
             'events/search'=>'events/search',
             'events/search/showall'=>'events/search/showall',
+            'events/create'=>'events/create',
+            'events/loadTime'=>'events/loadTime',
             'events/<slug>'=>'events/view/slug/<slug>',
             'dashboard'=>'dashboard/index',
             

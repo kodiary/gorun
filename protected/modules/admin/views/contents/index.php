@@ -3,7 +3,7 @@ $this->breadcrumbs=array(
 	'Pages',
 );
 ?>
-<aside class="left_body floatLeft">
+<aside class="col-md-8 floatLeft">
 <div class="line"></div>
 <h1>Parent Pages</h1>
 <div class="line"></div>
@@ -24,7 +24,7 @@ $this->breadcrumbs=array(
 
 </aside>
 
-<aside class="right_body floatRight" >
+<aside class="col-md-4 floatRight" >
 	<a href="<?php echo $this->createUrl('/admin/contents/create')?>" class="btn">+Add Page</a>
 </aside>
 
