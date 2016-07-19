@@ -12,15 +12,16 @@
     
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/jqueryui/jquery-ui.min.css" rel="stylesheet" type="text/css" />    
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.js" type="text/javascript"></script>
+    
+    
+    
+	<title>Home - GoRun</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet"> 
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/jqueryui/jquery-ui.min.js" type="text/javascript"></script>    
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/filter.js" type="text/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/timepicki.css" rel="stylesheet" type="text/css" />
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/timepicki.js" type="text/javascript"></script>
-    
-    
-	<title>Home - GoRun</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet"> 
 </head>
 
 <body>

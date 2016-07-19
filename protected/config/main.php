@@ -40,7 +40,7 @@ return array(
 
 	// application components
 	'components'=>array(
-        'clientScript' => array(
+        /*'clientScript' => array(
         
                 // disable default yii scripts
                 'scriptMap' => array(
@@ -50,7 +50,7 @@ return array(
                     'jquery-ui-i18n.min.js'=>false,
                     'bootstrap-transition.js'=>false
                 ),
-                ),
+                ),*/
 	'swiftMailer' => array(
             'class' => 'ext.swiftMailer.SwiftMailer',
         ),
