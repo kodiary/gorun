@@ -40,7 +40,7 @@ return array(
 
 	// application components
 	'components'=>array(
-        /*'clientScript' => array(
+        'clientScript' => array(
         
                 // disable default yii scripts
                 'scriptMap' => array(
@@ -48,9 +48,13 @@ return array(
                     'jquery.min.js' => false,
                     'jquery-ui.min.js' => false,
                     'jquery-ui-i18n.min.js'=>false,
-                    'bootstrap-transition.js'=>false
+                    'bootstrap-transition.js'=>false,
+                    'jquery.color.js'=>false,
+                    'bootstrap-tooltip.js'=>false,
+                    'jquery.Jcrop.min.js'=>false
+                    
+                )
                 ),
-                ),*/
 	'swiftMailer' => array(
             'class' => 'ext.swiftMailer.SwiftMailer',
         ),
@@ -66,9 +70,9 @@ return array(
         ),
 		
         //load component bootstrap
-        'bootstrap'=>array(
+        /*'bootstrap'=>array(
             'class'=>'ext.bootstrap.components.Bootstrap', 
-        ),
+        ),*/
         //load image manipulation component
         'image'=>array(
           'class'=>'application.extensions.image.CImageComponent',

@@ -16,20 +16,15 @@
                     $('#upimage_0').html('<img src=\"'+data+'\"/>');
                     var filename = data.split('thumb/');
                     $('.main_logo').val(filename[1]);
-                    $('#cropModal').dialog('close'); return false;
+                     return false;
                 }",
                 ),
-                array('id'=>'cropIt_'.rand(),'class'=>'btn btn-primary cropIt','onclick'=>'$(".cropIt").val("loading...");')
+                array('id'=>'cropIt_'.rand(),'class'=>'btn btn-primary cropIt','data-dismiss'=>'modal','onclick'=>'$(".cropIt").val("loading...");')
         );
         
         
       ?>
-      <?php $this->widget('bootstrap.widgets.BootButton', array(
-            'size' =>'normal',
-			'label'=>'Cancel',
-            'id' =>'clearCrop',
-            'htmlOptions' =>array('onclick'=>'$("#cropModal").dialog("close");'),
-		));  ?>
+      <a href="javascript:void(0)" data-dismiss="modal" id="clearCrop" class="btn btn-default">Cancel</a>
         </div>
         <div class="clearfix"></div>
   </div>

@@ -324,10 +324,7 @@ class GalleryController extends Controller
     {
         if($_POST['fileName']!="")
         {
-            Yii::app()->clientScript->scriptMap=array(
-        	   (YII_DEBUG ?  'jquery.js':'jquery.min.js')=>false,
-        	);
-        	
+            
             if(file_exists(Yii::app()->basePath.'/../images/frontend/full/'.$_POST['fileName']))
                 $imageUrl = Yii::app()->baseUrl.'/images/frontend/full/'. $_POST['fileName'];
             else
