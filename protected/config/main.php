@@ -47,7 +47,8 @@ return array(
                     'jquery.js'     => false,
                     'jquery.min.js' => false,
                     'jquery-ui.min.js' => false,
-                    'jquery-ui-i18n.min.js'=>false
+                    'jquery-ui-i18n.min.js'=>false,
+                    'bootstrap-transition.js'=>false
                 ),
                 ),
 	'swiftMailer' => array(

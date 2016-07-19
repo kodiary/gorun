@@ -27,6 +27,15 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="load_time" style="display: none;"></div>
+                <hr />
+                <div class="form-group">
+                    <label class="col-md-11">Event Description<span class="blue"> - Provide the description of the event - try to keep it short</span></label>
+                    <div class="col-md-11"><textarea class="form-control description" name="description"><?php echo $model->description;?></textarea></div>
+                    <div class="clearfix"></div>
+                </div>
+                <hr />
+                
+                
                 <?php /*
                 <div class="form-group">
                     <label class="col-md-2">Example</label>
