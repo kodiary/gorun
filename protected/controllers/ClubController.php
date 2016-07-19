@@ -39,6 +39,9 @@ class ClubController extends Controller
 	}
     public function actionIndex()
 	{
+	    Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.js"));
+        Yii::app()->clientScript->registerCssFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.css"));
+         
 	   $member = Member::model()->findByPk(Yii::app()->user->id);
 	   $this->render('index', array('member'=>$member));
     }

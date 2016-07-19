@@ -13,7 +13,7 @@
             <form action="<?php echo Yii::app()->request->baseUrl;?>/dashboard" id="profile-detail" method="post">
                 <div class="form-group">
 
-                    <label class="col-md-2">Club Name<span class="required">*</span></label>
+                    <label class="col-md-3">Club Name<span class="required">*</span></label>
                     <div class="col-md-7"><input type="text" class="form-control" placeholder="Club Name..." name="name" value="<?php //echo $member->fname;?>" /></div>
 
                     <div class="clearfix"></div>
@@ -31,25 +31,23 @@
                 
                 <div class="form-group">
                     <label class="col-md-12">Club Logo <span class="blue">- Include an club logo or photo (Optional)</span></label>
-
-                    <div class="col-md-7 profilepic">
-
-
-                    <div class="profile_img" id="upimage_0">
-                    <?php
-                    if(file_exists(Yii::app()->basePath.'/../images/frontend/thumb/'.$member->logo))
-                    {
-                        $img_url=Yii::app()->baseUrl.'/images/frontend/thumb/'.$member->logo;
-                    }
-                    else
-                    {
-                        $img_url=Yii::app()->baseUrl.'/images/noimage.jpg';    
-                    }
-                    ?>
+                    <div class="clearfix"></div>
+                        <div class="profilepic ">
+                        <div class="profile_img " id="upimage_0">
+                        <?php
+                        if(file_exists(Yii::app()->basePath.'/../images/frontend/thumb/'.$member->logo))
+                        {
+                            $img_url=Yii::app()->baseUrl.'/images/frontend/thumb/'.$member->logo;
+                        }
+                        else
+                        {
+                            $img_url=Yii::app()->baseUrl.'/images/noimage.jpg';    
+                        }
+                        ?>
                         <img src="<?php echo $img_url;?>"/>
-                    </div>
-                    <div class="col-md-7 picact">
-                    <?php echo $this->renderPartial('application.views.gallery._addImage',array('member'=>$member)); ?>
+                        </div>
+                        <div class="col-md-6">
+                        <?php echo $this->renderPartial('application.views.gallery._addImage',array('member'=>$member)); ?>
                         
                       
             <?php
@@ -87,7 +85,7 @@
                 
                 <div class="form-group">
 
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <label> <strong>Club Type</strong><span class="required">*</span> </label>
                     </div>
                     <div class="col-md-7">
@@ -121,19 +119,19 @@
                 
                 <hr />
                 <div class="form-group">
-                    <label class="col-md-2">Club Address/Venue<span class="required">*</span></label>
+                    <label class="col-md-3">Club Address/Venue<span class="required">*</span></label>
                     <div class="col-md-7"><input type="text" class="form-control" placeholder="Street Address" name="street_address" value="<?php //echo $member->fname;?>" /></div>
                     <div class="clearfix"></div>
                 
                 </div>
                  <div class="form-group">
-                    <label class="col-md-2">City / Town <span class="required">*</span></label>
+                    <label class="col-md-3">City / Town <span class="required">*</span></label>
                     <div class="col-md-7"><input type="text" class="form-control" placeholder="Suburb Town or City" name="city" value="<?php //echo $member->fname;?>" /></div>
                     <div class="clearfix"></div>
                 
                 </div>
                  <div class="form-group">
-                    <label class="col-md-2">Province<span class="required">*</span></label>
+                    <label class="col-md-3">Province<span class="required">*</span></label>
                     <div class="col-md-7"><select name="province"><option>Select Province</option></select></div>
                     <div class="clearfix"></div>
                 
@@ -147,7 +145,7 @@
                 
                 <hr />
                 <div class="form-group">
-                    <label class="col-md-2">Day / Time<span class="required">*</span></label>
+                    <label class="col-md-3">Day / Time<span class="required">*</span></label>
                     <div class="col-md-7">
                         <div class="col-md-6">
                             <select name="day[]">
@@ -195,7 +193,7 @@
                 
                 </div>
                  <div class="form-group">
-                    <label class="col-md-2">Description<span class="required">*</span></label>
+                    <label class="col-md-3">Description<span class="required">*</span></label>
                     <div class="col-md-7"><input type="text" class="form-control" placeholder="Optional description" name="city" value="<?php //echo $member->fname;?>" /></div>
                     <div class="clearfix"></div>
                 
@@ -209,40 +207,44 @@
                 
                 <hr />
                 <div class="form-group">
-                    <label class="col-md-2">Contact Person<span class="required">*</span></label>
+                    <label class="col-md-3">Contact Person<span class="required">*</span></label>
                     <div class="col-md-7"><input type="text" class="form-control" placeholder="Street Address" name="street_address" value="<?php //echo $member->fname;?>" /></div>
                     <div class="clearfix"></div>
                 
                 </div>
                 <hr />
-                 <div class="form-group">
-                    <label class="col-md-2">Contact Number <span class="required">*</span></label>
-                    <div class="col-md-7"><input type="text" class="form-control" placeholder="Suburb Town or City" name="city" value="<?php //echo $member->fname;?>" /></div>
-                    <input type="button" value="+Add" class="btn btn-default col-md-1"/>
-                    <div class="clearfix"></div>
-                
+                <div class="Contact_Number">
+                    <div class="form-group">
+                        <label class="col-md-3">Contact Number <span class="required">*</span></label>
+                        <div class="col-md-7"><input type="text" class="form-control" placeholder="Contact Number" name="contact_number[]" value="<?php //echo $member->fname;?>" /></div>
+                        <input type="button" value="+Add" class="btn btn-default col-md-1" onclick="addmore('Contact_Number');"/>
+                        <div class="clearfix"></div>
+                    
+                    </div>
+                </div>
+                <div class="Contact_Email">
+                    <div class="form-group ">
+                        <label class="col-md-3">Contact E-mail <span class="required">*</span></label>
+                        <div class="col-md-7"><input type="text" class="form-control" placeholder="Contact email" name="contact_email[]" value="<?php //echo $member->fname;?>" /></div>
+                        <input type="button" value="+Add" class="btn btn-default col-md-1" onclick="addmore('Contact_Email');" />
+                        <div class="clearfix"></div>
+                    
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-2">Contact E-mail <span class="required">*</span></label>
-                    <div class="col-md-7"><input type="text" class="form-control" placeholder="Suburb Town or City" name="city" value="<?php //echo $member->fname;?>" /></div>
-                    <input type="button" value="+Add" class="btn btn-default col-md-1"/>
-                    <div class="clearfix"></div>
-                
-                </div>
-                <div class="form-group">
-                    <label class="col-md-2">Website <span class="required">*</span></label>
+                    <label class="col-md-3">Website <span class="required">*</span></label>
                     <div class="col-md-7"><input type="text" class="form-control" placeholder="http://" name="city" value="<?php //echo $member->fname;?>" /></div>
                     <div class="clearfix"></div>
                 
                 </div>
                 <div class="form-group">
-                    <label class="col-md-2">Facebook page <span class="required">*</span></label>
+                    <label class="col-md-3">Facebook page <span class="required">*</span></label>
                     <div class="col-md-7"><input type="text" class="form-control" placeholder="http://" name="city" value="<?php //echo $member->fname;?>" /></div>
                     <div class="clearfix"></div>
                 
                 </div>
                 <div class="form-group">
-                    <label class="col-md-2">Twitter Page <span class="required">*</span></label>
+                    <label class="col-md-3">Twitter Page <span class="required">*</span></label>
                     <div class="col-md-7"><input type="text" class="form-control" placeholder="http://" name="city" value="<?php //echo $member->fname;?>" /></div>
                     <div class="clearfix"></div>
                 
@@ -274,81 +276,7 @@
     
     $this->endWidget('zii.widgets.jui.CJuiDialog');
 ?>
-<?php /*$this->breadcrumbs=array('Welcome to the exhibition and event association of southern africa');?>
-<div id="fb-root"></div>
- <?php
-    if($sliders)
-    {
-    ?>
-      <div class="slider">
-        <?php $this->renderPartial('_slider',array('sliders'=>$sliders));?>
-            <div class="clear"></div>
-      </div>
-      <!--slider-->
-    <?php
-    }
-?>
-<div class="body_content_left">
-<?php
-    if($model)
-    {
-    ?>
-        <div class="home-desc"><?php echo $model->desc;?></div>
-    <?php
-    }
-?>
-<div class="latest-news-new">
-    <div class="fl_left">Latest News</div>
-    <div class="fl_right"><a href="<?php echo $this->createUrl('/news'); ?>">View More</a></div>
-    <div class="clear"></div>
-</div>
- <?php $this->widget('bootstrap.widgets.BootListView',array(
-	'dataProvider'=>$articlesData,
-    'pager' => array(
-        'class'=>'bootstrap.widgets.BootPager',
-        'maxButtonCount'=>5,
-    ),
-	'itemView'=>'_articles',
-    'summaryText'=>'',
-	'emptyText'=>'',
-    'viewData'=>array('section'=>'articles') 
-)); ?>
 
-<div style="margin-top:6px;">
-    <div class="floatLeft"><a  style=" font-size: 17px; color:#666666; margin-top:5px; display:inline-block; margin-top:4px;" href="<?php echo $this->createUrl('/news'); ?>" class="viewMoreArticles">View More Articles</a></h2></div>
-    <div class="floatRight"><a  href="<?php echo $this->createUrl('/news'); ?>" class="btn btn-info">View More</a></div>
-    <div class="clear"></div>
-</div>
-
-
-<!-- bottom banner-->
-<?php $this->renderPartial('_bottomBanner');?>
-</div><!--#body_content_left-->
-
-<div class="body_content_right">
-<!-- Right side bar -->
-<?php $this->renderPartial('_eventCalender');?>
-
-
-<div class="subNewsletter">
-    <h2>FRESH INDUSTRY NEWS!</h2>
-    <div class="line"></div>
-    
-    <div class="sub-content">Would you like the latest industry news served fresh to your inbox? Enter your details below.</div>
-    <div class="line"></div>
-    <div id="subscriptionLink"><a href="<?php echo $this->createUrl('/subscribers')?>">SUBSCRIBE NOW <i class="icon-circle-arrow-right"></i></a></div>
-</div> 
-
-<?php $this->renderPartial('_patron_members', array('patronslider'=>$patronslider));?>
-
-<div class="like_box">
-<?php echo $this->renderPartial('_fblikebox')?>
-</div>
-
-<?php $this->renderPartial('_squareBanner');?>
-</div><!--#body_content_right-->
-<div class="clear"></div>
-<!-- Rght side bar end --><?php */?>
     <script>
     function confirm_delete(ques)
     {
@@ -360,6 +288,20 @@
         else
             return false;
     }
+    //Add more
+    function addmore(div)
+    {
+        
+        $("."+div).append('<div class="form-group">'+
+                        '<label class="col-md-3">'+div.replace("_",' ')+'<span class="required">*</span></label>'+
+                        '<div class="col-md-7"><input type="text" class="form-control" placeholder="'+div.replace("_",' ')+'" name="'+div+'[]" value="" /></div>'+
+                        '<input type="button" value="Remove" class="btn btn-danger" onclick="$(this).parent().remove();"  />'+
+                        '<div class="clearfix"></div>'+
+                
+                    '</div>');
+        
+    }
+    
     $(function(){
 			$( "#profile-detail" ).validate( {
 			 onkeyup: false,
