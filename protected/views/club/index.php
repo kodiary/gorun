@@ -33,7 +33,7 @@
                     <label class="col-md-12">Club Logo <span class="blue">- Include an club logo or photo (Optional)</span></label>
                     <div class="clearfix"></div>
                         <div class="profilepic ">
-                        <div class="profile_img " id="upimage_0">
+                        <div class="club_img " id="upimage_0">
                         <?php
                         if(file_exists(Yii::app()->basePath.'/../images/frontend/thumb/'.$member->logo))
                         {
@@ -47,14 +47,14 @@
                         <img src="<?php echo $img_url;?>"/>
                         </div>
                         <div class="col-md-6">
-                        <?php echo $this->renderPartial('application.views.gallery._addImage',array('member'=>$member)); ?>
+                        <?php echo $this->renderPartial('application.views.gallery._addImage',array('member'=>$member,'type'=>'club')); ?>
                         
                       
             <?php
                         
             //crop button
              echo CHtml::ajaxButton('Crop',
-                        $this->createUrl('gallery/cropPhoto'),
+                        $this->createUrl('gallery/cropPhoto?height=180&width=220'),
                          array( //ajax options
                          'data'=>array('fileName'=>"js:function(){ return $('.uploaded_image').val()}",'id'=>$member->id),
                          'type'=>'POST',

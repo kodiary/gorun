@@ -11,7 +11,7 @@ function initiateUpload(index)
     new qq.FileUploader({'element':document.getElementById('uploadFile'),
     'debug':true,
     'multiple':false,
-	'action':'<?php echo $this->createUrl('gallery/upload')?>',
+	'action':'<?php echo $this->createUrl('gallery/upload?type='.$type)?>',
     'allowedExtensions':['jpg','jpeg','gif','png'],
     'sizeLimit':10485760,
     'onSubmit':function()

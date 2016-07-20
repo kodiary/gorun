@@ -132,20 +132,22 @@
                         
                     </div>
                     <div class="col-md-6 picact">
-                    <?php echo $this->renderPartial('application.views.gallery._addImage',array('member'=>$member)); ?>
+                    <?php echo $this->renderPartial('application.views.gallery._addImage',array('member'=>$member,'type'=>'member')); ?>
                         
                       
             <?php
                         
             //crop button
              echo CHtml::ajaxButton('Crop',
-                        $this->createUrl('gallery/cropPhoto'),
+                        $this->createUrl('gallery/cropPhoto?height=215&width=215'),
                          array( //ajax options
                          'data'=>array('fileName'=>"js:function(){ return $('.uploaded_image').val()}",'id'=>$member->id),
                          'type'=>'POST',
                         'success'=>"js:function(data){
                                     if(data!=''){
-                                        $('#cropModal').html(data).dialog('open'); return false;
+                                        $('#cropModal').html(data).dialog('open');
+                                        $('.ui-dialog-titlebar-close').hide();
+                                         return false;
                                     }
                                     else
                                         alert('No Image selected');

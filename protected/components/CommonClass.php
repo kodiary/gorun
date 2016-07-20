@@ -141,6 +141,30 @@ class CommonClass extends CComponent
                     )
                 );
             break;
+             case "club":
+                return array(
+                    0=>array(
+                        "width"=>"220",
+                        "height"=>"180",
+                        "new_path"=>Yii::app()->basePath.'/../images/temp/thumb/',
+                        "crop"=>"true",
+                        "crop_type"=>"center",
+                    ),
+                     1=>array(
+                        "width"=>"340",
+                        "height"=>"240",
+                        "new_path"=>Yii::app()->basePath.'/../images/temp/main/',
+                        "crop"=>"true",
+                        "crop_type"=>"center",
+                    ),
+                     2=>array(
+                        "width"=>"700",
+                        "height"=>"600",
+                        "new_path"=>Yii::app()->basePath.'/../images/temp/full/',
+                        "crop"=>"false",
+                    )
+                );
+            break;
             case "background_banner":
                 return array(
                     0=>array(

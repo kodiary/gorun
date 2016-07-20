@@ -271,7 +271,7 @@ class GalleryController extends Controller
                  $result['imageFull']=Yii::app()->baseUrl.'/images/temp/full/'.$result['filename'];
                 
                  Yii::import('application.extensions.image.Image');
-                 $resize_detail=CommonClass::get_resize_details('member');
+                 $resize_detail=CommonClass::get_resize_details($_GET['type']);
                  if (is_array($resize_detail))
                  {
                     foreach($resize_detail as $resize_item)
@@ -338,9 +338,9 @@ class GalleryController extends Controller
     {
        $x=$_POST['cropX'];
        $y=$_POST['cropY'];
-       $width=$_POST['cropW'];
-       $height=$_POST['cropH'];
-       
+       $width=round($_POST['cropW']);
+       $height=round($_POST['cropH']);
+       //var_dump($_POST);die();
        if(file_exists(Yii::app()->basePath.'/../images/temp/full/'.$_POST['filename']))
        {
             $src_file=Yii::app()->basePath.'/../images/temp/full/'.$_POST['filename'];

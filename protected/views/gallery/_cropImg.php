@@ -12,6 +12,7 @@
                 }',
                 'success'=>"js:function(data){
                     $('.cropIt').val('Crop');
+                    $('.ui-dialog-titlebar-close').click();
                     $('#upimage_0').html('');
                     $('#upimage_0').html('<img src=\"'+data+'\"/>');
                     var filename = data.split('thumb/');
@@ -19,12 +20,12 @@
                      return false;
                 }",
                 ),
-                array('id'=>'cropIt_'.rand(),'class'=>'btn btn-primary cropIt','data-dismiss'=>'modal','onclick'=>'$(".cropIt").val("loading...");')
+                array('id'=>'cropIt_'.rand(),'class'=>'btn btn-primary cropIt','onclick'=>'$(".cropIt").val("loading...");')
         );
         
         
       ?>
-      <a href="javascript:void(0)" data-dismiss="modal" id="clearCrop" class="btn btn-default">Cancel</a>
+      <a href="javascript:void(0)"  id="clearCrop" class="btn btn-default" onclick="$('.ui-dialog-titlebar-close').click();">Cancel</a>
         </div>
         <div class="clearfix"></div>
   </div>
@@ -33,8 +34,8 @@
 	<?php echo CHtml::hiddenField('cropID');?>
 	<?php echo CHtml::hiddenField('cropX','0');?>
 	<?php echo CHtml::hiddenField('cropY', '0');?>
-	<?php echo CHtml::hiddenField('cropW', '215');?>
-	<?php echo CHtml::hiddenField('cropH', '215');?>
+	<?php echo CHtml::hiddenField('cropW', isset($_GET['width'])?$_GET['width']:'215');?>
+	<?php echo CHtml::hiddenField('cropH', isset($_GET['height'])?$_GET['height']:'215');?>
     
     
 	<?php $this->widget('ext.jcrop.jCropWidget',array(
@@ -44,11 +45,11 @@
     	'formElementWidth'=>'cropW',
     	'formElementHeight'=>'cropH',
     	'jCropOptions'=>array(
-        	'aspectRatio'=>1, 
+        	'aspectRatio'=>(isset($_GET["width"])?$_GET["width"]:215)/(isset($_GET["height"])?$_GET["height"]:215), 
         	'boxWidth'=>700,
         	'boxHeight'=>600,
-            'minSize'=> array(215,215),
-        	'setSelect'=>array(0, 0, 215, 215),
+            'minSize'=> array(isset($_GET["width"])?$_GET["width"]:215,isset($_GET["height"])?$_GET["height"]:215),
+        	'setSelect'=>array(0, 0, isset($_GET["width"])?$_GET["width"]:215,isset($_GET["height"])?$_GET["height"]:215),
     	),
 	)
 	);

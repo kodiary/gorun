@@ -70,9 +70,9 @@ return array(
         ),
 		
         //load component bootstrap
-        /*'bootstrap'=>array(
+        'bootstrap'=>array(
             'class'=>'ext.bootstrap.components.Bootstrap', 
-        ),*/
+        ),
         //load image manipulation component
         'image'=>array(
           'class'=>'application.extensions.image.CImageComponent',

@@ -179,7 +179,8 @@ img{max-width:100%;}
 .profile_detail label{font-weight: normal;}
 span.required{color:#D10404;}
 .profilepic .btn{min-width:100px;margin-bottom:10px;}
-.profile_img{background:#FFF;border:5px solid #DDD;height: 245px;width:215px;height:215px;float:left;}
+.profile_img{background:#FFF;border:5px solid #DDD;width:215px;height:215px;float:left;}
+.club_img{background:#FFF;border:5px solid #DDD;height: 190px;width:230px;float:left;}
 .picact{margin-top:50px}
 
 .control-group a.selectBox{width:200px;}
