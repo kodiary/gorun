@@ -10,11 +10,11 @@
             
             <hr />
             
-            <form action="<?php echo Yii::app()->request->baseUrl;?>/dashboard" id="profile-detail" method="post">
+            <form action="<?php echo Yii::app()->request->baseUrl;?>/club/addclub" id="club-detail" method="post">
                 <div class="form-group">
 
                     <label class="col-md-3">Club Name<span class="required">*</span></label>
-                    <div class="col-md-7"><input type="text" class="form-control" placeholder="Club Name..." name="name" value="<?php //echo $member->fname;?>" /></div>
+                    <div class="col-md-7"><input type="text" class="form-control" placeholder="Club Name..." name="title" value="<?php //echo $member->fname;?>" /></div>
 
                     <div class="clearfix"></div>
                 </div>
@@ -23,8 +23,9 @@
                 
                 <div class="form-group">
                     <label class="col-md-12">Club Description <span class="blue">- Provide a description of the club</span><span class="required">*</span></label>
-                    <div class="col-md-12"> <textarea class="form-control username" placeholder="Club description..." name="username"> </textarea></div>
+                    <div class="col-md-12 "> <textarea class="form-control" placeholder="Club description..." name="description"></textarea></div>
                     <div class="clearfix"></div>
+                    <div class="club_desc"></div>                                        
                 </div>
                 
                 <hr />
@@ -108,6 +109,7 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="clearfix"></div>
+                    <div class="types"></div>
                 </div>
                 
                 <hr />
@@ -132,7 +134,20 @@
                 </div>
                  <div class="form-group">
                     <label class="col-md-3">Province<span class="required">*</span></label>
-                    <div class="col-md-7"><select name="province"><option>Select Province</option></select></div>
+                    <div class="col-md-7">
+                        <select name="province">
+                            <option value="">Select Province</option>
+                            <option value="The Eastern Cape">The Eastern Cape</option>
+                            <option value="The Free State">The Free State</option>
+                            <option value="Gauteng">Gauteng</option>
+                            <option value="KwaZulu-Natal">KwaZulu-Natal</option>
+                            <option value="Limpopo">Limpopo</option>
+                            <option value="Mpumalanga">Mpumalanga</option>
+                            <option value="The Northern Cape">The Northern Cape</option>
+                            <option value="North West">North West</option>
+                            <option value="The Western Cape">The Western Cape</option>
+                        </select>
+                    </div>
                     <div class="clearfix"></div>
                 
                 </div>
@@ -145,7 +160,7 @@
                 
                 <hr />
                 <div class="form-group">
-                    <label class="col-md-3">Day / Time<span class="required">*</span></label>
+                    <label class="col-md-3">Day / Time</label>
                     <div class="col-md-7">
                         <div class="col-md-6">
                             <select name="day[]">
@@ -193,7 +208,7 @@
                 
                 </div>
                  <div class="form-group">
-                    <label class="col-md-3">Description<span class="required">*</span></label>
+                    <label class="col-md-3">Description</label>
                     <div class="col-md-7"><input type="text" class="form-control" placeholder="Optional description" name="city" value="<?php //echo $member->fname;?>" /></div>
                     <div class="clearfix"></div>
                 
@@ -208,14 +223,14 @@
                 <hr />
                 <div class="form-group">
                     <label class="col-md-3">Contact Person<span class="required">*</span></label>
-                    <div class="col-md-7"><input type="text" class="form-control" placeholder="Street Address" name="street_address" value="<?php //echo $member->fname;?>" /></div>
+                    <div class="col-md-7"><input type="text" class="form-control" placeholder="Street Address" name="contact_person" value="<?php //echo $member->fname;?>" /></div>
                     <div class="clearfix"></div>
                 
                 </div>
                 <hr />
                 <div class="Contact_Number">
                     <div class="form-group">
-                        <label class="col-md-3">Contact Number <span class="required">*</span></label>
+                        <label class="col-md-3">Contact Number </label>
                         <div class="col-md-7"><input type="text" class="form-control" placeholder="Contact Number" name="contact_number[]" value="<?php //echo $member->fname;?>" /></div>
                         <input type="button" value="+Add" class="btn btn-default col-md-1" onclick="addmore('Contact_Number');"/>
                         <div class="clearfix"></div>
@@ -232,22 +247,28 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3">Website <span class="required">*</span></label>
-                    <div class="col-md-7"><input type="text" class="form-control" placeholder="http://" name="city" value="<?php //echo $member->fname;?>" /></div>
+                    <label class="col-md-3">Website </label>
+                    <div class="col-md-7"><input type="url" class="form-control" placeholder="http://" name="city" value="<?php //echo $member->fname;?>" /></div>
                     <div class="clearfix"></div>
                 
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3">Facebook page <span class="required">*</span></label>
-                    <div class="col-md-7"><input type="text" class="form-control" placeholder="http://" name="city" value="<?php //echo $member->fname;?>" /></div>
+                    <label class="col-md-3">Facebook page </label>
+                    <div class="col-md-7"><input type="url" class="form-control" placeholder="http://" name="city" value="<?php //echo $member->fname;?>" /></div>
                     <div class="clearfix"></div>
                 
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3">Twitter Page <span class="required">*</span></label>
-                    <div class="col-md-7"><input type="text" class="form-control" placeholder="http://" name="city" value="<?php //echo $member->fname;?>" /></div>
+                    <label class="col-md-3">Twitter Page </label>
+                    <div class="col-md-7"><input type="url" class="form-control" placeholder="http://" name="city" value="<?php //echo $member->fname;?>" /></div>
                     <div class="clearfix"></div>
                 
+                </div>
+                
+                <hr />
+                
+                <div class="form-group">
+                <input type="submit" name="submit" value="Submit" class="btn btn-default bgblue btn-lg" />
                 </div>
   
 </form>
@@ -303,29 +324,20 @@
     }
     
     $(function(){
-			$( "#profile-detail" ).validate( {
-			 onkeyup: false,
+			$( "#club-detail" ).validate( {
+			 //onkeyup: false,
 				rules: {
-					fname: "required",
-					lname: "required",
-                    d_ob: "required",
-                    m_ob: "required",
-                    y_ob: "required",
-                    gender: "required",
-                    username: 'required',
-					password_signup: {
-						required: true,
-						minlength: 5
-					},
-					confirm_password: {
-						required: true,
-						minlength: 5,
-						equalTo: "#password_signup"
-					},
-					email: {
+					title: "required",
+					description: "required",
+                    street_address: "required",
+                    city: "required",
+                    province: "required",
+                    contact_person: "required",
+                    'type[]':"required",
+                   	'contact_email[]': {
 						required: true,
 						email: true,
-                        remote: {
+                       /* remote: {
                             url: "<?php echo Yii::app()->request->baseUrl;?>/member/checkemail?type=email",
                             type: "post",
                             data: {
@@ -334,22 +346,9 @@
                                 }
 
 					       }
-                        }
+                        }*/
                     },
-                    username: {
-                        required: true,
-                        remote: {
-                            url: "<?php echo Yii::app()->request->baseUrl;?>/member/checkemail?type=username",
-                            type: "post",
-                            data: {
-                              username: function() {
-                                return $( ".username" ).val();
-                                }
-
-					       }
-                        }
-                    },
-					agree: "required"
+                  
 				},
                 groups: {
                     y_ob: "d_ob m_ob y_ob"
@@ -387,22 +386,22 @@
                     
 					error.addClass( "help-block" );
 
-					if ( element.attr( "name" ) == "d_ob" || element.attr( "name" ) == "m_ob" || element.attr( "name" ) == "y_ob" ) {
-						error.insertAfter( ".y_ob" );
+					if ( element.attr( "name" ) == "type[]") {
+						error.insertAfter( ".types" );
 					}
-                    else if(element.prop('type')=== 'radio')
+                    else if(element.attr('name')=== 'description')
                     {
-                        error.insertAfter( ('.f_gender'));
+                        error.insertAfter( ('.club_desc'));
                     }
                      else {
 						error.insertAfter( element );
 					}
 				},
 				highlight: function ( element, errorClass, validClass ) {
-					$( element ).parents( ".form-group, .dobs" ).addClass( "has-error" ).removeClass( "has-success" );
+					$( element ).parents( ".form-group" ).addClass( "has-error" ).removeClass( "has-success" );
 				},
 				unhighlight: function (element, errorClass, validClass) {
-					$( element ).parents( ".form-group, .dobs" ).addClass( "has-success" ).removeClass( "has-error" );
+					$( element ).parents( ".form-group" ).addClass( "has-success" ).removeClass( "has-error" );
 				},
                 
 			} );
