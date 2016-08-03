@@ -71,25 +71,15 @@ class Club extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			//array('name, contact_person, number, email, password, password_real, fax, website, twitter, facebok, pinterest, google, tagline, detail, logo, display_address, street_add, suburb, province, latitude, longitude, status, slug, date_added, date_updated, seo_title, seo_desc, seo_keywords', 'required'),
-            array('title,description,logo,types,venue,town,province,trial_day,trial_time,trial_desc,contact_person,website,fb_page,twitter_page','required','on'=>'companyInfo,dashboard.index'),
-            array('lname,opentimes_type,gender,username,mobile,sa_identity_no,championchip,tracetec,opentimes,latitude,longitude,logo,fax,slug,status,suburb,seo_title,seo_desc,seo_keywords,date_added,date_updated','safe','on'=>'companyInfo,index'),
-            array('email','email','on'=>'companyInfo,signup,editlogin,adminSignup'),
-            array('email','unique','on'=>'companyInfo,signup,editlogin,adminSignup'),
-            array('fname','unique','on'=>'signup,adminSignup'),
-            array('website,twitter,facebook,pinterest,google','url', 'defaultScheme' => 'http','on'=>'companyInfo'),
-            array('status,rigger,valid_until,never_expire','safe','on'=>'updatestatus'),
-            array('seo_title,seo_desc,seo_keywords,id','safe','on'=>'seo'),
-            array('fname,lname,password_real,password,number,email','required','on'=>'signup,adminSignup,editlogin'),
-            array('repeat_password', 'compare', 'compareAttribute'=>'password_real','on'=>'signup,adminSignup,editlogin'),
-			array('province, status', 'numerical', 'integerOnly'=>true),
-			array('latitude, longitude', 'numerical'),
-            array('contact_clicked,date_updated,is_verified','safe'),
+            array('title,description,logo,types,venue,town,province,trial_day,trial_time,trial_desc,contact_person,website,fb_page,twitter_page','required','on'=>'create,dashboard.index'),
+         
 		);
 	}
 
 	/**
 	 * @return array relational rules.
 	 */
+     /*
 	public function relations()
 	{
 		// NOTE: you may need to adjust the relation name and the related
@@ -102,7 +92,7 @@ class Club extends CActiveRecord
      
 		);
 	}
-
+        */
 	/**
 	 * @return array customized attribute labels (name=>label)
 	 */
@@ -267,10 +257,21 @@ class Club extends CActiveRecord
                 return CHtml::image($baseUrl.'/images/no_image_random.jpg', $alt);    
         }
     }
-    
+    function testSlug($slug)
+    {
+        //echo $slug;
+        if($this->exists_company($slug))
+        {
+            $new_slug =  $slug.rand(0,1000);
+            return $this->testSlug($new_slug);
+            
+        }
+        else
+            return $slug;
+    }
     public function exists_company($slug)
     {
-        if(Company::model()->findByAttributes(array('slug'=>$slug))) return true;
+        if(Club::model()->findByAttributes(array('slug'=>$slug))) return true;
         else return false;
     }
     

@@ -71,6 +71,7 @@ class DashboardController extends Controller
                 @copy(Yii::app()->basePath.'/../images/temp/main/'.$_POST['logo'],Yii::app()->basePath.'/../images/frontend/main/'.$_POST['logo']);
                 @copy(Yii::app()->basePath.'/../images/temp/thumb/'.$_POST['logo'],Yii::app()->basePath.'/../images/frontend/thumb/'.$_POST['logo']);
                 
+                @unlink(Yii::app()->basePath."/../images/temp/full/".$_POST['logo']);
                 @unlink(Yii::app()->basePath."/../images/temp/main/".$_POST['logo']);
                 @unlink(Yii::app()->basePath."/../images/temp/thumb/".$_POST['logo']);
                 $member->logo = $_POST['logo'];                

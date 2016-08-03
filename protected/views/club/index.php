@@ -10,7 +10,7 @@
             
             <hr />
             
-            <form action="<?php echo Yii::app()->request->baseUrl;?>/club/addclub" id="club-detail" method="post">
+            <form action="<?php echo Yii::app()->request->baseUrl;?>/club/create" id="club-detail" method="post">
                 <div class="form-group">
 
                     <label class="col-md-3">Club Name<span class="required">*</span></label>
@@ -163,7 +163,7 @@
                     <label class="col-md-3">Day / Time</label>
                     <div class="col-md-7">
                         <div class="col-md-6">
-                            <select name="day[]">
+                            <select name="trial_day">
                                 <option>Select Day</option>
                                 <option value="Mondays">Mondays</option>
                                 <option value="Tuesdays">Tuesdays</option>
@@ -175,7 +175,7 @@
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <select name="time[]">
+                            <select name="trial_time">
                                 <option>Select Time</option>
                                 <?php for($i=4;$i<=22 ;$i=$i+.5)
                                     {
@@ -209,7 +209,7 @@
                 </div>
                  <div class="form-group">
                     <label class="col-md-3">Description</label>
-                    <div class="col-md-7"><input type="text" class="form-control" placeholder="Optional description" name="city" value="<?php //echo $member->fname;?>" /></div>
+                    <div class="col-md-7"><input type="text" class="form-control" placeholder="Optional description" name="trial_desc" value="<?php //echo $member->fname;?>" /></div>
                     <div class="clearfix"></div>
                 
                 </div>
@@ -223,7 +223,7 @@
                 <hr />
                 <div class="form-group">
                     <label class="col-md-3">Contact Person<span class="required">*</span></label>
-                    <div class="col-md-7"><input type="text" class="form-control" placeholder="Street Address" name="contact_person" value="<?php //echo $member->fname;?>" /></div>
+                    <div class="col-md-7"><input type="text" class="form-control" placeholder="Contact Person" name="contact_person" value="<?php //echo $member->fname;?>" /></div>
                     <div class="clearfix"></div>
                 
                 </div>
@@ -248,19 +248,19 @@
                 </div>
                 <div class="form-group">
                     <label class="col-md-3">Website </label>
-                    <div class="col-md-7"><input type="url" class="form-control" placeholder="http://" name="city" value="<?php //echo $member->fname;?>" /></div>
+                    <div class="col-md-7"><input type="url" class="form-control" placeholder="http://" name="website" value="<?php //echo $member->fname;?>" /></div>
                     <div class="clearfix"></div>
                 
                 </div>
                 <div class="form-group">
                     <label class="col-md-3">Facebook page </label>
-                    <div class="col-md-7"><input type="url" class="form-control" placeholder="http://" name="city" value="<?php //echo $member->fname;?>" /></div>
+                    <div class="col-md-7"><input type="url" class="form-control" placeholder="http://" name="fb_page" value="<?php //echo $member->fname;?>" /></div>
                     <div class="clearfix"></div>
                 
                 </div>
                 <div class="form-group">
                     <label class="col-md-3">Twitter Page </label>
-                    <div class="col-md-7"><input type="url" class="form-control" placeholder="http://" name="city" value="<?php //echo $member->fname;?>" /></div>
+                    <div class="col-md-7"><input type="url" class="form-control" placeholder="http://" name="twitter_page" value="<?php //echo $member->fname;?>" /></div>
                     <div class="clearfix"></div>
                 
                 </div>
@@ -312,10 +312,13 @@
     //Add more
     function addmore(div)
     {
-        
+        if(div == 'Contact_Number')
+        var type = 'text';
+        else
+        var type = 'email';
         $("."+div).append('<div class="form-group">'+
                         '<label class="col-md-3">'+div.replace("_",' ')+'<span class="required">*</span></label>'+
-                        '<div class="col-md-7"><input type="text" class="form-control" placeholder="'+div.replace("_",' ')+'" name="'+div+'[]" value="" /></div>'+
+                        '<div class="col-md-7"><input type="'+type+'" class="form-control" placeholder="'+div.replace("_",' ')+'" name="'+div+'[]" value="" /></div>'+
                         '<input type="button" value="Remove" class="btn btn-danger" onclick="$(this).parent().remove();"  />'+
                         '<div class="clearfix"></div>'+
                 
