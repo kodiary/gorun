@@ -104,7 +104,7 @@ class qqFileUploader {
     /**
      * Returns array('success'=>true) or array('error'=>'error message')
      */
-    function handleUpload($uploadDirectory, $replaceOldFile = FALSE){
+    function handleUpload($uploadDirectory, $width='', $height='', $replaceOldFile = FALSE){
         if (!is_writable($uploadDirectory)){
             return array('error' => "Server error. Upload directory isn't writable.");
         }
@@ -142,6 +142,17 @@ class qqFileUploader {
         }
 
         if ($this->file->save($uploadDirectory . $filename . '.' . $ext)){
+            if($height!="" && $width!="")
+            {
+                list($width1, $height1, $type, $attr) = getimagesize($uploadDirectory . $filename . '.' . $ext);
+               
+                if($width1< $width || $height1 < $height)
+                {
+                    @unlink($uploadDirectory . $filename . '.' . $ext);
+                    return ['error'=>'Selected Image dimension must be greater than '.$width."x".$height];
+                }
+            }
+      
             return array('success'=>true,'filename'=>$filename.'.'.$ext);
         } else {
             return array('error'=> 'Could not save uploaded file.' .

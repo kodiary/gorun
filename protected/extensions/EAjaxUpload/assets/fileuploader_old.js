@@ -261,8 +261,8 @@ qq.FileUploaderBasic = function(o){
         allowedExtensions: [],
         sizeLimit: 0,
         minSizeLimit: 0,
-        minHeight: 0,
-        minWidth: 0,
+        minHeight:0,
+        minWidth:0,
         // events
         // return false to cancel submit
         onSubmit: function(id, fileName){},
@@ -274,8 +274,8 @@ qq.FileUploaderBasic = function(o){
             typeError: "{file} has invalid extension. Only {extensions} are allowed.",
             sizeError: "{file} is too large, maximum file size is {sizeLimit}.",
             minSizeError: "{file} is too small, minimum file size is {minSizeLimit}.",
-            minHeightError: "{file} dimension is too small, minimum Height is {minHeight}.",
-            minWidthError: "{file} dimension is too small, minimum Width is {minWidth}.",
+            minHeightError: "{file} is too small, minimum Height is {minHeight}.",
+            minWidthError: "{file} is too small, minimum Width is {minWidth}.",
             emptyError: "{file} is empty, please select files again without it.",
             onLeave: "The files are being uploaded, if you leave now the upload will be cancelled."
         },

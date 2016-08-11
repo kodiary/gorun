@@ -46,8 +46,8 @@
     	'formElementHeight'=>'cropH',
     	'jCropOptions'=>array(
         	'aspectRatio'=>(isset($_GET["width"])?$_GET["width"]:215)/(isset($_GET["height"])?$_GET["height"]:215), 
-        	'boxWidth'=>700,
-        	'boxHeight'=>600,
+        	'boxWidth'=>'auto',
+        	'boxHeight'=>'auto',
             'minSize'=> array(isset($_GET["width"])?$_GET["width"]:215,isset($_GET["height"])?$_GET["height"]:215),
         	'setSelect'=>array(0, 0, isset($_GET["width"])?$_GET["width"]:215,isset($_GET["height"])?$_GET["height"]:215),
     	),
