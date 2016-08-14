@@ -1,5 +1,5 @@
 <?php
-class ClubController extends Controller
+class ClubsController extends Controller
 {
     public $layout='//layouts/column2';
     
@@ -120,20 +120,27 @@ class ClubController extends Controller
                 }
                 
                 Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - A new club has been added successfully!');
-				$this->redirect(Yii::app()->request->baseUrl);
+				//$this->redirect(Yii::app()->request->baseUrl);
+            }
+            else
+            {
+                Yii::app()->user->setFlash('error', '<strong>Error</strong>!');
             }
          
         }
         if(!Yii::app()->user->isGuest)
         {
-            $this->redirect(Yii::app()->request->baseUrl.'/dashboard');
+            //$this->redirect(Yii::app()->request->baseUrl.'/dashboard');
         }
        
         
     }
-    public function generateSlug($string)
+    public function actionDetails($slug)
     {
-        
+         $club = Club::model()->findByAttributes(['slug'=>$slug]);
+         $total_member = ClubMembers::model()->findAllByAttributes(['club_id'=>$club->id])->count();
+    $this->render('details', array('model'=>$club,'total'=>$total_member));
     }
+    
  }
  ?>
