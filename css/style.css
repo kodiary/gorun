@@ -124,7 +124,7 @@ img{max-width:100%;}
     margin-top: 0;font-weight: bold;}
 .datetime{background:#DFDFDF;display:inline-block;padding:4px;font-size:14px;}
 .racetag{display:inline-block;padding:3px 10px;font-size:14px;border:2px solid #e5e5e5;border-radius:3px;}
-.distance{background:#DF0269;color:#FFF;font-weight:bold;display:inline-block;font-size:13px;padding:1px 8px;border-radius:10px;margin-right:10px;margin-top:8px;}
+.distance{background:#DF0269;color:#FFF;font-weight:bold;display:inline-block;font-size:13px;padding:1px 8px;margin-right:10px;margin-top:8px;}
 .calendar-view{display:block;background:#FFF;color:#555;text-transform:uppercase;padding-left:15px;font-size:16px;padding: 8px 8px 8px 20px;text-decoration: none;}
 .calendar-view:hover{text-decoration:none;}
 .submit-event{display:block;background:#EB0067;color:#FFF;font-weight:800;padding-left:15px;font-size:14px;padding: 7px 7px 7px 20px;text-decoration: none;}
@@ -243,15 +243,58 @@ a.ui-dialog-titlebar-close{width:35px!important; height:35px!important; z-index:
 .icon-circle{color:#049DDC;font-size:33px;text-align:center;}
 .center-align{text-align: center;}
 .description{height:160px!important;}
+
+.capital{text-transform: uppercase;}
+.white{background:#FFF;border: 1px solid #CCC;padding-top:15px;padding-bottom:15px;}
+.white label{font-weight:600;font-size:20px;text-transform: uppercase;color:#333}
+.white input{background:#f5f5f5;}
+.white .fa{color:#049DDC;}
+.fa-calendar{font-size:18px;}
+
+.fa-sort{float:right;color:#FFF!important;line-height:20px}
+.inline-block{display: inline-block;width:200px;margin-left:15px;}
+.padding-bot-10{padding-bottom:10px;}
+.padding-left-0{padding-left:0;}
+a.dropdownselect{background:#0095E7;display:block;color:#FFF;padding:4px 8px;border-radius: 4px;position:relative;font-weight: bold;}
+a.dropdownselect:hover{text-decoration:none;}
+.dropdownselect .line{font-size: 26px;
+    line-height: 0.8;
+    position: absolute;
+    right: 20px;
+    top: 0;
+    font-weight: normal!important;}
+.drop-option a{display:block;padding:4px 8px;background:#f5f5f5;color:#777;border-bottom:1px solid #e5e5e5;}
+.drop-option a:hover{text-decoration: none;}
+.distances span{display:inline-block;font-size:18px;}
+.three{width:50px;}
+.three, .two,.one,.four {
+    border: 1px solid #CCC;
+    padding: 2px 6px;
+}
+.one {
+    width: 22px;
+}
+.two{width:40px;}
+.four{width:70px;}
+.distances .col-md-4:not(.start){border-left:1px solid #000;min-height: 58px;}
+.distances .small{font-size: 13px;font-weight: bold;display:block;padding-top:5px;}
+.distances input{color:#000;}
+.distance_list{list-style:none;margin-top:10px;}
+.distance_list .blue{font-size:15px;}
+.distance_list li{background:#F4F4F4;margin-bottom:5px;padding:5px;position: relative;}
+.delete_distance{position:absolute;display:inline-block;right:10px;top:5px;color: #000;}
+.delete_distance .fa-times{color:#000;}
+.white label .blue{font-size:15px;display:block;}
+
 .clubs {    background: #fff none repeat scroll 0 0;
     border: 1px solid #ccc;
     display: block;
     margin: 2px;
     padding: 5px;}
-    
 .news_article{  background: #fff none repeat scroll 0 0;
     border: 1px solid #ccc;
     margin-bottom: 10px;
     padding-top: 5px;}
 .news a, .news_more a{ text-decoration:none;}
 .block_border{background: #fff; border:1px solid #ccc;margin-bottom: 10px; padding:5px;}
+
