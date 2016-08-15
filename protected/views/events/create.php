@@ -3,8 +3,8 @@
         </div>
         <div class="col-md-9 right-content profile_detail"> 
             <div class="col-md-12">
-                <h1>Add your events</h1>
-                <strong><span class="blue">Manage your event details here</span></strong>
+                <h1 class="capital">Your event details</h1>
+                <span class="">Enter your event details below. You can edit your event details at any time.<br />Please note that this is subject to approval before being posted live.</span>
             </div>
             <div class="clearfix"></div>
             <hr />

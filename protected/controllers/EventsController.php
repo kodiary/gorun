@@ -600,4 +600,13 @@ class EventsController extends Controller
         $e = $_GET['e'];
         $this->renderPartial('_loadTime',array('s'=>$s,'e'=>$e));
     }
+    
+    public function actionRenderForm()
+    {
+        if(!isset($_POST['type']))
+        $type= $_POST['type'];
+        else
+        $type = 'running';
+        $this->renderPartial('_'.$type.'_form');
+    }
 }
