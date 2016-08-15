@@ -44,7 +44,8 @@ class DashboardController extends Controller
 	    Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.js"));
         Yii::app()->clientScript->registerCssFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.css"));
          
-        $member = Member::model()->findByPk(Yii::app()->user->id);
+        $member = Member::model()->findByPk(Yii::app()->user->id)->with('club');
+        //var_dump($member);
         if(isset($_POST['first_login']))
         {
             $member->saveAttributes(['is_verified'=>'2']);

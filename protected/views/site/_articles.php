@@ -1,18 +1,18 @@
 <div class="directory_listing new-one">
 <a href="<?php echo $this->createUrl('news/'.$data->slug);?>">
-<article> 
+<article class="news_article"> 
 <?php
 if(Articles::get1ImageFromFile($data->id)->title)
     $alt = Articles::get1ImageFromFile($data->id)->title;
 else
     $alt = $data->title;
 ?>
-	<aside class="fl_left">
+	<aside class="col-md-2">
     	<div class="thumbnail left">
         <?php
         $baseUrl = Yii::app()->baseUrl;
         $basePath = Yii::app()->basePath;
-        $img_url=$baseUrl.'/images/article_fallback_80x80.png';
+        $img_url=$baseUrl.'/images/article_fallback_120x120.png';
         
         $filename=Articles::get1ImageFromFile($data->id);
         //get aritlce image if article image exists
@@ -24,10 +24,10 @@ else
         </div>
     </aside><!--articleImage-->
     
-    <aside class="right article_desc">
-    <h2><?php echo $data->title;?></h2>
+    <aside class="col-md-10 article_desc">
+    <strong><?php echo $data->title;?></strong>
         <p class="desc"><span style="color: #205FAC;"><?php echo date('d F Y',strtotime($data->publish_date))?> - </span><?php echo CommonClass::limit_text($data->detail);?></p>
     </aside><!--articleContent-->
-    <div class="clear"></div>
+    <div class="clearfix"></div>
 </article></a>
 </div>

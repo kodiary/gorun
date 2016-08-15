@@ -95,10 +95,11 @@ class Member extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-            'membership'=>array(self::HAS_MANY,'CompanyMember','company_id'),
-            'articles'=>array(self::HAS_MANY, 'Articles', 'company_id'),
-            'jobs'=>array(self::HAS_MANY, 'Jobs', 'company_id'),
-            'services'=>array(self::HAS_MANY,'CompanyServices','company_id'),
+            'clubs'=>array(self::HAS_MANY,'ClubMember','member_id'),
+            'club'=>array(self::HAS_ONE,'Club','created_by'),
+            'articles'=>array(self::HAS_MANY, 'Articles', 'member_id'),
+            //'jobs'=>array(self::HAS_MANY, 'Jobs', 'company_id'),
+            //'services'=>array(self::HAS_MANY,'CompanyServices','company_id'),
      
 		);
 	}

@@ -79,20 +79,23 @@ class Club extends CActiveRecord
 	/**
 	 * @return array relational rules.
 	 */
-     /*
+    
 	public function relations()
 	{
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-            'membership'=>array(self::HAS_MANY,'CompanyMember','company_id'),
-            'articles'=>array(self::HAS_MANY, 'Articles', 'company_id'),
-            'jobs'=>array(self::HAS_MANY, 'Jobs', 'company_id'),
-            'services'=>array(self::HAS_MANY,'CompanyServices','company_id'),
+            'members'=>array(self::HAS_MANY,'ClubMember','club_id'),
+            'member'=>array(self::HAS_MANY,'Member',['member_id'=>'id'],'through'=>'members'),
+            'articles'=>array(self::HAS_MANY, 'Articles', 'club_id'),
+            'extras'=>array(self::HAS_MANY, 'ClubExtra','club_id'),
+            'creator'=>array(self::BELONGS_TO,'Member','created_by')
+            //'jobs'=>array(self::HAS_MANY, 'Jobs', 'company_id'),
+            //'services'=>array(self::HAS_MANY,'CompanyServices','company_id'),
      
 		);
 	}
-        */
+ 
 	/**
 	 * @return array customized attribute labels (name=>label)
 	 */

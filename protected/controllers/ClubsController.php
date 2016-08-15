@@ -118,7 +118,10 @@ class ClubsController extends Controller
                         unset($clubExtra);
                     }
                 }
-                
+                //Insert into Club members table
+                $clubmember = new ClubMember;
+                $clubmember->club_id = $id;
+                $clubmember->member_id = Yii::app()->user->id;
                 Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - A new club has been added successfully!');
 				//$this->redirect(Yii::app()->request->baseUrl);
             }
@@ -137,9 +140,25 @@ class ClubsController extends Controller
     }
     public function actionDetails($slug)
     {
-         $club = Club::model()->findByAttributes(['slug'=>$slug]);
-         $total_member = ClubMembers::model()->findAllByAttributes(['club_id'=>$club->id])->count();
-    $this->render('details', array('model'=>$club,'total'=>$total_member));
+        $club = Club::model()->findByAttributes(['slug'=>$slug])->with('extras','member');
+        //var_dump($club);
+        $total_member = ClubMember::model()->countByAttributes(['club_id'=>$club->id]);
+        $companyId = Yii::app()->user->id;
+        $criteria = new CDbCriteria;
+        $criteria->condition = 'company_id='.$club->id;
+        $criteria->order = 'publish_date DESC,t.id DESC';
+        
+        $pages='';
+        if(isset($_GET['showall'])){
+            $dataProvider= new CActiveDataProvider('Articles',array('criteria'=>$criteria, 'pagination'=>false));
+            $pages = new CPagination($dataProvider->totalItemCount);
+            $pages->pageSize = Yii::app()->params['articles_pers_page'];
+            $pages->applyLimit($criteria);
+        }
+        else
+            $dataProvider= new CActiveDataProvider('Articles',array('criteria'=>$criteria));
+            
+        $this->render('details', array('model'=>$club,'total'=>$total_member,'dataProvider'=>$dataProvider));
     }
     
  }

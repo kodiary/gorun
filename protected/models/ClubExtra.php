@@ -52,7 +52,20 @@ class ClubExtra extends CActiveRecord
             'client_id' =>'Client Id'
 		);
 	}
-    	public function search()
+    
+    public function relations()
+	{
+		// NOTE: you may need to adjust the relation name and the related
+		// class name for the relations automatically generated below.
+		return array(
+            'club'=>array(self::BELONGS_TO,'Club','club_id'),
+            
+            //'jobs'=>array(self::HAS_MANY, 'Jobs', 'company_id'),
+            //'services'=>array(self::HAS_MANY,'CompanyServices','company_id'),
+     
+		);
+	}
+	public function search()
 	{
 		// Warning: Please modify the following code to remove attributes that
 		// should not be searched.
