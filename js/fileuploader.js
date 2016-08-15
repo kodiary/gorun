@@ -2,7 +2,7 @@
  * http://github.com/valums/file-uploader
  *
  * Multiple file upload component with progress-bar, drag-and-drop.
- * © 2010 Andrew Valums ( andrew(at)valums.com )
+ * Â© 2010 Andrew Valums ( andrew(at)valums.com )
  *
  * Licensed under GNU GPL 2 or later, see license.txt.
  */
@@ -261,8 +261,6 @@ qq.FileUploaderBasic = function(o){
         allowedExtensions: [],
         sizeLimit: 0,
         minSizeLimit: 0,
-        minHeight: 0,
-        minWidth: 0,
         // events
         // return false to cancel submit
         onSubmit: function(id, fileName){},
@@ -274,8 +272,6 @@ qq.FileUploaderBasic = function(o){
             typeError: "{file} has invalid extension. Only {extensions} are allowed.",
             sizeError: "{file} is too large, maximum file size is {sizeLimit}.",
             minSizeError: "{file} is too small, minimum file size is {minSizeLimit}.",
-            minHeightError: "{file} dimension is too small, minimum Height is {minHeight}.",
-            minWidthError: "{file} dimension is too small, minimum Width is {minWidth}.",
             emptyError: "{file} is empty, please select files again without it.",
             onLeave: "The files are being uploaded, if you leave now the upload will be cancelled."
         },
@@ -430,10 +426,6 @@ qq.FileUploaderBasic.prototype = {
             this._error('minSizeError', name);
             return false;
         }
-         else if (! this._checkDimension(name)){
-            this._error('minWidthError', name);
-            return false;
-        }
 
         return true;
     },
@@ -445,8 +437,6 @@ qq.FileUploaderBasic.prototype = {
         r('{extensions}', this._options.allowedExtensions.join(', '));
         r('{sizeLimit}', this._formatSize(this._options.sizeLimit));
         r('{minSizeLimit}', this._formatSize(this._options.minSizeLimit));
-        r('{minHeight}', this._formatSize(this._options.minHeight));
-        r('{minWidth}', this._formatSize(this._options.minWidth));
 
         this._options.showMessage(message);
     },
@@ -476,19 +466,6 @@ qq.FileUploaderBasic.prototype = {
         } while (bytes > 99);
 
         return Math.max(bytes, 0.1).toFixed(1) + ['kB', 'MB', 'GB', 'TB', 'PB', 'EB'][i];
-    },
-    _checkDimension: function(fileName)
-    {
-        var h = this._options.minHeight;
-        var w = this._options.minWidth;
-        var myImage = new Image();
-            myImage.name = fileName;
-            height = myImage.height;
-            width = myImage.width;
-           if(height<h && width<w)
-           return false;
-           else
-           return true;
     }
 };
 
@@ -509,7 +486,7 @@ qq.FileUploader = function(o){
 
         template: '<div class="qq-uploader">' +
                 '<div class="qq-upload-drop-area"><span>Drop files here to upload</span></div>' +
-                '<div class="qq-upload-button"><span id="uploadControl" class="selectCtrl">Select</span></div>' +
+                '<div class="qq-upload-button"><span class="uploadControl">Upload</span></div>' +
                 '<ul class="qq-upload-list" style="display:none"></ul>' +
              '</div>',
 
