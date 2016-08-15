@@ -177,9 +177,9 @@ return array(
             'events/showall'=>'events/index/showall',
             'events/search'=>'events/search',
             'events/search/showall'=>'events/search/showall',
-            'events/create'=>'events/create',
+            
             'events/loadTime'=>'events/loadTime',
-            'events/<slug>'=>'events/view/slug/<slug>',
+            
             'dashboard'=>'dashboard/index',
             
             '<controller:\w+>/<id:\d+>'=>'<controller>/view',

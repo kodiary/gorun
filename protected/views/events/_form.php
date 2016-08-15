@@ -1,26 +1,53 @@
+<script src="//cdn.ckeditor.com/4.5.10/basic/ckeditor.js"></script>
 <form action="<?php echo Yii::app()->request->baseUrl;?>/dashboard" id="profile-detail" method="post">
-                <div class="form-group">
-                    <label class="col-md-2">Event title<span class="required">*</span></label>
-                    <div class="col-md-9"><input type="text" class="form-control" placeholder="Your Event Title" name="title" value="<?php echo $model->title;?>" /></div>
+                <div class="form-group white">
+                    <label class="col-md-12">Event title</label>
+                    <div class="col-md-12"><input type="text" class="form-control" placeholder="Your Event Title" name="title" value="<?php echo $model->title;?>" /></div>
                     <div class="clearfix"></div>
                 </div>
                 
-                <hr />
                 
-                <div class="form-group">
-                    <label class="col-md-2">Event Date<span class="required">*</span></label>
-                    <div class="col-md-9"><input type="checkbox" name="is_multiple_date" value="1" /> &nbsp; Multiple Date Event</div>
+                
+                <div class="form-group white">
+                    <label class="col-md-12">Date and time</label>
+                    <div class="col-md-12">Multiple Date Event &nbsp; <input type="checkbox" name="is_multiple_date" value="1" onchange="if($(this).is(':checked'))$('.hiddendate').show('slow');else $('.hiddendate').hide('slow');" /></div>
+                    <div class="clearfix"></div>
+                    <br />
+                    
+                    <div class="col-md-12 padding-bot-10 padding-left-0">
+                        <div class="col-md-2"><span class="fa fa-calendar"></span> Start Date</div>
+                        <div class="col-md-4"><input type="text" class="form-control datepicker" placeholder="Start Date" id="start_date" name="start_date" value="<?php echo $model->start_date;?>" /></div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="col-md-12 padding-bot-10 padding-left-0 hiddendate" style="display: none;">
+                        <div class="col-md-2"><span class="fa fa-calendar"></span> End Date</div>
+                        <div class="col-md-4"><input type="text" class="form-control datepicker" placeholder="End Date" id="end_date" name="end_date" value="<?php echo $model->end_date;?>" /></div>
+                        <div class="clearfix"></div>
+                    </div>
                     <div class="clearfix"></div>
                 </div>
-               
-                <div class="form-group">
-                    <label class="col-md-2">Event Date<span class="required">*</span></label>
-                    <div class="col-md-4"><input type="text" class="form-control datepicker" placeholder="Start Date" id="start_date" name="start_date" value="<?php echo $model->start_date;?>" /></div>
-                    <div class="col-md-1"><span class="fa fa-arrow-circle-right icon-circle"></span></div>
-                    <div class="col-md-4"><input type="text" class="form-control datepicker" placeholder="End Date" id="end_date" name="end_date" value="<?php echo $model->end_date;?>" /></div>
+                <div class="form-group white">
+                    <label class="col-md-12">Event Type</label>
+                    <div class="col-md-4">
+                        <a href="javascript:void(0)" class="dropdownselect"><span class="value">Event Type</span> <span class="fa fa-sort"></span><span class="line"> | </span></a>
+                        <div class="drop-option" style="display:none;">
+                            <a href="javascript:void(0)" class="running">Road Running</a>
+                            <a href="javascript:void(0)" class="running">Park Run</a>
+                            <a href="javascript:void(0)" class="running">Trial Running</a>
+                            <a href="javascript:void(0)" class="biking">Road Biking</a>
+                            <a href="javascript:void(0)" class="biking">Mountain Biking</a>
+                            <a href="javascript:void(0)" class="triathlon">Triathlon - 5150</a>
+                            <a href="javascript:void(0)" class="triathlon">Triathlon - Sprint</a>
+                            <a href="javascript:void(0)" class="triathlon">Triathlon - Olympic</a>
+                            <a href="javascript:void(0)" class="triathlon">Triathlon - Half Ironman</a>
+                            <a href="javascript:void(0)" class="triathlon">Triathlon - Ironman</a>
+                        </div>
+                    </div>
                     <div class="clearfix"></div>
                 </div>
-                <hr />
+                <div class="loadform">
+                    
+                </div>
                 <div class="form-group">
                     <label class="col-md-2">Event Times<span class="required">*</span></label>
                     <div class="col-md-9"><input type="checkbox" class="include_times" name="include_times" value="1" /> &nbsp; Include Times</div>
@@ -290,6 +317,23 @@
     })
   }
   $( function() {
+    $('.dropdownselect').click(function(){
+        $('.drop-option').toggle();
+    });
+    $('.drop-option a').click(function(){
+        $('.drop-option').hide();
+        $('.dropdownselect .value').text($(this).text());
+        var class_form = $(this).attr("class");
+        $.ajax({
+            url:'<?php echo Yii::app()->request->baseUrl;?>/events/renderForm/',
+            data:'type='+$(this).attr('class'),
+            type:'post',
+            success:function(res){
+                $('.loadform').html(res);
+            }
+        })
+        
+    })
     if($('.include_times').is(':checked'))
     {
         $('.load_time').show();
