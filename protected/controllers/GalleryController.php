@@ -264,7 +264,10 @@ class GalleryController extends Controller
             $allowedExtensions = array("jpg","jpeg",'gif','png');
             $sizeLimit = 10 * 1024 * 1024;// maximum file size in bytes
             $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
-            $result = $uploader->handleUpload($folder);
+            $sizes = CommonClass::get_resize_details($_GET['type']);
+            $width = $sizes[0]['width'];
+            $height = $sizes[0]['height'];
+            $result = $uploader->handleUpload($folder,$width,$height);
             if($result['success'])
             {
                  $file=$folder.$result['filename'];
@@ -286,7 +289,10 @@ class GalleryController extends Controller
                         }
                         //load image library for resizing
                          $image = new Image($file);
-                         $image->resize($resize_width,$resize_height)->quality(90);
+                         if($resize_item['height']==''&&$resize_item['width']=='')
+                            $image->resize($width,$height)->quality(90);
+                         else
+                            $image->resize($resize_width,$resize_height)->quality(90);
                          $image->save($resize_item["new_path"].$result['filename']);
                          
                         if($resize_item["crop"]=="true")

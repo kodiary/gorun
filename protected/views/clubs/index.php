@@ -10,7 +10,7 @@
             
             <hr />
             
-            <form action="<?php echo Yii::app()->request->baseUrl;?>/club/create" id="club-detail" method="post">
+            <form action="<?php echo Yii::app()->request->baseUrl;?>/clubs/create" id="club-detail" method="post">
                 <div class="form-group">
 
                     <label class="col-md-3">Club Name<span class="required">*</span></label>

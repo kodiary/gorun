@@ -120,6 +120,8 @@ return array(
             'emailtosubscriber'=>'emailtosubscriber/index',
             
             //'confirmation/hash/<hash>'=>'member/confirmation/<hash>',
+            'clubs/create'=>'clubs/create',
+            'clubs/<slug>'=>'clubs/details/slug/<slug>',
             
             
             'directory/contact'=>'directory/contact',
