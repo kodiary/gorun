@@ -1,9 +1,9 @@
 /* 
 * GMap V3 Geocoding 
-* @author : Ambika
+* @author : Bikash Shrestha Desar
 * 2012
 */
-var base_url="http://exsa.co.za/";
+var base_url="http://localhost/gorun/";
 var geocoder = new google.maps.Geocoder();
   var map;
   var marker;
@@ -95,6 +95,7 @@ function updateMarkerAddress(str) {
     address+=province+', South Africa';
     geocoder.geocode( { 'address': address,'region':'ZA','partialmatch': true}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK && results.length > 0) {
+        if(marker != null)
         marker.setMap(null);//clear the previous marker from the map
         latlng=results[0].geometry.location;
         map.setCenter(latlng);

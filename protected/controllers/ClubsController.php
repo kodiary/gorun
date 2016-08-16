@@ -41,7 +41,10 @@ class ClubsController extends Controller
 	{
 	    Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.js"));
         Yii::app()->clientScript->registerCssFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.css"));
-         
+        Yii::app()->clientScript->registerScriptFile("http://maps.google.com/maps/api/js?key=AIzaSyDdlZuslizFva3XY9GZVyF_IDZTDI-7BD0");
+        //Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::getPathOfAlias('application.components')."/gmap/gmap_new.js"));
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::getPathOfAlias('application.components')."/gmap/gmap.js"));
+        Yii::app()->clientScript->registerScript('init','initialize();',CClientScript::POS_LOAD); 
 	   $club = Member::model()->findByPk(Yii::app()->user->id);
 	   $this->render('index', array('member'=>$club));
     }
@@ -78,6 +81,8 @@ class ClubsController extends Controller
             $club->types = $types;
             $club->venue = $_POST['street_address'];
             $club->town = $_POST['city'];
+            $club->latitude = $_POST['latitude'];
+            $club->longitude = $_POST['longitude'];
             $club->province =  $_POST['province'];
             $club->trial_day =  $_POST['trial_day'];
             $club->trial_time =  $_POST['trial_time'];
@@ -123,7 +128,7 @@ class ClubsController extends Controller
                 $clubmember->club_id = $id;
                 $clubmember->member_id = Yii::app()->user->id;
                 Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - A new club has been added successfully!');
-				//$this->redirect(Yii::app()->request->baseUrl);
+				$this->redirect(Yii::app()->request->baseUrl);
             }
             else
             {
@@ -140,8 +145,15 @@ class ClubsController extends Controller
     }
     public function actionDetails($slug)
     {
+        
         $club = Club::model()->findByAttributes(['slug'=>$slug])->with('extras','member');
-        //var_dump($club);
+        if($club->longitude!=0 && $club->latitude!=0)
+        {
+            Yii::app()->clientScript->registerScriptFile("http://maps.google.com/maps/api/js?key=AIzaSyDdlZuslizFva3XY9GZVyF_IDZTDI-7BD0");
+            //Yii::app()->clientScript->registerScriptFile("http://maps.google.com/maps/api/js?sensor=false");
+            Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::getPathOfAlias('application.components')."/gmap/gmap_new.js"));
+            Yii::app()->clientScript->registerScript('init','initialize();',CClientScript::POS_LOAD);
+        }
         $total_member = ClubMember::model()->countByAttributes(['club_id'=>$club->id]);
         $companyId = Yii::app()->user->id;
         $criteria = new CDbCriteria;
@@ -157,8 +169,11 @@ class ClubsController extends Controller
         }
         else
             $dataProvider= new CActiveDataProvider('Articles',array('criteria'=>$criteria));
-            
+        $dataProvider = Articles::model()->findAllByAttributes(['company_id'=>$club->id]); 
+        
         $this->render('details', array('model'=>$club,'total'=>$total_member,'dataProvider'=>$dataProvider));
+        
+       
     }
     
  }

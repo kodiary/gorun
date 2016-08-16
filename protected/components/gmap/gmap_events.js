@@ -3,7 +3,7 @@
 * @author : Ambika
 * 2012
 */
-var base_url="http://exsa.co.za/";
+var base_url="http://localhost/gorun/";
 var geocoder = new google.maps.Geocoder();
   var map;
   var marker;

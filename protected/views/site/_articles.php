@@ -1,3 +1,4 @@
+<?php foreach($dataProvider as $data){?>
 <div class="directory_listing new-one">
 <a href="<?php echo $this->createUrl('news/'.$data->slug);?>">
 <article class="news_article"> 
@@ -31,3 +32,4 @@ else
     <div class="clearfix"></div>
 </article></a>
 </div>
+<?php }?>

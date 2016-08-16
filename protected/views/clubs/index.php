@@ -45,7 +45,7 @@
                             $img_url=Yii::app()->baseUrl.'/images/noimage.jpg';    
                         }
                         ?>
-                        <img src="<?php echo $img_url;?>"/>
+                        <img src="<?php //echo $img_url;?>"/>
                         </div>
                         <div class="col-md-6">
                         <?php echo $this->renderPartial('application.views.gallery._addImage',array('member'=>$member,'type'=>'club')); ?>
@@ -122,36 +122,56 @@
                 <hr />
                 <div class="form-group">
                     <label class="col-md-3">Club Address/Venue<span class="required">*</span></label>
-                    <div class="col-md-7"><input type="text" class="form-control" placeholder="Street Address" name="street_address" value="<?php //echo $member->fname;?>" /></div>
+                    <div class="col-md-7"><input type="text" id="Company_street_add" class="form-control" placeholder="Street Address" name="street_address" value="<?php //echo $member->fname;?>" /></div>
                     <div class="clearfix"></div>
                 
                 </div>
                  <div class="form-group">
                     <label class="col-md-3">City / Town <span class="required">*</span></label>
-                    <div class="col-md-7"><input type="text" class="form-control" placeholder="Suburb Town or City" name="city" value="<?php //echo $member->fname;?>" /></div>
+                    <div class="col-md-7"><input type="text" id="city" class="form-control" placeholder="Suburb Town or City" name="city" value="<?php //echo $member->fname;?>" onBlur='codeAddress();' /></div>
                     <div class="clearfix"></div>
                 
                 </div>
                  <div class="form-group">
                     <label class="col-md-3">Province<span class="required">*</span></label>
                     <div class="col-md-7">
-                        <select name="province">
+                        <select name="province" onchange='codeAddress();' id="Company_province">
                             <option value="">Select Province</option>
-                            <option value="The Eastern Cape">The Eastern Cape</option>
-                            <option value="The Free State">The Free State</option>
-                            <option value="Gauteng">Gauteng</option>
-                            <option value="KwaZulu-Natal">KwaZulu-Natal</option>
-                            <option value="Limpopo">Limpopo</option>
-                            <option value="Mpumalanga">Mpumalanga</option>
-                            <option value="The Northern Cape">The Northern Cape</option>
-                            <option value="North West">North West</option>
-                            <option value="The Western Cape">The Western Cape</option>
+                    <?php $provinces = Province::model()->findAll();
+                        foreach($provinces as $province){?>
+                            <option value="<?php echo $province->id;?>"><?php echo $province->name;?></option>
+                    <?php }?>
+                            
                         </select>
                     </div>
                     <div class="clearfix"></div>
                 
                 </div>
                 <hr />
+                
+              <div class="control-group">
+            	<label class="control-label">Coordinates</label>
+                <div class="controls">
+                <div class="sn_group">
+                	<div class="s1 col-md-6">
+                        <input type="text" id="Company_latitude" value="<?php echo $model->latitude;?>" placeholder="Latitude"style="width:127px;" onblur="updateMapPinPosition()"/>
+                    <?php //echo $form->textField($model, 'latitude',array('placeholder'=>'Latitude','style'=>'','onBlur'=>'updateMapPinPosition();') );?>
+                    </div>
+                    <div class="s2 col-md-6">
+                        <input type="text" id="Company_longitude" value="<?php echo $model->longitude;?>" placeholder="Longitude"style="width:125px;margin-left:50px;;" onblur="updateMapPinPosition()"/>
+                    <?php //echo $form->textField($model, 'longitude',array('placeholder'=>'Longitude','style'=>'width:125px;margin-left:50px;','onBlur'=>'updateMapPinPosition();') ); ?>
+                    </div>
+                    <div class="clear"></div>
+                 </div>
+                </div>
+                <div class="clear"></div>
+                <input type="hidden" name="formattedAddress" id="formattedAddress" value=""/>
+            </div>
+             <hr/>
+            <!-- gmap -->
+            <div id="map_canvas" style="width: 100%; height: 300px;"></div>
+            <h2 style="margin-top:5px;"><span>Drag the pin to reposition it if necessary</span></h2>
+            <hr/>
                  
                 <div class="form-group">
                     <label class="col-md-12"><strong>Time Trials</strong> <span class="blue">-Does your club have a weekly trial(Optional)</span></label>

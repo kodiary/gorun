@@ -51,7 +51,9 @@ return array(
                     'bootstrap-transition.js'=>false,
                     'jquery.color.js'=>false,
                     'bootstrap-tooltip.js'=>false,
-                    'jquery.Jcrop.min.js'=>false
+                    'jquery.Jcrop.min.js'=>false,
+                    'jquery.yiilistview.js'=>false,
+                    'jquery.ba-bbq.js'=>false
                     
                 )
                 ),
