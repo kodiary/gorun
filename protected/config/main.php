@@ -10,7 +10,7 @@ return array(
 	'name'=>'EXSA - Exhibition & Event Association of South Africa',
 
 	// preloading 'log' component
-	'preload'=>array('bootstrap'),
+	'preload'=>array('bootstrap','log'),
     //'onBeginRequest'=>create_function('$event', 'return ob_start("ob_gzhandler");'),
     //'onEndRequest'=>create_function('$event', 'return ob_end_flush();'),
 
@@ -52,7 +52,7 @@ return array(
                     'jquery.color.js'=>false,
                     'bootstrap-tooltip.js'=>false,
                     'jquery.Jcrop.min.js'=>false,
-                    'jquery.yiilistview.js'=>false,
+                    //'jquery.yiilistview.js'=>false,
                     'jquery.ba-bbq.js'=>false
                     
                 )
@@ -123,6 +123,7 @@ return array(
             
             //'confirmation/hash/<hash>'=>'member/confirmation/<hash>',
             'clubs/create'=>'clubs/create',
+            'clubs/details'=>'clubs/details',
             'clubs/<slug>'=>'clubs/details/slug/<slug>',
             
             
@@ -246,8 +247,8 @@ return array(
         'twitter_access_token_secret'=>'XuOShmKfV79CwaWWGJaJgeCXDkRNWJeJoEFoTgBtPH9Gv',
 
         'ip2location_key' => '8faee27e7591bd3c5a731f98ea92c68f5c93cd37e111558b18abf96f78ec3df6',
-        'items_pers_page' => '20',
-        'articles_pers_page' => '10',
+        'items_pers_page' => '2',
+        'articles_pers_page' => '2',
         'jobs_pers_page'=>'10',
         'defaultCountryId' => '224',
         'image_size' => '10',   //image upload size in MB

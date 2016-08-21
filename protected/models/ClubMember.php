@@ -53,5 +53,23 @@ class ClubMember extends CActiveRecord
 		);
 	}
     
+    public function recent( $limit = 2 ) {
+
+    $this->getDbCriteria()->mergeWith(array(
+        //'order' => $this->getTableAlias(false, false).'.createTime DESC',
+        'limit' => (int) $limit,
+    ));
+
+    return $this;
+    }
+    
+    public function load_more($limit,$offset)
+    {
+        $criteria = new CDbCriteria;
+        $criteria->select = array('id, fname');
+        $criteria->order = 'fname asc';
+        $company = Company::model()->findAll($criteria);
+        return $company;
+    }
 
  }

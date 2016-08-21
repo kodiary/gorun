@@ -39,7 +39,12 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
             <a href="" class="btn btn-primary col-md-12">Follow +</a>
             <h3><strong><?php echo $total;?> MEMBERS</strong></h3>
             <div class="icons">
-            
+                <a href="#">
+                    <img alt="facebook" src="/gorun/images/facebook.png" />
+                </a>
+                <a href="#">
+                    <img alt="twitter" src="/gorun/images/twitter.png" />
+                </a>
             </div>
             <div class="activities">
             <h3><strong>CLUB ACTIVITES</strong></h3>
@@ -103,17 +108,36 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
             <div class="clear"></div>
         </div-->
         <div class="block_border blue"> No Results!</div>
-    <?php }else{ ?>          
-    <?php
-    $this->renderPartial('/site/_articles',['dataProvider'=>$dataProvider]);
-        /*$this->widget('bootstrap.widgets.BootListView',array(
-        	'dataProvider'=>$dataProvider,
-        	'itemView'=>'/site/_articles',
-            'summaryText'=>'',
-        ));  */  
+    <?php }else{
+       
+       $this->widget('CLinkPager', array(
+            'pages' => $pages,
+            'htmlOptions'=>['style'=>'display:none'],
+        ));
+         /* auto scrolling on showall
+    if($pages->itemCount>Yii::app()->params['items_pers_page'])
+        $this->widget('ext.yiinfinite-scroll.YiinfiniteScroller', array(
+        'contentSelector' => '.items',
+        'itemSelector' => '.direcotry_listing',
+        'loadingText' => 'Loading...',
+        'donetext' => 'There are no more news.',
+        'pages' => $pages,
+    ));*/
+    
     ?>
-    <?php } ?>
-
+            
+        <?php
+        $this->renderPartial('/site/_articles',['dataProvider'=>$dataProvider]);
+           /* $this->widget('bootstrap.widgets.BootListView',array(
+            	'dataProvider'=>$dataProvider,
+            	'itemView'=>'/site/_article_old',
+                'summaryText'=>'',
+            ));   */
+         if($pages->itemCount>1)
+            echo "<a href='javascript:void(0);' class='btn btn-primary' id='load_more'>Load More</a>";
+        ?>
+        <?php } ?>
+    
     </div>
     <div class="clearfix"></div>
     <div class="col-md-12 block_border" <?php if(count($model->member)==0)echo 'style="margin:0;border-bottom:none"';?>>
@@ -149,7 +173,10 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
             </div>   
         <?php
         }
+        echo "<a href='javascript:void(0);' onclick='load_content(\"members_more\");' class='btn btn-primary'>Load More</a>";
+        
     }
+    
     else
         echo "<div class='block_border blue'>No Resluts</div>";
     ?>
@@ -168,6 +195,51 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 </div>
 <div class="clearfix"></div>
 <script>
+
+$(function(){
+    var curPage = 1;
+    var pagesNum = $("li.page:last").text();
+    //$('#load_more').attr('href',$('li.next a:first').attr('href'));
+    //alert($('li.next a:first').attr('href'));
+    $('.items').infinitescroll({
+ 
+    navSelector  : "ul.yiiPager",            
+                   // selector for the paged navigation (it will be hidden)
+    nextSelector : "li.next a:first",    
+                   // selector for the NEXT link (to page 2)
+    itemSelector : ".items div.directory_listing",          
+                   // selector for all items you'll retrieve
+    //debug        : true,
+    //donetext     : "I think we've hit the end, Jim" ,
+  }, function() {  // Optional callback when new content is successfully loaded
+
+            curPage++;
+
+            if(curPage == pagesNum) {
+
+                $(window).unbind('.infscr');
+                $('#load_more').remove();
+            }
+            });
+  $(window).unbind('.infscr');
+  $('a#load_more').click(function(){
+        
+        $('.items').infinitescroll('retrieve');
+      //$(window).trigger('retrieve.infscr');
+      
+      return false;
+    });
+    
+   
+   $(document).ajaxError(function(e,xhr,opt){
+      if (xhr.status == 404)
+      {
+        $('#load_more').remove();
+      }
+      
+      
+    });
+})
 function toggle_div(div,thi)
 {
     var clas;
@@ -182,6 +254,10 @@ function toggle_div(div,thi)
     }
         
     $(thi).find('.right>i').attr('class',clas);
+}
+function load_content(div)
+{
+    alert($('.'+div).attr('class'));
 }
 
 </script>

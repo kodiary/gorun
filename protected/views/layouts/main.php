@@ -1,8 +1,38 @@
 <!DOCTYPE HTML>
 <head>
-	<meta http-equiv="content-type" content="text/html" />
-	<meta name="author" content="Anwar Ali" />
-    
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<?php
+if (isset($_GET['view'])) {
+    $seo = CommonClass::getSeoByPage('generic');
+    $this->metaDesc = $seo['desc'];
+    $this->metaKeys = $seo['keys'];
+
+    $view = $_GET['view'];
+    if ($view == 'advertise') {
+        $this->pageTitle = "Advertise - " . $seo['title'];
+    }
+    if ($view == 'privacy') {
+        $this->pageTitle = "Privacy Policy - " . $seo['title'];
+    }
+    if ($view == 'terms') {
+        $this->pageTitle = 'Terms & Conditions - ' . $seo['title'];
+    }
+}
+?>
+<?php
+if (!empty($this->metaDesc)) {
+?>
+<meta name="description" content="<?php echo $this->metaDesc; ?>" />
+<?php
+}
+?>
+<?php
+if (!empty($this->metaKeys)) {
+?>
+<meta name="keywords" content="<?php echo $this->metaKeys; ?>" />
+<?php
+}
+?>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
@@ -13,14 +43,12 @@
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/jqueryui/jquery-ui.min.css" rel="stylesheet" type="text/css" />    
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/jquery.Jcrop.min.css" rel="stylesheet" type="text/css" />
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.0.0.js"></script>
     
-    
-    
-    
-	<title>Home - GoRun</title>
+    <title>Home - GoRun</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet"> 
     
-    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+    
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/jqueryui/jquery-ui.min.js" type="text/javascript"></script>    
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/filter.js" type="text/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>

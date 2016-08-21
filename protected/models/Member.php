@@ -207,6 +207,15 @@ class Member extends CActiveRecord
     {
         return Company::model()->findByPk($companyId);
     }
+    public function recent( $limit = 2 ) {
+
+    $this->getDbCriteria()->mergeWith(array(
+        //'order' => $this->getTableAlias(false, false).'.createTime DESC',
+        'limit' => (int) $limit,
+    ));
+
+    return $this;
+    }
     
     public function getAll()
     {

@@ -145,8 +145,10 @@ class ClubsController extends Controller
     }
     public function actionDetails($slug)
     {
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/jquery.infinitescroll.js"));
+        $club = Club::model()->with(['extras','member:recent'=>['together'=>true]])->findByAttributes(['slug'=>$slug],['limit'=>2]);
+        //var_dump($club);
         
-        $club = Club::model()->findByAttributes(['slug'=>$slug])->with('extras','member');
         if($club->longitude!=0 && $club->latitude!=0)
         {
             Yii::app()->clientScript->registerScriptFile("http://maps.google.com/maps/api/js?key=AIzaSyDdlZuslizFva3XY9GZVyF_IDZTDI-7BD0");
@@ -154,24 +156,24 @@ class ClubsController extends Controller
             Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::getPathOfAlias('application.components')."/gmap/gmap_new.js"));
             Yii::app()->clientScript->registerScript('init','initialize();',CClientScript::POS_LOAD);
         }
-        $total_member = ClubMember::model()->countByAttributes(['club_id'=>$club->id]);
+        
         $companyId = Yii::app()->user->id;
         $criteria = new CDbCriteria;
         $criteria->condition = 'company_id='.$club->id;
         $criteria->order = 'publish_date DESC,t.id DESC';
         
         $pages='';
-        if(isset($_GET['showall'])){
-            $dataProvider= new CActiveDataProvider('Articles',array('criteria'=>$criteria, 'pagination'=>false));
-            $pages = new CPagination($dataProvider->totalItemCount);
-            $pages->pageSize = Yii::app()->params['articles_pers_page'];
-            $pages->applyLimit($criteria);
-        }
-        else
-            $dataProvider= new CActiveDataProvider('Articles',array('criteria'=>$criteria));
-        $dataProvider = Articles::model()->findAllByAttributes(['company_id'=>$club->id]); 
+       
+        $dataProvider= new CActiveDataProvider('Articles',array('criteria'=>$criteria, 'pagination'=>false));
+        $pages = new CPagination($dataProvider->totalItemCount);
+        $pages->pageSize = Yii::app()->params['articles_pers_page'];
+        $pages->applyLimit($criteria);
+    
+       
+            //$dataProvider= new CActiveDataProvider('Articles',array('criteria'=>$criteria));
+        $dataProvider = Articles::model()->findAll($criteria); 
         
-        $this->render('details', array('model'=>$club,'total'=>$total_member,'dataProvider'=>$dataProvider));
+        $this->render('details', array('model'=>$club,'total'=>$total_member,'dataProvider'=>$dataProvider,'pages'=>$pages));
         
        
     }
