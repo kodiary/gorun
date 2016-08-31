@@ -4298,3 +4298,37 @@ Stack trace:
 #16 {main}
 REQUEST_URI=/gorun/clubs/bedfordview-athletics
 ---
+2016/08/31 06:28:33 [error] [php] Invalid argument supplied for foreach() (E:\wamp\www\gorun\framework\web\helpers\CHtml.php:2109)
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CBaseController.php(127): require()
+#1 E:\wamp\www\gorun\framework\web\CBaseController.php(96): EventsController->renderInternal()
+#2 E:\wamp\www\gorun\framework\web\CController.php(870): EventsController->renderFile()
+#3 E:\wamp\www\gorun\protected\controllers\EventsController.php(610): EventsController->renderPartial()
+#4 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): EventsController->actionRenderForm()
+#5 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams()
+#6 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(134): EventsController->runAction()
+#7 E:\wamp\www\gorun\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#8 E:\wamp\www\gorun\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#9 E:\wamp\www\gorun\framework\web\filters\CInlineFilter.php(59): EventsController->filterAccessControl()
+#10 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#11 E:\wamp\www\gorun\framework\web\CController.php(292): CFilterChain->run()
+#12 E:\wamp\www\gorun\framework\web\CController.php(266): EventsController->runActionWithFilters()
+#13 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): EventsController->run()
+#14 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#15 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 E:\wamp\www\gorun\index.php(13): CWebApplication->run()
+REQUEST_URI=/gorun/events/renderForm/
+in E:\wamp\www\gorun\protected\views\events\_running_form.php (73)
+in E:\wamp\www\gorun\protected\controllers\EventsController.php (610)
+in E:\wamp\www\gorun\index.php (13)
+2016/08/31 06:46:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "undefined".' in E:\wamp\www\gorun\framework\web\CController.php:484
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CController.php(271): CController->missingAction('undefined')
+#1 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('undefined')
+#2 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('events/undefine...')
+#3 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/gorun/events/undefined
+HTTP_REFERER=http://localhost/gorun/events/create
+---

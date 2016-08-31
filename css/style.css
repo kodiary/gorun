@@ -284,7 +284,8 @@ a.dropdownselect:hover{text-decoration:none;}
 .distance_list li{background:#F4F4F4;margin-bottom:5px;padding:5px;position: relative;}
 .delete_distance{position:absolute;display:inline-block;right:10px;top:5px;color: #000;}
 .delete_distance .fa-times{color:#000;}
-.white label .blue{font-size:15px;display:block;}
+.white label .blue{font-size: 13px;
+    text-transform: none;display:block;}
 
 .clubs {    background: #fff none repeat scroll 0 0;
     border: 1px solid #ccc;
@@ -297,4 +298,10 @@ a.dropdownselect:hover{text-decoration:none;}
     padding-top: 5px;}
 .news a, .news_more a{ text-decoration:none;}
 .block_border{background: #fff; border:1px solid #ccc;margin-bottom: 10px; padding:5px;}
+.event_img{width:380px;height:285px;margin-right:45px;}
+.picact .btn{width: 250px; padding: 7px 0; text-align:center;    
+    border:2px solid #000;color:#199ED9;font-size: 20px;color:#000;text-transform:uppercase;font-weight: bold;}
+.picact .btn-crop{border:2px solid #1EA7E7;color:#1EA7E7}
+.picact .btn-remove{border:2px solid #E00000;color:#E00000}
+
 

@@ -65,16 +65,9 @@ function initiateUpload(index)
      <div class="qq-uploader">
     <div>
         <div id="uploadFile">
-            <div class="qq-uploader" >
-                <div class="qq-upload-drop-area" style="display: none;"><span>Drop files here to upload</span></div>
-                <div class="image_rows">
-                	<div class="qq-upload-button btn-primary" id="0" style="position: relative; overflow: hidden; direction: ltr;" >
-                    <span class="uploadControl">Upload</span>
-                    <input type="file" name="file" style="position: absolute; right: 0pt; top: 0pt; font-family: Arial; font-size: 118px; margin: 0pt; padding: 0pt; cursor: pointer; opacity: 0;"/>
-                </div>
-                </div>
-                <ul style="display:none" class="qq-upload-list"></ul>
-            </div>
+            
+                	<a href="javascript:void(0)" class="qq-upload-button btn btn-black uploadControl" id="0" style="font-weight: bold;"><span class="fa fa-picture-o"></span>Upload Image</a>
+                
         </div>    
     </div>
     </div>
@@ -87,9 +80,6 @@ function initiateUpload(index)
  <ul id="uploadList"></ul>
 
 
-    <div class="line"></div>
-    <?php //echo CHtml::activeHiddenField($model, "[0]id");?>
-
+    </div>
      
 
-</div>

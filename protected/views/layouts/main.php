@@ -56,6 +56,8 @@ if (!empty($this->metaKeys)) {
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/timepicki.js" type="text/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.validate.js" type="text/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.Jcrop.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Gjdm_0nJk17UVBPoV5Im40uQeguoRAo"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/gmap.js"></script>
     
 </head>
 
