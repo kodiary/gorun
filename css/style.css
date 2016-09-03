@@ -303,5 +303,9 @@ a.dropdownselect:hover{text-decoration:none;}
     border:2px solid #000;color:#199ED9;font-size: 20px;color:#000;text-transform:uppercase;font-weight: bold;}
 .picact .btn-crop{border:2px solid #1EA7E7;color:#1EA7E7}
 .picact .btn-remove{border:2px solid #E00000;color:#E00000}
+.org_group{margin-top:10px;}
+.submit_group{border-left:3px solid #BDBDBD;border-right: 3px solid #bdbdbd;}
+.submit_group .col-md-6{text-align:center;padding-top:15px;padding-bottom: 15px;}
+.btn-submit{border:2px solid #454545;color: #454545;padding: 10px 15px;width:85%;font-size:21px;font-weight:bold;}
 
 
