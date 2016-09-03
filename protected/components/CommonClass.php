@@ -134,8 +134,8 @@ class CommonClass extends CComponent
                         "crop_type"=>"center",
                     ),
                      2=>array(
-                        "width"=>"700",
-                        "height"=>"600",
+                        "width"=>"",
+                        "height"=>"",
                         "new_path"=>Yii::app()->basePath.'/../images/temp/full/',
                         "crop"=>"false",
                     )

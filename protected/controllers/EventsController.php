@@ -56,8 +56,8 @@ class EventsController extends Controller
 		
 		// Uncomment the following line if AJAX validation is needed
 		//$this->performAjaxValidation($model);
-        Yii::app()->clientScript->registerScriptFile("http://maps.google.com/maps/api/js?sensor=false");
-        Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::getPathOfAlias('application.components')."/gmap/gmap_events.js"));
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.js"));
+        Yii::app()->clientScript->registerCssFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.css"));
         //Yii::app()->clientScript->registerScript('init','initialize();',CClientScript::POS_LOAD);
         
         $model  = new Events;
