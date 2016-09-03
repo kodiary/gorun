@@ -2,7 +2,7 @@
             <label class="col-md-12">Email</label>
             <div class="col-md-12">
                 <input type="email" id="LoginForm_username" name="LoginForm_username"  placeholder="Email or Username" class="form-control" />
-                
+                <input type="hidden" value="<?php echo Yii::app()->request->url;?>" />
             </div>
             <div class="clearfix"></div>           
             

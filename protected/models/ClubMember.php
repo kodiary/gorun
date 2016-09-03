@@ -71,5 +71,13 @@ class ClubMember extends CActiveRecord
         $company = Company::model()->findAll($criteria);
         return $company;
     }
+    
+    public function ismember($cid,$member_id)
+    {
+        if(ClubMember::model()->findByAttributes(['club_id'=>$cid,'member_id'=>$member_id]))
+            return true;
+        else
+            return false;
+    }
 
  }

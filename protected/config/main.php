@@ -124,6 +124,8 @@ return array(
             //'confirmation/hash/<hash>'=>'member/confirmation/<hash>',
             'clubs/create'=>'clubs/create',
             'clubs/details'=>'clubs/details',
+            'clubs/unfollow'=>'clubs/unfollow',
+            'clubs/follow'=>'clubs/follow',
             'clubs/<slug>'=>'clubs/details/slug/<slug>',
             
             

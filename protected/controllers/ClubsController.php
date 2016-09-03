@@ -9,7 +9,7 @@ class ClubsController extends Controller
         if(Yii::app()->user->isGuest)
         {
             
-            $this->redirect(Yii::app()->request->baseUrl);
+            //$this->redirect(Yii::app()->request->baseUrl);
         }
         else
         {
@@ -51,6 +51,10 @@ class ClubsController extends Controller
     
     public function actionCreate()
     {
+        if(Yii::app()->user->isGuest)
+        {
+            $this->redirect(Yii::app()->request->baseUrl);
+        }
         Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.js"));
         Yii::app()->clientScript->registerCssFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.css"));
          
@@ -127,6 +131,7 @@ class ClubsController extends Controller
                 $clubmember = new ClubMember;
                 $clubmember->club_id = $id;
                 $clubmember->member_id = Yii::app()->user->id;
+                $clubmember->save();
                 Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - A new club has been added successfully!');
 				$this->redirect(Yii::app()->request->baseUrl);
             }
@@ -136,10 +141,7 @@ class ClubsController extends Controller
             }
          
         }
-        if(!Yii::app()->user->isGuest)
-        {
-            //$this->redirect(Yii::app()->request->baseUrl.'/dashboard');
-        }
+        
        
         
     }
@@ -172,10 +174,50 @@ class ClubsController extends Controller
        
             //$dataProvider= new CActiveDataProvider('Articles',array('criteria'=>$criteria));
         $dataProvider = Articles::model()->findAll($criteria); 
-        
-        $this->render('details', array('model'=>$club,'total'=>$total_member,'dataProvider'=>$dataProvider,'pages'=>$pages));
+        $ismember = ClubMember::model()->ismember($club->id,Yii::app()->user->id);
+        $this->render('details', array('model'=>$club,'total'=>$total_member,'dataProvider'=>$dataProvider,'pages'=>$pages,'ismember'=>$ismember));
         
        
+    }
+    function actionUnfollow()
+    {
+        if(Yii::app()->user->isGuest)
+        {
+            $this->redirect(Yii::app()->request->baseUrl);
+        }
+        if(isset($_POST['clubid']))
+        {
+            if(ClubMember::model()->deleteAllByAttributes(['club_id'=>$_POST['clubid'],'member_id'=>Yii::app()->user->id]))
+                echo "OK";
+            else
+                echo "Error";
+            
+            die();
+            
+        }
+    }
+    function actionFollow()
+    {
+        if(Yii::app()->user->isGuest)
+        {
+            $this->redirect(Yii::app()->request->baseUrl);
+        }
+        if(isset($_POST['club_id']))
+        {
+            $clubmember = new ClubMember;
+            $clubmember->club_id = $_POST['club_id'];
+            $clubmember->member_id = Yii::app()->user->id;
+            if($clubmember->save())
+            {
+                Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - Club Followed!');
+                echo "OK";
+            }
+            else
+                echo "Error";
+            
+            die();
+            
+        }
     }
     
  }

@@ -96,7 +96,7 @@ class DashboardController extends Controller
     
     public function actionClub()
     {
-        $clubs = Club::model()->findAllByAttributes(['created_by'=>Yii::app()->user->id]);
+        $clubs = ClubMember::model()->findAllByAttributes(['member_id'=>Yii::app()->user->id]);
         $this->render('clubs',['clubs'=>$clubs]);
     }
     public function actionPassword()

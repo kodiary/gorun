@@ -374,7 +374,7 @@ $(function(){
                                    if(msg=='OK')
                                    {
                                    
-                                        window.location.href ="<?php echo Yii::app()->request->baseUrl; ?>/dashboard";
+                                        window.location.href ="<?php echo Yii::app()->request->url; ?>";
                                         //$('.error-login').html('Invalid Username/Email or Password');
                                    }
                                    else if(msg == 'Not Verified')

@@ -36,7 +36,11 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
                 
              </div>
              <div class="clearfix"></div>
-            <a href="" class="btn btn-primary col-md-12">Follow +</a>
+             <?php
+             if(Yii::app()->user->isGuest || !$ismember)
+             {?>
+                <a href="javascript:void(0);" class="btn btn-primary col-md-12 <?php if(!$ismember)echo "followclub";?>" <?php if(Yii::app()->user->isGuest){?> data-target="#loginModal" data-toggle="modal"<?php }?>>Follow +</a>
+            <?php }?>
             <h3><strong><?php echo $total;?> MEMBERS</strong></h3>
             <div class="icons">
                 <a href="#">
@@ -239,6 +243,18 @@ $(function(){
       
       
     });
+    
+    $('.followclub').click(function(){
+        $.ajax({
+            type:'post',
+            url:'<?php echo Yii::app()->request->baseUrl;?>/clubs/follow',
+            data:'club_id=<?php echo $model->id;?>',
+            success:function(msg){
+                if(msg=='OK')
+                    window.location.href ="<?php echo Yii::app()->request->url; ?>";
+            }
+        })
+    })
 })
 function toggle_div(div,thi)
 {
