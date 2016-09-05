@@ -39,6 +39,10 @@ class ClubsController extends Controller
 	}
     public function actionIndex()
 	{
+	   if(Yii::app()->user->isGuest)
+        {
+            $this->redirect(Yii::app()->request->baseUrl);
+        }
 	    Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.js"));
         Yii::app()->clientScript->registerCssFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.css"));
         Yii::app()->clientScript->registerScriptFile("http://maps.google.com/maps/api/js?key=AIzaSyDdlZuslizFva3XY9GZVyF_IDZTDI-7BD0");

@@ -30,7 +30,7 @@
                 
                 <hr />
                 
-                <div class="form-group">
+                <div class="form-group picact">
                     <label class="col-md-12">Club Logo <span class="blue">- Include an club logo or photo (Optional)</span></label>
                     <div class="clearfix"></div>
                         <div class="profilepic ">
@@ -54,7 +54,7 @@
             <?php
                         
             //crop button
-             echo CHtml::ajaxButton('Crop',
+             echo CHtml::ajaxLink('<span class="fa fa-crop"></span> Crop',
                         $this->createUrl('gallery/cropPhoto?height=180&width=220'),
                          array( //ajax options
                          'data'=>array('fileName'=>"js:function(){ return $('.uploaded_image').val()}",'id'=>$member->id),
@@ -70,12 +70,12 @@
                                       $('#crop_".$member->id."').val('Crop');
                                     }",
                         ),
-                        array('id'=>'crop_'.$member->id,'class'=>'btn btn-default','onclick'=>'$("#crop_'.$member->id.'").val("loading...");')//html options
+                        array('id'=>'crop_'.$member->id,'class'=>'btn btn-crop','onclick'=>'$("#crop_'.$member->id.'").val("loading...");')//html options
             );
             ?><br />
             
                         
-                        <a href="javascript:void(0)" class="btn btn-danger" onclick="return confirm_delete('Are you sure that you want to remove the image?'); ">Remove</a><br />
+                        <a href="javascript:void(0)" class="btn btn-remove" onclick="return confirm_delete('Are you sure that you want to remove the image?'); "><span class="fa fa-times" style="color: #E00000;"></span> Remove</a><br />
                     </div>
                         
                     </div>
