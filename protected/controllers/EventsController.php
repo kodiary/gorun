@@ -603,9 +603,12 @@ class EventsController extends Controller
     
     public function actionRenderForm()
     {
-        if(!isset($_POST['type']))
+        if(isset($_POST['type']))
         $type= $_POST['type'];
         else
+        $type = 'running';
+        
+        if($type!='triathlon')
         $type = 'running';
         $this->renderPartial('_'.$type.'_form');
     }
