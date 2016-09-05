@@ -17,7 +17,8 @@
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/front_style.css" />
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo Yii::app()->request->baseUrl; ?>/images/favicon.ico" />
-	<title><?php echo CHtml::encode($this->pageTitle)." | Admin"; ?></title>
+	
+    <title><?php echo CHtml::encode($this->pageTitle)." | Admin"; ?></title>
 </head>
 <body>
 <div class="container" id="page">
@@ -82,10 +83,11 @@
      </div>
     <?php echo $content; ?>
     </div>
+    
     <!--load footer -->
     <!--
     <div id="footer">
-    <p >Access Keys CMS &copy; 2012 | Website designed by <a href="http://www.access-keys.com/" style="color:#C00;" target="_blank">Access-keys</a></p>
+    <p >Kodiary &copy; 2016 | Website designed by <a href="http://www.kodiary.com/" style="color:#C00;" target="_blank">Kodiary</a></p>
     </div>
     -->
 </div>

@@ -52,8 +52,10 @@ return array(
                     'jquery.color.js'=>false,
                     'bootstrap-tooltip.js'=>false,
                     'jquery.Jcrop.min.js'=>false,
-                    //'jquery.yiilistview.js'=>false,
-                    'jquery.ba-bbq.js'=>false
+                    'jquery.yiilistview.js'=>false,
+                    'jquery.ba-bbq.js'=>false,
+                    //'bootstrap-popover.js'=>false,
+                    //'bootstrap-alert.js'=>false,
                     
                 )
                 ),
@@ -249,7 +251,7 @@ return array(
         'twitter_access_token_secret'=>'XuOShmKfV79CwaWWGJaJgeCXDkRNWJeJoEFoTgBtPH9Gv',
 
         'ip2location_key' => '8faee27e7591bd3c5a731f98ea92c68f5c93cd37e111558b18abf96f78ec3df6',
-        'items_pers_page' => '2',
+        'items_pers_page' => '10',
         'articles_pers_page' => '2',
         'jobs_pers_page'=>'10',
         'defaultCountryId' => '224',

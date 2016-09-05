@@ -137,7 +137,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
             	'itemView'=>'/site/_article_old',
                 'summaryText'=>'',
             ));   */
-         if($pages->itemCount>1)
+         if($pages->itemCount>Yii::app()->params['articles_pers_page'])
             echo "<a href='javascript:void(0);' class='btn btn-primary' id='load_more'>Load More</a>";
         ?>
         <?php } ?>
