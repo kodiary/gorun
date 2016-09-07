@@ -1,3 +1,4 @@
+<script src="//cdn.ckeditor.com/4.5.10/basic/ckeditor.js"></script>
 <div class="sidebar col-md-3">
           <?php echo $this->renderPartial('/sidebar/_menu', false, true); ?>
         </div>
@@ -11,44 +12,43 @@
             <hr />
             
             <form action="<?php echo Yii::app()->request->baseUrl;?>/clubs/create" id="club-detail" method="post">
-                <div class="form-group">
-
-                    <label class="col-md-3">Club Name<span class="required">*</span></label>
-                    <div class="col-md-7"><input type="text" class="form-control" placeholder="Club Name..." name="title" value="<?php //echo $member->fname;?>" /></div>
-
+                
+                <div class="form-group white">
+                    <label class="col-md-12">Club Name</label>
+                    <div class="col-md-12"><input type="text" class="form-control" placeholder="Club Name..." name="title" value="<?php //echo $member->fname;?>" /></div>
                     <div class="clearfix"></div>
                 </div>
-                
-                <hr />
-                
-                <div class="form-group">
-                    <label class="col-md-12">Club Description <span class="blue">- Provide a description of the club</span><span class="required">*</span></label>
-                    <div class="col-md-12 "> <textarea class="form-control" placeholder="Club description..." name="description"></textarea></div>
+                <div class="form-group white">
+                    <label class="col-md-12">Club Description<br /><span class="blue">Provide a description of the club</span></label>
+                    
+                    <div class="col-md-12"><textarea class="form-control description" name="description"><?php echo $model->description;?></textarea></div>
                     <div class="clearfix"></div>
-                    <div class="club_desc"></div>                                        
+                    <div class="club_desc"></div> 
                 </div>
                 
-                <hr />
-                
-                <div class="form-group picact">
-                    <label class="col-md-12">Club Logo <span class="blue">- Include an club logo or photo (Optional)</span></label>
+                <div class="form-group white">
+                    <label class="col-md-12">Club Logo (O<span style="text-transform: lowercase;">ptional</span>)
+                    <br /><span class="blue">Include a club logo or photo</span></label>
                     <div class="clearfix"></div>
-                        <div class="profilepic ">
-                        <div class="club_img " id="upimage_0">
+                        <div class="profilepic col-md-12">
+                        <div class="club_img " id="upimage_0" style="margin-right: 30px;">
                         <?php
-                        if(file_exists(Yii::app()->basePath.'/../images/frontend/thumb/'.$member->logo))
+                        if(file_exists(Yii::app()->basePath.'/../images/frontend/thumb/'.$member->logo) && $member->logo)
                         {
                             $img_url=Yii::app()->baseUrl.'/images/frontend/thumb/'.$member->logo;
                         }
                         else
                         {
-                            $img_url=Yii::app()->baseUrl.'/images/noimage.jpg';    
+                            $img_url='';    
                         }
+                        if($img_url){?>
+                        <img src="<?php echo $img_url;?>"/>
+                        <?php }
                         ?>
-                        <img src="<?php //echo $img_url;?>"/>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 picact" style="margin-top: 20px;">
                         <?php echo $this->renderPartial('application.views.gallery._addImage',array('member'=>$member,'type'=>'club')); ?>
+                        
                         
                       
             <?php
@@ -77,220 +77,206 @@
                         
                         <a href="javascript:void(0)" class="btn btn-remove" onclick="return confirm_delete('Are you sure that you want to remove the image?'); "><span class="fa fa-times" style="color: #E00000;"></span> Remove</a><br />
                     </div>
-                        
+                     <div class="clearfix"></div>   
                     </div>
                     <div class="clearfix"></div>
                 </div>
                                                                                                                                                                                                                                                                                                                                                                                 
-                <hr />
                 
-                <div class="form-group">
+                
+                <div class="form-group white">
 
-                    <div class="col-md-3">
-                        <label> <strong>Club Type</strong><span class="required">*</span> </label>
-                    </div>
-                    <div class="col-md-7">
-                        <span class="col-md-6 checkbox"><input type="checkbox" name="type[]" value="Running" />Running</span>
-                        <span class="col-md-6 checkbox"><input type="checkbox" name="type[]" value="Canoe" />Canoe</span>
+                    
+                    <label class="col-md-12">Club Type<br /></label>
+                   
+                    <div class="col-md-12">
+                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Running" />Running</div>
+                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Canoe" />Canoe</div>
                         <div class="clearfix"></div>
-                        <span class="col-md-6 checkbox"><input type="checkbox" name="type[]" value="Swimming" />Swimming</span>
-                        <span class="col-md-6 checkbox"><input type="checkbox" name="type[]" value="Cross Country" />Cross Country</span>
+                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Swimming" />Swimming</div>
+                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Cross Country" />Cross Country</div>
                         <div class="clearfix"></div>
-                        <span class="col-md-6 checkbox"><input type="checkbox" name="type[]" value="Cycling" />Cycling</span>
-                        <span class="col-md-6 checkbox"><input type="checkbox" name="type[]" value="Dog Allowed" />Dogs Allowed</span>
+                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Cycling" />Cycling</div>
+                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Dog Allowed" />Dogs Allowed</div>
                         <div class="clearfix"></div>
-                        <span class="col-md-6 checkbox"><input type="checkbox" name="type[]" value="Duathlon" />Duathlon</span>
-                        <span class="col-md-6 checkbox"><input type="checkbox" name="type[]" value="Fun Run" />Fun Run</span>
+                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Duathlon" />Duathlon</div>
+                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Fun Run" />Fun Run</div>
                         <div class="clearfix"></div>
-                        <span class="col-md-6 checkbox"><input type="checkbox" name="type[]" value="Mountain Biking" />Mountain Biking</span>
-                        <span class="col-md-6 checkbox"><input type="checkbox" name="type[]" value="Road Run" />Road Run </span>
+                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Mountain Biking" />Mountain Biking</div>
+                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Road Run" />Road Run </div>
                         <div class="clearfix"></div>
-                        <span class="col-md-6 checkbox"><input type="checkbox" name="type[]" value="Triathlon" />Triathlon</span>
+                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Triathlon" />Triathlon</div>
                         <div class="clearfix"></div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="types"></div>
                 </div>
                 
-                <hr />
-                 
-                <div class="form-group">
-                    <label class="col-md-12"><strong>Location</strong> <span class="blue">-Where is this club located?</span></label>
-                    <div class="clearfix"></div>
-                </div>
-                
-                <hr />
-                <div class="form-group">
-                    <label class="col-md-3">Club Address/Venue<span class="required">*</span></label>
-                    <div class="col-md-7"><input type="text" id="Company_street_add" class="form-control" placeholder="Street Address" name="street_address" value="<?php //echo $member->fname;?>" /></div>
-                    <div class="clearfix"></div>
-                
-                </div>
-                 <div class="form-group">
-                    <label class="col-md-3">City / Town <span class="required">*</span></label>
-                    <div class="col-md-7"><input type="text" id="city" class="form-control" placeholder="Suburb Town or City" name="city" value="<?php //echo $member->fname;?>" onBlur='codeAddress();' /></div>
-                    <div class="clearfix"></div>
-                
-                </div>
-                 <div class="form-group">
-                    <label class="col-md-3">Province<span class="required">*</span></label>
-                    <div class="col-md-7">
-                        <select name="province" onchange='codeAddress();' id="Company_province">
-                            <option value="">Select Province</option>
-                    <?php $provinces = Province::model()->findAll();
-                        foreach($provinces as $province){?>
-                            <option value="<?php echo $province->id;?>"><?php echo $province->name;?></option>
-                    <?php }?>
-                            
-                        </select>
-                    </div>
-                    <div class="clearfix"></div>
-                
-                </div>
-                <hr />
-                
-              <div class="control-group">
-            	<label class="control-label">Coordinates</label>
-                <div class="controls">
-                <div class="sn_group">
-                	<div class="s1 col-md-6">
-                        <input type="text" id="Company_latitude" value="<?php echo $model->latitude;?>" placeholder="Latitude"style="width:127px;" onblur="updateMapPinPosition()"/>
-                    <?php //echo $form->textField($model, 'latitude',array('placeholder'=>'Latitude','style'=>'','onBlur'=>'updateMapPinPosition();') );?>
-                    </div>
-                    <div class="s2 col-md-6">
-                        <input type="text" id="Company_longitude" value="<?php echo $model->longitude;?>" placeholder="Longitude"style="width:125px;margin-left:50px;;" onblur="updateMapPinPosition()"/>
-                    <?php //echo $form->textField($model, 'longitude',array('placeholder'=>'Longitude','style'=>'width:125px;margin-left:50px;','onBlur'=>'updateMapPinPosition();') ); ?>
-                    </div>
-                    <div class="clear"></div>
-                 </div>
-                </div>
-                <div class="clear"></div>
-                <input type="hidden" name="formattedAddress" id="formattedAddress" value=""/>
-            </div>
-             <hr/>
-            <!-- gmap -->
-            <div id="map_canvas" style="width: 100%; height: 300px;"></div>
-            <h2 style="margin-top:5px;"><span>Drag the pin to reposition it if necessary</span></h2>
-            <hr/>
-                 
-                <div class="form-group">
-                    <label class="col-md-12"><strong>Time Trials</strong> <span class="blue">-Does your club have a weekly trial(Optional)</span></label>
-                    <div class="clearfix"></div>
-                </div>
-                
-                <hr />
-                <div class="form-group">
-                    <label class="col-md-3">Day / Time</label>
-                    <div class="col-md-7">
-                        <div class="col-md-6">
-                            <select name="trial_day">
-                                <option>Select Day</option>
-                                <option value="Mondays">Mondays</option>
-                                <option value="Tuesdays">Tuesdays</option>
-                                <option value="Wednesdays">Wednesdays</option>
-                                <option value="Thursdays">Thursdays</option>
-                                <option value="Fridays">Fridays</option>
-                                <option value="Saturdays">Saturdays</option>
-                                <option value="Sundays">Sundays</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <select name="trial_time">
-                                <option>Select Time</option>
-                                <?php for($i=4;$i<=22 ;$i=$i+.5)
-                                    {
-                                        if($i<12)
-                                        {
-                                            $time = $i.":00 am";
-                                            if(str_replace('.5',":30 am",$i)!=$i)
-                                                $time = str_replace('.5',":30 am",$i);
-                                        }
-                                        elseif($i==12 || $i ==12.5)
-                                        {
-                                            $time = $i.":00 pm";
-                                            if(str_replace('.5',":30 pm",$i)!=$i)
-                                            $time = str_replace('.5',":30 pm",$i);
-                                        }    
-                                        elseif($i>=13)
-                                        {
-                                            $time = ($i-12).":00 pm";
-                                            if(str_replace('.5',":30 pm",$i)!=$i)
-                                            $time = str_replace('.5',":30 pm",$i-12);
-                                        }
-                                            
-                                        echo "<option value=".$time.">".$time."</option>";
-                                    }
-                                ?>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                
-                </div>
-                 <div class="form-group">
-                    <label class="col-md-3">Description</label>
-                    <div class="col-md-7"><input type="text" class="form-control" placeholder="Optional description" name="trial_desc" value="<?php //echo $member->fname;?>" /></div>
-                    <div class="clearfix"></div>
-                
-                </div>
-                 <hr />
-                 
-                <div class="form-group">
-                    <label class="col-md-12"><strong>Contact Details</strong> <span class="blue">-Complete the contact details below</span></label>
-                    <div class="clearfix"></div>
-                </div>
-                
-                <hr />
-                <div class="form-group">
-                    <label class="col-md-3">Contact Person<span class="required">*</span></label>
-                    <div class="col-md-7"><input type="text" class="form-control" placeholder="Contact Person" name="contact_person" value="<?php //echo $member->fname;?>" /></div>
-                    <div class="clearfix"></div>
-                
-                </div>
-                <hr />
-                <div class="Contact_Number">
+                <div class="form-group white">
+                    <label class="col-md-12">Location<br /><span class="blue">Where is this club located?</span></label>
                     <div class="form-group">
-                        <label class="col-md-3">Contact Number </label>
-                        <div class="col-md-7"><input type="text" class="form-control" placeholder="Contact Number" name="contact_number[]" value="<?php //echo $member->fname;?>" /></div>
-                        <input type="button" value="+Add" class="btn btn-default col-md-1" onclick="addmore('Contact_Number');"/>
+                        <div class="col-md-3">Club Address/Venue<span class="required">*</span></div>
+                        <div class="col-md-7"><input type="text" id="Company_street_add" class="form-control" placeholder="Street Address" name="street_address" value="<?php //echo $member->fname;?>" /></div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">City / Town <span class="required">*</span></div>
+                        <div class="col-md-7"><input type="text" id="city" class="form-control" placeholder="Suburb Town or City" name="city" value="<?php //echo $member->fname;?>" onBlur='codeAddress();' /></div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">Province<span class="required">*</span></div>
+                        <div class="col-md-7">
+                            <select name="province" class="form-control" onchange='codeAddress();' id="Company_province">
+                                <option value="">Select Province</option>
+                        <?php $provinces = Province::model()->findAll();
+                            foreach($provinces as $province){?>
+                                <option value="<?php echo $province->id;?>"><?php echo $province->name;?></option>
+                        <?php }?>
+                                
+                            </select>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="form-group">
+                    	<div class="col-md-3">Coordinates</div>
+                        <div class="controls col-md-7">
+                            <div class="sn_group">
+                            	<div class="s1 col-md-3 padding-left-0">
+                                    <input type="text" class="form-control" id="Company_latitude" value="<?php echo $model->latitude;?>" placeholder="Latitude" style="width:127px;" onblur="updateMapPinPosition()"/>
+                                <?php //echo $form->textField($model, 'latitude',array('placeholder'=>'Latitude','style'=>'','onBlur'=>'updateMapPinPosition();') );?>
+                                </div>
+                                <div class="s2 col-md-3">
+                                    <input type="text" class="form-control" id="Company_longitude" value="<?php echo $model->longitude;?>" placeholder="Longitude" style="width:125px;margin-left:50px;;" onblur="updateMapPinPosition()"/>
+                                <?php //echo $form->textField($model, 'longitude',array('placeholder'=>'Longitude','style'=>'width:125px;margin-left:50px;','onBlur'=>'updateMapPinPosition();') ); ?>
+                                </div>
+                                <div class="clear"></div>
+                             </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                
+                    <input type="hidden" name="formattedAddress" id="formattedAddress" value=""/>
+ 
+                     <!-- gmap -->
+                    <div id="map_canvas" style="width: 100%; height: 300px;"></div>
+                </div>
+                 
+                <div class="form-group white">
+                    <label class="col-md-12">Time Trials<br /><span class="blue">Does your club have a weekly trial(Optional)</span></label>
+                    <div class="clearfix"></div>
+                    <div class="form-group">
+                        <div class="col-md-3">Day / Time</div>
+                        <div class="col-md-7">
+                            <div class="col-md-6 padding-left-0">
+                                <select name="trial_day" class="form-control">
+                                    <option>Select Day</option>
+                                    <option value="Mondays">Mondays</option>
+                                    <option value="Tuesdays">Tuesdays</option>
+                                    <option value="Wednesdays">Wednesdays</option>
+                                    <option value="Thursdays">Thursdays</option>
+                                    <option value="Fridays">Fridays</option>
+                                    <option value="Saturdays">Saturdays</option>
+                                    <option value="Sundays">Sundays</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <select name="trial_time" class="form-control">
+                                    <option>Select Time</option>
+                                    <?php for($i=4;$i<=22 ;$i=$i+.5)
+                                        {
+                                            if($i<12)
+                                            {
+                                                $time = $i.":00 am";
+                                                if(str_replace('.5',":30 am",$i)!=$i)
+                                                    $time = str_replace('.5',":30 am",$i);
+                                            }
+                                            elseif($i==12 || $i ==12.5)
+                                            {
+                                                $time = $i.":00 pm";
+                                                if(str_replace('.5',":30 pm",$i)!=$i)
+                                                $time = str_replace('.5',":30 pm",$i);
+                                            }    
+                                            elseif($i>=13)
+                                            {
+                                                $time = ($i-12).":00 pm";
+                                                if(str_replace('.5',":30 pm",$i)!=$i)
+                                                $time = str_replace('.5',":30 pm",$i-12);
+                                            }
+                                                
+                                            echo "<option value=".$time.">".$time."</option>";
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="col-md-3">Description</div>
+                        <div class="col-md-7"><input type="text" class="form-control" placeholder="Optional description" name="trial_desc" value="<?php //echo $member->fname;?>" /></div>
                         <div class="clearfix"></div>
                     
                     </div>
-                </div>
-                <div class="Contact_Email">
-                    <div class="form-group ">
-                        <label class="col-md-3">Contact E-mail <span class="required">*</span></label>
-                        <div class="col-md-7"><input type="text" class="form-control" placeholder="Contact email" name="contact_email[]" value="<?php //echo $member->fname;?>" /></div>
-                        <input type="button" value="+Add" class="btn btn-default col-md-1" onclick="addmore('Contact_Email');" />
+                 </div>
+                 
+                <div class="form-group white">
+                    <label class="col-md-12">Contact Details<br /><span class="blue">Complete the contact details below</span></label>
+                    
+                    <div class="form-group">
+                        <div class="col-md-3">Contact Person<span class="required">*</span></div>
+                        <div class="col-md-7"><input type="text" class="form-control" placeholder="Contact Person" name="contact_person" value="<?php //echo $member->fname;?>" /></div>
                         <div class="clearfix"></div>
                     
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-md-3">Website </label>
-                    <div class="col-md-7"><input type="url" class="form-control" placeholder="http://" name="website" value="<?php //echo $member->fname;?>" /></div>
+                    <hr />
+                    <div class="Contact_Number">
+                        <div class="form-group">
+                            <div class="col-md-3">Contact Number <span class="required">*</span></div>
+                            <div class="col-md-7"><input type="text" class="form-control" placeholder="Contact Number" name="contact_number[]" value="<?php //echo $member->fname;?>" /></div>
+                            <input type="button" value="+Add" class="btn btn-default col-md-1" onclick="addmore('Contact_Number');"/>
+                            <div class="clearfix"></div>
+                        
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="Contact_Email">
+                        <div class="form-group ">
+                            <div class="col-md-3">Contact E-mail <span class="required">*</span></div>
+                            <div class="col-md-7"><input type="text" class="form-control" placeholder="Contact email" name="contact_email[]" value="<?php //echo $member->fname;?>" /></div>
+                            <input type="button" value="+Add" class="btn btn-default col-md-1" onclick="addmore('Contact_Email');" />
+                            <div class="clearfix"></div>
+                        
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        <div class="col-md-3">Website </div>
+                        <div class="col-md-7"><input type="url" class="form-control" placeholder="http://" name="website" value="<?php //echo $member->fname;?>" /></div>
+                        <div class="clearfix"></div>
+                    
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">Facebook page </div>
+                        <div class="col-md-7"><input type="url" class="form-control" placeholder="http://" name="fb_page" value="<?php //echo $member->fname;?>" /></div>
+                        <div class="clearfix"></div>
+                    
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">Twitter Page </div>
+                        <div class="col-md-7"><input type="url" class="form-control" placeholder="http://" name="twitter_page" value="<?php //echo $member->fname;?>" /></div>
+                        <div class="clearfix"></div>
+                    
+                    </div>
+                    
                     <div class="clearfix"></div>
-                
-                </div>
-                <div class="form-group">
-                    <label class="col-md-3">Facebook page </label>
-                    <div class="col-md-7"><input type="url" class="form-control" placeholder="http://" name="fb_page" value="<?php //echo $member->fname;?>" /></div>
-                    <div class="clearfix"></div>
-                
-                </div>
-                <div class="form-group">
-                    <label class="col-md-3">Twitter Page </label>
-                    <div class="col-md-7"><input type="url" class="form-control" placeholder="http://" name="twitter_page" value="<?php //echo $member->fname;?>" /></div>
-                    <div class="clearfix"></div>
-                
                 </div>
                 
-                <hr />
-                
-                <div class="form-group">
-                <input type="submit" name="submit" value="Submit" class="btn btn-default bgblue btn-lg" />
+                <div class="col-md-5 padding-left-0">
+                <input type="submit" name="submit" class="btn btn-submit" value="Submit" />
                 </div>
-  
+                <div class="clearfix"></div>
 </form>
             
         </div>
@@ -319,6 +305,19 @@
 ?>
 
     <script>
+   
+$(function(){
+    
+    CKEDITOR.replace( 'description' );
+    CKEDITOR.editorConfig = function( config ) {
+	config.language = 'es';
+	config.uiColor = '#F5f5f5';
+	
+};
+    
+    
+})
+
     function confirm_delete(ques)
     {
         if(confirm(ques))
@@ -337,7 +336,7 @@
         else
         var type = 'email';
         $("."+div).append('<div class="form-group">'+
-                        '<label class="col-md-3">'+div.replace("_",' ')+'<span class="required">*</span></label>'+
+                        '<div class="col-md-3">'+div.replace("_",' ')+'<span class="required">*</span></div>'+
                         '<div class="col-md-7"><input type="'+type+'" class="form-control" placeholder="'+div.replace("_",' ')+'" name="'+div+'[]" value="" /></div>'+
                         '<input type="button" value="Remove" class="btn btn-danger" onclick="$(this).parent().remove();"  />'+
                         '<div class="clearfix"></div>'+
