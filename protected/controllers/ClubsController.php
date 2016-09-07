@@ -224,5 +224,25 @@ class ClubsController extends Controller
         }
     }
     
+    public function actionType($match="")
+    {
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/jquery.infinitescroll.js"));
+        $match = ucfirst($match);
+        $match = addcslashes($match, '%_');
+        $criteria = new CDbCriteria;
+        $criteria->addSearchCondition('types',$match);
+        //$criteria->order = 'publish_date DESC,t.id DESC';
+        $pages='';
+       
+        $dataProvider= new CActiveDataProvider('Club',array('criteria'=>$criteria, 'pagination'=>false));
+        $pages = new CPagination($dataProvider->totalItemCount);
+        $pages->pageSize = Yii::app()->params['articles_pers_page'];
+        $pages->applyLimit($criteria);
+        
+        $dataProvider = Club::model()->findAll($criteria); 
+        $clubs = Club::model()->findAll('types LIKE :match',[':match'=>"%$match%"]);
+        $this->render('type',['clubs'=>$clubs,'type'=>$match,'dataProvider'=>$dataProvider,'pages'=>$pages]);
+    }
+    
  }
  ?>

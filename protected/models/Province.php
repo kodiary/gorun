@@ -102,4 +102,13 @@ class Province extends CActiveRecord
         $criteria->order='name asc';
         return self::model()->findAll($criteria);
     }
+    public function getAbbrivation($prov_id)
+    {
+        $prov = self::model()->findByPk($prov_id);
+        $title = $prov->name;
+        $letters = preg_replace('/(\B.|\s+)/','',$title); 
+        return $letters;
+        
+        
+    }
 }

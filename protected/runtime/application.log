@@ -4457,3 +4457,522 @@ Stack trace:
 REQUEST_URI=/gorun/clubs/follow
 HTTP_REFERER=http://localhost/gorun/clubs/bedfordview-athletics
 ---
+2016/09/06 15:10:52 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in F:\wamp\www\gorun\framework\web\CController.php:337
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('type')
+#4 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/type/runn...')
+#5 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/gorun/clubs/type/running
+---
+2016/09/06 15:10:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404.jpg".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/404.jpg')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/404.jpg
+HTTP_REFERER=http://localhost/gorun/clubs/type/running
+---
+2016/09/06 15:12:00 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_articles` `t` WHERE company_id=.
+in F:\wamp\www\gorun\protected\controllers\ClubsController.php (174)
+in F:\wamp\www\gorun\index.php (13)
+2016/09/06 15:12:00 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_articles` `t` WHERE company_id=' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1536): CDbCommand->queryScalar()
+#2 F:\wamp\www\gorun\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 F:\wamp\www\gorun\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 F:\wamp\www\gorun\framework\base\CComponent.php(112): CDataProvider->getTotalItemCount()
+#5 F:\wamp\www\gorun\protected\controllers\ClubsController.php(174): CComponent->__get('totalItemCount')
+#6 [internal function]: ClubsController->actionDetails('type')
+#7 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#8 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/details/s...')
+#14 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/gorun/clubs/type
+---
+2016/09/06 15:12:40 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in F:\wamp\www\gorun\framework\web\CController.php:337
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('type')
+#4 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/type')
+#5 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/gorun/clubs/type
+---
+2016/09/06 15:12:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404.jpg".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/404.jpg')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/404.jpg
+HTTP_REFERER=http://localhost/gorun/clubs/type
+---
+2016/09/06 15:12:46 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in F:\wamp\www\gorun\framework\web\CController.php:337
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('type')
+#4 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/type')
+#5 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/gorun/clubs/type
+---
+2016/09/06 15:12:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404.jpg".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/404.jpg')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/404.jpg
+HTTP_REFERER=http://localhost/gorun/clubs/type
+---
+2016/09/06 15:14:22 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in F:\wamp\www\gorun\framework\web\CController.php:337
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('type')
+#4 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/type/runn...')
+#5 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/gorun/clubs/type/running
+---
+2016/09/06 15:14:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404.jpg".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/404.jpg')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/404.jpg
+HTTP_REFERER=http://localhost/gorun/clubs/type/running
+---
+2016/09/06 15:15:01 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in F:\wamp\www\gorun\framework\web\CController.php:337
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('type')
+#4 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/type/runn...')
+#5 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/gorun/clubs/type/running
+---
+2016/09/06 15:15:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404.jpg".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/404.jpg')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/404.jpg
+HTTP_REFERER=http://localhost/gorun/clubs/type/running
+---
+2016/09/06 15:15:42 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in F:\wamp\www\gorun\framework\web\CController.php:337
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('type')
+#4 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/type/rrr')
+#5 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/gorun/clubs/type/rrr
+---
+2016/09/06 15:15:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404.jpg".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/404.jpg')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/404.jpg
+HTTP_REFERER=http://localhost/gorun/clubs/type/rrr
+---
+2016/09/06 15:16:09 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_articles` `t` WHERE company_id=.
+in F:\wamp\www\gorun\protected\controllers\ClubsController.php (174)
+in F:\wamp\www\gorun\index.php (13)
+2016/09/06 15:16:09 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_articles` `t` WHERE company_id=' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1536): CDbCommand->queryScalar()
+#2 F:\wamp\www\gorun\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 F:\wamp\www\gorun\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 F:\wamp\www\gorun\framework\base\CComponent.php(112): CDataProvider->getTotalItemCount()
+#5 F:\wamp\www\gorun\protected\controllers\ClubsController.php(174): CComponent->__get('totalItemCount')
+#6 [internal function]: ClubsController->actionDetails('type')
+#7 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#8 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/details/s...')
+#14 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/gorun/clubs/type
+---
+2016/09/06 15:16:13 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_articles` `t` WHERE company_id=.
+in F:\wamp\www\gorun\protected\controllers\ClubsController.php (174)
+in F:\wamp\www\gorun\index.php (13)
+2016/09/06 15:16:13 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_articles` `t` WHERE company_id=' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1536): CDbCommand->queryScalar()
+#2 F:\wamp\www\gorun\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 F:\wamp\www\gorun\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 F:\wamp\www\gorun\framework\base\CComponent.php(112): CDataProvider->getTotalItemCount()
+#5 F:\wamp\www\gorun\protected\controllers\ClubsController.php(174): CComponent->__get('totalItemCount')
+#6 [internal function]: ClubsController->actionDetails('types')
+#7 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#8 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/details/s...')
+#14 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/gorun/clubs/types
+---
+2016/09/06 15:16:20 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in F:\wamp\www\gorun\framework\web\CController.php:337
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('type')
+#4 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/type/sss')
+#5 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/gorun/clubs/type/sss
+---
+2016/09/06 15:16:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404.jpg".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/404.jpg')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/404.jpg
+HTTP_REFERER=http://localhost/gorun/clubs/type/sss
+---
+2016/09/06 15:16:33 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in F:\wamp\www\gorun\framework\web\CController.php:337
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('type')
+#4 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/type/sss')
+#5 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/gorun/clubs/type/sss
+---
+2016/09/06 15:16:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404.jpg".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/404.jpg')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/404.jpg
+HTTP_REFERER=http://localhost/gorun/clubs/type/sss
+---
+2016/09/06 15:17:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "type".' in F:\wamp\www\gorun\framework\web\CController.php:484
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CController.php(271): CController->missingAction('type')
+#1 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('type')
+#2 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/type/asas')
+#3 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/gorun/clubs/types/asas
+---
+2016/09/06 15:17:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404.jpg".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/404.jpg')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/404.jpg
+HTTP_REFERER=http://localhost/gorun/clubs/types/asas
+---
+2016/09/06 15:18:20 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in F:\wamp\www\gorun\framework\web\CController.php:337
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('types')
+#4 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/types/asd...')
+#5 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/gorun/clubs/types/asdas
+---
+2016/09/06 15:18:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404.jpg".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/404.jpg')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/404.jpg
+HTTP_REFERER=http://localhost/gorun/clubs/types/asdas
+---
+2016/09/06 15:18:41 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_articles` `t` WHERE company_id=.
+in F:\wamp\www\gorun\protected\controllers\ClubsController.php (174)
+in F:\wamp\www\gorun\index.php (13)
+2016/09/06 15:18:41 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_articles` `t` WHERE company_id=' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1536): CDbCommand->queryScalar()
+#2 F:\wamp\www\gorun\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 F:\wamp\www\gorun\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 F:\wamp\www\gorun\framework\base\CComponent.php(112): CDataProvider->getTotalItemCount()
+#5 F:\wamp\www\gorun\protected\controllers\ClubsController.php(174): CComponent->__get('totalItemCount')
+#6 [internal function]: ClubsController->actionDetails('types')
+#7 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#8 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/details/s...')
+#14 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/gorun/clubs/types
+---
+2016/09/06 15:19:00 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in F:\wamp\www\gorun\framework\web\CController.php:337
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('types')
+#4 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/types')
+#5 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/gorun/clubs/types
+---
+2016/09/06 15:19:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404.jpg".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/404.jpg')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/404.jpg
+HTTP_REFERER=http://localhost/gorun/clubs/types
+---
+2016/09/06 15:19:07 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in F:\wamp\www\gorun\framework\web\CController.php:337
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('types')
+#4 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/types')
+#5 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/gorun/clubs/types
+---
+2016/09/06 15:19:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404.jpg".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/404.jpg')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/404.jpg
+HTTP_REFERER=http://localhost/gorun/clubs/types
+---
+2016/09/06 15:20:39 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in F:\wamp\www\gorun\framework\web\CController.php:337
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('category')
+#4 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/category')
+#5 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/gorun/clubs/category
+---
+2016/09/06 15:20:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404.jpg".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/404.jpg')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/404.jpg
+HTTP_REFERER=http://localhost/gorun/clubs/category
+---
+2016/09/06 15:24:02 [error] [php] include(Clubs.php): failed to open stream: No such file or directory (F:\wamp\www\gorun\framework\YiiBase.php:418)
+Stack trace:
+#0 F:\wamp\www\gorun\protected\controllers\ClubsController.php(231): spl_autoload_call()
+#1 unknown(0): ClubsController->actionCategory()
+#2 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#3 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#4 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 F:\wamp\www\gorun\framework\web\CController.php(287): ClubsController->runAction()
+#6 F:\wamp\www\gorun\framework\web\CController.php(266): ClubsController->runActionWithFilters()
+#7 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): ClubsController->run()
+#8 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#9 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 F:\wamp\www\gorun\index.php(13): CWebApplication->run()
+REQUEST_URI=/gorun/clubs/type/aa
+in F:\wamp\www\gorun\protected\controllers\ClubsController.php (231)
+in F:\wamp\www\gorun\index.php (13)
+2016/09/06 20:04:34 [error] [exception.CException] exception 'CException' with message 'Property "Club.type" is not defined.' in F:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('type')
+#1 F:\wamp\www\gorun\protected\views\clubs\type.php(15): CActiveRecord->__get('type')
+#2 F:\wamp\www\gorun\framework\web\CBaseController.php(127): require('F:\\wamp\\www\\gor...')
+#3 F:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('F:\\wamp\\www\\gor...', Array, true)
+#4 F:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('F:\\wamp\\www\\gor...', Array, true)
+#5 F:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('type', Array, true)
+#6 F:\wamp\www\gorun\protected\controllers\ClubsController.php(232): CController->render('type', Array)
+#7 [internal function]: ClubsController->actionCategory('running')
+#8 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#9 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#11 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#12 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('category')
+#14 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/category/...')
+#15 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/gorun/clubs/type/running
+---
+2016/09/06 20:04:34 [error] [exception.CException] exception 'CException' with message 'Property "Club.type" is not defined.' in F:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('type')
+#1 F:\wamp\www\gorun\protected\views\clubs\type.php(15): CActiveRecord->__get('type')
+#2 F:\wamp\www\gorun\framework\web\CBaseController.php(127): require('F:\\wamp\\www\\gor...')
+#3 F:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('F:\\wamp\\www\\gor...', Array, true)
+#4 F:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('F:\\wamp\\www\\gor...', Array, true)
+#5 F:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('type', Array, true)
+#6 F:\wamp\www\gorun\protected\controllers\ClubsController.php(232): CController->render('type', Array)
+#7 [internal function]: ClubsController->actionCategory('running')
+#8 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#9 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#11 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#12 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('category')
+#14 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/category/...')
+#15 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/gorun/clubs/type/running
+---
+2016/09/07 10:17:29 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'types' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_articles` `t` WHERE types LIKE :ycp0.
+in F:\wamp\www\gorun\protected\controllers\ClubsController.php (237)
+in F:\wamp\www\gorun\index.php (13)
+2016/09/07 10:17:29 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'types' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_articles` `t` WHERE types LIKE :ycp0' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1536): CDbCommand->queryScalar()
+#2 F:\wamp\www\gorun\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 F:\wamp\www\gorun\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 F:\wamp\www\gorun\framework\base\CComponent.php(112): CDataProvider->getTotalItemCount()
+#5 F:\wamp\www\gorun\protected\controllers\ClubsController.php(237): CComponent->__get('totalItemCount')
+#6 [internal function]: ClubsController->actionCategory('running')
+#7 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#8 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('category')
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/category/...')
+#14 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/gorun/clubs/type/running
+---
+2016/09/07 10:17:48 [error] [php] include(Clubs.php): failed to open stream: No such file or directory (F:\wamp\www\gorun\framework\YiiBase.php:418)
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(378): spl_autoload_call()
+#1 F:\wamp\www\gorun\framework\web\CActiveDataProvider.php(75): model()
+#2 F:\wamp\www\gorun\protected\controllers\ClubsController.php(236): CActiveDataProvider->__construct()
+#3 unknown(0): ClubsController->actionCategory()
+#4 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#5 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#6 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 F:\wamp\www\gorun\framework\web\CController.php(287): ClubsController->runAction()
+#8 F:\wamp\www\gorun\framework\web\CController.php(266): ClubsController->runActionWithFilters()
+#9 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): ClubsController->run()
+#10 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#11 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 F:\wamp\www\gorun\index.php(13): CWebApplication->run()
+REQUEST_URI=/gorun/clubs/type/running
+in F:\wamp\www\gorun\protected\controllers\ClubsController.php (236)
+in F:\wamp\www\gorun\index.php (13)
+2016/09/07 10:29:50 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_articles` `t` WHERE company_id=.
+in F:\wamp\www\gorun\protected\controllers\ClubsController.php (174)
+in F:\wamp\www\gorun\index.php (13)
+2016/09/07 10:29:50 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_articles` `t` WHERE company_id=' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1536): CDbCommand->queryScalar()
+#2 F:\wamp\www\gorun\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 F:\wamp\www\gorun\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 F:\wamp\www\gorun\framework\base\CComponent.php(112): CDataProvider->getTotalItemCount()
+#5 F:\wamp\www\gorun\protected\controllers\ClubsController.php(174): CComponent->__get('totalItemCount')
+#6 [internal function]: ClubsController->actionDetails('category')
+#7 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#8 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/details/s...')
+#14 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/gorun/clubs/category?match=running&page=2
+HTTP_REFERER=http://localhost/gorun/clubs/type/running
+---
+2016/09/07 10:31:22 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_articles` `t` WHERE company_id=.
+in F:\wamp\www\gorun\protected\controllers\ClubsController.php (174)
+in F:\wamp\www\gorun\index.php (13)
+2016/09/07 10:31:22 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_articles` `t` WHERE company_id=' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1536): CDbCommand->queryScalar()
+#2 F:\wamp\www\gorun\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 F:\wamp\www\gorun\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 F:\wamp\www\gorun\framework\base\CComponent.php(112): CDataProvider->getTotalItemCount()
+#5 F:\wamp\www\gorun\protected\controllers\ClubsController.php(174): CComponent->__get('totalItemCount')
+#6 [internal function]: ClubsController->actionDetails('type')
+#7 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#8 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/details/s...')
+#14 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/gorun/clubs/type?match=running&page=2
+HTTP_REFERER=http://localhost/gorun/clubs/type/running
+---
