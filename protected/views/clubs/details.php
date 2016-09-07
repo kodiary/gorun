@@ -106,7 +106,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
         <div class="clearfix"></div>
     </div>
     <div class="clearfix"></div>
-    <div class="news col-md-12 block_border" <?php if(!$dataProvider)echo 'style="margin:0;border-bottom:none"';?>>
+    <div class="news col-md-12 block_border toggle-div" <?php if(!$dataProvider)echo 'style="margin:0;border-bottom:none"';?>>
         <a href="javascript:void(0)" onclick="toggle_div('news_more',this);"><span><strong>NEWS</strong></span>
         <span class="right"><i class="glyphicon glyphicon-chevron-down"></i></span></a>
     </div>
@@ -151,13 +151,13 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
                 'summaryText'=>'',
             ));   */
          if($pages->itemCount>Yii::app()->params['articles_pers_page'])
-            echo "<a href='javascript:void(0);' class='btn btn-primary' id='load_more'>Load More</a>";
+            echo "<a href='javascript:void(0);' class='btn btn-loadmore' id='load_more'>Load More</a>";
         ?>
         <?php } ?>
     
     </div>
     <div class="clearfix"></div>
-    <div class="col-md-12 block_border" <?php if(count($model->member)==0)echo 'style="margin:0;border-bottom:none"';?>>
+    <div class="col-md-12 block_border toggle-div" <?php if(count($model->member)==0)echo 'style="margin:0;border-bottom:none"';?>>
         <a href="javascript:void(0)" onclick="toggle_div('members_more',this);"><span><strong>MEMBERS</strong></span>
         <span class="right"><i class="glyphicon glyphicon-chevron-down"></i></span></a>
     </div>
@@ -166,10 +166,13 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
     <?php
     if(count($model->member)>0)
     {
+        $i=0;
         foreach($model->member as $member)
         {
+            $i++;
         ?>
-            <div class="block_border col-md-6">
+            <div class="white" style="width: 49%;float:<?php if($i%2==1){?>left<?php }else{?>right<?php }?>;margin-bottom:15px;border-radius:5px;">
+            
             <?php
                     if(file_exists(Yii::app()->basePath.'/../images/frontend/thumb/'.$member->logo)&&$member->logo!='')
                     {
@@ -177,28 +180,34 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
                     }
                     else
                     {
-                        $img_url=Yii::app()->baseUrl.'/images/noimage.jpg';    
+                        $img_url=Yii::app()->baseUrl.'/images/blue.png';    
                     }
                  ?>
                 <div class="col-md-3">
                     <img class="img-circle" src="<?php echo $img_url;?>"/>
                 </div>
                 <div class="col-md-9">
-                    <?php echo ucfirst($member->fname." ".$member->lname);?>
+                    <div class="Members_name"><?php echo ucfirst($member->fname." ".$member->lname);?></div>
+                    <span class="results">5 Results</span>
+                    <div class="blue race-reviews">23 RACE REVIEWS</div>
                 </div>
-                
-            </div>   
+                <div class="clearfix"></div>
+            
+            </div>
+            
         <?php
         }
-        echo "<a href='javascript:void(0);' onclick='load_content(\"members_more\");' class='btn btn-primary'>Load More</a>";
+        
+        //echo "<a href='javascript:void(0);' onclick='load_content(\"members_more\");' class='btn btn-loadmore'>Load More</a>";
         
     }
     
     else
         echo "<div class='block_border blue'>No Resluts</div>";
     ?>
+    <div class="clearfix"></div> 
     </div>
-    <div class="col-md-12 block_border" <?php if(true)echo 'style="margin:0;border-bottom:none"';?>>
+    <div class="col-md-12 block_border toggle-div" <?php if(true)echo 'style="margin:0;border-bottom:none"';?>>
         <a href="javascript:void(0)" onclick="toggle_div('admin_more',this);"><span><strong>ADMINS</strong></span>
         <span class="right"><i class="glyphicon glyphicon-chevron-down"></i></span></a>
     </div>

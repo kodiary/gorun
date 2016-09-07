@@ -295,7 +295,7 @@ a.dropdownselect:hover{text-decoration:none;}
 .news_article{  background: #fff none repeat scroll 0 0;
     border: 1px solid #ccc;
     margin-bottom: 10px;
-    padding-top: 5px;}
+    padding-top: 20px;color:#555;}
 .news a, .news_more a{ text-decoration:none;}
 .block_border{background: #fff; border:1px solid #ccc;margin-bottom: 10px; padding:5px;}
 .event_img{width:380px;height:285px;margin-right:45px;}
@@ -351,4 +351,9 @@ a.dropdownselect:hover{text-decoration:none;}
 .website{font-size:18px;font-weight:600;margin-bottom:15px;}
 .website a:hover{text-decoration:none;}
 .red{color:#E20054;font-weight:600}
-.venue_detail{color:#000;font-size:16px;font-weight:600}
+.venue_detail{color:#000;font-size:16px;font-weight:600;}
+.toggle-div a{color:#444;font-size:18px;}
+.Members_name{font-weight: 600;color:#444;font-size:16px;}
+.results{display:inline-block;background:#262626;color:#FFF;padding:4px 12px;border-radius:4px;font-size:13px;font-weight:600;margin-top:3px;}
+.race-reviews{font-size:14px;font-weight:600;padding-top:5px;}
+.btn-loadmore{background:#FFF;border:#999 solid 2px;color:#777;font-weight:600;margin-bottom:10px;}
