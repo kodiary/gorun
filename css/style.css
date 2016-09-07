@@ -310,3 +310,45 @@ a.dropdownselect:hover{text-decoration:none;}
 .dist_lab{display:inline-block;width:80px;padding-bottom:5px;}
 .checkboxes input{margin-right:10px;margin-bottom:10px;}
 .checkboxes{padding-left:0!important;}
+.bcrumb a,.bcrumb span{text-transform: lowercase;padding: 5px 10px;display:inline-block;float:left;color:#666;font-size:13px;font-weight: 600;}
+.bcrumb i{float:left;}
+.b_sep{background:url('../images/bread.png') no-repeat;height:30px; width:11px;display:inline-block;}
+.detail_page{padding:10px 20px;}
+.detail_heading {
+    padding-top:10px;
+    color: #777;
+    font-size: 36px;
+    line-height: 25px;
+}
+.detail_heading span{font-size:15px;font-weight:600;}
+.wallpaper{background: #0af none repeat scroll 0 0;
+            height: 200px;
+            margin-bottom: 10px;
+            width: 100%;background:url('../images/no_img.jpg') no-repeat;}
+.btn-follow{background: #0198e9 none repeat scroll 0 0;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    width: 100%;}
+.mem_count{font-weight:600;margin-top:10px;}
+.follow_icons a{border: 5px solid #555;
+    border-radius: 69px;
+    color: #555;
+    display: inline-block;
+    font-size: 22px;
+    padding: 9px 10px;
+    text-align: center;
+    width: 60px;}
+.phone_number{font-weight:600;color:#555;font-size:16px;}
+.sharing a,.total_share{display:inline-block;height:30px;float:left;margin-right:5px;}
+.total_share{color:#007DCB;margin-left:10px;font-size:20px;font-weight:600;}
+.sharing a:hover{color:#FFF;text-decoration:none;}
+.btn-facebook{background:#31629A;color:#FFF;padding:7px 14px;font-size:13px;border-radius:2px;}
+.btn-twitter{background:#21C3F1;color:#FFF;padding:7px 14px;font-size:13px;border-radius:2px;}
+.btn-plus{background:url('../images/plus.png') no-repeat;width:30px;height:30px;}
+.sharing{margin-bottom:15px;}
+.padding-left-10{padding-left:10px;}
+.website{font-size:18px;font-weight:600;margin-bottom:15px;}
+.website a:hover{text-decoration:none;}
+.red{color:#E20054;font-weight:600}
+.venue_detail{color:#000;font-size:16px;font-weight:600}

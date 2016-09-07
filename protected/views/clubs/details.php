@@ -8,20 +8,17 @@
 );
 $this->widget('zii.widgets.CBreadcrumbs', array(
     'links'=>$this->breadcrumbs,
-    'htmlOptions'=>['style'=>'background:#fff; border:1px solid #ccc; margin-bottom:10px;']
+    'htmlOptions'=>['style'=>'background:#fff; border:1px solid #ccc; margin-bottom:10px;','class'=>'bcrumb']
 ));
 
 ?>
-    <div class="col-md-12 block_border">
-        <h1><?php echo $model->title;?></h1>
-        <strong><span class="blue"><?php echo Province::model()->getTitle($model->province).", ".$model->town;?></span> </strong>
-        <div class="wallpaper" style=" background: #0af none repeat scroll 0 0;
-            height: 200px;
-            margin-bottom: 10px;
-            width: 100%">
+    <div class="col-md-12 block_border detail_page">
+        <h1 class="detail_heading"><?php echo ucfirst($model->title);?><br /><span class="blue"><?php echo Province::model()->getTitle($model->province).", ".$model->town;?></span></h1>
+        
+        <div class="wallpaper" style="">
         </div>
         <div class="col-md-4" style="position: relative;  top: -100px; left:15px;text-align: center;">
-            <div class="club_img" style="margin-bottom: 5px; border: 1px solid #ccc !important;" >
+            <div class="club_img" style="margin-bottom: 5px;border:1px solid #eee;width:auto;height: auto;" >
              <?php
                 if(file_exists(Yii::app()->basePath.'/../images/clubs/thumb/'.$model->logo)&&$model->logo!='')
                 {
@@ -29,7 +26,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
                 }
                 else
                 {
-                    $img_url=Yii::app()->baseUrl.'/images/noimage.jpg';    
+                    $img_url=Yii::app()->baseUrl.'/images/no_logo.jpg';    
                 }
              ?>
                 <img src="<?php echo $img_url;?>"/>
@@ -39,15 +36,18 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
              <?php
              if(Yii::app()->user->isGuest || !$ismember)
              {?>
-                <a href="javascript:void(0);" class="btn btn-primary col-md-12 <?php if(!$ismember)echo "followclub";?>" <?php if(Yii::app()->user->isGuest){?> data-target="#loginModal" data-toggle="modal"<?php }?>>Follow +</a>
+                <a href="javascript:void(0);" class="btn btn-follow <?php if(!$ismember)echo "followclub";?>" <?php if(Yii::app()->user->isGuest){?> data-target="#loginModal" data-toggle="modal"<?php }?>>Follow +</a>
             <?php }?>
-            <h3><strong><?php echo $total;?> MEMBERS</strong></h3>
-            <div class="icons">
+            <h3 class="mem_count"><span><?php echo $total;?> MEMBERS</span></h3>
+            <div class="icons follow_icons">
                 <a href="#">
-                    <img alt="facebook" src="/gorun/images/facebook.png" />
+                    <span class="fa fa-facebook"></span>
                 </a>
                 <a href="#">
-                    <img alt="twitter" src="/gorun/images/twitter.png" />
+                    <span class="fa fa-twitter"></span>
+                </a>
+                <a href="#">
+                    <span class="fa fa-google-plus"></span>
                 </a>
             </div>
             <div class="activities">
@@ -58,16 +58,18 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
                 echo $activity."<br/>";
             }?>
             </div>
-            <div class="contact block_border">
-            <a href="#"><i class="fa fa-envelope-o"></i> CONTACT CLUB</a>
+            
+            <div class="contact" style="height: 40px;">
+            <a href="#" class="btn-submit" style="border: 2px solid #878787;color: #878787;font-size: 16px;"><i class="fa fa-envelope-o"></i> CONTACT CLUB</a>
             </div>
-            <div class="phone">
+            <div class="clearfix"></div>
+            <div class="phone_number">
             <?php
                 foreach($model->extras as $extra)
                 {
                     if($extra->type=='contact_number'){
             ?>
-                    <strong><?php echo ($extra->value);?></strong>
+                    <?php echo ($extra->value);?>
             <?php
                     }
                 }
@@ -76,19 +78,30 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
             </div>
         </div>
         <div class="col-md-8">
-            <?php echo $model->description;?>
-            <div class="blue"><a href="<?php echo $model->website;?>" target="_blank"><?php echo strtoupper(str_replace('http://','',$model->website));?></a></div>
-             <?php 
-            if($model->latitude!=0 && $model->longitude!=0)
-            {
-            ?>
-            <?php $this->renderPartial('_map',array('model'=>$model));?>
-            <div>
-                <span class="blue">ADDRESS -</span> <a href="http://www.google.com/maps/place/<?php echo $model->latitude.",".$model->longitude;?>" target="_blank">View on Google Maps</a>
-            
+            <div class="padding-left-10">
+                <div class="sharing">
+                    <a href="#" class="btn-facebook"><span class="fa fa-facebook"></span> Share on facebook</a>
+                    <a href="#" class="btn-twitter"><span class="fa fa-twitter"></span> Share on twitter</a>
+                    <a href="#" class="btn-plus"></a>
+                    <span class="total_share">667 Shares</span>
+                    <div class="clearfix"></div>
+                </div>
+                <?php echo $model->description;?>
+                <div class="website"><a href="<?php echo $model->website;?>" target="_blank"><?php echo strtoupper(str_replace('http://','',$model->website));?></a></div>
+                 <?php 
+                if($model->latitude!=0 && $model->longitude!=0)
+                {
+                ?>
+                <?php $this->renderPartial('_map',array('model'=>$model));?>
+                <div>
+                    <span class="blue"><strong>ADDRESS -</strong></span> <a href="http://www.google.com/maps/place/<?php echo $model->latitude.",".$model->longitude;?>" class="red" target="_blank">View on Google Maps</a>
+                
+                </div>
+                <?php }?>
+                <div class="venue_detail">
+                    <?php echo $model->venue;?>
+                </div>
             </div>
-            <?php }?>
-            <?php echo $model->venue;?>
         </div>
         <div class="clearfix"></div>
     </div>

@@ -87,7 +87,7 @@ class CBreadcrumbs extends CWidget
 	/**
 	 * @var string the separator between links in the breadcrumbs. Defaults to ' &raquo; '.
 	 */
-	public $separator=' &gt; ';
+	public $separator=' <i class="b_sep"></i> ';
 
 	/**
 	 * Renders the content of the portlet.
@@ -110,7 +110,7 @@ class CBreadcrumbs extends CWidget
 			else
 				$links[]='<span>'.($this->encodeLabel ? CHtml::encode($url) : $url).'</span>';
 		}
-		echo implode($this->separator,$links);
+		echo implode($this->separator,$links)."<div class='clearfix'></div>";
 		echo CHtml::closeTag($this->tagName);
 	}
 }
