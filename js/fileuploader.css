@@ -1,9 +1,13 @@
 .qq-uploader { position:relative; width: 100%;}
 
 .qq-upload-button {
-    display:block; /* or inline-block */
-    width: 250px; padding: 7px 0; text-align:center;    
-    border:2px solid #000;
+    border: 2px solid #000;
+    display: block;
+    font-size: 20px;
+    padding: 7px 0;
+    text-align: center;
+    text-transform: uppercase;
+    width: 250px;
 }
 .qq-uploader .fa{font-size:18px;color:#000;}
 .qq-upload-button-focus {outline:1px dotted black;}

@@ -308,4 +308,5 @@ a.dropdownselect:hover{text-decoration:none;}
 .submit_group .col-md-6{text-align:center;padding-top:15px;padding-bottom: 15px;}
 .btn-submit{border:2px solid #454545;color: #454545;padding: 10px 15px;width:85%;font-size:21px;font-weight:bold;}
 .dist_lab{display:inline-block;width:80px;padding-bottom:5px;}
-
+.checkboxes input{margin-right:10px;margin-bottom:10px;}
+.checkboxes{padding-left:0!important;}
