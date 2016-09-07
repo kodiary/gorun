@@ -4457,3 +4457,64 @@ Stack trace:
 REQUEST_URI=/gorun/clubs/follow
 HTTP_REFERER=http://localhost/gorun/clubs/bedfordview-athletics
 ---
+2016/09/05 08:48:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "undefined".' in E:\wamp\www\gorun\framework\web\CController.php:484
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CController.php(271): CController->missingAction('undefined')
+#1 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('undefined')
+#2 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('events/undefine...')
+#3 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/gorun/events/undefined
+HTTP_REFERER=http://localhost/gorun/events/create
+---
+2016/09/05 08:59:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "club".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('club')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/club
+---
+2016/09/05 08:59:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404.jpg".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/404.jpg')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/404.jpg
+HTTP_REFERER=http://localhost/gorun/club
+---
+2016/09/05 09:00:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/Jcrop.gif".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('css/Jcrop.gif')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/css/Jcrop.gif
+HTTP_REFERER=http://localhost/gorun/css/jquery.Jcrop.min.css
+---
+2016/09/06 16:04:02 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+' in E:\wamp\www\gorun\framework\db\CDbConnection.php:382
+Stack trace:
+#0 E:\wamp\www\gorun\framework\db\CDbConnection.php(331): CDbConnection->open()
+#1 E:\wamp\www\gorun\framework\db\CDbConnection.php(309): CDbConnection->setActive(true)
+#2 E:\wamp\www\gorun\framework\base\CModule.php(388): CDbConnection->init()
+#3 E:\wamp\www\gorun\framework\base\CApplication.php(431): CModule->getComponent('db')
+#4 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(615): CApplication->getDb()
+#5 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(2263): CActiveRecord->getDbConnection()
+#6 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(379): CActiveRecordMetaData->__construct(Object(Seo))
+#7 E:\wamp\www\gorun\protected\models\Seo.php(23): CActiveRecord::model('Seo')
+#8 E:\wamp\www\gorun\protected\components\CommonClass.php(485): Seo::model()
+#9 E:\wamp\www\gorun\protected\controllers\SiteController.php(34): CommonClass->getSeoByPage('home-page')
+#10 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): SiteController->actionIndex()
+#11 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#12 E:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#13 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('')
+#15 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('')
+#16 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#17 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/gorun/
+---
