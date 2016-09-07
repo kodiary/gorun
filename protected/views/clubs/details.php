@@ -1,10 +1,10 @@
 <div class="sidebar col-md-3">
-    <?php echo $this->renderPartial('/sidebar/_menu', false, true); ?>
+    <?php echo $this->renderPartial('/common/_clubs', ['prov_id'=>$model->province], true); ?>
 </div>
 <div class="col-md-9 right-content profile_detail">
 <?php
     $this->breadcrumbs=array('clubs',
-	$model->province,$model->title,
+	Province::model()->getTitle($model->province),$model->title,
 );
 $this->widget('zii.widgets.CBreadcrumbs', array(
     'links'=>$this->breadcrumbs,
@@ -14,7 +14,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 ?>
     <div class="col-md-12 block_border">
         <h1><?php echo $model->title;?></h1>
-        <strong><span class="blue"><?php echo $model->province.", ".$model->town;?></span> </strong>
+        <strong><span class="blue"><?php echo Province::model()->getTitle($model->province).", ".$model->town;?></span> </strong>
         <div class="wallpaper" style=" background: #0af none repeat scroll 0 0;
             height: 200px;
             margin-bottom: 10px;

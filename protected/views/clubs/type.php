@@ -1,11 +1,16 @@
 <div class="sidebar col-md-3">
-          <?php echo $this->renderPartial('/common/_clubs', false, true); ?>
+          <?php echo $this->renderPartial('/common/_clubs', ['prov_id'=>$province_id,'type'=>$type], true); ?>
         </div>
         <div class="col-md-9 right-content items">
             <?php
-            $this->breadcrumbs=array(
-        	$type." clubs",
-        );
+            if(isset($province_id))
+            {
+                $province = Province::model()->getTitle($province_id);
+                $bread = array($type." clubs",$province);
+            }
+            else
+               $bread = array($type." clubs");
+            $this->breadcrumbs=$bread;
         $this->widget('zii.widgets.CBreadcrumbs', array(
             'links'=>$this->breadcrumbs,
             'htmlOptions'=>['style'=>'background:#fff; border:1px solid #ccc; margin-bottom:10px;']
@@ -13,8 +18,9 @@
         
         ?>
         
-            <h2><?php echo ucfirst($type);?> Clubs, All Provinces</h2>
+            <h2><?php echo ucfirst($type);?> Clubs, <?php echo (isset($province_id))?$province:'All Provinces';?></h2>
             <?php
+            if(count($dataProvider)>0){
              $this->widget('CLinkPager', array(
             'pages' => $pages,
             'htmlOptions'=>['style'=>'display:none'],
@@ -23,17 +29,29 @@
                 
                 ?>
             <div class="listing">
-                <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/events/noimg.png"/></div>
+                <div class="img">
+                <?php
+                    if(file_exists(Yii::app()->basePath.'/../images/clubs/thumb/'.$club->logo)&&$club->logo!='')
+                    {
+                        $img_url=Yii::app()->baseUrl.'/images/clubs/thumb/'.$club->logo;
+                    }
+                    else
+                    {
+                        $img_url=Yii::app()->baseUrl.'/images/noimage.jpg';    
+                    }
+                 ?>
+                    <a href="<?php echo Yii::app()->baseUrl;?>/clubs/<?php echo $club->slug;?>"><img src="<?php echo $img_url; ?>" width="90" height="90"/></a>
+                </div>
                 <div class="txt">
                     <h3><?php echo $club->title;?></h3>
                     <span class="datetime"><?php echo $club->venue;?></span> 
-                    <span class="racetag"><?php echo $club->province;?></span>
+                    <span class="racetag"><?php echo Province::model()->getAbbrivation($club->province);?></span>
                     <div class="clearfix"></div>
                     <?php 
                     $types = explode(',',substr($club->types, 0 ,(strlen($club->types)-1)));
                     foreach($types as $type)
                     {?>
-                        <span class="distance"><?php echo $type;?></span>    
+                        <a href="<?php echo Yii::app()->baseUrl.'/clubs/type/'.str_replace(' ','_',$type);?>"><span class="distance"><?php echo $type;?></span></a>    
                     <?php
                     }?>
                     
@@ -43,6 +61,9 @@
             <?php }
             if($pages->itemCount>Yii::app()->params['articles_pers_page'])
             echo "<a href='javascript:void(0);' class='btn btn-primary' id='load_more'>Load More</a>";
+            }
+            else
+                echo "No Results Found.";
             ?>
             
         </div>

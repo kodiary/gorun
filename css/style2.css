@@ -1,0 +1,18 @@
+.province-list
+{
+    background: #fff none repeat scroll 0 0;
+    color: #555;
+    display: block;
+    font-size: 16px;
+    padding: 8px 8px 8px 20px;
+    text-decoration: none;
+    border-bottom: 1px solid #ccc;
+    
+}
+
+.province-list:hover{text-decoration:none;}
+.pink{ color: #df0269; font-weight:bold ;}
+.province-active
+{
+    background-color: #ccc;
+}

@@ -106,9 +106,21 @@ class Province extends CActiveRecord
     {
         $prov = self::model()->findByPk($prov_id);
         $title = $prov->name;
-        $letters = preg_replace('/(\B.|\s+)/','',$title); 
+        $letters = preg_replace('/(\B.|\s+)/','',$title);
+        if(strlen($letters)==1)
+        $letters.=$letter."P";
         return $letters;
         
         
+    }
+    public function getTitle($prov_id)
+    {
+        $prov = self::model()->findByPk($prov_id);
+        return $prov->name;
+    }
+    public function getIdbySlug($slug)
+    {
+         $prov = self::model()->findByAttributes(['slug'=>$slug]);
+        return $prov->id;
     }
 }

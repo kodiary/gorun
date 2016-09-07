@@ -16,7 +16,7 @@
                     <ul class="option">
                     <?php $provinces = Province::model()->findAll();
                         foreach($provinces as $province){?>
-                            <option value="<?php echo $province->id;?>"><?php echo $province->name;?></option>
+                            <li value="<?php echo $province->id;?>"><a href="javascript:void(0);"><?php echo $province->name;?></a></li>
                     <?php }?>
                     </ul>
                 </div>
@@ -24,5 +24,10 @@
                 <div class="gap"></div>
                 <a href="javascript:void(0)" class="btn btn-inverse btn-lg">Search</a>
             </div>
-            <a href="#" class="calendar-view">Calendar View &nbsp; <span class="fa fa-calendar"></span></a>
+            <?php
+            foreach($provinces as $prov)
+            {?>
+            
+                <a href="<?php echo Yii::app()->baseUrl;?>/clubs/type/<?php echo (isset($type))?$type:'';?>?province=<?php echo $prov->slug;?>" class="province-list <?php echo (isset($prov_id)&& $prov_id==$prov->id)?'province-active':'';?>"><?php echo $prov->name;?> <span class="pink"><?php echo Club::model()->countByProvince($prov->id);?></span></a>
+            <?php }?>
             <a href="<?php echo Yii::app()->request->baseUrl;?>/clubs" class="submit-event">Add your Club &nbsp; <span class="fa fa-plus"></span></a>

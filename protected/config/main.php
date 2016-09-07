@@ -128,8 +128,8 @@ return array(
             'clubs/details'=>'clubs/details',
             'clubs/unfollow'=>'clubs/unfollow',
             'clubs/follow'=>'clubs/follow',
-            'clubs/type'=>'clubs/type',
             'clubs/type/<match>'=>'clubs/type/match/<match>',
+            'clubs/type'=>'clubs/type',
             'clubs/<slug>'=>'clubs/details/slug/<slug>',
             
             

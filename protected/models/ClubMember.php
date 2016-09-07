@@ -74,10 +74,17 @@ class ClubMember extends CActiveRecord
     
     public function ismember($cid,$member_id)
     {
-        if(ClubMember::model()->findByAttributes(['club_id'=>$cid,'member_id'=>$member_id]))
+        if(self::model()->findByAttributes(['club_id'=>$cid,'member_id'=>$member_id]))
             return true;
         else
             return false;
+    }
+    
+     public function totalMember($cid)
+    {
+        $count = self::model()->countByAttributes (['club_id'=>$cid]);
+        return $count;
+        
     }
 
  }

@@ -4976,3 +4976,139 @@ Stack trace:
 REQUEST_URI=/gorun/clubs/type?match=running&page=2
 HTTP_REFERER=http://localhost/gorun/clubs/type/running
 ---
+2016/09/07 10:59:38 [error] [exception.CException] exception 'CException' with message 'ClubsController cannot find the requested view "/common/_club".' in F:\wamp\www\gorun\framework\web\CController.php:879
+Stack trace:
+#0 F:\wamp\www\gorun\protected\views\clubs\details.php(2): CController->renderPartial('/common/_club', false, true)
+#1 F:\wamp\www\gorun\framework\web\CBaseController.php(127): require('F:\\wamp\\www\\gor...')
+#2 F:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('F:\\wamp\\www\\gor...', Array, true)
+#3 F:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('F:\\wamp\\www\\gor...', Array, true)
+#4 F:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('details', Array, true)
+#5 F:\wamp\www\gorun\protected\controllers\ClubsController.php(182): CController->render('details', Array)
+#6 [internal function]: ClubsController->actionDetails('bedfordview-ath...')
+#7 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#8 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/details/s...')
+#14 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/gorun/clubs/bedfordview-athletics
+HTTP_REFERER=http://localhost/gorun/clubs/type/running
+---
+2016/09/07 11:05:31 [error] [exception.CException] exception 'CException' with message 'Property "CDbCriteria.club_id" is not defined.' in F:\wamp\www\gorun\framework\base\CComponent.php:174
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\schema\CDbCriteria.php(153): CComponent->__set('club_id', '18')
+#1 F:\wamp\www\gorun\framework\db\schema\CDbCommandBuilder.php(462): CDbCriteria->__construct(Array)
+#2 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1532): CDbCommandBuilder->createCriteria(Array, Array)
+#3 F:\wamp\www\gorun\protected\models\ClubMember.php(85): CActiveRecord->count(Array)
+#4 F:\wamp\www\gorun\protected\controllers\ClubsController.php(182): ClubMember->totalMember('18')
+#5 [internal function]: ClubsController->actionDetails('bedfordview-ath...')
+#6 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#7 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#8 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#10 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/details/s...')
+#13 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/gorun/clubs/bedfordview-athletics
+HTTP_REFERER=http://localhost/gorun/clubs/type/running
+---
+2016/09/07 12:02:18 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '6 (province)' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE (types LIKE :ycp0) 6 (province).
+in F:\wamp\www\gorun\protected\controllers\ClubsController.php (246)
+in F:\wamp\www\gorun\index.php (13)
+2016/09/07 12:02:18 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '6 (province)' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE (types LIKE :ycp0) 6 (province)' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1536): CDbCommand->queryScalar()
+#2 F:\wamp\www\gorun\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 F:\wamp\www\gorun\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 F:\wamp\www\gorun\framework\base\CComponent.php(112): CDataProvider->getTotalItemCount()
+#5 F:\wamp\www\gorun\protected\controllers\ClubsController.php(246): CComponent->__get('totalItemCount')
+#6 [internal function]: ClubsController->actionType('running')
+#7 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#8 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('type')
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/type/matc...')
+#14 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/gorun/clubs/type/running?province=6
+---
+2016/09/07 12:37:26 [error] [exception.CException] exception 'CException' with message 'Province and its behaviors do not have a method or closure named "getId".' in F:\wamp\www\gorun\framework\base\CComponent.php:266
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(226): CComponent->__call('getId', Array)
+#1 F:\wamp\www\gorun\protected\controllers\ClubsController.php(243): CActiveRecord->__call('getId', Array)
+#2 F:\wamp\www\gorun\protected\controllers\ClubsController.php(243): Province->getId('kwazulu-natal')
+#3 [internal function]: ClubsController->actionType('Running')
+#4 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#5 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#6 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('type')
+#10 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/type/matc...')
+#11 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/gorun/clubs/type/Running?province=kwazulu-natal
+HTTP_REFERER=http://localhost/gorun/clubs/type/running
+---
+2016/09/07 12:37:35 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=.
+in F:\wamp\www\gorun\protected\controllers\ClubsController.php (252)
+in F:\wamp\www\gorun\index.php (13)
+2016/09/07 12:37:35 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1536): CDbCommand->queryScalar()
+#2 F:\wamp\www\gorun\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 F:\wamp\www\gorun\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 F:\wamp\www\gorun\framework\base\CComponent.php(112): CDataProvider->getTotalItemCount()
+#5 F:\wamp\www\gorun\protected\controllers\ClubsController.php(252): CComponent->__get('totalItemCount')
+#6 [internal function]: ClubsController->actionType('Running')
+#7 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#8 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('type')
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/type/matc...')
+#14 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/gorun/clubs/type/Running?province=kwazulu-natal
+HTTP_REFERER=http://localhost/gorun/clubs/type/running
+---
+2016/09/07 12:38:30 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=.
+in F:\wamp\www\gorun\protected\controllers\ClubsController.php (252)
+in F:\wamp\www\gorun\index.php (13)
+2016/09/07 12:38:30 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1536): CDbCommand->queryScalar()
+#2 F:\wamp\www\gorun\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 F:\wamp\www\gorun\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 F:\wamp\www\gorun\framework\base\CComponent.php(112): CDataProvider->getTotalItemCount()
+#5 F:\wamp\www\gorun\protected\controllers\ClubsController.php(252): CComponent->__get('totalItemCount')
+#6 [internal function]: ClubsController->actionType('Running')
+#7 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#8 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('type')
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/type/matc...')
+#14 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/gorun/clubs/type/Running?province=kwazulu-natal
+HTTP_REFERER=http://localhost/gorun/clubs/type/running
+---

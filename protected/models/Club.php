@@ -383,4 +383,9 @@ class Club extends CActiveRecord
         $criteria->order = 't.name asc';
         return Company::model()->findAll($criteria);
     }
+    public function countByProvince($prov_id)
+    {
+        $count = self::model()->countByAttributes(['province'=>$prov_id]);
+        return $count;
+    }
 }

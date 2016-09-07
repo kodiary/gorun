@@ -179,6 +179,7 @@ class ClubsController extends Controller
             //$dataProvider= new CActiveDataProvider('Articles',array('criteria'=>$criteria));
         $dataProvider = Articles::model()->findAll($criteria); 
         $ismember = ClubMember::model()->ismember($club->id,Yii::app()->user->id);
+        $total_member = ClubMember::model()->totalMember($club->id);
         $this->render('details', array('model'=>$club,'total'=>$total_member,'dataProvider'=>$dataProvider,'pages'=>$pages,'ismember'=>$ismember));
         
        
@@ -226,11 +227,27 @@ class ClubsController extends Controller
     
     public function actionType($match="")
     {
+        //die($match);
         Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/jquery.infinitescroll.js"));
-        $match = ucfirst($match);
-        $match = addcslashes($match, '%_');
+        
         $criteria = new CDbCriteria;
-        $criteria->addSearchCondition('types',$match);
+        if(isset($match) && $match!='')
+        {
+            $match = str_replace('_',' ',$match);
+            $match = ucfirst($match);
+            $match = addcslashes($match, '%_');
+            $criteria->addSearchCondition('types',$match);
+           
+        }
+        
+        if(isset($_GET['province']))
+        {
+            $province = $_GET['province'];
+            $prov = Province::model()->getIdbySlug($province);
+            
+            $criteria->condition= 'province='.$prov;
+        }
+            
         //$criteria->order = 'publish_date DESC,t.id DESC';
         $pages='';
        
@@ -240,8 +257,8 @@ class ClubsController extends Controller
         $pages->applyLimit($criteria);
         
         $dataProvider = Club::model()->findAll($criteria); 
-        $clubs = Club::model()->findAll('types LIKE :match',[':match'=>"%$match%"]);
-        $this->render('type',['clubs'=>$clubs,'type'=>$match,'dataProvider'=>$dataProvider,'pages'=>$pages]);
+        //$clubs = Club::model()->findAll('types LIKE :match',[':match'=>"%$match%"]);
+        $this->render('type',['clubs'=>$clubs,'type'=>$match,'dataProvider'=>$dataProvider,'pages'=>$pages,'province_id'=>$prov]);
     }
     
  }
