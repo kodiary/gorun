@@ -16,3 +16,11 @@
 {
     background-color: #ccc;
 }
+.profile_cover
+{
+   background:#FFF;border:5px solid #DDD;width:760px;height:230px;float:left;
+}
+.profile_cover img
+{
+   width:760px;height:220px;
+}

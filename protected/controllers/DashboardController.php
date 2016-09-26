@@ -60,9 +60,13 @@ class DashboardController extends Controller
             $member->username = $_POST['username'];
             $member->mobile = $_POST['mobile'];
             $member->sa_identity_no = $_POST['sa_identity_no'];
-            $member->championchip = $_POST['championchip'];
-            $member->tracetec = $_POST['tracetec'];
+            $member->facebook = $_POST['facebook'];
+            $member->twitter = $_POST['twitter'];
+            $member->google = $_POST['google'];
+            $member->detail = $_POST['detail'];
             $member->gender = $_POST['gender'];
+            $member->suburb = $_POST['suburb'];
+            $member->province = $_POST['province'];
             
             if($_POST['logo']!='')
             {
@@ -77,10 +81,49 @@ class DashboardController extends Controller
                 @unlink(Yii::app()->basePath."/../images/temp/thumb/".$_POST['logo']);
                 $member->logo = $_POST['logo'];                
             }
+            if($_POST['cover']!='')
+            {
+                $logo = explode("?rand",$_POST['cover']);
+                $_POST['cover'] = $logo[0];
+                @copy(Yii::app()->basePath.'/../images/temp/full/'.$_POST['cover'],Yii::app()->basePath.'/../images/frontend/full/'.$_POST['cover']);
+                @copy(Yii::app()->basePath.'/../images/temp/main/'.$_POST['cover'],Yii::app()->basePath.'/../images/frontend/main/'.$_POST['cover']);
+                @copy(Yii::app()->basePath.'/../images/temp/thumb/'.$_POST['cover'],Yii::app()->basePath.'/../images/frontend/thumb/'.$_POST['cover']);
+                
+                @unlink(Yii::app()->basePath."/../images/temp/full/".$_POST['cover']);
+                @unlink(Yii::app()->basePath."/../images/temp/main/".$_POST['cover']);
+                @unlink(Yii::app()->basePath."/../images/temp/thumb/".$_POST['cover']);
+                $member->cover = $_POST['cover'];                
+            }
             //var_dump($member);
             if($member->save())
             {
+                $id = $member->id;
+                MemberExtra::model()->deleteAllByAttributes(['member_id'=>$id]);
+                foreach($_POST['championchip'] as $number)
+                {
+                    if($number != '')
+                    {
+                        $memberExtra = new MemberExtra;
+                        $memberExtra->type = 'championchip';
+                        $memberExtra->value= $number;
+                        $memberExtra->member_id = $id;
+                        $memberExtra->save();
+                        unset($memberExtra);
+                    }
+                }
                 
+                foreach($_POST['tracetec'] as $number)
+                {
+                    if($number != "")
+                    {
+                        $memberExtra = new MemberExtra;
+                        $memberExtra->type = 'tracetec';
+                        $memberExtra->value= $number;
+                        $memberExtra->member_id = $id;
+                        $memberExtra->save();
+                        unset($memberExtra);
+                    }
+                }
                 Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - Your details has been updated successfully!');
             }
             

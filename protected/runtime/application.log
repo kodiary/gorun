@@ -5112,3 +5112,150 @@ Stack trace:
 REQUEST_URI=/gorun/clubs/type/Running?province=kwazulu-natal
 HTTP_REFERER=http://localhost/gorun/clubs/type/running
 ---
+2016/09/19 14:02:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "undefined".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('undefined')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/undefined
+HTTP_REFERER=http://localhost/gorun/dashboard
+---
+2016/09/19 17:31:52 [error] [exception.CException] exception 'CException' with message 'Property "Member.cover" is not defined.' in F:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('cover')
+#1 F:\wamp\www\gorun\protected\views\gallery\_addImagecover.php(58): CActiveRecord->__get('cover')
+#2 F:\wamp\www\gorun\framework\web\CBaseController.php(127): require('F:\\wamp\\www\\gor...')
+#3 F:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('F:\\wamp\\www\\gor...', Array, true)
+#4 F:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('F:\\wamp\\www\\gor...', Array, true)
+#5 F:\wamp\www\gorun\protected\views\dashboard\index.php(211): CController->renderPartial('application.vie...', Array)
+#6 F:\wamp\www\gorun\framework\web\CBaseController.php(127): require('F:\\wamp\\www\\gor...')
+#7 F:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('F:\\wamp\\www\\gor...', Array, true)
+#8 F:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('F:\\wamp\\www\\gor...', Array, true)
+#9 F:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('index', Array, true)
+#10 F:\wamp\www\gorun\protected\controllers\DashboardController.php(93): CController->render('index', Array)
+#11 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): DashboardController->actionIndex()
+#12 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#14 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('index')
+#16 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('dashboard/index')
+#17 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/gorun/dashboard
+---
+2016/09/19 20:21:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/temp/full/undefined".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/temp/ful...')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/temp/full/undefined
+HTTP_REFERER=http://localhost/gorun/dashboard
+---
+2016/09/19 20:21:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/temp/full/undefined".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/temp/ful...')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/temp/full/undefined
+---
+2016/09/19 20:38:01 [error] [exception.CException] exception 'CException' with message 'image invalid left' in F:\wamp\www\gorun\protected\extensions\image\Image.php:216
+Stack trace:
+#0 F:\wamp\www\gorun\protected\controllers\GalleryController.php(371): Image->crop(760, 220, '55', '-109')
+#1 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): GalleryController->actionCrop()
+#2 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#3 F:\wamp\www\gorun\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#4 F:\wamp\www\gorun\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#5 F:\wamp\www\gorun\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#6 F:\wamp\www\gorun\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#7 F:\wamp\www\gorun\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#8 F:\wamp\www\gorun\framework\web\CController.php(292): CFilterChain->run()
+#9 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('crop')
+#11 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('gallery/crop')
+#12 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/gorun/gallery/crop
+HTTP_REFERER=http://localhost/gorun/dashboard
+---
+2016/09/20 11:20:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/Jcrop.gif".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('css/Jcrop.gif')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/css/Jcrop.gif
+HTTP_REFERER=http://localhost/gorun/css/jquery.Jcrop.min.css
+---
+2016/09/20 16:42:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/Jcrop.gif".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('css/Jcrop.gif')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/css/Jcrop.gif
+HTTP_REFERER=http://localhost/gorun/css/jquery.Jcrop.min.css
+---
+2016/09/21 18:13:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/Jcrop.gif".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('css/Jcrop.gif')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/css/Jcrop.gif
+HTTP_REFERER=http://localhost/gorun/css/jquery.Jcrop.min.css
+---
+2016/09/21 18:16:21 [error] [exception.CException] exception 'CException' with message 'Property "Member.subrub" is not defined.' in F:\wamp\www\gorun\framework\base\CComponent.php:174
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(160): CComponent->__set('subrub', 'asdas sdas')
+#1 F:\wamp\www\gorun\protected\controllers\DashboardController.php(68): CActiveRecord->__set('subrub', 'asdas sdas')
+#2 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): DashboardController->actionIndex()
+#3 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#4 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#5 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('index')
+#7 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('dashboard/index')
+#8 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/gorun/dashboard
+HTTP_REFERER=http://localhost/gorun/dashboard
+---
+2016/09/21 21:41:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/Jcrop.gif".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('css/Jcrop.gif')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/css/Jcrop.gif
+HTTP_REFERER=http://localhost/gorun/css/jquery.Jcrop.min.css
+---
+2016/09/23 19:08:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/Jcrop.gif".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('css/Jcrop.gif')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/css/Jcrop.gif
+HTTP_REFERER=http://localhost/gorun/css/jquery.Jcrop.min.css
+---
+2016/09/23 19:12:51 [error] [exception.CException] exception 'CException' with message 'Property "Club.cover" is not defined.' in F:\wamp\www\gorun\framework\base\CComponent.php:174
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(160): CComponent->__set('cover', 'file_1474650652...')
+#1 F:\wamp\www\gorun\protected\controllers\ClubsController.php(98): CActiveRecord->__set('cover', 'file_1474650652...')
+#2 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): ClubsController->actionCreate()
+#3 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#4 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#5 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('create')
+#7 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/create')
+#8 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/gorun/clubs/create
+HTTP_REFERER=http://localhost/gorun/clubs/
+---

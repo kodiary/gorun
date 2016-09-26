@@ -14,13 +14,40 @@
             <form action="<?php echo Yii::app()->request->baseUrl;?>/clubs/create" id="club-detail" method="post">
                 
                 <div class="form-group white">
-                    <label class="col-md-12">Club Name</label>
+                    <label class="col-md-12">CLUB NAME</label>
                     <div class="col-md-12"><input type="text" class="form-control" placeholder="Club Name..." name="title" value="<?php //echo $member->fname;?>" /></div>
                     <div class="clearfix"></div>
                 </div>
-                <div class="form-group white">
-                    <label class="col-md-12">Club Description<br /><span class="blue">Provide a description of the club</span></label>
+                  <div class="form-group white">
+
                     
+                    <label class="col-md-12">CLUB ACTIVITIES<br /></label>
+                   
+                    <div class="col-md-12">
+                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Running" />Running</div>
+                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Canoe" />Canoe</div>
+                        <div class="clearfix"></div>
+                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Swimming" />Swimming</div>
+                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Cross Country" />Cross Country</div>
+                        <div class="clearfix"></div>
+                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Cycling" />Cycling</div>
+                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Dog Allowed" />Dogs Allowed</div>
+                        <div class="clearfix"></div>
+                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Duathlon" />Duathlon</div>
+                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Fun Run" />Fun Run</div>
+                        <div class="clearfix"></div>
+                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Mountain Biking" />Mountain Biking</div>
+                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Road Run" />Road Run </div>
+                        <div class="clearfix"></div>
+                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Triathlon" />Triathlon</div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="types"></div>
+                </div>
+                <div class="form-group white">
+                    <label class="col-md-12">CLUB DETAILS<br /></label>
+                    <div class="col-md-12">Tell us about your club.Limited to 600 characters<span class="blue">-You have <span class="count_letter">600</span> left</span></div>
                     <div class="col-md-12"><textarea class="form-control description" name="description"><?php echo $model->description;?></textarea></div>
                     <div class="clearfix"></div>
                     <div class="club_desc"></div> 
@@ -81,51 +108,91 @@
                     </div>
                     <div class="clearfix"></div>
                 </div>
-                                                                                                                                                                                                                                                                                                                                                                                
-                
-                
-                <div class="form-group white">
-
+                 <div class="form-group white">
+                    <h2 class="col-md-12">Cover Photo <span class="grey">(Recomended)</span></h2>
                     
-                    <label class="col-md-12">Club Type<br /></label>
-                   
-                    <div class="col-md-12">
-                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Running" />Running</div>
-                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Canoe" />Canoe</div>
-                        <div class="clearfix"></div>
-                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Swimming" />Swimming</div>
-                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Cross Country" />Cross Country</div>
-                        <div class="clearfix"></div>
-                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Cycling" />Cycling</div>
-                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Dog Allowed" />Dogs Allowed</div>
-                        <div class="clearfix"></div>
-                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Duathlon" />Duathlon</div>
-                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Fun Run" />Fun Run</div>
-                        <div class="clearfix"></div>
-                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Mountain Biking" />Mountain Biking</div>
-                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Road Run" />Road Run </div>
-                        <div class="clearfix"></div>
-                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Triathlon" />Triathlon</div>
-                        <div class="clearfix"></div>
+                     <div class="col-md-12 profilepic">
+                        <div class="profile_cover" id="upimage_1">
+                        <?php
+                        if($member->cover && (Yii::app()->basePath.'/../images/frontend/thumb/'.$member->cover))
+                        {
+                            $img_url=Yii::app()->baseUrl.'/images/frontend/thumb/'.$member->cover;
+                            echo '<img src="'.$img_url.'"/>';
+                        }
+                        
+                        ?>
+                            
+                        </div>
+                    <div class="col-md-12 picact">
+                    <?php echo $this->renderPartial('application.views.gallery._addImagecover',array('member'=>$member,'type'=>'member_cover','id'=>1)); ?>
+                        
+                      
+            <?php
+                        
+            //crop button
+             echo CHtml::ajaxButton('Crop',
+                        $this->createUrl('gallery/cropPhoto?height=220&width=760&crop_cover=cover'),
+                         array( //ajax options
+                         'data'=>array('fileName'=>"js:function(){ return $('.uploaded_cover').val()}",'id'=>$member->id),
+                         'type'=>'POST',
+                        'success'=>"js:function(data){
+                                    if(data!=''){
+                                        $('#cropModal').html(data).dialog('open');
+                                        $('.ui-dialog-titlebar-close').hide();
+                                         return false;
+                                    }
+                                    else
+                                        alert('No Image selected');
+                                    }",
+                        'complete'=>"js:function(){
+                                      $('#crop1_".$member->id."').val('Crop');
+                                    }",
+                        ),
+                        array('id'=>'crop1_'.$member->id,'class'=>'btn btn-default','onclick'=>'$("#crop1_'.$member->id.'").val("loading...");')//html options
+            );
+            ?><br />
+            
+                        
+                        <a href="javascript:void(0)" class="btn btn-danger" onclick="return confirm_delete('Are you sure that you want to remove the image?'); ">Remove</a><br />
                     </div>
-                    <div class="clearfix"></div>
-                    <div class="types"></div>
+                        
+                    
+                   
                 </div>
-                
+                 <div class="clearfix"></div>
+            </div>
+    <table id="address" style="display: none;">
+      <tr>
+        <td class="label">Street address</td>
+        <td class="slimField"><input class="field" id="street_number"
+              disabled="true"></input></td>
+        <td class="wideField" colspan="2"><input class="field" id="route"
+              disabled="true"></input></td>
+      </tr>
+      <tr>
+        <td class="label">City</td>
+        <td class="wideField" colspan="3"><input class="field" id="locality"
+              disabled="true"></input></td>
+      </tr>
+      <tr>
+        <td class="label">State</td>
+        <td class="slimField"><input class="field"
+              id="administrative_area_level_1" disabled="true"></input></td>
+        <td class="label">Zip code</td>
+        <td class="wideField"><input class="field" id="postal_code"
+              disabled="true"></input></td>
+      </tr>
+      <tr>
+        <td class="label">Country</td>
+        <td class="wideField" colspan="3"><input class="field"
+              id="country" disabled="true"></input></td>
+      </tr>
+    </table>
+
                 <div class="form-group white">
                     <label class="col-md-12">Location<br /><span class="blue">Where is this club located?</span></label>
-                    <div class="form-group">
-                        <div class="col-md-3">Club Address/Venue<span class="required">*</span></div>
-                        <div class="col-md-7"><input type="text" id="Company_street_add" class="form-control" placeholder="Street Address" name="street_address" value="<?php //echo $member->fname;?>" /></div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-3">City / Town <span class="required">*</span></div>
-                        <div class="col-md-7"><input type="text" id="city" class="form-control" placeholder="Suburb Town or City" name="city" value="<?php //echo $member->fname;?>" onBlur='codeAddress();' /></div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-3">Province<span class="required">*</span></div>
+                      <div class="form-group">
+                        <div class="col-md-3">Your location<span class="required">*</span></div>
                         <div class="col-md-7">
                             <select name="province" class="form-control" onchange='codeAddress();' id="Company_province">
                                 <option value="">Select Province</option>
@@ -138,16 +205,33 @@
                         </div>
                         <div class="clearfix"></div>
                     </div>
+                    
+                  
                     <div class="form-group">
+                        <div class="col-md-3">City / Town <span class="required">*</span></div>
+                        <div class="col-md-7"><input type="text" id="city" class="form-control" placeholder="Suburb Town or City" name="city" value="<?php //echo $member->fname;?>" onBlur='codeAddress();' /></div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                <div class="white">
+                <div class="form-group ">
+                    <label class="col-md-12">CLUB LOCATION (REQUIRED)<br />
+                    <span class="blue">Input the venue name or address below to find it on Google Map.Drag pin to desired location if required.</span></label>
+                    <div class="col-md-10"><input type="text" id="Company_street_add" class="form-control" placeholder="Enter Venue Name or Street Address" onFocus="geolocate()" name="street_address" value="<?php //echo $member->fname;?>" /></div>
+                    
+                    <div class="clearfix"></div>
+                
+                    <div class="form-group" style="display: none;">
                     	<div class="col-md-3">Coordinates</div>
                         <div class="controls col-md-7">
                             <div class="sn_group">
                             	<div class="s1 col-md-3 padding-left-0">
-                                    <input type="text" class="form-control" id="Company_latitude" value="<?php echo $model->latitude;?>" placeholder="Latitude" style="width:127px;" onblur="updateMapPinPosition()"/>
+                                    <input type="text" class="form-control" name="latitude" id="Company_latitude" value="<?php echo $model->latitude;?>" placeholder="Latitude" style="width:127px;" onblur="updateMapPinPosition()"/>
                                 <?php //echo $form->textField($model, 'latitude',array('placeholder'=>'Latitude','style'=>'','onBlur'=>'updateMapPinPosition();') );?>
                                 </div>
                                 <div class="s2 col-md-3">
-                                    <input type="text" class="form-control" id="Company_longitude" value="<?php echo $model->longitude;?>" placeholder="Longitude" style="width:125px;margin-left:50px;;" onblur="updateMapPinPosition()"/>
+                                    <input type="text" class="form-control" name="longitude" id="Company_longitude" value="<?php echo $model->longitude;?>" placeholder="Longitude" style="width:125px;margin-left:50px;;" onblur="updateMapPinPosition()"/>
                                 <?php //echo $form->textField($model, 'longitude',array('placeholder'=>'Longitude','style'=>'width:125px;margin-left:50px;','onBlur'=>'updateMapPinPosition();') ); ?>
                                 </div>
                                 <div class="clear"></div>
@@ -157,10 +241,16 @@
                     </div>
                 
                     <input type="hidden" name="formattedAddress" id="formattedAddress" value=""/>
- 
+                    <div class="clearfix"></div>
+                </div>
+                  <div class="form-group"> 
                      <!-- gmap -->
                     <div id="map_canvas" style="width: 100%; height: 300px;"></div>
+                    <div class="clearfix"></div>
+                  </div>
                 </div>
+                
+              
                  
                 <div class="form-group white">
                     <label class="col-md-12">Time Trials<br /><span class="blue">Does your club have a weekly trial(Optional)</span></label>
@@ -250,7 +340,11 @@
                         
                         </div>
                     </div>
-                    <hr />
+                    <div class="clearfix"></div>
+                    </div>
+                    <div class="white">
+                    <label class="col-md-12">SOCIAL MEDIA LINKS (OPTIONAL)<br />
+                    <span class="blue">These will be displayed as icons on your club page an link to your social media pages</span></label>
                     <div class="form-group">
                         <div class="col-md-3">Website </div>
                         <div class="col-md-7"><input type="url" class="form-control" placeholder="http://" name="website" value="<?php //echo $member->fname;?>" /></div>
@@ -270,6 +364,11 @@
                     
                     </div>
                     
+                    <div class="clearfix"></div>
+                </div>
+                <div class="white">
+                    <label class="col-md-12">Visibility<br />
+                    <span class="blue">Events are subject to approval before going live and visible to public.</span></label>
                     <div class="clearfix"></div>
                 </div>
                 

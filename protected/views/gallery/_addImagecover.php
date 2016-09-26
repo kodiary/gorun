@@ -1,14 +1,12 @@
 <script type="text/javascript">
 $(function(){
-   $('.qq-upload-button').each(function(){
-        var index=$(this).attr('id');
-        initiateUpload(index);
-   });   
+    initiateUpload1('uploadControl1');
 });
-function initiateUpload(index)
+
+function initiateUpload1(index)
 {
     //var index=0;
-    new qq.FileUploader({'element':document.getElementById('uploadFile'+index),
+    new qq.FileUploader({'element':document.getElementById('uploadFile1'),
     'debug':true,
     'multiple':false,
 	'action':'<?php echo $this->createUrl('gallery/upload?type='.$type)?>',
@@ -18,17 +16,17 @@ function initiateUpload(index)
     'onSubmit':function()
             {
                 //$(this).http://github.com/valums/file-uploader
-                $('.uploadControl').text('Uploading...');
+                $('.uploadControl1').text('Uploading...');
             },
     'onComplete':function(id, fileName, responseJSON){
             if(responseJSON.success)
             {
                 //if(index==0)
                 //{
-                    $('#upimage_'+index).html('<img src="'+responseJSON.imageThumb+'"/>');
-                    $('.uploaded_image').val(responseJSON.filename);
-                    $('.main_logo').val(responseJSON.filename);
-                    $('#Gallery_'+index+'_name').val(responseJSON.filename);    
+                    $('#upimage_1').html('<img src="'+responseJSON.imageThumb+'"/>');
+                    $('.uploaded_cover').val(responseJSON.filename);
+                    $('.main_cover').val(responseJSON.filename);
+                    //$('#Gallery_'+index+'_name').val(responseJSON.filename);    
                 //}
                 //else
                 //$('#uploadList').append('<li class="items"><div class="thumbnail" style="width: 80px;height:80px;  float:left;"><img src="'+responseJSON.imageThumb+'"/></div><div class="button_rows"><a herf="javascript:void(0);" class="btn btn-danger" onclick="$(this).closest(\'li\').remove();">Remove</a></div><div class="clear"></div><div style="margin:10px 0;"><textarea placeholder="Caption" name="Gallery['+index+'][caption]"></textarea><input type="hidden" name="Gallery['+index+'][name]" value="'+responseJSON.filename+'"/></div></li>');
@@ -43,7 +41,7 @@ function initiateUpload(index)
             {
                 alert('something went wrong!');
             } */
-            $('.uploadControl').text('Upload'); 
+            $('.uploadControl1').text('Upload'); 
         },
         'messages':{'typeError':'{file} has invalid extension. Only {extensions} are allowed.','sizeError':'{file} is too large, maximum file size is {sizeLimit}.','minSizeError':'{file} is too small, minimum file size is {minSizeLimit}.','minHeightError': "{file} dimension is too small, minimum Height is {minHeight}.",
             'minWidthError': "{file} dimension is too small, minimum Width is {minWidth}.",'emptyError':'{file} is empty, please select files again without it.','onLeave':'The files are being uploaded, if you leave now the upload will be cancelled.'},'showMessage':function(message){ alert(message); }});
@@ -54,22 +52,21 @@ function initiateUpload(index)
     
     <div class="image_rows">
     <?php //echo CHtml::activeHiddenField($model, "[0]name")?>
-    <input type="hidden" name="logo" class="main_logo" value=""/>
-    <input type="hidden" class="uploaded_image" value="<?php echo $member->logo;?>"/>
+    <input type="hidden" name="cover" class="main_cover" value=""/>
+    <input type="hidden" class="uploaded_cover" value="<?php echo $member->cover;?>"/>
      
    
     
     <div class="button_rows">
-     <div id="file-uploader_<?php echo isset($id)?$id:'0';?>">
-     <div class="qq-uploader">
-    <div>
-        <div id="uploadFile<?php echo isset($id)?$id:'0';?>">
-            
-                	<a href="javascript:void(0)" class="qq-upload-button btn btn-black uploadControl" id="<?php echo isset($id)?$id:'0';?>" style="font-weight: bold;"><span class="fa fa-picture-o"></span>Upload Image</a>
-                
-        </div>    
-    </div>
-    </div>
+     <div id="file-uploader_1">
+         <div class="qq-uploader1">
+            <div>
+                <div id="uploadFile1">
+                    <a href="javascript:void(0)" class="qq-upload-button btn btn-black uploadControl1" id="1" style="font-weight: bold;"><span class="fa fa-picture-o"></span>Upload Image</a>
+                       
+                </div>    
+            </div>
+        </div>
     </div>
     </div>
  	<div class="clear"></div>   

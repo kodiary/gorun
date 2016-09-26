@@ -1,9 +1,22 @@
 <div class="crop_outer">
-<?php echo CHtml::beginForm($this->createUrl('gallery/crop'), 'POST')?>
+<?php echo CHtml::beginForm($this->createUrl('gallery/crop'), 'POST');
+    if(isset($_GET['crop_cover'])&& $_GET['crop_cover'] !='')
+    {
+        
+        $main_logo ='uploaded_cover';
+        $upimage = 'upimage_1';
+    }
+    else
+    {
+        $main_logo = 'main_logo';
+        $upimage = 'upimage_0';
+    }
+    
+?>
  	<div class="crop_top">
     <p class="left">Select the area you wish to crop and click the crop button</p>
     <div class="right">
-      <?php 
+      <?php //$upimage_0
       echo CHtml::ajaxSubmitButton( 'Crop',
                 $this->createUrl('gallery/crop'),
                 array(
@@ -13,10 +26,10 @@
                 'success'=>"js:function(data){
                     $('.cropIt').val('Crop');
                     $('.ui-dialog-titlebar-close').click();
-                    $('#upimage_0').html('');
-                    $('#upimage_0').html('<img src=\"'+data+'\"/>');
+                    $('#".$upimage."').html('');
+                    $('#".$upimage."').html('<img src=\"'+data+'\"/>');
                     var filename = data.split('thumb/');
-                    $('.main_logo').val(filename[1]);
+                    $('.".$main_logo."').val(filename[1]);
                      return false;
                 }",
                 ),

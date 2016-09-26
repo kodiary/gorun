@@ -45,10 +45,12 @@ class ClubsController extends Controller
         }
 	    Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.js"));
         Yii::app()->clientScript->registerCssFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.css"));
-        Yii::app()->clientScript->registerScriptFile("http://maps.google.com/maps/api/js?key=AIzaSyDdlZuslizFva3XY9GZVyF_IDZTDI-7BD0");
+        Yii::app()->clientScript->registerCssFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.css"));
+        Yii::app()->clientScript->registerScriptFile("http://maps.google.com/maps/api/js?key=AIzaSyDdlZuslizFva3XY9GZVyF_IDZTDI-7BD0&libraries=places");
         //Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::getPathOfAlias('application.components')."/gmap/gmap_new.js"));
         Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::getPathOfAlias('application.components')."/gmap/gmap.js"));
         Yii::app()->clientScript->registerScript('init','initialize();',CClientScript::POS_LOAD); 
+        
 	   $club = Member::model()->findByPk(Yii::app()->user->id);
 	   $this->render('index', array('member'=>$club));
     }
@@ -82,6 +84,19 @@ class ClubsController extends Controller
                 @unlink(Yii::app()->basePath."/../images/temp/thumb/".$_POST['logo']);
                 $club->logo = $_POST['logo'];                
             }
+            if($_POST['cover']!='')
+            {
+                $logo = explode("?rand",$_POST['cover']);
+                $_POST['cover'] = $logo[0];
+                @copy(Yii::app()->basePath.'/../images/temp/full/'.$_POST['cover'],Yii::app()->basePath.'/../images/frontend/full/'.$_POST['cover']);
+                @copy(Yii::app()->basePath.'/../images/temp/main/'.$_POST['cover'],Yii::app()->basePath.'/../images/frontend/main/'.$_POST['cover']);
+                @copy(Yii::app()->basePath.'/../images/temp/thumb/'.$_POST['cover'],Yii::app()->basePath.'/../images/frontend/thumb/'.$_POST['cover']);
+                
+                @unlink(Yii::app()->basePath."/../images/temp/full/".$_POST['cover']);
+                @unlink(Yii::app()->basePath."/../images/temp/main/".$_POST['cover']);
+                @unlink(Yii::app()->basePath."/../images/temp/thumb/".$_POST['cover']);
+                $club->cover = $_POST['cover'];                
+            }
             foreach($_POST['type'] as $type)
             {
                 $types.= $type.",";
@@ -105,7 +120,8 @@ class ClubsController extends Controller
             if($club->save())
             {
                 $id = $club->id;
-                $clubExtra = new ClubExtra;
+               
+                ClubExtra::model()->deleteAllByAttributes(['club_id'=>$id]);
                 foreach($_POST['contact_number'] as $number)
                 {
                     if($number != '')
