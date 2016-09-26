@@ -108,12 +108,7 @@ class EventsController extends Controller
                 $model->logo = $_POST['logo'];                
            }
            
-            if($_POST['file']!="" )
-            {
-                @copy(Yii::app()->basePath.'/../documents/temp/'.$_POST['Events']['file'],Yii::app()->basePath.'/../documents/'.$_POST['Events']['file']);
-                @unlink(Yii::app()->basePath."/../documents/temp/".$_POST['Events']['file']);   
-                $model->file=$_POST['Events']['file'];
-            }       
+                  
 			if($model->save())
             {   
                 $id = $model->id;                     
@@ -139,6 +134,33 @@ class EventsController extends Controller
                    $events_time->save();
                    
                    unset($events_time);
+                }
+                if(isset($arr))
+                unset($arr);
+                }
+                
+                if(isset($_POST['EventsFile'])){
+                
+                foreach($_POST['EventsFile'] as $k=>$p)
+                {
+                    
+                    foreach($p as $k1=>$v)
+                    {
+                        $arr[$k1][$k] = $v;
+                    }
+                    
+                }
+                foreach($arr as $a)
+                {
+                   $events_file= new EventsFile;
+                   $events_file->event_id = $model->id;
+                   foreach($a as $k=>$v)
+                   {
+                        $events_file->$k = $v;
+                   } 
+                   $events_file->save();
+                   
+                   unset($events_file);
                 }
                 
                 }

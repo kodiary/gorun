@@ -325,6 +325,33 @@ class GalleryController extends Controller
             echo $return;// it's array
             }
     }
+    public function actionUploadFile()
+    {
+            Yii::import("ext.EAjaxUpload.qqFileUploader");
+     
+            $folder=Yii::app()->basePath.'/../files/events/';// folder to upload file
+            $allowedExtensions = array("pdf");
+            $sizeLimit = 7 * 1024 * 1024;// maximum file size in bytes
+            $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
+            $sizes = CommonClass::get_resize_details($_GET['type']);
+            
+            $result = $uploader->handleUpload($folder);
+            if($result['success'])
+            {
+                 //$file=$result['filename'];
+                 $file = $result['filename'];
+                 $result['file']=$file;
+            $result['success'] = 'wow';    
+            $return = htmlspecialchars(json_encode($result), ENT_NOQUOTES);
+            echo $return;// it's array
+        }
+        else
+            {
+                $result['success'] = 'wow';   
+                $return = htmlspecialchars(json_encode($result), ENT_NOQUOTES);
+            echo $return;// it's array
+            }
+    }
     
     function actionCropPhoto()
     {

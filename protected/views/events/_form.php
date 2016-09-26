@@ -117,6 +117,19 @@
                 </div>
                 
                 <div class="form-group white">
+                    <label class="col-md-12">Event Flyer or entry form (Optional)<br /><span class="blue">Upload a PDF for download. Handy for event flyer or entry form. Max 7MB file size. Drag to reorder.</span></label>
+                    
+                    <div class="col-md-12"><a class="btn btn-upload flyer" href="javascript:void(0);" id="uploadFileflyer"><span class="fa fa-file-pdf-o"></span> UPLOAD FILE</a></div>
+                    
+                    <input type="hidden" class="flyer_file" value="<?php echo $model->file;?>" />
+                    <div class="clearfix"></div>
+                    <ul class="flyer_list col-md-12" style="display: none;">
+                    
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                
+                <div class="form-group white">
                     <label class="col-md-12">Event Location (Required)<br /><span class="blue">Input the venue name or address below to find it on google map. Drag pin to desired located if required.</span></label>
                     
                     <div class="col-md-12"><input type="text" onblur='codeAddress()' id="formattedAddress" class="form-control venue" placeholder="Enter venue name or street address" name="Events[venue]" value="<?php echo $model->venue;?>" /></div>
@@ -242,6 +255,16 @@ $(function(){
     }
     return i;
   }
+  function confirm_delete(ques)
+    {
+        if(confirm(ques))
+        {
+            $('.profile_img').html('');
+            $('.image_rows input').val('');
+        }
+        else
+            return false;
+    }
   function load_time(s,e)
   {
     $.ajax({
@@ -258,6 +281,7 @@ $(function(){
     })
   }
   $( function() {
+    initiateUpload2('flyer');
     $('.dropdownselect').click(function(){
         $('.drop-option').toggle();
     });
@@ -317,6 +341,42 @@ $(function(){
 	
     
   } );
+  function initiateUpload2(index)
+{
+    //var index=0;
+    new qq.FileUploader({'element':document.getElementById('uploadFile'+index),
+    'debug':true,
+    'multiple':false,
+	'action':'<?php echo $this->createUrl('gallery/uploadFile')?>',
+    'allowedExtensions':['pdf'],
+    'sizeLimit':7340032,
+   
+    'onSubmit':function()
+            {
+                //$(this).http://github.com/valums/file-uploader
+                $('#uploadFileflyer').text('Uploading...');
+            },
+    'onComplete':function(id, fileName, responseJSON){
+        //alert(responseJSON.success);
+            if(responseJSON.success)
+            {
+                $('.flyer_list').show();
+                var str = '<li>'+responseJSON.file+'<input type="hidden" name="EventsFile[file][]" value="'+responseJSON.file+'" />('+responseJSON.size+'<input type="hidden" name="EventsFile[mb][]" value="'+responseJSON.size+'" />) - added <?php echo date('Y/m/d');?><input type="hidden" name="EventsFile[added_on][]" value="<?php echo date('Y/m/d');?>" /> at <?php echo date('H:s');?><input type="hidden" name="EventsFile[added_time][]" value="<?php echo date('H:s');?>" /> <a href="javascript:void(0)" class="cross"><span class="fa fa-times"></a></li>'
+                $('.flyer_list').append(str);
+                $('.flyer_file').val(responseJSON.file)
+                
+            }
+            
+            else
+            {
+                alert('something went wrong!');
+            }
+            $('#uploadFileflyer').html('<span class="fa fa-file-pdf-o"></span> UPLOAD FILE');
+            initiateUpload2('flyer');
+        },
+        'messages':{'typeError':'{file} has invalid extension. Only {extensions} are allowed.','sizeError':'{file} is too large, maximum file size is {sizeLimit}.','minSizeError':'{file} is too small, minimum file size is {minSizeLimit}.','minHeightError': "{file} dimension is too small, minimum Height is {minHeight}.",
+            'minWidthError': "{file} dimension is too small, minimum Width is {minWidth}.",'emptyError':'{file} is empty, please select files again without it.','onLeave':'The files are being uploaded, if you leave now the upload will be cancelled.'},'showMessage':function(message){ alert(message); }});
+}
 </script>
 <?php
                     $this->beginWidget('zii.widgets.jui.CJuiDialog', array(

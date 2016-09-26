@@ -153,7 +153,7 @@ class qqFileUploader {
                 }
             }
       
-            return array('success'=>true,'filename'=>$filename.'.'.$ext);
+            return array('success'=>true,'filename'=>$filename.'.'.$ext,'size'=>(($size/1024)/1024));
         } else {
             return array('error'=> 'Could not save uploaded file.' .
                 'The upload was cancelled, or server error encountered');
