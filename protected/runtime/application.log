@@ -5112,3 +5112,478 @@ Stack trace:
 REQUEST_URI=/gorun/clubs/type/Running?province=kwazulu-natal
 HTTP_REFERER=http://localhost/gorun/clubs/type/running
 ---
+2016/09/24 11:58:57 [error] [php] Invalid argument supplied for foreach() (E:\wamp\www\gorun\protected\views\events\_form.php:38)
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CController.php(870): EventsController->renderFile()
+#1 E:\wamp\www\gorun\protected\views\events\create.php(11): EventsController->renderPartial()
+#2 E:\wamp\www\gorun\framework\web\CBaseController.php(127): require()
+#3 E:\wamp\www\gorun\framework\web\CBaseController.php(96): EventsController->renderInternal()
+#4 E:\wamp\www\gorun\framework\web\CController.php(870): EventsController->renderFile()
+#5 E:\wamp\www\gorun\framework\web\CController.php(783): EventsController->renderPartial()
+#6 E:\wamp\www\gorun\protected\controllers\EventsController.php(128): EventsController->render()
+#7 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): EventsController->actionCreate()
+#8 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams()
+#9 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(134): EventsController->runAction()
+#10 E:\wamp\www\gorun\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 E:\wamp\www\gorun\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#12 E:\wamp\www\gorun\framework\web\filters\CInlineFilter.php(59): EventsController->filterAccessControl()
+#13 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#14 E:\wamp\www\gorun\framework\web\CController.php(292): CFilterChain->run()
+#15 E:\wamp\www\gorun\framework\web\CController.php(266): EventsController->runActionWithFilters()
+#16 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): EventsController->run()
+#17 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#18 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 E:\wamp\www\gorun\index.php(13): CWebApplication->run()
+REQUEST_URI=/gorun/events/create
+in E:\wamp\www\gorun\protected\views\events\_form.php (38)
+in E:\wamp\www\gorun\protected\views\events\create.php (11)
+in E:\wamp\www\gorun\protected\controllers\EventsController.php (128)
+2016/09/24 12:03:57 [error] [php] Invalid argument supplied for foreach() (E:\wamp\www\gorun\protected\views\events\_form.php:39)
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CController.php(870): EventsController->renderFile()
+#1 E:\wamp\www\gorun\protected\views\events\create.php(11): EventsController->renderPartial()
+#2 E:\wamp\www\gorun\framework\web\CBaseController.php(127): require()
+#3 E:\wamp\www\gorun\framework\web\CBaseController.php(96): EventsController->renderInternal()
+#4 E:\wamp\www\gorun\framework\web\CController.php(870): EventsController->renderFile()
+#5 E:\wamp\www\gorun\framework\web\CController.php(783): EventsController->renderPartial()
+#6 E:\wamp\www\gorun\protected\controllers\EventsController.php(129): EventsController->render()
+#7 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): EventsController->actionCreate()
+#8 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams()
+#9 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(134): EventsController->runAction()
+#10 E:\wamp\www\gorun\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 E:\wamp\www\gorun\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#12 E:\wamp\www\gorun\framework\web\filters\CInlineFilter.php(59): EventsController->filterAccessControl()
+#13 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#14 E:\wamp\www\gorun\framework\web\CController.php(292): CFilterChain->run()
+#15 E:\wamp\www\gorun\framework\web\CController.php(266): EventsController->runActionWithFilters()
+#16 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): EventsController->run()
+#17 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#18 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 E:\wamp\www\gorun\index.php(13): CWebApplication->run()
+REQUEST_URI=/gorun/events/create
+in E:\wamp\www\gorun\protected\views\events\_form.php (39)
+in E:\wamp\www\gorun\protected\views\events\create.php (11)
+in E:\wamp\www\gorun\protected\controllers\EventsController.php (129)
+2016/09/24 12:04:29 [error] [php] Invalid argument supplied for foreach() (E:\wamp\www\gorun\protected\views\events\_form.php:38)
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CController.php(870): EventsController->renderFile()
+#1 E:\wamp\www\gorun\protected\views\events\create.php(11): EventsController->renderPartial()
+#2 E:\wamp\www\gorun\framework\web\CBaseController.php(127): require()
+#3 E:\wamp\www\gorun\framework\web\CBaseController.php(96): EventsController->renderInternal()
+#4 E:\wamp\www\gorun\framework\web\CController.php(870): EventsController->renderFile()
+#5 E:\wamp\www\gorun\framework\web\CController.php(783): EventsController->renderPartial()
+#6 E:\wamp\www\gorun\protected\controllers\EventsController.php(129): EventsController->render()
+#7 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): EventsController->actionCreate()
+#8 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams()
+#9 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(134): EventsController->runAction()
+#10 E:\wamp\www\gorun\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 E:\wamp\www\gorun\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#12 E:\wamp\www\gorun\framework\web\filters\CInlineFilter.php(59): EventsController->filterAccessControl()
+#13 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#14 E:\wamp\www\gorun\framework\web\CController.php(292): CFilterChain->run()
+#15 E:\wamp\www\gorun\framework\web\CController.php(266): EventsController->runActionWithFilters()
+#16 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): EventsController->run()
+#17 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#18 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 E:\wamp\www\gorun\index.php(13): CWebApplication->run()
+REQUEST_URI=/gorun/events/create
+in E:\wamp\www\gorun\protected\views\events\_form.php (38)
+in E:\wamp\www\gorun\protected\views\events\create.php (11)
+in E:\wamp\www\gorun\protected\controllers\EventsController.php (129)
+2016/09/24 12:05:06 [error] [php] Invalid argument supplied for foreach() (E:\wamp\www\gorun\protected\views\events\_form.php:38)
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CController.php(870): EventsController->renderFile()
+#1 E:\wamp\www\gorun\protected\views\events\create.php(11): EventsController->renderPartial()
+#2 E:\wamp\www\gorun\framework\web\CBaseController.php(127): require()
+#3 E:\wamp\www\gorun\framework\web\CBaseController.php(96): EventsController->renderInternal()
+#4 E:\wamp\www\gorun\framework\web\CController.php(870): EventsController->renderFile()
+#5 E:\wamp\www\gorun\framework\web\CController.php(783): EventsController->renderPartial()
+#6 E:\wamp\www\gorun\protected\controllers\EventsController.php(129): EventsController->render()
+#7 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): EventsController->actionCreate()
+#8 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams()
+#9 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(134): EventsController->runAction()
+#10 E:\wamp\www\gorun\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 E:\wamp\www\gorun\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#12 E:\wamp\www\gorun\framework\web\filters\CInlineFilter.php(59): EventsController->filterAccessControl()
+#13 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#14 E:\wamp\www\gorun\framework\web\CController.php(292): CFilterChain->run()
+#15 E:\wamp\www\gorun\framework\web\CController.php(266): EventsController->runActionWithFilters()
+#16 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): EventsController->run()
+#17 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#18 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 E:\wamp\www\gorun\index.php(13): CWebApplication->run()
+REQUEST_URI=/gorun/events/create
+in E:\wamp\www\gorun\protected\views\events\_form.php (38)
+in E:\wamp\www\gorun\protected\views\events\create.php (11)
+in E:\wamp\www\gorun\protected\controllers\EventsController.php (129)
+2016/09/24 12:06:38 [error] [exception.CException] exception 'CException' with message 'Property "Events.online_entry" is not defined.' in E:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('online_entry')
+#1 E:\wamp\www\gorun\protected\views\events\_form.php(113): CActiveRecord->__get('online_entry')
+#2 E:\wamp\www\gorun\framework\web\CBaseController.php(127): require('E:\\wamp\\www\\gor...')
+#3 E:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('E:\\wamp\\www\\gor...', Array, true)
+#4 E:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('E:\\wamp\\www\\gor...', Array, true)
+#5 E:\wamp\www\gorun\protected\views\events\create.php(11): CController->renderPartial('/events/_form', Array)
+#6 E:\wamp\www\gorun\framework\web\CBaseController.php(127): require('E:\\wamp\\www\\gor...')
+#7 E:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('E:\\wamp\\www\\gor...', Array, true)
+#8 E:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('E:\\wamp\\www\\gor...', Array, true)
+#9 E:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('create', Array, true)
+#10 E:\wamp\www\gorun\protected\controllers\EventsController.php(129): CController->render('create', Array)
+#11 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): EventsController->actionCreate()
+#12 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#14 E:\wamp\www\gorun\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#15 E:\wamp\www\gorun\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#16 E:\wamp\www\gorun\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#17 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#18 E:\wamp\www\gorun\framework\web\CController.php(292): CFilterChain->run()
+#19 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('create')
+#21 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('events/create')
+#22 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#23 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/gorun/events/create
+---
+2016/09/24 12:07:31 [error] [exception.CException] exception 'CException' with message 'Property "Events.online_entry" is not defined.' in E:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('online_entry')
+#1 E:\wamp\www\gorun\protected\views\events\_form.php(136): CActiveRecord->__get('online_entry')
+#2 E:\wamp\www\gorun\framework\web\CBaseController.php(127): require('E:\\wamp\\www\\gor...')
+#3 E:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('E:\\wamp\\www\\gor...', Array, true)
+#4 E:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('E:\\wamp\\www\\gor...', Array, true)
+#5 E:\wamp\www\gorun\protected\views\events\create.php(11): CController->renderPartial('/events/_form', Array)
+#6 E:\wamp\www\gorun\framework\web\CBaseController.php(127): require('E:\\wamp\\www\\gor...')
+#7 E:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('E:\\wamp\\www\\gor...', Array, true)
+#8 E:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('E:\\wamp\\www\\gor...', Array, true)
+#9 E:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('create', Array, true)
+#10 E:\wamp\www\gorun\protected\controllers\EventsController.php(129): CController->render('create', Array)
+#11 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): EventsController->actionCreate()
+#12 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#14 E:\wamp\www\gorun\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#15 E:\wamp\www\gorun\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#16 E:\wamp\www\gorun\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#17 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#18 E:\wamp\www\gorun\framework\web\CController.php(292): CFilterChain->run()
+#19 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('create')
+#21 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('events/create')
+#22 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#23 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/gorun/events/create
+---
+2016/09/24 12:12:29 [error] [exception.CException] exception 'CException' with message 'Property "EventsType.cat_it" is not defined.' in E:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('cat_it')
+#1 E:\wamp\www\gorun\protected\views\events\_form.php(41): CActiveRecord->__get('cat_it')
+#2 E:\wamp\www\gorun\framework\web\CBaseController.php(127): require('E:\\wamp\\www\\gor...')
+#3 E:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('E:\\wamp\\www\\gor...', Array, true)
+#4 E:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('E:\\wamp\\www\\gor...', Array, true)
+#5 E:\wamp\www\gorun\protected\views\events\create.php(11): CController->renderPartial('/events/_form', Array)
+#6 E:\wamp\www\gorun\framework\web\CBaseController.php(127): require('E:\\wamp\\www\\gor...')
+#7 E:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('E:\\wamp\\www\\gor...', Array, true)
+#8 E:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('E:\\wamp\\www\\gor...', Array, true)
+#9 E:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('create', Array, true)
+#10 E:\wamp\www\gorun\protected\controllers\EventsController.php(129): CController->render('create', Array)
+#11 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): EventsController->actionCreate()
+#12 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#14 E:\wamp\www\gorun\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#15 E:\wamp\www\gorun\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#16 E:\wamp\www\gorun\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#17 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#18 E:\wamp\www\gorun\framework\web\CController.php(292): CFilterChain->run()
+#19 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('create')
+#21 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('events/create')
+#22 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#23 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/gorun/events/create
+---
+2016/09/25 08:44:49 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'organiser' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_events` `t` WHERE organiser='3'.
+in E:\wamp\www\gorun\protected\views\events\index.php (16)
+in E:\wamp\www\gorun\protected\controllers\EventsController.php (389)
+in E:\wamp\www\gorun\index.php (13)
+2016/09/25 08:44:49 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'organiser' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_events` `t` WHERE organiser='3'' in E:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 E:\wamp\www\gorun\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1536): CDbCommand->queryScalar()
+#2 E:\wamp\www\gorun\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 E:\wamp\www\gorun\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 E:\wamp\www\gorun\framework\base\CComponent.php(112): CDataProvider->getTotalItemCount()
+#5 E:\wamp\www\gorun\protected\views\events\index.php(16): CComponent->__get('totalItemCount')
+#6 E:\wamp\www\gorun\framework\web\CBaseController.php(127): require('E:\\wamp\\www\\gor...')
+#7 E:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('E:\\wamp\\www\\gor...', Array, true)
+#8 E:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('E:\\wamp\\www\\gor...', Array, true)
+#9 E:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('index', Array, true)
+#10 E:\wamp\www\gorun\protected\controllers\EventsController.php(389): CController->render('index', Array)
+#11 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): EventsController->actionIndex()
+#12 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#14 E:\wamp\www\gorun\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#15 E:\wamp\www\gorun\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#16 E:\wamp\www\gorun\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#17 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#18 E:\wamp\www\gorun\framework\web\CController.php(292): CFilterChain->run()
+#19 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('')
+#21 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('events')
+#22 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#23 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/gorun/events
+HTTP_REFERER=http://localhost/gorun/dashboard
+---
+2016/09/25 08:46:11 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'organiser' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_events` `t` WHERE organiser='3'.
+in E:\wamp\www\gorun\protected\views\events\index.php (44)
+in E:\wamp\www\gorun\protected\controllers\EventsController.php (389)
+in E:\wamp\www\gorun\index.php (13)
+2016/09/25 08:46:11 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'organiser' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_events` `t` WHERE organiser='3'' in E:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 E:\wamp\www\gorun\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1536): CDbCommand->queryScalar()
+#2 E:\wamp\www\gorun\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 E:\wamp\www\gorun\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 E:\wamp\www\gorun\framework\base\CComponent.php(112): CDataProvider->getTotalItemCount()
+#5 E:\wamp\www\gorun\protected\views\events\index.php(44): CComponent->__get('totalItemCount')
+#6 E:\wamp\www\gorun\framework\web\CBaseController.php(127): require('E:\\wamp\\www\\gor...')
+#7 E:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('E:\\wamp\\www\\gor...', Array, true)
+#8 E:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('E:\\wamp\\www\\gor...', Array, true)
+#9 E:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('index', Array, true)
+#10 E:\wamp\www\gorun\protected\controllers\EventsController.php(389): CController->render('index', Array)
+#11 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): EventsController->actionIndex()
+#12 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#14 E:\wamp\www\gorun\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#15 E:\wamp\www\gorun\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#16 E:\wamp\www\gorun\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#17 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#18 E:\wamp\www\gorun\framework\web\CController.php(292): CFilterChain->run()
+#19 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('')
+#21 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('events')
+#22 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#23 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/gorun/events
+---
+2016/09/25 08:46:12 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'organiser' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_events` `t` WHERE organiser='3'.
+in E:\wamp\www\gorun\protected\views\events\index.php (44)
+in E:\wamp\www\gorun\protected\controllers\EventsController.php (389)
+in E:\wamp\www\gorun\index.php (13)
+2016/09/25 08:46:12 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'organiser' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_events` `t` WHERE organiser='3'' in E:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 E:\wamp\www\gorun\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1536): CDbCommand->queryScalar()
+#2 E:\wamp\www\gorun\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 E:\wamp\www\gorun\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 E:\wamp\www\gorun\framework\base\CComponent.php(112): CDataProvider->getTotalItemCount()
+#5 E:\wamp\www\gorun\protected\views\events\index.php(44): CComponent->__get('totalItemCount')
+#6 E:\wamp\www\gorun\framework\web\CBaseController.php(127): require('E:\\wamp\\www\\gor...')
+#7 E:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('E:\\wamp\\www\\gor...', Array, true)
+#8 E:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('E:\\wamp\\www\\gor...', Array, true)
+#9 E:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('index', Array, true)
+#10 E:\wamp\www\gorun\protected\controllers\EventsController.php(389): CController->render('index', Array)
+#11 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): EventsController->actionIndex()
+#12 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#14 E:\wamp\www\gorun\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#15 E:\wamp\www\gorun\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#16 E:\wamp\www\gorun\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#17 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#18 E:\wamp\www\gorun\framework\web\CController.php(292): CFilterChain->run()
+#19 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('')
+#21 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('events')
+#22 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#23 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/gorun/events
+---
+2016/09/25 09:03:05 [error] [exception.CException] exception 'CException' with message 'Property "Events.event_type" is not defined.' in E:\wamp\www\gorun\framework\base\CComponent.php:174
+Stack trace:
+#0 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(160): CComponent->__set('event_type', '1970-01-01')
+#1 E:\wamp\www\gorun\protected\controllers\EventsController.php(78): CActiveRecord->__set('event_type', '1970-01-01')
+#2 [internal function]: EventsController->actionCreate('0')
+#3 E:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EventsController), Array)
+#4 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EventsController), Object(ReflectionMethod), Array)
+#5 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#7 E:\wamp\www\gorun\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#8 E:\wamp\www\gorun\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#9 E:\wamp\www\gorun\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#10 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#11 E:\wamp\www\gorun\framework\web\CController.php(292): CFilterChain->run()
+#12 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('create')
+#14 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('events/create')
+#15 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/gorun/events/create/0
+HTTP_REFERER=http://localhost/gorun/events/create
+---
+2016/09/25 09:35:47 [error] [php] Invalid argument supplied for foreach() (E:\wamp\www\gorun\protected\controllers\EventsController.php:119)
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#1 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(134): EventsController->runAction()
+#3 E:\wamp\www\gorun\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#4 E:\wamp\www\gorun\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#5 E:\wamp\www\gorun\framework\web\filters\CInlineFilter.php(59): EventsController->filterAccessControl()
+#6 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#7 E:\wamp\www\gorun\framework\web\CController.php(292): CFilterChain->run()
+#8 E:\wamp\www\gorun\framework\web\CController.php(266): EventsController->runActionWithFilters()
+#9 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): EventsController->run()
+#10 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#11 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 E:\wamp\www\gorun\index.php(13): CWebApplication->run()
+REQUEST_URI=/gorun/events/create/0
+in E:\wamp\www\gorun\protected\controllers\EventsController.php (119)
+in E:\wamp\www\gorun\index.php (13)
+2016/09/25 09:38:21 [error] [exception.CException] exception 'CException' with message 'Property "Events.distance1" is not defined.' in E:\wamp\www\gorun\framework\base\CComponent.php:174
+Stack trace:
+#0 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(160): CComponent->__set('distance1', '11')
+#1 E:\wamp\www\gorun\protected\controllers\EventsController.php(82): CActiveRecord->__set('distance1', '11')
+#2 [internal function]: EventsController->actionCreate('0')
+#3 E:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EventsController), Array)
+#4 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EventsController), Object(ReflectionMethod), Array)
+#5 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#7 E:\wamp\www\gorun\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#8 E:\wamp\www\gorun\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#9 E:\wamp\www\gorun\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#10 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#11 E:\wamp\www\gorun\framework\web\CController.php(292): CFilterChain->run()
+#12 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('create')
+#14 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('events/create')
+#15 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/gorun/events/create/0
+HTTP_REFERER=http://localhost/gorun/events/create/
+---
+2016/09/25 09:52:39 [error] [exception.CException] exception 'CException' with message 'Property "EventsTime.comrade_qualifier" is not defined.' in E:\wamp\www\gorun\framework\base\CComponent.php:174
+Stack trace:
+#0 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(160): CComponent->__set('comrade_qualifi...', '1')
+#1 E:\wamp\www\gorun\protected\controllers\EventsController.php(121): CActiveRecord->__set('comrade_qualifi...', '1')
+#2 [internal function]: EventsController->actionCreate('0')
+#3 E:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EventsController), Array)
+#4 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EventsController), Object(ReflectionMethod), Array)
+#5 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#7 E:\wamp\www\gorun\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#8 E:\wamp\www\gorun\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#9 E:\wamp\www\gorun\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#10 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#11 E:\wamp\www\gorun\framework\web\CController.php(292): CFilterChain->run()
+#12 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('create')
+#14 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('events/create')
+#15 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/gorun/events/create/0
+HTTP_REFERER=http://localhost/gorun/events/create
+---
+2016/09/25 09:57:47 [error] [exception.CException] exception 'CException' with message 'Property "EventsTime.event_from" is not defined.' in E:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('event_from')
+#1 E:\wamp\www\gorun\framework\validators\CRequiredValidator.php(52): CActiveRecord->__get('event_from')
+#2 E:\wamp\www\gorun\framework\validators\CValidator.php(197): CRequiredValidator->validateAttribute(Object(EventsTime), 'event_from')
+#3 E:\wamp\www\gorun\framework\base\CModel.php(158): CValidator->validate(Object(EventsTime), NULL)
+#4 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(786): CModel->validate(NULL)
+#5 E:\wamp\www\gorun\protected\controllers\EventsController.php(125): CActiveRecord->save()
+#6 [internal function]: EventsController->actionCreate('0')
+#7 E:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EventsController), Array)
+#8 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EventsController), Object(ReflectionMethod), Array)
+#9 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#11 E:\wamp\www\gorun\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#12 E:\wamp\www\gorun\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#13 E:\wamp\www\gorun\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#14 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#15 E:\wamp\www\gorun\framework\web\CController.php(292): CFilterChain->run()
+#16 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('create')
+#18 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('events/create')
+#19 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#20 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/gorun/events/create/0
+HTTP_REFERER=http://localhost/gorun/events/create
+---
+2016/09/25 10:09:33 [error] [exception.CException] exception 'CException' with message 'Property "EventsTime.event_from" is not defined.' in E:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('event_from')
+#1 E:\wamp\www\gorun\framework\validators\CStringValidator.php(80): CActiveRecord->__get('event_from')
+#2 E:\wamp\www\gorun\framework\validators\CValidator.php(197): CStringValidator->validateAttribute(Object(EventsTime), 'event_from')
+#3 E:\wamp\www\gorun\framework\base\CModel.php(158): CValidator->validate(Object(EventsTime), NULL)
+#4 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(786): CModel->validate(NULL)
+#5 E:\wamp\www\gorun\protected\controllers\EventsController.php(125): CActiveRecord->save()
+#6 [internal function]: EventsController->actionCreate('0')
+#7 E:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EventsController), Array)
+#8 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EventsController), Object(ReflectionMethod), Array)
+#9 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#11 E:\wamp\www\gorun\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#12 E:\wamp\www\gorun\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#13 E:\wamp\www\gorun\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#14 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#15 E:\wamp\www\gorun\framework\web\CController.php(292): CFilterChain->run()
+#16 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('create')
+#18 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('events/create')
+#19 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#20 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/gorun/events/create/0
+HTTP_REFERER=http://localhost/gorun/events/create
+---
+2016/09/26 09:11:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "undefined".' in E:\wamp\www\gorun\framework\web\CController.php:484
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CController.php(271): CController->missingAction('undefined')
+#1 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('undefined')
+#2 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('events/undefine...')
+#3 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/gorun/events/undefined
+HTTP_REFERER=http://localhost/gorun/events/create
+---
+2016/09/26 09:13:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "undefined".' in E:\wamp\www\gorun\framework\web\CController.php:484
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CController.php(271): CController->missingAction('undefined')
+#1 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('undefined')
+#2 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('events/undefine...')
+#3 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/gorun/events/undefined
+HTTP_REFERER=http://localhost/gorun/events/create
+---
+2016/09/26 09:14:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "undefined".' in E:\wamp\www\gorun\framework\web\CController.php:484
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CController.php(271): CController->missingAction('undefined')
+#1 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('undefined')
+#2 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('events/undefine...')
+#3 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/gorun/events/undefined
+HTTP_REFERER=http://localhost/gorun/events/create
+---
+2016/09/26 09:15:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "undefined".' in E:\wamp\www\gorun\framework\web\CController.php:484
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CController.php(271): CController->missingAction('undefined')
+#1 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('undefined')
+#2 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('events/undefine...')
+#3 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/gorun/events/undefined
+---

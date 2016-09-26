@@ -38,12 +38,12 @@ class EventsTime extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('event_id, on_date, from, to', 'required'),
+			array('event_id, event_from_hour, event_from_min', 'required'),
 			array('event_id', 'numerical', 'integerOnly'=>true),
-			array('from, to', 'length', 'max'=>200),
+			array('event_from_hour, event_from_min, event_cost', 'length', 'max'=>200),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, event_id, on_date, from, to', 'safe', 'on'=>'search'),
+			array('id, event_id, distance1,distance2, distance_swim_1, distance_swim_2, distance_run_1, distance_run_2, distance_bike_1, distance_bike_2, event_from_hour, event_from_min, event_cost', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,9 +66,17 @@ class EventsTime extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'event_id' => 'Event',
-			'on_date' => 'On Date',
-			'from' => 'From',
-			'to' => 'To',
+			'distance1' => 'Distance',
+            'distance2' => 'Distance',
+            'distance_swim_1' => 'Swim',
+            'distance_swim_2' => 'Swim',
+            'distance_run_1' => 'Run',
+            'distance_run_2' => 'Run',
+            'distance_bike_1' => 'Bike',
+            'distance_bike_2' => 'Bike',
+			'event_from_hour' => 'Start Time',
+            'event_from_min' => 'Start Time',
+			'event_cost' => 'Cost',
 		);
 	}
 
@@ -85,9 +93,17 @@ class EventsTime extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('event_id',$this->event_id);
-		$criteria->compare('on_date',$this->on_date,true);
-		$criteria->compare('from',$this->from,true);
-		$criteria->compare('to',$this->to,true);
+		$criteria->compare('distance1',$this->distance1,true);
+        $criteria->compare('distance2',$this->distance2,true);
+        $criteria->compare('distance_swim_1',$this->distance_swim_1,true);
+        $criteria->compare('distance_swim_2',$this->distance_swim_2,true);
+        $criteria->compare('distance_run_1',$this->distance_run_1,true);
+        $criteria->compare('distance_run_2',$this->distance_run_2,true);
+        $criteria->compare('distance_bike_1',$this->distance_bike_1,true);
+        $criteria->compare('distance_bike_2',$this->distance_bike_2,true);
+		$criteria->compare('event_from_hour',$this->event_from_hour,true);
+        $criteria->compare('event_from_min',$this->event_from_min,true);
+		$criteria->compare('event_cost',$this->event_cost,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

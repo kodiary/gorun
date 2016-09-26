@@ -11,8 +11,8 @@
  * @property string $end_date
  * @property string $logo
  * @property string $file
- * @property integer $venue_id
- * @property string $organiser
+ * @property varchar $venue
+ * @property string $organizer
  * @property integer $visible
  * @property string $editor_type
  */
@@ -47,13 +47,13 @@ class Events extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, description, start_date, venue_id, organiser', 'required'),
+			array('created_by, title, description, start_date, website, venue, latitude, longitude, organizer, organizer_contact, organizer_email, organizer_website', 'required'),
 			array('visible', 'numerical', 'integerOnly'=>true),
 			array('title, logo, file', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, description, start_date, end_date, logo, file, venue_id, organiser, readcount, visible', 'safe', 'on'=>'search'),
-            array('editor_type','safe'),
+			array('id, created_by, title, description, start_date, end_date, website, logo, file, venue, latitude, longitude, organizer, organizer_contact, organizer_email, organizer_website, readcount, visible', 'safe', 'on'=>'search'),
+            
 		);
 	}
 
@@ -76,16 +76,23 @@ class Events extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+            'created_by' => 'Created By',
 			'title' => 'Event Title',
 			'description' => 'Description',
 			'start_date' => 'Event Date',
 			'end_date' => 'End Date',
+            'website' => 'Online Entry Link',
 			'logo' => 'Logo',
 			'file' => 'File',
-			'venue_id' => 'Venue or Location',
-			'organiser' => 'Organiser',
+			'venue' => 'Event Location',
+            'latitude' => 'Latitude',
+            'longitude' => 'Longitude',
+			'organizer' => 'organizer',
+            'organizer_contact' => 'organizer_contact',
+            'organizer_email' => 'organizer_email',
+            'organizer_website' => 'organizer_website',
 			'visible' => 'Visible',
-            'editor_type' => 'Editor Type'
+            
 		);
 	}
 
@@ -101,16 +108,23 @@ class Events extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+        $criteria->compare('created_by',$this->created_by,true);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('start_date',$this->start_date,true);
 		$criteria->compare('end_date',$this->end_date,true);
 		$criteria->compare('logo',$this->logo,true);
 		$criteria->compare('file',$this->file,true);
-		$criteria->compare('venue_id',$this->venue_id);
-		$criteria->compare('organiser',$this->organiser);
+        $criteria->compare('website',$this->website);
+		$criteria->compare('venue',$this->venue);
+        $criteria->compare('latitide',$this->latitide);
+        $criteria->compare('longitude',$this->longitude);
+		$criteria->compare('organizer',$this->organizer);
+        $criteria->compare('organizer_contact',$this->organizer_contact);
+        $criteria->compare('organizer_email',$this->organizer_email);
+        $criteria->compare('organizer_website',$this->organizer_website);
 		$criteria->compare('visible',$this->visible);
-        $criteria->compare('editor_type',$this->editor_type,true);
+        
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -153,12 +167,12 @@ class Events extends CActiveRecord
             return CHtml::image($baseUrl.'/images/events_fallback_thumb.png', $alt, $html_opt);    
     }
     
-    public function get_org_details($event_id,$organiser_id)
+    public function get_org_details($event_id,$organizer_id)
     {
         $org_detail = new stdClass();
-        if($organiser_id==0)
+        if($organizer_id==0)
         {
-            if($details=Organisers::model()->findByAttributes(array('event_id'=>$event_id)))
+            if($details=organizers::model()->findByAttributes(array('event_id'=>$event_id)))
             {
               $org_detail->contact = $details->contact_number;
               //echo $details->contact_number;die();              
@@ -168,13 +182,13 @@ class Events extends CActiveRecord
             //return $details->contact_number;
         }
         else
-        {   if($company=Company::model()->findByPk($organiser_id))
+        {   if($company=Company::model()->findByPk($organizer_id))
             {
               $org_detail->contact = $company->number;               
               $org_detail->website = $company->website;
               $org_detail->email = $details ->email;                   
             }        
-            //$company=Company::model()->findByPk($organiser_id);
+            //$company=Company::model()->findByPk($organizer_id);
             
         }
         return $org_detail;

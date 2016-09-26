@@ -357,3 +357,5 @@ a.dropdownselect:hover{text-decoration:none;}
 .results{display:inline-block;background:#262626;color:#FFF;padding:4px 12px;border-radius:4px;font-size:13px;font-weight:600;margin-top:3px;}
 .race-reviews{font-size:14px;font-weight:600;padding-top:5px;}
 .btn-loadmore{background:#FFF;border:#999 solid 2px;color:#777;font-weight:600;margin-bottom:10px;}
+.cross span{color:#444!important;font-weight:400;}
+.cross{display:inline-block;float:right;}
