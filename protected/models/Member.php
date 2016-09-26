@@ -71,7 +71,7 @@ class Member extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			//array('name, contact_person, number, email, password, password_real, fax, website, twitter, facebok, pinterest, google, tagline, detail, logo, display_address, street_add, suburb, province, latitude, longitude, status, slug, date_added, date_updated, seo_title, seo_desc, seo_keywords', 'required'),
-            array('fname,tagline,number,email,detail,username,mobile,sa_identity_no,championchip,tracetec,province,dob,gender,street_add,postal_address,display_address','required','on'=>'companyInfo,dashboard.index'),
+            array('fname,tagline,number,email,detail,username,mobile,cover,sa_identity_no,facebook,twitter,google,province,dob,gender,street_add,suburb','required','on'=>'companyInfo,dashboard.index'),
             array('lname,opentimes_type,gender,username,mobile,sa_identity_no,championchip,tracetec,opentimes,latitude,longitude,logo,fax,slug,status,suburb,seo_title,seo_desc,seo_keywords,date_added,date_updated','safe','on'=>'companyInfo,index'),
             array('email','email','on'=>'companyInfo,signup,editlogin,adminSignup'),
             array('email','unique','on'=>'companyInfo,signup,editlogin,adminSignup'),
@@ -98,6 +98,7 @@ class Member extends CActiveRecord
             'clubs'=>array(self::HAS_MANY,'ClubMember','member_id'),
             'club'=>array(self::HAS_ONE,'Club','created_by'),
             'articles'=>array(self::HAS_MANY, 'Articles', 'member_id'),
+            'extras'=>array(self::HAS_MANY, 'MemberExtra','member_id')
             //'jobs'=>array(self::HAS_MANY, 'Jobs', 'company_id'),
             //'services'=>array(self::HAS_MANY,'CompanyServices','company_id'),
      
@@ -128,6 +129,7 @@ class Member extends CActiveRecord
 			'google' => 'Google+',
 			'tagline' => 'Tag Line',
 			'detail' => 'Description',
+            'cover' =>'Cover',
 			'logo' => 'Company Sign/Logo',
 			'display_address' => 'Display Address',
             'postal_address' => 'Postal Address',

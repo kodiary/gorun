@@ -330,7 +330,6 @@ class GalleryController extends Controller
     {
         if($_POST['fileName']!="")
         {
-            
             if(file_exists(Yii::app()->basePath.'/../images/frontend/full/'.$_POST['fileName']))
                 $imageUrl = Yii::app()->baseUrl.'/images/frontend/full/'. $_POST['fileName'];
             else
@@ -373,7 +372,7 @@ class GalleryController extends Controller
        
        $cropped_image= new Image($temp_file);
        
-       $cropped_image->resize(215,215);
+       $cropped_image->resize($width,$height);
        $cropped_image->save($save_path);
        
        if(Yii::app()->file->set($temp_file)->exists)

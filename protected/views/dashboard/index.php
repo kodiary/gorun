@@ -1,3 +1,4 @@
+<script src="//cdn.ckeditor.com/4.5.10/basic/ckeditor.js"></script>
 <div class="sidebar col-md-3">
           <?php echo $this->renderPartial('/sidebar/_menu', false, true); ?>
         </div>
@@ -116,9 +117,25 @@
                 </div>
                 
                 <hr />
-                
+                  <div class="form-group">
+                    <h2 class="col-md-12">About You <span class="grey">Optional</span></h2>
+                    <div class="clearfix"></div>
+                  </div>
+                <hr />
                 <div class="form-group">
-                    <label class="col-md-2">Profile Photo</label>
+                    <label class="col-md-12"><span class="blue">Tell us about yourself.</span>Limited to 600 characters-<span class="blue">You have <span class="count_letter">600</span> left</span></label>
+                    <div class="col-md-12"><textarea class="form-control description" id="description" name="detail"><?php echo $member->detail;?></textarea></div>
+                    <div class="clearfix"></div>
+                </div>
+                <hr />
+                <div class="form-group">
+                    
+                    <h2 class="col-md-12">Profile Photo <span class="grey">Optional</span></h2>
+                    <div class="clearfix"></div>
+                </div>
+                <hr />
+                <div class="form-group">
+                    
                     <div class="col-md-9 profilepic">
                     <div class="profile_img" id="upimage_0">
                     <?php
@@ -169,7 +186,139 @@
                 </div>
                 
                 <hr />
-                
+              
+                <div class="form-group">
+                    
+                    <h2 class="col-md-12">Cover Photo <span class="grey">Optional</span></h2>
+                    <div class="clearfix"></div>
+                </div>
+                <hr />
+                <div class="form-group">
+                    
+                    <div class="col-md-9 profilepic">
+                    <div class="profile_cover" id="upimage_1">
+                    <?php
+                    if($member->cover && (Yii::app()->basePath.'/../images/frontend/thumb/'.$member->cover))
+                    {
+                        $img_url=Yii::app()->baseUrl.'/images/frontend/thumb/'.$member->cover;
+                        echo '<img src="'.$img_url.'"/>';
+                    }
+                    
+                    ?>
+                        
+                    </div>
+                    <div class="col-md-12 picact">
+                    <?php echo $this->renderPartial('application.views.gallery._addImagecover',array('member'=>$member,'type'=>'member_cover','id'=>1)); ?>
+                        
+                      
+            <?php
+                        
+            //crop button
+             echo CHtml::ajaxButton('Crop',
+                        $this->createUrl('gallery/cropPhoto?height=220&width=760&crop_cover=cover'),
+                         array( //ajax options
+                         'data'=>array('fileName'=>"js:function(){ return $('.uploaded_cover').val()}",'id'=>$member->id),
+                         'type'=>'POST',
+                        'success'=>"js:function(data){
+                                    if(data!=''){
+                                        $('#cropModal').html(data).dialog('open');
+                                        $('.ui-dialog-titlebar-close').hide();
+                                         return false;
+                                    }
+                                    else
+                                        alert('No Image selected');
+                                    }",
+                        'complete'=>"js:function(){
+                                      $('#crop1_".$member->id."').val('Crop');
+                                    }",
+                        ),
+                        array('id'=>'crop1_'.$member->id,'class'=>'btn btn-default','onclick'=>'$("#crop1_'.$member->id.'").val("loading...");')//html options
+            );
+            ?><br />
+            
+                        
+                        <a href="javascript:void(0)" class="btn btn-danger" onclick="return confirm_delete('Are you sure that you want to remove the image?'); ">Remove</a><br />
+                    </div>
+                        
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <hr />
+              
+                <div class="form-group">
+                    
+                    <h2 class="col-md-12">Location <span class="grey">Required</span></h2>
+                    <div class="clearfix"></div>
+                </div>
+                <hr />
+                <div class="form-group">
+                    <label class="col-md-2">Your Location<span class="required">*</span></label>
+                     <div class="col-md-5">
+                            <select name="province" class="form-control"  id="Member_province">
+                                <option value="">Select Province</option>
+                        <?php $provinces = Province::model()->findAll();
+                            foreach($provinces as $province){?>
+                                <option value="<?php echo $province->id;?>" <?php if($member->province==$province->id)echo "selected='selected'";?>><?php echo $province->name;?></option>
+                        <?php }?>
+                                
+                            </select>
+                            <br />
+                            <span class="blue">Required for race personalisation- Optional</span>
+                        </div>
+                    <div class="clearfix"></div>
+                </div>
+                <hr />
+                <div class="form-group">
+                    <label class="col-md-2">City/Town</label>
+                    <div class="col-md-9"><input type="text" class="form-control" placeholder="Your closest City or Town" name="suburb" value="<?php echo $member->suburb;?>" /></div>
+                    <div class="clearfix"></div>
+                </div>
+                <hr />
+                <div class="form-group">
+                    <h2 class="col-md-12">Social Links <span class="grey">Optional</span></h2>
+                    <div class="clearfix"></div>
+                </div>
+                <hr />
+               <div class="form-group">
+                    <div class="col-md-2">Facebook </div>
+                    <div class="col-md-9">
+                        <input type="url" class="form-control" placeholder="Input your Facebook username" name="facebook" value="<?php echo $member->facebook;?>" />
+                        <br />
+                        <span class="blue">http://www.facebook.com/</span>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <hr />
+                <div class="form-group">
+                    <div class="col-md-2">Twitter </div>
+                    <div class="col-md-9">
+                        <input type="url" class="form-control" placeholder="Input your Twitter username" name="twitter" value="<?php echo $member->twitter;?>" />
+                        <br />
+                        <span class="blue">http://www.twitter.com/</span>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <hr />
+                 <div class="form-group">
+                    <div class="col-md-2">Google + </div>
+                    <div class="col-md-9">
+                        <input type="url" class="form-control" placeholder="Input your Google+ username" name="google" value="<?php echo $member->google;?>" />
+                        <br />
+                        <span class="blue">http://www.google.com/</span>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <hr />
+                <div class="form-group">
+                    <h2 class="col-md-12">ID & Chip Numbers <span class="grey">Optional</span></h2>
+                    <div class="clearfix"></div>
+                </div>
+                <hr />
+                <div class="form-group">
+                    <label class="col-md-12"><span class="blue">Tags your results.</span>We use this info to tag results to your profile.</label>
+                    <div class="clearfix"></div>
+                </div>
+                <hr />
                 <div class="form-group">
                     <label class="col-md-2">SA Identity No.</label>
                     <div class="col-md-9"><input type="text" class="form-control" placeholder="Your SA Identity Number" name="sa_identity_no" value="<?php echo $member->sa_identity_no;?>" /></div>
@@ -184,11 +333,51 @@
                 
                 <hr />
                 
-                <div class="form-group">
-                    <label class="col-md-2">Championchip</label>
-                    <div class="col-md-9"><input type="text" class="form-control" placeholder="Your Championchip Number" name="championchip" value="<?php echo $member->championchip;?>" /></div>
-                    <div class="clearfix"></div>
-                </div>
+               
+                    
+                <?php $championchips = MemberExtra::model()->findAllByAttributes(['member_id'=>$member->id,'type'=>'championchip']);
+                    if(count($championchips)>0)
+                    {
+                       foreach($championchips as $k=>$championchip)
+                       { 
+                        if($k==0)
+                        {
+                        ?>
+                         <div class="form-group Championchip_Number">
+                            <label class="col-md-2">Championchip</label>
+                            <div class="col-md-7"><input type="text" class="form-control" placeholder="Your Championchip Number" name="championchip[]" value="<?php echo $member->championchip;?>" /></div>
+                            <div class="col-md-2"><button type="button" class="add_chamionchip btn btn-outline-secondary" onclick="addmore('Championchip_Number','championchip');">ADD +</button></div>
+                            <div class="clearfix"></div>
+                         </div>
+                        <?php }
+                        else
+                        {?>
+                        <div class="form-group">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-7"><input type="text" class="form-control" placeholder="Your Championchip Number" name="championchip[]" value="<?php echo $championchip->value;?>" /></div>
+                            <div class="col-md-2"><input type="button" value="Remove" class="btn btn-danger" onclick="$(this).parent().parent().remove();"  /></div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <?php
+                            
+                        }?>
+                    
+                <?php
+                        }
+                    }
+                    else
+                    {
+                    ?>
+                        <div class="form-group Championchip_Number">
+                        <label class="col-md-2">Championchip</label>
+                        <div class="col-md-7"><input type="text" class="form-control" placeholder="Your Championchip Number" name="championchip[]" value="<?php echo $member->championchip;?>" /></div>
+                        <div class="col-md-2"><button type="button" class="add_chamionchip btn btn-outline-secondary" onclick="addmore('Championchip_Number','championchip');">ADD +</button></div>
+                        <div class="clearfix"></div>
+                        </div>
+                    <?php 
+                    }?>
+                    
+                
                 
                  <div class="form-group">
                     <label class="col-md-2"></label>
@@ -197,16 +386,51 @@
                 </div>
                 
                 <hr />
-                
-                <div class="form-group">
-                    <label class="col-md-2">TraceTec</label>
-                    <div class="col-md-9"><input type="text" class="form-control" placeholder="Your TraceTec Number" name="tracetec" value="<?php echo $member->tracetec;?>"  /></div>
-                    <div class="clearfix"></div>
-                </div>
+                <?php $championchips = MemberExtra::model()->findAllByAttributes(['member_id'=>$member->id,'type'=>'tracetec']);
+                        if(count($championchips)>0)
+                        {
+                           foreach($championchips as $k=>$championchip)
+                           { 
+                                if($k==0)
+                                {
+                                ?>
+                                    <div class="form-group RaceTec_Number">
+                                        <label class="col-md-2">RaceTec Chip</label>
+                                        <div class="col-md-7"><input type="text" class="form-control" placeholder="RaceTec Number" name="tracetec[]" value="<?php echo $championchip->value;?>"  /></div>
+                                        <div class="col-md-2"><button type="button" class="add_racetec btn btn-secondary" onclick="addmore('RaceTec_Number','tracetec');">ADD +</button></div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                <?php
+                                }
+                                else
+                                {
+                                ?>
+                                    <div class="form-group">
+                                        <label class="col-md-2"></label>
+                                        <div class="col-md-7"><input type="text" class="form-control" placeholder="RaceTec Number" name="tracetec[]" value="<?php echo $championchip->value;?>"  /></div>
+                                        <div class="col-md-2"><input type="button" value="Remove" class="btn btn-danger" onclick="$(this).parent().parent().remove();"  /></div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                <?php
+                                }
+                            }
+                        }
+                        else
+                        {
+                            ?>
+                        <div class="form-group RaceTec_Number">
+                            <label class="col-md-2">RaceTec Chip</label>
+                            <div class="col-md-7"><input type="text" class="form-control" placeholder="RaceTec Number" name="tracetec[]" value="<?php echo $member->tracetec;?>"  /></div>
+                            <div class="col-md-2"><button type="button" class="add_racetec btn btn-secondary" onclick="addmore('RaceTec_Number','tracetec');">ADD +</button></div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <?php    
+                        }
+                        ?>
                 
                  <div class="form-group">
                     <label class="col-md-2"></label>
-                    <div class="col-md-9"><span class="blue">Input your <strong>TraceTec Number</strong> to track your results - <strong>Optional</strong></span></div>
+                    <div class="col-md-9"><span class="blue">Input your <strong>RaceTec Number</strong> to track your results - <strong>Optional</strong></span></div>
                     <div class="clearfix"></div>
                 </div>
                 
@@ -318,6 +542,17 @@
 <div class="clear"></div>
 <!-- Rght side bar end --><?php */?>
     <script>
+    function addmore(div,name)
+    {
+        $("."+div).append('<div class="form-group">'+
+                        '<div class="col-md-2"></div>'+
+                        '<div class="col-md-7"><input type="text" class="form-control" placeholder="'+div.replace("_",' ')+'" name="'+name+'[]" value="" /></div>'+
+                        '<div class="col-md-2"><input type="button" value="Remove" class="btn btn-danger" onclick="$(this).parent().parent().remove();"  /></div>'+
+                        '<div class="clearfix"></div>'+
+                
+                    '</div>');
+        
+    }
     function confirm_delete(ques)
     {
         if(confirm(ques))
@@ -329,6 +564,68 @@
             return false;
     }
     $(function(){
+            CKEDITOR.replace( 'description' );
+            CKEDITOR.editorConfig = function( config ) {
+        	config.language = 'es';
+        	config.uiColor = '#F5f5f5';
+        	};
+            function textCounter2(field, countfield, maxlimit)
+            {
+            	if (field.value.length > maxlimit) // if too long...trim it!
+            		field.value=field.value.substring(0, maxlimit);
+            	else  // otherwise, update counter
+            		countfield.value=field.value.length;
+            }
+            var editor = CKEDITOR.instances.description;
+            /*editor.on( 'key', function( evt ){
+                alert(evt.editor.getData());
+               // Update the counter with text length of editor HTML output.
+               textCounter2( { value : evt.editor.getData() },this.form.grLenght2, 500 );
+            }, editor.element.$ );*/
+            var locked;
+           
+            editor.on( 'change', function( evt ){
+                var html=editor.getData();
+                var dom=document.createElement("DIV");
+                dom.innerHTML=html;
+                var plain_text=(dom.textContent || dom.innerText);
+                var currentLength = plain_text.length,
+                   maximumLength = 600;
+                var rem_text = maximumLength-currentLength;
+                $('.count_letter').text(rem_text);
+                if( currentLength >= maximumLength )
+                {
+                     
+                    //editor.execCommand( 'undo' );
+                     setTimeout( function()
+                     {
+                        if(rem_text<0) 
+                        {   var snippet=dom.innerText.substr(0,600);
+                                editor.setData(snippet);} 
+                        if( !locked )
+                          {
+                             // Record the last legal content.
+                             editor.fire( 'saveSnapshot' ), locked = 1;
+                                            // Cancel the keystroke.
+                             evt.cancel();
+                          }
+                          else
+                          {
+                                setTimeout( function()
+                                 {
+                                    // Rollback the illegal one.  
+                                    if( plain_text.length > maximumLength )
+                                       editor.execCommand( 'undo' );
+                                    else
+                                       locked = 0;
+                                 }, 0 );
+                          }
+                        },0);
+            
+                }
+               });
+            
+            
 			$( "#profile-detail" ).validate( {
 			 onkeyup: false,
 				rules: {
@@ -339,6 +636,7 @@
                     y_ob: "required",
                     gender: "required",
                     username: 'required',
+                    province: 'required',
 					password_signup: {
 						required: true,
 						minlength: 5
