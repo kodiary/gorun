@@ -1,7 +1,8 @@
 <div class="sidebar col-md-3">
           <?php echo $this->renderPartial('/common/_clubs', ['prov_id'=>$province_id,'type'=>$type], true); ?>
         </div>
-        <div class="col-md-9 right-content items">
+        <div class="col-md-9 right-content ">
+        <div class="items">
             <?php
             if(isset($province_id))
             {
@@ -59,14 +60,20 @@
                 <div class="clearfix"></div>
             </div>
             <?php }
-            if($pages->itemCount>Yii::app()->params['articles_pers_page'])
-            echo "<a href='javascript:void(0);' class='btn btn-primary' id='load_more'>Load More</a>";
+            
             }
             else
                 echo "No Results Found.";
             ?>
             
+       </div>
+        <div class="form-group">
+           <?php
+        if($pages->itemCount>Yii::app()->params['articles_pers_page'])
+            echo "<a href='javascript:void(0);' class='btn btn-primary' id='load_more'>Load More</a>";
+        ?> 
         </div>
+        </div> 
         <div class="clearfix"></div>
 <script>
 $(function(){

@@ -142,6 +142,7 @@ class DashboardController extends Controller
         $clubs = ClubMember::model()->findAllByAttributes(['member_id'=>Yii::app()->user->id]);
         $this->render('clubs',['clubs'=>$clubs]);
     }
+    
     public function actionPassword()
     {
         
@@ -158,6 +159,67 @@ class DashboardController extends Controller
         }
         $this->render('password',['password'=>$pass]);
 
+    }
+    public function actionDetails($slug)
+    {
+        
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/jquery.infinitescroll.js"));
+        //$club = Club::model()->with(['extras','member:recent'=>['together'=>true]])->findByAttributes(['slug'=>$slug],['limit'=>2]);
+        $club = Member::model()->findByAttributes(['username'=>$slug]);
+       
+        $events = EventsType::model()->findAll();
+        
+        $companyId = Yii::app()->user->id;
+        $criteria = new CDbCriteria;
+        $criteria->condition = 'company_id='.$club->id;
+        $criteria->order = 'publish_date DESC,t.id DESC';
+        $isfollowed = MemberFollow::model()->isfollowed($club->id,Yii::app()->user->id);
+        $pages='';
+        $this->render('details', array('model'=>$club,'pages'=>$pages,'isfollowed'=>$isfollowed,'events'=>$events));
+        
+       
+    }
+    function actionUnfollow()
+    {
+        if(Yii::app()->user->isGuest)
+        {
+            $this->redirect(Yii::app()->request->baseUrl);
+        }
+        if(isset($_POST['follower_id']))
+        {
+            if(MemberFollow::model()->deleteAllByAttributes(['follower_id'=>$_POST['follower_id'],'member_id'=>Yii::app()->user->id]))
+            {    Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - Athelete Unfollowed!');
+                echo "OK";
+            }
+            else
+                echo "Error";
+            
+            die();
+            
+        }
+    }
+    function actionFollow()
+    {
+        if(Yii::app()->user->isGuest)
+        {
+            $this->redirect(Yii::app()->request->baseUrl);
+        }
+        if(isset($_POST['follower_id']))
+        {
+            $clubmember = new MemberFollow;
+            $clubmember->follower_id = $_POST['follower_id'];
+            $clubmember->member_id = Yii::app()->user->id;
+            if($clubmember->save())
+            {
+                Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - Athelete Followed!');
+                echo "OK";
+            }
+            else
+                echo "Error";
+            
+            die();
+            
+        }
     }
     
     

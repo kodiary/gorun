@@ -391,4 +391,18 @@ class Member extends CActiveRecord
         $criteria->order = 't.name asc';
         return Company::model()->findAll($criteria);
     }
+    public function getAge($dob)
+    {
+        $recent_date = explode("-",date('Y-m-d'));
+        $date =explode("-", $dob);
+        $year = $recent_date[0]-$date[0];
+        $year++;
+        if($date[1]>$recent_date[1])
+            $year = $year+1;
+        if($date[1]==$recent_date[1] && $date[2]>=$recent_date[2])
+            $year = $year+1;
+        return $year;
+        
+        
+    }
 }

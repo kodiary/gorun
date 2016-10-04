@@ -52,44 +52,7 @@ function updateMarkerPosition(latlng) {
 function updateMarkerAddress(str) {
   document.getElementById('formattedAddress').value = str;
 }
-function fillInAddress() {
-        // Get the place details from the autocomplete object.
-        //var place = autocomplete.getPlace();
 
-        for (var component in componentForm) {
-          document.getElementById(component).value = '';
-          document.getElementById(component).disabled = false;
-        }
-        // Get each component of the address from the place details
-        // and fill the corresponding field on the form.
-        for (var i = 0; i < place.address_components.length; i++) {
-          var addressType = place.address_components[i].types[0];
-          if (componentForm[addressType]) {
-            
-            var val = place.address_components[i][componentForm[addressType]];
-            if(addressType=='locality')
-            {
-                document.getElementById('city').value = val;
-            }
-            if(addressType == 'administrative_area_level_1')
-            {
-                 var selectTag = document.getElementById("Company_province");
-                 //console.log(place);
-                  for (var i = 0; i < selectTag.options.length; i++) {
-            
-                        var optionTag = selectTag.options[i];
-                        //alert(optionTag.text+':'+place.state);
-                        if (optionTag.text== val) {
-                            selectTag.options[i].selected= true;
-                           continue;
-                        }
-                    }
-            }
-            document.getElementById(addressType).value = val;
-          }
-        }
-        document.getElementById('Company_street_add').value= place.name;
-      }
 
   function initialize() {
     var lat_value=document.getElementById('Company_latitude').value; 
@@ -123,13 +86,7 @@ function fillInAddress() {
   geocodePosition(latlng);
 	// Add dragging event listeners.
    
-  google.maps.event.addListener(marker, 'drag', function() {
-    updateMarkerPosition(marker.getPosition());
-  });
- 
-  google.maps.event.addListener(marker, 'dragend', function() {
-    geocodePosition(marker.getPosition());
-  });
+
   initMap();  
   }
 
@@ -182,6 +139,12 @@ function fillInAddress() {
   function updateMapPinPosition()
   {
      marker.setMap(null);//clear the previous marker from the map
+     google.maps.Map.prototype.clearOverlays = function() {
+      for (var i = 0; i < markersArray.length; i++ ) {
+        markersArray[i].setMap(null);
+      }
+      markersArray.length = 0;
+    }
      var latlng=new google.maps.LatLng(document.getElementById('Company_latitude').value,document.getElementById('Company_longitude').value);
       map.setCenter(latlng);
      marker = new google.maps.Marker({
@@ -191,13 +154,13 @@ function fillInAddress() {
             icon: image,
             //shadow: shadow,
         });
-    google.maps.event.addListener(marker, 'drag', function() {
-    updateMarkerPosition(marker.getPosition());
-  });
- 
-  google.maps.event.addListener(marker, 'dragend', function() {
-    geocodePosition(marker.getPosition());
-  });
+        google.maps.event.addListener(marker, 'drag', function() {
+        updateMarkerPosition(marker.getPosition());
+      });
+     
+      google.maps.event.addListener(marker, 'dragend', function() {
+        geocodePosition(marker.getPosition());
+      });
   }
   function initMap() {
        
@@ -211,23 +174,28 @@ function fillInAddress() {
 
         var autocomplete = new google.maps.places.Autocomplete(input);
         autocomplete.bindTo('bounds', map);
-        
-        //autocomplete.setComponentRestrictions({'country': 'za'});
+        autocomplete.setComponentRestrictions({'country': 'za'});
 
         var infowindow = new google.maps.InfoWindow();
         
-        var marker = new google.maps.Marker({
+       
+
+        autocomplete.addListener('place_changed', function() {
+          infowindow.close();
+         
+          marker.setVisible(false);
+          place = autocomplete.getPlace();
+          updateMarkerPosition(place.geometry.location)
+         
+           if(marker != null)
+            marker.setMap(null);
+          marker = new google.maps.Marker({
           map: map,
-          anchorPoint: new google.maps.Point(0, -29),
+          position: place.geometry.location,
           draggable: true,
           icon: image,
 
         });
-
-        autocomplete.addListener('place_changed', function() {
-          infowindow.close();
-          marker.setVisible(false);
-          place = autocomplete.getPlace();
           if (!place.geometry) {
             window.alert("Autocomplete's returned place contains no geometry");
             return;
@@ -250,7 +218,7 @@ function fillInAddress() {
           );*/
           marker.setPosition(place.geometry.location);
           marker.setVisible(true);
-          updateMapPinPosition();
+          
 
           var address = '';
           if (place.address_components) {
@@ -260,14 +228,21 @@ function fillInAddress() {
               (place.address_components[2] && place.address_components[2].short_name || '')
             ].join(' ');
           }
-            
+           
           infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
           //document.getElementById('city').value = place.address_components[3].long_name;
           infowindow.open(map, marker);
-          
+          fillInAddress();
         });
+          google.maps.event.addListener(marker, 'drag', function() {
+    updateMarkerPosition(marker.getPosition());
+  });
+ 
+  google.maps.event.addListener(marker, 'dragend', function() {
+    geocodePosition(marker.getPosition());
+  });
         
-        autocomplete.addListener('place_changed', fillInAddress);
+        //autocomplete.addListener('place_changed', );
 
 
         // Sets a listener on a radio button to change the filter type on Places
@@ -284,6 +259,46 @@ function fillInAddress() {
         setupClickListener('changetype-address', ['address']);
         setupClickListener('changetype-establishment', ['establishment']);
         setupClickListener('changetype-geocode', ['geocode']);*/
+      }
+function fillInAddress() {
+        // Get the place details from the autocomplete object.
+        //var place = autocomplete.getPlace();
+
+        for (var component in componentForm) {
+          document.getElementById(component).value = '';
+          document.getElementById(component).disabled = false;
+        }
+        // Get each component of the address from the place details
+        // and fill the corresponding field on the form.
+        for (var i = 0; i < place.address_components.length; i++) {
+          var addressType = place.address_components[i].types[0];
+          if (componentForm[addressType]) {
+            
+            var val = place.address_components[i][componentForm[addressType]];
+            if(addressType=='locality')
+            {
+                document.getElementById('city').value = val;
+            }
+            if(addressType == 'administrative_area_level_1')
+            {
+                 var selectTag = document.getElementById("Company_province");
+                 //console.log(place);
+                  for (var i = 0; i < selectTag.options.length; i++) {
+            
+                        var optionTag = selectTag.options[i];
+                        //alert(optionTag.text+':'+place.state);
+                        if (optionTag.text== val) {
+                            selectTag.options[i].selected= true;
+                           continue;
+                        }
+                    }
+            }
+            document.getElementById(addressType).value = val;
+          }
+        }
+        document.getElementById('Company_street_add').value= place.name;
+        
+        updateMapPinPosition(); 
       }
 
   
