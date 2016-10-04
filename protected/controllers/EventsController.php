@@ -50,10 +50,12 @@ class EventsController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreate($id=0)
 	{
-	   $company_id=Yii::app()->user->getId();
-		
+	   //$created_by=Yii::app()->user->getId();
+		//var_dump($_POST['EventsTime']);die();
+        
+               
 		// Uncomment the following line if AJAX validation is needed
 		//$this->performAjaxValidation($model);
         Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.js"));
@@ -61,22 +63,29 @@ class EventsController extends Controller
         //Yii::app()->clientScript->registerScript('init','initialize();',CClientScript::POS_LOAD);
         
         $model  = new Events;
-        $venue  = new Venues;
-        $model->visible=1;
+        $model_type  = new EventsType;
+        $event_type = EventsType::model()->findAll();
         
         
-        $events_link= new EventsLink;
         
-		if(isset($_POST['Events']))
+        
+        
+        
+        
+		if(isset($_POST['Events']['title']))
 		{
-		   $model->attributes=$_POST['Events'];
-           $model->file = $_POST['file'];
-           $model->start_date = date('Y-m-d', strtotime($_POST['Events']['start_date']));
-           $model->end_date = date('Y-m-d', strtotime($_POST['Events']['end_date']));
-           $model->organiser=$company_id;
-           $model->description = nl2br($model->description);
+		  $model->created_by = Yii::app()->user->id;
+          $model->visible=0;
+		   foreach($_POST['Events'] as $k=>$p)
+           {
+            if($k == 'start_date' || $k == 'end_date')
+            $model->$k = date('Y-m-d', strtotime($p));
+            else
+            $model->$k = $p;
+           }
+		   
            
-           if($model->start_date > $model->end_date){$model->end_date=$model->start_date;}
+           
            //getSlug
            $slug=CommonClass::getSlug($_POST['Events']['title']);
            $count=0;
@@ -90,55 +99,86 @@ class EventsController extends Controller
                 
            if($_POST['logo']!='')
            {
-                @copy(Yii::app()->basePath.'/../images/temp/full/'.$_POST['logo'],Yii::app()->basePath.'/../images/frontend/full/'.$_POST['logo']);
-                @copy(Yii::app()->basePath.'/../images/temp/main/'.$_POST['logo'],Yii::app()->basePath.'/../images/frontend/main/'.$_POST['logo']);
-                @copy(Yii::app()->basePath.'/../images/temp/thumb/'.$_POST['logo'],Yii::app()->basePath.'/../images/frontend/thumb/'.$_POST['logo']);
+                @copy(Yii::app()->basePath.'/../images/temp/full/'.$_POST['Events']['logo'],Yii::app()->basePath.'/../images/frontend/events/full/'.$_POST['Events']['logo']);
+                @copy(Yii::app()->basePath.'/../images/temp/main/'.$_POST['Events']['logo'],Yii::app()->basePath.'/../images/frontend/events/main/'.$_POST['Events']['logo']);
+                @copy(Yii::app()->basePath.'/../images/temp/thumb/'.$_POST['Events']['logo'],Yii::app()->basePath.'/../images/frontend/events/thumb/'.$_POST['Events']['logo']);
                 
-                @unlink(Yii::app()->basePath."/../images/temp/main/".$_POST['logo']);
-                @unlink(Yii::app()->basePath."/../images/temp/thumb/".$_POST['logo']);
+                @unlink(Yii::app()->basePath."/../images/temp/main/".$_POST['Events']['logo']);
+                @unlink(Yii::app()->basePath."/../images/temp/thumb/".$_POST['Events']['logo']);
                 $model->logo = $_POST['logo'];                
            }
            
-            if($_POST['file']!="" )
-            {
-                @copy(Yii::app()->basePath.'/../documents/temp/'.$_POST['file'],Yii::app()->basePath.'/../documents/'.$_POST['file']);
-                @unlink(Yii::app()->basePath."/../documents/temp/".$_POST['file']);   
-                $model->file=$_POST['file'];
-            }       
+                  
 			if($model->save())
             {   
                 $id = $model->id;                     
+                if(isset($_POST['EventsTime'])){
                 
-                $events_link->attributes = $_POST['EventsLink'];
-                $events_link->event_id = $id;
-                $events_link->save();
-                
-                if($model->venue_id=='000')
+                foreach($_POST['EventsTime'] as $k=>$p)
                 {
-                    $venue->attributes = $_POST['Venues'];
-                    $venue->event_id = $id;
-                    $venue->save();
-                } 
-            
-                if($_POST['times'] == 'on')
-                {
-                    foreach($_POST['on_date'] as $key=>$date)
+                    
+                    foreach($p as $k1=>$v)
                     {
-                        $time = new EventsTime;
-                        $time->on_date = $date;
-                        $time->from = $_POST['from'][$key];
-                        $time->to = $_POST['to'][$key];
-                        $time->event_id = $id;
-                        $time->save();
+                        $arr[$k1][$k] = $v;
                     }
+                    
                 }
+                foreach($arr as $a)
+                {
+                   $events_time= new EventsTime;
+                   $events_time->event_id = $model->id;
+                   foreach($a as $k=>$v)
+                   {
+                        $events_time->$k = $v;
+                   } 
+                   $events_time->save();
+                   
+                   unset($events_time);
+                }
+                if(isset($arr))
+                unset($arr);
+                }
+                
+                if(isset($_POST['EventsFile'])){
+                
+                foreach($_POST['EventsFile'] as $k=>$p)
+                {
+                    
+                    foreach($p as $k1=>$v)
+                    {
+                        $arr[$k1][$k] = $v;
+                    }
+                    
+                }
+                foreach($arr as $a)
+                {
+                   $events_file= new EventsFile;
+                   $events_file->event_id = $model->id;
+                   foreach($a as $k=>$v)
+                   {
+                        $events_file->$k = $v;
+                   } 
+                   $events_file->save();
+                   
+                   unset($events_file);
+                }
+                
+                }
+                
+                
+                
                 Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - A new event has been added successfully!');
+                //die();
 				$this->redirect(array('index'));
+            }
+            else
+            {
+                var_dump($model);
             }   
 		}
         
 		$this->render('create',array(
-			'model'=>$model,'venue'=>$venue,'events_link' =>$events_link
+			'model'=>$model,'event_type'=>$event_type
 		));
 	}
     

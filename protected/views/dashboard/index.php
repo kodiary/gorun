@@ -148,14 +148,14 @@
                     ?>
                         
                     </div>
-                    <div class="col-md-6 picact">
+                    <div class="col-md-6 picact" style="margin-left: 20px;margin-top: 30px;">
                     <?php echo $this->renderPartial('application.views.gallery._addImage',array('member'=>$member,'type'=>'member')); ?>
                         
                       
             <?php
                         
             //crop button
-             echo CHtml::ajaxButton('Crop',
+             echo CHtml::ajaxLink('<span class="fa fa-crop"></span> Crop',
                         $this->createUrl('gallery/cropPhoto?height=215&width=215'),
                          array( //ajax options
                          'data'=>array('fileName'=>"js:function(){ return $('.uploaded_image').val()}",'id'=>$member->id),
@@ -173,12 +173,12 @@
                                       $('#crop_".$member->id."').val('Crop');
                                     }",
                         ),
-                        array('id'=>'crop_'.$member->id,'class'=>'btn btn-default','onclick'=>'$("#crop_'.$member->id.'").val("loading...");')//html options
+                        array('id'=>'crop_'.$member->id,'class'=>'btn btn-crop','onclick'=>'$("#crop_'.$member->id.'").val("loading...");')//html options
             );
             ?><br />
             
                         
-                        <a href="javascript:void(0)" class="btn btn-danger" onclick="return confirm_delete('Are you sure that you want to remove the image?'); ">Remove</a><br />
+                        <a href="javascript:void(0)" class="btn btn-remove" onclick="return confirm_delete('Are you sure that you want to remove the image?'); "><span class="fa fa-times" style="color: #E00000;"></span> Remove</a><br />
                     </div>
                         
                     </div>

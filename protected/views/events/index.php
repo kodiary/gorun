@@ -13,7 +13,7 @@ $this->breadcrumbs=array(
 <div class="line"></div>
   <?php $this->widget('bootstrap.widgets.BootAlert'); ?>
   <?php 
-if($dataProvider->totalItemCount>0)
+/*if($dataProvider->totalItemCount>0)
 {
       $this->widget('bootstrap.widgets.BootListView',array(
     	'dataProvider'=>$dataProvider,
@@ -26,7 +26,7 @@ if($dataProvider->totalItemCount>0)
     ));
 }
 else
-{?>
+{*/?>
     <div class="green-border">
         <div class="fl_left">
             <img src="<?php echo $this->createUrl('/images/alert.png')?>" alt="alert"/>
@@ -37,10 +37,10 @@ else
         </div>
         <div class="clear"></div>
     </div>
-<?php }?>
+<?php //}?>
 
 <div class="showAllBtn">
-  <?php
+  <?php/*
 if($dataProvider->totalItemCount>10 && !isset($_GET['showall'])){
     $this->widget('bootstrap.widgets.BootButton', array(
                 'label'=>'Show All',
@@ -49,7 +49,7 @@ if($dataProvider->totalItemCount>10 && !isset($_GET['showall'])){
                 'url' => $this->createUrl('events/index/showall'),
                 //'htmlOptions'=>array('id'=>'update_'.$data->NewsId),
             ));
-    }?>
+    }*/?>
 </div>
 <div class="clear"></div>
 </div>
