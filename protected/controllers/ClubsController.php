@@ -37,6 +37,7 @@ class ClubsController extends Controller
 			),
 		);
 	}
+    
     public function actionIndex()
 	{
 	   if(Yii::app()->user->isGuest)
@@ -50,9 +51,9 @@ class ClubsController extends Controller
         //Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::getPathOfAlias('application.components')."/gmap/gmap_new.js"));
         Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::getPathOfAlias('application.components')."/gmap/gmap.js"));
         Yii::app()->clientScript->registerScript('init','initialize();',CClientScript::POS_LOAD); 
-        
+        $events = EventsType::model()->findAll();
 	   $club = Member::model()->findByPk(Yii::app()->user->id);
-	   $this->render('index', array('member'=>$club));
+	   $this->render('index', array('member'=>$club,'events'=>$events));
     }
     
     public function actionCreate()
@@ -115,12 +116,15 @@ class ClubsController extends Controller
             $club->fb_page =  $_POST['fb_page'];
             $club->twitter_page =  $_POST['twitter_page'];
             $club->created_by =  Yii::app()->user->id;
+            $club->contact_email = $_POST['contact_email'];
+            $club->google = $_POST['google'];
+            $club->contact_number = $_POST['contact_number'];
             
             
             if($club->save())
             {
                 $id = $club->id;
-               
+               /*
                 ClubExtra::model()->deleteAllByAttributes(['club_id'=>$id]);
                 foreach($_POST['contact_number'] as $number)
                 {
@@ -147,11 +151,12 @@ class ClubsController extends Controller
                         unset($clubExtra);
                     }
                 }
+                
                 //Insert into Club members table
                 $clubmember = new ClubMember;
                 $clubmember->club_id = $id;
                 $clubmember->member_id = Yii::app()->user->id;
-                $clubmember->save();
+                $clubmember->save();*/
                 Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - A new club has been added successfully!');
 				$this->redirect(Yii::app()->request->baseUrl);
             }

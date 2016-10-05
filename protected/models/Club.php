@@ -71,7 +71,7 @@ class Club extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			//array('name, contact_person, number, email, password, password_real, fax, website, twitter, facebok, pinterest, google, tagline, detail, logo, display_address, street_add, suburb, province, latitude, longitude, status, slug, date_added, date_updated, seo_title, seo_desc, seo_keywords', 'required'),
-            array('title,description,logo,cover,types,venue,town,province,latitude,longitude,trial_day,trial_time,trial_desc,contact_person,website,fb_page,twitter_page','required','on'=>'create,dashboard.index'),
+            array('title,description,logo,cover,types,venue,town,province,latitude,longitude,trial_day,trial_time,trial_desc,contact_person,website,fb_page,twitter_page,google,contact_email,contact_number','required','on'=>'create,dashboard.index'),
          
 		);
 	}

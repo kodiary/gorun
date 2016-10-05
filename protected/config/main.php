@@ -124,6 +124,7 @@ return array(
             'emailtosubscriber'=>'emailtosubscriber/index',
             
             //'confirmation/hash/<hash>'=>'member/confirmation/<hash>',
+            'clubs/'=>'clubs/index',
             'clubs/create'=>'clubs/create',
             'clubs/details'=>'clubs/details',
             'clubs/unfollow'=>'clubs/unfollow',
@@ -132,6 +133,7 @@ return array(
             'clubs/type'=>'clubs/type',
             'clubs/<slug>'=>'clubs/details/slug/<slug>',
             
+            'events/'=>'events/index',
             
             'directory/contact'=>'directory/contact',
             'directory/countContact'=>'directory/countContact',
@@ -194,6 +196,7 @@ return array(
             '<controller:\w+>/<id:\d+>'=>'<controller>/view',
 			'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 			'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+            '/<slug>'=>'dashboard/details/slug/<slug>'
 			),
 		),
 		

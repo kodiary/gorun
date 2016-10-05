@@ -24,23 +24,17 @@
                     <label class="col-md-12">CLUB ACTIVITIES<br /></label>
                    
                     <div class="col-md-12">
-                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Running" />Running</div>
-                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Canoe" />Canoe</div>
-                        <div class="clearfix"></div>
-                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Swimming" />Swimming</div>
-                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Cross Country" />Cross Country</div>
-                        <div class="clearfix"></div>
-                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Cycling" />Cycling</div>
-                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Dog Allowed" />Dogs Allowed</div>
-                        <div class="clearfix"></div>
-                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Duathlon" />Duathlon</div>
-                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Fun Run" />Fun Run</div>
-                        <div class="clearfix"></div>
-                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Mountain Biking" />Mountain Biking</div>
-                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Road Run" />Road Run </div>
-                        <div class="clearfix"></div>
-                        <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="Triathlon" />Triathlon</div>
-                        <div class="clearfix"></div>
+                        <?php 
+                        foreach($events as $event)
+                        {?>
+                            <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="<?php echo $event->id;?>" /><?php echo $event->title;?></div>
+                            
+                            <div class="clearfix"></div>
+                            
+                        <?php
+                            
+                        }?>
+                        
                     </div>
                     <div class="clearfix"></div>
                     <div class="types"></div>
@@ -243,16 +237,16 @@
                     <input type="hidden" name="formattedAddress" id="formattedAddress" value=""/>
                     <div class="clearfix"></div>
                 </div>
-                  <div class="form-group"> 
+                 
+                </div>
+                 <div class="form-group"> 
                      <!-- gmap -->
                     <div id="map_canvas" style="width: 100%; height: 300px;"></div>
                     <div class="clearfix"></div>
                   </div>
-                </div>
-                
               
                  
-                <div class="form-group white">
+                <!--div class="form-group white">
                     <label class="col-md-12">Time Trials<br /><span class="blue">Does your club have a weekly trial(Optional)</span></label>
                     <div class="clearfix"></div>
                     <div class="form-group">
@@ -309,71 +303,79 @@
                         <div class="clearfix"></div>
                     
                     </div>
-                 </div>
+                 </div-->
                  
                 <div class="form-group white">
-                    <label class="col-md-12">Contact Details<br /><span class="blue">Complete the contact details below</span></label>
-                    
-                    <div class="form-group">
-                        <div class="col-md-3">Contact Person<span class="required">*</span></div>
-                        <div class="col-md-7"><input type="text" class="form-control" placeholder="Contact Person" name="contact_person" value="<?php //echo $member->fname;?>" /></div>
-                        <div class="clearfix"></div>
-                    
-                    </div>
-                    <hr />
+                    <label class="col-md-12">Club Contact Details(Required)<br />
+                    <span class="blue">Display contact details of the club</span></label>
                     <div class="Contact_Number">
                         <div class="form-group">
-                            <div class="col-md-3">Contact Number <span class="required">*</span></div>
-                            <div class="col-md-7"><input type="text" class="form-control" placeholder="Contact Number" name="contact_number[]" value="<?php //echo $member->fname;?>" /></div>
-                            <input type="button" value="+Add" class="btn btn-default col-md-1" onclick="addmore('Contact_Number');"/>
+                            <div class="col-md-12">Contact Number</div>
+                            <div class="col-md-6"><input type="text" class="form-control" placeholder="Contact Number" name="contact_number" value="<?php //echo $member->fname;?>" /></div>
+                            <!--input type="button" value="+Add" class="btn btn-default col-md-1" onclick="addmore('Contact_Number');"/-->
                             <div class="clearfix"></div>
                         
                         </div>
                     </div>
-                    <hr />
+                
                     <div class="Contact_Email">
                         <div class="form-group ">
-                            <div class="col-md-3">Contact E-mail <span class="required">*</span></div>
-                            <div class="col-md-7"><input type="text" class="form-control" placeholder="Contact email" name="contact_email[]" value="<?php //echo $member->fname;?>" /></div>
-                            <input type="button" value="+Add" class="btn btn-default col-md-1" onclick="addmore('Contact_Email');" />
+                            <div class="col-md-12">Email Address (Will display a Contact Button)</div>
+                            <div class="col-md-6"><input type="text" class="form-control" placeholder="Contact email" name="contact_email" value="<?php //echo $member->fname;?>" /></div>
+                            <!--input type="button" value="+Add" class="btn btn-default col-md-1" onclick="addmore('Contact_Email');" /-->
                             <div class="clearfix"></div>
                         
                         </div>
                     </div>
+                    
+                  <div class="form-group">
+                    <div class="col-md-12">Website Address</div>
+                    <div class="col-md-6"><input type="url" class="form-control" placeholder="Organiser Website Address" name="website" value="<?php //echo $member->fname;?>" /></div>
                     <div class="clearfix"></div>
+                
                     </div>
-                    <div class="white">
+                    
+                    <div class="clearfix"></div>
+                </div>
+                <div class="white form-group">
                     <label class="col-md-12">SOCIAL MEDIA LINKS (OPTIONAL)<br />
                     <span class="blue">These will be displayed as icons on your club page an link to your social media pages</span></label>
+                    
                     <div class="form-group">
-                        <div class="col-md-3">Website </div>
-                        <div class="col-md-7"><input type="url" class="form-control" placeholder="http://" name="website" value="<?php //echo $member->fname;?>" /></div>
+                        <div class="col-md-12">Facebook page </div>
+                        <div class="col-md-6"><input type="url" class="form-control" placeholder="http://" name="fb_page" value="<?php //echo $member->fname;?>" /></div>
                         <div class="clearfix"></div>
                     
                     </div>
+                    
                     <div class="form-group">
-                        <div class="col-md-3">Facebook page </div>
-                        <div class="col-md-7"><input type="url" class="form-control" placeholder="http://" name="fb_page" value="<?php //echo $member->fname;?>" /></div>
+                        <div class="col-md-12">Twitter Handle </div>
+                        <div class="col-md-6"><input type="url" class="form-control" placeholder="http://" name="twitter_page" value="<?php //echo $member->fname;?>" /></div>
                         <div class="clearfix"></div>
                     
                     </div>
-                    <div class="form-group">
-                        <div class="col-md-3">Twitter Page </div>
-                        <div class="col-md-7"><input type="url" class="form-control" placeholder="http://" name="twitter_page" value="<?php //echo $member->fname;?>" /></div>
+                    
+                     <div class="form-group">
+                        <div class="col-md-12">Google + Page </div>
+                        <div class="col-md-6"><input type="url" class="form-control" placeholder="http://" name="google" value="<?php //echo $member->fname;?>" /></div>
                         <div class="clearfix"></div>
                     
                     </div>
                     
                     <div class="clearfix"></div>
                 </div>
-                <div class="white">
+                <div class="white form-group">
                     <label class="col-md-12">Visibility<br />
                     <span class="blue">Events are subject to approval before going live and visible to public.</span></label>
                     <div class="clearfix"></div>
                 </div>
-                
-                <div class="col-md-5 padding-left-0">
-                <input type="submit" name="submit" class="btn btn-submit" value="Submit" />
+                <div class="form-group">
+                    <div class="col-md-6">
+                    <span><strong>PLEASE NOTE:</strong> Submitting a club requires our <br /> approval before it will be displayed live.</span>
+                    </div>
+                    <div class="col-md-6 padding-left-0">
+                    <input type="submit" name="submit" class="btn btn-submit" value="SUBMIT FOR APPROVAL" />
+                    </div>
                 </div>
                 <div class="clearfix"></div>
 </form>
@@ -453,9 +455,9 @@ $(function(){
                     street_address: "required",
                     city: "required",
                     province: "required",
-                    contact_person: "required",
+                    //contact_person: "required",
                     'type[]':"required",
-                   	'contact_email[]': {
+                   	contact_email: {
 						required: true,
 						email: true,
                        /* remote: {

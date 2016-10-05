@@ -15,7 +15,18 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
     <div class="col-md-12 block_border detail_page">
         <h1 class="detail_heading"><?php echo ucfirst($model->title);?><br /><span class="blue"><?php echo Province::model()->getTitle($model->province).", ".$model->town;?></span></h1>
         
-        <div class="wallpaper" style="">
+        <div class="wallpaper">
+            <?php
+                if(file_exists(Yii::app()->basePath.'/../images/frontend/thumb/'.$model->cover)&&$model->cover!='')
+                {
+                    $img_url=Yii::app()->baseUrl.'/images/frontend/thumb/'.$model->cover;
+                }
+                else
+                {
+                    $img_url=Yii::app()->baseUrl.'/images/no_img.jpg';    
+                }
+             ?>
+             <img src="<?php echo $img_url;?>"/>
         </div>
         <div class="col-md-4" style="position: relative;  top: -100px; left:15px;text-align: center;">
             <div class="club_img" style="margin-bottom: 5px;border:1px solid #eee;width:auto;height: auto;" >
@@ -38,43 +49,41 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
              {?>
                 <a href="javascript:void(0);" class="btn btn-follow <?php if(!$ismember)echo "followclub";?>" <?php if(Yii::app()->user->isGuest){?> data-target="#loginModal" data-toggle="modal"<?php }?>>Follow +</a>
             <?php }?>
-            <h3 class="mem_count"><span><?php echo $total;?> MEMBERS</span></h3>
+            <h3 class="mem_count"><span><?php echo $total;?> MEMBER<?php if($total>1)echo 'S';?></span></h3>
             <div class="icons follow_icons">
-                <a href="#">
+                <a href="<?php echo $model->fb_page;?>" target="_blank">
                     <span class="fa fa-facebook"></span>
                 </a>
-                <a href="#">
+                <a href="<?php echo $model->twitter_page;?>" target="_blank">
                     <span class="fa fa-twitter"></span>
                 </a>
-                <a href="#">
+                <a href="<?php echo $model->google;?>" target="_blank">
                     <span class="fa fa-google-plus"></span>
                 </a>
             </div>
             <div class="activities">
             <h3><strong>CLUB ACTIVITES</strong></h3>
-            <?php $activities = explode(',',$model->types);
+            <?php 
+           
+            $activities = explode(',',$model->types);
             foreach($activities as $activity)
             {
-                echo $activity."<br/>";
+                if($activity!='')
+                {
+                echo EventsType::model()->titleName($activity)."<br/>";
+                }
             }?>
+            <div class="clearfix"></div>
             </div>
-            
+            <div class="clearfix"></div>
             <div class="contact" style="height: 40px;">
-            <a href="#" class="btn-submit" style="border: 2px solid #878787;color: #878787;font-size: 16px;"><i class="fa fa-envelope-o"></i> CONTACT CLUB</a>
+            <a href="mailto:<?php echo $model->contact_email;?>?Subject=Hello" target="_top" class="btn-submit" style="border: 2px solid #878787;color: #878787;font-size: 16px;"><i class="fa fa-envelope-o"></i> CONTACT CLUB</a>
             </div>
             <div class="clearfix"></div>
             <div class="phone_number">
-            <?php
-                foreach($model->extras as $extra)
-                {
-                    if($extra->type=='contact_number'){
-            ?>
-                    <?php echo ($extra->value);?>
-            <?php
-                    }
-                }
-            ?>
-            
+        
+                    <?php echo ($model->contact_number);?>
+       
             </div>
         </div>
         <div class="col-md-8">
@@ -88,24 +97,117 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
                 </div>
                 <?php echo $model->description;?>
                 <div class="website"><a href="<?php echo $model->website;?>" target="_blank"><?php echo strtoupper(str_replace('http://','',$model->website));?></a></div>
-                 <?php 
-                if($model->latitude!=0 && $model->longitude!=0)
-                {
-                ?>
-                <?php $this->renderPartial('_map',array('model'=>$model));?>
-                <div>
-                    <span class="blue"><strong>ADDRESS -</strong></span> <a href="http://www.google.com/maps/place/<?php echo $model->latitude.",".$model->longitude;?>" class="red" target="_blank">View on Google Maps</a>
                 
-                </div>
-                <?php }?>
-                <div class="venue_detail">
-                    <?php echo $model->venue;?>
-                </div>
             </div>
         </div>
         <div class="clearfix"></div>
     </div>
     <div class="clearfix"></div>
+    <div class="map col-md-12 block_border toggle-div" style="margin:0;border-bottom:none">
+        <a href="javascript:void(0)" onclick="toggle_div('map_more',this);"><span><strong>LOCATION</strong></span>
+        <span class="right"><i class="glyphicon glyphicon-chevron-down"></i></span></a>
+    </div>
+    <div class="clearfix"></div>
+    <div class="cold-md-12 map_more block_border" >
+        <div class="form-group">
+            <?php echo $model->venue.",".$model->town;?>
+        </div>
+     <?php 
+        if($model->latitude!=0 && $model->longitude!=0)
+        {
+        ?>
+        <?php $this->renderPartial('_map',array('model'=>$model));?>
+        <div>
+            <span class="blue"><a href="http://www.google.com/maps/place/<?php echo $model->latitude.",".$model->longitude;?>"  target="_blank">VIEW ON GOOGLE MAPS</a></span>
+        
+        </div>
+        <?php }?>
+        
+    </div>
+    
+    <div class="col-md-12 block_border toggle-div" <?php if(count($model->member)==0)echo 'style="margin:0;border-bottom:none"';?>>
+        <a href="javascript:void(0)" onclick="toggle_div('members_more',this);"><span><strong><?php  if($total!=0)echo $total;?> MEMBER<?php if($total>1&&$total==0)echo 'S';?></strong></span>
+        <span class="right"><i class="glyphicon glyphicon-chevron-down"></i></span></a>
+    </div>
+    <div class="clearfix"></div>
+    <div class="members_more">
+    <?php
+    if(count($model->member)>0)
+    {
+        $i=0;
+        foreach($model->member as $member)
+        {
+            $i++;
+        ?>
+            <div class="white" style="width: 49%;float:<?php if($i%2==1){?>left<?php }else{?>right<?php }?>;margin-bottom:15px;border-radius:5px;">
+            
+                <?php
+                    if(file_exists(Yii::app()->basePath.'/../images/frontend/thumb/'.$member->logo)&&$member->logo!='')
+                    {
+                        $img_url=Yii::app()->baseUrl.'/images/frontend/thumb/'.$member->logo;
+                    }
+                    else
+                    {
+                        $img_url=Yii::app()->baseUrl.'/images/blue.png';    
+                    }
+                 ?>
+                <div class="col-md-3">
+                    <img class="img-circle" src="<?php echo $img_url;?>"/>
+                </div>
+                <div class="col-md-9">
+                    <div class="Members_name"><?php echo ucfirst($member->fname." ".$member->lname);?></div>
+                    <span class="results">5 Results</span>
+                    <div class="blue race-reviews">23 RACE REVIEWS</div>
+                </div>
+                <div class="clearfix"></div>
+            
+            </div>
+            
+        <?php
+        }
+        
+        //echo "<a href='javascript:void(0);' onclick='load_content(\"members_more\");' class='btn btn-loadmore'>Load More</a>";
+        
+    }
+    
+    else
+        echo "<div class='block_border blue'>No Resluts</div>";
+    ?>
+    <div class="clearfix"></div> 
+    </div>
+    <div class="col-md-12 block_border toggle-div" >
+        <a href="javascript:void(0)" onclick="toggle_div('admin_more',this);"><span><strong>ADMINS</strong></span>
+        <span class="right"><i class="glyphicon glyphicon-chevron-down"></i></span></a>
+    </div>
+    <div class="clearfix"></div>
+    <div class="admin_more">
+        
+      <div class="white" style="width: 49%;float:left;margin-bottom:15px;border-radius:5px;">
+        
+            <?php
+            $admin = Member::model()->findByPk($model->created_by);
+                if(file_exists(Yii::app()->basePath.'/../images/frontend/thumb/'.$admin->logo)&&$admin->logo!='')
+                {
+                    $img_url=Yii::app()->baseUrl.'/images/frontend/thumb/'.$admin->logo;
+                }
+                else
+                {
+                    $img_url=Yii::app()->baseUrl.'/images/blue.png';    
+                }
+             ?>
+            <div class="col-md-3">
+                <img class="img-circle" src="<?php echo $img_url;?>"/>
+            </div>
+            <div class="col-md-9">
+                <div class="Members_name"><?php echo ucfirst($admin->fname." ".$admin->lname);?></div>
+                <span class="results">5 Results</span>
+                <div class="blue race-reviews">23 RACE REVIEWS</div>
+            </div>
+            <div class="clearfix"></div>
+        
+        </div>   
+        
+    </div>
     <div class="news col-md-12 block_border toggle-div" <?php if(!$dataProvider)echo 'style="margin:0;border-bottom:none"';?>>
         <a href="javascript:void(0)" onclick="toggle_div('news_more',this);"><span><strong>NEWS</strong></span>
         <span class="right"><i class="glyphicon glyphicon-chevron-down"></i></span></a>
@@ -157,64 +259,6 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
     
     </div>
     <div class="clearfix"></div>
-    <div class="col-md-12 block_border toggle-div" <?php if(count($model->member)==0)echo 'style="margin:0;border-bottom:none"';?>>
-        <a href="javascript:void(0)" onclick="toggle_div('members_more',this);"><span><strong>MEMBERS</strong></span>
-        <span class="right"><i class="glyphicon glyphicon-chevron-down"></i></span></a>
-    </div>
-    <div class="clearfix"></div>
-    <div class="members_more">
-    <?php
-    if(count($model->member)>0)
-    {
-        $i=0;
-        foreach($model->member as $member)
-        {
-            $i++;
-        ?>
-            <div class="white" style="width: 49%;float:<?php if($i%2==1){?>left<?php }else{?>right<?php }?>;margin-bottom:15px;border-radius:5px;">
-            
-            <?php
-                    if(file_exists(Yii::app()->basePath.'/../images/frontend/thumb/'.$member->logo)&&$member->logo!='')
-                    {
-                        $img_url=Yii::app()->baseUrl.'/images/frontend/thumb/'.$member->logo;
-                    }
-                    else
-                    {
-                        $img_url=Yii::app()->baseUrl.'/images/blue.png';    
-                    }
-                 ?>
-                <div class="col-md-3">
-                    <img class="img-circle" src="<?php echo $img_url;?>"/>
-                </div>
-                <div class="col-md-9">
-                    <div class="Members_name"><?php echo ucfirst($member->fname." ".$member->lname);?></div>
-                    <span class="results">5 Results</span>
-                    <div class="blue race-reviews">23 RACE REVIEWS</div>
-                </div>
-                <div class="clearfix"></div>
-            
-            </div>
-            
-        <?php
-        }
-        
-        //echo "<a href='javascript:void(0);' onclick='load_content(\"members_more\");' class='btn btn-loadmore'>Load More</a>";
-        
-    }
-    
-    else
-        echo "<div class='block_border blue'>No Resluts</div>";
-    ?>
-    <div class="clearfix"></div> 
-    </div>
-    <div class="col-md-12 block_border toggle-div" <?php if(true)echo 'style="margin:0;border-bottom:none"';?>>
-        <a href="javascript:void(0)" onclick="toggle_div('admin_more',this);"><span><strong>ADMINS</strong></span>
-        <span class="right"><i class="glyphicon glyphicon-chevron-down"></i></span></a>
-    </div>
-    <div class="clearfix"></div>
-    <div class="admin_more">
-        <div class="block_border blue">No Results</div>
-    </div>
   
             
             

@@ -289,4 +289,5 @@ class Events extends CActiveRecord
         $events = self::model()->findAll($criteria);
         return $events; 
     }
+    
 }
