@@ -1,10 +1,10 @@
 <script src="//cdn.ckeditor.com/4.5.10/basic/ckeditor.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Gjdm_0nJk17UVBPoV5Im40uQeguoRAo"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/gmap.js"></script>
-<form action="<?php echo Yii::app()->request->baseUrl;?>/events/create/<?php if($model->id)echo $model->id;else echo '0';?>" id="profile-detail" method="post">
+<form action="<?php echo Yii::app()->request->baseUrl;?>/events/create/<?php if($model->id)echo $model->id;else echo '0';?>" id="profile-detail" method="post" onsubmit="return validate_form();">
                 <div class="form-group white">
                     <label class="col-md-12">Event title</label>
-                    <div class="col-md-12"><input type="text" class="form-control" placeholder="Your Event Title" name="Events[title]" value="<?php echo $model->title;?>" /></div>
+                    <div class="col-md-12"><input type="text" class="form-control" required="" placeholder="Your Event Title" name="Events[title]" value="<?php echo $model->title;?>" /></div>
                     <div class="clearfix"></div>
                 </div>
                 
@@ -18,7 +18,7 @@
                     
                     <div class="col-md-12 padding-bot-10 padding-left-0">
                         <div class="col-md-2"><span class="fa fa-calendar"></span> Start Date</div>
-                        <div class="col-md-4"><input type="text" class="form-control datepicker" placeholder="Start Date" id="start_date" name="Events[start_date]" value="<?php echo $model->start_date;?>" /></div>
+                        <div class="col-md-4"><input type="text" class="form-control datepicker" placeholder="Start Date" required="" id="start_date" name="Events[start_date]" value="<?php echo $model->start_date;?>" /></div>
                         <div class="clearfix"></div>
                     </div>
                     <div class="col-md-12 padding-bot-10 padding-left-0 hiddendate" style="display: none;">
@@ -47,6 +47,7 @@
                         </div>
                     </div>
                     <div class="clearfix"></div>
+                    <div class="errormsg_type errors col-md-12" style="display: none;">This field is required.</div><div class="clearfix"></div>
                 </div>
                 <div class="loadform">
                     
@@ -54,8 +55,10 @@
                 <div class="form-group white">
                     <label class="col-md-12">Event Info<br /><span class="blue">All the details about your event</span></label>
                     
-                    <div class="col-md-12"><textarea class="form-control description" name="Events[description]"><?php echo $model->description;?></textarea></div>
+                    <div class="col-md-12"><textarea required="" class="form-control description" name="Events[description]"><?php echo $model->description;?></textarea></div>
+                    
                     <div class="clearfix"></div>
+                    <div class="errormsg_desc errors col-md-12" style="display: none;">This field is required.</div><div class="clearfix"></div>
                 </div>
                 <div class="form-group white">
                     <label class="col-md-12">Cover image (O<span style="text-transform: lowercase;">ptional</span>)</label>
@@ -132,7 +135,7 @@
                 <div class="form-group white">
                     <label class="col-md-12">Event Location (Required)<br /><span class="blue">Input the venue name or address below to find it on google map. Drag pin to desired located if required.</span></label>
                     
-                    <div class="col-md-12"><input type="text" onblur='codeAddress()' id="formattedAddress" class="form-control venue" placeholder="Enter venue name or street address" name="Events[venue]" value="<?php echo $model->venue;?>" /></div>
+                    <div class="col-md-12"><input type="text" required="" onblur='codeAddress()' id="formattedAddress" class="form-control venue" placeholder="Enter venue name or street address" name="Events[venue]" value="<?php echo $model->venue;?>" /></div>
                     <div class="clearfix"></div>
                     <input id="Company_latitude" type="hidden" name="Events[latitude]" onchange='updateMapPinPosition()' value="-26.2041028" />
                     <input id="Company_longitude" type="hidden" name="Events[longitude]" onchange='updateMapPinPosition()' value="28.047305100000017" />
@@ -183,7 +186,7 @@
                         <strong>PLEASE NOTE: Submitting and event requires our approval before it will be displayed live.</strong>
                     </div>
                     <div class="col-md-6">
-                        <input type="submit" class="btn btn-submit" value="SUBMIT FOR APPROVAL" />
+                        <button type="submit" href="javascript:void(0)" class="btn btn-submit">SUBMIT FOR APPROVAL</button>
                     </div>
                     <div class="clearfix"></div>
                 </div>    
@@ -197,7 +200,6 @@ $(function(){
 	config.uiColor = '#F5f5f5';
 	
 };
-    
     
 });
 </script>
@@ -244,6 +246,33 @@ $(function(){
         return true;
     }
   } 
+  function validate_form(){
+    var messageLength = CKEDITOR.instances['Events[description]'].getData().replace(/<[^>]*>/gi, '').length;
+    if($('.event_type').val()=='')
+    {
+        
+        $('html,body').animate({
+                scrollTop: $(".dropdownselect").offset().top},
+                'slow');
+                $('.errormsg_type').show();
+                $('.errormsg_type').fadeOut(7000);
+                return false;
+    }
+    else
+    if( !messageLength ) {
+
+       $('html,body').animate({
+        scrollTop: $(".cke_1").offset().top},
+        'slow');
+        $('.errormsg_desc').show();
+        $('.errormsg_desc').fadeOut(7000);
+        return false;
+    }
+    else
+    return true;
+    
+    
+ }
   function get_month_by_name(name)
   {
     var months = ['January','February','March','April','May','June','July','August','September','August','September','October','November','December'];
@@ -286,6 +315,7 @@ $(function(){
         $('.drop-option').toggle();
     });
     $('.drop-option a').click(function(){
+        $('.distance_list').html('');
         var cat = $(this).attr('class');
         if(cat == 'running')
         $('.event_category').val('1');
@@ -361,7 +391,7 @@ $(function(){
             if(responseJSON.success)
             {
                 $('.flyer_list').show();
-                var str = '<li>'+responseJSON.file+'<input type="hidden" name="EventsFile[file][]" value="'+responseJSON.file+'" />('+responseJSON.size+'<input type="hidden" name="EventsFile[mb][]" value="'+responseJSON.size+'" />) - added <?php echo date('Y/m/d');?><input type="hidden" name="EventsFile[added_on][]" value="<?php echo date('Y/m/d');?>" /> at <?php echo date('H:s');?><input type="hidden" name="EventsFile[added_time][]" value="<?php echo date('H:s');?>" /> <a href="javascript:void(0)" class="cross"><span class="fa fa-times"></a></li>'
+                var str = '<li>'+responseJSON.file+'<input type="hidden" name="EventsFile[file][]" value="'+responseJSON.file+'" /> ('+parseFloat(responseJSON.size).toFixed(2)+'mb<input type="hidden" name="EventsFile[mb][]" value="'+parseFloat(responseJSON.size).toFixed(2)+'" />) - added <?php echo date('Y/m/d');?><input type="hidden" name="EventsFile[added_on][]" value="<?php echo date('Y/m/d');?>" /> at <?php echo date('H:s');?><input type="hidden" name="EventsFile[added_time][]" value="<?php echo date('H:s');?>" /> <a href="javascript:void(0)" class="cross"><span class="fa fa-times"></a></li>'
                 $('.flyer_list').append(str);
                 $('.flyer_file').val(responseJSON.file)
                 
@@ -377,6 +407,87 @@ $(function(){
         'messages':{'typeError':'{file} has invalid extension. Only {extensions} are allowed.','sizeError':'{file} is too large, maximum file size is {sizeLimit}.','minSizeError':'{file} is too small, minimum file size is {minSizeLimit}.','minHeightError': "{file} dimension is too small, minimum Height is {minHeight}.",
             'minWidthError': "{file} dimension is too small, minimum Width is {minWidth}.",'emptyError':'{file} is empty, please select files again without it.','onLeave':'The files are being uploaded, if you leave now the upload will be cancelled.'},'showMessage':function(message){ alert(message); }});
 }
+</script>
+<script>
+$('.add_distance1').live('click',function(){
+    //alert('test');
+    
+    var dist1 = $('.dist').val();
+    var dist2 = $('.distance_decimal').val(); 
+    var start_hour = $('.start_hour').val();
+    var start_min = $('.start_min').val();
+    var cost = $('.cost').val();
+    
+    if(!dist1)
+    dist1 = '000';
+    if(!dist2)
+    dist2 = '0';
+    if(!start_hour)
+    start_hour = '00';
+    if(!start_min)
+    start_min = '00';
+    if(!cost){
+    cost = 'N/A';
+    cost_val = '';
+    }
+    else{
+    cost_val = cost;
+    cost = 'R'+cost;
+    
+    }
+    
+    var str = dist1+'<input type="hidden" name="EventsTime[distance1][]" value="'+dist1+'" />,'+dist2+'<input type="hidden" name="EventsTime[distance2][]" value="'+dist2+'" />km &nbsp;|&nbsp; <span class="blue">Start</span> - '+start_hour+'<input type="hidden" name="EventsTime[event_from_hour][]" value="'+start_hour+'" />:'+start_min+'<input type="hidden" name="EventsTime[event_from_min][]" value="'+start_min+'" /> &nbsp;|&nbsp; '+ '<span class="blue">Cost</span> - '+cost + '<input type="hidden" name="EventsTime[event_cost][]" value="'+cost_val+'" /><a href="#" class="cross"><span class="fa fa-times"></span></a>'
+    //alert(str);
+    $('.distance_list').show()
+    $('.distance_list').append('<li>'+str+'</li>');
+});
+</script>
+<script>
+$('.add_distance').live('click',function(){
+    //alert('test');
+    
+    var dist1 = $('.dist1').val();
+    var dist2 = $('.distance_decimal1').val(); 
+    var dist3 = $('.dist2').val();
+    var dist4 = $('.distance_decimal2').val(); 
+    var dist5 = $('.dist3').val();
+    var dist6 = $('.distance_decimal3').val(); 
+    var start_hour = $('.start_hour').val();
+    var start_min = $('.start_min').val();
+    var cost = $('.cost').val();
+    
+    if(!dist1)
+    dist1 = '000';
+    if(!dist3)
+    dist2 = '000';
+    if(!dist5)
+    dist3 = '000';
+    if(!dist2)
+    dist2 = '0';
+    if(!dist4)
+    dist4 = '0';
+    if(!dist6)
+    dist6 = '0';
+    if(!start_hour)
+    start_hour = '00';
+    if(!start_min)
+    start_min = '00';
+    if(!cost){
+    cost = 'N/A';
+    cost_val = '';
+    }
+    else{
+    cost_val = cost;
+    cost = 'R'+cost;
+    
+    }
+    
+    var str = '<strong>SWIM</strong>: '+dist1+'<input type="hidden" name="EventsTime[distance_swim_1][]" value="'+dist1+'" />,'+dist2+'<input type="hidden" name="EventsTime[distance_swim_2][]" value="'+dist2+'" />km / <strong>BIKE</strong>: '+dist3+'<input type="hidden" name="EventsTime[distance_bike_1][]" value="'+dist3+'" />,'+dist4+'<input type="hidden" name="EventsTime[distance_bike_2][]" value="'+dist4+'" />km / <strong>RUN</strong>: '+dist5+'<input type="hidden" name="EventsTime[distance_run_1][]" value="'+dist5+'" />,'+dist6+'<input type="hidden" name="EventsTime[distance_run_2][]" value="'+dist6+'" />km  &nbsp;|&nbsp; <span class="blue">Start</span> - '+start_hour+'<input type="hidden" name="EventsTime[event_from_hour][]" value="'+start_hour+'" />:'+start_min+'<input type="hidden" name="EventsTime[event_from_min][]" value="'+start_min+'" /> &nbsp;|&nbsp; '+ '<span class="blue">Cost</span> - '+cost + '<input type="hidden" name="EventsTime[event_cost][]" value="'+cost_val+'" /><a href="#" class="cross"><span class="fa fa-times"></span></a>';
+    //alert(str);
+    $('.distance_list').show();
+    
+    $('.distance_list').append('<li>'+str+'</li>');
+});
 </script>
 <?php
                     $this->beginWidget('zii.widgets.jui.CJuiDialog', array(

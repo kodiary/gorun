@@ -83,6 +83,14 @@ class EventsController extends Controller
             else
             $model->$k = $p;
            }
+           if($_POST['Events']['latitude'] && $_POST['Events']['longitude'])
+           {
+            $array = file_get_contents('http://maps.googleapis.com/maps/api/geocode/json?latlng='.$_POST['Events']['latitude'].','.$_POST['Events']['longitude'].'&sensor=false');
+            $array = json_decode($array);
+            $array = (array)$array;
+            //  = get_province($arr);
+            $model->province = $this->get_province($array);
+           }
 		   
            
            
@@ -95,16 +103,20 @@ class EventsController extends Controller
                 $slug=$slug."-".$count;
            }
            $model->slug=$slug;
-   
-                
+            if(isset($_POST['logo']) && $_POST['logo']){
+            $logo_arr = explode('?',$_POST['logo']);
+            $_POST['logo'] = $logo_arr[0];
+            
+            }
+            //echo Yii::app()->basePath.'/../images/temp/full/'.$_POST['logo'];die();    
            if($_POST['logo']!='')
            {
-                @copy(Yii::app()->basePath.'/../images/temp/full/'.$_POST['Events']['logo'],Yii::app()->basePath.'/../images/frontend/events/full/'.$_POST['Events']['logo']);
-                @copy(Yii::app()->basePath.'/../images/temp/main/'.$_POST['Events']['logo'],Yii::app()->basePath.'/../images/frontend/events/main/'.$_POST['Events']['logo']);
-                @copy(Yii::app()->basePath.'/../images/temp/thumb/'.$_POST['Events']['logo'],Yii::app()->basePath.'/../images/frontend/events/thumb/'.$_POST['Events']['logo']);
+                @copy(Yii::app()->basePath.'/../images/temp/full/'.$_POST['logo'],Yii::app()->basePath.'/../images/frontend/events/full/'.$_POST['logo']);
+                @copy(Yii::app()->basePath.'/../images/temp/main/'.$_POST['logo'],Yii::app()->basePath.'/../images/frontend/events/main/'.$_POST['logo']);
+                @copy(Yii::app()->basePath.'/../images/temp/thumb/'.$_POST['logo'],Yii::app()->basePath.'/../images/frontend/events/thumb/'.$_POST['logo']);
                 
-                @unlink(Yii::app()->basePath."/../images/temp/main/".$_POST['Events']['logo']);
-                @unlink(Yii::app()->basePath."/../images/temp/thumb/".$_POST['Events']['logo']);
+                @unlink(Yii::app()->basePath."/../images/temp/main/".$_POST['logo']);
+                @unlink(Yii::app()->basePath."/../images/temp/thumb/".$_POST['logo']);
                 $model->logo = $_POST['logo'];                
            }
            
@@ -244,15 +256,15 @@ class EventsController extends Controller
                 @copy(Yii::app()->basePath.'/../images/temp/main/'.$_POST['logo'],Yii::app()->basePath.'/../images/frontend/main/'.$_POST['logo']);
                 @copy(Yii::app()->basePath.'/../images/temp/thumb/'.$_POST['logo'],Yii::app()->basePath.'/../images/frontend/thumb/'.$_POST['logo']);
                
-                @unlink(Yii::app()->basePath."/../images/temp/main/".$_POST['logo']);
-                @unlink(Yii::app()->basePath."/../images/temp/thumb/".$_POST['logo']);
+                //@unlink(Yii::app()->basePath."/../images/temp/main/".$_POST['logo']);
+                //@unlink(Yii::app()->basePath."/../images/temp/thumb/".$_POST['logo']);
                 
-                if($model->logo!=$_POST['logo'])
+                if($model->logo!=$_POST['logo'] && $id!=0)
                 {
-                    @unlink(Yii::app()->basePath."/../images/frontend/original/".$model->logo);
-                    @unlink(Yii::app()->basePath."/../images/frontend/full/".$model->logo);
-                    @unlink(Yii::app()->basePath."/../images/frontend/main/".$model->logo);
-                    @unlink(Yii::app()->basePath."/../images/frontend/thumb/".$model->logo);
+                    
+                    //@unlink(Yii::app()->basePath."/../images/frontend/full/".$model->logo);
+                    //@unlink(Yii::app()->basePath."/../images/frontend/main/".$model->logo);
+                    //@unlink(Yii::app()->basePath."/../images/frontend/thumb/".$model->logo);
                 }
                 $model->logo = $_POST['logo'];                
             }
@@ -651,5 +663,23 @@ class EventsController extends Controller
         if($type!='triathlon')
         $type = 'running';
         $this->renderPartial('_'.$type.'_form');
+    }
+    public function get_province($arr){
+        foreach($arr['results'] as $a)
+        {
+            $a = (array)$a;
+            $b[] =$a;
+        }
+        foreach($b[0]['address_components'] as $c)
+        {
+            $c = (array)$c;
+            $d[] = $c;
+        }
+        foreach($d as $e)
+        {
+            if($e['types']['0'] =='administrative_area_level_1')
+            return $e['short_name'];
+        }
+        return false;
     }
 }

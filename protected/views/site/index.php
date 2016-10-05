@@ -6,7 +6,7 @@
                 <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/banner.jpg" />
             </div>
             <div class="listing">
-                <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/events/noimg.png"/></div>
+                <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/frontend/events/noimg.png"/></div>
                 <div class="txt">
                     <h3>BROOK'S DARK RUN, THE RUN DEAD NIGHT TRAIL RUN - 8 & 4 KM</h3>
                     <span class="datetime">Thurs <strong>24 July, 2016</strong></span> 
@@ -17,7 +17,7 @@
                 <div class="clearfix"></div>
             </div>
             <div class="listing">
-                <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/events/noimg.png"/></div>
+                <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/frontend/events/noimg.png"/></div>
                 <div class="txt">
                     <h3>BROOK'S DARK RUN, THE RUN DEAD NIGHT TRAIL RUN - 8 & 4 KM</h3>
                     <span class="datetime">Thurs <strong>24 July, 2016</strong></span> 
@@ -28,7 +28,7 @@
                 <div class="clearfix"></div>
             </div>
             <div class="listing">
-                <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/events/noimg.png"/></div>
+                <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/frontend/events/noimg.png"/></div>
                 <div class="txt">
                     <h3>BROOK'S DARK RUN, THE RUN DEAD NIGHT TRAIL RUN - 8 & 4 KM</h3>
                     <span class="datetime">Thurs <strong>24 July, 2016</strong></span> 
@@ -39,7 +39,7 @@
                 <div class="clearfix"></div>
             </div>
             <div class="listing">
-                <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/events/noimg.png"/></div>
+                <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/frontend/events/noimg.png"/></div>
                 <div class="txt">
                     <h3>BROOK'S DARK RUN, THE RUN DEAD NIGHT TRAIL RUN - 8 & 4 KM</h3>
                     <span class="datetime">Thurs <strong>24 July, 2016</strong></span> 
@@ -50,7 +50,7 @@
                 <div class="clearfix"></div>
             </div>
             <div class="listing">
-                <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/events/noimg.png"/></div>
+                <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/frontend/events/noimg.png"/></div>
                 <div class="txt">
                     <h3>BROOK'S DARK RUN, THE RUN DEAD NIGHT TRAIL RUN - 8 & 4 KM</h3>
                     <span class="datetime">Thurs <strong>24 July, 2016</strong></span> 
@@ -61,7 +61,7 @@
                 <div class="clearfix"></div>
             </div>
             <div class="listing">
-                <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/events/noimg.png"/></div>
+                <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/frontend/events/noimg.png"/></div>
                 <div class="txt">
                     <h3>BROOK'S DARK RUN, THE RUN DEAD NIGHT TRAIL RUN - 8 & 4 KM</h3>
                     <span class="datetime">Thurs <strong>24 July, 2016</strong></span> 
@@ -72,7 +72,7 @@
                 <div class="clearfix"></div>
             </div>
             <div class="listing">
-                <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/events/noimg.png"/></div>
+                <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/frontend/events/noimg.png"/></div>
                 <div class="txt">
                     <h3>BROOK'S DARK RUN, THE RUN DEAD NIGHT TRAIL RUN - 8 & 4 KM</h3>
                     <span class="datetime">Thurs <strong>24 July, 2016</strong></span> 
@@ -83,7 +83,7 @@
                 <div class="clearfix"></div>
             </div>
             <div class="listing">
-                <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/events/noimg.png"/></div>
+                <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/frontend/events/noimg.png"/></div>
                 <div class="txt">
                     <h3>BROOK'S DARK RUN, THE RUN DEAD NIGHT TRAIL RUN - 8 & 4 KM</h3>
                     <span class="datetime">Thurs <strong>24 July, 2016</strong></span> 
