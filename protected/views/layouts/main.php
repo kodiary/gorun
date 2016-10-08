@@ -48,6 +48,7 @@ if (!empty($this->metaKeys)) {
     
     <title>Home - GoRun</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet"> 
     
     
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/jqueryui/jquery-ui.min.js" type="text/javascript"></script>    
@@ -220,96 +221,7 @@ if (!empty($this->metaKeys)) {
 </body>
 </html>
 <script>
-/*
-document.addEventListener("DOMContentLoaded", function() {
-    var elements = document.getElementsByTagName("INPUT");
-    for (var i = 0; i < elements.length; i++) {
-        elements[i].oninvalid = function(e) {
-            
-            e.target.setCustomValidity("");
-            if (!e.target.validity.valid) {
-                if(e.target.getAttribute('type')=='email')
-                {
-                   
-                    $('.failed_email').show();
-                    $('.failed_email').find('input').focus();
-                    $('.main_email').find('input').attr('disabled','disabled');
-                    $('.main_email, .success_email').find('input').removeAttr('required');
-                    $('.failed_email, .success_email').find('input').val(e.target.value);
-                    $('.main_email').hide();
-                    $('.success_email').hide();
-                    
-                }
-                if(e.target.getAttribute('type')=='password')
-                {
-                   $('.password').addClass('has-error');
-                   $('.failed_pwd').show();
-                  
-                }
-               
-                //e.target.setCustomValidity("This field cannot be left blank");
-                
-            }
-            else
-            {
-                if(e.target.getAttribute('type')=='password')
-                {
-                   $('.password').removeClass('has-error');
-                   $('.failed_pwd').hide();
-                  
-                }
-            }
-        };
-        elements[i].oninput = function(e) {
-            e.target.setCustomValidity("");
-            if (!e.target.validity.valid) {
-                if(e.target.getAttribute('type')=='email')
-                {
-                   
-                    $('.failed_email').show();
-                    $('.failed_email').find('input').focus();
-                    $('.main_email').find('input').attr('disabled','disabled');
-                    $('.main_email, .success_email').find('input').removeAttr('required');
-                    $('.failed_email, .success_email').find('input').val(e.target.value);
-                    $('.main_email').hide();
-                    $('.success_email').hide();
-                    
-                }
-                if(e.target.getAttribute('type')=='password')
-                {
-                   $('.password').addClass('has-error');
-                   $('.failed_pwd').show();
-                  
-                }
-                
-                
-                //e.target.setCustomValidity("This field cannot be left blank");
-                
-            }
-            else
-            {
-                
-                if(e.target.getAttribute('type')=='email')
-                {
-                    $('.main_email').find('input').attr('disabled','disabled');
-                    $('.success_email').show();
-                    $('.success_email').find('input').focus();
-                    $('.failed_email').hide();
-                    $('.main_email').hide();
-                    $('.main_email, .failed_email').find('input').removeAttr('required');
-                    $('.failed_email, .success_email').find('input').val(e.target.value);
-                }
-                if(e.target.getAttribute('type')=='password')
-                {
-                    $('.password').removeClass('has-error');
-                    $('.failed_pwd').hide();
-                }
-            }
-        };
-    }
-})*/
 $(function(){
-    //alert("<?php echo Yii::app()->controller->id;?>");
     
     
     $( ".login-form" ).validate( {
@@ -377,9 +289,7 @@ $(function(){
                         success: function(msg){
                                    if(msg=='OK')
                                    {
-                                   
-                                        window.location.href ="<?php echo Yii::app()->request->url; ?>";
-                                        //$('.error-login').html('Invalid Username/Email or Password');
+                                        window.location.href ="<?php echo Yii::app()->request->url; ?>"
                                    }
                                    else if(msg == 'Not Verified')
                                    {
