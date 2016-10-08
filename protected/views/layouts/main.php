@@ -149,9 +149,9 @@ if (!empty($this->metaKeys)) {
             <div class="footer_links">
             <div class="footer_racetype col-md-2 nopaddleft">
                 <ul class="col-md-7 nopadd">
-                    <li><a href="#">Run</a></li>
-                    <li><a href="#">Bike</a></li>
-                    <li><a href="#">Tri</a></li>
+                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/run">Run</a></li>
+                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/bike">Bike</a></li>
+                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/triathlon">Tri</a></li>
                     <li><a href="#">Buy</a></li>
                 </ul>
             </div>
