@@ -2,7 +2,7 @@
           <?php echo $this->renderPartial('/common/_clubs', ['prov_id'=>$province_id,'type'=>$type], true); ?>
         </div>
         <div class="col-md-9 right-content ">
-        <div class="items">
+        <div class="items ">
             <?php
             if(isset($province_id))
             {

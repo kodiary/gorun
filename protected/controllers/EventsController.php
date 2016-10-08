@@ -39,11 +39,18 @@ class EventsController extends Controller
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
-	public function actionView($id)
+	public function actionView($slug)
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+	   //die('here');
+	   $e = Events::model()->findByAttributes(array('slug'=>$slug));
+       $et = EventsType::model()->findByAttributes(array('id'=>$e->event_type));
+       $etime = EventsTime::model()->findAllByAttributes(array('event_id'=>$e->id));
+		$this->render('detail',array(
+			'model'=>$this->loadModel($e->id),
+            'm_type'=>$et,
+            'm_time'=>$etime
 		));
+        
 	}
 
 	/**

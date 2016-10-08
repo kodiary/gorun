@@ -110,7 +110,7 @@ class CBreadcrumbs extends CWidget
 			else
 				$links[]='<span>'.($this->encodeLabel ? CHtml::encode($url) : $url).'</span>';
 		}
-		echo implode($this->separator,$links)."<div class='clearfix'></div>";
+		echo "<div class='bcrumb'>".implode($this->separator,$links)."<div class='clearfix'></div></div>";
 		echo CHtml::closeTag($this->tagName);
 	}
 }

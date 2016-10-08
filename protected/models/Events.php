@@ -289,5 +289,10 @@ class Events extends CActiveRecord
         $events = self::model()->findAll($criteria);
         return $events; 
     }
+    public function getProvinceName($province)
+    {
+        $array = ['EC'=>"Eastern Cape","FS"=>"Free State","GP"=>"Gauteng","KZN"=>"KwaZulu-Natal","LP"=>"Limpopo","MP"=>"Mpumalanga","NC"=>"Northern Cape","NW"=>"North-West","WC"=>"Western Cape"];
+        return $array[$province];
+    }
     
 }

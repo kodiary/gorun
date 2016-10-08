@@ -72,9 +72,9 @@ if (!empty($this->metaKeys)) {
         
         <div class="nav col-md-6">
             <ul>
-                <li><a href="#" class="active">Run</a></li>
-                <li><a href="#">Bike</a></li>
-                <li><a href="#">Tri</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/run" class="active">Run</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/bike">Bike</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/triathlon">Tri</a></li>
                 <li class="last"><a href="#">Buy</a></li>
                 <li class="cart"><span class="cart-count"><a href="#">0</a></span></li>
             </ul>
@@ -214,6 +214,8 @@ if (!empty($this->metaKeys)) {
   </div>
   </form>
 </div>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53551fdf0354dd89"></script>
 
 </body>
 </html>

@@ -183,7 +183,7 @@ return array(
             '/showall'=>'site/index/showall',
             
             'events/index'=>'events/index',
-            'events/timeline'=>'events/timeline',
+            'events/view/<slug>'=>'events/view',
             'events/listRemaining'=>'events/listRemaining',  
             'events/showall'=>'events/index/showall',
             'events/search'=>'events/search',
@@ -196,7 +196,7 @@ return array(
             '<controller:\w+>/<id:\d+>'=>'<controller>/view',
 			'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 			'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-            '/<slug>'=>'dashboard/details/slug/<slug>'
+            '/user/<slug>'=>'dashboard/details/slug/<slug>'
 			),
 		),
 		

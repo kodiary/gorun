@@ -1,3 +1,4 @@
+
 <div class="sidebar col-md-3">
           <?php echo $this->renderPartial('/site/_filter', false, true); ?>
         </div>
