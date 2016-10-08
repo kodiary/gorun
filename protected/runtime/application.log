@@ -393,3 +393,181 @@ Stack trace:
 REQUEST_URI=/gorun/images/404.jpg
 HTTP_REFERER=http://localhost/gorun/events/detail/super-triathlon-sa-1-2-3-4
 ---
+2016/10/08 18:06:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/frontend/events/main/thumb/file_1474909818.jpg".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/frontend...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/frontend/events/main/thumb/file_1474909818.jpg
+HTTP_REFERER=http://localhost/gorun/events/view/super-triathlon-sa-1-2-3-4
+---
+2016/10/08 18:06:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/frontend/events/main/thumb/file_1474909818.jpg".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/frontend...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/frontend/events/main/thumb/file_1474909818.jpg
+HTTP_REFERER=http://localhost/gorun/events/view/super-triathlon-sa-1-2-3-4
+---
+2016/10/08 18:06:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/frontend/events/main/thumb/file_1474909818.jpg".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/frontend...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/frontend/events/main/thumb/file_1474909818.jpg
+---
+2016/10/08 18:07:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/frontend/events/thumb/file_1474908088.jpg".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/frontend...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/frontend/events/thumb/file_1474908088.jpg?rand=17591
+HTTP_REFERER=http://localhost/gorun/triathlon
+---
+2016/10/08 18:07:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/frontend/events/thumb/file_1474908088.jpg".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/frontend...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/frontend/events/thumb/file_1474908088.jpg?rand=17591
+HTTP_REFERER=http://localhost/gorun/triathlon
+---
+2016/10/08 18:07:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/frontend/events/thumb/file_1474908088.jpg".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/frontend...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/frontend/events/thumb/file_1474908088.jpg?rand=17591
+---
+2016/10/08 18:08:48 [error] [exception.CException] exception 'CException' with message 'Property "TriathlonController.basePath" is not defined.' in E:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 E:\wamp\www\gorun\protected\views\events\_listing.php(4): CComponent->__get('basePath')
+#1 E:\wamp\www\gorun\framework\web\CBaseController.php(127): require('E:\\wamp\\www\\gor...')
+#2 E:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('E:\\wamp\\www\\gor...', Array, true)
+#3 E:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('E:\\wamp\\www\\gor...', Array, true)
+#4 E:\wamp\www\gorun\protected\views\run\index.php(6): CController->renderPartial('/events/_listin...', Array)
+#5 E:\wamp\www\gorun\framework\web\CBaseController.php(127): require('E:\\wamp\\www\\gor...')
+#6 E:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('E:\\wamp\\www\\gor...', Array, true)
+#7 E:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('E:\\wamp\\www\\gor...', Array, true)
+#8 E:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('/run/index', Array, true)
+#9 E:\wamp\www\gorun\protected\controllers\TriathlonController.php(8): CController->render('/run/index', Array)
+#10 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): TriathlonController->actionIndex()
+#11 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#12 E:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#13 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('')
+#15 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('triathlon')
+#16 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#17 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/gorun/triathlon
+HTTP_REFERER=http://localhost/gorun/events/view/super-triathlon-sa-1-2-3-4
+---
+2016/10/08 18:09:04 [error] [exception.CException] exception 'CException' with message 'Property "CHttpRequest.basePath" is not defined.' in E:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 E:\wamp\www\gorun\protected\views\events\_listing.php(4): CComponent->__get('basePath')
+#1 E:\wamp\www\gorun\framework\web\CBaseController.php(127): require('E:\\wamp\\www\\gor...')
+#2 E:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('E:\\wamp\\www\\gor...', Array, true)
+#3 E:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('E:\\wamp\\www\\gor...', Array, true)
+#4 E:\wamp\www\gorun\protected\views\run\index.php(6): CController->renderPartial('/events/_listin...', Array)
+#5 E:\wamp\www\gorun\framework\web\CBaseController.php(127): require('E:\\wamp\\www\\gor...')
+#6 E:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('E:\\wamp\\www\\gor...', Array, true)
+#7 E:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('E:\\wamp\\www\\gor...', Array, true)
+#8 E:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('/run/index', Array, true)
+#9 E:\wamp\www\gorun\protected\controllers\TriathlonController.php(8): CController->render('/run/index', Array)
+#10 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): TriathlonController->actionIndex()
+#11 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#12 E:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#13 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('')
+#15 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('triathlon')
+#16 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#17 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/gorun/triathlon
+HTTP_REFERER=http://localhost/gorun/events/view/super-triathlon-sa-1-2-3-4
+---
+2016/10/08 18:18:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/frontend/events/noimg.jpg".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/frontend...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/frontend/events/noimg.jpg
+HTTP_REFERER=http://localhost/gorun/triathlon
+---
+2016/10/08 18:18:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/frontend/events/noimg.jpg".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/frontend...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/frontend/events/noimg.jpg
+HTTP_REFERER=http://localhost/gorun/triathlon
+---
+2016/10/08 18:18:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/frontend/events/noimg.jpg".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/frontend...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/frontend/events/noimg.jpg
+---
+2016/10/08 18:18:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/frontend/events/main/file_1474908088.jpg".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/frontend...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/frontend/events/main/file_1474908088.jpg?rand=17591
+HTTP_REFERER=http://localhost/gorun/events/view/super-triathlon-sa
+---
+2016/10/08 18:18:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/frontend/events/main/file_1474908088.jpg".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/frontend...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/frontend/events/main/file_1474908088.jpg?rand=17591
+HTTP_REFERER=http://localhost/gorun/events/view/super-triathlon-sa
+---
+2016/10/08 18:18:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/frontend/events/main/file_1474908088.jpg".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/frontend...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/frontend/events/main/file_1474908088.jpg?rand=17591
+---
+2016/10/08 18:19:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/frontend/events/main/file_1474908088.jpg".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/frontend...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/frontend/events/main/file_1474908088.jpg?rand=17591
+HTTP_REFERER=http://localhost/gorun/events/view/super-triathlon-sa
+---
+2016/10/08 18:20:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/frontend/events/main/file_1474908088.jpg".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/frontend...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/frontend/events/main/file_1474908088.jpg?rand=17591
+HTTP_REFERER=http://localhost/gorun/events/view/super-triathlon-sa
+---
+2016/10/08 18:20:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/frontend/events/main/file_1474908088.jpg".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/frontend...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/frontend/events/main/file_1474908088.jpg?rand=17591
+---

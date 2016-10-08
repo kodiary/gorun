@@ -40,7 +40,7 @@
             </div>
             <div class="col-md-5">
                 <div class="img-holder">
-                    <img class="responsive" src="<?php echo Yii::app()->request->baseUrl; ?>/images/frontend/events/main/<?php echo $model->logo;?>" />
+                    <img class="responsive" src="<?php echo Yii::app()->request->baseUrl; ?>/images/frontend/events/main/<?php if($model->logo && file_exists(Yii::app()->basePath.'/../images/frontend/events/main/'.$model->logo)){ echo $model->logo?><?php }else{?>noimg.jpg<?php }?>" />
                 </div>
             </div>
             <div class="clearfix"></div>
