@@ -155,7 +155,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
                     <img class="img-circle" src="<?php echo $img_url;?>"/>
                 </div>
                 <div class="col-md-9">
-                    <div class="Members_name"><?php echo ucfirst($member->fname." ".$member->lname);?></div>
+                    <div class="Members_name"><a href="<?php echo Yii::app()->baseUrl."/profile/".$member->username;?>"><?php echo ucfirst($member->fname." ".$member->lname);?></a></div>
                     <span class="results">5 Results</span>
                     <div class="blue race-reviews">23 RACE REVIEWS</div>
                 </div>
