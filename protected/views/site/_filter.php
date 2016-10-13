@@ -47,4 +47,4 @@
                 <a href="javascript:void(0)" class="btn btn-inverse btn-lg">Search</a>
             </div>
             <a href="#" class="calendar-view">Calendar View &nbsp; <span class="fa fa-calendar"></span></a>
-            <a href="#" class="submit-event">Submit your event &nbsp; <span class="fa fa-plus"></span></a>
+            <a href="<?php echo Yii::app()->request->baseUrl; ?>/events/create/0" class="submit-event">Submit your event &nbsp; <span class="fa fa-plus"></span></a>

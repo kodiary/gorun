@@ -1,7 +1,7 @@
 <?php
 class CommonClass extends CComponent
 {
-    public function getSlug($string)
+    public static function getSlug($string)
     {
         $new_string = preg_replace("/[^a-zA-Z0-9-\@\$ \s]/", "", strtolower(strip_tags($string)));
     	$rep_string = str_replace(" ","-",trim($new_string));
@@ -10,7 +10,7 @@ class CommonClass extends CComponent
         return $ret_string;
     } 
     
-    public function format_file_size( $size)
+    public static function format_file_size( $size)
     {
     	if( $size < 1024 )
     		$filesize = $size . ' bytes';
@@ -23,7 +23,7 @@ class CommonClass extends CComponent
     	return $filesize;
     }
     
-    public function get_resize_details($case)
+    public static function get_resize_details($case)
     {
         switch($case){
             # articles
@@ -313,7 +313,7 @@ class CommonClass extends CComponent
         }
     }
     
-    public function get_precrop_size($width, $height, $resize_width, $resize_height){
+    public static function get_precrop_size($width, $height, $resize_width, $resize_height){
         if($width<$height){
             $new_width = $resize_width;
             $new_height = ($new_width/$width)*$height;
@@ -343,7 +343,7 @@ class CommonClass extends CComponent
         return array($new_width, $new_height);
     }
     
-    public function get_center_crop_coordinates($width,$height,$rwidth, $rheight){
+    public static function get_center_crop_coordinates($width,$height,$rwidth, $rheight){
         if($width>$height){
             $x = ($width/2) - ($rwidth/2);
             $y = 0;
@@ -355,7 +355,7 @@ class CommonClass extends CComponent
         return array("x"=>$x,"y"=>$y);
     }
     
-   public function get_resized_width_height($width, $height,$resize_item)
+   public static function get_resized_width_height($width, $height,$resize_item)
    {
         if(is_array($resize_item))
         {
@@ -393,7 +393,7 @@ class CommonClass extends CComponent
     * int limit
     * return truncated text
     */  
-    public function limit_text($text, $limit='200')
+    public static function limit_text($text, $limit='200')
     {
         $text=strip_tags($text);
         if (strlen($text) > $limit) {
@@ -402,7 +402,7 @@ class CommonClass extends CComponent
         return $text;
     }
 
-    public function getCleanData($string,$limit=0)
+    public static function getCleanData($string,$limit=0)
     {
         if($limit!=0 && strlen(strip_tags($string))>$limit){
                 $return_string = substr(trim(strip_tags($string)),0,$limit);
@@ -420,7 +420,7 @@ class CommonClass extends CComponent
 	* @param string $body	
 	* @return 1 or null
 	*/
-	public function sendEmail($fromName="", $fromEmail="", $receiverEmail, $subject, $body,$replyTo="") 
+	public static function sendEmail($fromName="", $fromEmail="", $receiverEmail, $subject, $body,$replyTo="") 
 	{
 		if($fromName!="" && $fromEmail!="")
 			$from = $fromName."<".$fromEmail.">";
@@ -437,7 +437,7 @@ class CommonClass extends CComponent
         else return false;		
 	}
 	
-	public function sendNewsletter($fromName="", $fromEmail="", $receiverEmail, $subject, $body,$replyTo="") 
+	public static function sendNewsletter($fromName="", $fromEmail="", $receiverEmail, $subject, $body,$replyTo="") 
 	{
 		// Get mailer
 	        $SM = Yii::app()->swiftMailer;
@@ -470,7 +470,7 @@ class CommonClass extends CComponent
 	        else return false;
 	}
     
-    public function makeSlug( $model, $title, $id)
+    public static function makeSlug( $model, $title, $id)
     {
         $slug = CommonClass::getSlug($title);
         $criteria = new CDbCriteria;
@@ -487,7 +487,7 @@ class CommonClass extends CComponent
         * string date
         * string format
     */
-    public function formatDate($date, $format='d F Y')
+    public static function formatDate($date, $format='d F Y')
     {
         if($date!='0000-00-00'){
             $date = date_create($date);
@@ -495,7 +495,7 @@ class CommonClass extends CComponent
         }
     }
     
-    public function formatDatetime($date, $format='d F Y')
+    public static function formatDatetime($date, $format='d F Y')
     {
         $dates = explode(' ',$date);
         
@@ -509,7 +509,7 @@ class CommonClass extends CComponent
         }
     }
     
-    public function getIP()
+    public static function getIP()
     {
         if (getenv(HTTP_X_FORWARDED_FOR)) {
             $ipaddress = getenv(HTTP_X_FORWARDED_FOR);
@@ -518,7 +518,7 @@ class CommonClass extends CComponent
         }
         return $ipaddress;
     } 
-    public function Dot2LongIP ($IPaddr)
+    public static function Dot2LongIP ($IPaddr)
     {
         if ($IPaddr == "") {
             return 0;
@@ -528,7 +528,7 @@ class CommonClass extends CComponent
         }
     }
     
-    public function getSeoByPage($page)
+    public static function getSeoByPage($page)
     {
         $model=Seo::model()->findByAttributes(array('PageSlug'=>$page));
         $seo['title']=$model->SeoTitle;
@@ -538,7 +538,7 @@ class CommonClass extends CComponent
     }
     
     
-    public function getYoutubeCodeFromUrl($url)
+    public static function getYoutubeCodeFromUrl($url)
     {
         preg_match('/[\\?\\&]v=([^\\?\\&]+)/',$url,$matches);
         // $matches[ 1 ] should contain the youtube id
@@ -547,7 +547,7 @@ class CommonClass extends CComponent
     
     
     // autopost
-    public function autoPost($section,$id)
+    public static function autoPost($section,$id)
     {
         if(isset($id) && $id!='')
         {
@@ -615,7 +615,7 @@ class CommonClass extends CComponent
         }
     }
     
-    public function facebookPost($info)
+    public static function facebookPost($info)
     {
         // Attempt to query the graph:
         $title = $info['title'];
@@ -677,7 +677,7 @@ class CommonClass extends CComponent
         }
     }
 
-    public function autoFacebookPost($info)
+    public static function autoFacebookPost($info)
     {
         // Attempt to query the graph:
         $title = $info['title'];
@@ -739,7 +739,7 @@ class CommonClass extends CComponent
     }
 
     //This is the URL you want to shorten
-    public function shortUrl($long)
+    public static function shortUrl($long)
     {
         $longUrl = $long;
         $apiKey = 'AIzaSyDAjOX47PDM9vqQLULu4rkBR_kKKRlXm1k';
@@ -768,7 +768,7 @@ class CommonClass extends CComponent
         return $json->id;
     }
 
-    public function autoTwitterPost($info) //array as an argument
+    public static function autoTwitterPost($info) //array as an argument
     {
         $consumer_key = Yii::app()->params['twitter_consumer_key'];
         $consumer_secret = Yii::app()->params['twitter_consumer_secret'];
@@ -796,7 +796,7 @@ class CommonClass extends CComponent
         }
     }
 
-    public function getFollowersCount() {
+    public static function getFollowersCount() {
         Yii::import('ext.twitter.TwitterAPIExchange');
         /** Set access tokens here - see: https://dev.twitter.com/apps/ * */
         $settings = array(
@@ -823,7 +823,7 @@ class CommonClass extends CComponent
         }
     }
 
-    public function countFBLikes() {
+    public static function countFBLikes() {
         $fb_page_id = Yii::app()->params['page_id'];
         $data = @file_get_contents("https://graph.facebook.com/" . $fb_page_id);
         $data = json_decode($data);
@@ -833,7 +833,7 @@ class CommonClass extends CComponent
             return '0';
     }
     //genertare random strings
-    public function randomString($length = 6) {
+    public static function randomString($length = 6) {
 	$str = "";
 	$characters = array_merge(range('A','Z'),range('0','9'),range('a','z') );
 	$max = count($characters) - 1;
@@ -844,7 +844,7 @@ class CommonClass extends CComponent
 	return $str;
     }
     
-    public function encoded_password($string)
+    public static function encoded_password($string)
     {
         $s = substr($string,strlen($string)-3,3);
         return "****".$s;

@@ -1,5 +1,4 @@
 <?php
-
 class SiteController extends Controller
 {
 	/**
@@ -51,7 +50,7 @@ class SiteController extends Controller
            }
 
            $sliders = Slideshow::model()->findAll(array('order'=>'display_order ASC'));
-           $model=Contents::getBySlug('home-page');
+           $model = Contents::model()->getBySlug('home-page');
                       
            $criteria = new CDbCriteria;
            $criteria->addCondition('t.is_approved=1 AND t.visible=1 AND publish_date<=CURDATE()');
@@ -142,7 +141,7 @@ class SiteController extends Controller
     
     public function actionFeed() //specials feed
     {
-        $specials=Specials::getAllActiveCompanyActiveSpecials("",'id DESC');
+        $specials=Specials::model()->getAllActiveCompanyActiveSpecials("",'id DESC');
         if($specials)
         {
             $image_url=$this->createAbsoluteUrl('/images/logo.png');
@@ -166,7 +165,7 @@ class SiteController extends Controller
             
             foreach($specials as $data)
             {
-                $company = Company::companyInfo($data->company_id);              
+                $company = Company::model()->companyInfo($data->company_id);              
                 $link=$this->createAbsoluteUrl("companies/".$company->slug.'#'.$data->slug);
                 $item = $feed->createNewItem();
              
