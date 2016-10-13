@@ -2,3 +2,4 @@ assets/*
 images/temp/*
 *.log
 protected/runtime/application.log
+*.log

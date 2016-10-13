@@ -137,12 +137,12 @@
                 <div class="form-group">
                     
                     <div class="col-md-9 profilepic">
-                    <div class="profile_img" id="upimage_0">
+                    <div class="profile_img img-circle" id="upimage_0">
                     <?php
                     if($member->logo && (Yii::app()->basePath.'/../images/frontend/thumb/'.$member->logo))
                     {
                         $img_url=Yii::app()->baseUrl.'/images/frontend/thumb/'.$member->logo;
-                        echo '<img src="'.$img_url.'"/>';
+                        echo '<img src="'.$img_url.'" class="img-circle"/>';
                     }
                     
                     ?>
