@@ -139,12 +139,13 @@
                     <div class="col-md-9 profilepic">
                     <div class="profile_img img-circle" id="upimage_0">
                     <?php
-                    if($member->logo && (Yii::app()->basePath.'/../images/frontend/thumb/'.$member->logo))
+                    $img_url = Yii::app()->baseUrl.'/images/blue.png';
+                    if($member->logo && file_exists(Yii::app()->basePath.'/../images/frontend/thumb/'.$member->logo))
                     {
                         $img_url=Yii::app()->baseUrl.'/images/frontend/thumb/'.$member->logo;
-                        echo '<img src="'.$img_url.'" class="img-circle"/>';
+                        
                     }
-                    
+                    echo '<img src="'.$img_url.'" class="img-circle" width="100%" height="100%"/>';
                     ?>
                         
                     </div>
@@ -198,7 +199,7 @@
                     <div class="col-md-9 profilepic">
                     <div class="profile_cover" id="upimage_1">
                     <?php
-                    if($member->cover && (Yii::app()->basePath.'/../images/frontend/thumb/'.$member->cover))
+                    if($member->cover && file_exists(Yii::app()->basePath.'/../images/frontend/thumb/'.$member->cover))
                     {
                         $img_url=Yii::app()->baseUrl.'/images/frontend/thumb/'.$member->cover;
                         echo '<img src="'.$img_url.'"/>';
@@ -214,7 +215,7 @@
             <?php
                         
             //crop button
-             echo CHtml::ajaxButton('Crop',
+             echo CHtml::ajaxLink('<span class="fa fa-crop"></span> Crop',
                         $this->createUrl('gallery/cropPhoto?height=220&width=760&crop_cover=cover'),
                          array( //ajax options
                          'data'=>array('fileName'=>"js:function(){ return $('.uploaded_cover').val()}",'id'=>$member->id),
@@ -232,12 +233,12 @@
                                       $('#crop1_".$member->id."').val('Crop');
                                     }",
                         ),
-                        array('id'=>'crop1_'.$member->id,'class'=>'btn btn-default','onclick'=>'$("#crop1_'.$member->id.'").val("loading...");')//html options
+                        array('id'=>'crop1_'.$member->id,'class'=>'btn btn-crop','onclick'=>'$("#crop1_'.$member->id.'").val("loading...");')//html options
             );
             ?><br />
             
                         
-                        <a href="javascript:void(0)" class="btn btn-danger" onclick="return confirm_delete('Are you sure that you want to remove the image?'); ">Remove</a><br />
+                        <a href="javascript:void(0)" class="btn btn-remove" onclick="return confirm_delete('Are you sure that you want to remove the image?'); ">Remove</a><br />
                     </div>
                         
                     </div>
