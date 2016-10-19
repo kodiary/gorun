@@ -8,7 +8,7 @@
 <div class="content registration">
     <div class="col-md-4">
     <form id="signupForm" novalidate="novalidate" method="post" action="<?php echo Yii::app()->request->baseUrl;?>/member/signup">
-        <h2>Register now for free</h2>
+        <h2 class="blue">Register Now for Free</h2>
         <hr />
         <div class="form-group col-md-12">
             <input type="text" name="fname" placeholder="Your first name" class="form-control" />
@@ -26,9 +26,9 @@
             <input type="password" name="confirm_password" placeholder="Repeat Password" class="form-control" />
         </div>
         <div class="form-group dobs">
-            <div><label class="control-label col-md-12">Date of Birth</label></div>
+            <div><h3 class="margin-10 col-md-12"><strong>Date of Birth</strong></h3></div>
             <div class="col-sm-12">
-            <select name="d_ob" class="col-md-4">
+            <select name="d_ob" class="col-md-4 d_ob">
             <option value="">DAY</option>
                 <?php
                 for($i=1;$i<32;$i++)
@@ -67,30 +67,41 @@
             <div class="clearfix"></div>
         </div>
         <div class="form-group col-md-12">
-            <div class="col-md-6 whitebg"><input type="radio" name="gender" value="1"  /> Male</div>
-            <div class="col-md-6 whitebg f_gender"><input type="radio" name="gender" value="0"  /> Female</div>
+            <div class="col-md-6 whitebg f_male">
+            <label class="control control--radio">Male
+              <input type="radio" name="gender" value="1"/>
+              <div class="control__indicator"></div>
+            </label>
+            </div>
+            <div class="col-md-6 whitebg f_gender">
+                <label class="control control--radio">Female
+              <input type="radio" name="gender" value="0"/>
+              <div class="control__indicator"></div>
+            </label>
+            </div>
             <div class="clearfix"></div>
             
         </div>
         <div class="form-group col-md-12">
-            <input type="submit" name="signup" value="Go!" class="btn btn-default bgblue btn-lg fullwidth" />
+            <input type="submit" name="signup" value="Go!" class="btn btn-default btnblue2 btn-lg fullwidth" />
         </div>
         <div class="clearfix"></div>
         </form>
-        <hr />
+        <hr class="margin-10" />
         <div class="center col-md-12">
-        By creating an account, I have read and agreed to the <a href="" class="blue">Terms and conditions</a> 
+        By creating an account, I have read and<br/> agreed to the <a href="" class="blue">terms and conditions</a> 
         </div>
         <div class="clearfix"></div>
-        <hr />
+        <hr class="margin-10" />
         <div class="center col-md-12">
         <a href="#"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/googlesign.png" /></a><br /><br />
         <a href="#"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/fbsign.png" /></a>
         </div>
         <div class="clearfix"></div>
         <hr />
+        <div class="center col-md-12"><strong>Already a Member? <a href="#"  data-toggle="modal" data-target="#loginModal">Login Now</a></strong></div>
     </div>
-    <div class="col-md-4">
+    <!--div class="col-md-4">
         <h2>Password reset</h2>
         <hr />
         <div class="form-group">
@@ -115,7 +126,7 @@
         Not a member yet? <a href="#" class="blue">Join now for free.</a> 
       </div>
       
-    </div>
+    </div-->
     <div class="clearfix"></div>
 </div>
 <a class="btn btn-default bgblue verify_popup" data-target="#verify_user" data-toggle="modal" href="#" style="display:none">verify</a>
@@ -215,12 +226,12 @@
 						minlength: "Your password must be at least 5 characters long"
 					},
 					confirm_password: {
-						required: "Please provide a password",
+						required: "Password does not match",
 						minlength: "Your password must be at least 5 characters long",
 						equalTo: "Please enter the same password as above"
 					},
 					email: {
-					   required:"Input an email address",
+					   required:"Input a valid email address",
                         email: "Input a valid email address",
                         remote: $.validator.format("{0} is already taken.")
                     },

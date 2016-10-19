@@ -35,7 +35,7 @@ img{max-width:100%;}
 .subnav li{display:inline-block;padding:0 10px;border-right:1px solid #000;line-height:13px;}
 .subnav a{text-transform: uppercase;text-decoration:none;color:#555;font-weight:bold;font-size:14px;}
 .subnav .last{padding-right:0;border-right: none;}
-.blue{color:#27A8E2;}
+.blue{color:#27A8E2!important;}
 
 .maindiv{width:1100px;margin:0 auto;}
 
@@ -163,8 +163,13 @@ img{max-width:100%;}
 .right-point{height:24px;}
 .right-point_w{height:24px;}
 
-.registration h2{color:#666;text-align:center;}
-.dobs select,.profile_detail select{height:30px;}
+.registration h2{color:#666;}
+.dobs select,.profile_detail select{ 
+    color: #555;
+    font-weight: bold;
+    height: 30px;
+    padding: 0;
+    text-align: center;}
 .whitebg{background:#FFF;border:1px solid #AAA;}
 .fullwidth{width:100%;}
 .center{text-align:center;}
