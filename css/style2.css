@@ -53,10 +53,10 @@
 	background: #ccc;
 }
 
-/* Checked state 
-.control input:checked ~ .control__indicator {
+ /*Checked state */
+.control input[type='checkbox']:checked ~ .control__indicator {
 	background: #2aa1c0;
-}*/
+}
 
 /* Hover state whilst checked 
 .control:hover input:not([disabled]):checked ~ .control__indicator,
@@ -116,7 +116,7 @@
 .control {
 	font-size: 17px;
 	position: relative;
-	display: block;
+	
 	margin: 5px;
 	padding-left: 30px;
 	cursor: pointer;
@@ -164,4 +164,14 @@
 .email_footer{
     background: #2a303e;
     height: 50px;
+}
+.font-16{
+    font-size: 22px;
+}
+.bottom-border{
+    border-bottom: 3px solid #029cdc !important;
+    font-weight: bolder!important;
+}
+.btn-default:hover{
+   background-color: #029cdc !important;
 }

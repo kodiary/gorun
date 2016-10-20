@@ -131,9 +131,9 @@ class DashboardController extends Controller
               
         }
         if($member->is_verified == '1')
-            $this->render('first_login');
+            $this->render('first_login',['not_verified'=>'1']);
         else
-            $this->render('index',['member'=>$member]);
+            $this->render('index',['member'=>$member,'not_verified'=>$member->is_verified]);
         
 	}
     

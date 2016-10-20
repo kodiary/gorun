@@ -9,9 +9,10 @@
         </div>
         
         <div class="form-group has-feedback password">
-            <label class="col-md-12">Password</label>
+            <label class="col-md-6">Password</label>
+            <label class="col-md-6"><span class="blue right reset"><strong><a href="javascript:void(0)">Reset</a></strong></span></label>
             <div class="col-md-12">
-                <input type="password" id="LoginForm_password" name="LoginForm_password"  placeholder="Password" class="form-control password" />
+                <input type="password" id="LoginForm_password" name="LoginForm_password"  placeholder="Your Password" class="form-control password" />
                 <span  class="failed_pwd help-block" style="display: none;">Password is required.</span>
             </div>
             <div class="clearfix"></div>            
@@ -40,14 +41,27 @@
         <div class="form-group">
             <input type="hidden" name="ajax" value="login-form"/>
             <div class="col-md-12">
-                <input type="submit" name="login" value="Login to your account" class="form-control btn btn-default bgblue" /></div>
+                <button type="submit" name="login" class="form-control btn btn-default bgblue bottom-border" >LOGIN TO YOUR ACCOUNT</button></div>
             <div class="clearfix"></div>
-            <div class="remember">
-                <input type="checkbox" name="remember" /> Remember Me
+            
+            <div class="remember control-group">
+                <label class="control control--checkbox">Remember Me
+            		<input type="checkbox" name="remember"/>
+            		<div class="control__indicator"></div>
+            	</label>
+                
             </div>
             <div class="clearfix"></div>            
             
         </div>
        
-        
+<script>
+$(function(){
+    $('.reset').click(function(){
+        $('.login-form input').each(function(){
+            $(this).val("");
+        });
+    });
+})
+</script>       
       

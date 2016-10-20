@@ -193,7 +193,7 @@ class MemberController extends Controller
                     if($this->sendPassword($email,$password,$name))
                         Yii::app()->user->setFlash('success', '<strong>Success - </strong> The password has been sent to the email address provided.');
                     else
-                       Yii::app()->user->setFlash('error', '<strong>Error - </strong> The email cannot be sent.Please try later.'); 
+                       Yii::app()->user->setFlash('error', '<strong>Error - </strong> The email couldnot be sent.Please try later.'); 
                 }
             }
 		// display the login form

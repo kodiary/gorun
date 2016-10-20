@@ -1,25 +1,25 @@
-<div class="sidebar col-md-3">
+<div class="sidebar col-md-2">
   
 </div>
-<div class="col-md-9 right-content profile_detail">
-    <div class="col-md-12 verified" <?php echo (Yii::app()->user->hasFlash('notverified'))?'':'style="display: none;"';?>>
-        <h1>Email Address Confirmed Successfully.</h1>
-        <strong><span class="blue">Your email address has been verified.</span> </strong>
+<div class="col-md-10 right-content profile_detail">
+    <div class="col-md-7 verified center" <?php echo (Yii::app()->user->hasFlash('notverified'))?'':'style="display: none;"';?>>
+        <h1 class="font-16">Email Address Confirmed Successfully!</h1>
+        <strong><span class="blue">Your email address has been verified!</span> </strong>
         <br/>
-        Please use the form to login for the first time.
+        Please use the form to login for the first time...
     </div>
     <div class="clearfix"></div>
-   
-    <div class="col-md-6">
+   <div class="col-md-1"></div>
+    <div class="col-md-5">
       <form class="login-form" method="post" novalidate="novalidate">
-        <hr />
+        <hr class="margin-10" />
         <?php $this->renderPartial('/common/login');?>
     </form>
     <div class="center"> 
-        Not a member yet? <a href="#" class="blue">Join now for free.</a> 
+        Not a member yet? <a href="#" class="blue"><strong>Join now for Free.</strong></a> 
       </div>
     </div>
-    
+    <div class="clearfix"></div>
 </div>
 <script>
 $(function(){

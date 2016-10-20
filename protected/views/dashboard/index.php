@@ -1,10 +1,10 @@
 <script src="//cdn.ckeditor.com/4.5.10/basic/ckeditor.js"></script>
 <div class="sidebar col-md-3">
-          <?php echo $this->renderPartial('/sidebar/_menu', false, true); ?>
+          <?php echo $this->renderPartial('/sidebar/_menu', ['not_verified'=>$not_verified], true); ?>
         </div>
         <div class="col-md-9 right-content profile_detail"> 
             <div class="col-md-12">
-                <h1>YOUR PROFILE DETAIL</h1>
+                <h1>YOUR PROFILE DETAILS</h1>
                 <strong><span class="blue">Private and Confidential.</span> All information here is not openly shared.</strong>
             </div>
             <div class="clearfix"></div>
