@@ -175,3 +175,9 @@
 .btn-default:hover{
    background-color: #029cdc !important;
 }
+hr{
+    margin:10px
+}
+.grey{
+    color:#ccc;
+}

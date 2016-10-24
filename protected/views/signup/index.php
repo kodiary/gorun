@@ -75,9 +75,9 @@
             </div>
             <div class="col-md-6 whitebg f_gender">
                 <label class="control control--radio">Female
-              <input type="radio" name="gender" value="0"/>
-              <div class="control__indicator"></div>
-            </label>
+                    <input type="radio" name="gender" value="0"/>
+                    <div class="control__indicator"></div>
+                </label>
             </div>
             <div class="clearfix"></div>
             

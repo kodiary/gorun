@@ -169,7 +169,9 @@ img{max-width:100%;}
     font-weight: bold;
     height: 30px;
     padding: 0;
-    text-align: center;}
+    text-align: center;
+    margin-right: 10px;
+}
 .whitebg{background:#FFF;border:1px solid #AAA;}
 .fullwidth{width:100%;}
 .center{text-align:center;}

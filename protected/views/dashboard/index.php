@@ -68,8 +68,8 @@
                 <?php $date = explode("-",$member->dob);?>
                 <div class="form-group dobs">
                     <label class="col-md-2">Date of Birth<span class="required">*</span></label>
-                    <div class="col-md-9">
-                        <select name="d_ob" class="col-md-4">
+                    <div class="col-md-5">
+                        <select name="d_ob" class="col-md-3">
                             <option value="">Day</option>
                             <?php
                             for($i=1;$i<32;$i++)
@@ -91,7 +91,7 @@
                             }
                             ?>
                         </select> 
-                        <select name="y_ob" class="col-md-4 y_ob">
+                        <select name="y_ob" class="col-md-3 y_ob" style="margin-left: 0;">
                             <option value="">Year</option>
                             <?php
                             for($i=(date('Y')-100);$i<date('Y');$i++)
@@ -101,7 +101,8 @@
                                 <?php
                             }
                             ?>
-                        </select> 
+                        </select>
+                        <div class="clearfix"></div>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -109,19 +110,29 @@
                  <div class="form-group">
                     <label class="col-md-2">Gender<span class="required">*</span></label>
                     <div class="col-md-9">
-                        <div class="col-md-6 whitebg"><input type="radio" name="gender" value="1" <?php if($member->gender == '1')echo "checked='checked'";?> /> Male</div>
-                        <div class="col-md-6 whitebg"><input type="radio" name="gender" value="0" <?php if($member->gender == '0')echo "checked='checked'";?> /> Female</div>
-                        <div class="clearfix"></div>
+                        <div class="col-md-2 ">
+                            <label class="control control--radio">Male
+                              <input type="radio" name="gender" value="1" <?php if($member->gender == '1')echo "checked='checked'";?>/>
+                              <div class="control__indicator"></div>
+                            </label>
+                        </div>    
+                        <div class="col-md-6 ">
+                             <label class="control control--radio">Female
+                                <input type="radio" name="gender" value="0" <?php if($member->gender == '0')echo "checked='checked'";?>/>
+                                <div class="control__indicator"></div>
+                            </label>
+                       </div> 
+                        
                     </div>
                     <div class="clearfix"></div>
                 </div>
                 
-                <hr />
+                <hr class="margin-10" />
                   <div class="form-group">
                     <h2 class="col-md-12">About You <span class="grey">Optional</span></h2>
                     <div class="clearfix"></div>
                   </div>
-                <hr />
+                <hr class="margin-10"/>
                 <div class="form-group">
                     <label class="col-md-12"><span class="blue">Tell us about yourself.</span>Limited to 600 characters-<span class="blue">You have <span class="count_letter">600</span> left</span></label>
                     <div class="col-md-12"><textarea class="form-control description" id="description" name="detail"><?php echo $member->detail;?></textarea></div>
