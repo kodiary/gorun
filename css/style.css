@@ -168,9 +168,10 @@ img{max-width:100%;}
     color: #555;
     font-weight: bold;
     height: 30px;
+    margin-right: 2%;
     padding: 0;
     text-align: center;
-    margin-right: 10px;
+    width: 31%;
 }
 .whitebg{background:#FFF;border:1px solid #AAA;}
 .fullwidth{width:100%;}

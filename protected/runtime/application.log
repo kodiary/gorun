@@ -595,3 +595,21 @@ Stack trace:
 #18 {main}
 REQUEST_URI=/gorun/
 ---
+2016/11/03 07:42:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "results/create".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('results/create')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/results/create
+HTTP_REFERER=http://localhost/gorun/dashboard
+---
+2016/11/03 07:42:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404.jpg".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/404.jpg')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/404.jpg
+HTTP_REFERER=http://localhost/gorun/results/create
+---

@@ -140,8 +140,16 @@
 }
 .btnblue2
 {
-    background: #27a8e2;
-    border-bottom: 3px solid #029cdc !important;
+    -moz-border-bottom-colors: none !important;
+    -moz-border-left-colors: none !important;
+    -moz-border-right-colors: none !important;
+    -moz-border-top-colors: none !important;
+    background: #27a8e2 none repeat scroll 0 0;
+    border-color: #029cdc !important;
+    border-image: none !important;
+    border-radius: 5px;
+    border-style: solid !important;
+    border-width: 1px 1px 3px !important;
     color: #fff !important;
     font-size: 25px !important;
     font-weight: bolder;

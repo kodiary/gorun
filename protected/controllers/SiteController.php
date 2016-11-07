@@ -39,7 +39,7 @@ class SiteController extends Controller
                $seo=CommonClass::getSeoByPage('generic');
                $this->metaDesc=$seo['desc'];
                $this->metaKeys=$seo['keys'];
-               $this->pageTitle="EXSA Home - ".$seo['title'];            
+               $this->pageTitle="GoRun Home - ".$seo['title'];            
            }
         
            $patronSliderVisibility = PatronSetting::model()->findByPk(1)->visible;
@@ -109,10 +109,10 @@ class SiteController extends Controller
                     $admin_email.=",".$e[$i];
                 }
             }
-            $subject="Somebody Contacted on ".Yii::app()->params['site_name'];
-            $body=$this->renderPartial('/email/contact',array('data'=>$_POST['ContactForm']),true);
+            $subject = "Somebody Contacted on ".Yii::app()->params['site_name'];
+            $body = $this->renderPartial('/email/contact',array('data'=>$_POST['ContactForm']),true);
             //if(CommonClass::sendEmail($_POST['ContactForm']['name'],$_POST['ContactForm']['email'],$admin_email,$subject,$body,$_POST['ContactForm']['email']))
-            if(CommonClass::sendEmail('EXSA','info@exsa.co.za',$admin_email,$subject,$body,$_POST['ContactForm']['email']))
+            if(CommonClass::sendEmail('GoRun','info@gorun.co.za',$admin_email,$subject,$body,$_POST['ContactForm']['email']))
             {
                 Yii::app()->user->setFlash('info', '<strong>SUCCESS!</strong> Your Message has been sent.');
             }
@@ -151,7 +151,7 @@ class SiteController extends Controller
             // RSS 2.0 is the default type
             $feed = new EFeed();
              
-            $feed->title= 'EXSA';
+            $feed->title= 'GoRun';
             $feed->description = 'List of Company Specials all around the world';
              
             $feed->setImage('Sign African Directory Specials',$site_url,$image_url);
@@ -182,7 +182,7 @@ class SiteController extends Controller
                    $item->setEncloser($file_url, $size, $vals['mime']); 
                 }
                  
-                $item->addTag('author', 'info@exsa.co.za(EXSA)');
+                $item->addTag('author', 'info@gorun.co.za(GoRun)');
                 $item->addTag('guid', $link,array('isPermaLink'=>'true'));
                  
                 $feed->addItem($item);
