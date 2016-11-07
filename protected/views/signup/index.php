@@ -141,7 +141,7 @@
       </div>
       <div class="modal-body">
       <?php if (Yii::app()->user->hasFlash('error')): ?>
-        <div class="flash-error">
+        <div class="flash-error col-md-12">
             <?php echo Yii::app()->user->getFlash('error'); ?>
         </div><!-- /.flash-success -->
 <?php endif; ?>

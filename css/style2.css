@@ -189,3 +189,6 @@ hr{
 .grey{
     color:#ccc;
 }
+#code-error, .flash-error{
+    color:#f41465 !important;
+}
