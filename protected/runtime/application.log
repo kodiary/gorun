@@ -595,3 +595,55 @@ Stack trace:
 #18 {main}
 REQUEST_URI=/gorun/
 ---
+2016/11/06 15:49:39 [error] [exception.CException] exception 'CException' with message 'ContentController cannot find the requested view "index".' in F:\wamp\www\gorun\framework\web\CController.php:879
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('index', Array, true)
+#1 F:\wamp\www\gorun\protected\controllers\ContentController.php(42): CController->render('index', Array)
+#2 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): ContentController->actionTerms()
+#3 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#4 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#5 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('terms')
+#7 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('content/terms')
+#8 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/gorun/terms-and-conditions
+---
+2016/11/06 16:03:19 [error] [exception.CException] exception 'CException' with message 'Property "Contents.description" is not defined.' in F:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('description')
+#1 F:\wamp\www\gorun\protected\views\content\index.php(31): CActiveRecord->__get('description')
+#2 F:\wamp\www\gorun\framework\web\CBaseController.php(127): require('F:\\wamp\\www\\gor...')
+#3 F:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('F:\\wamp\\www\\gor...', Array, true)
+#4 F:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('F:\\wamp\\www\\gor...', Array, true)
+#5 F:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('index', Array, true)
+#6 F:\wamp\www\gorun\protected\controllers\ContentController.php(42): CController->render('index', Array)
+#7 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): ContentController->actionTerms()
+#8 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#10 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('terms')
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('content/terms')
+#13 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/gorun/terms-and-conditions
+---
+2016/11/07 11:45:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "login".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('login')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/login
+---
+2016/11/07 11:45:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404.jpg".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/404.jpg')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/404.jpg
+HTTP_REFERER=http://localhost/gorun/login
+---

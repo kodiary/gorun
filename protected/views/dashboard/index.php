@@ -691,8 +691,8 @@
                     y_ob: "d_ob m_ob y_ob"
                 },
 				messages: {
-					fname: "Input a firstname",
-					lname: "Input a lastname/Surname",
+					fname: "Input a firs tname",
+					lname: "Input a last name / Surname",
 					password_signup: {
 						required: "Input a password you will remember",
 						minlength: "Your password must be at least 5 characters long"

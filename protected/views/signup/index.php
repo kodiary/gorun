@@ -14,7 +14,7 @@
             <input type="text" name="fname" placeholder="Your first name" class="form-control" />
         </div>
         <div class="form-group col-md-12">
-            <input type="text" name="lname" placeholder="Your last name/Surname" class="form-control" />
+            <input type="text" name="lname" placeholder="Your last name / surname" class="form-control" />
         </div>
         <div class="form-group col-md-12">
             <input type="text" name="email" placeholder="Your email" class="form-control register_email" />
@@ -89,7 +89,7 @@
         </form>
         <hr class="margin-10" />
         <div class="center col-md-12">
-        By creating an account, I have read and<br/> agreed to the <a href="" class="blue">terms and conditions</a> 
+        By creating an account, I have read and<br/> agreed to the <a href="<?php echo Yii::app()->request->baseUrl;?>/terms-and-conditions" class="blue" target="_blank">terms and conditions</a> 
         </div>
         <div class="clearfix"></div>
         <hr class="margin-10" />
@@ -141,7 +141,7 @@
       <div class="modal-body">
       <?php if (Yii::app()->user->hasFlash('error')): ?>
         <div class="flash-error">
-            <?php echo CHtml::encode(Yii::app()->user->getFlash('error')); ?>
+            <?php echo Yii::app()->user->getFlash('error'); ?>
         </div><!-- /.flash-success -->
 <?php endif; ?>
          <div class="form-group">
@@ -219,8 +219,8 @@
                     y_ob: "d_ob m_ob y_ob"
                 },
 				messages: {
-					fname: "Input a firstname",
-					lname: "Input a lastname/Surname",
+					fname: "Input a first name",
+					lname: "Input a last name / surname",
 					password_signup: {
 						required: "Input a password you will remember",
 						minlength: "Your password must be at least 5 characters long"

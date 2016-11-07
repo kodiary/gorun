@@ -5,9 +5,9 @@
 <div style="padding: 20px;color:#555; font-size:15px;font-family:Arial, Helvetica, sans-serif;border-left: 1px solid #e5e5e5;border-right: 1px solid #e5e5e5;border-bottom: 1px solid #e5e5e5;">
 Hi <?php echo $fname." ".$lname?> ,<br />
 Thank you for creating an account on the Go Run SA website.<br/><br/>
-Verify your regestration by clicking on the link below or by copying and pasting this link on tyhe browser.
+Verify your regestration by clicking on the link below or by copying and pasting this link on the browser.
 <br/>When prompted please enter the following One Time Pin: <strong><?php echo $pin;?></strong>
 <br/><br/>Verification link:<br/>
-<a href='<?php echo $url;?>' taget='_blank'><?php echo $url;?></a>
+<a href='<?php echo $url;?>' target='_blank'><?php echo $url;?></a>
 </div>
-<div class="email_footer"></div>
+<div style="background: #2a303e none repeat scroll 0 0;padding: 20px 0;"></div>
