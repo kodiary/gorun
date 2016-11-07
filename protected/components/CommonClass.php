@@ -456,7 +456,7 @@ class CommonClass extends CComponent
 	        // New message
 	        $Message = $SM
 	            ->newMessage($subject)
-	            ->setFrom(($fromName!="" && $fromEmail!="")?array($fromEmail,$fromName):array('info@exsa.co.za' => 'Exsa.co.za'))
+	            ->setFrom(($fromName!="" && $fromEmail!="")?array($fromEmail,$fromName):array('info@gorun.co.za' => 'gorun.co.za'))
 	            ->setTo($receiverEmail)
 	            ->addPart($body, 'text/html');
 	     

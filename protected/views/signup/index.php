@@ -7,9 +7,10 @@
 </div>
 <div class="content registration">
     <div class="col-md-4">
-    <form id="signupForm" novalidate="novalidate" method="post" action="<?php echo Yii::app()->request->baseUrl;?>/member/signup">
-        <h2 class="blue">Register Now for Free</h2>
+    <h2 class="blue">Register Now for Free</h2>
         <hr />
+    <form class="row" id="signupForm" novalidate="novalidate" method="post" action="<?php echo Yii::app()->request->baseUrl;?>/member/signup">
+        
         <div class="form-group col-md-12">
             <input type="text" name="fname" placeholder="Your first name" class="form-control" />
         </div>
@@ -28,7 +29,7 @@
         <div class="form-group dobs">
             <div><h3 class="margin-10 col-md-12"><strong>Date of Birth</strong></h3></div>
             <div class="col-sm-12">
-            <select name="d_ob" class="col-md-4 d_ob">
+            <select name="d_ob">
             <option value="">DAY</option>
                 <?php
                 for($i=1;$i<32;$i++)
@@ -39,7 +40,7 @@
                 }
                 ?>
             </select> 
-            <select name="m_ob" class="col-md-4">
+            <select name="m_ob">
             <option value="">MONTH</option>
                 <?php
                 for($i=1;$i<13;$i++)
@@ -50,7 +51,7 @@
                 }
                 ?>
             </select> 
-            <select name="y_ob" class="col-md-4 y_ob">
+            <select name="y_ob" style="margin-right: 0;">
             <option value="">YEAR</option>
                 <?php
                 for($i=(date('Y')-100);$i<date('Y');$i++)
@@ -87,12 +88,12 @@
         </div>
         <div class="clearfix"></div>
         </form>
-        <hr class="margin-10" />
+        <hr class="" style="margin: 5px!important;" />
         <div class="center col-md-12">
         By creating an account, I have read and<br/> agreed to the <a href="<?php echo Yii::app()->request->baseUrl;?>/terms-and-conditions" class="blue" target="_blank">terms and conditions</a> 
         </div>
         <div class="clearfix"></div>
-        <hr class="margin-10" />
+        <hr class="" style="margin: 10px!important;" />
         <div class="center col-md-12">
         <a href="#"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/googlesign.png" /></a><br /><br />
         <a href="#"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/fbsign.png" /></a>

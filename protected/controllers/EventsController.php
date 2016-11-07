@@ -13,9 +13,13 @@ class EventsController extends Controller
 	 */
 	public function filters()
 	{
+	   $for = array('create','update','delete');
+       
+	   if(in_array($this->action->Id,$for)){
 		return array(
 			'accessControl', // perform access control for CRUD operations
 		);
+        }
 	}
 
 	/**
@@ -25,6 +29,9 @@ class EventsController extends Controller
 	 */
 	public function accessRules()
 	{
+	   $for = array('create','update','delete');
+       
+	   if(in_array($this->action->Id,$for)){
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'users'=>array('@'),
@@ -33,6 +40,7 @@ class EventsController extends Controller
 				'users'=>array('*'),
 			),
 		);
+        }
 	}
 
 	/**

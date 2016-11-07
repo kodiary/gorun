@@ -254,7 +254,7 @@ class MemberController extends Controller
         else $receivers=Yii::app()->params['adminEmail'];
         
         $email->to =  $receivers;
-        $email->from = "exsa.co.za <exsa@exsa.co.za>";
+        $email->from = "gorun.co.za <info@gorun.co.za>";
         $email->subject = 'New Company Registered';
         $email->view='signupAdmin';
         $email->viewVars=$info;
@@ -267,9 +267,9 @@ class MemberController extends Controller
         $email = Yii::app()->email;
        
         $email->to = $info['email'];
-        $email->from = "exsa.co.za <exsa@exsa.co.za>";
-        $email->subject = 'Welcome to Exsa directory';
-        $email->replyTo = 'exsa.co.za <noreply@exsa.co.za>';
+        $email->from = "gorun.co.za <info@gorun.co.za>";
+        $email->subject = 'Welcome to GoRun directory';
+        $email->replyTo = 'gorun.co.za <noreply@gorun.co.za>';
         $email->view='signupCompany';
         $email->viewVars=$info;
         if($email->send())return true;
