@@ -1,11 +1,12 @@
 <script src="//cdn.ckeditor.com/4.5.10/basic/ckeditor.js"></script>
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <div class="sidebar col-md-3">
           <?php echo $this->renderPartial('/sidebar/_menu', ['not_verified'=>$not_verified], true); ?>
         </div>
         <div class="col-md-9 right-content profile_detail"> 
             <div class="col-md-12">
                 <h1>YOUR PROFILE DETAILS</h1>
-                <strong><span class="blue">Private and Confidential.</span> All information here is not openly shared.</strong>
+                <strong><span class="blue">Private and Confidential.</span> All information here is NOT openly shared.</strong>
             </div>
             <div class="clearfix"></div>
             <hr />
@@ -134,8 +135,66 @@
                   </div>
                 <hr class="margin-10"/>
                 <div class="form-group">
-                    <label class="col-md-12"><span class="blue">Tell us about yourself.</span>Limited to 600 characters-<span class="blue">You have <span class="count_letter">600</span> left</span></label>
-                    <div class="col-md-12"><textarea class="form-control description" id="description" name="detail"><?php echo $member->detail;?></textarea></div>
+                    <label class="col-md-12"><span class="blue">Tell us about yourself. </span>Limited to 600 characters - <span class="blue">You have <span class="count_letter">600</span> left</span></label>
+                    <div class="col-md-12">
+                   
+                     
+                    <script>
+                            tinymce.init({
+                                selector:'textarea',
+                                statusbar: false,
+                                menubar: false,
+                                plugins:['hr link pagebreak'],
+                                toolbar: ['bold italic strikethrough bullist numlist blockquote hr alignleft aligncenter alignright link unlink pagebreak'],
+                                setup:function(ed) {
+                                   ed.on('keyup', function(e) {
+                                        tmp = ed.getContent({format : 'text'});
+                                        currentLength= tmp.length;
+                                        maximumLength = 10;
+                                        var rem_text = maximumLength-currentLength;
+                                        $('.count_letter').text(rem_text);
+                                        
+                                        if( currentLength > maximumLength )
+                                        {
+                                            ed.undoManager.add();
+                                            ed.undoManager.transact(function(){
+                                                ed.setContent(ed.getContent({format : 'text'}).substring(0,10));
+                                                $('.count_letter').text(0);
+                                                ed.undoManager.undo();
+                                             });
+                                             //ed.undoManager.undo();
+                                            //tinyMCE.execCommand("mceRemoveControl", true, 'description');
+                                            //tinymce.activeEditor.getBody().setAttribute('contenteditable', false);
+                                        }
+                                        else
+                                        {
+                                            ed.undoManager.clear();
+                                        }
+                                       /*console.log('the event object ', e);
+                                       console.log('the editor object ', ed);
+                                       console.log('the content ', ed.getContent().replace(/<(?:.|\n)*?>/gm, ''));*/
+                                   });
+                                   },
+                                
+                                });
+                                
+                    </script>
+                     
+                    
+                    <?php /*  
+                        // Create Editor instance and use Text property to load content into the RTE.  
+                            $rte=new RichTextEditor();
+                            $rte->Text=$member->detail;
+                            $rte->Name="Editor1";
+                            $rte->Height="200px";
+                            $rte->Skin="officexpsilver";
+                            $rte->Toolbar="minimal";
+                            $rte->MvcInit();
+                        // Render Editor 
+                        echo $rte->GetString();  */
+                    ?> 
+                    <textarea class="form-control description" id="description" name="detail"><?php echo $member->detail;?></textarea>
+                    </div>
                     <div class="clearfix"></div>
                 </div>
                 <hr />
@@ -207,7 +266,7 @@
                 <hr />
                 <div class="form-group">
                     
-                    <div class="col-md-9 profilepic">
+                    <div class="col-md-12 profilepic">
                     <div class="profile_cover" id="upimage_1">
                     <?php
                     if($member->cover && file_exists(Yii::app()->basePath.'/../images/frontend/thumb/'.$member->cover))
@@ -219,7 +278,11 @@
                     ?>
                         
                     </div>
-                    <div class="col-md-12 picact">
+                    
+                    <div class="col-md-6 picact">
+                        <span class="blue"><strong>Size is 760x220px</strong></span>
+                    </div>
+                    <div class="col-md-6 picact">
                     <?php echo $this->renderPartial('application.views.gallery._addImagecover',array('member'=>$member,'type'=>'member_cover','id'=>1)); ?>
                         
                       
@@ -251,6 +314,7 @@
                         
                         <a href="javascript:void(0)" class="btn btn-remove" onclick="return confirm_delete('Are you sure that you want to remove the image?'); ">Remove</a><br />
                     </div>
+                    <div class="clearfix"></div>
                         
                     </div>
                     <div class="clearfix"></div>
@@ -264,7 +328,7 @@
                 </div>
                 <hr />
                 <div class="form-group">
-                    <label class="col-md-2">Your Location<span class="required">*</span></label>
+                    <label class="col-md-2">Your Location <span class="required">*</span></label>
                      <div class="col-md-5">
                             <select name="province" class="form-control"  id="Member_province">
                                 <option value="">Select Province</option>
@@ -556,7 +620,7 @@
     <script>
     function addmore(div,name)
     {
-        $("."+div).append('<div class="form-group">'+
+        $("."+div).prepend('<div class="form-group">'+
                         '<div class="col-md-2"></div>'+
                         '<div class="col-md-7"><input type="text" class="form-control" placeholder="'+div.replace("_",' ')+'" name="'+name+'[]" value="" /></div>'+
                         '<div class="col-md-2"><input type="button" value="Remove" class="btn btn-danger" onclick="$(this).parent().parent().remove();"  /></div>'+
@@ -576,7 +640,7 @@
             return false;
     }
     $(function(){
-            CKEDITOR.replace( 'description' );
+            /*CKEDITOR.replace( 'description' );
             CKEDITOR.editorConfig = function( config ) {
         	config.language = 'es';
         	config.uiColor = '#F5f5f5';
@@ -588,15 +652,15 @@
             	else  // otherwise, update counter
             		countfield.value=field.value.length;
             }
-            var editor = CKEDITOR.instances.description;
+            var editor = CKEDITOR.instances.description;*/
             /*editor.on( 'key', function( evt ){
                 alert(evt.editor.getData());
                // Update the counter with text length of editor HTML output.
                textCounter2( { value : evt.editor.getData() },this.form.grLenght2, 500 );
-            }, editor.element.$ );*/
-            var locked;
+            }, editor.element.$ );
+            var locked;*/
            
-            editor.on( 'change', function( evt ){
+            /*editor.on( 'change', function( evt ){
                 var html=editor.getData();
                 var dom=document.createElement("DIV");
                 dom.innerHTML=html;
@@ -636,7 +700,7 @@
             
                 }
                });
-            
+            */
             
 			$( "#profile-detail" ).validate( {
 			 onkeyup: false,

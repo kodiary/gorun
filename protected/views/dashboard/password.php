@@ -34,7 +34,7 @@
         </div>
     <hr />
     
-    <div class="form-group">
+    <div class="form-group center">
 
         <input type="submit" name="submit" value="Save Changes" class="btn btn-default bgblue " />
         <input type="button" value="Cancel" class="btn btn-default " />

@@ -241,7 +241,7 @@ $(function(){
 						
 					},
 				
-					LoginForm_username: "Email or Username is not valid.",
+					LoginForm_username: "Email or username is not valid.",
 					
 				},
 				errorElement: "em",

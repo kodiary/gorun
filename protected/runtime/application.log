@@ -647,3 +647,71 @@ Stack trace:
 REQUEST_URI=/gorun/images/404.jpg
 HTTP_REFERER=http://localhost/gorun/login
 ---
+2016/11/08 10:04:40 [error] [exception.CException] exception 'CException' with message 'The asset "F:\wamp\www\gorun\protected\extensions\tinymce3\js\assets" to be published does not exist.' in F:\wamp\www\gorun\framework\web\CAssetManager.php:239
+Stack trace:
+#0 F:\wamp\www\gorun\protected\extensions\tinymce\SladekTinyMce.php(11): CAssetManager->publish('F:\\wamp\\www\\gor...')
+#1 F:\wamp\www\gorun\framework\web\CBaseController.php(148): SladekTinyMce->init()
+#2 F:\wamp\www\gorun\framework\web\CBaseController.php(173): CBaseController->createWidget('application.ext...', Array)
+#3 F:\wamp\www\gorun\protected\views\dashboard\index.php(139): CBaseController->widget('application.ext...')
+#4 F:\wamp\www\gorun\framework\web\CBaseController.php(127): require('F:\\wamp\\www\\gor...')
+#5 F:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('F:\\wamp\\www\\gor...', Array, true)
+#6 F:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('F:\\wamp\\www\\gor...', Array, true)
+#7 F:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('index', Array, true)
+#8 F:\wamp\www\gorun\protected\controllers\DashboardController.php(137): CController->render('index', Array)
+#9 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): DashboardController->actionIndex()
+#10 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#11 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#12 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('index')
+#14 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('dashboard/index')
+#15 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/gorun/dashboard
+---
+2016/11/08 10:05:37 [error] [exception.CException] exception 'CException' with message 'DashboardController has an extra endWidget() call in its view.' in F:\wamp\www\gorun\framework\web\CBaseController.php:211
+Stack trace:
+#0 F:\wamp\www\gorun\protected\views\dashboard\index.php(145): CBaseController->endWidget()
+#1 F:\wamp\www\gorun\framework\web\CBaseController.php(127): require('F:\\wamp\\www\\gor...')
+#2 F:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('F:\\wamp\\www\\gor...', Array, true)
+#3 F:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('F:\\wamp\\www\\gor...', Array, true)
+#4 F:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('index', Array, true)
+#5 F:\wamp\www\gorun\protected\controllers\DashboardController.php(137): CController->render('index', Array)
+#6 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): DashboardController->actionIndex()
+#7 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('index')
+#11 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('dashboard/index')
+#12 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/gorun/dashboard
+---
+2016/11/08 10:18:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/fc766df/themes/inlite/theme.min.js".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('assets/fc766df/...')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/assets/fc766df/themes/inlite/theme.min.js
+HTTP_REFERER=http://localhost/gorun/dashboard
+---
+2016/11/08 10:20:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/fc766df/themes/inlite/theme.min.js".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('assets/fc766df/...')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/assets/fc766df/themes/inlite/theme.min.js
+HTTP_REFERER=http://localhost/gorun/dashboard
+---
+2016/11/08 10:23:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/fc766df/themes/inlite/theme.min.js".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('assets/fc766df/...')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/assets/fc766df/themes/inlite/theme.min.js
+HTTP_REFERER=http://localhost/gorun/dashboard
+---
