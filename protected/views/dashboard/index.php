@@ -12,13 +12,13 @@
             <hr />
             <form action="<?php echo Yii::app()->request->baseUrl;?>/dashboard" id="profile-detail" method="post">
                 <div class="form-group">
-                    <label class="col-md-2">First Name<span class="required">*</span></label>
+                    <label class="col-md-2">First Name <span class="required">*</span></label>
                     <div class="col-md-9"><input type="text" class="form-control" placeholder="Your First Name" name="fname" value="<?php echo $member->fname;?>" /></div>
                     <div class="clearfix"></div>
                 </div>
                 
                 <div class="form-group">
-                    <label class="col-md-2">Last Name<span class="required">*</span></label>
+                    <label class="col-md-2">Last Name <span class="required">*</span></label>
                     <div class="col-md-9"><input type="text" class="form-control" placeholder="Your Last Name" name="lname" value="<?php echo $member->lname;?>" /></div>
                     <div class="clearfix"></div>
                 </div>
@@ -26,7 +26,7 @@
                 <hr />
                 
                 <div class="form-group">
-                    <label class="col-md-2">Username<span class="required">*</span></label>
+                    <label class="col-md-2">Username <span class="required">*</span></label>
                     <div class="col-md-9"><input type="text" class="form-control username" placeholder="Username" name="username" value="<?php echo $member->username;?>" /></div>
                     <div class="clearfix"></div>
                 </div>
@@ -40,7 +40,7 @@
                 <hr />
                 
                 <div class="form-group">
-                    <label class="col-md-2">Email<span class="required">*</span></label>
+                    <label class="col-md-2">Email <span class="required">*</span></label>
                     <div class="col-md-9"><input type="text" class="form-control profile_email" placeholder="Your Email Address" name="email" value="<?php echo $member->email;?>" /></div>
                     <div class="clearfix"></div>
                 </div>
@@ -68,7 +68,7 @@
                 <hr />
                 <?php $date = explode("-",$member->dob);?>
                 <div class="form-group dobs">
-                    <label class="col-md-2">Date of Birth<span class="required">*</span></label>
+                    <label class="col-md-2">Date of Birth <span class="required">*</span></label>
                     <div class="col-md-5">
                         <select name="d_ob" class="col-md-3">
                             <option value="">Day</option>
@@ -109,7 +109,7 @@
                 </div>
                 
                  <div class="form-group">
-                    <label class="col-md-2">Gender<span class="required">*</span></label>
+                    <label class="col-md-2">Gender <span class="required">*</span></label>
                     <div class="col-md-9">
                         <div class="col-md-2 ">
                             <label class="control control--radio">Male
@@ -312,7 +312,7 @@
             ?><br />
             
                         
-                        <a href="javascript:void(0)" class="btn btn-remove" onclick="return confirm_delete('Are you sure that you want to remove the image?'); ">Remove</a><br />
+                        <a href="javascript:void(0)" class="btn btn-remove" onclick="return confirm_delete('Are you sure that you want to remove the image?'); "><span class="fa fa-times" style="color: #E00000;"></span> Remove</a><br />
                     </div>
                     <div class="clearfix"></div>
                         
@@ -397,7 +397,7 @@
                 <hr />
                 <div class="form-group">
                     <label class="col-md-2">SA Identity No.</label>
-                    <div class="col-md-9"><input type="text" class="form-control" placeholder="Your SA Identity Number" name="sa_identity_no" value="<?php echo $member->sa_identity_no;?>" /></div>
+                    <div class="col-md-9"><input type="text" class="form-control" placeholder="Your SA Identity Number" name="sa_identity_no"  value="<?php echo $member->sa_identity_no;?>" /></div>
                     <div class="clearfix"></div>
                 </div>
                 
@@ -623,7 +623,7 @@
         $("."+div).prepend('<div class="form-group">'+
                         '<div class="col-md-2"></div>'+
                         '<div class="col-md-7"><input type="text" class="form-control" placeholder="'+div.replace("_",' ')+'" name="'+name+'[]" value="" /></div>'+
-                        '<div class="col-md-2"><input type="button" value="Remove" class="btn btn-danger" onclick="$(this).parent().parent().remove();"  /></div>'+
+                        '<div class="col-md-2"><input type="button" value="Remove" class="btn btn-remove" onclick="$(this).parent().parent().remove();"  /></div>'+
                         '<div class="clearfix"></div>'+
                 
                     '</div>');
@@ -639,6 +639,7 @@
         else
             return false;
     }
+    
     $(function(){
             /*CKEDITOR.replace( 'description' );
             CKEDITOR.editorConfig = function( config ) {
@@ -749,7 +750,29 @@
 					       }
                         }
                     },
-					agree: "required"
+                    sa_identity_no:{
+                        remote:{
+                            url:"<?php echo Yii::app()->request->baseUrl;?>/member/checkemail?type=sa_identity_no",
+                            type: "post",
+                            //data: { sa_identity_no: $.validator.format("{0}") }
+                            }
+                        
+                    },
+                    'championchip[]':{
+                         remote:{
+                            url:"<?php echo Yii::app()->request->baseUrl;?>/member/checkemail?type=championchip",
+                            type: "post",
+                            //data: { sa_identity_no: $.validator.format("{0}") }
+                            }
+                    },
+                    'tracetec[]':{
+                         remote:{
+                            url:"<?php echo Yii::app()->request->baseUrl;?>/member/checkemail?type=tracetec",
+                            type: "post",
+                            //data: { sa_identity_no: $.validator.format("{0}") }
+                            }
+                    },
+					
 				},
                 groups: {
                     y_ob: "d_ob m_ob y_ob"
@@ -775,7 +798,17 @@
 					    required:"Input a username",
                         remote: $.validator.format("{0} is already taken.")
                     },
-					agree: "Please accept our policy",
+                	sa_identity_no: {
+					    
+                        remote: $.validator.format("'{0}' SA Identity No. is already used.")
+                    },
+                    'tracetec[]':{
+                        remote: $.validator.format("'{0}' RaceTec number is already used.")
+                    },
+                    'championchip[]':{
+                        remote: $.validator.format("'{0}' ChampionChip number is already used.")
+                    },
+					
                     y_ob: "Please select a date of birth",
                     m_ob: "Please select a date of birth",
                     d_ob: "Please select a date of birth",

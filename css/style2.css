@@ -18,7 +18,7 @@
 }
 .profile_cover
 {
-   background:#FFF;border:5px solid #DDD;width:760px;height:230px;float:left;
+   background:#27a8e2;width:760px;height:220px;float:left;
 }
 .profile_cover img
 {
@@ -191,4 +191,8 @@ hr{
 }
 #code-error, .flash-error{
     color:#f41465 !important;
+}
+.btn-remove {
+    border: 2px solid #e00000;
+    color: #e00000;
 }

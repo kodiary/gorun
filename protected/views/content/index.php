@@ -5,7 +5,7 @@
 
     <div class="breadcrumb">
         <a class="home_bread" href="<?php echo Yii::app()->request->baseUrl; ?>"><span class="fa fa-home"></span></a><img class="right-point" src="<?php echo Yii::app()->request->baseUrl; ?>/images/rightpoint.png" />
-        register or login 
+        <?php echo $model->title;?>
         <img class="right-point_w" src="<?php echo Yii::app()->request->baseUrl; ?>/images/rightpoint_w.png" />
     </div>
 

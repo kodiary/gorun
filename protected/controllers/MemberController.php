@@ -22,14 +22,24 @@ class MemberController extends Controller
     {
         
         $member = new Member;
+        
         $cond = '';
-        if(isset($_GET['type']) || $username!='')
+        if(isset($_GET['type']) && isset($_POST) || $username!='')
         {
             if(isset(Yii::app()->user->id))
                 $cond = 'id <> '.Yii::app()->user->id;
-            if($_GET['type']=='email')
+            if($_GET['type']=='email'|| $_GET['type'] == 'sa_identity_no')
             {
-                if($member->findByAttributes(['email'=>$_POST['email']],$cond))
+                if($member->findByAttributes([$_GET['type']=>$_POST[$_GET['type']]],$cond))
+                {
+                   echo "false";
+                }
+                else
+                    echo "true";
+            }
+            else if($_GET['type']=='championchip' || $_GET['type']=='tracetec'){
+                $member = new MemberExtra;
+               if($member->findByAttributes(['type'=>$_GET['type'],'value'=>$_POST[$_GET['type']]],$cond))
                 {
                    echo "false";
                 }

@@ -16,7 +16,7 @@
         <?php $this->renderPartial('/common/login');?>
     </form>
     <div class="center"> 
-        Not a member yet? <a href="#" class="blue"><strong>Join now for Free.</strong></a> 
+        Not a member yet? <a href="<?php echo Yii::app()->request->baseUrl;?>/signup" class="blue"><strong>Join now for Free.</strong></a> 
       </div>
     </div>
     <div class="clearfix"></div>

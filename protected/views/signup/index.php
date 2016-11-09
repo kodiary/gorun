@@ -100,7 +100,7 @@
         </div>
         <div class="clearfix"></div>
         <hr />
-        <div class="center col-md-12"><strong>Already a Member? <a href="#"  data-toggle="modal" data-target="#loginModal">Login Now</a></strong></div>
+        <div class="center col-md-12"><strong>Already a Member? <a href="<?php echo Yii::app()->request->baseUrl;?>/member/login" >Login Now</a></strong></div>
     </div>
     <!--div class="col-md-4">
         <h2>Password reset</h2>
