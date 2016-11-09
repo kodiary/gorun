@@ -422,7 +422,10 @@ h3.blue{font-weight:bold;margin-top:0;}
 .blackSubmit{background:#010101;padding:15px 20px;margin-top:15px;position:absolute;bottom:0;width:100%;}
 .blackSubmit a{background:#01A5EC;width: 100%;border-radius:5px;border:1px solid #0097DA;border-bottom:3px solid #0097DA;padding:7px 20px;font-size:20px;color:#FFF;text-align:center;display:block;}
 .e_dis_bottom input{font-size:16px;text-align:center;}
-.submit_input{max-width:100%;}
+.submit_input{background: #F4F4F4 none repeat scroll 0 0;
+    border: 0.15em solid #ccc;
+    border-radius: 3px;
+    max-width: 100%;}
 .e_time{color:#AAA;font-size:20px;font-weight:700;}
 .e_cost{color:#07A1E7;font-size:20px;font-weight:700;}
 .pad-top-10{padding:10px 0;}
