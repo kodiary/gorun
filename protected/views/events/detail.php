@@ -46,7 +46,14 @@
             <div class="clearfix"></div>
         </div>
         </div>
-        <a href="#" class="result_submit_black">Submit your result</a>
+        <?php
+        if($past==1)
+        {
+            ?>
+        <a href="#" class="result_submit_black" <?php if(Yii::app()->user->isGuest){?>data-toggle="modal" data-target="#loginModal"<?php }else{?>data-toggle="modal" data-target="#submitResultModal"<?php }?> >Submit your result</a>
+        <?php 
+        }
+        ?>
         <div class="white padtopbot5">
             <a class="expand_block col-md-12" href="javascript:void(0)">
                 <div class="floatLeft">RACE INFO</div>
@@ -87,9 +94,16 @@
                         <?php
                     }
                     ?>
+                    <?php
+                    if($past==0)
+                    {
+                        ?>
                     <div class="pad-top-10">
                             <a class="btn btn-info btn-lg">Enter Online Now</a>
                     </div>
+                    <?php
+                    }
+                    ?>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -153,6 +167,87 @@
     
 </div>
 <div class="clearfix"></div>
+<!-- Modal -->
+<div class="modal fade" id="submitResultModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<form class="login-form" method="post" novalidate="novalidate">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header bluebg">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Your Result</h4>
+      </div>
+      <div class="modal-body" style="position: relative;padding-bottom:115px;">
+        <!-- Normal -->      
+        <?php
+        $c=0;
+        foreach($m_time as $mt)
+                    {
+                        $c++;
+                        ?>
+                        <div>
+                        <?php
+                        if($mt->distance1){
+                            ?>
+                        <div class="e_dis_block e_dis_submit"><?php echo $mt->distance1?><?php if($mt->distance2!=0){?>, <?php echo $mt->distance2?>k <?php }?></span></div>
+                        <div class="e_dis_block e_dis_bottom"><input type="text" class="submit_input" placeholder="00" /><br />HOURS</div>
+                        <div class="e_dis_block e_dis_bottom"><input type="text" class="submit_input" placeholder="00" /><br />MINUTES</div>
+                        <div class="e_dis_block e_dis_bottom"><input type="text" class="submit_input" placeholder="00" /><br />SECONDS</div>
+                        <div class="clearfix"></div>
+                        <?php
+                        }
+                        ?>
+                        <?php
+                        if($mt->distance_swim_1){
+                            ?>
+                        <span class="e_dis">
+                        
+                            <div class="e_dis_block e_dis_submit" style="line-height: 22px;font-size:16px;"><?php echo $mt->distance_run_1?><?php if($mt->distance_run_2!=0){?>, <?php echo $mt->distance_run_2?>k <?php }?><br /><strong style="font-size: 14px;">Run </strong></div>
+                            <div class="e_dis_block e_dis_bottom"><input type="text" class="submit_input" placeholder="00" /><br />HOURS</div>
+                            <div class="e_dis_block e_dis_bottom"><input type="text" class="submit_input" placeholder="00" /><br />MINUTES</div>
+                            <div class="e_dis_block e_dis_bottom"><input type="text" class="submit_input" placeholder="00" /><br />SECONDS</div>
+                            <div class="clearfix"></div>
+                            <div class="gap"></div>
+                            <div class="e_dis_block e_dis_submit" style="line-height: 22px;font-size:16px;"><?php echo $mt->distance_bike_1?><?php if($mt->distance_bike_2!=0){?>, <?php echo $mt->distance_bike_2?>k<?php }?><br /><strong>Bike </strong> </div>
+                            <div class="e_dis_block e_dis_bottom"><input type="text" class="submit_input" placeholder="00" /><br />HOURS</div>
+                            <div class="e_dis_block e_dis_bottom"><input type="text" class="submit_input" placeholder="00" /><br />MINUTES</div>
+                            <div class="e_dis_block e_dis_bottom"><input type="text" class="submit_input" placeholder="00" /><br />SECONDS</div>
+                            <div class="clearfix"></div>
+                            <div class="gap"></div>
+                            <div class="e_dis_block e_dis_submit" style="line-height: 22px;font-size:16px;"><?php echo $mt->distance_swim_1?><?php if($mt->distance_swim_2!=0){?>, <?php echo $mt->distance_swim_2?>k<?php }?><br /><strong>Swim </strong> </div>
+                            <div class="e_dis_block e_dis_bottom"><input type="text" class="submit_input" placeholder="00" /><br />HOURS</div>
+                            <div class="e_dis_block e_dis_bottom"><input type="text" class="submit_input" placeholder="00" /><br />MINUTES</div>
+                            <div class="e_dis_block e_dis_bottom"><input type="text" class="submit_input" placeholder="00" /><br />SECONDS</div>
+                            <div class="clearfix"></div>
+                        </span>
+                        <?php
+                        }
+                        ?>
+                        
+                        
+                        
+                        </div>
+                        <?php
+                        if($c!=count($m_time)){
+                        ?>
+                        <div class="row">
+                        <hr style="margin-left: 0;margin-right:0;" />
+                        </div>
+                        <?php
+                        }
+                    }
+        ?>
+        <div class="blackSubmit row">
+            <a href="#">SUBMIT RESULTS</a>
+        </div>
+      </div>
+      <div class="modal-footer blackbg" style="border-top: 1px solid #888;font-size:16px;">
+       Input your results. <a href="javascript:void(0)" class="blue clearResult">Clear Results</a>
+      </div>
+    </div>
+  </div>
+  </form>
+</div>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script>
 
 $(function(){
@@ -168,6 +263,13 @@ $(function(){
             $(this).attr('style','');
             $(this).parent().find('.content').hide('slow');
         }
+    });
+    $('.clearResult').click(function(){
+        $('.e_dis_block').each(function(){
+            $(this).find('input').each(function(){
+                $(this).val('');
+            })
+        })
     })
 })
 </script>

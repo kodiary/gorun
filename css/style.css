@@ -400,6 +400,29 @@ h3.blue{font-weight:bold;margin-top:0;}
 .expand_block:focus{outline: none!important;}
 .small_bold{font-size: 13px;font-weight: bold;}
 .e_dis{color:#444;font-size:20px;font-weight:700;padding-bottom:5px;}
+.e_dis_block {
+    float: left;
+    padding-left: 10px;
+    width: 20%;
+}
+.e_dis_submit {
+    color: #444;
+    font-size: 18px;
+    font-weight: 700;
+    padding-bottom: 5px;
+    width: 30% !important;
+    text-align: right;
+    padding-right:5px;
+}
+.e_dis_bottom {
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+.blackSubmit{background:#010101;padding:15px 20px;margin-top:15px;position:absolute;bottom:0;width:100%;}
+.blackSubmit a{background:#01A5EC;width: 100%;border-radius:5px;border:1px solid #0097DA;border-bottom:3px solid #0097DA;padding:7px 20px;font-size:20px;color:#FFF;text-align:center;display:block;}
+.e_dis_bottom input{font-size:16px;text-align:center;}
+.submit_input{max-width:100%;}
 .e_time{color:#AAA;font-size:20px;font-weight:700;}
 .e_cost{color:#07A1E7;font-size:20px;font-weight:700;}
 .pad-top-10{padding:10px 0;}
@@ -412,3 +435,6 @@ h3.blue{font-weight:bold;margin-top:0;}
     text-transform: uppercase;margin:10px 0;}
 .contact_organizer:hover{text-decoration:none;color:#666;}
 .contact_organizer .fa{color:#666;}
+.bluebg{background:#01A5EC;color:#FFF;}
+.blackbg{background:#010101;color:#FFF;}
+.gap{height: 10px;}

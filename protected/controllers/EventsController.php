@@ -51,12 +51,40 @@ class EventsController extends Controller
 	{
 	   //die('here');
 	   $e = Events::model()->findByAttributes(array('slug'=>$slug));
+       if(isset($e->end_date) && $e->end_date)
+       {
+            $date = new DateTime($e->end_date);
+            $now = new DateTime();
+            if($date < $now)
+            {
+                $past = 1;
+            }
+            else
+            $past = 0;
+       }
+       else
+       {
+        if(isset($e->start_date) && $e->start_date)
+        {
+            $date = new DateTime($e->start_date);
+            $now = new DateTime();
+            if($date < $now)
+            {
+                $past = 1;
+            }
+            else
+            $past = 0;
+        }
+        else
+        $past = 0;
+       }
        $et = EventsType::model()->findByAttributes(array('id'=>$e->event_type));
        $etime = EventsTime::model()->findAllByAttributes(array('event_id'=>$e->id));
 		$this->render('detail',array(
 			'model'=>$this->loadModel($e->id),
             'm_type'=>$et,
-            'm_time'=>$etime
+            'm_time'=>$etime,
+            'past'=>$past
 		));
         
 	}
