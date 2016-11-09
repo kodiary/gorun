@@ -3,10 +3,13 @@
           <?php echo $this->renderPartial('/sidebar/_menu', false, true); ?>
         </div>
         <div class="col-md-9 right-content profile_detail">
-            <div class="col-md-12">
+            
                 <h1>ADD YOUR CLUB</h1>
-                <strong><span class="blue">Add Your Club.</span> </strong>
-            </div>
+                <span>
+                    Add your club details below. You can edit these details at any time.<br />
+                    Please note this is subject to approval before being posted live.
+                </span>
+            
             <div class="clearfix"></div>
             
             <hr />
@@ -15,7 +18,11 @@
                 
                 <div class="form-group white">
                     <label class="col-md-12">CLUB NAME</label>
-                    <div class="col-md-12"><input type="text" class="form-control" placeholder="Club Name..." name="title" value="<?php //echo $member->fname;?>" /></div>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Your Club Name" name="title" value="<?php //echo $member->fname;?>" />
+                        <span class="blue"><strong>Vanity URL:http://www.gorun.co.za/clubs/your-club-name</strong></span>
+                    </div>
+                    
                     <div class="clearfix"></div>
                 </div>
                   <div class="form-group white">
@@ -27,7 +34,13 @@
                         <?php 
                         foreach($events as $event)
                         {?>
-                            <div class="col-md-6 checkboxes"><input type="checkbox" name="type[]" value="<?php echo $event->id;?>" /><?php echo $event->title;?></div>
+                            <div class="col-md-6 checkboxes">
+                                <label class="control control--checkbox"><?php echo $event->title;?>
+                                  <input type="checkbox" name="type[]" value="<?php echo $event->id;?>"/>
+                                  <div class="control__indicator"></div>
+                                </label>
+                                
+                            </div>
                             
                             <div class="clearfix"></div>
                             

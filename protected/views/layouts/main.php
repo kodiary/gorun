@@ -63,7 +63,7 @@ if (!empty($this->metaKeys)) {
 </head>
 
 <body>
-
+<?php $this->widget('application.extensions.email.debug'); ?>
 <div class="wrapper">
     <div class="header">
         <a class="logo" href="<?php echo Yii::app()->request->baseUrl; ?>">
@@ -241,7 +241,7 @@ $(function(){
 						
 					},
 				
-					LoginForm_username: "Email or Username is not valid.",
+					LoginForm_username: "Email or username is not valid.",
 					
 				},
 				errorElement: "em",

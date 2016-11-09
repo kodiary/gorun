@@ -91,7 +91,7 @@ class MemberController extends Controller
                 Yii::app()->session["pin_$id"] = $pin;
                 $url =  $this->createAbsoluteUrl("member/confirmation/hash/".sha1($member->email)."acef".$id);
                 $msg = $this->renderPartial('application.views.email.signup', array('fname'=>ucfirst($_POST['fname']),'lname'=>ucfirst($_POST['lname']),'pin'=>$pin,'url'=>$url), true);
-                    CommonClass::sendEmail("","",$member->email,"Confirmation Email",$msg);     
+                    CommonClass::sendEmail("GO RUN","noreply@gorun.co.za",$member->email,"Confirmation Email",$msg);     
                 // Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - A new event has been added successfully!');
 				$this->redirect(Yii::app()->request->baseUrl);
             }
@@ -127,7 +127,7 @@ class MemberController extends Controller
             else
             {
                 
-                Yii::app()->user->setFlash('error', '<strong>Error - </strong> The Pin didnot match.Please try later.');
+                Yii::app()->user->setFlash('error', '<strong>Error - </strong> The Pin didnot match.Please try again.');
                  //$this->redirect(Yii::app()->request->urlReferrer);
             }
         }
