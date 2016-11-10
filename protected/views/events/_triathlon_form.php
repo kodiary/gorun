@@ -17,7 +17,7 @@
     </div>
     <div class="col-md-4">
         COST <strong>R</strong> &nbsp; <input type="text" placeholder="0" class="four cost" name="EventsTime[event_cost]" /> 
-        <a href="javascript:void(0)" class="btn btn-default add_distance">ADD +</a>
+        <!--<a href="javascript:void(0)" class="btn btn-default add_distance">ADD +</a>-->
         <span class="blue small">Costs in Rands (Optional)</span>
     </div>
     

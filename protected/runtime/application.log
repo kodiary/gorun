@@ -715,3 +715,67 @@ Stack trace:
 REQUEST_URI=/gorun/assets/fc766df/themes/inlite/theme.min.js
 HTTP_REFERER=http://localhost/gorun/dashboard
 ---
+2016/11/09 11:31:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "results/create".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('results/create')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/results/create
+HTTP_REFERER=http://localhost/gorun/dashboard
+---
+2016/11/09 11:31:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404.jpg".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/404.jpg')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/404.jpg
+HTTP_REFERER=http://localhost/gorun/results/create
+---
+2016/11/10 16:35:33 [error] [exception.CException] exception 'CException' with message 'Property "Events.event_id" is not defined.' in E:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('event_id')
+#1 E:\wamp\www\gorun\protected\views\events\detail.php(280): CActiveRecord->__get('event_id')
+#2 E:\wamp\www\gorun\framework\web\CBaseController.php(127): require('E:\\wamp\\www\\gor...')
+#3 E:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('E:\\wamp\\www\\gor...', Array, true)
+#4 E:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('E:\\wamp\\www\\gor...', Array, true)
+#5 E:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('detail', Array, true)
+#6 E:\wamp\www\gorun\protected\controllers\EventsController.php(88): CController->render('detail', Array)
+#7 [internal function]: EventsController->actionView('super-triathlon...')
+#8 E:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EventsController), Array)
+#9 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EventsController), Object(ReflectionMethod), Array)
+#10 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#11 E:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#12 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), NULL)
+#13 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('view')
+#14 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('events/view')
+#15 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/gorun/events/view/super-triathlon-sa-1-2-3-4
+HTTP_REFERER=http://localhost/gorun/run
+---
+2016/11/10 16:36:15 [error] [exception.CException] exception 'CException' with message 'Property "Events.event_id" is not defined.' in E:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('event_id')
+#1 E:\wamp\www\gorun\protected\views\events\detail.php(280): CActiveRecord->__get('event_id')
+#2 E:\wamp\www\gorun\framework\web\CBaseController.php(127): require('E:\\wamp\\www\\gor...')
+#3 E:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('E:\\wamp\\www\\gor...', Array, true)
+#4 E:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('E:\\wamp\\www\\gor...', Array, true)
+#5 E:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('detail', Array, true)
+#6 E:\wamp\www\gorun\protected\controllers\EventsController.php(88): CController->render('detail', Array)
+#7 [internal function]: EventsController->actionView('super-triathlon...')
+#8 E:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EventsController), Array)
+#9 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EventsController), Object(ReflectionMethod), Array)
+#10 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#11 E:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#12 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), NULL)
+#13 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('view')
+#14 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('events/view')
+#15 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/gorun/events/view/super-triathlon-sa-1-2-3-4
+HTTP_REFERER=http://localhost/gorun/run
+---
