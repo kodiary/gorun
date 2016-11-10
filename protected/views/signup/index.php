@@ -121,7 +121,7 @@
     <div class="col-md-4">
         <h2>Member Login</h2>
         <hr />
-        <?php $this->renderPartial('/common/login');?>
+        <?php //$this->renderPartial('/common/login');?>
         
       <div class="center"> 
         Not a member yet? <a href="#" class="blue">Join now for free.</a> 

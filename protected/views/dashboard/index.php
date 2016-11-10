@@ -150,7 +150,7 @@
                                    ed.on('keyup', function(e) {
                                         tmp = ed.getContent({format : 'text'});
                                         currentLength= tmp.length;
-                                        maximumLength = 10;
+                                        maximumLength = 600;
                                         var rem_text = maximumLength-currentLength;
                                         $('.count_letter').text(rem_text);
                                         
@@ -158,7 +158,7 @@
                                         {
                                             ed.undoManager.add();
                                             ed.undoManager.transact(function(){
-                                                ed.setContent(ed.getContent({format : 'text'}).substring(0,10));
+                                                ed.setContent(ed.getContent({format : 'text'}).substring(0,600));
                                                 $('.count_letter').text(0);
                                                 ed.undoManager.undo();
                                              });
