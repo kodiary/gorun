@@ -725,4 +725,20 @@ class EventsController extends Controller
         }
         return false;
     }
+    public function actionSubmitresult()
+    {
+        $checker = $_POST['checker'];
+        unset($_POST['checker']);
+        
+        $arr = explode('_',$checker);
+        if($arr[0] == $arr[1])
+        {
+            echo 'last';
+        }
+        $_POST['EventResult'] = $_POST;
+        $model  = new EventResult;
+        $model->attributes=$_POST['EventResult'];
+        $model->save();
+        die();
+    }
 }

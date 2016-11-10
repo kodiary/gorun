@@ -403,14 +403,14 @@ h3.blue{font-weight:bold;margin-top:0;}
 .e_dis_block {
     float: left;
     padding-left: 10px;
-    width: 22%;
+    width: 21%;
 }
 .e_dis_submit {
     color: #444;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     padding-bottom: 5px;
-    width: 23% !important;
+    width: 26% !important;
     text-align: right;
     padding-right:5px;
 }

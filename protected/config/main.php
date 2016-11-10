@@ -188,7 +188,7 @@ return array(
             'events/showall'=>'events/index/showall',
             'events/search'=>'events/search',
             'events/search/showall'=>'events/search/showall',
-            
+            'events/submitresult'=>'events/submitresult',
             'events/loadTime'=>'events/loadTime',
             
             'dashboard'=>'dashboard/index',

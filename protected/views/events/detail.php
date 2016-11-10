@@ -178,6 +178,10 @@
         <h4 class="modal-title" id="myModalLabel">YOUR RESULTS</h4>
       </div>
       <div class="modal-body" style="position: relative;padding-bottom:115px;">
+      <div class="alert alert-success alert-dismissible submitMsg" role="alert" style="display: none;">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          Result submitted successfully.
+        </div>
         <!-- Normal -->      
         <?php
         $c=0;
@@ -190,10 +194,11 @@
                         if($mt->distance1){
                             if($c==1){?>
                              <input type="hidden" class="is_tri" value="0" />
-                             <input type="hidden" class="distance" value="<?php echo $mt->distance1?><?php if($mt->distance2!=0){?>, <?php echo $mt->distance2?>k<?php }?>" />
+                             
                              <?php }
                             ?>
                         <div class="submit_result_parent">
+                        <input type="hidden" class="distance" value="<?php echo $mt->distance1?><?php if($mt->distance2!=0){?>, <?php echo $mt->distance2?>k<?php }?>" />
                         <div class="e_dis_block e_dis_submit"><?php echo $mt->distance1?><?php if($mt->distance2!=0){?>, <?php echo $mt->distance2?>k <?php }?></span></div>
                         <div class="e_dis_block e_dis_bottom"><input type="text" class="submit_input hour" placeholder="00" /><br />HOURS</div>
                         <div class="e_dis_block e_dis_bottom"><input type="text" class="submit_input min" placeholder="00" /><br />MINUTES</div>
@@ -303,22 +308,93 @@ $(function(){
         var event_id = '<?php echo $model->id;?>';
         var event_category = '<?php echo $model->event_cat;?>';
         var event_type = '<?php echo $model->event_type;?>';
-        var distance = '<?php echo $model->distance;?>';
         var is_tri_swim = '0';
         var is_tri_bike = '0';
         var is_tri_run = '0';
+        var transition_time = '0';
+        var $this = '';
+        var count = 0;
+        var total = $('.submit_result_parent').length;
         $('.submit_result_parent').each(function(){
+            count++;
+            var checker = count+'_'+total;
+            var distance = $(this).find('.distance').val();
             if($('.is_tri').val()=='0')
             {
                 var dist_hour = $(this).find('.hour').val();
                 var dist_min = $(this).find('.min').val(); 
                 var dist_sec = $(this).find('.sec').val();
-                var distance = $(this).find('.distance').val();
+                
+                
             }
             else
             {
-                
+                if($(this).find('.tri_type').val() == 's')
+                {
+                    var dist_hour = $(this).find('.hour_s').val();
+                    var dist_min = $(this).find('.min_s').val(); 
+                    var dist_sec = $(this).find('.sec_s').val();
+                    is_tri_swim = '1';
+                    is_tri_bike = '0';
+                    is_tri_run = '0';
+                    transition_time = '0';
+                }
+                if($(this).find('.tri_type').val() == 't1')
+                {
+                    var dist_hour = $(this).find('.hour_t1').val();
+                    var dist_min = $(this).find('.min_t1').val(); 
+                    var dist_sec = $(this).find('.sec_t1').val();
+                    transition_time = '1';
+                    is_tri_swim = '0';
+                    is_tri_bike = '0';
+                    is_tri_run = '0';
+                }
+                if($(this).find('.tri_type').val() == 'b')
+                {
+                    var dist_hour = $(this).find('.hour_b').val();
+                    var dist_min = $(this).find('.min_b').val(); 
+                    var dist_sec = $(this).find('.sec_b').val();
+                    is_tri_bike = '1';
+                    is_tri_swim = '0';
+                    is_tri_run = '0';
+                    transition_time = '0';
+                }
+                if($(this).find('.tri_type').val() == 't2')
+                {
+                    var dist_hour = $(this).find('.hour_t2').val();
+                    var dist_min = $(this).find('.min_t2').val(); 
+                    var dist_sec = $(this).find('.sec_t2').val();
+                    transition_time = '2';
+                    is_tri_swim = '0';
+                    is_tri_bike = '0';
+                    is_tri_run = '0';
+                }
+                if($(this).find('.tri_type').val() == 'r')
+                {
+                    var dist_hour = $(this).find('.hour_r').val();
+                    var dist_min = $(this).find('.min_r').val(); 
+                    var dist_sec = $(this).find('.sec_r').val();
+                    is_tri_run = '1';
+                    is_tri_swim = '0';
+                    is_tri_bike = '0';
+                    transition_time = '0';
+                }
             }
+            $this = $(this);
+            $this.find('.e_dis_block').each(function(){
+                    $(this).find('input').each(function(){
+                        $(this).val('');
+                    })
+                 })
+            $.ajax({
+               url:'<?php echo Yii::app()->request->baseUrl; ?>/events/submitresult',
+               type:'post',
+               data:'checker='+checker+'&user_id='+user_id+'&event_id='+event_id+'&event_category='+event_category+'&event_type='+event_type+'&dist_hour='+dist_hour+'&dist_min='+dist_min+'&dist_sec='+dist_sec+'&distance='+distance+'&is_tri_swim='+is_tri_swim+'&is_tri_bike='+is_tri_bike+'&is_tri_run='+is_tri_run+'&transition_time='+transition_time,
+               success:function(res){
+                if(res=='last')
+                $('.submitMsg').show()
+               } 
+            });
         });
         
     })
