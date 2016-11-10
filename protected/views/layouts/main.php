@@ -280,7 +280,7 @@ $(function(){
 				}
 		,
             submitHandler: function(form) {
-                      var data = $(form).serialize();
+                      var data = $('.login-form').serialize();
                     
                     $.ajax({
                         type:"post",

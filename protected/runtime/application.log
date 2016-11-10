@@ -715,3 +715,64 @@ Stack trace:
 REQUEST_URI=/gorun/assets/fc766df/themes/inlite/theme.min.js
 HTTP_REFERER=http://localhost/gorun/dashboard
 ---
+2016/11/10 15:41:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in F:\wamp\www\gorun\protected\controllers\EventsController.php:524
+Stack trace:
+#0 F:\wamp\www\gorun\protected\controllers\EventsController.php(84): EventsController->loadModel(NULL)
+#1 [internal function]: EventsController->actionView('super-triathlon...')
+#2 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EventsController), Array)
+#3 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EventsController), Object(ReflectionMethod), Array)
+#4 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), NULL)
+#7 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('view')
+#8 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('events/view')
+#9 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/gorun/events/view/super-triathlon-sa-1-2-3-4
+---
+2016/11/10 15:41:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404.jpg".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/404.jpg')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/404.jpg
+HTTP_REFERER=http://localhost/gorun/events/view/super-triathlon-sa-1-2-3-4
+---
+2016/11/10 15:49:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/article_fallback_120x120.png".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/article_...')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/article_fallback_120x120.png
+HTTP_REFERER=http://localhost/gorun/clubs/bedfordview-athletics
+---
+2016/11/10 15:49:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/article_fallback_120x120.png".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/article_...')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/article_fallback_120x120.png
+HTTP_REFERER=http://localhost/gorun/clubs/bedfordview-athletics
+---
+2016/11/10 15:49:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/article_fallback_120x120.png".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/article_...')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/article_fallback_120x120.png
+HTTP_REFERER=http://localhost/gorun/clubs/bedfordview-athletics
+---
+2016/11/10 15:49:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/article_fallback_120x120.png".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/article_...')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/article_fallback_120x120.png
+HTTP_REFERER=http://localhost/gorun/clubs/bedfordview-athletics
+---

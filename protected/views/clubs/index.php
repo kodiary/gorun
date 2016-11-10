@@ -1,4 +1,5 @@
 <script src="//cdn.ckeditor.com/4.5.10/basic/ckeditor.js"></script>
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <div class="sidebar col-md-3">
           <?php echo $this->renderPartial('/sidebar/_menu', false, true); ?>
         </div>
@@ -50,19 +51,23 @@
                         
                     </div>
                     <div class="clearfix"></div>
+                    <div class="col-md-12">
                     <div class="types"></div>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
                 <div class="form-group white">
                     <label class="col-md-12">CLUB DETAILS<br /></label>
-                    <div class="col-md-12">Tell us about your club.Limited to 600 characters<span class="blue">-You have <span class="count_letter">600</span> left</span></div>
-                    <div class="col-md-12"><textarea class="form-control description" name="description"><?php echo $model->description;?></textarea></div>
+                    <div class="col-md-12">Tell us about your club. Limited to 600 characters<span class="blue"> - You have <span class="count_letter">600</span> left</span></div>
+                    <div class="col-md-12"><textarea class="form-control description" name="description" placeholder="Club details here…"><?php echo $model->description;?></textarea></div>
                     <div class="clearfix"></div>
                     <div class="club_desc"></div> 
                 </div>
                 
                 <div class="form-group white">
-                    <label class="col-md-12">Club Logo (O<span style="text-transform: lowercase;">ptional</span>)
-                    <br /><span class="blue">Include a club logo or photo</span></label>
+                    <label class="col-md-12">Club Logo (R<span style="text-transform: lowercase;">ecomended</span>)
+                    <br /><span class="blue">Size is 440x440px</span></label>
+                    <hr />
                     <div class="clearfix"></div>
                         <div class="profilepic col-md-12">
                         <div class="club_img " id="upimage_0" style="margin-right: 30px;">
@@ -116,8 +121,8 @@
                     <div class="clearfix"></div>
                 </div>
                  <div class="form-group white">
-                    <h2 class="col-md-12">Cover Photo <span class="grey">(Recomended)</span></h2>
-                    
+                    <label class="col-md-12">Club Cover Image (R<span style="text-transform: lowercase;">ecomended</span>)
+                    <br /><span class="blue">Size is 760x220px</span></label>
                      <div class="col-md-12 profilepic">
                         <div class="profile_cover" id="upimage_1">
                         <?php
@@ -130,39 +135,38 @@
                         ?>
                             
                         </div>
-                    <div class="col-md-12 picact">
-                    <?php echo $this->renderPartial('application.views.gallery._addImagecover',array('member'=>$member,'type'=>'member_cover','id'=>1)); ?>
+                     <div class="col-md-4" style="margin-right: 30px;"></div>
+                    <div class="col-md-6 picact" >
+                        <?php echo $this->renderPartial('application.views.gallery._addImagecover',array('member'=>$member,'type'=>'member_cover','id'=>1)); ?>
+                        <?php
+                                    
+                        //crop button
+                            echo CHtml::ajaxLink('<span class="fa fa-crop"></span> Crop',
+                                    $this->createUrl('gallery/cropPhoto?height=220&width=760&crop_cover=cover'),
+                                     array( //ajax options
+                                     'data'=>array('fileName'=>"js:function(){ return $('.uploaded_cover').val()}",'id'=>$member->id),
+                                     'type'=>'POST',
+                                    'success'=>"js:function(data){
+                                                if(data!=''){
+                                                    $('#cropModal').html(data).dialog('open');
+                                                    $('.ui-dialog-titlebar-close').hide();
+                                                     return false;
+                                                }
+                                                else
+                                                    alert('No Image selected');
+                                                }",
+                                    'complete'=>"js:function(){
+                                                  $('#crop1_".$member->id."').val('Crop');
+                                                }",
+                                    ),
+                                    array('id'=>'crop1_'.$member->id,'class'=>'btn btn-crop','onclick'=>'$("#crop1_'.$member->id.'").val("loading...");')//html options
+                                );
+                            ?><br />
                         
-                      
-            <?php
-                        
-            //crop button
-             echo CHtml::ajaxButton('Crop',
-                        $this->createUrl('gallery/cropPhoto?height=220&width=760&crop_cover=cover'),
-                         array( //ajax options
-                         'data'=>array('fileName'=>"js:function(){ return $('.uploaded_cover').val()}",'id'=>$member->id),
-                         'type'=>'POST',
-                        'success'=>"js:function(data){
-                                    if(data!=''){
-                                        $('#cropModal').html(data).dialog('open');
-                                        $('.ui-dialog-titlebar-close').hide();
-                                         return false;
-                                    }
-                                    else
-                                        alert('No Image selected');
-                                    }",
-                        'complete'=>"js:function(){
-                                      $('#crop1_".$member->id."').val('Crop');
-                                    }",
-                        ),
-                        array('id'=>'crop1_'.$member->id,'class'=>'btn btn-default','onclick'=>'$("#crop1_'.$member->id.'").val("loading...");')//html options
-            );
-            ?><br />
-            
-                        
-                        <a href="javascript:void(0)" class="btn btn-danger" onclick="return confirm_delete('Are you sure that you want to remove the image?'); ">Remove</a><br />
+                                    
+                            <a href="javascript:void(0)" class="btn btn-remove" onclick="return confirm_delete('Are you sure that you want to remove the image?'); "><span class="fa fa-times" style="color: #E00000;"></span> Remove</a><br />
                     </div>
-                        
+                    <div class="clearfix"></div>   
                     
                    
                 </div>
@@ -172,32 +176,32 @@
       <tr>
         <td class="label">Street address</td>
         <td class="slimField"><input class="field" id="street_number"
-              disabled="true"></input></td>
+              disabled="true"/></td>
         <td class="wideField" colspan="2"><input class="field" id="route"
-              disabled="true"></input></td>
+              disabled="true"/></td>
       </tr>
       <tr>
         <td class="label">City</td>
         <td class="wideField" colspan="3"><input class="field" id="locality"
-              disabled="true"></input></td>
+              disabled="true"/></td>
       </tr>
       <tr>
         <td class="label">State</td>
         <td class="slimField"><input class="field"
-              id="administrative_area_level_1" disabled="true"></input></td>
+              id="administrative_area_level_1" disabled="true"/></td>
         <td class="label">Zip code</td>
         <td class="wideField"><input class="field" id="postal_code"
-              disabled="true"></input></td>
+              disabled="true"/></td>
       </tr>
       <tr>
         <td class="label">Country</td>
         <td class="wideField" colspan="3"><input class="field"
-              id="country" disabled="true"></input></td>
+              id="country" disabled="true"/></td>
       </tr>
     </table>
 
                 <div class="form-group white">
-                    <label class="col-md-12">Location<br /><span class="blue">Where is this club located?</span></label>
+                    <label class="col-md-12">PROVINCE (R<span style="text-transform: lowercase;">equired</span>)<br /><span class="blue">Input the province and town the club is situated in.</span></label>
                       <div class="form-group">
                         <div class="col-md-3">Your location<span class="required">*</span></div>
                         <div class="col-md-7">
@@ -216,15 +220,15 @@
                   
                     <div class="form-group">
                         <div class="col-md-3">City / Town <span class="required">*</span></div>
-                        <div class="col-md-7"><input type="text" id="city" class="form-control" placeholder="Suburb Town or City" name="city" value="<?php //echo $member->fname;?>" onBlur='codeAddress();' /></div>
+                        <div class="col-md-7"><input type="text" id="city" class="form-control" placeholder="Closest City or Town" name="city" value="<?php //echo $member->fname;?>" onBlur='codeAddress();' /></div>
                         <div class="clearfix"></div>
                     </div>
                     <div class="clearfix"></div>
                   </div>
                 <div class="white">
                 <div class="form-group ">
-                    <label class="col-md-12">CLUB LOCATION (REQUIRED)<br />
-                    <span class="blue">Input the venue name or address below to find it on Google Map.Drag pin to desired location if required.</span></label>
+                    <label class="col-md-12">CLUB LOCATION (R<span style="text-transform: lowercase;">EQUIRED</span>)<br />
+                    <span class="blue">Input the venue name or address below to find it on a Google Map. Drag pin to desired location if required</span></label>
                     <div class="col-md-10"><input type="text" id="Company_street_add" class="form-control" placeholder="Enter Venue Name or Street Address" onFocus="geolocate()" name="street_address" value="<?php //echo $member->fname;?>" /></div>
                     
                     <div class="clearfix"></div>
@@ -319,7 +323,7 @@
                  </div-->
                  
                 <div class="form-group white">
-                    <label class="col-md-12">Club Contact Details(Required)<br />
+                    <label class="col-md-12">Club Contact Details(R<span style="text-transform: lowercase;">equired</span>)<br />
                     <span class="blue">Display contact details of the club</span></label>
                     <div class="Contact_Number">
                         <div class="form-group">
@@ -334,7 +338,7 @@
                     <div class="Contact_Email">
                         <div class="form-group ">
                             <div class="col-md-12">Email Address (Will display a Contact Button)</div>
-                            <div class="col-md-6"><input type="text" class="form-control" placeholder="Contact email" name="contact_email" value="<?php //echo $member->fname;?>" /></div>
+                            <div class="col-md-6"><input type="text" class="form-control" placeholder="Contact Email" name="contact_email" value="<?php //echo $member->fname;?>" /></div>
                             <!--input type="button" value="+Add" class="btn btn-default col-md-1" onclick="addmore('Contact_Email');" /-->
                             <div class="clearfix"></div>
                         
@@ -351,11 +355,11 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="white form-group">
-                    <label class="col-md-12">SOCIAL MEDIA LINKS (OPTIONAL)<br />
-                    <span class="blue">These will be displayed as icons on your club page an link to your social media pages</span></label>
+                    <label class="col-md-12">SOCIAL MEDIA LINKS (O<span style="text-transform: lowercase;">PTIONAL</span>)<br />
+                    <span class="blue">These will be displayed as icons on your club page and link to your social media pages</span></label>
                     
                     <div class="form-group">
-                        <div class="col-md-12">Facebook page </div>
+                        <div class="col-md-12">Facebook Page </div>
                         <div class="col-md-6"><input type="url" class="form-control" placeholder="http://" name="fb_page" value="<?php //echo $member->fname;?>" /></div>
                         <div class="clearfix"></div>
                     
@@ -382,14 +386,15 @@
                     <span class="blue">Events are subject to approval before going live and visible to public.</span></label>
                     <div class="clearfix"></div>
                 </div>
-                <div class="form-group">
+                <div class="submit_group">
                     <div class="col-md-6">
-                    <span><strong>PLEASE NOTE:</strong> Submitting a club requires our <br /> approval before it will be displayed live.</span>
+                        <strong>PLEASE NOTE: Submitting an event requires our approval before it will be displayed live.</strong>
                     </div>
-                    <div class="col-md-6 padding-left-0">
-                    <input type="submit" name="submit" class="btn btn-submit" value="SUBMIT FOR APPROVAL" />
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-submit">SUBMIT FOR APPROVAL</button>
                     </div>
-                </div>
+                    <div class="clearfix"></div>
+                </div>  
                 <div class="clearfix"></div>
 </form>
             
@@ -417,18 +422,57 @@
     
     $this->endWidget('zii.widgets.jui.CJuiDialog');
 ?>
-
+<script>
+    tinymce.init({
+        selector:'textarea',
+        statusbar: false,
+        menubar: false,
+        plugins:['hr link pagebreak'],
+        toolbar: ['bold italic strikethrough bullist numlist blockquote hr alignleft aligncenter alignright link unlink pagebreak'],
+        setup:function(ed) {
+           ed.on('keyup', function(e) {
+                tmp = ed.getContent({format : 'text'});
+                currentLength= tmp.length;
+                maximumLength = 600;
+                var rem_text = maximumLength-currentLength;
+                $('.count_letter').text(rem_text);
+                
+                if( currentLength > maximumLength )
+                {
+                    ed.undoManager.add();
+                    ed.undoManager.transact(function(){
+                        ed.setContent(ed.getContent({format : 'text'}).substring(0,600));
+                        $('.count_letter').text(0);
+                        ed.undoManager.undo();
+                     });
+                     //ed.undoManager.undo();
+                    //tinyMCE.execCommand("mceRemoveControl", true, 'description');
+                    //tinymce.activeEditor.getBody().setAttribute('contenteditable', false);
+                }
+                else
+                {
+                    ed.undoManager.clear();
+                }
+               /*console.log('the event object ', e);
+               console.log('the editor object ', ed);
+               console.log('the content ', ed.getContent().replace(/<(?:.|\n)*?>/gm, ''));*/
+           });
+           },
+        
+    });
+    
+</script>
     <script>
    
 $(function(){
-    
+    /*
     CKEDITOR.replace( 'description' );
     CKEDITOR.editorConfig = function( config ) {
 	config.language = 'es';
 	config.uiColor = '#F5f5f5';
 	
 };
-    
+    */
     
 })
 

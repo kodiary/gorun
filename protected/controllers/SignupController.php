@@ -22,7 +22,7 @@ class SignupController extends Controller
 	{
         if(Yii::app()->user->id)
         {
-            Yii::app()->user->logout();
+            $this->redirect(Yii::app()->homeUrl);
         }
 		$model = new Company('signup'); //signup scenario
         
