@@ -1,4 +1,4 @@
-<script src="//cdn.ckeditor.com/4.5.10/basic/ckeditor.js"></script>
+<!--script src="//cdn.ckeditor.com/4.5.10/basic/ckeditor.js"></script-->
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <div class="sidebar col-md-3">
           <?php echo $this->renderPartial('/sidebar/_menu', ['not_verified'=>$not_verified], true); ?>

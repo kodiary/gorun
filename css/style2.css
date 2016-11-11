@@ -196,3 +196,10 @@ hr{
     border: 2px solid #e00000;
     color: #e00000;
 }
+.contact a{
+    border: 2px solid #878787;
+    color: #878787;
+    font-size: 16px;
+    display:inline-block;
+    width:100%;
+}

@@ -13,7 +13,8 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 
 ?>
     <div class="col-md-12 block_border detail_page">
-        <h1 class="detail_heading"><?php echo ucfirst($model->title);?><br /><span class="blue"><?php echo Province::model()->getTitle($model->province).", ".$model->town;?></span></h1>
+        <h1 class="detail_heading"><?php echo ucfirst($model->title);?><br />
+            <span class="blue"><?php echo $model->town.", ".Province::model()->getTitle($model->province);?></span></h1>
         
         <div class="wallpaper">
             <?php
@@ -61,7 +62,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
                     <span class="fa fa-google-plus"></span>
                 </a>
             </div>
-            <div class="activities">
+            <div class="activities" style="margin-bottom:10px;">
             <h3><strong>CLUB ACTIVITES</strong></h3>
             <?php 
            
@@ -70,30 +71,28 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
             {
                 if($activity!='')
                 {
-                echo EventsType::model()->titleName($activity)."<br/>";
+                    echo EventsType::model()->titleName($activity)."<br/>";
                 }
             }?>
-            <div class="clearfix"></div>
+            
             </div>
             <div class="clearfix"></div>
-            <div class="contact" style="height: 40px;">
-            <a href="mailto:<?php echo $model->contact_email;?>?Subject=Hello" target="_top" class="btn-submit" style="border: 2px solid #878787;color: #878787;font-size: 16px;"><i class="fa fa-envelope-o"></i> CONTACT CLUB</a>
+            <div class="contact" style="height: 40px;margin-bottom:10px;">
+                <a href="mailto:<?php echo $model->contact_email;?>?Subject=Hello" target="_top" class="btn-submit"><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;CONTACT CLUB</a>
             </div>
-            <div class="clearfix"></div>
+           
             <div class="phone_number">
         
-                    <?php echo ($model->contact_number);?>
+                    <h1><?php echo ($model->contact_number);?></h1>
        
             </div>
         </div>
         <div class="col-md-8">
             <div class="padding-left-10">
-                <div class="sharing">
-                    <a href="#" class="btn-facebook"><span class="fa fa-facebook"></span> Share on facebook</a>
-                    <a href="#" class="btn-twitter"><span class="fa fa-twitter"></span> Share on twitter</a>
-                    <a href="#" class="btn-plus"></a>
-                    <span class="total_share">667 Shares</span>
-                    <div class="clearfix"></div>
+                <div class="social_share">
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <div class="addthis_inline_share_toolbox"></div>
+                    
                 </div>
                 <?php echo $model->description;?>
                 <div class="website"><a href="<?php echo $model->website;?>" target="_blank"><?php echo strtoupper(str_replace('http://','',$model->website));?></a></div>
@@ -126,7 +125,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
     </div>
     
     <div class="col-md-12 block_border toggle-div" <?php if(count($model->member)==0)echo 'style="margin:0;border-bottom:none"';?>>
-        <a href="javascript:void(0)" onclick="toggle_div('members_more',this);"><span><strong><?php  if($total!=0)echo $total;?> MEMBER<?php if($total>1&&$total==0)echo 'S';?></strong></span>
+        <a href="javascript:void(0)" onclick="toggle_div('members_more',this);"><span><strong><?php  if($total!=0)echo $total;?> MEMBER<?php if($total>1||$total==0)echo 'S';?></strong></span>
         <span class="right"><i class="glyphicon glyphicon-chevron-down"></i></span></a>
     </div>
     <div class="clearfix"></div>
