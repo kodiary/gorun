@@ -76,24 +76,18 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
                 </a>
             </div>
             <?php
-            $clubs = Yii::app()->db->createCommand()
-            ->select('title')
-            ->from('tbl_clubs c')
-            ->join('tbl_club_members m', 'c.id=m.club_id AND m.member_id=:mid',array(':mid'=>$model->id))
-            ->order('c.title asc')
-            ->queryAll();
-            if(count($club)>0){?>
+            if(count($clubs)> 0){?>
             <div class="activities">
-            <h3><strong class="blue">MEMBER OF</strong></h3>
-            <?php 
-            
-            foreach($clubs as $key=>$activity)
-            {
+                <h3><strong class="blue">MEMBER OF</strong></h3>
+                <?php 
                 
-                echo ucwords($activity['title']);
-                if($key+1!=count($clubs))
-                echo "<hr/>";
-            }?>
+                foreach($clubs as $key=>$activity)
+                {
+                    
+                    echo ucwords($activity['title']);
+                    if($key+1!=count($clubs))
+                    echo "<hr/>";
+                }?>
             </div>
             <?php }?>
             
@@ -109,9 +103,25 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
                     </div>
                 <?php echo $model->detail;?>
                 <span class="blue">
-                    <strong>PERSONAL BESTS</strong>
-                    
-                </span>
+                    <strong>PERSONAL BESTS</strong><br/>
+                </span>                    
+                    <?php
+                    foreach($results as $key=>$result)
+                    {
+                        if($key==0){
+                                                        
+                            echo "<span class='event_btn btn-inverse'>".strtoupper(EventsType::model()->titleName($result['event_type']))."</span><br/>";
+                        }
+                        elseif($result['event_type']!= $results[$key-1]['event_type'])
+                        {
+                            echo "<span class='event_btn btn-inverse'>".strtoupper(EventsType::model()->titleName($result['event_type']))."</span><br/>";
+                        }                        
+                        echo "<strong>".str_replace('.',',',$result['distance'])."K</strong> <span class='grey'>-</span> <span class='blue'>".$result['dist_time']."</span> <span class='grey'>- ".date('d M Y',$result['result_date'])."</span><br/>";
+                    ?>
+                           
+                    <?php
+                    }?>
+              
                 
             </div>
         </div>
@@ -119,48 +129,51 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
     </div>
     <div class="clearfix"></div>
     <?php 
+    if(count($results)>0)
+        $show = 1;
     foreach($events as $event)
     {
+        //$dataProvider = EventResult::model()->findBy();
     ?>
-       <div class="<?php echo str_replace(' ','',$event->title);?> col-md-12 block_border toggle-div" <?php if(!$dataProvider)echo 'style="margin:0;border-bottom:none"';?>>
-        <a href="javascript:void(0)" onclick="toggle_div('<?php echo str_replace(' ','',$event->title);?>_more',this);"><span><strong><?php echo $event->title;?></strong></span>
-        <span class="right"><i class="glyphicon glyphicon-chevron-down"></i></span></a>
-    </div>
-    <div class="clearfix"></div>
-    <div class="cold-md-12 <?php echo str_replace(' ','',$event->title);?>_more" >
-   
-    <?php if(!$dataProvider){?>
-        <!--div class="green-border">
-            <div class="left">
-                <img src="<?php echo $this->createUrl('/images/alert.png')?>" alt="alert"/>
-            </div>
-            <div class="right">
-                <div class="blue"><strong>Share your News with the world</strong></div>
-                <div>Now you can publish all your news to the world right from your listing. Once you post your news, we will review it and post it live for all to you. Add news now using the button on the right.</div>
-            </div>
-            <div class="clear"></div>
-        </div-->
-        <div class="block_border blue"> No Results!</div>
-    <?php }else{
+        <div class="<?php echo str_replace(' ','',$event->title);?> col-md-12 block_border toggle-div" style="<?php if(!$dataProvider)echo 'margin:0;border-bottom:none';if(!isset($show))echo "display:none;"?>">
+            <a href="javascript:void(0)" onclick="toggle_div('<?php echo str_replace(' ','',$event->title);?>_more',this);"><span><strong><?php echo $event->title;?></strong></span>
+            <span class="right"><i class="glyphicon glyphicon-chevron-down"></i></span></a>
+        </div>
+        <div class="clearfix"></div>
+        <div class="cold-md-12 <?php echo str_replace(' ','',$event->title);?>_more" >
        
-       $this->widget('CLinkPager', array(
+        <?php if(!$dataProvider){?>
+            <!--div class="green-border">
+                <div class="left">
+                    <img src="<?php echo $this->createUrl('/images/alert.png')?>" alt="alert"/>
+                </div>
+                <div class="right">
+                    <div class="blue"><strong>Share your News with the world</strong></div>
+                    <div>Now you can publish all your news to the world right from your listing. Once you post your news, we will review it and post it live for all to you. Add news now using the button on the right.</div>
+                </div>
+                <div class="clear"></div>
+            </div-->
+            <div class="block_border blue"> No Results!</div>
+        <?php }else{
+           
+           $this->widget('CLinkPager', array(
+                'pages' => $pages,
+                'htmlOptions'=>['style'=>'display:none'],
+            ));
+             /* auto scrolling on showall
+        if($pages->itemCount>Yii::app()->params['items_pers_page'])
+            $this->widget('ext.yiinfinite-scroll.YiinfiniteScroller', array(
+            'contentSelector' => '.items',
+            'itemSelector' => '.direcotry_listing',
+            'loadingText' => 'Loading...',
+            'donetext' => 'There are no more news.',
             'pages' => $pages,
-            'htmlOptions'=>['style'=>'display:none'],
-        ));
-         /* auto scrolling on showall
-    if($pages->itemCount>Yii::app()->params['items_pers_page'])
-        $this->widget('ext.yiinfinite-scroll.YiinfiniteScroller', array(
-        'contentSelector' => '.items',
-        'itemSelector' => '.direcotry_listing',
-        'loadingText' => 'Loading...',
-        'donetext' => 'There are no more news.',
-        'pages' => $pages,
-    ));*/
-    
-    ?>
-            
+        ));*/
+        
+        ?>
+                
         <?php
-        $this->renderPartial('/site/_articles',['dataProvider'=>$dataProvider]);
+            $this->renderPartial('/site/_articles',['dataProvider'=>$dataProvider]);
            /* $this->widget('bootstrap.widgets.BootListView',array(
             	'dataProvider'=>$dataProvider,
             	'itemView'=>'/site/_article_old',
@@ -173,10 +186,8 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
     
     </div>
     <div class="clearfix"></div>
-  
-            
-             
-    <?php    
+    <?php 
+          
     }
     ?>
 </div>

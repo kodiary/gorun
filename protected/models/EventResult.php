@@ -47,7 +47,7 @@ class EventResult extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('transition_time', 'required'),
-			array('user_id, event_id, event_category, event_type, dist_hour, dist_min, dist_sec, is_tri_swim, is_tri_bike, is_tri_run, transition_time', 'numerical', 'integerOnly'=>true),
+			array('user_id, event_id, event_category, event_type, dist_hour, dist_min, dist_sec, is_tri_swim, is_tri_bike, is_tri_run, transition_time, result_date', 'numerical', 'integerOnly'=>true),
 			array('distance', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -63,6 +63,10 @@ class EventResult extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+                    'member'=>array(self::BELONGS_TO,'Member','user_id'),
+                    'event'=>array(self::BELONGS_TO,'Events','event_id'),
+                    'eventCategory'=>array(self::BELONGS_TO,'EventCategory','event_category'),
+                    'eventType'=>array(self::BELONGS_TO,'EventsType','event_type'),
 		);
 	}
 
@@ -85,6 +89,7 @@ class EventResult extends CActiveRecord
 			'is_tri_bike' => 'Is Tri Bike',
 			'is_tri_run' => 'Is Tri Run',
 			'transition_time' => 'Transition Time',
+            'result_date' => 'Result Date'
 		);
 	}
 
