@@ -103,16 +103,14 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
         </div>
         <div class="col-md-8">
             <div class="padding-left-10">
-                <div class="sharing">
-                    <a href="#" class="btn-facebook"><span class="fa fa-facebook"></span> Share on facebook</a>
-                    <a href="#" class="btn-twitter"><span class="fa fa-twitter"></span> Share on twitter</a>
-                    <a href="#" class="btn-plus"></a>
-                    <span class="total_share">667 Shares</span>
-                    <div class="clearfix"></div>
-                </div>
+                    <div class="social_share">
+                        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                        <div class="addthis_inline_share_toolbox"></div>
+                    </div>
                 <?php echo $model->detail;?>
                 <span class="blue">
                     <strong>PERSONAL BESTS</strong>
+                    
                 </span>
                 
             </div>

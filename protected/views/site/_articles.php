@@ -4,8 +4,8 @@
     <a href="<?php echo $this->createUrl('news/'.$data->slug);?>">
     <article class="news_article"> 
     <?php
-    if(Articles::get1ImageFromFile($data->id)->title)
-        $alt = Articles::get1ImageFromFile($data->id)->title;
+    if(Articles::model()->get1ImageFromFile($data->id)->title)
+        $alt = Articles::model()->get1ImageFromFile($data->id)->title;
     else
         $alt = $data->title;
     ?>
@@ -16,7 +16,7 @@
             $basePath = Yii::app()->basePath;
             $img_url=$baseUrl.'/images/article_fallback_120x120.png';
             
-            $filename=Articles::get1ImageFromFile($data->id);
+            $filename=Articles::model()->get1ImageFromFile($data->id);
             //get aritlce image if article image exists
             if(file_exists($basePath.'/../images/frontend/thumb/'.$filename) && $filename!="")
                 $img_url=$baseUrl.'/images/frontend/thumb/'.$filename;
