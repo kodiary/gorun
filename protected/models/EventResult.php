@@ -9,14 +9,16 @@
  * @property integer $event_id
  * @property integer $event_category
  * @property integer $event_type
+ * @property string $dist_time
  * @property integer $dist_hour
  * @property integer $dist_min
  * @property integer $dist_sec
- * @property string $distance
+ * @property double $distance
  * @property integer $is_tri_swim
  * @property integer $is_tri_bike
  * @property integer $is_tri_run
  * @property integer $transition_time
+ * @property string $result_date
  */
 class EventResult extends CActiveRecord
 {
@@ -46,12 +48,12 @@ class EventResult extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('transition_time', 'required'),
+			array('dist_time, transition_time, result_date', 'required'),
 			array('user_id, event_id, event_category, event_type, dist_hour, dist_min, dist_sec, is_tri_swim, is_tri_bike, is_tri_run, transition_time', 'numerical', 'integerOnly'=>true),
-			array('distance', 'length', 'max'=>255),
+			array('distance', 'numerical'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, user_id, event_id, event_category, event_type, dist_hour, dist_min, dist_sec, distance, is_tri_swim, is_tri_bike, is_tri_run, transition_time', 'safe', 'on'=>'search'),
+			array('id, user_id, event_id, event_category, event_type, dist_time, dist_hour, dist_min, dist_sec, distance, is_tri_swim, is_tri_bike, is_tri_run, transition_time, result_date', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -77,6 +79,7 @@ class EventResult extends CActiveRecord
 			'event_id' => 'Event',
 			'event_category' => 'Event Category',
 			'event_type' => 'Event Type',
+			'dist_time' => 'Dist Time',
 			'dist_hour' => 'Dist Hour',
 			'dist_min' => 'Dist Min',
 			'dist_sec' => 'Dist Sec',
@@ -85,6 +88,7 @@ class EventResult extends CActiveRecord
 			'is_tri_bike' => 'Is Tri Bike',
 			'is_tri_run' => 'Is Tri Run',
 			'transition_time' => 'Transition Time',
+			'result_date' => 'Result Date',
 		);
 	}
 
@@ -104,14 +108,16 @@ class EventResult extends CActiveRecord
 		$criteria->compare('event_id',$this->event_id);
 		$criteria->compare('event_category',$this->event_category);
 		$criteria->compare('event_type',$this->event_type);
+		$criteria->compare('dist_time',$this->dist_time,true);
 		$criteria->compare('dist_hour',$this->dist_hour);
 		$criteria->compare('dist_min',$this->dist_min);
 		$criteria->compare('dist_sec',$this->dist_sec);
-		$criteria->compare('distance',$this->distance,true);
+		$criteria->compare('distance',$this->distance);
 		$criteria->compare('is_tri_swim',$this->is_tri_swim);
 		$criteria->compare('is_tri_bike',$this->is_tri_bike);
 		$criteria->compare('is_tri_run',$this->is_tri_run);
 		$criteria->compare('transition_time',$this->transition_time);
+		$criteria->compare('result_date',$this->result_date,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

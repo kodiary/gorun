@@ -216,7 +216,8 @@ if (!empty($this->metaKeys)) {
   </form>
 </div>
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53551fdf0354dd89"></script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58255cf946be96f0"></script>
+
 
 </body>
 </html>

@@ -736,9 +736,27 @@ class EventsController extends Controller
             echo 'last';
         }
         $_POST['EventResult'] = $_POST;
+        $_POST['EventResult']['dist_time'] = $this->createResultTime($_POST['dist_hour'],$_POST['dist_min'],$_POST['dist_sec']);
+        $_POST['EventResult']['distance'] = $this->createDistance($_POST['distance']);
+        $_POST['EventResult']['result_date'] = date('Y-m-d');
         $model  = new EventResult;
         $model->attributes=$_POST['EventResult'];
         $model->save();
         die();
+    }
+    public function createResultTime($h,$m,$s){
+        if(strlen($h)<2)
+        $h = '0'.$h;
+        if(strlen($m)<2)
+        $m = '0'.$m;
+        if(strlen($s)<2)
+        $s = '0'.$s;
+        return $h.':'.$m.':'.$s;
+        
+    }
+    public function createDistance($d)
+    {
+        $d = str_replace(array(' ','k',','),array('','','.'),$d);
+        return $d;
     }
 }
