@@ -54,7 +54,12 @@
         {
             ?>
         <div class="submit-result-block">
+        <div class="alert alert-success alert-dismissible submitMsg" role="alert" style="display: none;">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          Result submitted successfully.
+        </div>
             <div class="submit-result-form white" style="display: none;">
+            
                 <?php
                 $c=0;
                 foreach($m_time as $mt)
@@ -382,7 +387,8 @@ $(function(){
                data:'checker='+checker+'&user_id='+user_id+'&event_id='+event_id+'&event_category='+event_category+'&event_type='+event_type+'&dist_hour='+dist_hour+'&dist_min='+dist_min+'&dist_sec='+dist_sec+'&distance='+distance+'&is_tri_swim='+is_tri_swim+'&is_tri_bike='+is_tri_bike+'&is_tri_run='+is_tri_run+'&transition_time='+transition_time+'&result_date='+result_date,
                success:function(res){
                 if(res=='last')
-                $('.submitMsg').show()
+                $('.submitMsg').show();
+                $('.submit-result-form').hide();
                } 
             });
         });
