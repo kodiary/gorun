@@ -79,12 +79,22 @@ class EventsController extends Controller
         $past = 0;
        }
        $et = EventsType::model()->findByAttributes(array('id'=>$e->event_type));
+       $check = array();
+       if(Yii::app()->user->id){
+       $em = MemberEvent::model()->findByAttributes(array('event_id'=>$e->id,'member_id'=>Yii::app()->user->id));
+       
+       if(count($em))
+       {
+        $check['going'] = $em->going;
+       }
+       }
        $etime = EventsTime::model()->findAllByAttributes(array('event_id'=>$e->id));
 		$this->render('detail',array(
 			'model'=>$this->loadModel($e->id),
             'm_type'=>$et,
             'm_time'=>$etime,
-            'past'=>$past
+            'past'=>$past,
+            'check'=>$check
 		));
         
 	}
@@ -166,6 +176,7 @@ class EventsController extends Controller
                   
 			if($model->save())
             {   
+                
                 $id = $model->id;                     
                 if(isset($_POST['EventsTime'])){
                 
@@ -178,6 +189,7 @@ class EventsController extends Controller
                     }
                     
                 }
+                
                 foreach($arr as $a)
                 {
                    $events_time= new EventsTime;
@@ -727,21 +739,36 @@ class EventsController extends Controller
     }
     public function actionSubmitresult()
     {
+        $last =0;
         $checker = $_POST['checker'];
         unset($_POST['checker']);
         
         $arr = explode('_',$checker);
         if($arr[0] == $arr[1])
         {
+            $last =1;
             echo 'last';
         }
+        
         $_POST['EventResult'] = $_POST;
         $_POST['EventResult']['dist_time'] = $this->createResultTime($_POST['dist_hour'],$_POST['dist_min'],$_POST['dist_sec']);
         $_POST['EventResult']['distance'] = $this->createDistance($_POST['distance']);
-        $_POST['EventResult']['result_date'] = date('Y-m-d');
-        $model  = new EventResult;
+        //$_POST['EventResult']['result_date'] = date('Y-m-d');
+        if(isset($_POST['is_tri_swim']) || isset($_POST['is_tri_run']) || isset($_POST['is_tri_bike']))
+        {
+            $model  = new EventTriResult;
+        }
+        else
+        {
+           $model  = new EventResult; 
+        }
+        
         $model->attributes=$_POST['EventResult'];
         $model->save();
+        if($last == 1)
+        {
+            $this->saveTri($_POST['EventResult']['event_id'],$_POST['EventResult']['user_id'],$_POST['EventResult']['event_type'],$_POST['EventResult']['result_date']);
+        }
         die();
     }
     public function createResultTime($h,$m,$s){
@@ -758,5 +785,65 @@ class EventsController extends Controller
     {
         $d = str_replace(array(' ','k',','),array('','','.'),$d);
         return $d;
+    }
+    public function saveTri($id,$uid,$type,$rdate)
+    {
+        $result = EventTriResult::model()->findAllByAttributes(array('event_id'=>$id));
+        if(count($result))
+        {
+            $arr['user_id'] = $uid;
+            $arr['event_id']=$id;
+            $arr['event_category'] = 3;
+            $arr['event_type'] = $type;
+            $arr['result_date'] = $rdate;
+            $h = 0;
+            $m = 0;
+            $s = 0;
+            $d = 0;
+            $swim = 0;
+            $run = 0;
+            $tri = 0;
+            foreach($result as $r)
+            {
+                $h = $h+$r->dist_hour;
+                $m = $m+$r->dist_min;
+                $s = $s+$r->dist_sec;
+                if($r->is_tri_swim)
+                {
+                    $swim = $r->distance;
+                }
+                if($r->is_tri_run)
+                {
+                    $run = $r->distance;
+                }
+                if($r->is_tri_bike)
+                {
+                    $bike = $r->distance;
+                }
+                $d = $d+$r->distance;
+            }
+            $s = $s+($m*60)+($h*60*60);
+            $h = $s/3600;
+            $h = (int)$h;
+            
+            $m = ($s - ($h*3600))/60;
+            $m = (int)$m;
+            
+            $s = $s -($h*3600)-($m*60);
+            
+            $arr['dist_time'] = $this->createResultTime($h,$m,$s);
+            $arr['dist_hour'] = $h;
+            $arr['dist_min'] = $m;
+            $arr['dist_sec'] = $s;
+            
+            $distance_tri = $swim.'/'.$bike.'/'.$run;
+            $arr['distance_tri'] = str_replace('.',',',$distance_tri);
+            $arr['distance'] = str_replace(',','.',$d);
+            $model  = new EventResult;            
+            $model->attributes=$arr;
+            $model->save();
+            //var_dump($arr);
+            return true;
+        }
     }
 }

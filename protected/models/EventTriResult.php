@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "tbl_event_result".
+ * This is the model class for table "tbl_event_tri_result".
  *
- * The followings are the available columns in table 'tbl_event_result':
+ * The followings are the available columns in table 'tbl_event_tri_result':
  * @property integer $id
  * @property integer $user_id
  * @property integer $event_id
@@ -21,12 +21,12 @@
  * @property string $result_date
  * @property string $distance_tri
  */
-class EventResult extends CActiveRecord
+class EventTriResult extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return EventResult the static model class
+	 * @return EventTriResult the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -38,7 +38,7 @@ class EventResult extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'tbl_event_result';
+		return 'tbl_event_tri_result';
 	}
 
 	/**
