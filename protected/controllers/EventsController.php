@@ -754,8 +754,9 @@ class EventsController extends Controller
         $_POST['EventResult']['dist_time'] = $this->createResultTime($_POST['dist_hour'],$_POST['dist_min'],$_POST['dist_sec']);
         $_POST['EventResult']['distance'] = $this->createDistance($_POST['distance']);
         //$_POST['EventResult']['result_date'] = date('Y-m-d');
-        if(isset($_POST['is_tri_swim']) || isset($_POST['is_tri_run']) || isset($_POST['is_tri_bike']))
+        if($_POST['is_tri_swim'] || $_POST['is_tri_run'] || $_POST['is_tri_bike'])
         {
+            $is_triathlon = 1;
             $model  = new EventTriResult;
         }
         else
@@ -765,7 +766,7 @@ class EventsController extends Controller
         
         $model->attributes=$_POST['EventResult'];
         $model->save();
-        if($last == 1)
+        if($last == 1 && isset($is_triathlon))
         {
             $this->saveTri($_POST['EventResult']['event_id'],$_POST['EventResult']['user_id'],$_POST['EventResult']['event_type'],$_POST['EventResult']['result_date']);
         }
