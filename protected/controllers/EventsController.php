@@ -86,6 +86,12 @@ class EventsController extends Controller
        if(count($em))
        {
         $check['going'] = $em->going;
+        if($check['going'] == 1)
+        {
+            $er = EventResult::model()->findAllByAttributes(array('event_id'=>$e->id,'user_id'=>Yii::app()->user->id));
+            if(count($er))
+            $check['result'] = $er;
+        }
        }
        }
        $etime = EventsTime::model()->findAllByAttributes(array('event_id'=>$e->id));

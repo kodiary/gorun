@@ -50,11 +50,19 @@
         
         
         <?php
-        if($past==1)
+        if($past==1 && (isset($check['going']) && $check['going'] == 1))
         {
+            if(!isset($check['result'])){
             ?>
             <?php $this->renderPartial('/events/_submit_result',array('m_time'=>$m_time));?>
         <?php 
+            }
+            else
+            {
+                ?>
+                <!-- Red block for result here -->
+                <?php
+            }
         }
         ?>
         <div class="white padtopbot5">
