@@ -650,3 +650,195 @@ Stack trace:
 REQUEST_URI=/gorun/images/article_fallback_120x120.png
 HTTP_REFERER=http://localhost/gorun/clubs/bedfordview-athletics
 ---
+2016/11/16 09:34:20 [error] [exception.CException] exception 'CException' with message 'Property "CDbCriteria.where" is not defined.' in F:\wamp\www\gorun\framework\base\CComponent.php:174
+Stack trace:
+#0 F:\wamp\www\gorun\protected\controllers\DashboardController.php(181): CComponent->__set('where', 'userid=1278')
+#1 [internal function]: DashboardController->actionDetails('warriorbik')
+#2 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DashboardController), Array)
+#3 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DashboardController), Object(ReflectionMethod), Array)
+#4 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#8 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('dashboard/detai...')
+#9 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/gorun/warriorbik
+---
+2016/11/16 09:34:36 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'userid' in 'where clause'. The SQL statement executed was: SELECT min(dist_hour) AS bestResult FROM `tbl_event_result` `t` WHERE userid=1278 LIMIT 1.
+in F:\wamp\www\gorun\protected\controllers\DashboardController.php (182)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/16 09:34:36 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'userid' in 'where clause'. The SQL statement executed was: SELECT min(dist_hour) AS bestResult FROM `tbl_event_result` `t` WHERE userid=1278 LIMIT 1' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryRow()
+#2 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1392): CActiveRecord->query(Object(CDbCriteria))
+#3 F:\wamp\www\gorun\protected\controllers\DashboardController.php(182): CActiveRecord->find(Object(CDbCriteria))
+#4 [internal function]: DashboardController->actionDetails('warriorbik')
+#5 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DashboardController), Array)
+#6 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DashboardController), Object(ReflectionMethod), Array)
+#7 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#11 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('dashboard/detai...')
+#12 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/gorun/warriorbik
+---
+2016/11/16 09:34:46 [error] [exception.CException] exception 'CException' with message 'Property "EventResult.bestResult" is not defined.' in F:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('bestResult')
+#1 F:\wamp\www\gorun\framework\base\CModel.php(593): CActiveRecord->__get('bestResult')
+#2 F:\wamp\www\gorun\protected\controllers\DashboardController.php(183): CModel->offsetGet('bestResult')
+#3 [internal function]: DashboardController->actionDetails('warriorbik')
+#4 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DashboardController), Array)
+#5 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DashboardController), Object(ReflectionMethod), Array)
+#6 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#10 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('dashboard/detai...')
+#11 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/gorun/warriorbik
+---
+2016/11/16 09:35:18 [error] [exception.CException] exception 'CException' with message 'Property "EventResult.bestResult" is not defined.' in F:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('bestResult')
+#1 F:\wamp\www\gorun\framework\base\CModel.php(593): CActiveRecord->__get('bestResult')
+#2 F:\wamp\www\gorun\protected\controllers\DashboardController.php(183): CModel->offsetGet('bestResult')
+#3 [internal function]: DashboardController->actionDetails('warriorbik')
+#4 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DashboardController), Array)
+#5 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DashboardController), Object(ReflectionMethod), Array)
+#6 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#10 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('dashboard/detai...')
+#11 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/gorun/warriorbik
+---
+2016/11/16 09:40:21 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* FROM `tbl_event_result` `t` WHERE user_id=1261 LIMIT 1' at line 1. The SQL statement executed was: SELECT min(dist_hour) AS bestResult, * FROM `tbl_event_result` `t` WHERE user_id=1261 LIMIT 1.
+in F:\wamp\www\gorun\protected\controllers\DashboardController.php (182)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/16 09:40:21 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* FROM `tbl_event_result` `t` WHERE user_id=1261 LIMIT 1' at line 1. The SQL statement executed was: SELECT min(dist_hour) AS bestResult, * FROM `tbl_event_result` `t` WHERE user_id=1261 LIMIT 1' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryRow()
+#2 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1392): CActiveRecord->query(Object(CDbCriteria))
+#3 F:\wamp\www\gorun\protected\controllers\DashboardController.php(182): CActiveRecord->find(Object(CDbCriteria))
+#4 [internal function]: DashboardController->actionDetails('warriorbik')
+#5 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DashboardController), Array)
+#6 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DashboardController), Object(ReflectionMethod), Array)
+#7 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#11 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('dashboard/detai...')
+#12 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/gorun/warriorbik
+---
+2016/11/16 10:07:07 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* FROM `tbl_event_result` `t` WHERE user_id=1261 LIMIT 1' at line 1. The SQL statement executed was: SELECT min(dist_hour) AS bestResult, * FROM `tbl_event_result` `t` WHERE user_id=1261 LIMIT 1.
+in F:\wamp\www\gorun\protected\controllers\DashboardController.php (182)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/16 10:07:07 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* FROM `tbl_event_result` `t` WHERE user_id=1261 LIMIT 1' at line 1. The SQL statement executed was: SELECT min(dist_hour) AS bestResult, * FROM `tbl_event_result` `t` WHERE user_id=1261 LIMIT 1' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryRow()
+#2 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1392): CActiveRecord->query(Object(CDbCriteria))
+#3 F:\wamp\www\gorun\protected\controllers\DashboardController.php(182): CActiveRecord->find(Object(CDbCriteria))
+#4 [internal function]: DashboardController->actionDetails('warriorbik')
+#5 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DashboardController), Array)
+#6 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DashboardController), Object(ReflectionMethod), Array)
+#7 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#11 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('dashboard/detai...')
+#12 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/gorun/warriorbik
+---
+2016/11/16 10:25:54 [error] [exception.CException] exception 'CException' with message 'CDbCommand and its behaviors do not have a method or closure named "with".' in F:\wamp\www\gorun\framework\base\CComponent.php:266
+Stack trace:
+#0 F:\wamp\www\gorun\protected\controllers\DashboardController.php(184): CComponent->__call('with', Array)
+#1 F:\wamp\www\gorun\protected\controllers\DashboardController.php(184): CDbCommand->with(Array)
+#2 [internal function]: DashboardController->actionDetails('warriorbik')
+#3 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DashboardController), Array)
+#4 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DashboardController), Object(ReflectionMethod), Array)
+#5 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#9 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('dashboard/detai...')
+#10 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/gorun/warriorbik
+---
+2016/11/16 11:44:21 [error] [exception.CException] exception 'CException' with message 'CDbCommand and its behaviors do not have a method or closure named "jon".' in F:\wamp\www\gorun\framework\base\CComponent.php:266
+Stack trace:
+#0 F:\wamp\www\gorun\protected\controllers\DashboardController.php(184): CComponent->__call('jon', Array)
+#1 F:\wamp\www\gorun\protected\controllers\DashboardController.php(184): CDbCommand->jon('tbl_events_type...', 't.id=a.event_ty...')
+#2 [internal function]: DashboardController->actionDetails('warriorbik')
+#3 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DashboardController), Array)
+#4 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DashboardController), Object(ReflectionMethod), Array)
+#5 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#9 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('dashboard/detai...')
+#10 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/gorun/warriorbik
+---
+2016/11/16 12:06:28 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'm.distance' in 'order clause'. The SQL statement executed was: SELECT distance,dist_time,event_type FROM tbl_event_result AS a, (SELECT MIN(dist_time) AS mini FROM tbl_event_result GROUP BY event_type ,distance ) AS m WHERE m.mini = a.dist_time ORDER BY a.event_type ASC, m.distance.
+in F:\wamp\www\gorun\protected\controllers\DashboardController.php (179)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/16 12:06:28 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'm.distance' in 'order clause'. The SQL statement executed was: SELECT distance,dist_time,event_type FROM tbl_event_result AS a, (SELECT MIN(dist_time) AS mini FROM tbl_event_result GROUP BY event_type ,distance ) AS m WHERE m.mini = a.dist_time ORDER BY a.event_type ASC, m.distance' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 F:\wamp\www\gorun\protected\controllers\DashboardController.php(179): CDbCommand->queryAll()
+#2 [internal function]: DashboardController->actionDetails('warriorbik')
+#3 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DashboardController), Array)
+#4 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DashboardController), Object(ReflectionMethod), Array)
+#5 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#9 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('dashboard/detai...')
+#10 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/gorun/warriorbik
+---
+2016/11/16 12:34:44 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'm.user_id' in 'where clause'. The SQL statement executed was: SELECT distance,dist_time,event_type FROM tbl_event_result AS a, (SELECT MIN(dist_time) AS mini FROM tbl_event_result GROUP BY event_type ,distance ) AS m WHERE m.mini = a.dist_time AND m.user_id=1262 ORDER BY a.event_type ASC, distance ASC.
+in F:\wamp\www\gorun\protected\controllers\DashboardController.php (179)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/16 12:34:44 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'm.user_id' in 'where clause'. The SQL statement executed was: SELECT distance,dist_time,event_type FROM tbl_event_result AS a, (SELECT MIN(dist_time) AS mini FROM tbl_event_result GROUP BY event_type ,distance ) AS m WHERE m.mini = a.dist_time AND m.user_id=1262 ORDER BY a.event_type ASC, distance ASC' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 F:\wamp\www\gorun\protected\controllers\DashboardController.php(179): CDbCommand->queryAll()
+#2 [internal function]: DashboardController->actionDetails('chatak')
+#3 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DashboardController), Array)
+#4 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DashboardController), Object(ReflectionMethod), Array)
+#5 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#9 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('dashboard/detai...')
+#10 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/gorun/chatak
+---

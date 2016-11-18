@@ -160,25 +160,37 @@ class DashboardController extends Controller
         $this->render('password',['password'=>$pass]);
 
     }
-    public function actionDetails($slug)
-    {
-        
-        Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/jquery.infinitescroll.js"));
-        //$club = Club::model()->with(['extras','member:recent'=>['together'=>true]])->findByAttributes(['slug'=>$slug],['limit'=>2]);
-        $club = Member::model()->findByAttributes(['username'=>$slug]);
-       
-        $events = EventsType::model()->findAll();
-        
-        $companyId = Yii::app()->user->id;
-        $criteria = new CDbCriteria;
-        $criteria->condition = 'company_id='.$club->id;
-        $criteria->order = 'publish_date DESC,t.id DESC';
-        $isfollowed = MemberFollow::model()->isfollowed($club->id,Yii::app()->user->id);
-        $pages='';
-        $this->render('details', array('model'=>$club,'pages'=>$pages,'isfollowed'=>$isfollowed,'events'=>$events));
-        
-       
-    }
+    /**
+ * public function actionDetails($slug)
+ *     {
+ *         
+ *         Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/jquery.infinitescroll.js"));
+ *         //$club = Club::model()->with(['extras','member:recent'=>['together'=>true]])->findByAttributes(['slug'=>$slug],['limit'=>2]);
+ *         $member = Member::model()->findByAttributes(['username'=>$slug]);
+ *        
+ *         $events = EventsType::model()->findAll();
+ *         
+ *         $companyId = Yii::app()->user->id;
+ *         $criteria = new CDbCriteria;
+ *         $criteria->condition = 'company_id='.$member->id;
+ *         $criteria->order = 'publish_date DESC,t.id DESC';
+ *         $isfollowed = MemberFollow::model()->isfollowed($member->id,Yii::app()->user->id);
+ *         //$results_best = EventResult::model()->findAllByAttributes(['user_id'=>Yii::app()->user->id, ]);
+ *                
+ *         $results = Yii::app()->db->createCommand('SELECT distance,dist_time,event_type FROM tbl_event_result AS a, (SELECT MIN(dist_time) AS mini FROM tbl_event_result GROUP BY event_type ,distance ) AS m WHERE m.mini = a.dist_time AND a.user_id='.$member->id.' ORDER BY a.event_type ASC, distance ASC')->queryAll();
+ *         //$clubs = ClubMember::model()->findAllByAttributes(['member_id'=>$member->id]);
+ *         $clubs = Yii::app()->db->createCommand()
+ *             ->select('title')
+ *             ->from('tbl_clubs c')
+ *             ->join('tbl_club_members m', 'c.id=m.club_id AND m.member_id=:mid',array(':mid'=>$member->id))
+ *             ->order('c.title asc')
+ *             ->queryAll();
+ *         $pages='';
+ *         $this->render('details', array('model'=>$member,'pages'=>$pages,'isfollowed'=>$isfollowed,'events'=>$events,'results'=>$results,'clubs'=>$clubs));
+ *         
+ *        
+ *     }
+ */
     function actionUnfollow()
     {
         if(Yii::app()->user->isGuest)

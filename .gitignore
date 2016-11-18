@@ -4,3 +4,4 @@ images/temp/*
 protected/runtime/application.log
 *.log
 *.log
+protected/runtime/application.log

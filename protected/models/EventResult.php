@@ -49,7 +49,7 @@ class EventResult extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('dist_time, transition_time, result_date', 'required'),
+			array('dist_time, result_date', 'required'),
 			array('user_id, event_id, event_category, event_type, dist_hour, dist_min, dist_sec, is_tri_swim, is_tri_bike, is_tri_run, transition_time', 'numerical', 'integerOnly'=>true),
 			array('distance', 'numerical'),
 			array('distance_tri', 'length', 'max'=>255),
