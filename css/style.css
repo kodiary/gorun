@@ -393,6 +393,10 @@ h3.blue{font-weight:bold;margin-top:0;}
 .img-holder{padding:10px;border:2px solid #e5e5e5;}
 .result_submit_black{background:#111111;color:#FFF;text-transform: uppercase;font-weight:700;text-align:center;display:block;padding:10px;font-size:18px;margin-bottom:10px;}
 .result_submit_black:hover{text-decoration:none;color:#ccc;}
+
+.result_submit_red{background:#ED0166;color:#FFF;text-transform: uppercase;text-align:center;display:block;padding:10px;font-size:16px;margin:10px 0;}
+.result_submit_red:hover{text-decoration:none;color:#ccc;}
+
 .expand_block{display:block;padding-top:2px;padding-bottom:2px;color:#444;font-size:15px;font-weight:700;}
 .expand_block .fa{color:#444!important;font-size:18px;}
 .floatLeft{float:left;}

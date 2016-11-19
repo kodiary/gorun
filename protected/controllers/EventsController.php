@@ -91,9 +91,18 @@ class EventsController extends Controller
             $er = EventResult::model()->findAllByAttributes(array('event_id'=>$e->id,'user_id'=>Yii::app()->user->id));
             if(count($er))
             $check['result'] = $er;
+            
+            if($e->event_cat == 3)
+            {
+                $etr = EventTriResult::model()->findAllByAttributes(array('event_id'=>$e->id,'user_id'=>Yii::app()->user->id));
+                if(count($etr))
+                $check['tri_result'] = $etr;
+            }
         }
        }
        }
+       
+       //var_dump($check);
        $etime = EventsTime::model()->findAllByAttributes(array('event_id'=>$e->id));
 		$this->render('detail',array(
 			'model'=>$this->loadModel($e->id),

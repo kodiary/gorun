@@ -59,9 +59,10 @@
             }
             else
             {
-                ?>
-                <!-- Red block for result here -->
-                <?php
+                if(!isset($check['tri_result']))
+               $this->renderPartial('/events/_your_result',array('model'=>$check['result']));
+               else
+               $this->renderPartial('/events/_your_result',array('model'=>$check['result'],'model_tri'=>$check['tri_result']));
             }
         }
         ?>
