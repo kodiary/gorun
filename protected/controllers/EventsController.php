@@ -735,16 +735,19 @@ class EventsController extends Controller
         $this->renderPartial('_'.$type.'_form');
     }
     public function get_province($arr){
+        if(isset($arr['results']) && count($arr['results']))
         foreach($arr['results'] as $a)
         {
             $a = (array)$a;
             $b[] =$a;
         }
+        if(isset($b[0]['address_components']) && count($b[0]['address_components']))
         foreach($b[0]['address_components'] as $c)
         {
             $c = (array)$c;
             $d[] = $c;
         }
+        if(isset($d) && count($d))
         foreach($d as $e)
         {
             if($e['types']['0'] =='administrative_area_level_1')
