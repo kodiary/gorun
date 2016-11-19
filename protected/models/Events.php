@@ -66,6 +66,8 @@ class Events extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
             'event_link'=>array(self::HAS_ONE,'EventsLink','event_id'),
+            'members'=>array(self::HAS_MANY,'MemberEvent','event_id'),
+            'results'=>array(self::HAS_MANY,'EventResult','event_id'),
 		);
 	}
 
