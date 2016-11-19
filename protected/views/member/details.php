@@ -128,39 +128,79 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
         <div class="clearfix"></div>
     </div>
     <div class="clearfix"></div>
-    <?php 
+    <div class="col-md-12 block_border toggle-div upcoming">
+        <a href="javascript:void(0)" onclick="toggle_div('upcoming_more',this);"><span><strong>UPCOMING RACES</strong></span>
+        <span class="right"><i class="glyphicon glyphicon-chevron-down"></i></span></a>
+    </div>
+    <?php
+        $upcomingEvents = MemberEvent::model()->with(['event','event'=>['together'=>true]])->findAllByAttributes(['member_id'=>$model->id]);?>
+    <div class="cold-md-12 upcoming_more " style="<?php if($show == 1 && count($memEvents)==0)echo "display:none;";?>" >
+         <?php if(!$upcomingEvents){?>
+          
+            <div class="block_border blue"> No Results!</div>
+        <?php }else{
+          
+        foreach($upcomingEvents as $m){
+        ?>
+        
+           <a href="<?php echo Yii::app()->request->baseUrl; ?>/events/view/<?php echo $m->event['slug'];?>" class="listing">
+            <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/frontend/events/<?php if($m->event['logo'] && file_exists(Yii::app()->basePath.'/../images/frontend/events/thumb/'.$m->event['logo'])){?>thumb/<?php echo $m->event['logo']?><?php }else{?>thumb/noimg.jpg<?php }?>"/></div>
+            <div class="txt">
+                <h3><?php echo $m->event['title'];?></h3>
+                <span class="datetime">
+                <?php 
+                    $date=date_create($m->event['start_date']);
+                    echo date_format($date,"D").' <strong>'.date_format($date,"d F Y").'</strong>';
+                    if($m->event['end_date']){
+                        $date=date_create($m->event['end_date']);
+                        echo " - ";
+                        echo $date2 = date_format($date,"D").' <strong>'.date_format($date,"d F Y").'</strong>';}
+                    ?></span> 
+                <span class="racetag"><?php echo $m->event['province']?></span>
+                <div class="clearfix"></div>
+                <?php
+                    $distances = EventsTime::model()->findByAttributes(['event_id'=>$m->event_id]);
+                    foreach($distances as $distance)
+                    {?>
+                       <span class="distance"><?php echo $distance->distance;?>k</span> 
+                <?php        
+                    }
+                ?>
+                
+            </div>
+            <div class="clearfix"></div>
+        </a>
+        <?php }
+        } 
+        unset($memEvents); 
+        ?>
+    </div>
+    <?php
+    $show = 0;
     if(count($results)>0)
         $show = 1;
     foreach($events as $event)
     {
-        //$dataProvider = EventResult::model()->findBy();
+        $memEvents = EventResult::model()->with(['event','event'=>['together'=>true]])->findAllByAttributes(['user_id'=>$model->id,'event_type'=>$event->id]);
+               
     ?>
-        <div class="<?php echo str_replace(' ','',$event->title);?> col-md-12 block_border toggle-div" style="<?php if(!$dataProvider)echo 'margin:0;border-bottom:none';if(!isset($show))echo "display:none;"?>">
+        <div class="<?php echo str_replace(' ','',$event->title);?> col-md-12 block_border toggle-div" style="<?php if(!$dataProvider)echo 'margin:0;border-bottom:none;';if($show == 1 && count($memEvents)==0)echo "display:none;";?>">
             <a href="javascript:void(0)" onclick="toggle_div('<?php echo str_replace(' ','',$event->title);?>_more',this);"><span><strong><?php echo $event->title;?></strong></span>
             <span class="right"><i class="glyphicon glyphicon-chevron-down"></i></span></a>
         </div>
         <div class="clearfix"></div>
-        <div class="cold-md-12 <?php echo str_replace(' ','',$event->title);?>_more" >
+        <div class="cold-md-12 <?php echo str_replace(' ','',$event->title);?>_more " style="<?php if($show == 1 && count($memEvents)==0)echo "display:none;";?>" >
        
-        <?php if(!$dataProvider){?>
-            <!--div class="green-border">
-                <div class="left">
-                    <img src="<?php echo $this->createUrl('/images/alert.png')?>" alt="alert"/>
-                </div>
-                <div class="right">
-                    <div class="blue"><strong>Share your News with the world</strong></div>
-                    <div>Now you can publish all your news to the world right from your listing. Once you post your news, we will review it and post it live for all to you. Add news now using the button on the right.</div>
-                </div>
-                <div class="clear"></div>
-            </div-->
+        <?php if(!$memEvents){?>
+          
             <div class="block_border blue"> No Results!</div>
         <?php }else{
-           
+           /*
            $this->widget('CLinkPager', array(
                 'pages' => $pages,
                 'htmlOptions'=>['style'=>'display:none'],
             ));
-             /* auto scrolling on showall
+              auto scrolling on showall
         if($pages->itemCount>Yii::app()->params['items_pers_page'])
             $this->widget('ext.yiinfinite-scroll.YiinfiniteScroller', array(
             'contentSelector' => '.items',
@@ -170,24 +210,38 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
             'pages' => $pages,
         ));*/
         
+        foreach($memEvents as $m){
         ?>
-                
-        <?php
-            $this->renderPartial('/site/_articles',['dataProvider'=>$dataProvider]);
-           /* $this->widget('bootstrap.widgets.BootListView',array(
-            	'dataProvider'=>$dataProvider,
-            	'itemView'=>'/site/_article_old',
-                'summaryText'=>'',
-            ));   */
-         if($pages->itemCount>Yii::app()->params['articles_pers_page'])
-            echo "<a href='javascript:void(0);' class='btn btn-loadmore' id='load_more'>Load More</a>";
+        
+           <a href="<?php echo Yii::app()->request->baseUrl; ?>/events/view/<?php echo $m->event['slug'];?>" class="listing">
+            <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/frontend/events/<?php if($m->event['logo'] && file_exists(Yii::app()->basePath.'/../images/frontend/events/thumb/'.$m->event['logo'])){?>thumb/<?php echo $m->event['logo']?><?php }else{?>thumb/noimg.jpg<?php }?>"/></div>
+            <div class="txt">
+                <h3><?php echo $m->event['title'];?></h3>
+                <span class="distance"><?php echo $m->dist_time;?></span>
+                <span class="datetime">
+                <?php 
+                    $date=date_create($m->event['start_date']);
+                    echo date_format($date,"D").' <strong>'.date_format($date,"d F Y").'</strong>';
+                    if($m->event['end_date']){
+                        $date=date_create($m->event['end_date']);
+                        echo " - ";
+                        echo $date2 = date_format($date,"D").' <strong>'.date_format($date,"d F Y").'</strong>';}
+                    ?></span> 
+                <span class="racetag"><?php echo $m->event['province']?></span>
+                <div class="clearfix"></div>
+                <span class="distance"><?php echo $m->distance;?>k</span>
+            </div>
+            <div class="clearfix"></div>
+        </a>
+        <?php }
+        } 
+        unset($memEvents); 
         ?>
-        <?php } ?>
     
     </div>
     <div class="clearfix"></div>
     <?php 
-          
+        
     }
     ?>
 </div>

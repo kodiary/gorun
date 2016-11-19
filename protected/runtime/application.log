@@ -842,3 +842,161 @@ Stack trace:
 #12 {main}
 REQUEST_URI=/gorun/chatak
 ---
+2016/11/18 12:01:44 [error] [exception.CException] exception 'CException' with message 'Property "MemberEvent.slug" is not defined.' in F:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('slug')
+#1 F:\wamp\www\gorun\protected\views\events\_listing.php(7): CActiveRecord->__get('slug')
+#2 F:\wamp\www\gorun\framework\web\CBaseController.php(127): require('F:\\wamp\\www\\gor...')
+#3 F:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('F:\\wamp\\www\\gor...', Array, true)
+#4 F:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('F:\\wamp\\www\\gor...', Array, true)
+#5 F:\wamp\www\gorun\protected\views\member\details.php(169): CController->renderPartial('/events/_listin...', Array)
+#6 F:\wamp\www\gorun\framework\web\CBaseController.php(127): require('F:\\wamp\\www\\gor...')
+#7 F:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('F:\\wamp\\www\\gor...', Array, true)
+#8 F:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('F:\\wamp\\www\\gor...', Array, true)
+#9 F:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('details', Array, true)
+#10 F:\wamp\www\gorun\protected\controllers\MemberController.php(46): CController->render('details', Array)
+#11 [internal function]: MemberController->actionDetails('warriorbik')
+#12 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#13 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#14 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#15 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#16 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#18 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/details/...')
+#19 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#20 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/gorun/warriorbik
+---
+2016/11/19 07:53:30 [error] [exception.CDbException] exception 'CDbException' with message 'Table "tbl_member_event" does not have a column named "user_id".' in F:\wamp\www\gorun\framework\db\schema\CDbCommandBuilder.php:570
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1471): CDbCommandBuilder->createColumnCriteria(Object(CMysqlTableSchema), Array, '', Array, '`t`.')
+#1 F:\wamp\www\gorun\protected\views\member\details.php(136): CActiveRecord->findAllByAttributes(Array)
+#2 F:\wamp\www\gorun\framework\web\CBaseController.php(127): require('F:\\wamp\\www\\gor...')
+#3 F:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('F:\\wamp\\www\\gor...', Array, true)
+#4 F:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('F:\\wamp\\www\\gor...', Array, true)
+#5 F:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('details', Array, true)
+#6 F:\wamp\www\gorun\protected\controllers\MemberController.php(46): CController->render('details', Array)
+#7 [internal function]: MemberController->actionDetails('warriorbik')
+#8 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#9 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#11 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#12 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#14 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/details/...')
+#15 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/gorun/warriorbik
+---
+2016/11/19 07:53:31 [error] [exception.CDbException] exception 'CDbException' with message 'Table "tbl_member_event" does not have a column named "user_id".' in F:\wamp\www\gorun\framework\db\schema\CDbCommandBuilder.php:570
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1471): CDbCommandBuilder->createColumnCriteria(Object(CMysqlTableSchema), Array, '', Array, '`t`.')
+#1 F:\wamp\www\gorun\protected\views\member\details.php(136): CActiveRecord->findAllByAttributes(Array)
+#2 F:\wamp\www\gorun\framework\web\CBaseController.php(127): require('F:\\wamp\\www\\gor...')
+#3 F:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('F:\\wamp\\www\\gor...', Array, true)
+#4 F:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('F:\\wamp\\www\\gor...', Array, true)
+#5 F:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('details', Array, true)
+#6 F:\wamp\www\gorun\protected\controllers\MemberController.php(46): CController->render('details', Array)
+#7 [internal function]: MemberController->actionDetails('warriorbik')
+#8 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#9 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#11 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#12 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#14 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/details/...')
+#15 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/gorun/warriorbik
+---
+2016/11/19 07:53:58 [error] [exception.CException] exception 'CException' with message 'Property "MemberEvent.dist_time" is not defined.' in F:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('dist_time')
+#1 F:\wamp\www\gorun\protected\views\member\details.php(150): CActiveRecord->__get('dist_time')
+#2 F:\wamp\www\gorun\framework\web\CBaseController.php(127): require('F:\\wamp\\www\\gor...')
+#3 F:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('F:\\wamp\\www\\gor...', Array, true)
+#4 F:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('F:\\wamp\\www\\gor...', Array, true)
+#5 F:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('details', Array, true)
+#6 F:\wamp\www\gorun\protected\controllers\MemberController.php(46): CController->render('details', Array)
+#7 [internal function]: MemberController->actionDetails('warriorbik')
+#8 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#9 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#11 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#12 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#14 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/details/...')
+#15 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/gorun/warriorbik
+---
+2016/11/19 07:53:58 [error] [exception.CException] exception 'CException' with message 'Property "MemberEvent.dist_time" is not defined.' in F:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('dist_time')
+#1 F:\wamp\www\gorun\protected\views\member\details.php(150): CActiveRecord->__get('dist_time')
+#2 F:\wamp\www\gorun\framework\web\CBaseController.php(127): require('F:\\wamp\\www\\gor...')
+#3 F:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('F:\\wamp\\www\\gor...', Array, true)
+#4 F:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('F:\\wamp\\www\\gor...', Array, true)
+#5 F:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('details', Array, true)
+#6 F:\wamp\www\gorun\protected\controllers\MemberController.php(46): CController->render('details', Array)
+#7 [internal function]: MemberController->actionDetails('warriorbik')
+#8 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#9 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#11 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#12 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#14 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/details/...')
+#15 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/gorun/warriorbik
+---
+2016/11/19 07:54:45 [error] [exception.CException] exception 'CException' with message 'Property "MemberEvent.distance" is not defined.' in F:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('distance')
+#1 F:\wamp\www\gorun\protected\views\member\details.php(161): CActiveRecord->__get('distance')
+#2 F:\wamp\www\gorun\framework\web\CBaseController.php(127): require('F:\\wamp\\www\\gor...')
+#3 F:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('F:\\wamp\\www\\gor...', Array, true)
+#4 F:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('F:\\wamp\\www\\gor...', Array, true)
+#5 F:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('details', Array, true)
+#6 F:\wamp\www\gorun\protected\controllers\MemberController.php(46): CController->render('details', Array)
+#7 [internal function]: MemberController->actionDetails('warriorbik')
+#8 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#9 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#11 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#12 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#14 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/details/...')
+#15 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/gorun/warriorbik
+---
+2016/11/19 07:54:45 [error] [exception.CException] exception 'CException' with message 'Property "MemberEvent.distance" is not defined.' in F:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('distance')
+#1 F:\wamp\www\gorun\protected\views\member\details.php(161): CActiveRecord->__get('distance')
+#2 F:\wamp\www\gorun\framework\web\CBaseController.php(127): require('F:\\wamp\\www\\gor...')
+#3 F:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('F:\\wamp\\www\\gor...', Array, true)
+#4 F:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('F:\\wamp\\www\\gor...', Array, true)
+#5 F:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('details', Array, true)
+#6 F:\wamp\www\gorun\protected\controllers\MemberController.php(46): CController->render('details', Array)
+#7 [internal function]: MemberController->actionDetails('warriorbik')
+#8 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#9 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#11 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#12 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#14 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/details/...')
+#15 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/gorun/warriorbik
+---
