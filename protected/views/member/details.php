@@ -159,10 +159,10 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
                 <span class="racetag"><?php echo $m->event['province']?></span>
                 <div class="clearfix"></div>
                 <?php
-                    $distances = EventsTime::model()->findByAttributes(['event_id'=>$m->event_id]);
+                    $distances = EventsTime::model()->findAllByAttributes(['event_id'=>$m->event_id]);
                     foreach($distances as $distance)
                     {?>
-                       <span class="distance"><?php echo $distance->distance1.$distance->distance2;?>k</span> 
+                       <span class="distance"><?php echo $distance->distance1;?><?php echo ($distance->distance2!='')?','.$distance->distance2:'';?>k</span> 
                 <?php        
                     }
                 ?>
@@ -181,7 +181,8 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
         $show = 1;
     foreach($events as $event)
     {
-        $memEvents = EventResult::model()->with(['event','event'=>['together'=>true]])->findAllByAttributes(['user_id'=>$model->id,'event_type'=>$event->id]);
+        $memEvents = EventResult::model()->with(['event','event'=>['together'=>true]])->findAllByAttributes(['user_id'=>$model->id,'event_type'=>$event->id],['limit'=>'2']);
+        //echo $memEvents_count = EventResult::model()->with(['event','event'=>['together'=>true]])->count(['user_id'=>$model->id,'event_type'=>$event->id]);
                
     ?>
         <div class="<?php echo str_replace(' ','',$event->title);?> col-md-12 block_border toggle-div" style="<?php if(!$dataProvider)echo 'margin:0;border-bottom:none;';if($show == 1 && count($memEvents)==0)echo "display:none;";?>">
@@ -234,6 +235,9 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
             <div class="clearfix"></div>
         </a>
         <?php }
+        ?>
+        <a class="btn btn-default btn-lg loadmore">Load More</a>
+        <?php
         } 
         unset($memEvents); 
         ?>
