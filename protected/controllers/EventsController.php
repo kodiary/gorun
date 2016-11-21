@@ -109,7 +109,9 @@ class EventsController extends Controller
             'm_type'=>$et,
             'm_time'=>$etime,
             'past'=>$past,
-            'check'=>$check
+            'check'=>$check,
+            'race_result'=>EventResult::model(),
+            'tri_result'=>EventTriResult::model()
 		));
         
 	}
@@ -772,21 +774,27 @@ class EventsController extends Controller
         $_POST['EventResult']['dist_time'] = $this->createResultTime($_POST['dist_hour'],$_POST['dist_min'],$_POST['dist_sec']);
         $_POST['EventResult']['distance'] = $this->createDistance($_POST['distance']);
         //$_POST['EventResult']['result_date'] = date('Y-m-d');
-        if($_POST['is_tri_swim'] || $_POST['is_tri_run'] || $_POST['is_tri_bike'])
+        if($_POST['is_tri_swim'] || $_POST['is_tri_run'] || $_POST['is_tri_bike'] || $_POST['transition_time'])
         {
             $is_triathlon = 1;
+            
             $model  = new EventTriResult;
+            $mod = EventTriResult::model();
         }
         else
         {
            $model  = new EventResult; 
+           $mod = EventResult::model();
         }
         
         $model->attributes=$_POST['EventResult'];
+        if(!$_POST['EventResult']['id'])
         $model->save();
+        else
+        $mod->updateByPk($_POST['EventResult']['id'], $_POST['EventResult']);
         if($last == 1 && isset($is_triathlon))
         {
-            $this->saveTri($_POST['EventResult']['event_id'],$_POST['EventResult']['user_id'],$_POST['EventResult']['event_type'],$_POST['EventResult']['result_date']);
+            $this->saveTri($_POST['EventResult']['event_id'],$_POST['EventResult']['user_id'],$_POST['EventResult']['event_type'],$_POST['EventResult']['result_date'],$_POST['EventResult']['id']);
         }
         die();
     }
@@ -805,9 +813,10 @@ class EventsController extends Controller
         $d = str_replace(array(' ','k',','),array('','','.'),$d);
         return $d;
     }
-    public function saveTri($id,$uid,$type,$rdate)
+    public function saveTri($id,$uid,$type,$rdate,$rid)
     {
-        $result = EventTriResult::model()->findAllByAttributes(array('event_id'=>$id));
+        $result = EventTriResult::model()->findAllByAttributes(array('event_id'=>$id,'user_id'=>$uid));
+        //$mod = EventResult::model()->findAllByAttributes(array('event_id'=>$id,'user_id'=>$uid));
         if(count($result))
         {
             $arr['user_id'] = $uid;
@@ -822,6 +831,7 @@ class EventsController extends Controller
             $swim = 0;
             $run = 0;
             $tri = 0;
+            EventResult::model()->deleteAllByAttributes(array('event_id'=>$id,'user_id'=>$uid));
             foreach($result as $r)
             {
                 $h = $h+$r->dist_hour;
@@ -861,7 +871,7 @@ class EventsController extends Controller
             $model  = new EventResult;            
             $model->attributes=$arr;
             $model->save();
-            //var_dump($arr);
+            
             return true;
         }
     }

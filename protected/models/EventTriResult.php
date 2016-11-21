@@ -7,6 +7,7 @@
  * @property integer $id
  * @property integer $user_id
  * @property integer $event_id
+ * @property integer $event_time_id
  * @property integer $event_category
  * @property integer $event_type
  * @property string $dist_time
@@ -49,13 +50,14 @@ class EventTriResult extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('dist_time, transition_time, result_date', 'required'),
-			array('user_id, event_id, event_category, event_type, dist_hour, dist_min, dist_sec, is_tri_swim, is_tri_bike, is_tri_run, transition_time', 'numerical', 'integerOnly'=>true),
+			array('transition_time, result_date', 'required'),
+			array('user_id, event_id, event_time_id, event_category, event_type, dist_hour, dist_min, dist_sec, is_tri_swim, is_tri_bike, is_tri_run, transition_time', 'numerical', 'integerOnly'=>true),
 			array('distance', 'numerical'),
 			array('distance_tri', 'length', 'max'=>255),
+			array('dist_time', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, user_id, event_id, event_category, event_type, dist_time, dist_hour, dist_min, dist_sec, distance, is_tri_swim, is_tri_bike, is_tri_run, transition_time, result_date, distance_tri', 'safe', 'on'=>'search'),
+			array('id, user_id, event_id, event_time_id, event_category, event_type, dist_time, dist_hour, dist_min, dist_sec, distance, is_tri_swim, is_tri_bike, is_tri_run, transition_time, result_date, distance_tri', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -79,6 +81,7 @@ class EventTriResult extends CActiveRecord
 			'id' => 'ID',
 			'user_id' => 'User',
 			'event_id' => 'Event',
+			'event_time_id' => 'Event Time',
 			'event_category' => 'Event Category',
 			'event_type' => 'Event Type',
 			'dist_time' => 'Dist Time',
@@ -109,6 +112,7 @@ class EventTriResult extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('event_id',$this->event_id);
+		$criteria->compare('event_time_id',$this->event_time_id);
 		$criteria->compare('event_category',$this->event_category);
 		$criteria->compare('event_type',$this->event_type);
 		$criteria->compare('dist_time',$this->dist_time,true);

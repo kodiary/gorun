@@ -54,15 +54,15 @@
         {
             if(!isset($check['result'])){
             ?>
-            <?php $this->renderPartial('/events/_submit_result',array('m_time'=>$m_time));?>
+            <?php $this->renderPartial('/events/_submit_result',array('m_time'=>$m_time,'tri_result'=>$tri_result,'race_result'=>$race_result));?>
         <?php 
             }
             else
             {
                 if(!isset($check['tri_result']))
-               $this->renderPartial('/events/_your_result',array('model'=>$check['result']));
+               $this->renderPartial('/events/_your_result',array('model'=>$check['result'],'m_time'=>$m_time,'race_result'=>$race_result,'tri_result'=>$tri_result));
                else
-               $this->renderPartial('/events/_your_result',array('model'=>$check['result'],'model_tri'=>$check['tri_result']));
+               $this->renderPartial('/events/_your_result',array('model'=>$check['result'],'model_tri'=>$check['tri_result'],'m_time'=>$m_time,'tri_result'=>$tri_result,'race_result'=>$race_result,));
             }
         }
         ?>
@@ -196,6 +196,7 @@ $(function(){
         var is_tri_swim = '0';
         var is_tri_bike = '0';
         var is_tri_run = '0';
+        
         var transition_time = '0';
         var $this = '';
         var count = 0;
@@ -204,6 +205,14 @@ $(function(){
             count++;
             var checker = count+'_'+total;
             var distance = $(this).find('.distance').val();
+            if($(this).find('.event_time_id').val())
+            var event_time_id = $(this).find('.event_time_id').val();
+            else
+            var event_time_id = 0;
+            if($(this).find('.id').val())
+            var id = $(this).find('.id').val();
+            else
+            id = 0;
             if($('.is_tri').val()=='0')
             {
                 var dist_hour = $(this).find('.hour').val();
@@ -268,13 +277,13 @@ $(function(){
             $this = $(this);
             $this.find('.e_dis_block').each(function(){
                     $(this).find('input').each(function(){
-                        $(this).val('');
+                        //$(this).val('');
                     })
                  })
             $.ajax({
                url:'<?php echo Yii::app()->request->baseUrl; ?>/events/submitresult',
                type:'post',
-               data:'checker='+checker+'&user_id='+user_id+'&event_id='+event_id+'&event_category='+event_category+'&event_type='+event_type+'&dist_hour='+dist_hour+'&dist_min='+dist_min+'&dist_sec='+dist_sec+'&distance='+distance+'&is_tri_swim='+is_tri_swim+'&is_tri_bike='+is_tri_bike+'&is_tri_run='+is_tri_run+'&transition_time='+transition_time+'&result_date='+result_date,
+               data:'id='+id+'&checker='+checker+'&user_id='+user_id+'&event_id='+event_id+'&event_category='+event_category+'&event_type='+event_type+'&dist_hour='+dist_hour+'&dist_min='+dist_min+'&dist_sec='+dist_sec+'&distance='+distance+'&is_tri_swim='+is_tri_swim+'&is_tri_bike='+is_tri_bike+'&is_tri_run='+is_tri_run+'&transition_time='+transition_time+'&result_date='+result_date+'&event_time_id='+event_time_id,
                success:function(res){
                 if(res=='last')
                 $('.submitMsg').show();

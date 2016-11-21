@@ -7,6 +7,7 @@
  * @property integer $id
  * @property integer $user_id
  * @property integer $event_id
+ * @property integer $event_time_id
  * @property integer $event_category
  * @property integer $event_type
  * @property string $dist_time
@@ -50,12 +51,12 @@ class EventResult extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('dist_time, result_date', 'required'),
-			array('user_id, event_id, event_category, event_type, dist_hour, dist_min, dist_sec, is_tri_swim, is_tri_bike, is_tri_run, transition_time', 'numerical', 'integerOnly'=>true),
+			array('user_id, event_id, event_time_id, event_category, event_type, dist_hour, dist_min, dist_sec, is_tri_swim, is_tri_bike, is_tri_run, transition_time', 'numerical', 'integerOnly'=>true),
 			array('distance', 'numerical'),
 			array('distance_tri', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, user_id, event_id, event_category, event_type, dist_time, dist_hour, dist_min, dist_sec, distance, is_tri_swim, is_tri_bike, is_tri_run, transition_time, result_date, distance_tri', 'safe', 'on'=>'search'),
+			array('id, user_id, event_id, event_time_id, event_category, event_type, dist_time, dist_hour, dist_min, dist_sec, distance, is_tri_swim, is_tri_bike, is_tri_run, transition_time, result_date, distance_tri', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -67,8 +68,6 @@ class EventResult extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-                    'member'=>array(self::BELONGS_TO,'Member','user_id'),
-                    'event'=>array(self::BELONGS_TO,'Events','event_id')
 		);
 	}
 
@@ -81,6 +80,7 @@ class EventResult extends CActiveRecord
 			'id' => 'ID',
 			'user_id' => 'User',
 			'event_id' => 'Event',
+			'event_time_id' => 'Event Time',
 			'event_category' => 'Event Category',
 			'event_type' => 'Event Type',
 			'dist_time' => 'Dist Time',
@@ -111,6 +111,7 @@ class EventResult extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('event_id',$this->event_id);
+		$criteria->compare('event_time_id',$this->event_time_id);
 		$criteria->compare('event_category',$this->event_category);
 		$criteria->compare('event_type',$this->event_type);
 		$criteria->compare('dist_time',$this->dist_time,true);

@@ -1000,3 +1000,79 @@ Stack trace:
 #17 {main}
 REQUEST_URI=/gorun/warriorbik
 ---
+2016/11/21 12:25:51 [warning] [application] Failed to set unsafe attribute "id" of "EventResult".
+in E:\wamp\www\gorun\protected\controllers\EventsController.php (790)
+in E:\wamp\www\gorun\index.php (13)
+2016/11/21 12:25:51 [error] [exception.CDbException] exception 'CDbException' with message 'No columns are being updated for table "tbl_event_result".' in E:\wamp\www\gorun\framework\db\schema\CDbCommandBuilder.php:269
+Stack trace:
+#0 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1680): CDbCommandBuilder->createUpdateCommand(Object(CMysqlTableSchema), Array, Object(CDbCriteria))
+#1 E:\wamp\www\gorun\protected\controllers\EventsController.php(794): CActiveRecord->updateByPk(NULL, Array)
+#2 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): EventsController->actionSubmitresult()
+#3 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#4 E:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#5 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), NULL)
+#6 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('submitresult')
+#7 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('events/submitre...')
+#8 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/gorun/events/submitresult
+HTTP_REFERER=http://localhost/gorun/events/view/super-triathlon-sa-1-2-3-4
+---
+2016/11/21 12:25:51 [warning] [application] Failed to set unsafe attribute "id" of "EventResult".
+in E:\wamp\www\gorun\protected\controllers\EventsController.php (790)
+in E:\wamp\www\gorun\index.php (13)
+2016/11/21 12:25:51 [error] [exception.CDbException] exception 'CDbException' with message 'No columns are being updated for table "tbl_event_result".' in E:\wamp\www\gorun\framework\db\schema\CDbCommandBuilder.php:269
+Stack trace:
+#0 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1680): CDbCommandBuilder->createUpdateCommand(Object(CMysqlTableSchema), Array, Object(CDbCriteria))
+#1 E:\wamp\www\gorun\protected\controllers\EventsController.php(794): CActiveRecord->updateByPk(NULL, Array)
+#2 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): EventsController->actionSubmitresult()
+#3 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#4 E:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#5 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), NULL)
+#6 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('submitresult')
+#7 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('events/submitre...')
+#8 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/gorun/events/submitresult
+HTTP_REFERER=http://localhost/gorun/events/view/super-triathlon-sa-1-2-3-4
+---
+2016/11/21 12:27:18 [warning] [application] Failed to set unsafe attribute "id" of "EventResult".
+in E:\wamp\www\gorun\protected\controllers\EventsController.php (790)
+in E:\wamp\www\gorun\index.php (13)
+2016/11/21 12:27:18 [error] [exception.CDbException] exception 'CDbException' with message 'No columns are being updated for table "tbl_event_result".' in E:\wamp\www\gorun\framework\db\schema\CDbCommandBuilder.php:269
+Stack trace:
+#0 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1680): CDbCommandBuilder->createUpdateCommand(Object(CMysqlTableSchema), Array, Object(CDbCriteria))
+#1 E:\wamp\www\gorun\protected\controllers\EventsController.php(794): CActiveRecord->updateByPk('72', Array)
+#2 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): EventsController->actionSubmitresult()
+#3 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#4 E:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#5 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), NULL)
+#6 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('submitresult')
+#7 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('events/submitre...')
+#8 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/gorun/events/submitresult
+HTTP_REFERER=http://localhost/gorun/events/view/super-triathlon-sa-1-2-3-4
+---
+2016/11/21 12:27:18 [warning] [application] Failed to set unsafe attribute "id" of "EventResult".
+in E:\wamp\www\gorun\protected\controllers\EventsController.php (790)
+in E:\wamp\www\gorun\index.php (13)
+2016/11/21 12:27:18 [error] [exception.CDbException] exception 'CDbException' with message 'No columns are being updated for table "tbl_event_result".' in E:\wamp\www\gorun\framework\db\schema\CDbCommandBuilder.php:269
+Stack trace:
+#0 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1680): CDbCommandBuilder->createUpdateCommand(Object(CMysqlTableSchema), Array, Object(CDbCriteria))
+#1 E:\wamp\www\gorun\protected\controllers\EventsController.php(794): CActiveRecord->updateByPk('73', Array)
+#2 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): EventsController->actionSubmitresult()
+#3 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#4 E:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#5 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), NULL)
+#6 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('submitresult')
+#7 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('events/submitre...')
+#8 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/gorun/events/submitresult
+HTTP_REFERER=http://localhost/gorun/events/view/super-triathlon-sa-1-2-3-4
+---
