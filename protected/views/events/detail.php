@@ -187,6 +187,14 @@
 
 $(function(){
     initialize();
+    <?php
+    if(isset($_GET['submitted']))
+    {
+        ?>
+        $('.submitMsg').show();
+        <?php
+    }
+    ?>
     $('#submit_result').click(function(){
         var user_id = '<?php echo Yii::app()->user->id;?>';
         var event_id = '<?php echo $model->id;?>';
@@ -277,7 +285,8 @@ $(function(){
             $this = $(this);
             $this.find('.e_dis_block').each(function(){
                     $(this).find('input').each(function(){
-                        //$(this).val('');
+                        $(this).val('');
+                        
                     })
                  })
             $.ajax({
@@ -286,8 +295,9 @@ $(function(){
                data:'id='+id+'&checker='+checker+'&user_id='+user_id+'&event_id='+event_id+'&event_category='+event_category+'&event_type='+event_type+'&dist_hour='+dist_hour+'&dist_min='+dist_min+'&dist_sec='+dist_sec+'&distance='+distance+'&is_tri_swim='+is_tri_swim+'&is_tri_bike='+is_tri_bike+'&is_tri_run='+is_tri_run+'&transition_time='+transition_time+'&result_date='+result_date+'&event_time_id='+event_time_id,
                success:function(res){
                 if(res=='last')
-                $('.submitMsg').show();
+                //
                 $('.submit-result-form').hide();
+                window.location = '?submitted=1';
                } 
             });
         });
