@@ -162,7 +162,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
                     $distances = EventsTime::model()->findByAttributes(['event_id'=>$m->event_id]);
                     foreach($distances as $distance)
                     {?>
-                       <span class="distance"><?php echo $distance->distance;?>k</span> 
+                       <span class="distance"><?php echo $distance->distance1.$distance->distance2;?>k</span> 
                 <?php        
                     }
                 ?>

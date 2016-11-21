@@ -849,5 +849,14 @@ class CommonClass extends CComponent
         $s = substr($string,strlen($string)-3,3);
         return "****".$s;
     }
+    public static function getresults($model,$cond,$offset,$limit){
+        $Criteria = new CDbCriteria();
+        $Criteria->condition = $cond;
+        $Criteria->limit = $limit;
+        $Criteria->offset = $offset;
+        $results = $model::model()->findAll($Criteria);
+        
+        
+    }
 }
 ?>
