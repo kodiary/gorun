@@ -3,6 +3,7 @@ class MemberController extends Controller
 {
     //public $layout='//layouts/column2';
     public $username;
+    
     public function actions()
 	{
 		return array(
@@ -43,7 +44,7 @@ class MemberController extends Controller
             ->order('c.title asc')
             ->queryAll();
         $pages='';
-        $this->render('details', array('model'=>$member,'pages'=>$pages,'isfollowed'=>$isfollowed,'events'=>$events,'results'=>$results,'clubs'=>$clubs));
+        $this->render('details', array('model'=>$member,'pages'=>$pages,'isfollowed'=>$isfollowed,'events'=>$events,'results'=>$results,'clubs'=>$clubs,'limit'=>Yii::app()->params['results_per']));
         
        
     }
@@ -329,4 +330,22 @@ class MemberController extends Controller
 		$this->render('success');
         }
 	}
+    public function actionLoadmore($model,$offset)
+    {
+        //echo $model;
+        $critera = new CDbCriteria;
+        foreach($_POST as $k=>$value)
+        {
+            if($value!='' && $value != 'with[]')
+                $critera->$k = $value;
+            elseif($value == 'with[]')
+                $critera->with = [$value];
+        }
+        $critera->offset =$offset;
+        //var_dump($critera);
+        
+        $m = $model::model()->findAll($critera);
+        $this->renderPartial('/common/event_result',['memEvents'=>$m,'offset'=>$offset+$_POST['limit']]);
+       
+    }
 }

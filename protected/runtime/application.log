@@ -1076,3 +1076,626 @@ Stack trace:
 REQUEST_URI=/gorun/events/submitresult
 HTTP_REFERER=http://localhost/gorun/events/view/super-triathlon-sa-1-2-3-4
 ---
+2016/11/21 14:33:46 [error] [exception.CDbException] exception 'CDbException' with message 'Relation "event" is not defined in active record class "EventResult".' in F:\wamp\www\gorun\framework\db\ar\CActiveFinder.php:215
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveFinder.php(310): CActiveFinder->buildJoinTree(Object(CJoinElement), 'event')
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveFinder.php(49): CActiveFinder->buildJoinTree(Object(CJoinElement), Array)
+#2 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1291): CActiveFinder->__construct(Object(EventResult), Array)
+#3 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1392): CActiveRecord->query(Object(CDbCriteria))
+#4 F:\wamp\www\gorun\protected\views\member\details.php(191): CActiveRecord->find(Object(CDbCriteria))
+#5 F:\wamp\www\gorun\framework\web\CBaseController.php(127): require('F:\\wamp\\www\\gor...')
+#6 F:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('F:\\wamp\\www\\gor...', Array, true)
+#7 F:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('F:\\wamp\\www\\gor...', Array, true)
+#8 F:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('details', Array, true)
+#9 F:\wamp\www\gorun\protected\controllers\MemberController.php(46): CController->render('details', Array)
+#10 [internal function]: MemberController->actionDetails('warriorbik')
+#11 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#12 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#13 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#14 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#15 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#17 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/details/...')
+#18 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/gorun/warriorbik
+---
+2016/11/21 14:33:46 [error] [exception.CDbException] exception 'CDbException' with message 'Relation "event" is not defined in active record class "EventResult".' in F:\wamp\www\gorun\framework\db\ar\CActiveFinder.php:215
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveFinder.php(310): CActiveFinder->buildJoinTree(Object(CJoinElement), 'event')
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveFinder.php(49): CActiveFinder->buildJoinTree(Object(CJoinElement), Array)
+#2 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1291): CActiveFinder->__construct(Object(EventResult), Array)
+#3 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1392): CActiveRecord->query(Object(CDbCriteria))
+#4 F:\wamp\www\gorun\protected\views\member\details.php(191): CActiveRecord->find(Object(CDbCriteria))
+#5 F:\wamp\www\gorun\framework\web\CBaseController.php(127): require('F:\\wamp\\www\\gor...')
+#6 F:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('F:\\wamp\\www\\gor...', Array, true)
+#7 F:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('F:\\wamp\\www\\gor...', Array, true)
+#8 F:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('details', Array, true)
+#9 F:\wamp\www\gorun\protected\controllers\MemberController.php(46): CController->render('details', Array)
+#10 [internal function]: MemberController->actionDetails('warriorbik')
+#11 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#12 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#13 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#14 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#15 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#17 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/details/...')
+#18 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/gorun/warriorbik
+---
+2016/11/21 14:40:59 [error] [exception.CDbException] exception 'CDbException' with message 'Relation "event" is not defined in active record class "EventResult".' in F:\wamp\www\gorun\framework\db\ar\CActiveFinder.php:215
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveFinder.php(310): CActiveFinder->buildJoinTree(Object(CJoinElement), 'event')
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveFinder.php(49): CActiveFinder->buildJoinTree(Object(CJoinElement), Array)
+#2 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1291): CActiveFinder->__construct(Object(EventResult), Array)
+#3 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1392): CActiveRecord->query(Object(CDbCriteria))
+#4 F:\wamp\www\gorun\protected\views\member\details.php(191): CActiveRecord->find(Object(CDbCriteria))
+#5 F:\wamp\www\gorun\framework\web\CBaseController.php(127): require('F:\\wamp\\www\\gor...')
+#6 F:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('F:\\wamp\\www\\gor...', Array, true)
+#7 F:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('F:\\wamp\\www\\gor...', Array, true)
+#8 F:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('details', Array, true)
+#9 F:\wamp\www\gorun\protected\controllers\MemberController.php(46): CController->render('details', Array)
+#10 [internal function]: MemberController->actionDetails('warriorbik')
+#11 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#12 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#13 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#14 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#15 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#17 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/details/...')
+#18 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/gorun/warriorbik
+---
+2016/11/21 14:41:00 [error] [exception.CDbException] exception 'CDbException' with message 'Relation "event" is not defined in active record class "EventResult".' in F:\wamp\www\gorun\framework\db\ar\CActiveFinder.php:215
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveFinder.php(310): CActiveFinder->buildJoinTree(Object(CJoinElement), 'event')
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveFinder.php(49): CActiveFinder->buildJoinTree(Object(CJoinElement), Array)
+#2 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1291): CActiveFinder->__construct(Object(EventResult), Array)
+#3 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1392): CActiveRecord->query(Object(CDbCriteria))
+#4 F:\wamp\www\gorun\protected\views\member\details.php(191): CActiveRecord->find(Object(CDbCriteria))
+#5 F:\wamp\www\gorun\framework\web\CBaseController.php(127): require('F:\\wamp\\www\\gor...')
+#6 F:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('F:\\wamp\\www\\gor...', Array, true)
+#7 F:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('F:\\wamp\\www\\gor...', Array, true)
+#8 F:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('details', Array, true)
+#9 F:\wamp\www\gorun\protected\controllers\MemberController.php(46): CController->render('details', Array)
+#10 [internal function]: MemberController->actionDetails('warriorbik')
+#11 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#12 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#13 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#14 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#15 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#17 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/details/...')
+#18 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/gorun/warriorbik
+---
+2016/11/21 14:41:15 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1)' at line 1. The SQL statement executed was: SELECT `t`.`id` AS `t0_c0`, `t`.`user_id` AS `t0_c1`, `t`.`event_id` AS `t0_c2`, `t`.`event_time_id` AS `t0_c3`, `t`.`event_category` AS `t0_c4`, `t`.`event_type` AS `t0_c5`, `t`.`dist_time` AS `t0_c6`, `t`.`dist_hour` AS `t0_c7`, `t`.`dist_min` AS `t0_c8`, `t`.`dist_sec` AS `t0_c9`, `t`.`distance` AS `t0_c10`, `t`.`is_tri_swim` AS `t0_c11`, `t`.`is_tri_bike` AS `t0_c12`, `t`.`is_tri_run` AS `t0_c13`, `t`.`transition_time` AS `t0_c14`, `t`.`result_date` AS `t0_c15`, `t`.`distance_tri` AS `t0_c16`, `event`.`id` AS `t1_c0`, `event`.`created_by` AS `t1_c1`, `event`.`event_type` AS `t1_c2`, `event`.`event_cat` AS `t1_c3`, `event`.`title` AS `t1_c4`, `event`.`description` AS `t1_c5`, `event`.`start_date` AS `t1_c6`, `event`.`end_date` AS `t1_c7`, `event`.`website` AS `t1_c8`, `event`.`comrade_qualifier` AS `t1_c9`, `event`.`logo` AS `t1_c10`, `event`.`file` AS `t1_c11`, `event`.`venue` AS `t1_c12`, `event`.`longitude` AS `t1_c13`, `event`.`latitude` AS `t1_c14`, `event`.`province` AS `t1_c15`, `event`.`organizer` AS `t1_c16`, `event`.`organizer_contact` AS `t1_c17`, `event`.`organizer_email` AS `t1_c18`, `event`.`organizer_website` AS `t1_c19`, `event`.`readcount` AS `t1_c20`, `event`.`visible` AS `t1_c21`, `event`.`slug` AS `t1_c22` FROM `tbl_event_result` `t`  LEFT OUTER JOIN `tbl_events` `event` ON (`t`.`event_id`=`event`.`id`)  WHERE (t.user_id="1261 and t.event_type="1).
+in F:\wamp\www\gorun\protected\views\member\details.php (191)
+in F:\wamp\www\gorun\protected\controllers\MemberController.php (46)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/21 14:41:15 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1)' at line 1. The SQL statement executed was: SELECT `t`.`id` AS `t0_c0`, `t`.`user_id` AS `t0_c1`, `t`.`event_id` AS `t0_c2`, `t`.`event_time_id` AS `t0_c3`, `t`.`event_category` AS `t0_c4`, `t`.`event_type` AS `t0_c5`, `t`.`dist_time` AS `t0_c6`, `t`.`dist_hour` AS `t0_c7`, `t`.`dist_min` AS `t0_c8`, `t`.`dist_sec` AS `t0_c9`, `t`.`distance` AS `t0_c10`, `t`.`is_tri_swim` AS `t0_c11`, `t`.`is_tri_bike` AS `t0_c12`, `t`.`is_tri_run` AS `t0_c13`, `t`.`transition_time` AS `t0_c14`, `t`.`result_date` AS `t0_c15`, `t`.`distance_tri` AS `t0_c16`, `event`.`id` AS `t1_c0`, `event`.`created_by` AS `t1_c1`, `event`.`event_type` AS `t1_c2`, `event`.`event_cat` AS `t1_c3`, `event`.`title` AS `t1_c4`, `event`.`description` AS `t1_c5`, `event`.`start_date` AS `t1_c6`, `event`.`end_date` AS `t1_c7`, `event`.`website` AS `t1_c8`, `event`.`comrade_qualifier` AS `t1_c9`, `event`.`logo` AS `t1_c10`, `event`.`file` AS `t1_c11`, `event`.`venue` AS `t1_c12`, `event`.`longitude` AS `t1_c13`, `event`.`latitude` AS `t1_c14`, `event`.`province` AS `t1_c15`, `event`.`organizer` AS `t1_c16`, `event`.`organizer_contact` AS `t1_c17`, `event`.`organizer_email` AS `t1_c18`, `event`.`organizer_website` AS `t1_c19`, `event`.`readcount` AS `t1_c20`, `event`.`visible` AS `t1_c21`, `event`.`slug` AS `t1_c22` FROM `tbl_event_result` `t`  LEFT OUTER JOIN `tbl_events` `event` ON (`t`.`event_id`=`event`.`id`)  WHERE (t.user_id="1261 and t.event_type="1)' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveFinder.php(818): CDbCommand->queryAll()
+#2 F:\wamp\www\gorun\framework\db\ar\CActiveFinder.php(452): CJoinElement->runQuery(Object(CJoinQuery))
+#3 F:\wamp\www\gorun\framework\db\ar\CActiveFinder.php(70): CJoinElement->find(Object(CDbCriteria))
+#4 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1292): CActiveFinder->query(Object(CDbCriteria), false)
+#5 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1392): CActiveRecord->query(Object(CDbCriteria))
+#6 F:\wamp\www\gorun\protected\views\member\details.php(191): CActiveRecord->find(Object(CDbCriteria))
+#7 F:\wamp\www\gorun\framework\web\CBaseController.php(127): require('F:\\wamp\\www\\gor...')
+#8 F:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('F:\\wamp\\www\\gor...', Array, true)
+#9 F:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('F:\\wamp\\www\\gor...', Array, true)
+#10 F:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('details', Array, true)
+#11 F:\wamp\www\gorun\protected\controllers\MemberController.php(46): CController->render('details', Array)
+#12 [internal function]: MemberController->actionDetails('warriorbik')
+#13 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#14 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#15 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#16 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#17 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#19 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/details/...')
+#20 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#21 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/gorun/warriorbik
+---
+2016/11/21 14:41:15 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1)' at line 1. The SQL statement executed was: SELECT `t`.`id` AS `t0_c0`, `t`.`user_id` AS `t0_c1`, `t`.`event_id` AS `t0_c2`, `t`.`event_time_id` AS `t0_c3`, `t`.`event_category` AS `t0_c4`, `t`.`event_type` AS `t0_c5`, `t`.`dist_time` AS `t0_c6`, `t`.`dist_hour` AS `t0_c7`, `t`.`dist_min` AS `t0_c8`, `t`.`dist_sec` AS `t0_c9`, `t`.`distance` AS `t0_c10`, `t`.`is_tri_swim` AS `t0_c11`, `t`.`is_tri_bike` AS `t0_c12`, `t`.`is_tri_run` AS `t0_c13`, `t`.`transition_time` AS `t0_c14`, `t`.`result_date` AS `t0_c15`, `t`.`distance_tri` AS `t0_c16`, `event`.`id` AS `t1_c0`, `event`.`created_by` AS `t1_c1`, `event`.`event_type` AS `t1_c2`, `event`.`event_cat` AS `t1_c3`, `event`.`title` AS `t1_c4`, `event`.`description` AS `t1_c5`, `event`.`start_date` AS `t1_c6`, `event`.`end_date` AS `t1_c7`, `event`.`website` AS `t1_c8`, `event`.`comrade_qualifier` AS `t1_c9`, `event`.`logo` AS `t1_c10`, `event`.`file` AS `t1_c11`, `event`.`venue` AS `t1_c12`, `event`.`longitude` AS `t1_c13`, `event`.`latitude` AS `t1_c14`, `event`.`province` AS `t1_c15`, `event`.`organizer` AS `t1_c16`, `event`.`organizer_contact` AS `t1_c17`, `event`.`organizer_email` AS `t1_c18`, `event`.`organizer_website` AS `t1_c19`, `event`.`readcount` AS `t1_c20`, `event`.`visible` AS `t1_c21`, `event`.`slug` AS `t1_c22` FROM `tbl_event_result` `t`  LEFT OUTER JOIN `tbl_events` `event` ON (`t`.`event_id`=`event`.`id`)  WHERE (t.user_id="1261 and t.event_type="1).
+in F:\wamp\www\gorun\protected\views\member\details.php (191)
+in F:\wamp\www\gorun\protected\controllers\MemberController.php (46)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/21 14:41:15 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1)' at line 1. The SQL statement executed was: SELECT `t`.`id` AS `t0_c0`, `t`.`user_id` AS `t0_c1`, `t`.`event_id` AS `t0_c2`, `t`.`event_time_id` AS `t0_c3`, `t`.`event_category` AS `t0_c4`, `t`.`event_type` AS `t0_c5`, `t`.`dist_time` AS `t0_c6`, `t`.`dist_hour` AS `t0_c7`, `t`.`dist_min` AS `t0_c8`, `t`.`dist_sec` AS `t0_c9`, `t`.`distance` AS `t0_c10`, `t`.`is_tri_swim` AS `t0_c11`, `t`.`is_tri_bike` AS `t0_c12`, `t`.`is_tri_run` AS `t0_c13`, `t`.`transition_time` AS `t0_c14`, `t`.`result_date` AS `t0_c15`, `t`.`distance_tri` AS `t0_c16`, `event`.`id` AS `t1_c0`, `event`.`created_by` AS `t1_c1`, `event`.`event_type` AS `t1_c2`, `event`.`event_cat` AS `t1_c3`, `event`.`title` AS `t1_c4`, `event`.`description` AS `t1_c5`, `event`.`start_date` AS `t1_c6`, `event`.`end_date` AS `t1_c7`, `event`.`website` AS `t1_c8`, `event`.`comrade_qualifier` AS `t1_c9`, `event`.`logo` AS `t1_c10`, `event`.`file` AS `t1_c11`, `event`.`venue` AS `t1_c12`, `event`.`longitude` AS `t1_c13`, `event`.`latitude` AS `t1_c14`, `event`.`province` AS `t1_c15`, `event`.`organizer` AS `t1_c16`, `event`.`organizer_contact` AS `t1_c17`, `event`.`organizer_email` AS `t1_c18`, `event`.`organizer_website` AS `t1_c19`, `event`.`readcount` AS `t1_c20`, `event`.`visible` AS `t1_c21`, `event`.`slug` AS `t1_c22` FROM `tbl_event_result` `t`  LEFT OUTER JOIN `tbl_events` `event` ON (`t`.`event_id`=`event`.`id`)  WHERE (t.user_id="1261 and t.event_type="1)' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveFinder.php(818): CDbCommand->queryAll()
+#2 F:\wamp\www\gorun\framework\db\ar\CActiveFinder.php(452): CJoinElement->runQuery(Object(CJoinQuery))
+#3 F:\wamp\www\gorun\framework\db\ar\CActiveFinder.php(70): CJoinElement->find(Object(CDbCriteria))
+#4 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1292): CActiveFinder->query(Object(CDbCriteria), false)
+#5 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1392): CActiveRecord->query(Object(CDbCriteria))
+#6 F:\wamp\www\gorun\protected\views\member\details.php(191): CActiveRecord->find(Object(CDbCriteria))
+#7 F:\wamp\www\gorun\framework\web\CBaseController.php(127): require('F:\\wamp\\www\\gor...')
+#8 F:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('F:\\wamp\\www\\gor...', Array, true)
+#9 F:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('F:\\wamp\\www\\gor...', Array, true)
+#10 F:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('details', Array, true)
+#11 F:\wamp\www\gorun\protected\controllers\MemberController.php(46): CController->render('details', Array)
+#12 [internal function]: MemberController->actionDetails('warriorbik')
+#13 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#14 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#15 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#16 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#17 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#19 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/details/...')
+#20 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#21 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/gorun/warriorbik
+---
+2016/11/21 15:23:35 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in F:\wamp\www\gorun\framework\web\CController.php:337
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('loadmore')
+#4 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/loadmore...')
+#5 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/gorun/member/loadmore/EventResult
+HTTP_REFERER=http://localhost/gorun/warriorbik
+---
+2016/11/21 15:33:31 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in F:\wamp\www\gorun\framework\web\CController.php:337
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('loadmore')
+#4 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/loadmore...')
+#5 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/gorun/member/loadmore/EventResult
+HTTP_REFERER=http://localhost/gorun/warriorbik
+---
+2016/11/21 15:34:21 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in F:\wamp\www\gorun\framework\web\CController.php:337
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('loadmore')
+#4 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/loadmore...')
+#5 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/gorun/member/loadmore/EventResult
+HTTP_REFERER=http://localhost/gorun/warriorbik
+---
+2016/11/21 15:34:35 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in F:\wamp\www\gorun\framework\web\CController.php:337
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('loadmore')
+#4 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/loadmore...')
+#5 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/gorun/member/loadmore/EventResult
+HTTP_REFERER=http://localhost/gorun/warriorbik
+---
+2016/11/21 15:34:56 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in F:\wamp\www\gorun\framework\web\CController.php:337
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('loadmore')
+#4 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/loadmore...')
+#5 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/gorun/member/loadmore/EventResult
+HTTP_REFERER=http://localhost/gorun/warriorbik
+---
+2016/11/21 15:35:13 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in F:\wamp\www\gorun\framework\web\CController.php:337
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('loadmore')
+#4 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/loadmore...')
+#5 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/gorun/member/loadmore/EventResult
+HTTP_REFERER=http://localhost/gorun/warriorbik
+---
+2016/11/21 15:35:16 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in F:\wamp\www\gorun\framework\web\CController.php:337
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('loadmore')
+#4 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/loadmore...')
+#5 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/gorun/member/loadmore/EventResult
+HTTP_REFERER=http://localhost/gorun/warriorbik
+---
+2016/11/21 15:35:22 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in F:\wamp\www\gorun\framework\web\CController.php:337
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('loadmore')
+#4 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/loadmore...')
+#5 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/gorun/member/loadmore/EventResult
+HTTP_REFERER=http://localhost/gorun/warriorbik
+---
+2016/11/21 15:36:25 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in F:\wamp\www\gorun\framework\web\CController.php:337
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('loadmore')
+#4 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/loadmore...')
+#5 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/gorun/member/loadmore/EventResult
+HTTP_REFERER=http://localhost/gorun/warriorbik
+---
+2016/11/21 15:36:45 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in F:\wamp\www\gorun\framework\web\CController.php:337
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('loadmore')
+#4 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/loadmore...')
+#5 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/gorun/member/loadmore/EventResult
+HTTP_REFERER=http://localhost/gorun/warriorbik
+---
+2016/11/21 15:44:17 [error] [exception.CException] exception 'CException' with message 'MemberController cannot find the requested view "common/event_result".' in F:\wamp\www\gorun\framework\web\CController.php:879
+Stack trace:
+#0 F:\wamp\www\gorun\protected\controllers\MemberController.php(340): CController->renderPartial('common/event_re...', Array)
+#1 [internal function]: MemberController->actionLoadmore('EventResult')
+#2 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#3 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#4 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('loadmore')
+#8 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/loadmore...')
+#9 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/gorun/member/loadmore/model/EventResult
+HTTP_REFERER=http://localhost/gorun/warriorbik
+---
+2016/11/21 15:46:23 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[HY093]: Invalid parameter number: no parameters were bound. The SQL statement executed was: SELECT * FROM `tbl_event_result` `t` WHERE {"select":"*","distinct":false,"condition":"t.user_id="1261" and t.event_type="4"","params":[],"limit":2,"offset":-1,"order":"","group":"","join":"","having":"","with":{"0":"event","event":{"together":true}},"alias":null,"together":null,"index":null,"scopes":null}.
+in F:\wamp\www\gorun\protected\controllers\MemberController.php (338)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/21 15:46:23 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY093]: Invalid parameter number: no parameters were bound. The SQL statement executed was: SELECT * FROM `tbl_event_result` `t` WHERE {"select":"*","distinct":false,"condition":"t.user_id="1261" and t.event_type="4"","params":[],"limit":2,"offset":-1,"order":"","group":"","join":"","having":"","with":{"0":"event","event":{"together":true}},"alias":null,"together":null,"index":null,"scopes":null}' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 F:\wamp\www\gorun\protected\controllers\MemberController.php(338): CActiveRecord->findAll('{"select":"*","...')
+#4 [internal function]: MemberController->actionLoadmore('EventResult')
+#5 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#6 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#7 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('loadmore')
+#11 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/loadmore...')
+#12 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/gorun/member/loadmore/model/EventResult
+HTTP_REFERER=http://localhost/gorun/warriorbik
+---
+2016/11/21 15:48:16 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[HY093]: Invalid parameter number: no parameters were bound. The SQL statement executed was: SELECT * FROM `tbl_event_result` `t` WHERE {"select":"*","distinct":false,"condition":"t.user_id="1261" and t.event_type="4"","params":[],"limit":2,"offset":-1,"order":"","group":"","join":"","having":"","with":{"0":"event","event":{"together":true}},"alias":null,"together":null,"index":null,"scopes":null}.
+in F:\wamp\www\gorun\protected\controllers\MemberController.php (338)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/21 15:48:16 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY093]: Invalid parameter number: no parameters were bound. The SQL statement executed was: SELECT * FROM `tbl_event_result` `t` WHERE {"select":"*","distinct":false,"condition":"t.user_id="1261" and t.event_type="4"","params":[],"limit":2,"offset":-1,"order":"","group":"","join":"","having":"","with":{"0":"event","event":{"together":true}},"alias":null,"together":null,"index":null,"scopes":null}' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 F:\wamp\www\gorun\protected\controllers\MemberController.php(338): CActiveRecord->findAll('{"select":"*","...')
+#4 [internal function]: MemberController->actionLoadmore('EventResult')
+#5 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#6 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#7 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('loadmore')
+#11 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/loadmore...')
+#12 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/gorun/member/loadmore/model/EventResult
+HTTP_REFERER=http://localhost/gorun/warriorbik
+---
+2016/11/21 15:49:19 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[HY093]: Invalid parameter number: no parameters were bound. The SQL statement executed was: SELECT * FROM `tbl_event_result` `t` WHERE {"select":"*","distinct":false,"condition":"t.user_id="1261" and t.event_type="4"","params":[],"limit":2,"offset":-1,"order":"","group":"","join":"","having":"","with":{"0":"event","event":{"together":true}},"alias":null,"together":null,"index":null,"scopes":null}.
+in F:\wamp\www\gorun\protected\controllers\MemberController.php (338)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/21 15:49:19 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY093]: Invalid parameter number: no parameters were bound. The SQL statement executed was: SELECT * FROM `tbl_event_result` `t` WHERE {"select":"*","distinct":false,"condition":"t.user_id="1261" and t.event_type="4"","params":[],"limit":2,"offset":-1,"order":"","group":"","join":"","having":"","with":{"0":"event","event":{"together":true}},"alias":null,"together":null,"index":null,"scopes":null}' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 F:\wamp\www\gorun\protected\controllers\MemberController.php(338): CActiveRecord->findAll('{"select":"*","...')
+#4 [internal function]: MemberController->actionLoadmore('EventResult')
+#5 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#6 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#7 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('loadmore')
+#11 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/loadmore...')
+#12 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/gorun/member/loadmore/model/EventResult
+HTTP_REFERER=http://localhost/gorun/warriorbik
+---
+2016/11/21 15:49:47 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[HY093]: Invalid parameter number: no parameters were bound. The SQL statement executed was: SELECT * FROM `tbl_event_result` `t` WHERE {"select":"*","distinct":false,"condition":"t.user_id="1261" and t.event_type="4"","params":[],"limit":2,"offset":-1,"order":"","group":"","join":"","having":"","with":{"0":"event","event":{"together":true}},"alias":null,"together":null,"index":null,"scopes":null}.
+in F:\wamp\www\gorun\protected\controllers\MemberController.php (338)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/21 15:49:47 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY093]: Invalid parameter number: no parameters were bound. The SQL statement executed was: SELECT * FROM `tbl_event_result` `t` WHERE {"select":"*","distinct":false,"condition":"t.user_id="1261" and t.event_type="4"","params":[],"limit":2,"offset":-1,"order":"","group":"","join":"","having":"","with":{"0":"event","event":{"together":true}},"alias":null,"together":null,"index":null,"scopes":null}' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 F:\wamp\www\gorun\protected\controllers\MemberController.php(338): CActiveRecord->findAll('{"select":"*","...')
+#4 [internal function]: MemberController->actionLoadmore('EventResult')
+#5 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#6 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#7 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('loadmore')
+#11 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/loadmore...')
+#12 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/gorun/member/loadmore/model/EventResult
+HTTP_REFERER=http://localhost/gorun/warriorbik
+---
+2016/11/21 15:50:45 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[HY093]: Invalid parameter number: no parameters were bound. The SQL statement executed was: SELECT * FROM `tbl_event_result` `t` WHERE {"select":"*","distinct":false,"condition":"t.user_id="1261" and t.event_type="4"","params":[],"limit":2,"offset":-1,"order":"","group":"","join":"","having":"","with":{"0":"event","event":{"together":true}},"alias":null,"together":null,"index":null,"scopes":null}.
+in F:\wamp\www\gorun\protected\controllers\MemberController.php (339)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/21 15:50:45 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY093]: Invalid parameter number: no parameters were bound. The SQL statement executed was: SELECT * FROM `tbl_event_result` `t` WHERE {"select":"*","distinct":false,"condition":"t.user_id="1261" and t.event_type="4"","params":[],"limit":2,"offset":-1,"order":"","group":"","join":"","having":"","with":{"0":"event","event":{"together":true}},"alias":null,"together":null,"index":null,"scopes":null}' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 F:\wamp\www\gorun\protected\controllers\MemberController.php(339): CActiveRecord->findAll('{"select":"*","...')
+#4 [internal function]: MemberController->actionLoadmore('EventResult')
+#5 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#6 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#7 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('loadmore')
+#11 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/loadmore...')
+#12 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/gorun/member/loadmore/model/EventResult
+HTTP_REFERER=http://localhost/gorun/warriorbik
+---
+2016/11/21 15:51:16 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[HY093]: Invalid parameter number: no parameters were bound. The SQL statement executed was: SELECT * FROM `tbl_event_result` `t` WHERE {"select":"*","distinct":false,"condition":"t.user_id="1261" and t.event_type="4"","params":[],"limit":2,"offset":-1,"order":"","group":"","join":"","having":"","with":{"0":"event","event":{"together":true}},"alias":null,"together":null,"index":null,"scopes":null}.
+in F:\wamp\www\gorun\protected\controllers\MemberController.php (339)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/21 15:51:16 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY093]: Invalid parameter number: no parameters were bound. The SQL statement executed was: SELECT * FROM `tbl_event_result` `t` WHERE {"select":"*","distinct":false,"condition":"t.user_id="1261" and t.event_type="4"","params":[],"limit":2,"offset":-1,"order":"","group":"","join":"","having":"","with":{"0":"event","event":{"together":true}},"alias":null,"together":null,"index":null,"scopes":null}' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 F:\wamp\www\gorun\protected\controllers\MemberController.php(339): CActiveRecord->findAll('{"select":"*","...')
+#4 [internal function]: MemberController->actionLoadmore('EventResult')
+#5 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#6 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#7 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('loadmore')
+#11 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/loadmore...')
+#12 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/gorun/member/loadmore/model/EventResult
+HTTP_REFERER=http://localhost/gorun/warriorbik
+---
+2016/11/21 15:51:35 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[HY093]: Invalid parameter number: no parameters were bound. The SQL statement executed was: SELECT * FROM `tbl_event_result` `t` WHERE {"select":"*","distinct":false,"condition":"t.user_id="1261" and t.event_type="4"","params":[],"limit":2,"offset":-1,"order":"","group":"","join":"","having":"","with":{"0":"event","event":{"together":true}},"alias":null,"together":null,"index":null,"scopes":null}.
+in F:\wamp\www\gorun\protected\controllers\MemberController.php (339)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/21 15:51:35 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY093]: Invalid parameter number: no parameters were bound. The SQL statement executed was: SELECT * FROM `tbl_event_result` `t` WHERE {"select":"*","distinct":false,"condition":"t.user_id="1261" and t.event_type="4"","params":[],"limit":2,"offset":-1,"order":"","group":"","join":"","having":"","with":{"0":"event","event":{"together":true}},"alias":null,"together":null,"index":null,"scopes":null}' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 F:\wamp\www\gorun\protected\controllers\MemberController.php(339): CActiveRecord->findAll('{"select":"*","...')
+#4 [internal function]: MemberController->actionLoadmore('EventResult')
+#5 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#6 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#7 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('loadmore')
+#11 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/loadmore...')
+#12 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/gorun/member/loadmore/model/EventResult
+HTTP_REFERER=http://localhost/gorun/warriorbik
+---
+2016/11/21 16:00:06 [error] [exception.CException] exception 'CException' with message 'Property "EventResult." is not defined.' in F:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('')
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveFinder.php(81): CActiveRecord->__get('')
+#2 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1292): CActiveFinder->query(Object(CDbCriteria), true)
+#3 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#4 F:\wamp\www\gorun\protected\controllers\MemberController.php(339): CActiveRecord->findAll(Array)
+#5 [internal function]: MemberController->actionLoadmore('EventResult')
+#6 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#7 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#8 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#10 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('loadmore')
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/loadmore...')
+#13 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/gorun/member/loadmore/model/EventResult
+HTTP_REFERER=http://localhost/gorun/warriorbik
+---
+2016/11/21 16:00:45 [error] [exception.CException] exception 'CException' with message 'Property "EventResult." is not defined.' in F:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('')
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveFinder.php(81): CActiveRecord->__get('')
+#2 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1292): CActiveFinder->query(Object(CDbCriteria), true)
+#3 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#4 F:\wamp\www\gorun\protected\controllers\MemberController.php(339): CActiveRecord->findAll(Array)
+#5 [internal function]: MemberController->actionLoadmore('EventResult')
+#6 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#7 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#8 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#10 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('loadmore')
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/loadmore...')
+#13 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/gorun/member/loadmore/model/EventResult
+HTTP_REFERER=http://localhost/gorun/warriorbik
+---
+2016/11/21 16:03:46 [error] [exception.CException] exception 'CException' with message 'Property "EventResult." is not defined.' in F:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('')
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveFinder.php(81): CActiveRecord->__get('')
+#2 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1292): CActiveFinder->query(Object(CDbCriteria), true)
+#3 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#4 F:\wamp\www\gorun\protected\controllers\MemberController.php(343): CActiveRecord->findAll(Object(CDbCriteria))
+#5 [internal function]: MemberController->actionLoadmore('EventResult')
+#6 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#7 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#8 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#10 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('loadmore')
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/loadmore...')
+#13 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/gorun/member/loadmore/model/EventResult
+HTTP_REFERER=http://localhost/gorun/warriorbik
+---
+2016/11/21 16:04:17 [error] [exception.CException] exception 'CException' with message 'Property "EventResult." is not defined.' in F:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('')
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveFinder.php(81): CActiveRecord->__get('')
+#2 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1292): CActiveFinder->query(Object(CDbCriteria), true)
+#3 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#4 F:\wamp\www\gorun\protected\controllers\MemberController.php(343): CActiveRecord->findAll(Object(CDbCriteria))
+#5 [internal function]: MemberController->actionLoadmore('EventResult')
+#6 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#7 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#8 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#10 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('loadmore')
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/loadmore...')
+#13 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/gorun/member/loadmore/model/EventResult
+HTTP_REFERER=http://localhost/gorun/warriorbik
+---
+2016/11/21 16:07:58 [error] [exception.CException] exception 'CException' with message 'Property "EventResult." is not defined.' in F:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('')
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveFinder.php(81): CActiveRecord->__get('')
+#2 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1292): CActiveFinder->query(Object(CDbCriteria), true)
+#3 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#4 F:\wamp\www\gorun\protected\controllers\MemberController.php(346): CActiveRecord->findAll(Object(CDbCriteria))
+#5 [internal function]: MemberController->actionLoadmore('EventResult')
+#6 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#7 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#8 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#10 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('loadmore')
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/loadmore...')
+#13 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/gorun/member/loadmore/model/EventResult
+HTTP_REFERER=http://localhost/gorun/warriorbik
+---
+2016/11/21 16:11:17 [error] [exception.CException] exception 'CException' with message 'Property "EventResult." is not defined.' in F:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('')
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveFinder.php(81): CActiveRecord->__get('')
+#2 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1292): CActiveFinder->query(Object(CDbCriteria), true)
+#3 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#4 F:\wamp\www\gorun\protected\controllers\MemberController.php(346): CActiveRecord->findAll(Array)
+#5 [internal function]: MemberController->actionLoadmore('EventResult')
+#6 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#7 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#8 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#10 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('loadmore')
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/loadmore...')
+#13 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/gorun/member/loadmore/model/EventResult
+HTTP_REFERER=http://localhost/gorun/warriorbik
+---
+2016/11/21 17:09:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/article_fallback_120x120.png".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/article_...')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/article_fallback_120x120.png
+HTTP_REFERER=http://localhost/gorun/clubs/bedfordview-athletics
+---
+2016/11/21 17:09:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/article_fallback_120x120.png".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/article_...')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/article_fallback_120x120.png
+HTTP_REFERER=http://localhost/gorun/clubs/bedfordview-athletics
+---
+2016/11/21 17:09:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/article_fallback_120x120.png".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/article_...')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/article_fallback_120x120.png
+HTTP_REFERER=http://localhost/gorun/clubs/bedfordview-athletics
+---
