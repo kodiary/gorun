@@ -514,4 +514,6 @@ h3.blue{font-weight:bold;margin-top:0;}
     text-align: center;
     top: -6px;
     width: 17px;
-}}
+}
+.upper{text-transform:uppercase}
+.calendar_list{font-size:15px;margin-top:10px;}

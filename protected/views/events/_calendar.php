@@ -83,7 +83,7 @@ $da = end($arr);
 if(strlen($da)<2)
 $da = '0'.$da;
 $end_date = $ye.'-'.$mon.'-'.$da;
-$event= Yii::app()->db->createCommand('select start_date from tbl_events WHERE start_date >= "'.$start_date.'" AND end_date <= "'.$end_date.'" ORDER BY start_date')->queryAll();
+$event= Yii::app()->db->createCommand('select start_date from tbl_events WHERE start_date >= "'.$start_date.'" AND end_date <= "'.$end_date.'" AND visible = 1 ORDER BY start_date')->queryAll();
 $d_count;
 foreach($event as $e)
 {
@@ -154,9 +154,9 @@ foreach($event as $e)
                 }
                 //echo $checker.'<br/>';
                 if(!isset($ev[$checker]))
-                echo "<td class='day_num'><a href='javascript:void(0)' class='bg-grey-light'>".$a."</a></td>";
+                echo "<td class='day_num'><a class='bg-grey-light'>".$a."</a></td>";
                 else
-                echo "<td class='day_num'><a href='javascript:void(0)' class='bg-blue-light'>".$a."<span class='event_counter'>".count($ev[$checker])."</span></a></td>";
+                echo "<td class='day_num'><a href='javascript:void(0)' class='bg-blue-light get_events' id='".$checker."'>".$a."<span class='event_counter'>".count($ev[$checker])."</span></a></td>";
                 if($i%7==0)
                 {
                     ?>

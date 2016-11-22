@@ -906,4 +906,12 @@ class EventsController extends Controller
     {
         $this->renderPartial('/events/_calendar',array('events'=>$events));
     }
+    public function actionListCalendarEvent()
+    {
+        $start_date = $_POST['start_date'];
+        $events = Events::model()->findAllByAttributes(array('visible'=>1,'start_date'=>$start_date));
+        //var_dump($events);
+        $this->renderPartial('/events/_calendar_list',array('events'=>$events,'et'=>EventsTime::model()));
+        
+    }
 }

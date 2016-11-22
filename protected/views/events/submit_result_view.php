@@ -29,6 +29,8 @@
             </div>
             <div class="col-md-6">
                 <h3 class="blue-heading">EVENT THIS DAY</h3>
+                <strong class="blue">Select past date from calendar</strong>
+                <div class="calendarList"></div>
             </div>
            <div class="clearfix"></div>
         </div>
@@ -36,6 +38,7 @@
 <script>
 $(function(){
     $('.anchor-left a').live('click',function(){
+        $('.calendarList').html('');
         var month_year = $('.month_year').val();
         var arr = month_year.split('_');
         var mon = arr[0];
@@ -62,6 +65,7 @@ $(function(){
     });
     
     $('.anchor-right a').live('click',function(){
+        $('.calendarList').html('');
         var month_year = $('.month_year').val();
         var arr = month_year.split('_');
         var mon = arr[0];
@@ -86,6 +90,19 @@ $(function(){
             }
         })
     });
+    $('.get_events').live('click',function(){
+        $('.calendarList').html('');
+        var id = $(this).attr('id');
+        var start_date = id.replace('_','-').replace('_','-');
+        $.ajax({
+            url:'<?php echo Yii::app()->request->baseUrl; ?>/events/listCalendarEvent',
+            data:'start_date='+start_date,
+            type:'post',
+            success:function(res){
+                $('.calendarList').html(res);
+            }
+        })
+   });
 })
 </script>        
         
