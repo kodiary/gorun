@@ -65,6 +65,9 @@
                $this->renderPartial('/events/_your_result',array('model'=>$check['result'],'model_tri'=>$check['tri_result'],'m_time'=>$m_time,'tri_result'=>$tri_result,'race_result'=>$race_result,));
             }
         }
+        else{
+             $this->renderPartial('/events/_attending',array('me'=>$me,'eid'=>$model->id,'etype'=>$model->event_type,'edate'=>$model->start_date));
+        }
         ?>
         <div class="white padtopbot5">
             <a class="expand_block col-md-12" href="javascript:void(0)">

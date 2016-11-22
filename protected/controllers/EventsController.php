@@ -111,7 +111,8 @@ class EventsController extends Controller
             'past'=>$past,
             'check'=>$check,
             'race_result'=>EventResult::model(),
-            'tri_result'=>EventTriResult::model()
+            'tri_result'=>EventTriResult::model(),
+            'me'=>$em
 		));
         
 	}
@@ -874,5 +875,24 @@ class EventsController extends Controller
             
             return true;
         }
+    }
+    public function actionGoing()
+    {
+        $uid = Yii::app()->user->id;
+        $_POST['member_id'] = $uid;
+        $mod = MemberEvent::model();
+        if($_POST['id'])
+        {
+            $mod->updateByPk($_POST['id'], $_POST);
+        }
+        else
+        {
+            unset($_POST['id']);
+            $model  = new MemberEvent; 
+            $model->attributes=$_POST;
+            $model->save();
+        }
+        die();
+        
     }
 }

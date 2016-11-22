@@ -1076,3 +1076,26 @@ Stack trace:
 REQUEST_URI=/gorun/events/submitresult
 HTTP_REFERER=http://localhost/gorun/events/view/super-triathlon-sa-1-2-3-4
 ---
+2016/11/22 08:22:55 [warning] [application] Failed to set unsafe attribute "event_date" of "MemberEvent".
+in E:\wamp\www\gorun\protected\controllers\EventsController.php (892)
+in E:\wamp\www\gorun\index.php (13)
+2016/11/22 08:22:55 [error] [exception.CException] exception 'CException' with message 'Property "MemberEvent.event_time" is not defined.' in E:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('event_time')
+#1 E:\wamp\www\gorun\framework\validators\CRequiredValidator.php(52): CActiveRecord->__get('event_time')
+#2 E:\wamp\www\gorun\framework\validators\CValidator.php(197): CRequiredValidator->validateAttribute(Object(MemberEvent), 'event_time')
+#3 E:\wamp\www\gorun\framework\base\CModel.php(158): CValidator->validate(Object(MemberEvent), NULL)
+#4 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(786): CModel->validate(NULL)
+#5 E:\wamp\www\gorun\protected\controllers\EventsController.php(893): CActiveRecord->save()
+#6 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): EventsController->actionGoing()
+#7 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 E:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), NULL)
+#10 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('going')
+#11 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('events/going')
+#12 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/gorun/events/going
+HTTP_REFERER=http://localhost/gorun/events/view/lets-run-1
+---
