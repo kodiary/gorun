@@ -86,8 +86,8 @@ class EventsController extends Controller
        if(count($em))
        {
         $check['going'] = $em->going;
-        if($check['going'] == 1)
-        {
+        //if($check['going'] == 1)
+        //{
             $er = EventResult::model()->findAllByAttributes(array('event_id'=>$e->id,'user_id'=>Yii::app()->user->id));
             if(count($er))
             $check['result'] = $er;
@@ -98,7 +98,7 @@ class EventsController extends Controller
                 if(count($etr))
                 $check['tri_result'] = $etr;
             }
-        }
+        //}
        }
        }
        
@@ -895,5 +895,15 @@ class EventsController extends Controller
         }
         die();
         
+    }
+    
+    public function actionSubmitResults()
+    {
+        $events = Events::model();
+        $this->render('submit_result_view',array('events'=>$events));
+    }
+    public function actionCalendar()
+    {
+        $this->renderPartial('/events/_calendar',array('events'=>$events));
     }
 }

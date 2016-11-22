@@ -50,7 +50,7 @@
         
         
         <?php
-        if($past==1 && (isset($check['going']) && $check['going'] == 1))
+        if($past==1/* && (isset($check['going']) && $check['going'] == 1)*/)
         {
             if(!isset($check['result'])){
             ?>
