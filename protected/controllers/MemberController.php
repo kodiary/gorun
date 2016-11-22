@@ -330,7 +330,7 @@ class MemberController extends Controller
 		$this->render('success');
         }
 	}
-    public function actionLoadmore($model,$offset)
+    public function actionLoadmore($model,$offset,$view)
     {
         //echo $model;
         $critera = new CDbCriteria;
@@ -345,7 +345,7 @@ class MemberController extends Controller
         //var_dump($critera);
         
         $m = $model::model()->findAll($critera);
-        $this->renderPartial('/common/event_result',['memEvents'=>$m,'offset'=>$offset+$_POST['limit']]);
+        $this->renderPartial('/common/'.$view,['memEvents'=>$m,'offset'=>$offset+$_POST['limit']]);
        
     }
 }

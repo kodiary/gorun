@@ -128,13 +128,21 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
         <div class="clearfix"></div>
     </div>
     <div class="clearfix"></div>
-    <div class="col-md-12 block_border toggle-div upcoming">
-        <a href="javascript:void(0)" onclick="toggle_div('upcoming_more',this);"><span><strong>UPCOMING RACES</strong></span>
-        <span class="right"><i class="glyphicon glyphicon-chevron-down"></i></span></a>
-    </div>
+    <div class="upcoming_loader">
+        <div class="col-md-12 block_border toggle-div upcoming">
+            <a href="javascript:void(0)" onclick="toggle_div('upcoming_more',this);"><span><strong>UPCOMING RACES</strong></span>
+            <span class="right"><i class="glyphicon glyphicon-chevron-down"></i></span></a>
+        </div>
     <?php
-        $upcomingEvents = MemberEvent::model()->with(['event','event'=>['together'=>true]])->findAllByAttributes(['member_id'=>$model->id]);?>
-    <div class="cold-md-12 upcoming_more " style="<?php if($show == 1 && count($memEvents)==0)echo "display:none;";?>" >
+        $criteria = new CDbCriteria;
+        $criteria->with = ['event'];
+        $criteria->condition = 't.member_id="'.$model->id.'" and t.event_date>"'.date('Y-m-d').'"';
+        $upcomingEvents_Count= count(MemberEvent::model()->findAll($criteria));
+        $criteria->limit = $limit;
+        
+        $upcomingEvents = MemberEvent::model()->findAll($criteria);
+        //$upcomingEvents = MemberEvent::model()->with(['event','event'=>['together'=>true]])->findAllByAttributes(['member_id'=>$model->id]);?>
+        <div class="cold-md-12 upcoming_more" style="<?php if($show == 1 && count($memEvents)==0)echo "display:none;";?>" >
          <?php if(!$upcomingEvents){?>
           
             <div class="block_border blue"> No Results!</div>
@@ -143,19 +151,21 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
         foreach($upcomingEvents as $m){
         ?>
         
-           <a href="<?php echo Yii::app()->request->baseUrl; ?>/events/view/<?php echo $m->event['slug'];?>" class="listing">
+           <a href="<?php echo Yii::app()->request->baseUrl; ?>/events/view/<?php echo $m->event['slug'];?>" class="listing" title="<?php echo $limit;?>">
             <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/frontend/events/<?php if($m->event['logo'] && file_exists(Yii::app()->basePath.'/../images/frontend/events/thumb/'.$m->event['logo'])){?>thumb/<?php echo $m->event['logo']?><?php }else{?>thumb/noimg.jpg<?php }?>"/></div>
             <div class="txt">
                 <h3><?php echo $m->event['title'];?></h3>
                 <span class="datetime">
-                <?php 
-                    $date=date_create($m->event['start_date']);
-                    echo date_format($date,"D").' <strong>'.date_format($date,"d F Y").'</strong>';
-                    if($m->event['end_date']){
-                        $date=date_create($m->event['end_date']);
-                        echo " - ";
-                        echo $date2 = date_format($date,"D").' <strong>'.date_format($date,"d F Y").'</strong>';}
-                    ?></span> 
+                    <?php 
+                        $date=date_create($m->event['start_date']);
+                        echo date_format($date,"D").' <strong>'.date_format($date,"d F Y").'</strong>';
+                        if($m->event['end_date']){
+                            $date=date_create($m->event['end_date']);
+                            echo " - ";
+                            echo $date2 = date_format($date,"D").' <strong>'.date_format($date,"d F Y").'</strong>';
+                        }
+                    ?>
+                </span> 
                 <span class="racetag"><?php echo $m->event['province']?></span>
                 <div class="clearfix"></div>
                 <?php
@@ -171,10 +181,35 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
             <div class="clearfix"></div>
         </a>
         <?php }
-        } 
-        unset($memEvents); 
         ?>
+          <script>
+            function loadmore(div){
+                    var offset = $('.'+div+' a').last().attr('title');
+                    $.ajax({
+                        url:"<?php echo Yii::app()->baseUrl;?>/member/loadmore/model/MemberEvent/offset/"+offset+"/view/event_member",
+                        type: "post",
+                        dataType: 'html',
+                        data: <?php echo json_encode($criteria);?>,
+                        success:function(msg){
+                            $('.'+div).append(msg);
+                            var n_offset = $('.'+div+' a').last().attr('title');
+                            if(Number(<?php echo $upcomingEvents_Count;?>) <= Number(n_offset))
+                                $('.loadmore').hide();
+                        }
+                        
+                    });
+                }
+            </script>
+        <?php
+        } 
+        unset($upcomingEvents); 
+        ?>
+        </div>
     </div>
+    <?php 
+    if($upcomingEvents_Count > $limit){?>
+    <a class="btn btn-default btn-lg loadmore" onclick="loadmore('upcoming_loader')">Load More</a>
+    <?php }?>
     <?php
     $show = 0;
     if(count($results)>0)
@@ -256,7 +291,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
                    
                     
                     $.ajax({
-                        url:"<?php echo Yii::app()->baseUrl;?>/member/loadmore/model/EventResult/offset/"+offset,
+                        url:"<?php echo Yii::app()->baseUrl;?>/member/loadmore/model/EventResult/offset/"+offset+"/view/event_result",
                         type: "post",
                         dataType: 'html',
                         data: <?php echo json_encode($criteria);?>,
