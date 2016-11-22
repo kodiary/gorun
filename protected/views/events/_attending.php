@@ -32,7 +32,7 @@ $(function(){
     
     $.ajax({
        url:'<?php echo Yii::app()->request->baseUrl; ?>/events/going',
-       data:'going='+going+'&event_id=<?php echo $eid;?>&event_type=<?php echo $etype;?>&event_date=<?php echo $edate;?>&id=<?php echo $me->id;?>',
+       data:'going='+going+'&event_id=<?php echo $eid;?>&event_type=<?php echo $etype;?>&event_date=<?php echo $edate;?>',
        type:'post', 
     });
    }) 

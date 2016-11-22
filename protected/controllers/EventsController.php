@@ -881,13 +881,14 @@ class EventsController extends Controller
         $uid = Yii::app()->user->id;
         $_POST['member_id'] = $uid;
         $mod = MemberEvent::model();
-        if($_POST['id'])
+        $me = $mod->findByAttributes(array('member_id'=>$uid,'event_id'=>$_POST['event_id']));
+        if($me->id)
         {
-            $mod->updateByPk($_POST['id'], $_POST);
+            $mod->updateByPk($me->id, $_POST);
         }
         else
         {
-            unset($_POST['id']);
+            //unset($_POST['id']);
             $model  = new MemberEvent; 
             $model->attributes=$_POST;
             $model->save();

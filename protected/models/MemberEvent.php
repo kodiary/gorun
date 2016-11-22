@@ -39,11 +39,11 @@ class MemberEvent extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('member_id, event_id, event_type, event_time', 'required'),
-			array('member_id, event_id, going, event_type, event_time', 'numerical', 'integerOnly'=>true),
+			array('member_id, event_id, event_type, event_date', 'required'),
+			array('member_id, event_id, going, event_type', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, member_id, event_id, going, event_type, event_time', 'safe', 'on'=>'search'),
+			array('id, member_id, event_id, going, event_type, event_date', 'safe', 'on'=>'search'),
 		);
 	}
 
