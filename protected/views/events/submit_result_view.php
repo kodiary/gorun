@@ -13,7 +13,8 @@
             </label>
             
             <div class="col-md-12">
-                <input class="form-control" required="" placeholder="Input race name" name="race_name" value="" type="text">
+                <input class="form-control race_title" required="" placeholder="Input race name" name="race_name" value="" type="text">
+                <div class="listTypeEvent"></div>
             </div>
            <div class="clearfix"></div>
         </div>
@@ -100,6 +101,20 @@ $(function(){
             type:'post',
             success:function(res){
                 $('.calendarList').html(res);
+            }
+        })
+   });
+   
+   $('.race_title').keyup(function(){
+        
+        var title = $(this).val();
+        //var start_date = id.replace('_','-').replace('_','-');
+        $.ajax({
+            url:'<?php echo Yii::app()->request->baseUrl; ?>/events/listTypeEvent',
+            data:'title='+title,
+            type:'post',
+            success:function(res){
+                $('.listTypeEvent').html(res);
             }
         })
    });

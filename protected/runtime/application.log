@@ -128,3 +128,26 @@ Stack trace:
 REQUEST_URI=/gorun/events/listCalendarEvent
 HTTP_REFERER=http://localhost/gorun/events/submitresults
 ---
+2016/11/22 15:03:09 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'like' at line 3. The SQL statement executed was: SELECT `id`, `slug`, `start_date`
+FROM `tbl_events`
+WHERE like.
+in E:\wamp\www\gorun\protected\controllers\EventsController.php (925)
+in E:\wamp\www\gorun\index.php (13)
+2016/11/22 15:03:09 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'like' at line 3. The SQL statement executed was: SELECT `id`, `slug`, `start_date`
+FROM `tbl_events`
+WHERE like' in E:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 E:\wamp\www\gorun\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 E:\wamp\www\gorun\protected\controllers\EventsController.php(925): CDbCommand->queryRow()
+#2 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): EventsController->actionListTypeEvent()
+#3 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#4 E:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#5 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), NULL)
+#6 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('listtypeevent')
+#7 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('events/listType...')
+#8 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/gorun/events/listTypeEvent
+HTTP_REFERER=http://localhost/gorun/events/submitresults
+---

@@ -914,4 +914,20 @@ class EventsController extends Controller
         $this->renderPartial('/events/_calendar_list',array('events'=>$events,'et'=>EventsTime::model()));
         
     }
+    public function actionListTypeEvent()
+    {
+       
+        //$events = Events::model()->findAllByAttributes(array('visible'=>1,'start_date'=>$start_date));
+        if($_POST['title']){
+        $events = Yii::app()->db->createCommand()
+    ->select('id, slug, start_date,title')
+    ->from('tbl_events')
+    ->where('LOWER(title) LIKE LOWER("%'.$_POST['title'].'%")')
+    ->queryAll();
+    }
+    else
+    $events= array();
+        //var_dump($events);die();
+        $this->renderPartial('/events/_calendar_list',array('events'=>$events,'et'=>EventsTime::model())); 
+    }
 }
