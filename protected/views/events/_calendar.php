@@ -83,7 +83,7 @@ $da = end($arr);
 if(strlen($da)<2)
 $da = '0'.$da;
 $end_date = $ye.'-'.$mon.'-'.$da;
-$event= Yii::app()->db->createCommand('select start_date from tbl_events WHERE start_date >= "'.$start_date.'" AND end_date <= "'.$end_date.'" AND visible = 1 ORDER BY start_date')->queryAll();
+$event= Yii::app()->db->createCommand('select start_date from tbl_events WHERE start_date >= "'.$start_date.'" AND end_date <= "'.$end_date.'" AND end_date <= "'.date('Y-m-d').'" AND visible = 1 ORDER BY start_date')->queryAll();
 $d_count;
 foreach($event as $e)
 {

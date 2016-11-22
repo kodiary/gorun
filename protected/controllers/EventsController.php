@@ -909,7 +909,7 @@ class EventsController extends Controller
     public function actionListCalendarEvent()
     {
         $start_date = $_POST['start_date'];
-        $events = Events::model()->findAllByAttributes(array('visible'=>1,'start_date'=>$start_date));
+        $events = Events::model()->findAllByAttributes(array('visible'=>1,'start_date'=>$start_date,));
         //var_dump($events);
         $this->renderPartial('/events/_calendar_list',array('events'=>$events,'et'=>EventsTime::model()));
         
@@ -922,7 +922,7 @@ class EventsController extends Controller
         $events = Yii::app()->db->createCommand()
     ->select('id, slug, start_date,title')
     ->from('tbl_events')
-    ->where('LOWER(title) LIKE LOWER("%'.$_POST['title'].'%")')
+    ->where('LOWER(title) LIKE LOWER("%'.$_POST['title'].'%") AND end_date < "'.date('Y-m-d').'" AND visible=1')
     ->queryAll();
     }
     else
