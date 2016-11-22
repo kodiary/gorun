@@ -110,16 +110,7 @@
                         <?php
                     }
                     ?>
-                    <?php
-                    if($past==0)
-                    {
-                        ?>
-                    <div class="pad-top-10">
-                            <a class="btn btn-info btn-lg">Enter Online Now</a>
-                    </div>
-                    <?php
-                    }
-                    ?>
+                    
             </div>
             <div class="clearfix"></div>
         </div>
