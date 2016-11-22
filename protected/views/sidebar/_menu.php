@@ -13,4 +13,4 @@
 </div>
 <a href="#" class="race_wallet">RACE WALLET - <span class="blue">R0.00</span></a>
 <!--a href="<?php echo Yii::app()->request->baseUrl; ?>/events/create" class="submit-event">Submit your event &nbsp; <span class="fa fa-plus"></span></a-->
-<a href="<?php echo Yii::app()->request->baseUrl; ?>/results/create" class="submit-event">Submit Your Results &nbsp; <span class="fa fa-plus"></span></a>
+<a href="<?php echo Yii::app()->request->baseUrl; ?>/events/submitResults" class="submit-event">Submit Your Results &nbsp; <span class="fa fa-plus"></span></a>

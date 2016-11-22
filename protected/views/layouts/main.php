@@ -114,13 +114,13 @@ if (!empty($this->metaKeys)) {
     </div>
     <div class="mainnav">
         <ul class="anchors">
-            <li><a href="#" class="active">Home</a></li>
+            <li><a href="<?php echo Yii::app()->request->baseUrl; ?>" class="active">Home</a></li>
             <li><a href="#">Races</a></li>
             <li><a href="#">Results</a></li>
             <li><a href="#">Race Ratings</a></li>
             <li><a href="<?php echo Yii::app()->request->baseUrl;?>/clubs/type/running">Running clubs</a></li>
             <li><a href="#">News</a></li>
-            <li><a href="#">Submit Results</a></li>
+            <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/events/submitResults">Submit Results</a></li>
         </ul>
     </div>
     <div class="row maindiv">
