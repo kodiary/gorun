@@ -68,6 +68,8 @@ class EventResult extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+            'event'=>array(self::BELONGS_TO, 'Events', 'event_id'),
+            'member'=>array(self::BELONGS_TO, 'Member', 'user_id')
 		);
 	}
 
