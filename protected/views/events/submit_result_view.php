@@ -35,6 +35,38 @@
             </div>
            <div class="clearfix"></div>
         </div>
+        
+        <div class="form-group white">
+        
+            <label class="col-md-12">21 recent past events
+            <br /><span class="blue">A handful of recent past events to make submitting results easier</span>
+            </label>
+            
+            <div class="col-md-12">
+                <?php
+                $events = Yii::app()->db->createCommand()
+                ->select('id, slug, start_date,title')
+                ->from('tbl_events')
+                ->where('end_date < "'.date('Y-m-d').'" AND visible=1')
+                ->order('start_date')
+                ->limit(21)
+                ->queryAll();
+                foreach($events as $e)
+                {
+                    $start_date = $e['start_date'];
+                    $old_date_timestamp = strtotime($start_date);
+                    $new_date = date('d F Y', $old_date_timestamp);  
+                    ?>
+                    <a class="list21" href="<?php echo Yii::app()->request->baseUrl; ?>/events/view/<?php echo $e['slug'];?>">
+                        <?php echo $e['title'];?> | <span class="blue"><?php echo $new_date;?></span>
+                    </a>
+                    <?php
+                }
+                ?>
+                
+            </div>
+           <div class="clearfix"></div>
+        </div>
  </div>       
 <script>
 $(function(){
