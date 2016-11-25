@@ -1,5 +1,6 @@
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Gjdm_0nJk17UVBPoV5Im40uQeguoRAo"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/gmap_front.js"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap-star-rating.js"></script>
 <div class="sidebar col-md-3">
   <?php echo $this->renderPartial('/sidebar/_menu', false, true); ?>
 </div>
@@ -19,6 +20,7 @@
                 <h3 class="blue"><?php echo strtoupper($m_type->title)?></h3>
                 <h1 class="big_font"><?php echo $model->title?></h1>
                 <div>
+                    
                     <span class="datetime">
                         <?php 
                             $date=date_create($model->start_date);
@@ -167,6 +169,86 @@
             </div>
             <div class="clearfix"></div>
         </div>
+        
+        <div class="white padtopbot5">
+            <a class="expand_block ratinganchor col-md-12" href="javascript:void(0)">
+                <div class="floatLeft">RACE REVIEWS</div>
+                <div class="floatRight"><span class="fa fa-angle-down"></span></div>
+                <div class="clearfix"></div>
+            </a>
+            <div class="content col-md-12" style="display: none;">
+                <div class="row">
+                    <div class="rating-block">
+                        <div class="col-md-5">
+                            <?php
+                            $rating = 3.5;
+                            $rate_int = (int)$rating;
+                            $decimal = $rating - $rate_int;
+                            $review_count = 1100;
+                            
+                            $review_count = number_format($review_count);
+                            ?>
+                            <div id="stars-default2">
+                                <?php
+                                    for($i=1;$i<=5;$i++)
+                                    {
+                                        if($i<=$rate_int)
+                                        {
+                                            ?>
+                                            <span class="fa fa-star" style="font-size: 3.5em; color: rgb(3, 147, 217); cursor: pointer;"></span>
+                                            <?php
+                                        }
+                                        else
+                                        {
+                                            if($decimal>=0.5)
+                                            {
+                                               ?>
+                                               <span class="fa fa-star-half-empty" style="font-size: 3.5em; color: rgb(3, 147, 217); cursor: pointer;"></span>
+                                               <?php 
+                                               $decimal = 0;
+                                            }
+                                            else
+                                            {
+                                                ?>
+                                                <span class="fa fa-star" style="font-size: 3.5em; color: rgb(215, 215, 215); cursor: pointer;"></span>
+                                                <?php
+                                            }
+                                        }
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                        <div class="col-md-7 review-message">
+                            Average Rating <strong><?php echo str_replace('.',',',$rating);?></strong> from <strong><?php echo $review_count;?></strong> Reviews
+                            <br />
+                            <a href="#" class="edit_review">RATE THIS RACE</a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="your_review">
+                        <div class="col-md-12">
+                           <div class="col-md-12">
+                               <strong class="review-title">YOUR RACE REVIEW</strong>
+                               <span class="blue">Tell us about your race experience or post a personal performance review</span>
+                               <textarea class="form-control review_text"></textarea> 
+                           </div> 
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="five-start-block">
+                            <?php
+                            $my_rating = 0; 
+                            ?>
+                            <div class="col-md-4"><span class="rating-title">YOUR RATING</span></div>
+                            <div class="col-md-6"><div id="stars-default"><input type="hidden" name="rating"/></div></div>
+                            <div class="col-md-2"><span class="rating-title"><?php echo $my_rating;?> STARS</span></div>
+                            <div class="clearfix"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
     </div>
     <div class="clearfix"></div>
     <hr />
@@ -181,6 +263,8 @@
 
 $(function(){
     initialize();
+    //$("#stars-default").rating('create',{coloron:'#ADADAD',value:<?php echo $rating;?>});
+    $("#stars-default").rating('create',{coloron:'#0393D9',value:<?php echo $my_rating;?>});
     <?php
     if(isset($_GET['submitted']))
     {
@@ -300,6 +384,9 @@ $(function(){
     $('.expand_block').click(function(){
         
         if($(this).parent().find('.content').attr('style')=='display: none;'){
+        if($(this).hasClass('ratinganchor'))
+        $(this).attr('style','border-bottom:1px solid #ccc;padding-bottom:5px;');
+        else    
         $(this).attr('style','border-bottom:1px solid #ccc;padding-bottom:5px;margin-bottom:5px');
         $(this).parent().find('.content').show('slow');
         }

@@ -36,6 +36,7 @@ if (!empty($this->metaKeys)) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo Yii::app()->request->baseUrl; ?>/bootstrap/css/bootstrap-theme.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/fa/css/font-awesome.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/style2.css" rel="stylesheet" type="text/css" />

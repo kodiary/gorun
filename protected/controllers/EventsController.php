@@ -922,7 +922,7 @@ class EventsController extends Controller
         $events = Yii::app()->db->createCommand()
     ->select('id, slug, start_date,title')
     ->from('tbl_events')
-    ->where('LOWER(title) LIKE LOWER("%'.$_POST['title'].'%") AND end_date < "'.date('Y-m-d').'" AND visible=1')
+    ->where('LOWER(title) LIKE LOWER("%'.$_POST['title'].'%") AND visible=1')
     ->queryAll();
     }
     else
