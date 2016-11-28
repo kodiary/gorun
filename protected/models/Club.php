@@ -224,14 +224,14 @@ class Club extends CActiveRecord
        return $seo;
     }
     
-    public function getAllActiveCompany()
+    public function getAllActiveClub()
     {
-        $result = Company::model()->findAll("status=1 AND (valid_until >= curdate() OR never_expire=1)");
+        $result = Club::model()->findAll("is_active=1");
         $company = array();
         foreach($result as $val){
             $company[] = $val->id;
         }
-        return $company; 
+        return CHtml::listData($result, 'id', 'title'); 
     }
     
     public function getAllActiveCompanyForSpecials()

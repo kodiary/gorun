@@ -35,6 +35,38 @@ return array(
                 'bootstrap.gii', // since 0.9.1
             ),
 		),
+        'hybridauth' => array(
+            'baseUrl' => 'http://'. $_SERVER['SERVER_NAME'] . '/gorun/hybridauth', 
+            'withYiiUser' => false, // Set to true if using yii-user
+            "providers" => array ( 
+                "openid" => array (
+                    "enabled" => false
+                ),
+ 
+                "yahoo" => array ( 
+                    "enabled" => false 
+                ),
+ 
+                "google" => array ( 
+                    "enabled" => true,
+                    "keys"    => array ( "id" => "686923470286-8ntv99ud81aoh4p8atnb2h6610n1taus.apps.googleusercontent.com", "secret" => "1HrQYdXL_fpMw130o5_n5bjR" ),
+                    "scope"   => ""
+                ),
+ 
+                "facebook" => array ( 
+                    "enabled" => true,
+                    "keys"    => array ( "id" => "343657669340705", "secret" => "58120f347973ca16c74b67ff60d7f066" ),
+                    "scope"   => "email,user_birthday",
+                    "fields"  =>['name','email','gender','verified'],
+                    "display" => "" 
+                ),
+ 
+                "twitter" => array ( 
+                    "enabled" => false,
+                    "keys"    => array ( "key" => "", "secret" => "" ) 
+                )
+            )
+        ),
 		
 	),
 
@@ -54,6 +86,7 @@ return array(
                     'jquery.Jcrop.min.js'=>false,
                     'jquery.yiilistview.js'=>false,
                     'jquery.ba-bbq.js'=>false,
+                    //'jquery.yiiactiveform.js'=>false,
                     //'bootstrap-popover.js'=>false,
                     //'bootstrap-alert.js'=>false,
                     
@@ -195,6 +228,7 @@ return array(
             'run'=>'run/index',
             'bike'=>'bike/index',
             'triathlon'=>'triathlon/index',
+            'examples'=>'examples',
             '<slug>'=>'member/details/slug/<slug>',
             
             '<controller:\w+>/<id:\d+>'=>'<controller>/view',

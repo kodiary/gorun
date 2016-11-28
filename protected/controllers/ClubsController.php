@@ -257,8 +257,10 @@ class ClubsController extends Controller
         {
             $match = str_replace('_',' ',$match);
             $match = ucfirst($match);
-            $match = addcslashes($match, '%_');
-            $criteria->addSearchCondition('types',$match);
+            $type = EventsType::model()->findByAttributes(['title'=>$match]);
+            
+            $type = addcslashes($type->id, '%_');
+            $criteria->addSearchCondition('types',$type);
            
         }
         

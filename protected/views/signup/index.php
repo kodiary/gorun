@@ -7,6 +7,7 @@
 </div>
 <div class="content registration">
     <div class="col-md-4">
+    
     <h2 class="blue">Register Now for Free</h2>
         <hr />
     <form class="row" id="signupForm" novalidate="novalidate" method="post" action="<?php echo Yii::app()->request->baseUrl;?>/member/signup">
@@ -95,8 +96,8 @@
         <div class="clearfix"></div>
         <hr class="" style="margin: 10px!important;" />
         <div class="center col-md-12">
-        <a href="#"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/googlesign.png" /></a><br /><br />
-        <a href="#"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/fbsign.png" /></a>
+        <a href="<?php echo Yii::app()->request->baseUrl;?>/hybridauth/default/login?provider=google"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/googlesign.png" /></a><br /><br />
+        <a href="<?php echo Yii::app()->request->baseUrl;?>/hybridauth/default/login?provider=facebook"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/fbsign.png" /></a>
         </div>
         <div class="clearfix"></div>
         <hr />
@@ -166,8 +167,6 @@
   </div>
 </form>
 </div>
-
-
 <script type="text/javascript">
 	$( function () {
 	   

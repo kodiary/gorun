@@ -151,3 +151,1090 @@ Stack trace:
 REQUEST_URI=/gorun/events/listTypeEvent
 HTTP_REFERER=http://localhost/gorun/events/submitresults
 ---
+2016/11/24 07:22:55 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY a.event_type ASC, distance ASC' at line 1. The SQL statement executed was: SELECT distance,dist_time,event_type FROM tbl_event_result AS a, (SELECT MIN(dist_time) AS mini FROM tbl_event_result GROUP BY event_type ,distance ) AS m WHERE m.mini = a.dist_time AND a.user_id= ORDER BY a.event_type ASC, distance ASC.
+in F:\wamp\www\gorun\protected\controllers\MemberController.php (38)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/24 07:22:55 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY a.event_type ASC, distance ASC' at line 1. The SQL statement executed was: SELECT distance,dist_time,event_type FROM tbl_event_result AS a, (SELECT MIN(dist_time) AS mini FROM tbl_event_result GROUP BY event_type ,distance ) AS m WHERE m.mini = a.dist_time AND a.user_id= ORDER BY a.event_type ASC, distance ASC' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 F:\wamp\www\gorun\protected\controllers\MemberController.php(38): CDbCommand->queryAll()
+#2 [internal function]: MemberController->actionDetails('examples')
+#3 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#4 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#5 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#9 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/details/...')
+#10 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/gorun/examples/
+HTTP_REFERER=http://localhost/gorun/signup/oauthadmin
+---
+2016/11/24 07:23:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "examples".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('examples')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/examples/
+HTTP_REFERER=http://localhost/gorun/signup/oauthadmin
+---
+2016/11/24 07:23:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404.jpg".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/404.jpg')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/404.jpg
+HTTP_REFERER=http://localhost/gorun/examples/
+---
+2016/11/24 07:23:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "examples".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('examples')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/examples/
+HTTP_REFERER=http://localhost/gorun/signup/oauthadmin
+---
+2016/11/24 07:23:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404.jpg".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/404.jpg')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/404.jpg
+HTTP_REFERER=http://localhost/gorun/examples/
+---
+2016/11/24 07:26:29 [error] [exception.Exception] exception 'Exception' with message 'Model 'User' must implement the 'findByEmail' method' in F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php:526
+Stack trace:
+#0 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(131): HOAuthAction->setUp()
+#1 F:\wamp\www\gorun\framework\web\actions\CAction.php(75): HOAuthAction->run()
+#2 F:\wamp\www\gorun\framework\web\CController.php(309): CAction->runWithParams(Array)
+#3 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(HOAuthAction))
+#4 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(HOAuthAction), Array)
+#5 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('oauth')
+#6 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('signup/oauth')
+#7 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#8 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/gorun/signup/oauth?provider=Google
+HTTP_REFERER=http://localhost/gorun/signup
+---
+2016/11/24 07:26:50 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gorun.user_oauth' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `user_oauth`.
+in F:\wamp\www\gorun\protected\extensions\hoauth\models\UserOAuth.php (47)
+in F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php (160)
+in F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php (136)
+2016/11/24 07:28:27 [error] [exception.CException] exception 'CException' with message 'You need to implement verifyPassword($password) or validatePassword($password) method in order to let hoauth validate user password.' in F:\wamp\www\gorun\protected\extensions\hoauth\models\HUserInfoForm.php:121
+Stack trace:
+#0 F:\wamp\www\gorun\framework\validators\CInlineValidator.php(43): HUserInfoForm->validatePassword('password', Array)
+#1 F:\wamp\www\gorun\framework\validators\CValidator.php(197): CInlineValidator->validateAttribute(Object(HUserInfoForm), 'password')
+#2 F:\wamp\www\gorun\framework\base\CModel.php(158): CValidator->validate(Object(HUserInfoForm), NULL)
+#3 F:\wamp\www\gorun\framework\web\form\CForm.php(206): CModel->validate()
+#4 F:\wamp\www\gorun\protected\extensions\hoauth\models\HUserInfoForm.php(147): CForm->validate()
+#5 F:\wamp\www\gorun\framework\base\CComponent.php(112): HUserInfoForm->getIsFormValid()
+#6 F:\wamp\www\gorun\protected\extensions\hoauth\models\HUserInfoForm.php(171): CComponent->__get('isFormValid')
+#7 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(377): HUserInfoForm->validateUser()
+#8 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(329): HOAuthAction->checkUserData(Object(Member))
+#9 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(293): HOAuthAction->processUser(Object(Member), Object(Hybrid_User_Profile))
+#10 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(211): HOAuthAction->prepareGuestUser()
+#11 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(163): HOAuthAction->getAccessCode()
+#12 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(136): HOAuthAction->oAuth('Google')
+#13 F:\wamp\www\gorun\framework\web\actions\CAction.php(75): HOAuthAction->run()
+#14 F:\wamp\www\gorun\framework\web\CController.php(309): CAction->runWithParams(Array)
+#15 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(HOAuthAction))
+#16 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(HOAuthAction), Array)
+#17 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('oauth')
+#18 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('signup/oauth')
+#19 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#20 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/gorun/signup/oauth?provider=Google
+HTTP_REFERER=http://localhost/gorun/signup/oauth?provider=Google
+---
+2016/11/24 07:29:28 [error] [exception.CException] exception 'CException' with message 'Property "Member.acc_status" is not defined.' in F:\wamp\www\gorun\framework\base\CComponent.php:174
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(160): CComponent->__set('acc_status', 1)
+#1 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(447): CActiveRecord->__set('acc_status', 1)
+#2 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(324): HOAuthAction->populateModel(Object(Member), Object(Hybrid_User_Profile))
+#3 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(293): HOAuthAction->processUser(Object(Member), Object(Hybrid_User_Profile))
+#4 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(211): HOAuthAction->prepareGuestUser()
+#5 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(163): HOAuthAction->getAccessCode()
+#6 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(136): HOAuthAction->oAuth('Google')
+#7 F:\wamp\www\gorun\framework\web\actions\CAction.php(75): HOAuthAction->run()
+#8 F:\wamp\www\gorun\framework\web\CController.php(309): CAction->runWithParams(Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(HOAuthAction))
+#10 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(HOAuthAction), Array)
+#11 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('oauth')
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('signup/oauth')
+#13 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/gorun/signup/oauth?provider=Google
+HTTP_REFERER=http://localhost/gorun/signup
+---
+2016/11/24 07:30:10 [error] [exception.Exception] exception 'Exception' with message 'Can't sign in, something wrong with UserIdentity class.' in F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php:233
+Stack trace:
+#0 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(163): HOAuthAction->getAccessCode()
+#1 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(136): HOAuthAction->oAuth('Google')
+#2 F:\wamp\www\gorun\framework\web\actions\CAction.php(75): HOAuthAction->run()
+#3 F:\wamp\www\gorun\framework\web\CController.php(309): CAction->runWithParams(Array)
+#4 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(HOAuthAction))
+#5 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(HOAuthAction), Array)
+#6 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('oauth')
+#7 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('signup/oauth')
+#8 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/gorun/signup/oauth?provider=Google
+HTTP_REFERER=http://localhost/gorun/signup
+---
+2016/11/24 07:40:10 [error] [exception.Exception] exception 'Exception' with message ''debug_mode' is set to 'true', but the file hauth.log in 'debug_file' does not exit.' in F:\wamp\www\gorun\protected\extensions\hoauth\hybridauth\Hybrid\Logger.php:18
+Stack trace:
+#0 F:\wamp\www\gorun\protected\extensions\hoauth\hybridauth\Hybrid\Auth.php(91): Hybrid_Logger->__construct()
+#1 F:\wamp\www\gorun\protected\extensions\hoauth\hybridauth\Hybrid\Auth.php(39): Hybrid_Auth::initialize(Array)
+#2 F:\wamp\www\gorun\protected\extensions\hoauth\models\UserOAuth.php(159): Hybrid_Auth->__construct(Array)
+#3 F:\wamp\www\gorun\framework\base\CComponent.php(112): UserOAuth->getHybridAuth()
+#4 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('hybridauth')
+#5 F:\wamp\www\gorun\protected\extensions\hoauth\models\UserOAuth.php(194): CActiveRecord->__get('hybridauth')
+#6 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(160): UserOAuth->authenticate('Google')
+#7 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(136): HOAuthAction->oAuth('Google')
+#8 F:\wamp\www\gorun\framework\web\actions\CAction.php(75): HOAuthAction->run()
+#9 F:\wamp\www\gorun\framework\web\CController.php(309): CAction->runWithParams(Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(HOAuthAction))
+#11 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(HOAuthAction), Array)
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('oauth')
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('signup/oauth')
+#14 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/gorun/signup/oauth?provider=Google
+HTTP_REFERER=http://localhost/gorun/signup
+---
+2016/11/24 07:43:47 [error] [exception.Exception] exception 'Exception' with message 'Can't sign in, something wrong with UserIdentity class.' in F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php:233
+Stack trace:
+#0 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(163): HOAuthAction->getAccessCode()
+#1 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(136): HOAuthAction->oAuth('Google')
+#2 F:\wamp\www\gorun\framework\web\actions\CAction.php(75): HOAuthAction->run()
+#3 F:\wamp\www\gorun\framework\web\CController.php(309): CAction->runWithParams(Array)
+#4 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(HOAuthAction))
+#5 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(HOAuthAction), Array)
+#6 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('oauth')
+#7 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('signup/oauth')
+#8 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/gorun/signup/oauth?provider=Google
+HTTP_REFERER=http://localhost/gorun/signup
+---
+2016/11/24 07:48:20 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY a.event_type ASC, distance ASC' at line 1. The SQL statement executed was: SELECT distance,dist_time,event_type FROM tbl_event_result AS a, (SELECT MIN(dist_time) AS mini FROM tbl_event_result GROUP BY event_type ,distance ) AS m WHERE m.mini = a.dist_time AND a.user_id= ORDER BY a.event_type ASC, distance ASC.
+in F:\wamp\www\gorun\protected\controllers\MemberController.php (38)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/24 07:48:20 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY a.event_type ASC, distance ASC' at line 1. The SQL statement executed was: SELECT distance,dist_time,event_type FROM tbl_event_result AS a, (SELECT MIN(dist_time) AS mini FROM tbl_event_result GROUP BY event_type ,distance ) AS m WHERE m.mini = a.dist_time AND a.user_id= ORDER BY a.event_type ASC, distance ASC' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 F:\wamp\www\gorun\protected\controllers\MemberController.php(38): CDbCommand->queryAll()
+#2 [internal function]: MemberController->actionDetails('member')
+#3 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#4 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#5 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#9 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/details/...')
+#10 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/gorun/member/
+---
+2016/11/24 07:57:50 [error] [exception.Exception] exception 'Exception' with message 'Can't sign in, something wrong with UserIdentity class.' in F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php:233
+Stack trace:
+#0 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(163): HOAuthAction->getAccessCode()
+#1 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(136): HOAuthAction->oAuth('Google')
+#2 F:\wamp\www\gorun\framework\web\actions\CAction.php(75): HOAuthAction->run()
+#3 F:\wamp\www\gorun\framework\web\CController.php(309): CAction->runWithParams(Array)
+#4 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(HOAuthAction))
+#5 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(HOAuthAction), Array)
+#6 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('oauth')
+#7 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('signup/oauth')
+#8 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/gorun/signup/oauth?provider=Google
+HTTP_REFERER=http://localhost/gorun/signup
+---
+2016/11/24 08:11:20 [error] [exception.Exception] exception 'Exception' with message 'Can't sign in, something wrong with UserIdentity class.' in F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php:233
+Stack trace:
+#0 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(163): HOAuthAction->getAccessCode()
+#1 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(136): HOAuthAction->oAuth('Google')
+#2 F:\wamp\www\gorun\framework\web\actions\CAction.php(75): HOAuthAction->run()
+#3 F:\wamp\www\gorun\framework\web\CController.php(309): CAction->runWithParams(Array)
+#4 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(HOAuthAction))
+#5 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(HOAuthAction), Array)
+#6 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('oauth')
+#7 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('signup/oauth')
+#8 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/gorun/signup/oauth?provider=Google
+HTTP_REFERER=http://localhost/gorun/signup
+---
+2016/11/24 08:13:13 [error] [exception.Exception] exception 'Exception' with message 'Can't sign in, something wrong with UserIdentity class.' in F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php:233
+Stack trace:
+#0 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(163): HOAuthAction->getAccessCode()
+#1 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(136): HOAuthAction->oAuth('Google')
+#2 F:\wamp\www\gorun\framework\web\actions\CAction.php(75): HOAuthAction->run()
+#3 F:\wamp\www\gorun\framework\web\CController.php(309): CAction->runWithParams(Array)
+#4 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(HOAuthAction))
+#5 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(HOAuthAction), Array)
+#6 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('oauth')
+#7 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('signup/oauth')
+#8 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/gorun/signup/oauth?provider=Google
+HTTP_REFERER=http://localhost/gorun/signup
+---
+2016/11/24 08:13:16 [error] [exception.Exception] exception 'Exception' with message 'Can't sign in, something wrong with UserIdentity class.' in F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php:233
+Stack trace:
+#0 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(163): HOAuthAction->getAccessCode()
+#1 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(136): HOAuthAction->oAuth('Google')
+#2 F:\wamp\www\gorun\framework\web\actions\CAction.php(75): HOAuthAction->run()
+#3 F:\wamp\www\gorun\framework\web\CController.php(309): CAction->runWithParams(Array)
+#4 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(HOAuthAction))
+#5 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(HOAuthAction), Array)
+#6 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('oauth')
+#7 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('signup/oauth')
+#8 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/gorun/signup/oauth?provider=Google
+HTTP_REFERER=http://localhost/gorun/signup
+---
+2016/11/24 08:14:24 [error] [exception.Exception] exception 'Exception' with message 'Can't sign in, something wrong with UserIdentity class.' in F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php:233
+Stack trace:
+#0 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(163): HOAuthAction->getAccessCode()
+#1 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(136): HOAuthAction->oAuth('Google')
+#2 F:\wamp\www\gorun\framework\web\actions\CAction.php(75): HOAuthAction->run()
+#3 F:\wamp\www\gorun\framework\web\CController.php(309): CAction->runWithParams(Array)
+#4 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(HOAuthAction))
+#5 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(HOAuthAction), Array)
+#6 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('oauth')
+#7 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('signup/oauth')
+#8 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/gorun/signup/oauth?provider=Google
+HTTP_REFERER=http://localhost/gorun/signup
+---
+2016/11/24 08:19:33 [error] [exception.Exception] exception 'Exception' with message 'Can't sign in, something wrong with UserIdentity class.' in F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php:233
+Stack trace:
+#0 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(163): HOAuthAction->getAccessCode()
+#1 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(136): HOAuthAction->oAuth('Google')
+#2 F:\wamp\www\gorun\framework\web\actions\CAction.php(75): HOAuthAction->run()
+#3 F:\wamp\www\gorun\framework\web\CController.php(309): CAction->runWithParams(Array)
+#4 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(HOAuthAction))
+#5 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(HOAuthAction), Array)
+#6 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('oauth')
+#7 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('signup/oauth')
+#8 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/gorun/signup/oauth?provider=Google
+---
+2016/11/24 09:11:34 [warning] [application] Failed to set unsafe attribute "username" of "Member".
+in F:\wamp\www\gorun\protected\modules\hybridauth\controllers\DefaultController.php (68)
+in F:\wamp\www\gorun\protected\modules\hybridauth\controllers\DefaultController.php (17)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/24 09:11:34 [warning] [application] Failed to set unsafe attribute "email" of "Member".
+in F:\wamp\www\gorun\protected\modules\hybridauth\controllers\DefaultController.php (68)
+in F:\wamp\www\gorun\protected\modules\hybridauth\controllers\DefaultController.php (17)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/24 09:19:45 [warning] [application] Failed to set unsafe attribute "username" of "Member".
+in F:\wamp\www\gorun\protected\modules\hybridauth\controllers\DefaultController.php (68)
+in F:\wamp\www\gorun\protected\modules\hybridauth\controllers\DefaultController.php (17)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/24 09:19:45 [warning] [application] Failed to set unsafe attribute "email" of "Member".
+in F:\wamp\www\gorun\protected\modules\hybridauth\controllers\DefaultController.php (68)
+in F:\wamp\www\gorun\protected\modules\hybridauth\controllers\DefaultController.php (17)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/24 09:34:32 [warning] [application] Failed to set unsafe attribute "username" of "Member".
+in F:\wamp\www\gorun\protected\modules\hybridauth\controllers\DefaultController.php (68)
+in F:\wamp\www\gorun\protected\modules\hybridauth\controllers\DefaultController.php (17)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/24 09:34:32 [warning] [application] Failed to set unsafe attribute "email" of "Member".
+in F:\wamp\www\gorun\protected\modules\hybridauth\controllers\DefaultController.php (68)
+in F:\wamp\www\gorun\protected\modules\hybridauth\controllers\DefaultController.php (17)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/24 09:36:21 [warning] [application] Failed to set unsafe attribute "username" of "Member".
+in F:\wamp\www\gorun\protected\modules\hybridauth\controllers\DefaultController.php (68)
+in F:\wamp\www\gorun\protected\modules\hybridauth\controllers\DefaultController.php (17)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/24 09:36:21 [warning] [application] Failed to set unsafe attribute "email" of "Member".
+in F:\wamp\www\gorun\protected\modules\hybridauth\controllers\DefaultController.php (68)
+in F:\wamp\www\gorun\protected\modules\hybridauth\controllers\DefaultController.php (17)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/24 09:42:34 [warning] [application] Failed to set unsafe attribute "email" of "LoginForm".
+in F:\wamp\www\gorun\protected\modules\hybridauth\controllers\DefaultController.php (68)
+in F:\wamp\www\gorun\protected\modules\hybridauth\controllers\DefaultController.php (17)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/24 11:08:20 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY a.event_type ASC, distance ASC' at line 1. The SQL statement executed was: SELECT distance,dist_time,event_type FROM tbl_event_result AS a, (SELECT MIN(dist_time) AS mini FROM tbl_event_result GROUP BY event_type ,distance ) AS m WHERE m.mini = a.dist_time AND a.user_id= ORDER BY a.event_type ASC, distance ASC.
+in F:\wamp\www\gorun\protected\controllers\MemberController.php (38)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/24 11:08:20 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY a.event_type ASC, distance ASC' at line 1. The SQL statement executed was: SELECT distance,dist_time,event_type FROM tbl_event_result AS a, (SELECT MIN(dist_time) AS mini FROM tbl_event_result GROUP BY event_type ,distance ) AS m WHERE m.mini = a.dist_time AND a.user_id= ORDER BY a.event_type ASC, distance ASC' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 F:\wamp\www\gorun\protected\controllers\MemberController.php(38): CDbCommand->queryAll()
+#2 [internal function]: MemberController->actionDetails('s')
+#3 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#4 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#5 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#9 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/details/...')
+#10 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/gorun/s
+---
+2016/11/25 05:20:26 [error] [exception.Exception] exception 'Exception' with message 'Authentification failed! facebook returned an invalide user id.' in F:\wamp\www\gorun\protected\modules\hybridauth\Hybrid\Providers\Facebook.php:77
+Stack trace:
+#0 F:\wamp\www\gorun\protected\modules\hybridauth\Hybrid\Endpoint.php(190): Hybrid_Providers_Facebook->loginFinish()
+#1 F:\wamp\www\gorun\protected\modules\hybridauth\Hybrid\Endpoint.php(61): Hybrid_Endpoint::processAuthDone()
+#2 F:\wamp\www\gorun\protected\modules\hybridauth\controllers\DefaultController.php(134): Hybrid_Endpoint::process()
+#3 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): DefaultController->actionCallback()
+#4 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('callback')
+#8 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('hybridauth/defa...')
+#9 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#11 {main}
+
+Next exception 'Exception' with message 'Authentification failed! facebook returned an invalide user id.' in F:\wamp\www\gorun\protected\extensions\hoauth\hybridauth\Hybrid\Auth.php:147
+Stack trace:
+#0 F:\wamp\www\gorun\protected\extensions\hoauth\hybridauth\Hybrid\Auth.php(39): Hybrid_Auth::initialize(Array)
+#1 F:\wamp\www\gorun\protected\extensions\hoauth\models\UserOAuth.php(159): Hybrid_Auth->__construct(Array)
+#2 F:\wamp\www\gorun\framework\base\CComponent.php(112): UserOAuth->getHybridAuth()
+#3 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('hybridauth')
+#4 F:\wamp\www\gorun\protected\extensions\hoauth\models\UserOAuth.php(194): CActiveRecord->__get('hybridauth')
+#5 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(160): UserOAuth->authenticate('Facebook')
+#6 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(136): HOAuthAction->oAuth('Facebook')
+#7 F:\wamp\www\gorun\framework\web\actions\CAction.php(75): HOAuthAction->run()
+#8 F:\wamp\www\gorun\framework\web\CController.php(309): CAction->runWithParams(Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(HOAuthAction))
+#10 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(HOAuthAction), Array)
+#11 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('oauth')
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('signup/oauth')
+#13 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/gorun/signup/oauth?provider=Facebook
+---
+2016/11/25 05:28:38 [error] [exception.Exception] exception 'Exception' with message 'Authentification failed! facebook returned an invalide user id.' in F:\wamp\www\gorun\protected\modules\hybridauth\Hybrid\Providers\Facebook.php:77
+Stack trace:
+#0 F:\wamp\www\gorun\protected\modules\hybridauth\Hybrid\Endpoint.php(190): Hybrid_Providers_Facebook->loginFinish()
+#1 F:\wamp\www\gorun\protected\modules\hybridauth\Hybrid\Endpoint.php(61): Hybrid_Endpoint::processAuthDone()
+#2 F:\wamp\www\gorun\protected\modules\hybridauth\controllers\DefaultController.php(134): Hybrid_Endpoint::process()
+#3 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): DefaultController->actionCallback()
+#4 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('callback')
+#8 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('hybridauth/defa...')
+#9 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#11 {main}
+
+Next exception 'Exception' with message 'Authentification failed! facebook returned an invalide user id.' in F:\wamp\www\gorun\protected\extensions\hoauth\hybridauth\Hybrid\Auth.php:147
+Stack trace:
+#0 F:\wamp\www\gorun\protected\extensions\hoauth\hybridauth\Hybrid\Auth.php(39): Hybrid_Auth::initialize(Array)
+#1 F:\wamp\www\gorun\protected\extensions\hoauth\models\UserOAuth.php(159): Hybrid_Auth->__construct(Array)
+#2 F:\wamp\www\gorun\framework\base\CComponent.php(112): UserOAuth->getHybridAuth()
+#3 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('hybridauth')
+#4 F:\wamp\www\gorun\protected\extensions\hoauth\models\UserOAuth.php(194): CActiveRecord->__get('hybridauth')
+#5 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(160): UserOAuth->authenticate('Facebook')
+#6 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(136): HOAuthAction->oAuth('Facebook')
+#7 F:\wamp\www\gorun\framework\web\actions\CAction.php(75): HOAuthAction->run()
+#8 F:\wamp\www\gorun\framework\web\CController.php(309): CAction->runWithParams(Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(HOAuthAction))
+#10 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(HOAuthAction), Array)
+#11 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('oauth')
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('signup/oauth')
+#13 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/gorun/signup/oauth?provider=Facebook
+---
+2016/11/25 05:32:03 [error] [exception.Exception] exception 'Exception' with message 'Authentification failed! facebook returned an invalide user id.' in F:\wamp\www\gorun\protected\modules\hybridauth\Hybrid\Providers\Facebook.php:77
+Stack trace:
+#0 F:\wamp\www\gorun\protected\modules\hybridauth\Hybrid\Endpoint.php(190): Hybrid_Providers_Facebook->loginFinish()
+#1 F:\wamp\www\gorun\protected\modules\hybridauth\Hybrid\Endpoint.php(61): Hybrid_Endpoint::processAuthDone()
+#2 F:\wamp\www\gorun\protected\modules\hybridauth\controllers\DefaultController.php(134): Hybrid_Endpoint::process()
+#3 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): DefaultController->actionCallback()
+#4 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('callback')
+#8 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('hybridauth/defa...')
+#9 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#11 {main}
+
+Next exception 'Exception' with message 'Authentification failed! facebook returned an invalide user id.' in F:\wamp\www\gorun\protected\extensions\hoauth\hybridauth\Hybrid\Auth.php:147
+Stack trace:
+#0 F:\wamp\www\gorun\protected\extensions\hoauth\hybridauth\Hybrid\Auth.php(39): Hybrid_Auth::initialize(Array)
+#1 F:\wamp\www\gorun\protected\extensions\hoauth\models\UserOAuth.php(159): Hybrid_Auth->__construct(Array)
+#2 F:\wamp\www\gorun\framework\base\CComponent.php(112): UserOAuth->getHybridAuth()
+#3 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('hybridauth')
+#4 F:\wamp\www\gorun\protected\extensions\hoauth\models\UserOAuth.php(194): CActiveRecord->__get('hybridauth')
+#5 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(160): UserOAuth->authenticate('Facebook')
+#6 F:\wamp\www\gorun\protected\extensions\hoauth\HOAuthAction.php(136): HOAuthAction->oAuth('Facebook')
+#7 F:\wamp\www\gorun\framework\web\actions\CAction.php(75): HOAuthAction->run()
+#8 F:\wamp\www\gorun\framework\web\CController.php(309): CAction->runWithParams(Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(HOAuthAction))
+#10 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(HOAuthAction), Array)
+#11 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('oauth')
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('signup/oauth')
+#13 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/gorun/signup/oauth?provider=Facebook
+---
+2016/11/25 05:36:25 [error] [exception.Exception] exception 'Exception' with message 'Authentification failed! facebook returned an invalide user id.' in F:\wamp\www\gorun\protected\modules\hybridauth\Hybrid\Providers\Facebook.php:77
+Stack trace:
+#0 F:\wamp\www\gorun\protected\modules\hybridauth\Hybrid\Endpoint.php(190): Hybrid_Providers_Facebook->loginFinish()
+#1 F:\wamp\www\gorun\protected\modules\hybridauth\Hybrid\Endpoint.php(61): Hybrid_Endpoint::processAuthDone()
+#2 F:\wamp\www\gorun\protected\modules\hybridauth\controllers\DefaultController.php(134): Hybrid_Endpoint::process()
+#3 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): DefaultController->actionCallback()
+#4 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('callback')
+#8 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('hybridauth/defa...')
+#9 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#11 {main}
+
+Next exception 'Exception' with message 'Authentification failed! facebook returned an invalide user id.' in F:\wamp\www\gorun\protected\modules\hybridauth\Hybrid\Auth.php:152
+Stack trace:
+#0 F:\wamp\www\gorun\protected\modules\hybridauth\Hybrid\Auth.php(62): Hybrid_Auth::initialize(Array)
+#1 F:\wamp\www\gorun\protected\modules\hybridauth\HybridauthModule.php(21): Hybrid_Auth->__construct(Array)
+#2 F:\wamp\www\gorun\framework\base\CModule.php(91): HybridauthModule->init()
+#3 F:\wamp\www\gorun\framework\YiiBase.php(208): CModule->__construct('hybridauth', NULL, Array)
+#4 F:\wamp\www\gorun\framework\base\CModule.php(283): YiiBase::createComponent('hybridauth.Hybr...', 'hybridauth', NULL, Array)
+#5 F:\wamp\www\gorun\framework\web\CWebApplication.php(331): CModule->getModule('hybridauth')
+#6 F:\wamp\www\gorun\framework\web\CWebApplication.php(270): CWebApplication->createController('hybridauth/defa...')
+#7 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('hybridauth/defa...')
+#8 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/gorun/hybridauth/default/login/?provider=facebook
+---
+2016/11/25 07:08:00 [error] [exception.CDbException] exception 'CDbException' with message 'Table "ha_logins" does not have a column named "0".' in F:\wamp\www\gorun\framework\db\schema\CDbCommandBuilder.php:570
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1454): CDbCommandBuilder->createColumnCriteria(Object(CMysqlTableSchema), Array, '', Array, '`t`.')
+#1 F:\wamp\www\gorun\protected\controllers\MemberController.php(160): CActiveRecord->findByAttributes(Array)
+#2 [internal function]: MemberController->actionConfirmation('72b5ae030c3bb02...')
+#3 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#4 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#5 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('confirmation')
+#9 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/confirma...')
+#10 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/gorun/member/confirmation/hash/72b5ae030c3bb02bf8e5b2a1bb6ccb9f557384c5acef1315
+HTTP_REFERER=http://localhost/gorun/member/confirmation/hash/72b5ae030c3bb02bf8e5b2a1bb6ccb9f557384c5acef1315
+---
+2016/11/25 07:11:02 [error] [exception.CDbException] exception 'CDbException' with message 'Table "ha_logins" does not have a column named "0".' in F:\wamp\www\gorun\framework\db\schema\CDbCommandBuilder.php:570
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1454): CDbCommandBuilder->createColumnCriteria(Object(CMysqlTableSchema), Array, '', Array, '`t`.')
+#1 F:\wamp\www\gorun\protected\controllers\MemberController.php(160): CActiveRecord->findByAttributes(Array)
+#2 [internal function]: MemberController->actionConfirmation('72b5ae030c3bb02...')
+#3 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#4 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#5 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('confirmation')
+#9 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/confirma...')
+#10 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/gorun/member/confirmation/hash/72b5ae030c3bb02bf8e5b2a1bb6ccb9f557384c5acef1315
+HTTP_REFERER=http://localhost/gorun/member/confirmation/hash/72b5ae030c3bb02bf8e5b2a1bb6ccb9f557384c5acef1315
+---
+2016/11/25 07:12:48 [error] [exception.CDbException] exception 'CDbException' with message 'Table "tbl_members" does not have a column named "0".' in F:\wamp\www\gorun\framework\db\schema\CDbCommandBuilder.php:570
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1454): CDbCommandBuilder->createColumnCriteria(Object(CMysqlTableSchema), Array, '', Array, '`t`.')
+#1 F:\wamp\www\gorun\protected\controllers\MemberController.php(158): CActiveRecord->findByAttributes(Array)
+#2 [internal function]: MemberController->actionConfirmation('72b5ae030c3bb02...')
+#3 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#4 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#5 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('confirmation')
+#9 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/confirma...')
+#10 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/gorun/member/confirmation/hash/72b5ae030c3bb02bf8e5b2a1bb6ccb9f557384c5acef1315
+HTTP_REFERER=http://localhost/gorun/member/confirmation/hash/72b5ae030c3bb02bf8e5b2a1bb6ccb9f557384c5acef1315
+---
+2016/11/25 07:13:18 [error] [exception.CDbException] exception 'CDbException' with message 'Table "tbl_members" does not have a column named "password<>".' in F:\wamp\www\gorun\framework\db\schema\CDbCommandBuilder.php:570
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1454): CDbCommandBuilder->createColumnCriteria(Object(CMysqlTableSchema), Array, '', Array, '`t`.')
+#1 F:\wamp\www\gorun\protected\controllers\MemberController.php(158): CActiveRecord->findByAttributes(Array)
+#2 [internal function]: MemberController->actionConfirmation('72b5ae030c3bb02...')
+#3 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#4 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#5 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('confirmation')
+#9 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/confirma...')
+#10 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/gorun/member/confirmation/hash/72b5ae030c3bb02bf8e5b2a1bb6ccb9f557384c5acef1315
+HTTP_REFERER=http://localhost/gorun/member/confirmation/hash/72b5ae030c3bb02bf8e5b2a1bb6ccb9f557384c5acef1315
+---
+2016/11/25 07:13:30 [error] [exception.CDbException] exception 'CDbException' with message 'Table "tbl_members" does not have a column named "password <>".' in F:\wamp\www\gorun\framework\db\schema\CDbCommandBuilder.php:570
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1454): CDbCommandBuilder->createColumnCriteria(Object(CMysqlTableSchema), Array, '', Array, '`t`.')
+#1 F:\wamp\www\gorun\protected\controllers\MemberController.php(158): CActiveRecord->findByAttributes(Array)
+#2 [internal function]: MemberController->actionConfirmation('72b5ae030c3bb02...')
+#3 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#4 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#5 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('confirmation')
+#9 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/confirma...')
+#10 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/gorun/member/confirmation/hash/72b5ae030c3bb02bf8e5b2a1bb6ccb9f557384c5acef1315
+HTTP_REFERER=http://localhost/gorun/member/confirmation/hash/72b5ae030c3bb02bf8e5b2a1bb6ccb9f557384c5acef1315
+---
+2016/11/25 07:15:50 [error] [exception.CDbException] exception 'CDbException' with message 'Table "tbl_members" does not have a column named "password <>".' in F:\wamp\www\gorun\framework\db\schema\CDbCommandBuilder.php:570
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1454): CDbCommandBuilder->createColumnCriteria(Object(CMysqlTableSchema), Array, '', Array, '`t`.')
+#1 F:\wamp\www\gorun\protected\controllers\MemberController.php(161): CActiveRecord->findByAttributes(Array)
+#2 [internal function]: MemberController->actionConfirmation('72b5ae030c3bb02...')
+#3 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#4 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#5 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('confirmation')
+#9 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/confirma...')
+#10 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/gorun/member/confirmation/hash/72b5ae030c3bb02bf8e5b2a1bb6ccb9f557384c5acef1315
+HTTP_REFERER=http://localhost/gorun/member/confirmation/hash/72b5ae030c3bb02bf8e5b2a1bb6ccb9f557384c5acef1315
+---
+2016/11/25 07:16:31 [error] [exception.CException] exception 'CException' with message 'Property "Member.loginProvider" is not defined.' in F:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('loginProvider')
+#1 F:\wamp\www\gorun\protected\controllers\MemberController.php(163): CActiveRecord->__get('loginProvider')
+#2 [internal function]: MemberController->actionConfirmation('72b5ae030c3bb02...')
+#3 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#4 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#5 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('confirmation')
+#9 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/confirma...')
+#10 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/gorun/member/confirmation/hash/72b5ae030c3bb02bf8e5b2a1bb6ccb9f557384c5acef1315
+HTTP_REFERER=http://localhost/gorun/member/confirmation/hash/72b5ae030c3bb02bf8e5b2a1bb6ccb9f557384c5acef1315
+---
+2016/11/25 07:17:05 [error] [exception.CException] exception 'CException' with message 'Property "Member.loginProvider" is not defined.' in F:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('loginProvider')
+#1 F:\wamp\www\gorun\protected\controllers\MemberController.php(163): CActiveRecord->__get('loginProvider')
+#2 [internal function]: MemberController->actionConfirmation('72b5ae030c3bb02...')
+#3 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#4 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#5 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('confirmation')
+#9 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/confirma...')
+#10 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/gorun/member/confirmation/hash/72b5ae030c3bb02bf8e5b2a1bb6ccb9f557384c5acef1315
+HTTP_REFERER=http://localhost/gorun/member/confirmation/hash/72b5ae030c3bb02bf8e5b2a1bb6ccb9f557384c5acef1315
+---
+2016/11/25 07:22:57 [error] [exception.CException] exception 'CException' with message 'Property "Member.loginProvider" is not defined.' in F:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('loginProvider')
+#1 F:\wamp\www\gorun\protected\controllers\MemberController.php(163): CActiveRecord->__get('loginProvider')
+#2 [internal function]: MemberController->actionConfirmation('72b5ae030c3bb02...')
+#3 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#4 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#5 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('confirmation')
+#9 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/confirma...')
+#10 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/gorun/member/confirmation/hash/72b5ae030c3bb02bf8e5b2a1bb6ccb9f557384c5acef1315
+HTTP_REFERER=http://localhost/gorun/member/confirmation/hash/72b5ae030c3bb02bf8e5b2a1bb6ccb9f557384c5acef1315
+---
+2016/11/25 07:26:34 [error] [exception.CDbException] exception 'CDbException' with message 'Relation "true" is not defined in active record class "Member".' in F:\wamp\www\gorun\framework\db\ar\CActiveFinder.php:215
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveFinder.php(310): CActiveFinder->buildJoinTree(Object(CJoinElement), 'true')
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveFinder.php(49): CActiveFinder->buildJoinTree(Object(CJoinElement), Array)
+#2 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1291): CActiveFinder->__construct(Object(Member), Array)
+#3 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1455): CActiveRecord->query(Object(CDbCriteria))
+#4 F:\wamp\www\gorun\protected\controllers\MemberController.php(161): CActiveRecord->findByAttributes(Array, 'password <>""')
+#5 [internal function]: MemberController->actionConfirmation('72b5ae030c3bb02...')
+#6 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#7 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#8 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#10 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('confirmation')
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/confirma...')
+#13 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/gorun/member/confirmation/hash/72b5ae030c3bb02bf8e5b2a1bb6ccb9f557384c5acef1315
+HTTP_REFERER=http://localhost/gorun/member/confirmation/hash/72b5ae030c3bb02bf8e5b2a1bb6ccb9f557384c5acef1315
+---
+2016/11/25 07:41:46 [error] [exception.CDbException] exception 'CDbException' with message 'Table "tbl_members" does not have a column named "t.password".' in F:\wamp\www\gorun\framework\db\schema\CDbCommandBuilder.php:570
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1454): CDbCommandBuilder->createColumnCriteria(Object(CMysqlTableSchema), Array, '', Array, '`t`.')
+#1 F:\wamp\www\gorun\protected\controllers\MemberController.php(161): CActiveRecord->findByAttributes(Array)
+#2 [internal function]: MemberController->actionConfirmation('72b5ae030c3bb02...')
+#3 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#4 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#5 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('confirmation')
+#9 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/confirma...')
+#10 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/gorun/member/confirmation/hash/72b5ae030c3bb02bf8e5b2a1bb6ccb9f557384c5acef1315
+HTTP_REFERER=http://localhost/gorun/member/confirmation/hash/72b5ae030c3bb02bf8e5b2a1bb6ccb9f557384c5acef1315
+---
+2016/11/25 07:42:40 [error] [exception.CException] exception 'CException' with message 'Property "Member.loginProvider" is not defined.' in F:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('loginProvider')
+#1 F:\wamp\www\gorun\protected\controllers\MemberController.php(164): CActiveRecord->__get('loginProvider')
+#2 [internal function]: MemberController->actionConfirmation('72b5ae030c3bb02...')
+#3 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#4 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#5 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('confirmation')
+#9 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/confirma...')
+#10 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/gorun/member/confirmation/hash/72b5ae030c3bb02bf8e5b2a1bb6ccb9f557384c5acef1315
+HTTP_REFERER=http://localhost/gorun/member/confirmation/hash/72b5ae030c3bb02bf8e5b2a1bb6ccb9f557384c5acef1315
+---
+2016/11/25 07:43:06 [error] [exception.CException] exception 'CException' with message 'Property "Member.hasLogin" is not defined.' in F:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('hasLogin')
+#1 F:\wamp\www\gorun\protected\controllers\MemberController.php(164): CActiveRecord->__get('hasLogin')
+#2 [internal function]: MemberController->actionConfirmation('72b5ae030c3bb02...')
+#3 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(MemberController), Array)
+#4 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(MemberController), Object(ReflectionMethod), Array)
+#5 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('confirmation')
+#9 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('member/confirma...')
+#10 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/gorun/member/confirmation/hash/72b5ae030c3bb02bf8e5b2a1bb6ccb9f557384c5acef1315
+HTTP_REFERER=http://localhost/gorun/member/confirmation/hash/72b5ae030c3bb02bf8e5b2a1bb6ccb9f557384c5acef1315
+---
+2016/11/28 07:53:57 [error] [exception.CException] exception 'CException' with message 'Property "Club.name" is not defined.' in F:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('name')
+#1 F:\wamp\www\gorun\framework\web\helpers\CHtml.php(1696): CActiveRecord->__get('name')
+#2 F:\wamp\www\gorun\framework\web\helpers\CHtml.php(1660): CHtml::value(Object(Club), 'name')
+#3 F:\wamp\www\gorun\protected\models\Club.php(234): CHtml::listData(Array, 'id', 'name')
+#4 F:\wamp\www\gorun\protected\modules\admin\views\articles\_form.php(121): Club->getAllActiveClub()
+#5 F:\wamp\www\gorun\framework\web\CBaseController.php(127): require('F:\\wamp\\www\\gor...')
+#6 F:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('F:\\wamp\\www\\gor...', Array, true)
+#7 F:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('F:\\wamp\\www\\gor...', Array, true)
+#8 F:\wamp\www\gorun\protected\modules\admin\views\articles\create.php(47): CController->renderPartial('_form', Array)
+#9 F:\wamp\www\gorun\framework\web\CBaseController.php(127): require('F:\\wamp\\www\\gor...')
+#10 F:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('F:\\wamp\\www\\gor...', Array, true)
+#11 F:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('F:\\wamp\\www\\gor...', Array, true)
+#12 F:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('create', Array, true)
+#13 F:\wamp\www\gorun\protected\modules\admin\controllers\ArticlesController.php(132): CController->render('create', Array)
+#14 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): ArticlesController->actionCreate()
+#15 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#16 F:\wamp\www\gorun\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#17 F:\wamp\www\gorun\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#18 F:\wamp\www\gorun\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#19 F:\wamp\www\gorun\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#20 F:\wamp\www\gorun\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#21 F:\wamp\www\gorun\framework\web\CController.php(292): CFilterChain->run()
+#22 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#23 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('create')
+#24 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('admin/articles/...')
+#25 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#26 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#27 {main}
+REQUEST_URI=/gorun/admin/articles/create
+HTTP_REFERER=http://localhost/gorun/admin/articles
+---
+2016/11/28 08:12:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/article_fallback_120x120.png".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/article_...')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/article_fallback_120x120.png
+HTTP_REFERER=http://localhost/gorun/clubs/bedfordview-athletics
+---
+2016/11/28 08:12:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/article_fallback_120x120.png".' in F:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/article_...')
+#1 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/article_fallback_120x120.png
+HTTP_REFERER=http://localhost/gorun/clubs/bedfordview-athletics
+---
+2016/11/28 08:52:29 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=.
+in F:\wamp\www\gorun\protected\controllers\ClubsController.php (279)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/28 08:52:29 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1536): CDbCommand->queryScalar()
+#2 F:\wamp\www\gorun\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 F:\wamp\www\gorun\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 F:\wamp\www\gorun\framework\base\CComponent.php(112): CDataProvider->getTotalItemCount()
+#5 F:\wamp\www\gorun\protected\controllers\ClubsController.php(279): CComponent->__get('totalItemCount')
+#6 [internal function]: ClubsController->actionType('')
+#7 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#8 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('type')
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/type')
+#14 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/gorun/clubs/type/?province=
+HTTP_REFERER=http://localhost/gorun/clubs/type/Park%20Run?province=Mpumalanga
+---
+2016/11/28 08:52:52 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=.
+in F:\wamp\www\gorun\protected\controllers\ClubsController.php (279)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/28 08:52:52 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1536): CDbCommand->queryScalar()
+#2 F:\wamp\www\gorun\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 F:\wamp\www\gorun\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 F:\wamp\www\gorun\framework\base\CComponent.php(112): CDataProvider->getTotalItemCount()
+#5 F:\wamp\www\gorun\protected\controllers\ClubsController.php(279): CComponent->__get('totalItemCount')
+#6 [internal function]: ClubsController->actionType('')
+#7 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#8 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('type')
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/type')
+#14 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/gorun/clubs/type/?province=all
+---
+2016/11/28 08:54:09 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=.
+in F:\wamp\www\gorun\protected\controllers\ClubsController.php (279)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/28 08:54:09 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1536): CDbCommand->queryScalar()
+#2 F:\wamp\www\gorun\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 F:\wamp\www\gorun\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 F:\wamp\www\gorun\framework\base\CComponent.php(112): CDataProvider->getTotalItemCount()
+#5 F:\wamp\www\gorun\protected\controllers\ClubsController.php(279): CComponent->__get('totalItemCount')
+#6 [internal function]: ClubsController->actionType('')
+#7 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#8 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('type')
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/type')
+#14 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/gorun/clubs/type/?province=all
+---
+2016/11/28 08:56:33 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=.
+in F:\wamp\www\gorun\protected\controllers\ClubsController.php (279)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/28 08:56:33 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1536): CDbCommand->queryScalar()
+#2 F:\wamp\www\gorun\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 F:\wamp\www\gorun\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 F:\wamp\www\gorun\framework\base\CComponent.php(112): CDataProvider->getTotalItemCount()
+#5 F:\wamp\www\gorun\protected\controllers\ClubsController.php(279): CComponent->__get('totalItemCount')
+#6 [internal function]: ClubsController->actionType('Park Run')
+#7 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#8 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('type')
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/type/matc...')
+#14 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/gorun/clubs/type/Park%20Run?province=Kwazulu%20Natal
+HTTP_REFERER=http://localhost/gorun/clubs/type/?province=Gauteng
+---
+2016/11/28 08:56:47 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=.
+in F:\wamp\www\gorun\protected\controllers\ClubsController.php (279)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/28 08:56:47 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1536): CDbCommand->queryScalar()
+#2 F:\wamp\www\gorun\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 F:\wamp\www\gorun\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 F:\wamp\www\gorun\framework\base\CComponent.php(112): CDataProvider->getTotalItemCount()
+#5 F:\wamp\www\gorun\protected\controllers\ClubsController.php(279): CComponent->__get('totalItemCount')
+#6 [internal function]: ClubsController->actionType('Park_Run')
+#7 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#8 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('type')
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/type/matc...')
+#14 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/gorun/clubs/type/Park_Run?province=Kwazulu%20Natal
+---
+2016/11/28 08:57:06 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=.
+in F:\wamp\www\gorun\protected\controllers\ClubsController.php (279)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/28 08:57:06 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1536): CDbCommand->queryScalar()
+#2 F:\wamp\www\gorun\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 F:\wamp\www\gorun\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 F:\wamp\www\gorun\framework\base\CComponent.php(112): CDataProvider->getTotalItemCount()
+#5 F:\wamp\www\gorun\protected\controllers\ClubsController.php(279): CComponent->__get('totalItemCount')
+#6 [internal function]: ClubsController->actionType('Park_Run')
+#7 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#8 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('type')
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/type/matc...')
+#14 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/gorun/clubs/type/Park_Run?province=Kwazulu_Natal
+---
+2016/11/28 08:57:10 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=.
+in F:\wamp\www\gorun\protected\controllers\ClubsController.php (279)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/28 08:57:10 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1536): CDbCommand->queryScalar()
+#2 F:\wamp\www\gorun\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 F:\wamp\www\gorun\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 F:\wamp\www\gorun\framework\base\CComponent.php(112): CDataProvider->getTotalItemCount()
+#5 F:\wamp\www\gorun\protected\controllers\ClubsController.php(279): CComponent->__get('totalItemCount')
+#6 [internal function]: ClubsController->actionType('Park_Run')
+#7 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#8 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('type')
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/type/matc...')
+#14 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/gorun/clubs/type/Park_Run?province=Kwazulu%20Natal
+---
+2016/11/28 08:57:11 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=.
+in F:\wamp\www\gorun\protected\controllers\ClubsController.php (279)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/28 08:57:11 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1536): CDbCommand->queryScalar()
+#2 F:\wamp\www\gorun\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 F:\wamp\www\gorun\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 F:\wamp\www\gorun\framework\base\CComponent.php(112): CDataProvider->getTotalItemCount()
+#5 F:\wamp\www\gorun\protected\controllers\ClubsController.php(279): CComponent->__get('totalItemCount')
+#6 [internal function]: ClubsController->actionType('Park Run')
+#7 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#8 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('type')
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/type/matc...')
+#14 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/gorun/clubs/type/Park%20Run?province=Kwazulu%20Natal
+HTTP_REFERER=http://localhost/gorun/clubs/type/?province=Gauteng
+---
+2016/11/28 09:00:47 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=.
+in F:\wamp\www\gorun\protected\controllers\ClubsController.php (279)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/28 09:00:47 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1536): CDbCommand->queryScalar()
+#2 F:\wamp\www\gorun\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 F:\wamp\www\gorun\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 F:\wamp\www\gorun\framework\base\CComponent.php(112): CDataProvider->getTotalItemCount()
+#5 F:\wamp\www\gorun\protected\controllers\ClubsController.php(279): CComponent->__get('totalItemCount')
+#6 [internal function]: ClubsController->actionType('Park Run')
+#7 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#8 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('type')
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/type/matc...')
+#14 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/gorun/clubs/type/Park%20Run?province=North%20West
+---
+2016/11/28 09:01:35 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=.
+in F:\wamp\www\gorun\protected\controllers\ClubsController.php (279)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/28 09:01:35 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1536): CDbCommand->queryScalar()
+#2 F:\wamp\www\gorun\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 F:\wamp\www\gorun\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 F:\wamp\www\gorun\framework\base\CComponent.php(112): CDataProvider->getTotalItemCount()
+#5 F:\wamp\www\gorun\protected\controllers\ClubsController.php(279): CComponent->__get('totalItemCount')
+#6 [internal function]: ClubsController->actionType('Park Run')
+#7 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#8 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('type')
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/type/matc...')
+#14 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/gorun/clubs/type/Park%20Run?province=%27;select%20*%20from%20tbl_clubs;
+---
+2016/11/28 09:01:46 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=.
+in F:\wamp\www\gorun\protected\controllers\ClubsController.php (279)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/28 09:01:46 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1536): CDbCommand->queryScalar()
+#2 F:\wamp\www\gorun\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 F:\wamp\www\gorun\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 F:\wamp\www\gorun\framework\base\CComponent.php(112): CDataProvider->getTotalItemCount()
+#5 F:\wamp\www\gorun\protected\controllers\ClubsController.php(279): CComponent->__get('totalItemCount')
+#6 [internal function]: ClubsController->actionType('Park Run')
+#7 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#8 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('type')
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/type/matc...')
+#14 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/gorun/clubs/type/Park%20Run?province=%22;select%20*%20from%20tbl_clubs;
+---
+2016/11/28 09:05:58 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=.
+in F:\wamp\www\gorun\protected\controllers\ClubsController.php (279)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/28 09:05:58 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1536): CDbCommand->queryScalar()
+#2 F:\wamp\www\gorun\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 F:\wamp\www\gorun\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 F:\wamp\www\gorun\framework\base\CComponent.php(112): CDataProvider->getTotalItemCount()
+#5 F:\wamp\www\gorun\protected\controllers\ClubsController.php(279): CComponent->__get('totalItemCount')
+#6 [internal function]: ClubsController->actionType('Park Run')
+#7 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#8 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('type')
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/type/matc...')
+#14 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/gorun/clubs/type/Park%20Run?province=%27;select%20*%20from%20tbl_clubs;
+---
+2016/11/28 09:05:59 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=.
+in F:\wamp\www\gorun\protected\controllers\ClubsController.php (279)
+in F:\wamp\www\gorun\index.php (13)
+2016/11/28 09:05:59 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `tbl_clubs` `t` WHERE province=' in F:\wamp\www\gorun\framework\db\CDbCommand.php:528
+Stack trace:
+#0 F:\wamp\www\gorun\framework\db\CDbCommand.php(425): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 F:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1536): CDbCommand->queryScalar()
+#2 F:\wamp\www\gorun\framework\web\CActiveDataProvider.php(179): CActiveRecord->count(Object(CDbCriteria))
+#3 F:\wamp\www\gorun\framework\web\CDataProvider.php(193): CActiveDataProvider->calculateTotalItemCount()
+#4 F:\wamp\www\gorun\framework\base\CComponent.php(112): CDataProvider->getTotalItemCount()
+#5 F:\wamp\www\gorun\protected\controllers\ClubsController.php(279): CComponent->__get('totalItemCount')
+#6 [internal function]: ClubsController->actionType('Park Run')
+#7 F:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#8 F:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#9 F:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 F:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 F:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 F:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('type')
+#13 F:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/type/matc...')
+#14 F:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 F:\wamp\www\gorun\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/gorun/clubs/type/Park%20Run?province=North%20West
+---
