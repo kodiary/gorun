@@ -29,6 +29,7 @@ class EventResult extends CActiveRecord
 	 * @param string $className active record class name.
 	 * @return EventResult the static model class
 	 */
+    public $av;
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
@@ -69,6 +70,7 @@ class EventResult extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
             'event'=>array(self::BELONGS_TO, 'Events', 'event_id'),
+            'type'=>array(self::BELONGS_TO, 'EventsType', 'event_type'),
             'member'=>array(self::BELONGS_TO, 'Member', 'user_id')
 		);
 	}
@@ -132,4 +134,15 @@ class EventResult extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+    public function getAvg($user_id,$event_type,$distance)
+    {
+        $criteria=new CDbCriteria;
+        $criteria->select = 'SEC_TO_TIME(CEIL(AVG(TIME_TO_SEC(dist_time)))) as av';
+        $criteria->compare('user_id',$user_id);
+        $criteria->compare('event_type',$event_type);
+        $criteria->compare('cast(distance as decimal(5,2))',$distance);
+        $q = self::model()->find($criteria);
+        return $q->av;
+        }
+    
 }

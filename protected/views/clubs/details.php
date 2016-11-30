@@ -258,6 +258,40 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
     
     </div>
     <div class="clearfix"></div>
+    <div class="news col-md-12 block_border toggle-div" <?php if(!$dataProvider)echo 'style="margin:0;border-bottom:none"';?>>
+        <a href="javascript:void(0)" onclick="toggle_div('results_more',this);"><span><strong>CLUB LEADERBOARD</strong></span>
+        <span class="right"><i class="glyphicon glyphicon-chevron-down"></i></span></a>
+    </div>
+    <div class="clearfix"></div>
+    <div class="cold-md-12 results_more">
+    <?php
+    $id = '';
+        $clubMembers = ClubMember::model()->findAllByAttributes(['club_id'=>$model->id]);
+        foreach($clubMembers as $member)
+        {
+            $ids[] = $member->member_id;
+            $id.= $member->member_id.",";
+        }
+        
+        $criteria = new CDbCriteria;
+        //$criteria->select = '*,( SELECT MIN(dist_time) AS mini FROM tbl_event_result GROUP BY event_type ,distance) AS m';
+        //$criteria->with = ['member'];
+        
+        $id = substr($id,0,(strlen($id)-1));
+        $criteria->addInCondition('user_id',$ids);
+        //$criteria->condition = 'member.fname LIKE "%w%"';
+        $criteria->group = 'event_type, distance';
+        $criteria->together = true;
+        //var_dump($criteria);
+        //$results = Yii::app()->db->createCommand('SELECT distance,dist_time,event_type FROM tbl_event_result AS a, (SELECT MIN(dist_time) AS mini FROM tbl_event_result GROUP BY event_type ,distance, user_id ) AS m WHERE m.mini = a.dist_time AND a.user_id in('.$id.') ORDER BY a.event_type ASC, a.dist_time, a.distance ')->queryAll();
+        
+        $results = EventResult::model()->findAll($criteria);
+        
+        $this->renderPartial('/common/_board',['results'=>$results,'ids'=>$id]);
+        
+    ?>
+    </div>
+    <div class="clearfix"></div>
   
             
             

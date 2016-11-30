@@ -283,9 +283,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
             </a>
             <?php }
             ?>
-            
             <script>
-              
             function loadmore<?php echo $m->id;?>(div){
                     var offset = $('.'+div+' a').last().attr('title');
                    

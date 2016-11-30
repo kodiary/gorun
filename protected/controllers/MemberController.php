@@ -350,7 +350,7 @@ class MemberController extends Controller
             elseif($value == 'with[]')
                 $critera->with = [$value];
         }
-        $critera->offset =$offset;
+        $critera->offset = $offset;
         //var_dump($critera);
         
         $m = $model::model()->findAll($critera);

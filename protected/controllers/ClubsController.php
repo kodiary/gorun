@@ -285,5 +285,43 @@ class ClubsController extends Controller
         $this->render('type',['clubs'=>$clubs,'type'=>$match,'dataProvider'=>$dataProvider,'pages'=>$pages,'province_id'=>$prov]);
     }
     
+    public function actionGetresults()
+    {
+        
+        $criteria = new CDbCriteria;
+        $criteria->with = ['member'];
+        if(isset($_POST['ids']) &&$_POST['ids']!='')
+            $criteria->addInCondition('user_id',explode(',',$_POST['ids']));
+        if(isset($_POST['event_type']) && $_POST['event_type']!='')
+            $criteria->compare('event_type',$_POST['event_type']);
+        if(isset($_POST['distance']) &&$_POST['distance']!='')
+            $criteria->addcondition('cast(distance as decimal(5,1))='.$_POST['distance']);
+        if(isset($_POST['searchname']) &&$_POST['searchname']!='')
+        {
+            //echo $_POST['searchname']; die();
+            //$criteria->addcondition("member.fname LIKE '%$_POST[searchname]%' and member.lname LIKE '%$_POST[searchname]%'");
+            $criteria2 = new CDbCriteria;
+            //$criteria2->addCondition("MATCH(member.fname,member.lname) AGAINST('$_POST[searchname]' IN BOOLEAN MODE)");
+            //$criteria2->addCondition("MATCH(member.lname) AGAINST('$_POST[searchname]' IN BOOLEAN MODE)");
+            $criteria2->addSearchCondition('member.fname',trim($_POST['searchname']),true);
+            $criteria2->addSearchCondition('member.lname',trim($_POST['searchname']),true,'OR');
+            $criteria->mergeWith($criteria2);
+            
+        }
+        $criteria->group = 'user_id';
+        
+        
+        $count = count(EventResult::model()->findAll($criteria));
+        $criteria->limit = Yii::app()->params['results_per'];
+        $criteria->order = 'dist_time';
+        $report = EventResult::model()->findAll($criteria);
+       
+        $this->renderPartial('/common/_resultTable',['results'=>$report,'count'=>$count,'criteria'=>$criteria,'offset'=>Yii::app()->params['results_per']]);
+        
+        
+        
+        
+    }
+    
  }
  ?>

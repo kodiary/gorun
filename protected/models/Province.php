@@ -48,6 +48,11 @@ class Province extends CActiveRecord
 			array('id, code, name, enabled, country_id', 'safe', 'on'=>'search'),
 		);
 	}
+    public function scopes() {
+    return array(
+        'byname' => array('order' => 'name'),
+    );
+    }
 
 	/**
 	 * @return array relational rules.

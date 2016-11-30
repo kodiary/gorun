@@ -18,7 +18,7 @@
     <div class="fil-group">
         <a href="javascript:void(0)" class="fil searchProvince">All Provinces<span class="fa fa-sort"></span></a>
         <ul class="option">
-        <?php $provinces = Province::model()->findAll();
+        <?php $provinces = Province::model()->byname()->findAll();
             foreach($provinces as $province){?>
                 <li value="<?php echo $province->id;?>"><a href="javascript:void(0);"><?php echo $province->name;?></a></li>
         <?php }?>

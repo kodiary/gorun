@@ -164,6 +164,7 @@ return array(
             'clubs/follow'=>'clubs/follow',
             'clubs/type/<match>'=>'clubs/type/match/<match>',
             'clubs/type'=>'clubs/type',
+            'clubs/getresults'=>'clubs/getresults',
             'clubs/<slug>'=>'clubs/details/slug/<slug>',
             
             'events/'=>'events/index',
@@ -296,7 +297,7 @@ return array(
         'ip2location_key' => '8faee27e7591bd3c5a731f98ea92c68f5c93cd37e111558b18abf96f78ec3df6',
         'items_pers_page' => '10',
         'articles_pers_page' => '2',
-        'results_per'=>'1',
+        'results_per'=>'2',
         'jobs_pers_page'=>'10',
         'defaultCountryId' => '224',
         'image_size' => '10',   //image upload size in MB

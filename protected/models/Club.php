@@ -75,6 +75,7 @@ class Club extends CActiveRecord
          
 		);
 	}
+    
 
 	/**
 	 * @return array relational rules.
