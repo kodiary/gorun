@@ -783,6 +783,7 @@ class EventsController extends Controller
         $mod = Review::model()->findByAttributes(array('event_id'=>$_POST['event_id'],'user_id'=>$_POST['user_id']));
         $old = $mod->rate;
         $new = $_POST['rate'];
+        $_POST['review_time'] = date('H:i');
         $arr['event_id'] = $_POST['event_id'];
         if($mod->id)
         {

@@ -576,6 +576,7 @@ h3.blue{font-weight:bold;margin-top:0;}
     overflow: hidden;
 }
 .show_review{display:block;color:#444;}
+.show_review:focus{outline:none;}
 .load-more-review{margin-top:10px;}
 .btn-default:hover{color:#FFF;}
 
@@ -586,3 +587,6 @@ h3.blue{font-weight:bold;margin-top:0;}
     padding-left: 11px;
     padding-top: 2px;}
 .btn-default{border:1px solid #CCC;box-shadow: none;}
+.review-detail{background:#EAEAEA;padding:5px 10px;margin-top:5px;}
+.makeGrey{background: #EAEAEA;}
+.memname{font-weight:700;font-size:15px;}
