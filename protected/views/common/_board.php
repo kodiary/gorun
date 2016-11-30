@@ -1,5 +1,6 @@
-<div class="results col-md-12">
-    <div class="filter col-md-4">
+<div class="block_border" style="padding: 0;">
+<div class="results col-md-12" style="border-radius: 0;">
+    <div class="filter2 col-md-4">
         <div class="fil-group">
         <a href="javascript:void(0)" class="fil ResulteventType" title="<?php echo $results[0]->event_type."_".$results[0]->distance;?>"><?php echo $results[0]->type['title']."-".$results[0]->distance."Km";?><span class="fa fa-sort"></span></a>
         <ul class="option">
@@ -16,15 +17,15 @@
         </ul>
         </div>
     </div>
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
+    <div class="col-md-3"></div>
+    <div class="col-md-5">
         <input type="text" class="search_name" placeholder="Search Name" /> <input type="button" value="GO" class="btn search_results results"/>
     </div>
     <div class="clearfix"></div>
 </div>
 <div class="results_body">
 </div>
-
+</div>
 <script>
 $(function(){
     var events = $(".ResulteventType").attr('title').split('_');

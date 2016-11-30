@@ -6329,3 +6329,49 @@ Stack trace:
 REQUEST_URI=/gorun/images/article_fallback_120x120.png
 HTTP_REFERER=http://localhost/gorun/clubs/bedfordview-athletics
 ---
+2016/11/30 13:01:42 [error] [exception.CException] exception 'CException' with message 'Property "Club.google" is not defined.' in E:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('google')
+#1 E:\wamp\www\gorun\protected\views\clubs\details.php(61): CActiveRecord->__get('google')
+#2 E:\wamp\www\gorun\framework\web\CBaseController.php(127): require('E:\\wamp\\www\\gor...')
+#3 E:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('E:\\wamp\\www\\gor...', Array, true)
+#4 E:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('E:\\wamp\\www\\gor...', Array, true)
+#5 E:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('details', Array, true)
+#6 E:\wamp\www\gorun\protected\controllers\ClubsController.php(205): CController->render('details', Array)
+#7 [internal function]: ClubsController->actionDetails('test400')
+#8 E:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#9 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#10 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#11 E:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#12 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#14 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/details/s...')
+#15 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/gorun/clubs/test400
+HTTP_REFERER=http://localhost/gorun/clubs/type/running
+---
+2016/11/30 13:01:42 [error] [exception.CException] exception 'CException' with message 'Property "Club.google" is not defined.' in E:\wamp\www\gorun\framework\base\CComponent.php:131
+Stack trace:
+#0 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(144): CComponent->__get('google')
+#1 E:\wamp\www\gorun\protected\views\clubs\details.php(61): CActiveRecord->__get('google')
+#2 E:\wamp\www\gorun\framework\web\CBaseController.php(127): require('E:\\wamp\\www\\gor...')
+#3 E:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('E:\\wamp\\www\\gor...', Array, true)
+#4 E:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('E:\\wamp\\www\\gor...', Array, true)
+#5 E:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('details', Array, true)
+#6 E:\wamp\www\gorun\protected\controllers\ClubsController.php(205): CController->render('details', Array)
+#7 [internal function]: ClubsController->actionDetails('test400')
+#8 E:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubsController), Array)
+#9 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubsController), Object(ReflectionMethod), Array)
+#10 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#11 E:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#12 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('details')
+#14 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('clubs/details/s...')
+#15 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/gorun/clubs/test400
+HTTP_REFERER=http://localhost/gorun/clubs/type/running
+---
