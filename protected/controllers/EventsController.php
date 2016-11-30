@@ -13,13 +13,9 @@ class EventsController extends Controller
 	 */
 	public function filters()
 	{
-	   $for = array('create','update','delete');
-       
-	   if(in_array($this->action->Id,$for)){
-		return array(
+	   return array(
 			'accessControl', // perform access control for CRUD operations
 		);
-        }
 	}
 
 	/**
@@ -31,7 +27,7 @@ class EventsController extends Controller
 	{
 	   $for = array('create','update','delete');
        
-	   if(in_array($this->action->Id,$for)){
+	   if(in_array(Yii::app()->controller->action->id,$for)){
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'users'=>array('@'),
@@ -41,6 +37,15 @@ class EventsController extends Controller
 			),
 		);
         }
+        else
+        {
+            return array(
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'users'=>array('@'),
+			)
+		);
+        }
+        
 	}
 
 	/**
@@ -51,6 +56,13 @@ class EventsController extends Controller
 	{
 	   //die('here');
 	   $e = Events::model()->findByAttributes(array('slug'=>$slug));
+       if(Yii::app()->user->id)
+       $rating = Review::model()->findByAttributes(array('event_id'=>$e->id,'user_id'=>Yii::app()->user->id));
+       else
+       $rating = Review::model()->findByAttributes(array('event_id'=>$e->id,'user_id'=>0));
+       
+       $all_review = Review::model()->findAllByAttributes(array('event_id'=>$e->id),array('order'=>'id desc'));
+       $average = ReviewTotal::model()->findByAttributes(array('event_id'=>$e->id));
        if(isset($e->end_date) && $e->end_date)
        {
             $date = new DateTime($e->end_date);
@@ -112,10 +124,16 @@ class EventsController extends Controller
             'check'=>$check,
             'race_result'=>EventResult::model(),
             'tri_result'=>EventTriResult::model(),
-            'me'=>$em
+            'me'=>$em,
+            'review'=>$rating,
+            'average'=>$average,
+            'all_review'=>$all_review,
+            'members'=>Member::model()
 		));
         
 	}
+    
+    
 
 	/**
 	 * Creates a new model.
@@ -757,6 +775,90 @@ class EventsController extends Controller
             return $e['short_name'];
         }
         return false;
+    }
+    public function actionSubmitreview()
+    {
+        $total = new ReviewTotal;
+        $tot_old = ReviewTotal::model()->findByAttributes(array('event_id'=>$_POST['event_id']));
+        $mod = Review::model()->findByAttributes(array('event_id'=>$_POST['event_id'],'user_id'=>$_POST['user_id']));
+        $old = $mod->rate;
+        $new = $_POST['rate'];
+        $arr['event_id'] = $_POST['event_id'];
+        if($mod->id)
+        {
+           Review::model()->updateByPk($mod->id, $_POST);
+           
+           if($tot_old){
+           if($old>$new)
+           {
+            $diff = ($old-$new)*(-1);
+           } 
+           else
+           {
+            $diff = $new-$old;
+           }
+           
+           $arr['rate_sum'] = $tot_old->rate_sum + $diff;
+           ReviewTotal::model()->updateByPk($tot_old->id, $arr);
+           }
+           else
+           {
+            $arr['rate_sum'] = $tot_old->rate_sum+$_POST['rate'];
+            
+            
+            $total->attributes = $arr;
+            $total->save();
+           }
+           echo $mod->id;
+           
+        }
+        else
+        {
+        $model  = new Review;
+        $model->attributes=$_POST;
+        $model->save();
+        echo $model->id;
+        $arr['rate_sum'] = $tot_old->rate_sum+$_POST['rate'];
+        $arr['rate_count'] = $tot_old->rate_count+1;
+        if($tot_old){
+           
+           ReviewTotal::model()->updateByPk($tot_old->id, $arr);
+           }
+           else
+           {
+            $total->attributes = $arr;
+            $total->save();
+            }
+        }
+        die();
+        
+    }
+    public function actionSubmitpics()
+    {
+        $arr['review_id'] = $_POST['id'];
+        $pics = $_POST['pics'];
+        $pic_arr = explode(',',$pics);
+        foreach($pic_arr as $p)
+        {
+            $arr['picture'] = $p;
+            $model  = new ReviewPics; 
+            $model->attributes=$arr;
+            $model->save();
+            unset($model);
+        }
+        die();
+    }
+    public function actionLoadReview()
+    {
+        $offset = $_POST['offset'];
+        $event = $_POST['event_id'];
+        $all_review = Review::model()->findAllByAttributes(array('event_id'=>$event),array('order'=>'id desc','limit'=>6,'offset'=>$offset));
+        //var_dump($all_review);
+        $this->renderPartial('application.views.events._load_review',array(
+            'all_review'=>$all_review,
+            'race_result'=>EventResult::model(),
+            'members'=>Member::model()
+        ));  
     }
     public function actionSubmitresult()
     {

@@ -1,6 +1,8 @@
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Gjdm_0nJk17UVBPoV5Im40uQeguoRAo"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/gmap_front.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap-star-rating.js"></script>
+<link href="<?php echo Yii::app()->request->baseUrl; ?>/dropzone/css/dropzone.css" rel="stylesheet"/>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/dropzone/dropzone.js"></script>
 <div class="sidebar col-md-3">
   <?php echo $this->renderPartial('/sidebar/_menu', false, true); ?>
 </div>
@@ -169,83 +171,27 @@
             </div>
             <div class="clearfix"></div>
         </div>
-        
-        <div class="white padtopbot5">
-            <a class="expand_block ratinganchor col-md-12" href="javascript:void(0)">
+        <?php
+        if(isset($_GET['submitted']) && $_GET['submitted']=='review')
+        {
+            ?>
+            
+        <div class="alert alert-success alert-dismissible reviewMsg" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          Review submitted successfully.
+        </div>
+        <?php
+        }
+        ?>
+        <div class="white padtopbot5 reviewpad" style="border: none;padding:0;">
+            
+            <a class="expand_block ratinganchor col-md-12 extra_border" href="javascript:void(0)" style="padding-top: 7px;padding-bottom:7px;">
                 <div class="floatLeft">RACE REVIEWS</div>
                 <div class="floatRight"><span class="fa fa-angle-down"></span></div>
                 <div class="clearfix"></div>
             </a>
             <div class="content col-md-12" style="display: none;">
-                <div class="row">
-                    <div class="rating-block">
-                        <div class="col-md-5">
-                            <?php
-                            $rating = 3.5;
-                            $rate_int = (int)$rating;
-                            $decimal = $rating - $rate_int;
-                            $review_count = 1100;
-                            
-                            $review_count = number_format($review_count);
-                            ?>
-                            <div id="stars-default2">
-                                <?php
-                                    for($i=1;$i<=5;$i++)
-                                    {
-                                        if($i<=$rate_int)
-                                        {
-                                            ?>
-                                            <span class="fa fa-star" style="font-size: 3.5em; color: rgb(3, 147, 217); cursor: pointer;"></span>
-                                            <?php
-                                        }
-                                        else
-                                        {
-                                            if($decimal>=0.5)
-                                            {
-                                               ?>
-                                               <span class="fa fa-star-half-empty" style="font-size: 3.5em; color: rgb(3, 147, 217); cursor: pointer;"></span>
-                                               <?php 
-                                               $decimal = 0;
-                                            }
-                                            else
-                                            {
-                                                ?>
-                                                <span class="fa fa-star" style="font-size: 3.5em; color: rgb(215, 215, 215); cursor: pointer;"></span>
-                                                <?php
-                                            }
-                                        }
-                                    }
-                                ?>
-                            </div>
-                        </div>
-                        <div class="col-md-7 review-message">
-                            Average Rating <strong><?php echo str_replace('.',',',$rating);?></strong> from <strong><?php echo $review_count;?></strong> Reviews
-                            <br />
-                            <a href="#" class="edit_review">RATE THIS RACE</a>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="your_review">
-                        <div class="col-md-12">
-                           <div class="col-md-12">
-                               <strong class="review-title">YOUR RACE REVIEW</strong>
-                               <span class="blue">Tell us about your race experience or post a personal performance review</span>
-                               <textarea class="form-control review_text"></textarea> 
-                           </div> 
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="five-start-block">
-                            <?php
-                            $my_rating = 0; 
-                            ?>
-                            <div class="col-md-4"><span class="rating-title">YOUR RATING</span></div>
-                            <div class="col-md-6"><div id="stars-default"><input type="hidden" name="rating"/></div></div>
-                            <div class="col-md-2"><span class="rating-title"><?php echo $my_rating;?> STARS</span></div>
-                            <div class="clearfix"></div>
-                        </div>
-                        
-                    </div>
-                </div>
+                <?php echo $this->renderPartial('/events/_review', array('race_result'=>$race_result,'members'=>$members,'average'=>$average,'review'=>$review,'all_review'=>$all_review));?>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -259,20 +205,79 @@
 <!-- Modal -->
 
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<?php
+                            $my_rating = $review->rate; 
+                            if(!$my_rating)
+                            $my_rating = 0;
+                            ?>
 <script>
-
 $(function(){
     initialize();
-    //$("#stars-default").rating('create',{coloron:'#ADADAD',value:<?php echo $rating;?>});
-    $("#stars-default").rating('create',{coloron:'#0393D9',value:<?php echo $my_rating;?>});
+    $("#stars-default").rating('create',{coloron:'#0393D9',value:<?php echo $my_rating;?>,onClick:function(){ $('.rate_val').val(this.attr('data-rating'));}});
     <?php
     if(isset($_GET['submitted']))
     {
+        if($_GET['submitted']=='result'){
         ?>
         $('.submitMsg').show();
+        $('html,body').animate({
+                scrollTop: $(".submitMsg").offset().top},
+                'slow');
         <?php
+        }
+        else
+        {
+          ?>
+          $('.reviewMsg').show();
+          $('html,body').animate({
+                scrollTop: $(".reviewMsg").offset().top},
+                'slow');
+                //alert('test');
+          <?php  
+        }
     }
     ?>
+    $('.submit-review').click(function(){
+        var review = $('.review_text').val();
+        var user_id = '<?php echo Yii::app()->user->id;?>';
+        var event_id = '<?php echo $model->id;?>';
+        var rate = $('.rate_val').val();
+        var review_date = '<?php echo date('Y-m-d');?>'
+        $.ajax({
+            url:'<?php echo Yii::app()->request->baseUrl; ?>/events/submitreview',
+            data:'review='+review+'&user_id='+user_id+'&event_id='+event_id+'&rate='+rate+'&review_date='+review_date,
+            type:'post',
+            success:function(res){
+                if($('.pics').length>0)
+                {
+                    var pics = '';
+                    $('.pics').each(function(){
+                        if(pics=='')
+                        {
+                            pics = $('.pics').val();
+                        }
+                        else
+                        pics = pics+','+$('.pics').val();
+                        
+                    })
+                    if(pics){
+                    $.ajax({
+                    url:'<?php echo Yii::app()->request->baseUrl; ?>/events/submitpics',
+                    type:'post',
+                    data:'pics='+pics+'&id='+res,
+                    success:function(){
+                        window.location = '?submitted=review';
+                    }  
+                    })
+                    }
+                    
+                }
+                else
+                window.location = '?submitted=review';
+            }
+        })
+        
+    });
     $('#submit_result').click(function(){
         var user_id = '<?php echo Yii::app()->user->id;?>';
         var event_id = '<?php echo $model->id;?>';
@@ -375,7 +380,7 @@ $(function(){
                 if(res=='last')
                 //
                 $('.submit-result-form').hide();
-                window.location = '?submitted=1';
+                window.location = '?submitted=result';
                } 
             });
         });
@@ -385,14 +390,24 @@ $(function(){
         
         if($(this).parent().find('.content').attr('style')=='display: none;'){
         if($(this).hasClass('ratinganchor'))
-        $(this).attr('style','border-bottom:1px solid #ccc;padding-bottom:5px;');
+        $(this).attr('style','padding-bottom:5px;padding-top:5px;border-bottom:none;');
         else    
         $(this).attr('style','border-bottom:1px solid #ccc;padding-bottom:5px;margin-bottom:5px');
+        if($(this).parent().hasClass('reviewpad'))
+        {
+            $(this).parent().removeClass('padtopbot5');
+            $(this).parent().addClass('padtop5');
+        }
         $(this).parent().find('.content').show('slow');
         }
         else
         {
-            $(this).attr('style','');
+            if($(this).parent().hasClass('reviewpad'))
+            {
+                $(this).parent().addClass('padtopbot5');
+                $(this).parent().removeClass('padtop5');
+            }
+            $(this).attr('style','padding-top: 7px;padding-bottom:7px;');
             $(this).parent().find('.content').hide('slow');
         }
     });

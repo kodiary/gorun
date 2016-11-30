@@ -151,3 +151,259 @@ Stack trace:
 REQUEST_URI=/gorun/events/listTypeEvent
 HTTP_REFERER=http://localhost/gorun/events/submitresults
 ---
+2016/11/25 10:32:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "includes/global/plugins/dropzone/dropzone.js".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('includes/global...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/includes/global/plugins/dropzone/dropzone.js
+HTTP_REFERER=http://localhost/gorun/events/view/run-for-your-health
+---
+2016/11/25 10:32:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "includes/global/plugins/dropzone/css/dropzone.css".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('includes/global...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/includes/global/plugins/dropzone/css/dropzone.css
+HTTP_REFERER=http://localhost/gorun/events/view/run-for-your-health
+---
+2016/11/25 10:32:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "includes/global/plugins/dropzone/dropzone.js".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('includes/global...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/includes/global/plugins/dropzone/dropzone.js
+HTTP_REFERER=http://localhost/gorun/events/view/run-for-your-health
+---
+2016/11/25 10:32:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "includes/global/plugins/dropzone/css/dropzone.css".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('includes/global...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/includes/global/plugins/dropzone/css/dropzone.css
+HTTP_REFERER=http://localhost/gorun/events/view/run-for-your-health
+---
+2016/11/25 10:33:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "includes/global/plugins/dropzone/css/dropzone.css".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('includes/global...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/includes/global/plugins/dropzone/css/dropzone.css
+HTTP_REFERER=http://localhost/gorun/events/view/run-for-your-health
+---
+2016/11/25 10:33:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "includes/global/plugins/dropzone/dropzone.js".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('includes/global...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/includes/global/plugins/dropzone/dropzone.js
+HTTP_REFERER=http://localhost/gorun/events/view/run-for-your-health
+---
+2016/11/25 10:33:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "includes/global/plugins/dropzone/css/dropzone.css".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('includes/global...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/includes/global/plugins/dropzone/css/dropzone.css
+HTTP_REFERER=http://localhost/gorun/events/view/run-for-your-health
+---
+2016/11/25 10:33:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "includes/global/plugins/dropzone/dropzone.js".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('includes/global...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/includes/global/plugins/dropzone/dropzone.js
+HTTP_REFERER=http://localhost/gorun/events/view/run-for-your-health
+---
+2016/11/27 06:34:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in E:\wamp\www\gorun\protected\controllers\EventsController.php:554
+Stack trace:
+#0 E:\wamp\www\gorun\protected\controllers\EventsController.php(108): EventsController->loadModel(NULL)
+#1 [internal function]: EventsController->actionView('test.php')
+#2 E:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EventsController), Array)
+#3 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EventsController), Object(ReflectionMethod), Array)
+#4 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 E:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), NULL)
+#7 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('view')
+#8 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('events/view')
+#9 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/gorun/events/view/test.php
+HTTP_REFERER=http://localhost/gorun/events/view/super-triathlon-sa-1-2-3-4
+---
+2016/11/27 07:21:30 [error] [exception.CException] exception 'CException' with message 'image file not found' in E:\wamp\www\gorun\protected\extensions\image\Image.php:78
+Stack trace:
+#0 E:\wamp\www\gorun\protected\controllers\GalleryController.php(403): Image->__construct('E:\\wamp\\www\\gor...')
+#1 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): GalleryController->actionDropzone()
+#2 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#3 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#4 E:\wamp\www\gorun\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#5 E:\wamp\www\gorun\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#6 E:\wamp\www\gorun\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#7 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#8 E:\wamp\www\gorun\framework\web\CController.php(292): CFilterChain->run()
+#9 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('dropzone')
+#11 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('gallery/dropzon...')
+#12 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/gorun/gallery/dropzone?type=review
+HTTP_REFERER=http://localhost/gorun/events/view/super-triathlon-sa-1-2-3-4
+---
+2016/11/27 07:24:44 [error] [exception.CException] exception 'CException' with message 'image file not found' in E:\wamp\www\gorun\protected\extensions\image\Image.php:78
+Stack trace:
+#0 E:\wamp\www\gorun\protected\controllers\GalleryController.php(394): Image->__construct('E:\\wamp\\www\\gor...')
+#1 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): GalleryController->actionDropzone()
+#2 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#3 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#4 E:\wamp\www\gorun\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#5 E:\wamp\www\gorun\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#6 E:\wamp\www\gorun\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#7 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#8 E:\wamp\www\gorun\framework\web\CController.php(292): CFilterChain->run()
+#9 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('dropzone')
+#11 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('gallery/dropzon...')
+#12 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/gorun/gallery/dropzone?type=review
+HTTP_REFERER=http://localhost/gorun/events/view/super-triathlon-sa-1-2-3-4
+---
+2016/11/28 12:10:22 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+' in E:\wamp\www\gorun\framework\db\CDbConnection.php:382
+Stack trace:
+#0 E:\wamp\www\gorun\framework\db\CDbConnection.php(331): CDbConnection->open()
+#1 E:\wamp\www\gorun\framework\db\CDbConnection.php(309): CDbConnection->setActive(true)
+#2 E:\wamp\www\gorun\framework\base\CModule.php(388): CDbConnection->init()
+#3 E:\wamp\www\gorun\framework\base\CApplication.php(431): CModule->getComponent('db')
+#4 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(615): CApplication->getDb()
+#5 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(2263): CActiveRecord->getDbConnection()
+#6 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(379): CActiveRecordMetaData->__construct(Object(Seo))
+#7 E:\wamp\www\gorun\protected\models\Seo.php(23): CActiveRecord::model('Seo')
+#8 E:\wamp\www\gorun\protected\components\CommonClass.php(554): Seo::model()
+#9 E:\wamp\www\gorun\protected\controllers\SiteController.php(33): CommonClass::getSeoByPage('home-page')
+#10 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): SiteController->actionIndex()
+#11 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#12 E:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#13 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('')
+#15 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('')
+#16 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#17 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/gorun/
+---
+2016/11/28 12:10:30 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+' in E:\wamp\www\gorun\framework\db\CDbConnection.php:382
+Stack trace:
+#0 E:\wamp\www\gorun\framework\db\CDbConnection.php(331): CDbConnection->open()
+#1 E:\wamp\www\gorun\framework\db\CDbConnection.php(309): CDbConnection->setActive(true)
+#2 E:\wamp\www\gorun\framework\base\CModule.php(388): CDbConnection->init()
+#3 E:\wamp\www\gorun\framework\base\CApplication.php(431): CModule->getComponent('db')
+#4 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(615): CApplication->getDb()
+#5 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(2263): CActiveRecord->getDbConnection()
+#6 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(379): CActiveRecordMetaData->__construct(Object(Seo))
+#7 E:\wamp\www\gorun\protected\models\Seo.php(23): CActiveRecord::model('Seo')
+#8 E:\wamp\www\gorun\protected\components\CommonClass.php(554): Seo::model()
+#9 E:\wamp\www\gorun\protected\controllers\SiteController.php(33): CommonClass::getSeoByPage('home-page')
+#10 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(50): SiteController->actionIndex()
+#11 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#12 E:\wamp\www\gorun\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#13 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('')
+#15 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('')
+#16 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#17 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/gorun/
+---
+2016/11/29 12:01:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ima/gorun/ges/frontend/thumb/file_1480417235.jpg".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('ima/gorun/ges/f...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/ima/gorun/ges/frontend/thumb/file_1480417235.jpg
+HTTP_REFERER=http://localhost/gorun/dashboard
+---
+2016/11/29 12:06:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/frontend/thumb/file_1468222889.jpg".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/frontend...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/frontend/thumb/file_1468222889.jpg
+HTTP_REFERER=http://localhost/gorun/events/view/super-triathlon-sa-1-2-3-4?submitted=review
+---
+2016/11/29 12:06:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/frontend/thumb/file_1468222889.jpg".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/frontend...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/frontend/thumb/file_1468222889.jpg
+HTTP_REFERER=http://localhost/gorun/events/view/super-triathlon-sa-1-2-3-4?submitted=review
+---
+2016/11/29 12:07:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/frontend/thumb/file_1468222889.jpg".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/frontend...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/frontend/thumb/file_1468222889.jpg
+---
+2016/11/29 12:08:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/frontend/thumb/file_1468222889.jpg".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/frontend...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/frontend/thumb/file_1468222889.jpg
+HTTP_REFERER=http://localhost/gorun/events/view/super-triathlon-sa-1-2-3-4?submitted=review
+---
+2016/11/29 12:08:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/frontend/thumb/file_1468222889.jpg".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/frontend...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/frontend/thumb/file_1468222889.jpg
+HTTP_REFERER=http://localhost/gorun/events/view/super-triathlon-sa-1-2-3-4?submitted=review
+---
+2016/11/29 12:08:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/frontend/thumb/file_1468222889.jpg".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/frontend...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/frontend/thumb/file_1468222889.jpg
+---
+2016/11/30 08:19:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/frontend/thumb/file_1468250628.jpg".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/frontend...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/frontend/thumb/file_1468250628.jpg
+HTTP_REFERER=http://localhost/gorun/events/view/super-triathlon-sa-1-2-3-4?submitted=review
+---
+2016/11/30 08:19:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/frontend/thumb/file_1468250628.jpg".' in E:\wamp\www\gorun\framework\web\CWebApplication.php:280
+Stack trace:
+#0 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('images/frontend...')
+#1 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/gorun/images/frontend/thumb/file_1468250628.jpg
+HTTP_REFERER=http://localhost/gorun/events/view/super-triathlon-sa-1-2-3-4?submitted=review
+---
