@@ -124,6 +124,7 @@ class qqFileUploader {
         }
 
         $pathinfo = pathinfo($this->file->getName());
+        //return var_dump($pathinfo);
         //$filename = $pathinfo['filename'];
         $filename = 'file_'.time();
         //$filename = md5(uniqid());

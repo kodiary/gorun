@@ -259,7 +259,6 @@ class GalleryController extends Controller
      public function actionUpload()
     {
             Yii::import("ext.EAjaxUpload.qqFileUploader");
-     
             $folder=Yii::app()->basePath.'/../images/temp/full/';// folder to upload file
             $allowedExtensions = array("jpg","jpeg",'gif','png');
             $sizeLimit = 10 * 1024 * 1024;// maximum file size in bytes
@@ -267,9 +266,12 @@ class GalleryController extends Controller
             $sizes = CommonClass::get_resize_details($_GET['type']);
             $width = $sizes[0]['width'];
             $height = $sizes[0]['height'];
+            
             $result = $uploader->handleUpload($folder,$width,$height);
+            //var_dump($result);die();
             if($result['success'])
             {
+                
                  $file=$folder.$result['filename'];
                  $result['imageFull']=Yii::app()->baseUrl.'/images/temp/full/'.$result['filename'];
                 
@@ -277,9 +279,11 @@ class GalleryController extends Controller
                  $resize_detail=CommonClass::get_resize_details($_GET['type']);
                  if (is_array($resize_detail))
                  {
+                    //var_dump($resize_detail);die();
                     foreach($resize_detail as $resize_item)
                     {
                         list($width,$height) = getimagesize($file);
+                        
                         list($resize_width,$resize_height)=CommonClass::get_resized_width_height($width, $height,$resize_item);
                         if($width < $resize_item["width"])
                         {
@@ -287,14 +291,17 @@ class GalleryController extends Controller
                             $resize_width = $width;
                             $resize_height = $height;
                         }
+                        
                         //load image library for resizing
                          $image = new Image($file);
+                         
                          if($resize_item['height']==''&&$resize_item['width']=='')
                             $image->resize($width,$height)->quality(90);
                          else
                             $image->resize($resize_width,$resize_height)->quality(90);
+                           
                          $image->save($resize_item["new_path"].$result['filename']);
-                         
+                          
                         if($resize_item["crop"]=="true")
                         {
                             switch($resize_item["crop_type"])
@@ -313,8 +320,11 @@ class GalleryController extends Controller
                              $image->crop($resize_item["width"],$resize_item["height"],$top_offset,$left_offset)->quality(90);
                              $image->save();
                         }
+                       
                  } 
+                 
                  $result['imageThumb']=Yii::app()->baseUrl.'/images/temp/thumb/'.$result['filename'];  
+                  
             }
             $return = htmlspecialchars(json_encode($result), ENT_NOQUOTES);
             echo $return;// it's array
@@ -324,6 +334,103 @@ class GalleryController extends Controller
                 $return = htmlspecialchars(json_encode($result), ENT_NOQUOTES);
             echo $return;// it's array
             }
+            
+    }
+    public function actionDropzone()
+    {
+            //Yii::import("ext.EAjaxUpload.qqFileUploader");
+            $folder=Yii::app()->basePath.'/../images/temp/full/';// folder to upload file
+            $allowedExtensions = array("jpg","jpeg",'gif','png');
+            $sizeLimit = 10 * 1024 * 1024;
+            if(isset($_FILES['file']['name']) && $_FILES['file']['name'])
+            {
+                $img = $_FILES['file']['name'];
+                $arr_img = explode('.',$img);
+                $ext = end($arr_img);
+                if(!in_array(strtolower($ext), $allowedExtensions))
+                {
+                    $these = implode(', ', $allowedExtensions);
+                    $result['error'] = 'File has an invalid extension, it should be one of '. $these . '.';
+                }
+                else
+                if($_FILES['file']['size']>$sizeLimit)
+                {
+                    $result['error'] = 'File size should not exceed '.$sizeLimit/(1024*1024).'MB';
+                }
+                $filename = 'file_'.time().'.'.$ext;
+                if(!isset($result['error'])){
+                move_uploaded_file($_FILES['file']['tmp_name'],$folder.$filename);
+                $result = array('success'=>true,'filename'=>$filename,'size'=>(($_FILES['file']['size']/1024)/1024));
+                }
+            }
+            $sizes = CommonClass::get_resize_details($_GET['type']);
+            $width = $sizes[0]['width'];
+            $height = $sizes[0]['height'];
+            if($result['success'])
+            {
+                
+                 $file=$folder.$result['filename'];
+                 $result['imageFull']=Yii::app()->baseUrl.'/images/temp/full/'.$result['filename'];
+                
+                 Yii::import('application.extensions.image.Image');
+                 $resize_detail=CommonClass::get_resize_details($_GET['type']);
+                 if (is_array($resize_detail))
+                 {
+                    foreach($resize_detail as $resize_item)
+                    {
+                        list($width,$height) = getimagesize($file);
+                        
+                        list($resize_width,$resize_height)=CommonClass::get_resized_width_height($width, $height,$resize_item);
+                        if($width < $resize_item["width"])
+                        {
+                            $resize_item["crop"]= "false";
+                            $resize_width = $width;
+                            $resize_height = $height;
+                        }
+                        
+                        //load image library for resizing
+                         $image = new Image($file);
+                         
+                         if($resize_item['height']==''&&$resize_item['width']=='')
+                            $image->resize($width,$height)->quality(90);
+                         else
+                            $image->resize($resize_width,$resize_height)->quality(90);
+                           
+                         $image->save($resize_item["new_path"].$result['filename']);
+                          
+                        if($resize_item["crop"]=="true")
+                        {
+                            switch($resize_item["crop_type"])
+                            {
+                                case "center":
+                                    $top_offset='center';
+                                    $left_offset='center';
+                                    break;
+                                case "top_left":
+                                    $top_offset='top';
+                                    $left_offset='left';
+                                    break;
+                            }
+                            //load image library for cropping
+                             $image = new Image($resize_item["new_path"].$result['filename']);
+                             $image->crop($resize_item["width"],$resize_item["height"],$top_offset,$left_offset)->quality(90);
+                             $image->save();
+                        }
+                       
+                 } 
+                 
+                 $result['imageThumb']=Yii::app()->baseUrl.'/images/temp/thumb/'.$result['filename'];  
+                  
+            }
+            $return = htmlspecialchars(json_encode($result), ENT_NOQUOTES);
+            echo $return;// it's array
+        }
+        else
+            {
+                $return = htmlspecialchars(json_encode($result), ENT_NOQUOTES);
+            echo $return;// it's array
+            }
+            
     }
     public function actionUploadFile()
     {
