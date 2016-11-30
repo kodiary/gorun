@@ -51,9 +51,14 @@
                     <?php 
                     $types = explode(',',substr($club->types, 0 ,(strlen($club->types)-1)));
                     foreach($types as $type)
-                    {?>
-                        <a href="<?php echo Yii::app()->baseUrl.'/clubs/type/'.str_replace(' ','_',$type);?>"><span class="distance"><?php echo $type;?></span></a>    
+                    {
+                        if($type != ''){
+                            $eventsType = EventsType::model()->findByPk($type);
+                            
+                        ?>
+                        <a href="<?php echo Yii::app()->baseUrl.'/clubs/type/'.str_replace(' ','_',$eventsType->title);?>"><span class="distance"><?php echo $eventsType->title;?></span></a>    
                     <?php
+                        }
                     }?>
                     
                 </div>

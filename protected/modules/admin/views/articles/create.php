@@ -43,7 +43,7 @@ else
   <!--subTitle-->
   <div class="line"></div>
   <?php
-    Yii::app()->clientScript->registerCoreScript('jquery.ui');
+    //Yii::app()->clientScript->registerCoreScript('jquery.ui');
     echo $this->renderPartial('_form', array('model'=>$model, 'model_source'=>$model_source));
     //echo $this->renderPartial('_addimage');
   ?>

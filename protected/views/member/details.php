@@ -136,7 +136,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
     <?php
         $criteria = new CDbCriteria;
         $criteria->with = ['event'];
-        $criteria->condition = 't.member_id="'.$model->id.'" and t.event_date>"'.date('Y-m-d').'"';
+        $criteria->condition = 't.member_id="'.$model->id.'" and t.event_date>"'.date('Y-m-d').'" and t.going=1';
         $upcomingEvents_Count= count(MemberEvent::model()->findAll($criteria));
         $criteria->limit = $limit;
         

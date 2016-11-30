@@ -126,13 +126,9 @@ class MemberController extends Controller
             if($member->save())
             {
                 $id = $member->id;
-                
-                $pin = CommonClass::randomString('8');
-                Yii::app()->session["pin_$id"] = $pin;
-                $url =  $this->createAbsoluteUrl("member/confirmation/hash/".sha1($member->email)."acef".$id);
-                $msg = $this->renderPartial('application.views.email.signup', array('fname'=>ucfirst($_POST['fname']),'lname'=>ucfirst($_POST['lname']),'pin'=>$pin,'url'=>$url), true);
-                    CommonClass::sendEmail("GO RUN","noreply@gorun.co.za",$member->email,"Confirmation Email",$msg);     
-                // Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - A new event has been added successfully!');
+                CommonClass::sendConfirmationEmail($member);
+                     
+                Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - User has been added. Please verfiy your account.');
 				$this->redirect(Yii::app()->request->baseUrl);
             }
          
@@ -146,7 +142,8 @@ class MemberController extends Controller
     }
     public function actionConfirmation($hash="")
     {
-        
+        Yii::import('application.modules.hybridauth.models.*');
+        Yii::import('application.modules.hybridauth.components.*');
         $m = explode('acef',$hash);
         $id = $m[1];
         $member =  Member::model()->findByPk($id);
@@ -158,10 +155,22 @@ class MemberController extends Controller
                 if($m[0] == sha1($member->email))
                 {
                     $member->saveAttributes(['is_verified'=>1]);
-                       
-                    unset(Yii::app()->session['pin_'.$id]);
-                    Yii::app()->user->setFlash('notverified','ok');
-                    $this->redirect(Yii::app()->request->baseUrl.'/member/login');
+                    //$provider = Member::model()->with(['haLogin'])->findByAttributes(['id'=>$id],'password <>""');
+                    //var_dump($provider);
+                    //unset(Yii::app()->session['pin_'.$id]);
+                    if($provider = Member::model()->with(['haLogin'=>['together'=>true]])->findByAttributes(['id'=>$id,'password'=>''])){
+                        
+                        //var_dump($provider['haLogin']);
+                        $identity = new RemoteUserIdentity($provider->haLogin['loginProvider'],Yii::app()->getModule('hybridauth')->getHybridauth());
+                        $identity->id = $id;
+                        Yii::app()->user->login($identity, 0);
+                        $this->redirect(Yii::app()->request->baseUrl."/dashboard");
+                        
+                    } else
+                    {
+                        Yii::app()->user->setFlash('notverified','ok');
+                        $this->redirect(Yii::app()->request->baseUrl.'/member/login');
+                    }
                 }
             }
             else
@@ -220,7 +229,7 @@ class MemberController extends Controller
         if(isset($_POST['btnRemindPass']))
 		{
             
-                $record=Company::model()->findByAttributes(array('email'=>$_POST['LoginForm']['emailAdd']));
+                $record=Member::model()->findByAttributes(array('email'=>$_POST['LoginForm']['emailAdd']));
                 if($record===null)
                 {
                     Yii::app()->user->setFlash('info', '<strong>ERROR - </strong> The email address does not exist in the database. Try another.');

@@ -84,6 +84,7 @@ class Member extends CActiveRecord
 			array('province, status', 'numerical', 'integerOnly'=>true),
 			array('latitude, longitude', 'numerical'),
             array('contact_clicked,date_updated,is_verified','safe'),
+            
 		);
 	}
 
@@ -98,7 +99,8 @@ class Member extends CActiveRecord
             'clubs'=>array(self::HAS_MANY,'ClubMember','member_id'),
             'club'=>array(self::HAS_ONE,'Club','created_by'),
             'articles'=>array(self::HAS_MANY, 'Articles', 'member_id'),
-            'extras'=>array(self::HAS_MANY, 'MemberExtra','member_id')
+            'extras'=>array(self::HAS_MANY, 'MemberExtra','member_id'),
+            'haLogin'=>array(self::HAS_ONE,'HaLogin','userId')
             //'jobs'=>array(self::HAS_MANY, 'Jobs', 'company_id'),
             //'services'=>array(self::HAS_MANY,'CompanyServices','company_id'),
      
@@ -404,5 +406,9 @@ class Member extends CActiveRecord
         return $year;
         
         
+    }
+    public function findByEmail($email)
+    {
+        return self::model()->findByAttributes(array('email' => $email));
     }
 }

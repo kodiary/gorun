@@ -117,8 +117,9 @@
         </div>
    
         <li class="greybg radioOption">
-            <label>Member</label>
-            <?php echo $form->dropDownList($model, 'company_id', Company::getAll(), array('empty'=>'Untagged Article', 'class'=>''));?> 
+            <label>Club</label>
+            <?php //echo $form->dropDownList($model, 'company_id', Company::getAll(), array('empty'=>'Untagged Article', 'class'=>''));?> 
+            <?php echo $form->dropDownList($model, 'company_id', Club::model()->getAllActiveClub(), array('empty'=>'Untagged Article', 'class'=>''));?>
             <div class="clear"></div>
         </li>
     
