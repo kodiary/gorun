@@ -1,4 +1,5 @@
-
+<script src="<?php echo Yii::app()->request->baseUrl;?>/popup/jquery.magnific-popup.js"></script>
+<link href="<?php echo Yii::app()->request->baseUrl;?>/popup/magnific-popup.css" rel="stylesheet" type="text/css" />
 <div class="row">
 <div class="extra_border">
                     <div class="rating-block">
@@ -96,6 +97,23 @@
                                     <div id="review_photos"></div>-->
                                     <form action="<?php echo Yii::app()->request->baseUrl; ?>/gallery/dropzone?type=review" class="dropzone" id="my-dropzone">
 					                </form>
+                                    <?php
+                                    $my_pic = $pics->findAllByAttributes(['review_id'=>$review->id]);
+                                    if(count($my_pic))
+                                    {
+                                      
+                                        foreach($my_pic as $p)
+                                        {
+                                            ?>
+                                            <div class="review-pic-list">
+                                                <img src="<?php echo Yii::app()->request->baseUrl;?>/images/temp/thumb/<?php echo $p->picture;?>" />
+                                                <input class="pics" value="<?php echo $p->picture;?>" type="hidden">
+                                            </div>
+                                            <?php
+                                        }
+                                
+                                    }
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -205,6 +223,53 @@
                                     <br />
                                     Submitted: <?php echo str_replace('-','/',$ar->review_date);?> at <?php echo $ar->review_time;?>
                                 </p>
+                                <?php
+                                $pictures = $pics->findAllByAttributes(['review_id'=>$ar->id]);
+                                if(count($pictures)){
+                                ?>
+                                <p>
+                                <?php
+                                if(count($pictures))
+                                {
+                                    ?>
+                                    <div class="popup<?php echo $ar->id;?>">
+                                   <?php
+                                foreach($pictures as $p)
+                                {
+                                    ?>
+                                    <a class="review-pic-list" href="<?php echo Yii::app()->request->baseUrl;?>/images/temp/full/<?php echo $p->picture;?>">
+                                        <img src="<?php echo Yii::app()->request->baseUrl;?>/images/temp/thumb/<?php echo $p->picture;?>" />
+                                    </a>
+                                    <?php
+                                }
+                                ?>
+                                 </div>
+                                 <script>
+                                 $(function(){
+                                 $('.popup<?php echo $ar->id;?>').magnificPopup({
+                          delegate: 'a',
+                          type: 'image',
+                          tLoading: 'Loading image #%curr%...',
+                          mainClass: 'mfp-img-mobile',
+                          gallery: {
+                            enabled: true,
+                            navigateByImgClick: true,
+                            preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+                          },
+                          image: {
+                            tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+                            titleSrc: function(item) {
+                              return '';
+                            }
+                          }
+                        });
+                        })
+                        </script>
+                                    <?php
+                                }
+                                ?>
+                                </p>
+                                <?php } ?>
                                 </div>
                             </div>
                             <?php
@@ -269,6 +334,7 @@
                         
                     }
                     $(function(){
+                    
                     $('.load-more-review').click(function(){
                        var offset = $('.offset').val();
                        $('.offset').val(parseInt(offset)+6);
@@ -277,7 +343,10 @@
                         data:'offset='+offset+'&event_id='+$('.event_id').val(),
                         type:'post',
                         success:function(res){
+                            if(res){
+                                $('.all-review .clearfix:last').remove()
                             $('.all-review').append(res);
+                            }
                         }
                        }); 
                     });

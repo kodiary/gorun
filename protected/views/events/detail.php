@@ -191,7 +191,7 @@
                 <div class="clearfix"></div>
             </a>
             <div class="content col-md-12" style="display: none;">
-                <?php echo $this->renderPartial('/events/_review', array('race_result'=>$race_result,'members'=>$members,'average'=>$average,'review'=>$review,'all_review'=>$all_review));?>
+                <?php echo $this->renderPartial('/events/_review', array('pics'=>$pics,'race_result'=>$race_result,'members'=>$members,'average'=>$average,'review'=>$review,'all_review'=>$all_review));?>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -254,10 +254,10 @@ $(function(){
                     $('.pics').each(function(){
                         if(pics=='')
                         {
-                            pics = $('.pics').val();
+                            pics = $(this).val();
                         }
                         else
-                        pics = pics+','+$('.pics').val();
+                        pics = pics+','+$(this).val();
                         
                     })
                     if(pics){

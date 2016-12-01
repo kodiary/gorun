@@ -6375,3 +6375,35 @@ Stack trace:
 REQUEST_URI=/gorun/clubs/test400
 HTTP_REFERER=http://localhost/gorun/clubs/type/running
 ---
+2016/12/01 06:30:06 [error] [exception.CDbException] exception 'CDbException' with message 'Table "tbl_review_pics" does not have a column named "user_id".' in E:\wamp\www\gorun\framework\db\schema\CDbCommandBuilder.php:570
+Stack trace:
+#0 E:\wamp\www\gorun\framework\db\ar\CActiveRecord.php(1471): CDbCommandBuilder->createColumnCriteria(Object(CMysqlTableSchema), Array, '', Array, '`t`.')
+#1 E:\wamp\www\gorun\protected\views\events\_review.php(100): CActiveRecord->findAllByAttributes(Array)
+#2 E:\wamp\www\gorun\framework\web\CBaseController.php(127): require('E:\\wamp\\www\\gor...')
+#3 E:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('E:\\wamp\\www\\gor...', Array, true)
+#4 E:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('E:\\wamp\\www\\gor...', Array, true)
+#5 E:\wamp\www\gorun\protected\views\events\detail.php(194): CController->renderPartial('/events/_review', Array)
+#6 E:\wamp\www\gorun\framework\web\CBaseController.php(127): require('E:\\wamp\\www\\gor...')
+#7 E:\wamp\www\gorun\framework\web\CBaseController.php(96): CBaseController->renderInternal('E:\\wamp\\www\\gor...', Array, true)
+#8 E:\wamp\www\gorun\framework\web\CController.php(870): CBaseController->renderFile('E:\\wamp\\www\\gor...', Array, true)
+#9 E:\wamp\www\gorun\framework\web\CController.php(783): CController->renderPartial('detail', Array, true)
+#10 E:\wamp\www\gorun\protected\controllers\EventsController.php(133): CController->render('detail', Array)
+#11 [internal function]: EventsController->actionView('super-triathlon...')
+#12 E:\wamp\www\gorun\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EventsController), Array)
+#13 E:\wamp\www\gorun\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EventsController), Object(ReflectionMethod), Array)
+#14 E:\wamp\www\gorun\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#15 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#16 E:\wamp\www\gorun\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#17 E:\wamp\www\gorun\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#18 E:\wamp\www\gorun\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#19 E:\wamp\www\gorun\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#20 E:\wamp\www\gorun\framework\web\CController.php(292): CFilterChain->run()
+#21 E:\wamp\www\gorun\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#22 E:\wamp\www\gorun\framework\web\CWebApplication.php(276): CController->run('view')
+#23 E:\wamp\www\gorun\framework\web\CWebApplication.php(135): CWebApplication->runController('events/view')
+#24 E:\wamp\www\gorun\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#25 E:\wamp\www\gorun\index.php(13): CApplication->run()
+#26 {main}
+REQUEST_URI=/gorun/events/view/super-triathlon-sa-1-2-3-4?submitted=review
+HTTP_REFERER=http://localhost/gorun/events/view/super-triathlon-sa-1-2-3-4?submitted=review
+---

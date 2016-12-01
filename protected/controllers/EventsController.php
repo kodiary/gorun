@@ -128,7 +128,8 @@ class EventsController extends Controller
             'review'=>$rating,
             'average'=>$average,
             'all_review'=>$all_review,
-            'members'=>Member::model()
+            'members'=>Member::model(),
+            'pics'=>ReviewPics::model()
 		));
         
 	}
@@ -839,6 +840,12 @@ class EventsController extends Controller
         $arr['review_id'] = $_POST['id'];
         $pics = $_POST['pics'];
         $pic_arr = explode(',',$pics);
+        $check = ReviewPics::model()->findAllByAttributes(['review_id'=>$_POST['id']]);
+        if(count($check))
+        {
+          ReviewPics::model()->deleteAllByAttributes(array('review_id'=>$_POST['id']));  
+        }
+        
         foreach($pic_arr as $p)
         {
             $arr['picture'] = $p;
@@ -858,7 +865,8 @@ class EventsController extends Controller
         $this->renderPartial('application.views.events._load_review',array(
             'all_review'=>$all_review,
             'race_result'=>EventResult::model(),
-            'members'=>Member::model()
+            'members'=>Member::model(),
+            'pics'=>ReviewPics::model()
         ));  
     }
     public function actionSubmitresult()

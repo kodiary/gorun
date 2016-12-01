@@ -1,4 +1,5 @@
 <?php
+if(count($all_review)){
                         $cou=0;
                         foreach($all_review as $ar)
                         {
@@ -35,7 +36,7 @@
                                                 }
                             ?>
                             <div class="col-md-6">
-                            <a href="javascript:void(0)" class="show_review">
+                            <a href="javascript:void(0)" id="hidden<?php echo $ar->id;?>" class="show_review" onclick="showReview($(this),<?php echo $ar->id;?>)">
                                 <div class="all_review_list">
                                     <div class="review-list-img"><img class="img-circle" src="<?php echo Yii::app()->request->baseUrl; ?>/images/<?php if($mem->logo){?>frontend/thumb/<?php echo $mem->logo;?><?php }else{?>blue.png<?php }?>"/></div>
                                     <div class="review-list-txt">
@@ -71,8 +72,39 @@
                                 </div> 
                             </a>                           
                             </div>
+                            <div class="col-md-12 hidden<?php echo $ar->id;?>" style="display: none;">
+                                <div class="review-detail">
+                                <p><?php echo str_replace('1em','2em',$str);?></p>
+                                <p>
+                                <?php echo $ar->review;?>
+                                </p>
+                                <p>
+                                    <span class="blue memname"><?php echo ucfirst($mem->fname).' '.ucfirst($mem->lname);?></span>
+                                    <br />
+                                    Submitted: <?php echo str_replace('-','/',$ar->review_date);?> at <?php echo $ar->review_time;?>
+                                </p>
+                                <?php
+                                $pictures = $pics->findAllByAttributes(['review_id'=>$ar->id]);
+                                if(count($pictures)){
+                                ?>
+                                <p>
+                                <?php
+                                foreach($pictures as $p)
+                                {
+                                    ?>
+                                    <div class="review-pic-list">
+                                        <img src="<?php echo Yii::app()->request->baseUrl;?>/images/temp/thumb/<?php echo $p->picture;?>" />
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+                                </p>
+                                <?php } ?>
+                                </div>
+                            </div>
                             <?php
                         }
                         
                         ?>
                         <div class="clearfix"></div>
+                        <?php }?>
