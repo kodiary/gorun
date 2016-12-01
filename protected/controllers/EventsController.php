@@ -777,6 +777,12 @@ class EventsController extends Controller
         }
         return false;
     }
+    public function actionDeletereview(){
+        $arr['user_id'] = $_POST['user_id'];
+        $arr['event_id'] = $_POST['event_id'];
+        Review::model()->deleteAllByAttributes($arr);
+        die('here');
+    }
     public function actionSubmitreview()
     {
         $total = new ReviewTotal;

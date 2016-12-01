@@ -183,6 +183,18 @@
         <?php
         }
         ?>
+        <?php
+        if(isset($_GET['deleted']) && $_GET['deleted']=='review')
+        {
+            ?>
+            
+        <div class="alert alert-success alert-dismissible reviewMsg" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          Review deleted successfully.
+        </div>
+        <?php
+        }
+        ?>
         <div class="white padtopbot5 reviewpad" style="border: none;padding:0;">
             
             <a class="expand_block ratinganchor col-md-12 extra_border" href="javascript:void(0)" style="padding-top: 7px;padding-bottom:7px;">
@@ -215,6 +227,16 @@ $(function(){
     initialize();
     $("#stars-default").rating('create',{coloron:'#0393D9',value:<?php echo $my_rating;?>,onClick:function(){ $('.rate_val').val(this.attr('data-rating'));}});
     <?php
+    if(isset($_GET['deleted']))
+    {
+        ?>
+        $('.reviewMsg').show();
+          $('html,body').animate({
+                scrollTop: $(".reviewMsg").offset().top},
+                'slow');
+                //alert('test');
+        <?php
+    }
     if(isset($_GET['submitted']))
     {
         if($_GET['submitted']=='result'){
@@ -237,11 +259,32 @@ $(function(){
         }
     }
     ?>
+    $('.delete-review').click(function(){
+       var con = confirm('Are you sure you want to delete your review?');
+       var user_id = '<?php echo Yii::app()->user->id;?>';
+        var event_id = '<?php echo $model->id;?>';
+       if(con)
+       {
+        $.ajax({
+            url:'<?php echo Yii::app()->request->baseUrl; ?>/events/deletereview',
+            data:'user_id='+user_id+'&event_id='+event_id,
+            type:'post',
+            success:function(res){
+                window.location = '<?php echo Yii::app()->request->baseUrl;?>/events/view/<?php echo $model->slug;?>?deleted=review';
+            }
+        })
+       } 
+    });
     $('.submit-review').click(function(){
         var review = $('.review_text').val();
         var user_id = '<?php echo Yii::app()->user->id;?>';
         var event_id = '<?php echo $model->id;?>';
         var rate = $('.rate_val').val();
+        if(rate==0)
+        {
+            alert('You must rate atleast 1 star');
+            return false;
+        }
         var review_date = '<?php echo date('Y-m-d');?>'
         $.ajax({
             url:'<?php echo Yii::app()->request->baseUrl; ?>/events/submitreview',
@@ -266,14 +309,15 @@ $(function(){
                     type:'post',
                     data:'pics='+pics+'&id='+res,
                     success:function(){
-                        window.location = '?submitted=review';
+                        window.location = '<?php echo Yii::app()->request->baseUrl;?>/events/view/<?php echo $model->slug;?>?submitted=review';
                     }  
                     })
                     }
                     
                 }
-                else
-                window.location = '?submitted=review';
+                else{
+                window.location = '<?php echo Yii::app()->request->baseUrl;?>/events/view/<?php echo $model->slug;?>?submitted=review';
+                }
             }
         })
         
@@ -380,7 +424,7 @@ $(function(){
                 if(res=='last')
                 //
                 $('.submit-result-form').hide();
-                window.location = '?submitted=result';
+                window.location = '<?php echo Yii::app()->request->baseUrl;?>/events/view/<?php echo $model->slug;?>?submitted=result';
                } 
             });
         });

@@ -10,6 +10,7 @@
  * @property integer $rate
  * @property string $review
  * @property string $review_date
+ * @property string $review_time
  */
 class Review extends CActiveRecord
 {
@@ -39,12 +40,13 @@ class Review extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, event_id, rate, review_date','review_time', 'required'),
+			array('user_id, event_id, rate, review_date, review_time', 'required'),
 			array('user_id, event_id, rate', 'numerical', 'integerOnly'=>true),
+			array('review_time', 'length', 'max'=>255),
 			array('review', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, user_id, event_id, rate, review, review_date','review_time', 'safe', 'on'=>'search'),
+			array('id, user_id, event_id, rate, review, review_date, review_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -71,7 +73,7 @@ class Review extends CActiveRecord
 			'rate' => 'Rate',
 			'review' => 'Review',
 			'review_date' => 'Review Date',
-            'review_time' => 'Review Time'
+			'review_time' => 'Review Time',
 		);
 	}
 
@@ -92,7 +94,8 @@ class Review extends CActiveRecord
 		$criteria->compare('rate',$this->rate);
 		$criteria->compare('review',$this->review,true);
 		$criteria->compare('review_date',$this->review_date,true);
-        $criteria->compare('review_time',$this->review_time,true);
+		$criteria->compare('review_time',$this->review_time,true);
+
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
