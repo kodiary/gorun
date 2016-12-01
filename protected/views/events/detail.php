@@ -133,6 +133,28 @@
         
         <div class="white padtopbot5">
             <a class="expand_block col-md-12" href="javascript:void(0)">
+                <div class="floatLeft">EVENT FLYER</div>
+                <div class="floatRight"><span class="fa fa-angle-down"></span></div>
+                <div class="clearfix"></div>
+            </a>
+            <div class="col-md-12 content" style="display: none;">
+            <?php
+            $flyer = $files->findAllByAttributes(['event_id'=>$model->id]);
+            foreach($flyer as $fl)
+            {
+                ?>
+                <a class="pdf-anc" href="javascript:void(0)" onclick="$('.popover2 .modal-body').html('<iframe src=\'https://docs.google.com/gview?url=<?php echo urlencode(Yii::app()->createAbsoluteUrl('files/events').'/'.$fl->file);?>&embedded=true\' style=\'width:100%; height:700px;\' frameborder=\'0\'></iframe><p>');$('.popover2 .modal-title').html('<?php echo $fl->file;?>');" data-toggle="modal" data-target="#docModal"><span class="fa fa-file-pdf-o"></span><br /><?php echo $fl->file;?></a>
+                <?php
+            }
+            ?>
+            
+                
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        
+        <div class="white padtopbot5">
+            <a class="expand_block col-md-12" href="javascript:void(0)">
                 <div class="floatLeft">WHERE</div>
                 <input type="hidden" required="" onblur='codeAddress()' id="formattedAddress" class="form-control venue" placeholder="Enter venue name or street address" name="Events[venue]" value="<?php echo $model->venue;?>" />
                 <input id="Company_latitude" type="hidden" name="Events[latitude]" onchange='updateMapPinPosition()' value="<?php echo $model->latitude;?>" />
@@ -464,3 +486,20 @@ $(function(){
     })
 })
 </script>
+<div class="modal fade popover2" id="docModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" style="color: #444;" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Member Login</h4>
+      </div>
+      <div class="modal-body">
+        <!-- Normal -->      
+        <?php $this->renderPartial('/common/login');?>
+        </div>
+      
+    </div>
+  </div>
+
+</div>

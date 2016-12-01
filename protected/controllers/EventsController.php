@@ -129,7 +129,8 @@ class EventsController extends Controller
             'average'=>$average,
             'all_review'=>$all_review,
             'members'=>Member::model(),
-            'pics'=>ReviewPics::model()
+            'pics'=>ReviewPics::model(),
+            'files'=>EventsFile::model()
 		));
         
 	}

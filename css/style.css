@@ -625,3 +625,5 @@ h3.blue{font-weight:bold;margin-top:0;}
     margin-top: 6px;
     padding: 5px 12px;}
 .search_results:hover{color:#CCC;}
+.pdf-anc{display:inline-block;margin-right:10px;text-align:center;color:#444;font-size:12px;padding:5px;border:2px solid #ccc;border-radius:4px;margin-top:10px;}
+.pdf-anc .fa{font-size:90px!important;color:#27A8E2!important;}
