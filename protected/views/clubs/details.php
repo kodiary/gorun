@@ -154,9 +154,9 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
                     <img class="img-circle" src="<?php echo $img_url;?>"/>
                 </div>
                 <div class="col-md-9">
-                    <div class="Members_name"><a href="<?php echo Yii::app()->baseUrl."/profile/".$member->username;?>"><?php echo ucfirst($member->fname." ".$member->lname);?></a></div>
-                    <span class="results">5 Results</span>
-                    <div class="blue race-reviews">23 RACE REVIEWS</div>
+                    <div class="Members_name"><a href="<?php echo Yii::app()->baseUrl."/".$member->username;?>"><?php echo ucfirst($member->fname." ".$member->lname);?></a></div>
+                    <span class="results"><?php echo EventResult::model()->resultCountbyUser($member->id);?> Results</span>
+                    <div class="blue race-reviews"><?php echo Review::model()->resultCountbyUser($member->id);?> RACE REVIEWS</div>
                 </div>
                 <div class="clearfix"></div>
             
@@ -199,8 +199,8 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
             </div>
             <div class="col-md-9">
                 <div class="Members_name"><?php echo ucfirst($admin->fname." ".$admin->lname);?></div>
-                <span class="results">5 Results</span>
-                <div class="blue race-reviews">23 RACE REVIEWS</div>
+                <span class="results"><?php echo EventResult::model()->resultCountbyUser($admin->id);?> Results</span>
+                <div class="blue race-reviews"><?php echo Review::model()->resultCountbyUser($admin->id);?> RACE REVIEWS</div>
             </div>
             <div class="clearfix"></div>
         

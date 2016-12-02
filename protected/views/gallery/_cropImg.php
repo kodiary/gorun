@@ -27,7 +27,7 @@
                     $('.cropIt').val('Crop');
                     $('.ui-dialog-titlebar-close').click();
                     $('#".$upimage."').html('');
-                    $('#".$upimage."').html('<img src=\"'+data+'\"/>');
+                    $('#".$upimage."').html('<img src=\"'+data+'\" class=\"img-circle\"/>');
                     var filename = data.split('thumb/');
                     $('.".$main_logo."').val(filename[1]);
                      return false;

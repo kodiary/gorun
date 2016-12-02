@@ -143,6 +143,14 @@ class EventResult extends CActiveRecord
         $criteria->compare('cast(distance as decimal(5,2))',$distance);
         $q = self::model()->find($criteria);
         return $q->av;
-        }
+    }
+    
+    public function resultCountbyUser($user_id)
+    {
+        $criteria = new CDbCriteria;
+        $criteria->condition = 'user_id='.$user_id;
+        return self::model()->count($criteria);
+        
+    }
     
 }

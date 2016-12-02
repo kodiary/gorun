@@ -25,7 +25,7 @@ function initiateUpload(index)
             {
                 //if(index==0)
                 //{
-                    $('#upimage_'+index).html('<img src="'+responseJSON.imageThumb+'"/>');
+                    $('#upimage_'+index).html('<img src="'+responseJSON.imageThumb+'" class="img-circle"/>');
                     $('.uploaded_image').val(responseJSON.filename);
                     $('.main_logo').val(responseJSON.filename);
                     $('#Gallery_'+index+'_name').val(responseJSON.filename);    

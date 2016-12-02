@@ -140,43 +140,43 @@
                    
                      
                     <script>
-                            tinymce.init({
-                                selector:'textarea',
-                                statusbar: false,
-                                menubar: false,
-                                plugins:['hr link pagebreak'],
-                                toolbar: ['bold italic strikethrough bullist numlist blockquote hr alignleft aligncenter alignright link unlink pagebreak'],
-                                setup:function(ed) {
-                                   ed.on('keyup', function(e) {
-                                        tmp = ed.getContent({format : 'text'});
-                                        currentLength= tmp.length;
-                                        maximumLength = 600;
-                                        var rem_text = maximumLength-currentLength;
-                                        $('.count_letter').text(rem_text);
-                                        
-                                        if( currentLength > maximumLength )
-                                        {
-                                            ed.undoManager.add();
-                                            ed.undoManager.transact(function(){
-                                                ed.setContent(ed.getContent({format : 'text'}).substring(0,600));
-                                                $('.count_letter').text(0);
-                                                ed.undoManager.undo();
-                                             });
-                                             //ed.undoManager.undo();
-                                            //tinyMCE.execCommand("mceRemoveControl", true, 'description');
-                                            //tinymce.activeEditor.getBody().setAttribute('contenteditable', false);
-                                        }
-                                        else
-                                        {
-                                            ed.undoManager.clear();
-                                        }
-                                       /*console.log('the event object ', e);
-                                       console.log('the editor object ', ed);
-                                       console.log('the content ', ed.getContent().replace(/<(?:.|\n)*?>/gm, ''));*/
-                                   });
-                                   },
-                                
-                                });
+                        tinymce.init({
+                            selector:'textarea',
+                            statusbar: false,
+                            menubar: false,
+                            plugins:['hr link pagebreak'],
+                            toolbar: ['bold italic strikethrough bullist numlist blockquote hr alignleft aligncenter alignright link unlink pagebreak'],
+                            setup:function(ed) {
+                               ed.on('keyup', function(e) {
+                                    tmp = ed.getContent({format : 'text'});
+                                    currentLength= tmp.length;
+                                    maximumLength = 600;
+                                    var rem_text = maximumLength-currentLength;
+                                    $('.count_letter').text(rem_text);
+                                    
+                                    if( currentLength > maximumLength )
+                                    {
+                                        ed.undoManager.add();
+                                        ed.undoManager.transact(function(){
+                                            ed.setContent(ed.getContent({format : 'text'}).substring(0,600));
+                                            $('.count_letter').text(0);
+                                            ed.undoManager.undo();
+                                         });
+                                         //ed.undoManager.undo();
+                                        //tinyMCE.execCommand("mceRemoveControl", true, 'description');
+                                        //tinymce.activeEditor.getBody().setAttribute('contenteditable', false);
+                                    }
+                                    else
+                                    {
+                                        ed.undoManager.clear();
+                                    }
+                                   /*console.log('the event object ', e);
+                                   console.log('the editor object ', ed);
+                                   console.log('the content ', ed.getContent().replace(/<(?:.|\n)*?>/gm, ''));*/
+                               });
+                               },
+                            
+                            });
                                 
                     </script>
                      

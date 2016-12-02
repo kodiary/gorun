@@ -100,4 +100,12 @@ class Review extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+    
+    public function resultCountbyUser($user_id)
+    {
+        $criteria = new CDbCriteria;
+        $criteria->condition = 'user_id='.$user_id;
+        return self::model()->count($criteria);
+        
+    }
 }
