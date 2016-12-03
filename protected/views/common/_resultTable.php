@@ -10,7 +10,7 @@
         </thead>
         <tbody class="more_results">
         <?php
-            $this->renderPartial('/common/_trResult',['memEvents'=>$results,'offset'=>$offset]);
+            $this->renderPartial('/common/_trResult',['models'=>$results,'offset'=>$offset]);
         ?>
         </tbody>
       
