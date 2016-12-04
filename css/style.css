@@ -616,14 +616,21 @@ h3.blue{font-weight:bold;margin-top:0;}
     display: inline-block;
     float: left;
     margin-top: 6px;
-    padding: 6px 10px;
+    padding: 4px 10px;
     width: 228px;}
 .search_results{border: 1px solid #ccc;
     display: inline-block;
     float: right;
     line-height: 19px;
     margin-top: 6px;
-    padding: 5px 12px;}
+    padding: 3px 12px;}
 .search_results:hover{color:#CCC;}
 .pdf-anc{display:inline-block;margin-right:10px;text-align:center;color:#444;font-size:12px;padding:5px;border:2px solid #ccc;border-radius:4px;margin-top:10px;}
 .pdf-anc .fa{font-size:90px!important;color:#27A8E2!important;}
+.whitetext{color:#FFF;font-size:17px;padding-top:7px;}
+.whitetext span,.whitetext a{font-weight:bold;}
+.dis_active{color: #FFF;}
+.searchblock{background:#343434;padding-bottom:8px;}
+.whitetext a:hover{text-decoration:none;color:#FFF;}
+.whitetext a:focus{text-decoration:none;color:#FFF;outline:none;}
+.btnresult{background:#343434!important;}

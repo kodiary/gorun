@@ -229,10 +229,27 @@
             </div>
             <div class="clearfix"></div>
         </div>
+        
+        <div class="white padtopbot5" style="">
+            
+            <a href="javascript:void(0)" class="expand_block col-md-12">
+                <div class="floatLeft">RACE RESULTS</div>
+                <div class="floatRight"><span class="fa fa-angle-down"></span></div>
+                <div class="clearfix"></div>
+            </a>
+            <?php $this->renderPartial('/events/_board',['results'=>'race_result','event_id'=>$model->id,'members'=>$members,'model'=>$model,'m_time'=>$m_time]);?>
+            
+            
+            
+            <div class="clearfix"></div>
+        </div>   
+        
+        
+        
     </div>
     <div class="clearfix"></div>
     <hr />
-    <?php //echo $this->renderPartial('/events/_form', array('model'=>$model,'event_type'=>$event_type)); ?>
+   
     
 </div>
 <div class="clearfix"></div>
@@ -455,6 +472,7 @@ $(function(){
     $('.expand_block').click(function(){
         
         if($(this).parent().find('.content').attr('style')=='display: none;'){
+            $(this).parent().find('.searchblock').show();
         if($(this).hasClass('ratinganchor'))
         $(this).attr('style','padding-bottom:5px;padding-top:5px;border-bottom:none;');
         else    

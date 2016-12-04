@@ -1048,4 +1048,10 @@ class EventsController extends Controller
         //var_dump($events);die();
         $this->renderPartial('/events/_calendar_list',array('events'=>$events,'et'=>EventsTime::model())); 
     }
+    public function actionLoadBoard()
+    {
+        $id = $_POST['event_time_id'];
+        $result = EventResult::model()->findAllByAttributes(['event_time_id'=>$id],['limit'=>10,'order'=>'dist_time asc']);
+        $this->renderPartial('/events/_ajax_board',array('result'=>$result));
+    }
 }
