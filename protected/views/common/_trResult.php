@@ -1,5 +1,5 @@
 <?php
-foreach($memEvents as $k=>$result){?>
+foreach($models as $k=>$result){?>
 <tr title="<?php echo $offset;?>">
     <td><span class="blue pos"><?php echo (isset($_GET['pos']))?++$_GET['pos']:++$k;?></span></td>
     <td><span class="blue"> <a href="<?php echo Yii::app()->request->baseUrl."/".$result->member['username'];?>" target="_blank"><?php echo $result->member['fname']." ".$result->member['lname'];?></a></span></td>

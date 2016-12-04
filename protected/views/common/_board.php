@@ -1,9 +1,9 @@
 <div class="block_border" style="padding: 0;">
 <div class="results col-md-12" style="border-radius: 0;">
     <div class="filter2 col-md-4">
-        <div class="fil-group">
+        <div class="fil-group" style="position: relative;">
         <a href="javascript:void(0)" class="fil ResulteventType" title="<?php echo $results[0]->event_type."_".$results[0]->distance;?>"><?php echo $results[0]->type['title']."-".$results[0]->distance."Km";?><span class="fa fa-sort"></span></a>
-        <ul class="option">
+        <ul class="option" style="padding: 0px; list-style: outside none none; position:absolute; bottom:-100px; width:100%">
         <?php  
         
         foreach($results as $k=>$result)

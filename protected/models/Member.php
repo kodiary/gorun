@@ -106,6 +106,7 @@ class Member extends CActiveRecord
      
 		);
 	}
+  
 
 	/**
 	 * @return array customized attribute labels (name=>label)

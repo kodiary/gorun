@@ -354,7 +354,7 @@ class MemberController extends Controller
         //var_dump($critera);
         
         $m = $model::model()->findAll($critera);
-        $this->renderPartial('/common/'.$view,['memEvents'=>$m,'offset'=>$offset+$_POST['limit']]);
+        $this->renderPartial('/common/'.$view,['models'=>$m,'offset'=>$offset+$_POST['limit']]);
        
     }
 }

@@ -42,6 +42,16 @@ class ClubMember extends CActiveRecord
          
 		);
 	}
+    public function relations()
+	{
+		// NOTE: you may need to adjust the relation name and the related
+		// class name for the relations automatically generated below.
+		return array(
+            'club'=>array(self::BELONGS_TO,'Club','club_id'),
+            'member'=>array(self::BELONGS_TO,'Member','member_id')
+		);
+	}
+
     
     public function attributeLabels()
 	{

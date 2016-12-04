@@ -1,5 +1,5 @@
 <?php
-foreach($memEvents as $m){
+foreach($models as $m){
 ?>
 
    <a href="<?php echo Yii::app()->request->baseUrl; ?>/events/view/<?php echo $m->event['slug'];?>" class="listing loadResult_<?php echo $m->id;?>" title="<?php echo $offset;?>">

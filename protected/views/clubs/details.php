@@ -131,41 +131,17 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
     <div class="clearfix"></div>
     <div class="members_more">
     <?php
-    if(count($model->member)>0)
+    $criteriaCM = new CDbCriteria;
+    $criteriaCM->with = ['member'];
+    $criteriaCM->condition = 'club_id = :club_id';
+    $criteriaCM->params = ['club_id'=> $model->id];
+    $criteriaCM->order = 'member.fname';
+    $clubMemberCount = ClubMember::model()->count($criteriaCM);
+    $criteriaCM->limit = Yii::app()->params['articles_pers_page'];
+    $clubMembers = ClubMember::model()->findAll($criteriaCM);
+    if(count($clubMembers)>0)
     {
-        $i=0;
-        foreach($model->member as $member)
-        {
-            $i++;
-        ?>
-            <div class="white" style="width: 49%;float:<?php if($i%2==1){?>left<?php }else{?>right<?php }?>;margin-bottom:15px;border-radius:5px;">
-            
-                <?php
-                    if(file_exists(Yii::app()->basePath.'/../images/frontend/thumb/'.$member->logo)&&$member->logo!='')
-                    {
-                        $img_url=Yii::app()->baseUrl.'/images/frontend/thumb/'.$member->logo;
-                    }
-                    else
-                    {
-                        $img_url=Yii::app()->baseUrl.'/images/blue.png';    
-                    }
-                 ?>
-                <div class="col-md-3">
-                    <img class="img-circle" src="<?php echo $img_url;?>"/>
-                </div>
-                <div class="col-md-9">
-                    <div class="Members_name"><a href="<?php echo Yii::app()->baseUrl."/".$member->username;?>"><?php echo ucfirst($member->fname." ".$member->lname);?></a></div>
-                    <span class="results"><?php echo EventResult::model()->resultCountbyUser($member->id);?> Results</span>
-                    <div class="blue race-reviews"><?php echo Review::model()->resultCountbyUser($member->id);?> RACE REVIEWS</div>
-                </div>
-                <div class="clearfix"></div>
-            
-            </div>
-            
-        <?php
-        }
-        
-        //echo "<a href='javascript:void(0);' onclick='load_content(\"members_more\");' class='btn btn-loadmore'>Load More</a>";
+        $this->renderPartial('/common/_memberBlock',['models'=>$clubMembers,'offset'=>Yii::app()->params['articles_pers_page']]);
         
     }
     
@@ -174,6 +150,10 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
     ?>
     <div class="clearfix"></div> 
     </div>
+    <?php
+        if($clubMemberCount> Yii::app()->params['articles_pers_page'])
+            echo "<a href='javascript:void(0);' onclick='load_content(\"members_more\");' class='btn btn-loadmore membersloadmore'>Load More</a>";
+    ?>
     <div class="col-md-12 block_border toggle-div" >
         <a href="javascript:void(0)" onclick="toggle_div('admin_more',this);"><span><strong>ADMINS</strong></span>
         <span class="right"><i class="glyphicon glyphicon-chevron-down"></i></span></a>
@@ -372,7 +352,22 @@ function toggle_div(div,thi)
 }
 function load_content(div)
 {
-    alert($('.'+div).attr('class'));
+    var offset = $('.'+div+' > .white').last().attr('title');
+    $.ajax({
+        url:"<?php echo Yii::app()->baseUrl;?>/member/loadmore/model/ClubMember/offset/"+offset+"/view/_memberBlock",
+        type: "post",
+        dataType: 'html',
+        data: <?php echo json_encode($criteriaCM);?>,
+        success:function(msg){
+            $('.'+div).append(msg);
+            var n_offset = $('.'+div+' > .white').last().attr('title');
+            if(Number(<?php echo $clubMemberCount;?>) <= Number(n_offset))
+                $('.membersloadmore').hide();
+        }
+        
+    });
 }
 
 </script>
+
+          

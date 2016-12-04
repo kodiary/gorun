@@ -1,5 +1,5 @@
 <?php
-foreach($memEvents as $m){
+foreach($models as $m){
 ?>
 <a href="<?php echo Yii::app()->request->baseUrl; ?>/events/view/<?php echo $m->event['slug'];?>" class="listing" title="<?php echo $offset;?>">
             <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/frontend/events/<?php if($m->event['logo'] && file_exists(Yii::app()->basePath.'/../images/frontend/events/thumb/'.$m->event['logo'])){?>thumb/<?php echo $m->event['logo']?><?php }else{?>thumb/noimg.jpg<?php }?>"/></div>
