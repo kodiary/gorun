@@ -81,8 +81,10 @@ if (!empty($this->metaKeys)) {
             else
             if($con=='triathlon')
             $act = 3;
-            else
+            else{
+                $con='run';
             $act =1;
+            }
             ?>
                 <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/run" class="<?php if($act==1){?>active<?php }?>">Run</a></li>
                 <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/bike" class="<?php if($act==2){?>active<?php }?>">Bike</a></li>
@@ -125,10 +127,15 @@ if (!empty($this->metaKeys)) {
     </div>
     <div class="mainnav">
         <ul class="anchors">
-            <li><a href="<?php echo Yii::app()->request->baseUrl; ?>" class="active">Home</a></li>
-            <li><a href="#">Races</a></li>
-            <li><a href="#">Results</a></li>
-            <li><a href="#">Race Ratings</a></li>
+            <?php if($act==1){?><li><a href="<?php echo Yii::app()->request->baseUrl; ?>" class="active">Home</a></li><?php }?>
+            <li><a href="<?php echo Yii::app()->request->baseUrl;?>/<?php echo $con;?>">Races</a></li>
+            <?php
+            if(Yii::app()->controller->id=='events' && Yii::app()->controller->action->id == 'view')
+            {?>
+            <li><a class="anchor1" href="javascript:void(0);">Results</a></li>
+            <li><a class="anchor2" href="javascript:void(0);">Race Ratings</a></li>
+            <?php }
+            ?>
             <li><a href="<?php echo Yii::app()->request->baseUrl;?>/clubs/type/running">Running clubs</a></li>
             <li><a href="#">News</a></li>
             <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/events/submitResults">Submit Results</a></li>
@@ -235,7 +242,18 @@ if (!empty($this->metaKeys)) {
 <script>
 $(function(){
     
-    
+    $('.anchor1').click(function(){
+        $(".race-result-a").click();
+        $('html,body').animate({
+                scrollTop: $(".race-result-a").offset().top},
+                'slow');
+    })
+    $('.anchor2').click(function(){
+        $(".ratinganchor").click();
+        $('html,body').animate({
+                scrollTop: $(".ratinganchor").offset().top},
+                'slow');
+    })
     $( ".login-form" ).validate( {
 				rules: {
 				

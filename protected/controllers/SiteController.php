@@ -52,7 +52,7 @@ class SiteController extends Controller
            $sliders = Slideshow::model()->findAll(array('order'=>'display_order ASC'));
            $model = Contents::model()->getBySlug('home-page');
            
-           $events = Events::model()->findAllByAttributes(array('event_cat'=>1,'visible'=>1));
+           $events = Events::model()->findAllByAttributes(array('event_cat'=>1,'visible'=>1),array('order'=>'id desc','limit'=>2));
                       
            $criteria = new CDbCriteria;
            $criteria->addCondition('t.is_approved=1 AND t.visible=1 AND publish_date<=CURDATE()');

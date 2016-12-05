@@ -4,7 +4,7 @@ class BikeController extends Controller
 {
 public function actionIndex()
 	{
-		$events = Events::model()->findAllByAttributes(array('event_cat'=>2,'visible'=>1));
+		$events = Events::model()->findAllByAttributes(array('event_cat'=>2,'visible'=>1),array('order'=>'id desc','limit'=>10));
 		$this->render('/run/index',array('events'=>$events));
 	}
 

@@ -1,16 +1,4 @@
 <?php
-            $con = Yii::app()->controller->id;
-            if($con == 'bike')
-            $act = 2;
-            else
-            if($con=='triathlon')
-            $act = 3;
-            else
-            $act =1;
-            ?>
-<div class="listing-parent">
-<input type="hidden" class="offset" value="0" />
-<?php
 
 foreach($model as $m)
 {
@@ -38,26 +26,3 @@ foreach($model as $m)
     </a>
     <?php
 }
-?>
-
-</div>
-<hr />
-<a class="btn btn-default btn-lg loadmore">Load More</a>
-<script>
-$('.loadmore').click(function(){
-   var cat =  '<?php echo $act;?>';
-   var offset = $('.offset').val();
-                       $('.offset').val(parseInt(offset)+10);
-                       $.ajax({
-                        url:'<?php echo Yii::app()->request->baseUrl;?>/events/loadEvents',
-                        data:'offset='+offset+'&cat='+cat,
-                        type:'post',
-                        success:function(res){
-                            if(res){
-                                //$('.all-review .clearfix:last').remove()
-                            $('.listing-parent').append(res);
-                            }
-                        }
-                       }); 
-});
-</script>

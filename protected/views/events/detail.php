@@ -232,7 +232,7 @@
         
         <div class="white padtopbot5" style="">
             
-            <a href="javascript:void(0)" class="expand_block col-md-12">
+            <a href="javascript:void(0)" class="expand_block col-md-12 race-result-a">
                 <div class="floatLeft">RACE RESULTS</div>
                 <div class="floatRight"><span class="fa fa-angle-down"></span></div>
                 <div class="clearfix"></div>

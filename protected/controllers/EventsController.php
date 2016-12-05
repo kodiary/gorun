@@ -876,6 +876,16 @@ class EventsController extends Controller
             'pics'=>ReviewPics::model()
         ));  
     }
+    public function actionLoadEvents()
+    {
+        $offset = $_POST['offset'];
+        $cat = $_POST['cat'];
+        $model = Events::model()->findAllByAttributes(array('event_cat'=>$cat,'visible'=>1),array('order'=>'id desc','limit'=>10,'offset'=>$offset));
+        //var_dump($all_review);
+        $this->renderPartial('application.views.events._ajax_listing',array(
+            'model'=>$model
+        ));  
+    }
     public function actionSubmitresult()
     {
         $last =0;
