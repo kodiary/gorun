@@ -136,7 +136,7 @@ if (!empty($this->metaKeys)) {
             <li><a class="anchor2" href="javascript:void(0);">Race Ratings</a></li>
             <?php }
             ?>
-            <li><a href="<?php echo Yii::app()->request->baseUrl;?>/clubs/type/running">Running clubs</a></li>
+            <li><a href="<?php echo Yii::app()->request->baseUrl;?>/clubs/category/<?php echo $con;?>">Running clubs</a></li>
             <li><a href="#">News</a></li>
             <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/events/submitResults">Submit Results</a></li>
         </ul>
