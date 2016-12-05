@@ -74,9 +74,19 @@ if (!empty($this->metaKeys)) {
         
         <div class="nav col-md-6">
             <ul>
-                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/run" class="active">Run</a></li>
-                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/bike">Bike</a></li>
-                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/triathlon">Tri</a></li>
+            <?php
+            $con = Yii::app()->controller->id;
+            if($con == 'bike')
+            $act = 2;
+            else
+            if($con=='triathlon')
+            $act = 3;
+            else
+            $act =1;
+            ?>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/run" class="<?php if($act==1){?>active<?php }?>">Run</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/bike" class="<?php if($act==2){?>active<?php }?>">Bike</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/triathlon" class="<?php if($act==3){?>active<?php }?>">Tri</a></li>
                 <li class="last"><a href="#">Buy</a></li>
                 <li class="cart"><span class="cart-count"><a href="#">0</a></span></li>
             </ul>

@@ -51,6 +51,8 @@ class SiteController extends Controller
 
            $sliders = Slideshow::model()->findAll(array('order'=>'display_order ASC'));
            $model = Contents::model()->getBySlug('home-page');
+           
+           $events = Events::model()->findAllByAttributes(array('event_cat'=>1,'visible'=>1));
                       
            $criteria = new CDbCriteria;
            $criteria->addCondition('t.is_approved=1 AND t.visible=1 AND publish_date<=CURDATE()');
@@ -58,7 +60,7 @@ class SiteController extends Controller
            $criteria->limit=10;
 
            $articlesData = new CActiveDataProvider('Articles', array('criteria'=>$criteria, 'pagination'=>false));
-           $this->render('index', array('model'=>$model, 'sliders'=>$sliders, 'articlesData'=>$articlesData, 'patronslider'=>$patronslider));
+           $this->render('index', array('model'=>$model, 'sliders'=>$sliders, 'articlesData'=>$articlesData, 'patronslider'=>$patronslider,'events'=>$events));
         }
 
 	/**

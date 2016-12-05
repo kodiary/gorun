@@ -312,10 +312,23 @@ class YiiBase
 			{
 				if($forceInclude)
 				{
+				
 					if(is_file($path.'.php'))
 						require($path.'.php');
 					else
-						throw new CException(Yii::t('yii','Alias "{alias}" is invalid. Make sure it points to an existing PHP file.',array('{alias}'=>$alias)));
+					{
+					$path_arr = explode('/',$path);
+					$path_count = count($path_arr);
+					$path_arr[$path_count-1] = ucfirst($path_arr[$path_count-1]);
+					$path2 = implode('/',$path_arr);
+					//echo $path2;die();
+					if(is_file($path2.'.php'))
+						require($path2.'.php');
+						else
+						{
+						//echo $path;die();
+						throw new CException(Yii::t('yii','Alias "{alias}" is invalid. Make sure it points to an existing PHP file.',array('{alias}'=>$alias)));}
+						}
 					self::$_imports[$alias]=$className;
 				}
 				else
