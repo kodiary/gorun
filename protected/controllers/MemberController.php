@@ -147,14 +147,17 @@ class MemberController extends Controller
         $m = explode('acef',$hash);
         $id = $m[1];
         $member =  Member::model()->findByPk($id);
-        if(Yii::app()->session['pin_'.$id]){
+        
+        //var_dump($member);die();
+        if(Yii::app()->session['pin_'.$id] || ($member->is_verified==0 && $member->pin !='')){
         if(isset($_POST['Verify'])){
-            if(Yii::app()->session['pin_'.$id]==$_POST['code'])
+            if(Yii::app()->session['pin_'.$id]==$_POST['code'] || $member->pin == $_POST['code'] )
             {
                 //Yii::app()->user->setFlash('error', '<strong>Success - </strong>.Your email has been verified. You may now login.');
                 if($m[0] == sha1($member->email))
                 {
                     $member->saveAttributes(['is_verified'=>1]);
+                    $member->saveAttributes(['pin'=>'']);
                     //$provider = Member::model()->with(['haLogin'])->findByAttributes(['id'=>$id],'password <>""');
                     //var_dump($provider);
                     //unset(Yii::app()->session['pin_'.$id]);
@@ -180,7 +183,7 @@ class MemberController extends Controller
                  //$this->redirect(Yii::app()->request->urlReferrer);
             }
         }
-        $this->render('/signup/index',array('member'=>$member));
+            $this->render('/signup/index',array('member'=>$member));
         }
         else
             $this->redirect(Yii::app()->request->baseUrl);

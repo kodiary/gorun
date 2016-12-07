@@ -164,6 +164,8 @@ return array(
             'clubs/follow'=>'clubs/follow',
             'clubs/type/<match>'=>'clubs/type/match/<match>',
             'clubs/type'=>'clubs/type',
+            'clubs/category/<match>'=>'clubs/category/match/<match>',
+            'clubs/category'=>'clubs/category',
             'clubs/getresults'=>'clubs/getresults',
             'clubs/<slug>'=>'clubs/details/slug/<slug>',
             

@@ -37,7 +37,7 @@
                         {?>
                             <div class="col-md-6 checkboxes">
                                 <label class="control control--checkbox"><?php echo $event->title;?>
-                                  <input type="checkbox" name="type[]" value="<?php echo $event->id;?>"/>
+                                  <input type="checkbox" name="type[]" value="<?php echo $event->id."_".$event->cat_id;?>"/>
                                   <div class="control__indicator"></div>
                                 </label>
                                 

@@ -20,4 +20,10 @@ class Controller extends CController
 	 * for more details on how to specify this property.
 	 */
 	public $breadcrumbs=array();
+    public function redirect($url, $terminate=true, $statusCode=302)
+    {
+        if(session_id()!=='') @session_write_close();
+        parent::redirect($url, $terminate, $statusCode);
+    }
+
 }
