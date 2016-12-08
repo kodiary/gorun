@@ -273,7 +273,8 @@ class EventsController extends Controller
                 
                 
                 Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - A new event has been added successfully!');
-                //die();
+                $this->sendEventEmail($model->title,$model->slug,$model->created_by);
+                $this->sendAdminEventEmail($model->title,$model->slug,$model->id);
 				$this->redirect(array('index'));
             }
             else
@@ -293,6 +294,22 @@ class EventsController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
+    public function sendEventEmail($title='',$slug='',$user_id='')
+    {
+        $mem = Member::model()->findByPk($user_id);
+        $subject = "Event Submission";
+            $body = $this->renderPartial('application.views.email.eventSubmission',array('member'=>$mem, 'title'=>$title, 'slug'=>$slug),true);
+            CommonClass::sendEmail("","", $mem->email, $subject, $body);
+           
+    }
+    public function actionSendAdminEventEmail($title='',$slug='',$id='')
+    {
+        //$mem = Member::model()->findByPk($user_id);
+        $subject = "New Event Submitted";
+            $body = $this->renderPartial('application.views.email.adminEventSubmission',array('title'=>$title, 'slug'=>$slug,'id'=>$id),true);
+            CommonClass::sendEmail("","", 'justdoit2045@gmail.com', $subject, $body);
+           
+    }
 	public function actionUpdate($id)
 	{
 	   //get company id

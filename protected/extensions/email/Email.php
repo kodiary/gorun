@@ -34,7 +34,7 @@ class Email extends CApplicationComponent {
 	/**
 	 * @var string Return-path address
 	 */
-	public $returnPath = "Exsa.co.za <info@exsa.co.za>";
+	public $returnPath = "Gorun.co.za <info@gorun.co.za>";
 	
 	/**
 	 * @var string Carbon Copy
