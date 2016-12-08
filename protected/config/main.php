@@ -226,6 +226,8 @@ return array(
             'events/search/showall'=>'events/search/showall',
             'events/submitresult'=>'events/submitresult',
             'events/loadTime'=>'events/loadTime',
+            'events/approve/<slug>'=>'events/approve/number/<slug>',
+            'events/decline/<slug>'=>'events/decline/number/<slug>',
             
             'dashboard'=>'dashboard/index',
             'run'=>'run/index',

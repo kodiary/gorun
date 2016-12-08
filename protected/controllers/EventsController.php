@@ -302,13 +302,54 @@ class EventsController extends Controller
             CommonClass::sendEmail("","", $mem->email, $subject, $body);
            
     }
-    public function actionSendAdminEventEmail($title='',$slug='',$id='')
+    public function SendAdminEventEmail($title='',$slug='',$id='')
     {
         //$mem = Member::model()->findByPk($user_id);
         $subject = "New Event Submitted";
             $body = $this->renderPartial('application.views.email.adminEventSubmission',array('title'=>$title, 'slug'=>$slug,'id'=>$id),true);
             CommonClass::sendEmail("","", 'justdoit2045@gmail.com', $subject, $body);
            
+    }
+    public function actionApprove($number='')
+    {
+        //$number = 58471671;
+        $number = (string)$number;
+        $arr =  str_split($number);
+        //var_dump($arr);die();
+        for($i=0;$i<7;$i++)
+        {
+            $arr[$i] = '';
+        }
+        $id = implode('',$arr);
+        //var_dump ($id = $number);die();
+        $events = Events::model()->findByPk($id);
+        $mem = Member::model()->findByPk($events->created_by); 
+        Events::model()->updateByPk($id,array('visible'=>1));
+        $subject = "Event Approved and Live";
+            $body = $this->renderPartial('application.views.email.approveEvent',array('title'=>$events->title, 'slug'=>$events->slug,'name'=>$mem->fname.' '.$mem->lname,'approved'=>1),true);
+            CommonClass::sendEmail("","", $mem->email, $subject, $body);
+            Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - The event has been approved!');
+            $this->redirect(array('/'));
+            
+    }
+    public function actionDecline($number='')
+    {
+       $number = (string)$number;
+        $arr =  str_split($number);
+        //var_dump($arr);die();
+        for($i=0;$i<7;$i++)
+        {
+            $arr[$i] = '';
+        }
+        $id = implode('',$arr);
+        $events = Events::model()->findByPk($id);
+        $mem = Member::model()->findByPk($events->created_by); 
+        Events::model()->updateByPk($id,array('visible'=>1));
+        $subject = "Event Rejected";
+            $body = $this->renderPartial('application.views.email.approveEvent',array('title'=>$events->title, 'slug'=>$events->slug,'name'=>$mem->fname.' '.$mem->lname,'approved'=>0),true);
+            CommonClass::sendEmail("","", $mem->email, $subject, $body);
+            Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - The event has been declined!');
+            $this->redirect(array('/'));
     }
 	public function actionUpdate($id)
 	{
