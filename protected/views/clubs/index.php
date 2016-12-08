@@ -106,10 +106,10 @@
                                         alert('No Image selected');
                                     }",
                         'complete'=>"js:function(){
-                                      $('#crop_".$member->id."').val('Crop');
+                                      $('#crop_0').val('Crop');
                                     }",
                         ),
-                        array('id'=>'crop_'.$member->id,'class'=>'btn btn-crop','onclick'=>'$("#crop_'.$member->id.'").val("loading...");')//html options
+                        array('id'=>'crop_0','class'=>'btn btn-crop','onclick'=>'$("#crop_0").val("loading...");')//html options
             );
             ?><br />
             
@@ -156,10 +156,10 @@
                                                     alert('No Image selected');
                                                 }",
                                     'complete'=>"js:function(){
-                                                  $('#crop1_".$member->id."').val('Crop');
+                                                  $('#crop1').val('Crop');
                                                 }",
                                     ),
-                                    array('id'=>'crop1_'.$member->id,'class'=>'btn btn-crop','onclick'=>'$("#crop1_'.$member->id.'").val("loading...");')//html options
+                                    array('id'=>'crop1','class'=>'btn btn-crop','onclick'=>'$("#crop1").val("loading...");')//html options
                                 );
                             ?><br />
                         

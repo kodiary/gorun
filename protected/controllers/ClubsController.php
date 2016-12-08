@@ -47,7 +47,8 @@ class ClubsController extends Controller
 	    Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.js"));
         Yii::app()->clientScript->registerCssFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.css"));
         Yii::app()->clientScript->registerCssFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.css"));
-        Yii::app()->clientScript->registerScriptFile("http://maps.google.com/maps/api/js?key=AIzaSyDdlZuslizFva3XY9GZVyF_IDZTDI-7BD0&libraries=places");
+        //Yii::app()->clientScript->registerScriptFile("http://maps.google.com/maps/api/js?key=AIzaSyDdlZuslizFva3XY9GZVyF_IDZTDI-7BD0&libraries=places");
+        Yii::app()->clientScript->registerScriptFile("https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Gjdm_0nJk17UVBPoV5Im40uQeguoRAo&libraries=places");
         //Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::getPathOfAlias('application.components')."/gmap/gmap_new.js"));
         Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::getPathOfAlias('application.components')."/gmap/gmap.js"));
         Yii::app()->clientScript->registerScript('init','initialize();',CClientScript::POS_LOAD); 
@@ -185,7 +186,8 @@ class ClubsController extends Controller
         
         if($club->longitude!=0 && $club->latitude!=0)
         {
-            Yii::app()->clientScript->registerScriptFile("http://maps.google.com/maps/api/js?key=AIzaSyDdlZuslizFva3XY9GZVyF_IDZTDI-7BD0");
+            //Yii::app()->clientScript->registerScriptFile("http://maps.google.com/maps/api/js?key=AIzaSyDdlZuslizFva3XY9GZVyF_IDZTDI-7BD0");
+            Yii::app()->clientScript->registerScriptFile("https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Gjdm_0nJk17UVBPoV5Im40uQeguoRAo&libraries=places");
             //Yii::app()->clientScript->registerScriptFile("http://maps.google.com/maps/api/js?sensor=false");
             Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::getPathOfAlias('application.components')."/gmap/gmap_new.js"));
             Yii::app()->clientScript->registerScript('init','initialize();',CClientScript::POS_LOAD);

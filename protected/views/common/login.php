@@ -10,7 +10,7 @@
         
         <div class="form-group has-feedback password">
             <label class="col-md-6">Password</label>
-            <label class="col-md-6"><span class="blue right reset"><strong><a href="javascript:void(0)">Reset</a></strong></span></label>
+            <label class="col-md-6"><span class="blue right reset"><strong><a href="<?php echo Yii::app()->request->baseUrl;?>/member/passwordreset">Reset</a></strong></span></label>
             <div class="col-md-12">
                 <input type="password" id="LoginForm_password" name="LoginForm_password"  placeholder="Your Password" class="form-control password" />
                 <span  class="failed_pwd help-block" style="display: none;">Password is required.</span>

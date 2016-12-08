@@ -10,4 +10,4 @@ Verify your regestration by clicking on the link below or by copying and pasting
 <br/><br/>Verification link:<br/>
 <a href='<?php echo $url;?>' target='_blank'><?php echo $url;?></a>
 </div>
-<div style="background: #2a303e none repeat scroll 0 0;padding: 20px 0;"></div>
+<div style="background: #2a303e none repeat scroll 0 0;padding: 20px 0;display:block;"></div>

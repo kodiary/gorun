@@ -8,6 +8,7 @@ $(function(){
 function initiateUpload(index)
 {
     //var index=0;
+   
     new qq.FileUploader({'element':document.getElementById('uploadFile'+index),
     'debug':true,
     'multiple':false,
@@ -17,18 +18,24 @@ function initiateUpload(index)
    
     'onSubmit':function()
             {
+                //alert(index);
                 //$(this).http://github.com/valums/file-uploader
                 $('.uploadControl').text('Uploading...');
+                
+                $('#crop_'+index).css({'pointer-events':'none'});
+                
             },
     'onComplete':function(id, fileName, responseJSON){
             if(responseJSON.success)
             {
                 //if(index==0)
                 //{
-                    $('#upimage_'+index).html('<img src="'+responseJSON.imageThumb+'" class="img-circle"/>');
+                    $('#upimage_'+index).html('<img src="'+responseJSON.imageThumb+'"<?php if(Yii::app()->controller->id=='dashboard')echo  'class="img-circle"';?>/>');
                     $('.uploaded_image').val(responseJSON.filename);
                     $('.main_logo').val(responseJSON.filename);
-                    $('#Gallery_'+index+'_name').val(responseJSON.filename);    
+                    $('#Gallery_'+index+'_name').val(responseJSON.filename);
+                    
+                    setTimeout(function(){ $('#crop_'+index).css({'pointer-events':'auto'}); }, 3000);
                 //}
                 //else
                 //$('#uploadList').append('<li class="items"><div class="thumbnail" style="width: 80px;height:80px;  float:left;"><img src="'+responseJSON.imageThumb+'"/></div><div class="button_rows"><a herf="javascript:void(0);" class="btn btn-danger" onclick="$(this).closest(\'li\').remove();">Remove</a></div><div class="clear"></div><div style="margin:10px 0;"><textarea placeholder="Caption" name="Gallery['+index+'][caption]"></textarea><input type="hidden" name="Gallery['+index+'][name]" value="'+responseJSON.filename+'"/></div></li>');
@@ -65,7 +72,7 @@ function initiateUpload(index)
     <div>
         <div id="uploadFile<?php echo isset($id)?$id:'0';?>">
             
-                	<a href="javascript:void(0)" class="qq-upload-button btn btn-black uploadControl" id="<?php echo isset($id)?$id:'0';?>" style="font-weight: bold;"><span class="fa fa-picture-o"></span>Upload Image</a>
+                	<a href="javascript:void(0)" class="qq-upload-button btn btn-black uploadControl" id="<?php echo isset($id)?$id:'0';?>" style="font-weight: bold;"><span class="fa fa-picture-o"></span> Upload Image</a>
                 
         </div>    
     </div>

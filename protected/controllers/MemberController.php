@@ -251,6 +251,46 @@ class MemberController extends Controller
 		// display the login form
         
 	}
+    public function actionPasswordreset()
+    { 
+        
+        if(isset($_POST['btnRemindPass']))
+		{
+           
+                $record = Member::model()->findByAttributes(array('email'=>$_POST['email']));
+                
+                if($record===null)
+                {
+                  
+                    Yii::app()->user->setFlash('error', '<strong>ERROR - </strong> The email address does not exist in the database. Try another.');
+                }
+                else
+                {
+                    $password=$record->password_real;
+                    $email=$record->email;
+                    $name=$record->fname." ".$record->lname;
+                    if($this->sendPassword($email,$password,$name))
+                        Yii::app()->user->setFlash('success', '<strong>Success - </strong> The password has been sent to the email address provided.');
+                    else
+                       Yii::app()->user->setFlash('error', '<strong>Error - </strong> The email couldnot be sent.Please try later.'); 
+                }
+            }
+            $this->render('/member/passwordreset');
+    }
+    public function sendPassword($email_add,$password,$name)
+    {
+        
+        $email = Yii::app()->email;
+        
+        $email->to =  $email_add;
+        $email->from = "Gorun.co.za <info@gorun.co.za>";
+        $email->replyTo="Gorun.co.za <noreply@gorun.co.za>";
+        $email->subject = 'Password Reminder';
+        $email->view= 'passwordReminder';
+        $email->viewVars=array('email_add'=>$email_add,'password'=>$password,'name'=>$name);
+        if($email->send())return true;
+        else return false;
+    }
     public function actionLogout()
 	{
 		Yii::app()->user->logout();

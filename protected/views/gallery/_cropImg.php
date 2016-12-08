@@ -17,6 +17,7 @@
     <p class="left">Select the area you wish to crop and click the crop button</p>
     <div class="right">
       <?php //$upimage_0
+      $class = (isset($_GET['img-circle']))? 'class="img-circle"':'';      
       echo CHtml::ajaxSubmitButton( 'Crop',
                 $this->createUrl('gallery/crop'),
                 array(
@@ -27,7 +28,7 @@
                     $('.cropIt').val('Crop');
                     $('.ui-dialog-titlebar-close').click();
                     $('#".$upimage."').html('');
-                    $('#".$upimage."').html('<img src=\"'+data+'\" class=\"img-circle\"/>');
+                    $('#".$upimage."').html('<img src=\"'+data+'\" ".$class."/>');
                     var filename = data.split('thumb/');
                     $('.".$main_logo."').val(filename[1]);
                      return false;

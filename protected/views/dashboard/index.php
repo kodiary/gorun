@@ -227,7 +227,7 @@
                         
             //crop button
              echo CHtml::ajaxLink('<span class="fa fa-crop"></span> Crop',
-                        $this->createUrl('gallery/cropPhoto?height=215&width=215'),
+                        $this->createUrl('gallery/cropPhoto?height=215&width=215&img-circle'),
                          array( //ajax options
                          'data'=>array('fileName'=>"js:function(){ return $('.uploaded_image').val()}",'id'=>$member->id),
                          'type'=>'POST',
@@ -241,10 +241,10 @@
                                         alert('No Image selected');
                                     }",
                         'complete'=>"js:function(){
-                                      $('#crop_".$member->id."').val('Crop');
+                                      $('#crop_0').val('Crop');
                                     }",
                         ),
-                        array('id'=>'crop_'.$member->id,'class'=>'btn btn-crop','onclick'=>'$("#crop_'.$member->id.'").val("loading...");')//html options
+                        array('id'=>'crop_0','class'=>'btn btn-crop','onclick'=>'$("#crop_0").val("loading...");')//html options
             );
             ?><br />
             
@@ -296,6 +296,7 @@
                          'type'=>'POST',
                         'success'=>"js:function(data){
                                     if(data!=''){
+                                        
                                         $('#cropModal').html(data).dialog('open');
                                         $('.ui-dialog-titlebar-close').hide();
                                          return false;
@@ -304,10 +305,10 @@
                                         alert('No Image selected');
                                     }",
                         'complete'=>"js:function(){
-                                      $('#crop1_".$member->id."').val('Crop');
+                                      $('#crop1').val('Crop');
                                     }",
                         ),
-                        array('id'=>'crop1_'.$member->id,'class'=>'btn btn-crop','onclick'=>'$("#crop1_'.$member->id.'").val("loading...");')//html options
+                        array('id'=>'crop1','class'=>'btn btn-crop','onclick'=>'$("#crop1").val("loading...");')//html options
             );
             ?><br />
             
@@ -778,8 +779,8 @@
                     y_ob: "d_ob m_ob y_ob"
                 },
 				messages: {
-					fname: "Input a firs tname",
-					lname: "Input a last name / Surname",
+					fname: "Input a first name",
+					lname: "Input a last name / surname",
 					password_signup: {
 						required: "Input a password you will remember",
 						minlength: "Your password must be at least 5 characters long"

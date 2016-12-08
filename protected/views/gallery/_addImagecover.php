@@ -17,6 +17,7 @@ function initiateUpload1(index)
             {
                 //$(this).http://github.com/valums/file-uploader
                 $('.uploadControl1').text('Uploading...');
+                $('#crop1').css({'pointer-events':'none'});
             },
     'onComplete':function(id, fileName, responseJSON){
             if(responseJSON.success)
@@ -26,6 +27,7 @@ function initiateUpload1(index)
                     $('#upimage_1').html('<img src="'+responseJSON.imageThumb+'"/>');
                     $('.uploaded_cover').val(responseJSON.filename);
                     $('.main_cover').val(responseJSON.filename);
+                    setTimeout(function(){ $('#crop1').css({'pointer-events':'auto'}); }, 2000);
                     //$('#Gallery_'+index+'_name').val(responseJSON.filename);    
                 //}
                 //else

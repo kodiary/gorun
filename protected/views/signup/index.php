@@ -52,7 +52,7 @@
                 }
                 ?>
             </select> 
-            <select name="y_ob" style="margin-right: 0;">
+            <select name="y_ob" style="margin: 0;" class="y_ob">
             <option value="">YEAR</option>
                 <?php
                 for($i=(date('Y')-100);$i<date('Y');$i++)

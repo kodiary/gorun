@@ -444,9 +444,12 @@ class CommonClass extends CComponent
         $email = Yii::app()->email;
         $email->from = $from;
         $email->to = $receiverEmail;
-        if($replyTo!="")$email->replyTo = $replyTo;
+        $email->replyTo = ($replyTo!="")?$replyTo:"Gorun.co.za <noreply@gorun.co.za>";
+        //if($replyTo!="")$email->replyTo = $replyTo;
         $email->subject = $subject;
-        $email->message = $body;
+        //$email->message = $body;
+        $email->view= 'passwordReminder';
+        $email->viewVars=array('email_add'=>$email_add,'password'=>$password,'name'=>$name);
         if($email->send())
             return true;
         else
@@ -869,9 +872,22 @@ class CommonClass extends CComponent
         $pin = CommonClass::randomString('8');
         Yii::app()->session["pin_$member->id"] = $pin;
         $url =  Yii::app()->createAbsoluteUrl("member/confirmation/hash/".sha1($member->email)."acef".$member->id);
-        $msg = Yii::app()->controller->renderPartial('application.views.email.signup', array('fname'=>ucfirst($member->fname),'lname'=>ucfirst($member->lname),'pin'=>$pin,'url'=>$url), true);
-        if(CommonClass::sendEmail("GO RUN","noreply@gorun.co.za",$member->email,"Confirmation Email",$msg))
+        
+        $email = Yii::app()->email;
+        $email->to =  $member->email;
+        $email->from = "Gorun.co.za <info@gorun.co.za>";
+        $email->replyTo="Gorun.co.za <noreply@gorun.co.za>";
+        $email->subject = 'Confirmation Email';
+        $email->view= 'signup';
+        $email->viewVars=array('fname'=>ucfirst($member->fname),'lname'=>ucfirst($member->lname),'pin'=>$pin,'url'=>$url);
+        if($email->send())
             return $pin;
+        else
+            return false;
+        
+        /*$msg = Yii::app()->controller->renderPartial('application.views.email.signup', array('fname'=>ucfirst($member->fname),'lname'=>ucfirst($member->lname),'pin'=>$pin,'url'=>$url), true);
+        if(CommonClass::sendEmail("GO RUN","noreply@gorun.co.za",$member->email,"Confirmation Email",$msg))
+            return $pin;*/
         
     }
 }

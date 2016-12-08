@@ -479,21 +479,24 @@ class GalleryController extends Controller
        $y=$_POST['cropY'];
        $width=round($_POST['cropW']);
        $height=round($_POST['cropH']);
+       $file = (explode('?',$_POST['filename']));
+       $file = $file[0];
+       //die($file);
        //var_dump($_POST);die();
-       if(file_exists(Yii::app()->basePath.'/../images/temp/full/'.$_POST['filename']))
+       if(file_exists(Yii::app()->basePath.'/../images/temp/full/'.$file))
        {
-            $src_file=Yii::app()->basePath.'/../images/temp/full/'.$_POST['filename'];
-            $temp_file=Yii::app()->basePath.'/../images/temp/'.$_POST['filename'];
-            $save_path= Yii::app()->basePath.'/../images/temp/thumb/'.$_POST['filename'];
-            $imgPath= Yii::app()->baseUrl.'/images/temp/thumb/'.$_POST['filename'];
+            $src_file=Yii::app()->basePath.'/../images/temp/full/'.$file;
+            $temp_file=Yii::app()->basePath.'/../images/temp/'.$file;
+            $save_path= Yii::app()->basePath.'/../images/temp/thumb/'.$file;
+            $imgPath= Yii::app()->baseUrl.'/images/temp/thumb/'.$file;
        
        }
        else
        {
-            $src_file=Yii::app()->basePath.'/../images/frontend/full/'.$_POST['filename'];
-            $temp_file=Yii::app()->basePath.'/../images/frontend/'.$_POST['filename'];
-            $save_path= Yii::app()->basePath.'/../images/frontend/thumb/'.$_POST['filename'];
-            $imgPath= Yii::app()->baseUrl.'/images/frontend/thumb/'.$_POST['filename'];
+            $src_file=Yii::app()->basePath.'/../images/frontend/full/'.$file;
+            $temp_file=Yii::app()->basePath.'/../images/frontend/'.$file;
+            $save_path= Yii::app()->basePath.'/../images/frontend/thumb/'.$file;
+            $imgPath= Yii::app()->baseUrl.'/images/frontend/thumb/'.$file;
             
        
        }
@@ -501,14 +504,15 @@ class GalleryController extends Controller
        Yii::import('application.extensions.image.Image');
        
        $image = new Image($src_file);
-       $image->crop($width,$height,$y,$x)->quality(90);
-       $image->save($temp_file);
+       if($image->crop($width,$height,$y,$x)->quality(90))
+        @unlink($save_path);
+       $image->save($save_path);
        
-       $cropped_image= new Image($temp_file);
+       /*$cropped_image= new Image($temp_file);
        
        $cropped_image->resize($width,$height);
        $cropped_image->save($save_path);
-       
+       */
        if(Yii::app()->file->set($temp_file)->exists)
        {
             $temp = Yii::app()->file->set($temp_file);
@@ -516,6 +520,7 @@ class GalleryController extends Controller
        }
        
        echo $imgPath."?rand=".rand();
+       //echo $imgPath;
     }
     
     public function actionSortImage()
