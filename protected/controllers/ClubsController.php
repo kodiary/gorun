@@ -66,8 +66,8 @@ class ClubsController extends Controller
         Yii::app()->clientScript->registerCssFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.css"));
          
         $club = new Club;
-        
-        if(isset($_POST['submit']))
+        //var_dump($_POST);
+        if(isset($_POST['title']))
         {
             $club->title = $_POST['title'];
             $club->slug = $club->testSlug(CommonClass::getSlug($_POST['title']));
@@ -100,8 +100,14 @@ class ClubsController extends Controller
             }
             foreach($_POST['type'] as $type)
             {
-                $types.= $type.",";
+                $t = explode('_',$type);
+                
+                $types.= $t[0].",";
+                
+                $eventCategory[]= $t[1];
             }
+            $eventCategory = array_unique($eventCategory);
+            $club->event_category = implode(",",$eventCategory);
             $club->types = $types;
             $club->venue = $_POST['street_address'];
             $club->town = $_POST['city'];
@@ -259,8 +265,9 @@ class ClubsController extends Controller
             $match = ucfirst($match);
             $type = EventsType::model()->findByAttributes(['title'=>$match]);
             
-            $type = addcslashes($type->id, '%_');
-            $criteria->addSearchCondition('types',$type);
+            //$type = addcslashes($type->id, '%_');
+            //$criteria->addSearchCondition('types',$type);
+            $criteria->addCondition("types LIKE '$type->id,%' OR types LIKE '%,$type->id,%' OR types LIKE '%,$type->id' OR types LIKE '$type->id'");
            
         }
         
@@ -320,8 +327,46 @@ class ClubsController extends Controller
         
         
         
-        
     }
+    public function actionCategory($match="")
+    {
+        //die($match);
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/jquery.infinitescroll.js"));
+        
+        $criteria = new CDbCriteria;
+        if(isset($match) && $match!='')
+        {
+            $match = str_replace('_',' ',$match);
+            $match = ucfirst($match);
+            $type = EventsCategory::model()->findByAttributes(['title'=>$match]);
+           
+            //$type = addcslashes($type->id, '%_');
+            //$critera2 = new CDbCriteria;
+            $criteria->addCondition("event_category LIKE '$type->id,%' OR event_category LIKE '%,$type->id,%' OR event_category LIKE '%,$type->id' OR event_category LIKE '$type->id'");
+            //$criteria->mergeWith($critera2);
+           
+        }
+        $prov ='';
+        if(isset($_GET['province']))
+        {
+            $province = $_GET['province'];
+            $prov = Province::model()->getIdbySlug($province);
+            
+            $criteria->condition= 'province='.$prov;
+        }
+           
+        //$criteria->order = 'publish_date DESC,t.id DESC';
+        $pages='';
+       
+        $dataProvider= new CActiveDataProvider('Club',array('criteria'=>$criteria, 'pagination'=>false));
+        $pages = new CPagination($dataProvider->totalItemCount);
+        $pages->pageSize = Yii::app()->params['articles_pers_page'];
+        $pages->applyLimit($criteria);
+        
+        $dataProvider = Club::model()->findAll($criteria); 
+        //$clubs = Club::model()->findAll('types LIKE :match',[':match'=>"%$match%"]);
+        $this->render('type',['clubs'=>$clubs,'type'=>$match,'dataProvider'=>$dataProvider,'pages'=>$pages,'province_id'=>$prov]);
+    }    
     
  }
  ?>

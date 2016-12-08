@@ -865,13 +865,13 @@ class CommonClass extends CComponent
         $s = substr($string,strlen($string)-3,3);
         return "****".$s;
     }
-    public static function sendConfirmationEmail($member){
+   public static function sendConfirmationEmail($member){
         $pin = CommonClass::randomString('8');
         Yii::app()->session["pin_$member->id"] = $pin;
         $url =  Yii::app()->createAbsoluteUrl("member/confirmation/hash/".sha1($member->email)."acef".$member->id);
         $msg = Yii::app()->controller->renderPartial('application.views.email.signup', array('fname'=>ucfirst($member->fname),'lname'=>ucfirst($member->lname),'pin'=>$pin,'url'=>$url), true);
         if(CommonClass::sendEmail("GO RUN","noreply@gorun.co.za",$member->email,"Confirmation Email",$msg))
-            return $msg;
+            return $pin;
         
     }
 }

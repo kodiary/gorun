@@ -67,7 +67,7 @@ class DefaultController extends Controller {
                 $user_profile =$provider->getUserProfile();
                 //var_dump($user_profile);
                 $user->email= $user_profile->email;
-                var_dump($_POST);
+                //var_dump($_POST);
 				if (isset($_POST['email'])) {
 					//Save the form
                     
@@ -79,14 +79,16 @@ class DefaultController extends Controller {
                     $user->lname = $user_profile->lastName;
                     //$user->is_verified = 1;
                     $user->gender = ($user_profile->gender=='male')?"1":"0";
-                    var_dump($user->attributes);
+                    //var_dump($user->attributes);
 					if ($user->validate() && $user->save()) {
-					   
-						$msg =CommonClass::sendConfirmationEmail($user);
+                        //var_dump($user->attributes);die();
+						$pin =CommonClass::sendConfirmationEmail($user);
+                        $Userpin['pin'] = $pin;
+                        $user->saveAttributes($Userpin);
                         $identity->id = $user->id;
-						//$identity->username = $user->username;
+						//$identity->username = $user->username; 
 						$this->_linkProvider($identity);
-                        Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - User has been added. Please verfiy your account.');
+                        Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - User has been added. Please verify your account.');
                         $this->redirect(Yii::app()->request->baseUrl);
 						//$this->_loginUser($identity);
 					} // } else { do nothing } => the form will get redisplayed
