@@ -94,15 +94,15 @@ class EventsController extends Controller
        $check = array();
        if(Yii::app()->user->id){
        $em = MemberEvent::model()->findByAttributes(array('event_id'=>$e->id,'member_id'=>Yii::app()->user->id));
-       
+       $er = EventResult::model()->findAllByAttributes(array('event_id'=>$e->id,'user_id'=>Yii::app()->user->id));
+            if(count($er))
+            $check['result'] = $er;
        if(count($em))
        {
         $check['going'] = $em->going;
         //if($check['going'] == 1)
         //{
-            $er = EventResult::model()->findAllByAttributes(array('event_id'=>$e->id,'user_id'=>Yii::app()->user->id));
-            if(count($er))
-            $check['result'] = $er;
+            
             
             if($e->event_cat == 3)
             {

@@ -126,9 +126,27 @@
                             }
                 ?>
                 <div class="blackSubmit">
-                    <a href="javascript:void(0)" id="submit_result">SUBMIT RESULTS</a>
+                    <a href="javascript:void(0)" id="submit_result" class="submit_result_anc">SUBMIT RESULTS</a>
                 </div>
                 <div class="blackbg">
                    Input your results. <a href="javascript:void(0)" class="blue clearResult">Clear Results</a>
                 </div>
             </div>
+            <script>
+            $(function(){
+                $('.submit_input').keyup(function(){
+                    var t_val = $(this).val();
+                    t_val = parseInt(t_val);
+                    if(t_val>60)
+                    {
+                        
+                        $(this).attr('style','border-color:#DB4437');
+                    }
+                    else
+                    {
+                        
+                        $(this).removeAttr('style');
+                    }
+                })
+            })
+            </script>

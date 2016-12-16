@@ -362,6 +362,25 @@ $(function(){
         
     });
     $('#submit_result').click(function(){
+        var chec = '';
+        $('.submit_input').each(function(){
+                    var t_val = $(this).val();
+                    t_val = parseInt(t_val);
+                    if(t_val>60)
+                    {
+                        
+                        chec = false;
+                         return false;
+                    }
+                    else
+                    {
+                        
+                        chec = true;
+                       
+                    }
+                })
+                //alert(chec);
+                if(chec){
         var user_id = '<?php echo Yii::app()->user->id;?>';
         var event_id = '<?php echo $model->id;?>';
         var event_category = '<?php echo $model->event_cat;?>';
@@ -467,6 +486,11 @@ $(function(){
                } 
             });
         });
+        }
+        else
+        {
+            return false;
+        }
         
     })
     $('.expand_block').click(function(){
