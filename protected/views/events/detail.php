@@ -79,7 +79,7 @@
                 <div class="floatRight"><span class="fa fa-angle-down"></span></div>
                 <div class="clearfix"></div>
             </a>
-            <div class="content col-md-12" style="display: none;">
+            <div class="content col-md-12" style="<?php if($past==1){?>display: none;<?php }?>">
                 <span class="blue small_bold">DISTANCES AND START TIMES</span>
                 
                     <?php
@@ -125,7 +125,7 @@
                 <div class="floatRight"><span class="fa fa-angle-down"></span></div>
                 <div class="clearfix"></div>
             </a>
-            <div class="content col-md-12" style="display: none;">
+            <div class="content col-md-12" style="<?php if($past==1){?>display: none;<?php }?>">
                 <?php echo $model->description;?>
             </div>
             <div class="clearfix"></div>
@@ -137,7 +137,7 @@
                 <div class="floatRight"><span class="fa fa-angle-down"></span></div>
                 <div class="clearfix"></div>
             </a>
-            <div class="col-md-12 content" style="display: none;">
+            <div class="col-md-12 content" style="<?php if($past==1){?>display: none;<?php }?>">
             <?php
             $flyer = $files->findAllByAttributes(['event_id'=>$model->id]);
             foreach($flyer as $fl)
@@ -224,7 +224,7 @@
                 <div class="floatRight"><span class="fa fa-angle-down"></span></div>
                 <div class="clearfix"></div>
             </a>
-            <div class="content col-md-12" style="display: none;">
+            <div class="content col-md-12" style="<?php if($past==1){}else{?>display: none;<?php }?>">
                 <?php echo $this->renderPartial('/events/_review', array('pics'=>$pics,'race_result'=>$race_result,'members'=>$members,'average'=>$average,'review'=>$review,'all_review'=>$all_review));?>
             </div>
             <div class="clearfix"></div>
@@ -237,7 +237,7 @@
                 <div class="floatRight"><span class="fa fa-angle-down"></span></div>
                 <div class="clearfix"></div>
             </a>
-            <?php $this->renderPartial('/events/_board',['results'=>'race_result','event_id'=>$model->id,'members'=>$members,'model'=>$model,'m_time'=>$m_time]);?>
+            <?php $this->renderPartial('/events/_board',['past'=>$past,'results'=>'race_result','event_id'=>$model->id,'members'=>$members,'model'=>$model,'m_time'=>$m_time]);?>
             
             
             

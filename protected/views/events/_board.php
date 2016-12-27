@@ -1,5 +1,5 @@
 <div class="clearfix"></div>
-<div class="searchblock" style="display:none;">
+<div class="searchblock" style="<?php if($past==1){}else{?>display: none;<?php }?>;">
     <div class="filter2 whitetext col-md-7">
         <span>Results</span> &nbsp; | &nbsp; 
         <?php
