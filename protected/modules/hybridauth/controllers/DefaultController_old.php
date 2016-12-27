@@ -42,7 +42,6 @@ class DefaultController extends Controller {
 		$identity = new RemoteUserIdentity($_GET['provider'],$this->module->getHybridauth());
 		
 		if ($identity->authenticate()) {
-		 
 			// They have authenticated AND we have a user record associated with that provider
 			if (Yii::app()->user->isGuest) {
 				$this->_loginUser($identity);
@@ -52,10 +51,8 @@ class DefaultController extends Controller {
 				$this->redirect(Yii::app()->user->returnUrl);
 			}
 		} else if ($identity->errorCode == RemoteUserIdentity::ERROR_USERNAME_INVALID) {
-		 
 			// They have authenticated to their provider but we don't have a matching HaLogin entry
 			if (Yii::app()->user->isGuest) {
-			 
  				// They aren't logged in => display a form to choose their username & email 
 				// (we might not get it from the provider)
 				if ($this->module->withYiiUser == true) {
@@ -71,51 +68,6 @@ class DefaultController extends Controller {
                 //var_dump($user_profile);
                 $user->email= $user_profile->email;
                 //var_dump($_POST);
-                //Check Extisting user email
-                $exists = $user->model()->findByAttributes(['email'=>$user_profile->email]);
-                //var_dump($exists); die();
-                if($exists === null)
-                {
-                    $user->email = $user_profile->email;
-                    $user->fname = $user_profile->firstName;
-                    $user->lname = $user_profile->lastName;
-                    $user->is_verified = 2;
-                    $user->gender = ($user_profile->gender=='male')?"1":"0";
-                    //$user->dob = $user_profile->birthYear."-".$user_profile->birthMonth."-".$user_profile->birthDay;
-                	if ($user->validate() && $user->save()) {
-                    
-                        $identity->id = $user->id;
-						//$identity->username = $user->username; 
-						$this->_linkProvider($identity);
-                        Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - User has been added.');
-                        $this->_loginUser($identity);
-                        //$this->redirect(Yii::app()->request->baseUrl);
-                    }
-                    else
-                    {
-                        
-                        $user->deleteByPk($user->id);
-                        Yii::app()->user->setFlash('error', '<strong>Error</strong> - User couldnot be added. Please try again!');
-                        $this->redirect(Yii::app()->request->baseUrl);
-                    }
-                }
-                else
-                {
-                    $halogin = HaLogin::model()->findByAttributes(['userId'=>$exists->id]);
-                    if($halogin === null) { 
-                        
-                        Yii::app()->user->setFlash('error', '<strong>Error</strong> - Email associated with the account is already regestered!');
-                        $this->redirect(Yii::app()->request->baseUrl);
-                    } else {
-                        $identity->id = $exists->id;
-                        $this->_loginUser($identity);
-                    }
-            
-                
-				//$this->_loginUser($identity);
-					
-                }
-                /*
 				if (isset($_POST['email'])) {
 					//Save the form
                     
@@ -130,24 +82,14 @@ class DefaultController extends Controller {
                     //var_dump($user->attributes);
 					if ($user->validate() && $user->save()) {
                         //var_dump($user->attributes);die();
-						if($pin =CommonClass::sendConfirmationEmail($user))
-                        {
-                            $Userpin['pin'] = $pin;
-                            $user->saveAttributes($Userpin);
-                            $identity->id = $user->id;
-    						//$identity->username = $user->username; 
-    						$this->_linkProvider($identity);
-                            Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - User has been added. Please verify your account.');
-                            $this->redirect(Yii::app()->request->baseUrl);
-                        }
-                        else
-                        {
-                            
-                            $user->deleteByPk($user->id);
-                            Yii::app()->user->setFlash('success', '<strong>Error</strong> - User couldnot be added. Please try again!');
-                            $this->redirect(Yii::app()->request->baseUrl);
-                        }
-                        
+						$pin =CommonClass::sendConfirmationEmail($user);
+                        $Userpin['pin'] = $pin;
+                        $user->saveAttributes($Userpin);
+                        $identity->id = $user->id;
+						//$identity->username = $user->username; 
+						$this->_linkProvider($identity);
+                        Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - User has been added. Please verify your account.');
+                        $this->redirect(Yii::app()->request->baseUrl);
 						//$this->_loginUser($identity);
 					} // } else { do nothing } => the form will get redisplayed
 				} else {
@@ -162,9 +104,8 @@ class DefaultController extends Controller {
 
 				$this->render('createUser', array(
 					'user' => $user,
-				));*/
+				));
 			} else {
-			  
 				// They are already logged in, link their user account with new provider
 				$identity->id = Yii::app()->user->id;
 				$this->_linkProvider($identity);

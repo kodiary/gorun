@@ -50,12 +50,13 @@ return array(
                 "google" => array ( 
                     "enabled" => true,
                     "keys"    => array ( "id" => "686923470286-8ntv99ud81aoh4p8atnb2h6610n1taus.apps.googleusercontent.com", "secret" => "1HrQYdXL_fpMw130o5_n5bjR" ),
-                    "scope"   => ""
+                    "scope"   => "https://www.googleapis.com/auth/userinfo.profile ".
+                                 "https://www.googleapis.com/auth/userinfo.email",
                 ),
  
                 "facebook" => array ( 
                     "enabled" => true,
-                    "keys"    => array ( "id" => "343657669340705", "secret" => "58120f347973ca16c74b67ff60d7f066" ),
+                    "keys"    => array ( "id" => "1311325642274761", "secret" => "6d715094310f80c21ee511e4dbbd8b07" ),
                     "scope"   => "email,user_birthday",
                     "fields"  =>['name','email','gender','verified'],
                     "display" => "" 
