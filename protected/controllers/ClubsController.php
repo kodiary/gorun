@@ -278,7 +278,7 @@ class ClubsController extends Controller
             $province = $_GET['province'];
             $prov = Province::model()->getIdbySlug($province);
             
-            $criteria->condition= 'province='.$prov;
+            $criteria->addCondition('province='.$prov);
         }
             
         //$criteria->order = 'publish_date DESC,t.id DESC';
@@ -354,7 +354,7 @@ class ClubsController extends Controller
             $province = $_GET['province'];
             $prov = Province::model()->getIdbySlug($province);
             
-            $criteria->condition= 'province='.$prov;
+            $criteria->addCondition('province='.$prov);
         }
            
         //$criteria->order = 'publish_date DESC,t.id DESC';

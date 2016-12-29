@@ -1,6 +1,6 @@
 <?php
 
-$pages = Contents::listParent();
+$pages = Contents::model()->listParent();
 $arr = array();
 foreach($pages as $menu) 
 {

@@ -177,11 +177,11 @@ if (!empty($this->metaKeys)) {
             <div class="col-md-3 quick-link">
                 <h2>For the South African Athelete</h2>
                 <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Advertise</a></li>
+                    <li><a href="<?php echo Yii::app()->request->baseUrl;?>/about">About Us</a></li>
+                    <li><a href="<?php echo Yii::app()->request->baseUrl;?>/advertise">Advertise</a></li>
                     <li><a href="#">Race Result</a></li>
                     <li><a href="#">Leaderboard</a></li>
-                    <li><a href="#">Clubs</a></li>
+                    <li><a href="<?php echo Yii::app()->request->baseUrl;?>/clubs/type">Clubs</a></li>
                 </ul>
             </div>
             <div class="quick-link col-md-6">
