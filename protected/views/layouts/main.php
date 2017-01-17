@@ -81,9 +81,14 @@ if (!empty($this->metaKeys)) {
             else
             if($con=='triathlon')
             $act = 3;
-            else{
-                $con='run';
+            else
+            if($con=='run'){
             $act =1;
+            }
+            else
+            {
+                $con = '';
+                $act = 0;
             }
             ?>
                 <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/run" class="<?php if($act==1){?>active<?php }?>">Run</a></li>
@@ -135,8 +140,14 @@ if (!empty($this->metaKeys)) {
             <li><a class="anchor1" href="javascript:void(0);">Results</a></li>
             <li><a class="anchor2" href="javascript:void(0);">Race Ratings</a></li>
             <?php }
-            ?>
+            if($con)
+            {
+                ?>
+                
             <li><a href="<?php echo Yii::app()->request->baseUrl;?>/clubs/category/<?php echo $con;?>">Running clubs</a></li>
+            <?php
+            }
+            ?>
             <li><a href="#">News</a></li>
             <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/events/submitResults">Submit Results</a></li>
         </ul>

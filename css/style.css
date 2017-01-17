@@ -634,4 +634,4 @@ h3.blue{font-weight:bold;margin-top:0;}
 .whitetext a:hover{text-decoration:none;color:#FFF;}
 .whitetext a:focus{text-decoration:none;color:#FFF;outline:none;}
 .btnresult{background:#343434!important;}
-.bgblue:hover,.btnblue2:hover,.submit-event:hover,.btnresult:hover{background:#000000!important;color:#FFF;border-color:#1E1E1E!important;}
+.bgblue:hover,.btnblue2:hover,.submit-event:hover,.btnresult:hover,.btn-default:hover{background:#000000!important;color:#FFF;border-color:#1E1E1E!important;}
