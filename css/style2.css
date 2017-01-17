@@ -183,11 +183,12 @@
     font-size: 22px;
 }
 .bottom-border{
-    border-bottom: 3px solid #029cdc !important;
+    border-bottom: 3px solid #029cdc;
     font-weight: bolder!important;
 }
-.btn-default:hover{
-   background-color: #029cdc !important;
+.bottom-border:hover{
+    border-bottom: 3px solid #1E1E1E;
+    font-weight: bolder!important;
 }
 hr{
     margin:10px
