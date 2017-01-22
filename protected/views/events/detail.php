@@ -34,7 +34,26 @@
                             ?></span> 
                         <span class="racetag"><?php echo $model->province?></span>
                         <div class="clearfix"></div>
-                        <span class="blue_bg"><?php echo $arr_cat[$model->event_cat];?></span><span class="distance">5k</span><span class="distance">32k</span><span class="distance">160k</span>
+                        <span class="blue_bg"><?php echo $arr_cat[$model->event_cat];?></span>
+                        <?php
+                        $etime = EventsTime::model()->findAllByAttributes(array('event_id'=>$model->id));
+                        foreach($etime as $mt)
+                    {
+                        if($mt->distance1){
+                        ?>
+                        <span class="distance"><?php echo $mt->distance1?>, <?php echo $mt->distance2?>k</span>
+                        <?php
+                        }
+                        else
+                        {
+                        if($mt->distance_swim_1){
+                            ?>
+                        <span class="distance">
+                            <?php echo $mt->distance_run_1?>, <?php echo $mt->distance_run_2?>km / <?php echo $mt->distance_bike_1?>, <?php echo $mt->distance_bike_2?>km / <?php echo $mt->distance_swim_1?>, <?php echo $mt->distance_swim_2?>km 
+                        </span>
+                        <?php
+                        }
+                           }}?>
                         <div class="social_share">
                             <!-- Go to www.addthis.com/dashboard to customize your tools -->
                             <div class="addthis_inline_share_toolbox"></div>
