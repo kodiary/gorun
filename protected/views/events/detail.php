@@ -282,6 +282,31 @@
                             ?>
 <script>
 $(function(){
+    $('.submit_result_parent .sub1').keyup(function(){
+        var inputs = $(this).parent().parent();
+        var ch = 0;
+        inputs.find('.sub1').each(function(){
+            if($(this).val())
+            {
+                //alert($(this).val());
+                ch = 1;
+            }
+        });
+        //alert(ch);
+        $('.submit_result_parent').not( inputs ).each(function(){
+            $(this).find('.sub1').each(function(){
+                if(ch == 1){
+                $(this).attr('disabled','disabled');
+                $(this).attr('style','background:#CCC;');
+                }
+                else
+                {
+                    $(this).removeAttr('disabled');
+                    $(this).removeAttr('style');
+                }
+            })
+        })
+    });
     initialize();
     $("#stars-default").rating('create',{coloron:'#0393D9',value:<?php echo $my_rating;?>,onClick:function(){ $('.rate_val').val(this.attr('data-rating'));}});
     <?php
@@ -425,11 +450,14 @@ $(function(){
             var id = $(this).find('.id').val();
             else
             id = 0;
+            var dis_hour = '';
+            var dis_min = '';
+            var dis_sec = '';
             if($('.is_tri').val()=='0')
             {
-                var dist_hour = $(this).find('.hour').val();
-                var dist_min = $(this).find('.min').val(); 
-                var dist_sec = $(this).find('.sec').val();
+                dist_hour = $(this).find('.hour').val();
+                dist_min = $(this).find('.min').val(); 
+                dist_sec = $(this).find('.sec').val();
                 
                 
             }
@@ -437,9 +465,9 @@ $(function(){
             {
                 if($(this).find('.tri_type').val() == 's')
                 {
-                    var dist_hour = $(this).find('.hour_s').val();
-                    var dist_min = $(this).find('.min_s').val(); 
-                    var dist_sec = $(this).find('.sec_s').val();
+                    dist_hour = $(this).find('.hour_s').val();
+                    dist_min = $(this).find('.min_s').val(); 
+                    dist_sec = $(this).find('.sec_s').val();
                     is_tri_swim = '1';
                     is_tri_bike = '0';
                     is_tri_run = '0';
@@ -447,9 +475,9 @@ $(function(){
                 }
                 if($(this).find('.tri_type').val() == 't1')
                 {
-                    var dist_hour = $(this).find('.hour_t1').val();
-                    var dist_min = $(this).find('.min_t1').val(); 
-                    var dist_sec = $(this).find('.sec_t1').val();
+                    dist_hour = $(this).find('.hour_t1').val();
+                    dist_min = $(this).find('.min_t1').val(); 
+                    dist_sec = $(this).find('.sec_t1').val();
                     transition_time = '1';
                     is_tri_swim = '0';
                     is_tri_bike = '0';
@@ -457,9 +485,9 @@ $(function(){
                 }
                 if($(this).find('.tri_type').val() == 'b')
                 {
-                    var dist_hour = $(this).find('.hour_b').val();
-                    var dist_min = $(this).find('.min_b').val(); 
-                    var dist_sec = $(this).find('.sec_b').val();
+                    dist_hour = $(this).find('.hour_b').val();
+                    dist_min = $(this).find('.min_b').val(); 
+                    dist_sec = $(this).find('.sec_b').val();
                     is_tri_bike = '1';
                     is_tri_swim = '0';
                     is_tri_run = '0';
@@ -467,9 +495,9 @@ $(function(){
                 }
                 if($(this).find('.tri_type').val() == 't2')
                 {
-                    var dist_hour = $(this).find('.hour_t2').val();
-                    var dist_min = $(this).find('.min_t2').val(); 
-                    var dist_sec = $(this).find('.sec_t2').val();
+                    dist_hour = $(this).find('.hour_t2').val();
+                    dist_min = $(this).find('.min_t2').val(); 
+                    dist_sec = $(this).find('.sec_t2').val();
                     transition_time = '2';
                     is_tri_swim = '0';
                     is_tri_bike = '0';
@@ -477,9 +505,9 @@ $(function(){
                 }
                 if($(this).find('.tri_type').val() == 'r')
                 {
-                    var dist_hour = $(this).find('.hour_r').val();
-                    var dist_min = $(this).find('.min_r').val(); 
-                    var dist_sec = $(this).find('.sec_r').val();
+                    dist_hour = $(this).find('.hour_r').val();
+                    dist_min = $(this).find('.min_r').val(); 
+                    dist_sec = $(this).find('.sec_r').val();
                     is_tri_run = '1';
                     is_tri_swim = '0';
                     is_tri_bike = '0';
@@ -493,6 +521,12 @@ $(function(){
                         
                     })
                  })
+                 if(dist_hour=='' && dis_min=='' && dis_sec=='')
+                 {
+                    //skip
+                 }
+                 else
+                 {
             $.ajax({
                url:'<?php echo Yii::app()->request->baseUrl; ?>/events/submitresult',
                type:'post',
@@ -504,6 +538,7 @@ $(function(){
                 window.location = '<?php echo Yii::app()->request->baseUrl;?>/events/view/<?php echo $model->slug;?>?submitted=result';
                } 
             });
+            }
         });
         }
         else

@@ -14,16 +14,23 @@
                                      <input type="hidden" class="is_tri" value="0" />
                                      
                                      <?php }
+                                     $ch_mod = $mod = $race_result->findByAttributes(array('user_id'=>Yii::app()->user->id));
                                      $mod = $race_result->findByAttributes(array('event_time_id'=>$mt->id,'user_id'=>Yii::app()->user->id));
+                                     if(count($ch_mod) && !count($mod))
+                                     {
+                                        $style = 'disabled="disabled" style="background:#CCC"';
+                                     }
+                                     else
+                                     $style='';
                                     ?>
                                 <div class="submit_result_parent">
                                 <input type="hidden" class="event_time_id" value="<?php echo $mt->id?>" />
                                 <input type="hidden" class="id" value="<?php echo $mod->id?>" />
                                 <input type="hidden" class="distance" value="<?php echo $mt->distance1?><?php if($mt->distance2!=0){?>, <?php echo $mt->distance2?>k<?php }?>" />
                                 <div class="e_dis_block e_dis_submit"><?php echo $mt->distance1?><?php if($mt->distance2!=0){?>, <?php echo $mt->distance2?>k <?php }?></span></div>
-                                <div class="e_dis_block e_dis_bottom"><input type="text" class="submit_input hour" value="<?php echo $mod->dist_hour;?>" placeholder="00" /><br />HOURS</div>
-                                <div class="e_dis_block e_dis_bottom"><input type="text" class="submit_input min" value="<?php echo $mod->dist_min;?>" placeholder="00" /><br />MINUTES</div>
-                                <div class="e_dis_block e_dis_bottom"><input type="text" class="submit_input sec" value="<?php echo $mod->dist_sec;?>" placeholder="00" /><br />SECONDS</div>
+                                <div class="e_dis_block e_dis_bottom"><input <?php echo $style;?> type="text" class="submit_input sub1 hour" value="<?php echo $mod->dist_hour;?>" placeholder="00" /><br />HOURS</div>
+                                <div class="e_dis_block e_dis_bottom"><input <?php echo $style;?> type="text" class="submit_input sub1 min" value="<?php echo $mod->dist_min;?>" placeholder="00" /><br />MINUTES</div>
+                                <div class="e_dis_block e_dis_bottom"><input <?php echo $style;?> type="text" class="submit_input sub1 sec" value="<?php echo $mod->dist_sec;?>" placeholder="00" /><br />SECONDS</div>
                                 <div class="clearfix"></div>
                                 </div>
                                 <?php
