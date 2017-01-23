@@ -1,6 +1,13 @@
 
 (function($) {
-var base_url = 'http://localhost/gorun/';
+    var path = window.location.pathname;
+        var base_url;
+        if (path.replace('gorun/', '') != path) {
+            base_url = 'http://localhost/gorun/';
+        } else {
+            var base_url = 'http://gorun.co.za/dev/';
+            }
+
 /**
  * Require the module at `name`.
  *

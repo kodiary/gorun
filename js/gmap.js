@@ -3,7 +3,13 @@
 * @author : Ambika
 * 2012
 */
-var base_url="http://localhost/gorun/";
+var path = window.location.pathname;
+        var base_url;
+        if (path.replace('gorun/', '') != path) {
+            base_url = 'http://localhost/gorun/';
+        } else {
+            var base_url = 'http://gorun.co.za/dev/';
+            }
 var geocoder = new google.maps.Geocoder();
   var map;
   var marker;

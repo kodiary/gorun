@@ -10,10 +10,14 @@
 // ----------------------------------------------------------------------------------------
 //	HybridAuth Config file: http://hybridauth.sourceforge.net/userguide/Configuration.html
 // ----------------------------------------------------------------------------------------
-
+$host = $_SERVER['SERVER_NAME'];
+if($host == 'localhost')
+$base_url = "http://localhost/gorun/signup/oauth";
+else
+$base_url = "http://gorun.co.za/dev/signup/oauth";  
 return 
 	array(
-		"base_url" => "http://localhost/gorun/signup/oauth", 
+		"base_url" => $base_url, 
 
 		"providers" => array ( 
 			// openid providers

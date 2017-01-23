@@ -113,8 +113,6 @@ class EventsController extends Controller
         //}
        }
        }
-       
-       //var_dump($check);
        $etime = EventsTime::model()->findAllByAttributes(array('event_id'=>$e->id));
 		$this->render('detail',array(
 			'model'=>$this->loadModel($e->id),
