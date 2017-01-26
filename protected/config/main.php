@@ -5,6 +5,28 @@
 
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
+if($_SERVER['SERVER_NAME'] == 'localhost'){
+$db = array(
+			'connectionString' => 'mysql:host=localhost;dbname=gorun',
+			'emulatePrepare' => true,
+			'username' => 'root',
+			'password' => '',
+			'charset' => 'utf8',
+		);
+        $hauth = "http://localhost/gorun/hybridauth"
+}
+else
+{
+    $db = array(
+			'connectionString' => 'mysql:host=localhost;dbname=gorunco_yii3',
+			'emulatePrepare' => true,
+			'username' => 'gorunco_anwar',
+			'password' => 'Anwar123!',
+			'charset' => 'utf8',
+		);
+        $hauth = "http://gorun.co.za/dev2/hybridauth"
+}
+        
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'EXSA - Exhibition & Event Association of South Africa',
@@ -36,7 +58,7 @@ return array(
             ),
 		),
         'hybridauth' => array(
-            'baseUrl' => 'http://'. $_SERVER['SERVER_NAME'] . '/gorun/hybridauth', 
+            'baseUrl' => $hauth, 
             'withYiiUser' => false, // Set to true if using yii-user
             "providers" => array ( 
                 "openid" => array (
@@ -251,13 +273,7 @@ return array(
         */
 		// uncomment the following to use a MySQL database
 		
-		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=gorun',
-			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => '',
-			'charset' => 'utf8',
-		),
+		'db'=>$db,
 		
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
