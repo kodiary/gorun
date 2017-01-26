@@ -13,7 +13,7 @@ $db = array(
 			'password' => '',
 			'charset' => 'utf8',
 		);
-        $hauth = "http://localhost/gorun/hybridauth"
+        $hauth = "http://localhost/gorun/hybridauth";
 }
 else
 {
@@ -24,7 +24,7 @@ else
 			'password' => 'Anwar123!',
 			'charset' => 'utf8',
 		);
-        $hauth = "http://gorun.co.za/dev2/hybridauth"
+        $hauth = "http://gorun.co.za/dev2/hybridauth";
 }
         
 return array(
