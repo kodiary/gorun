@@ -5,7 +5,7 @@
         if (path.replace('gorun/', '') != path) {
             base_url = 'http://localhost/gorun/';
         } else {
-            var base_url = 'http://gorun.co.za/dev/';
+            var base_url = 'http://gorun.co.za/dev2/';
             }
 
 /**

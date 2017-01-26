@@ -8,7 +8,7 @@ var path = window.location.pathname;
         if (path.replace('gorun/', '') != path) {
             base_url = 'http://localhost/gorun/';
         } else {
-            var base_url = 'http://gorun.co.za/dev/';
+            var base_url = 'http://gorun.co.za/dev2/';
             }
 var geocoder = new google.maps.Geocoder();
   var map;
