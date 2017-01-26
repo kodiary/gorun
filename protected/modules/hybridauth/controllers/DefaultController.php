@@ -55,7 +55,7 @@ class DefaultController extends Controller {
 		 
 			// They have authenticated to their provider but we don't have a matching HaLogin entry
 			if (Yii::app()->user->isGuest) {
-			 
+			  //die('2');
  				// They aren't logged in => display a form to choose their username & email 
 				// (we might not get it from the provider)
 				if ($this->module->withYiiUser == true) {
@@ -72,8 +72,7 @@ class DefaultController extends Controller {
                 $user->email= $user_profile->email;
                 //var_dump($_POST);
                 //Check Extisting user email
-                $exists = $user->model()->findByAttributes(['email'=>$user_profile->email]);
-                //var_dump($exists); die();
+                $exists =$user->model()->findByAttributes(['email'=>$user_profile->email]);
                 if($exists === null)
                 {
                     $user->email = $user_profile->email;
@@ -101,6 +100,8 @@ class DefaultController extends Controller {
                 }
                 else
                 {
+                    
+                            
                     $halogin = HaLogin::model()->findByAttributes(['userId'=>$exists->id]);
                     if($halogin === null) { 
                         
@@ -164,7 +165,7 @@ class DefaultController extends Controller {
 					'user' => $user,
 				));*/
 			} else {
-			  
+			  die('3');
 				// They are already logged in, link their user account with new provider
 				$identity->id = Yii::app()->user->id;
 				$this->_linkProvider($identity);

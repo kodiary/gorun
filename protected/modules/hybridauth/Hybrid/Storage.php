@@ -12,7 +12,7 @@ class Hybrid_Storage
 {
 	function __construct()
 	{
-	   //session_set_cookie_params(0, '/', 'localhost/gorun');
+	   //session_set_cookie_params(0, '/', 'gorun.co.za/dev');
 		if( ! session_id() ){
 			throw new Exception( "Hybriauth require the use of 'session_start()' at the start of your script", 1 );
 		}
