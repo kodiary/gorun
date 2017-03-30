@@ -110,7 +110,7 @@ if (!empty($this->metaKeys)) {
         
             <ul>
                 <li><a href="<?php echo Yii::app()->request->baseUrl;?>/dashboard">My profile</a></li>
-                <li><a href="#">My results <span class="blue">45</span></a></li>
+                <li><a href="#">My results <span class="blue"><?php echo EventResult::model()->countByAttributes(['user_id'=>Yii::app()->user->id]);?></span></a></li>
                 <li><a href="#">Credits <span class="blue">0.00</span></a></li>
                 <li class="last"><a href="<?php echo Yii::app()->request->baseUrl;?>/member/logout">Logout</a></li>
             </ul>

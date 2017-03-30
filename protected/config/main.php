@@ -24,7 +24,7 @@ else
 			'password' => 'Anwar123!',
 			'charset' => 'utf8',
 		);
-        $hauth = "http://gorun.co.za/dev2/hybridauth";
+        $hauth = 'http://'.$_SERVER['HTTP_HOST'].'/dev/hybridauth';
 }
         
 return array(
@@ -78,7 +78,7 @@ return array(
  
                 "facebook" => array ( 
                     "enabled" => true,
-                    "keys"    => array ( "id" => "1311325642274761", "secret" => "6d715094310f80c21ee511e4dbbd8b07" ),
+                    "keys"    => array ( "id" => "1778078242453264", "secret" => "7736f307bee0d39e6da1bf57025b88bc" ),
                     "scope"   => "email,user_birthday",
                     "fields"  =>['name','email','gender','verified'],
                     "display" => "" 
