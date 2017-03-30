@@ -82,9 +82,9 @@
                     <div class="col-md-12 profilepic">
                     <div class="profile_img event_img" id="upimage_0">
                     <?php
-                    if($model->logo && file_exists(Yii::app()->basePath.'/../images/temp/thumb/'.$model->logo))
+                    if($model->logo && file_exists(Yii::app()->basePath.'/../images/frontend/events/thumb/'.$model->logo))
                     {
-                        $img_url=Yii::app()->baseUrl.'/images/temp/thumb/'.$model->logo;
+                        $img_url=Yii::app()->baseUrl.'/images/frontend/events/thumb/'.$model->logo;
                         echo '<img src="'.$img_url.'"/>';
                     }
                     
@@ -157,7 +157,7 @@
                                 foreach($flyers as $f)
                                 {
                                     ?>
-                                    <li><?php echo $f->file;?><input name="EventsFile[file][]" value="<?php echo $f->file;?>" type="hidden"> (<?php echo $f->mb;?>mb<input name="EventsFile[mb][]" value="<?php echo $f->mb;?>" type="hidden">) - added <?php echo $f->added_on;?><input name="EventsFile[added_on][]" value="<?php echo $f->added_on;?>" type="hidden"> at <?php echo $f->added_time;?><input name="EventsFile[added_time][]" value="<?php echo $f->added_time;?>" type="hidden"> <a href="javascript:void(0)" class="cross"><span class="fa fa-times"></span></a></li>
+                                    <li><?php echo $f->file;?><input name="EventsFile[file][]" value="<?php echo $f->file;?>" type="hidden"> (<?php echo $f->mb;?>mb<input name="EventsFile[mb][]" value="<?php echo $f->mb;?>" type="hidden">) - added <?php echo $f->added_on;?><input name="EventsFile[added_on][]" value="<?php echo $f->added_on;?>" type="hidden"> at <?php echo $f->added_time;?><input name="EventsFile[added_time][]" value="<?php echo $f->added_time;?>" type="hidden"> <a href="javascript:void(0)" onclick="$(this).closest('li').remove();" class="cross"><span class="fa fa-times"></span></a></li>
                                     <?php
                                 }
                             }
@@ -447,7 +447,7 @@ $(function(){
             if(responseJSON.success)
             {
                 $('.flyer_list').show();
-                var str = '<li>'+responseJSON.file+'<input type="hidden" name="EventsFile[file][]" value="'+responseJSON.file+'" /> ('+parseFloat(responseJSON.size).toFixed(2)+'mb<input type="hidden" name="EventsFile[mb][]" value="'+parseFloat(responseJSON.size).toFixed(2)+'" />) - added <?php echo date('Y/m/d');?><input type="hidden" name="EventsFile[added_on][]" value="<?php echo date('Y/m/d');?>" /> at <?php echo date('H:s');?><input type="hidden" name="EventsFile[added_time][]" value="<?php echo date('H:s');?>" /> <a href="javascript:void(0)" class="cross"><span class="fa fa-times"></a></li>'
+                var str = '<li>'+responseJSON.file+'<input type="hidden" name="EventsFile[file][]" value="'+responseJSON.file+'" /> ('+parseFloat(responseJSON.size).toFixed(2)+'mb<input type="hidden" name="EventsFile[mb][]" value="'+parseFloat(responseJSON.size).toFixed(2)+'" />) - added <?php echo date('Y/m/d');?><input type="hidden" name="EventsFile[added_on][]" value="<?php echo date('Y/m/d');?>" /> at <?php echo date('H:s');?><input type="hidden" name="EventsFile[added_time][]" value="<?php echo date('H:s');?>" /> <a href="javascript:void(0)" onclick="$(this).closest(li).remove();" class="cross"><span class="fa fa-times"></a></li>'
                 $('.flyer_list').append(str);
                 $('.flyer_file').val(responseJSON.file)
                 

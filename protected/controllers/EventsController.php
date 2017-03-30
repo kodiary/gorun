@@ -166,6 +166,7 @@ class EventsController extends Controller
 		if(isset($_POST['Events']['title']))
 		{
 		  $model->created_by = Yii::app()->user->id;
+          if(!$id)
           $model->visible=0;
 		   foreach($_POST['Events'] as $k=>$p)
            {
@@ -193,6 +194,7 @@ class EventsController extends Controller
                 $count++;
                 $slug=$slug."-".$count;
            }
+           if(!$id)
            $model->slug=$slug;
             if(isset($_POST['logo']) && $_POST['logo']){
             $logo_arr = explode('?',$_POST['logo']);
@@ -255,6 +257,7 @@ class EventsController extends Controller
                     }
                     
                 }
+                EventsFile::model()->deleteAllByAttributes(array('event_id'=>$id));
                 foreach($arr as $a)
                 {
                    $events_file= new EventsFile;
@@ -273,8 +276,10 @@ class EventsController extends Controller
                 
                 
                 Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - A new event has been added successfully!');
-                $this->sendEventEmail($model->title,$model->slug,$model->created_by);
-                $this->sendAdminEventEmail($model->title,$model->slug,$model->id);
+                if(!$id){
+                                $this->sendEventEmail($model->title,$model->slug,$model->created_by);
+                                $this->sendAdminEventEmail($model->title,$model->slug,$model->id);
+                            }
 				$this->redirect(array('index'));
             }
             else
