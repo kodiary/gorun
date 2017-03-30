@@ -12,7 +12,7 @@
                 
                 <div class="form-group white">
                     <label class="col-md-12">Date and time</label>
-                    <div class="col-md-12">Multiple Date Event &nbsp; <input type="checkbox" name="is_multiple_date" value="1" onchange="if($(this).is(':checked'))$('.hiddendate').show('slow');else $('.hiddendate').hide('slow');" /></div>
+                    <div class="col-md-12">Multiple Date Event &nbsp; <input type="checkbox" name="is_multiple_date" value="1" onchange="if($(this).is(':checked'))$('.hiddendate').show('slow');else {$('.hiddendate').hide('slow');$('#end_date')val('');}" <?php if($model->end_date){?>checked<?php }?> /></div>
                     <div class="clearfix"></div>
                     <br />
                     
@@ -21,7 +21,7 @@
                         <div class="col-md-4"><input type="text" class="form-control datepicker" placeholder="Start Date" required="" id="start_date" name="Events[start_date]" value="<?php echo $model->start_date;?>" /></div>
                         <div class="clearfix"></div>
                     </div>
-                    <div class="col-md-12 padding-bot-10 padding-left-0 hiddendate" style="display: none;">
+                    <div class="col-md-12 padding-bot-10 padding-left-0 hiddendate" <?php if(!$model->end_date){?>style="display: none;<?php }?>">
                         <div class="col-md-2"><span class="fa fa-calendar"></span> End Date</div>
                         <div class="col-md-4"><input type="text" class="form-control datepicker" placeholder="End Date" id="end_date" name="Events[end_date]" value="<?php echo $model->end_date;?>" /></div>
                         <div class="clearfix"></div>
@@ -31,7 +31,24 @@
                 <div class="form-group white">
                     <label class="col-md-12">Event Type</label>
                     <div class="col-md-4">
-                        <a href="javascript:void(0)" class="dropdownselect"><span class="value">Event Type</span> <span class="fa fa-sort"></span><span class="line">|</span></a>
+                        <?php 
+                        $type = $model->event_type;
+                        if($type)
+                        {
+                            $type_model = EventsType::model()->findByPk($type);
+                            $cat_id = $type_model->cat_id;
+                            $event_type_name = $type_model->title; 
+                            $event_type_id = $type_model->id;
+                        }
+                        else
+                        {
+                            $cat_id = '';
+                            $event_type_name = ''; 
+                            $event_type_id = '';
+                        }
+
+                        ?>
+                        <a href="javascript:void(0)" class="dropdownselect"><span class="value"><?php if($event_type_name)echo $event_type_name;else{?>Event Type<?php }?></span> <span class="fa fa-sort"></span><span class="line">|</span></a>
                         <div class="drop-option" style="display:none;">
                             <?php
                             $type = array('','running','biking','triathlon');
@@ -42,8 +59,8 @@
                                 <?php
                             }
                             ?>
-                            <input type="hidden" name="Events[event_type]" class="event_type" />
-                            <input type="hidden" name="Events[event_cat]" class="event_category" />
+                            <input type="hidden" name="Events[event_type]" class="event_type" value="<?php echo event_type_id;?>" />
+                            <input type="hidden" name="Events[event_cat]" class="event_category" value="<?php echo $cat_id;?>" />
                         </div>
                     </div>
                     <div class="clearfix"></div>
@@ -65,11 +82,11 @@
                     <div class="col-md-12 profilepic">
                     <div class="profile_img event_img" id="upimage_0">
                     <?php
-                    /*if($member->logo && (Yii::app()->basePath.'/../images/frontend/thumb/'.$member->logo))
+                    if($model->logo && file_exists(Yii::app()->basePath.'/../images/temp/thumb/'.$model->logo))
                     {
-                        $img_url=Yii::app()->baseUrl.'/images/frontend/thumb/'.$member->logo;
+                        $img_url=Yii::app()->baseUrl.'/images/temp/thumb/'.$model->logo;
                         echo '<img src="'.$img_url.'"/>';
-                    }*/
+                    }
                     
                     ?>
                         
@@ -126,8 +143,26 @@
                     
                     <input type="hidden" class="flyer_file" value="<?php echo $model->file;?>" />
                     <div class="clearfix"></div>
-                    <ul class="flyer_list col-md-12" style="display: none;">
-                    
+                    <?php
+                    if($model->id)
+                    $flyers = EventsFile::model()->findAllByAttributes(array('event_id'=>$model->id));
+                    ?>
+                    <ul class="flyer_list col-md-12" <?php if($model->id && $flyers){}else{?>style="display: none;"<?php }?>>
+                        <?php
+                        if($model->id)
+                        {
+                            
+                            if($flyers)
+                            {
+                                foreach($flyers as $f)
+                                {
+                                    ?>
+                                    <li><?php echo $f->file;?><input name="EventsFile[file][]" value="<?php echo $f->file;?>" type="hidden"> (<?php echo $f->mb;?>mb<input name="EventsFile[mb][]" value="<?php echo $f->mb;?>" type="hidden">) - added <?php echo $f->added_on;?><input name="EventsFile[added_on][]" value="<?php echo $f->added_on;?>" type="hidden"> at <?php echo $f->added_time;?><input name="EventsFile[added_time][]" value="<?php echo $f->added_time;?>" type="hidden"> <a href="javascript:void(0)" class="cross"><span class="fa fa-times"></span></a></li>
+                                    <?php
+                                }
+                            }
+                        }
+                        ?>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
@@ -208,6 +243,49 @@ $(function(){
 .btn-black{padding:5px;font-size:20px;text-transform: uppercase;background:#FFF!important;width:200px!important;color:#000;}
 </style>
 <script>
+  <?php
+  if($model->id)
+  {
+    ?>
+    $('.drop-option a').each(function(){
+        var id = $(this).attr('id');
+        if(id.replace('et_','') == '<?php echo $model->event_type;?>')
+        {
+            //alert(id);
+            $('.drop-option').show(function(){
+                $('#'+id).click();
+            });
+            
+        }
+    })
+    <?php
+  }
+  ?>
+  function renderForm($this)
+  {
+    $('.distance_list').html('');
+        var cat = $this.attr('class');
+        if(cat == 'running')
+        $('.event_category').val('1');
+        if(cat == 'biking')
+        $('.event_category').val('2');
+        if(cat == 'triathlon')
+        $('.event_category').val('3');
+        $('.drop-option').hide();
+        $('.dropdownselect .value').text($this.text());
+        var id = $this.attr('id').replace('et_','');
+        $('.event_type').val(id);
+        var class_form = $this.attr("class");
+        $.ajax({
+            url:'<?php echo Yii::app()->request->baseUrl;?>/events/renderForm/<?php echo $model->id;?>',
+            data:'type='+$this.attr('class'),
+            type:'post',
+            success:function(res){
+                $('.loadform').html(res);
+                
+            }
+        })
+  }
   function validate_date(s,e)
   {
     var s_arr = s.split(',');
@@ -315,29 +393,7 @@ $(function(){
         $('.drop-option').toggle();
     });
     $('.drop-option a').click(function(){
-        $('.distance_list').html('');
-        var cat = $(this).attr('class');
-        if(cat == 'running')
-        $('.event_category').val('1');
-        if(cat == 'biking')
-        $('.event_category').val('2');
-        if(cat == 'triathlon')
-        $('.event_category').val('3');
-        $('.drop-option').hide();
-        $('.dropdownselect .value').text($(this).text());
-        var id = $(this).attr('id').replace('et_','');
-        $('.event_type').val(id);
-        var class_form = $(this).attr("class");
-        $.ajax({
-            url:'<?php echo Yii::app()->request->baseUrl;?>/events/renderForm/',
-            data:'type='+$(this).attr('class'),
-            type:'post',
-            success:function(res){
-                $('.loadform').html(res);
-                
-            }
-        })
-        
+        renderForm($(this));        
     })
     if($('.include_times').is(':checked'))
     {

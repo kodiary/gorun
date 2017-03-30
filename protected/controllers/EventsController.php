@@ -150,8 +150,10 @@ class EventsController extends Controller
         Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.js"));
         Yii::app()->clientScript->registerCssFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.css"));
         //Yii::app()->clientScript->registerScript('init','initialize();',CClientScript::POS_LOAD);
-        
+        if(!$id)
         $model  = new Events;
+        else
+        $model = $this->loadModel($id);
         $model_type  = new EventsType;
         $event_type = EventsType::model()->findAll();
         
@@ -583,22 +585,14 @@ class EventsController extends Controller
 	 */
 	public function actionIndex()
 	{
+        //die('here');
         $id=Yii::app()->user->getId();
         $condition="organiser='$id'";
         $order='start_date DESC';      
       
-    	$dataProvider=new CActiveDataProvider('Events',
-        array( 
-            'criteria'=>array(
-            'order'=>$order,
-            'condition'=>$condition,
-            ),
-            'pagination'=>array(
-            'pageSize'=>10
-            ),
-        ));
+    	$events = Events::model()->findAllByAttributes(array('visible'=>1,'created_by'=>$id),array('order'=>'id desc'));
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'dataProvider'=>$events,
 
 		));
 	}
@@ -802,8 +796,19 @@ class EventsController extends Controller
         $this->renderPartial('_loadTime',array('s'=>$s,'e'=>$e));
     }
     
-    public function actionRenderForm()
+    public function actionRenderForm($id=0)
     {
+        if($id)
+            $event = Events::model()->findByPk($id);
+        else
+            $event  = false;
+        if($id)
+        {
+            $model = EventsTime::model()->findAllByAttributes(array('event_id'=>$id));
+        }
+        else
+            $model = false;
+
         if(isset($_POST['type']))
         $type= $_POST['type'];
         else
@@ -811,7 +816,7 @@ class EventsController extends Controller
         
         if($type!='triathlon')
         $type = 'running';
-        $this->renderPartial('_'.$type.'_form');
+        $this->renderPartial('_'.$type.'_form',array('model'=>$model,'event'=>$event));
     }
     public function get_province($arr){
         if(isset($arr['results']) && count($arr['results']))

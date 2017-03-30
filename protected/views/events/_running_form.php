@@ -15,13 +15,25 @@
     </div>
     
     <div class="clearfix"></div>
-    <ul class="distance_list col-md-7" style="display: none;"></ul>
+    <ul class="distance_list col-md-7" <?php if(!$model){?>style="display: none;"<?php }?>>
+        <?php
+        if($model)
+        {
+            foreach($model as $m)
+            {
+                ?>
+                <li><?php echo $m->distance1?><input name="EventsTime[distance1][]" value="<?php echo $m->distance1?>" type="hidden">,<?php echo $m->distance2?><input name="EventsTime[distance2][]" value="<?php echo $m->distance1?>" type="hidden">km &nbsp;|&nbsp; <span class="blue">Start</span> - <?php echo $m->event_from_hour?><input name="EventsTime[event_from_hour][]" value="<?php echo $m->event_from_hour?>" type="hidden">:<?php echo $m->event_from_min?><input name="EventsTime[event_from_min][]" value="<?php echo $m->event_from_min?>" type="hidden"> &nbsp;|&nbsp; <span class="blue">Cost</span> - R<?php echo $m->event_cost?><input name="EventsTime[event_cost][]" value="<?php echo $m->event_cost?>" type="hidden"><a href="#" class="cross"><span class="fa fa-times"></span></a></li>
+                <?php
+            }
+        }
+        ?>
+    </ul>
     <div class="clearfix"></div>
 </div>
 <div class="form-group white">
     <label class="col-md-12">Comrades Qualifier</span></label>
     
-    <div class="col-md-12"><input type="checkbox" value="1" name="Events[comrade_qualifier]" /> &nbsp; YES, this is an official Comrades Marathon qualifying race.</div>
+    <div class="col-md-12"><input type="checkbox" <?php if($event && $event->comrade_qualifier){?>checked<?php }?> value="1" name="Events[comrade_qualifier]" /> &nbsp; YES, this is an official Comrades Marathon qualifying race.</div>
     <div class="clearfix"></div>
 </div>
 
