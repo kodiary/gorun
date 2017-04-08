@@ -4,7 +4,7 @@
     <a href="<?php echo $this->createUrl('news/'.$data->slug);?>">
     <article class="news_article"> 
     <?php
-    if(Articles::model()->get1ImageFromFile($data->id)->title)
+    if(isset(Articles::model()->get1ImageFromFile($data->id)->title))
         $alt = Articles::model()->get1ImageFromFile($data->id)->title;
     else
         $alt = $data->title;

@@ -1,5 +1,5 @@
 <div class="crop_outer">
-<?php echo CHtml::beginForm($this->createUrl('gallery/crop'), 'POST');
+<?php echo CHtml::beginForm(Yii::app()->baseUrl.'/gallery/crop', 'POST');
     if(isset($_GET['crop_cover'])&& $_GET['crop_cover'] !='')
     {
         
@@ -19,7 +19,7 @@
       <?php //$upimage_0
       $class = (isset($_GET['img-circle']))? 'class="img-circle"':'';      
       echo CHtml::ajaxSubmitButton( 'Crop',
-                $this->createUrl('gallery/crop'),
+                Yii::app()->baseUrl.'/gallery/crop',
                 array(
                 'error'=>'js:function(){
                     alert(\'error\');

@@ -21,7 +21,7 @@
     <div class="line"></div>
  </div>
 
-    <?php echo $form->textFieldRow($model,'title',array('class'=>'span4','maxlength'=>255)); ?>
+    <?php echo $form->textFieldRow($model,'name',array('class'=>'span4','maxlength'=>255)); ?>
 
 	<?php echo $form->textFieldRow($model,'tagline',array('class'=>'span4','maxlength'=>255)); ?>
     <div class="additional_extra blue">A one line advertising slogan about your company, <br />for example, "The Complete Exhibition Specialists!"</div>

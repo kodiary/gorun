@@ -258,9 +258,10 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
         //$criteria->with = ['member'];
         
         $id = substr($id,0,(strlen($id)-1));
+        //$criteria->select = '*';
         $criteria->addInCondition('user_id',$ids);
         //$criteria->condition = 'member.fname LIKE "%w%"';
-        $criteria->group = 'event_type, distance';
+        $criteria->group = 't.event_type, t.distance';
         $criteria->together = true;
         //var_dump($criteria);
         //$results = Yii::app()->db->createCommand('SELECT distance,dist_time,event_type FROM tbl_event_result AS a, (SELECT MIN(dist_time) AS mini FROM tbl_event_result GROUP BY event_type ,distance, user_id ) AS m WHERE m.mini = a.dist_time AND a.user_id in('.$id.') ORDER BY a.event_type ASC, a.dist_time, a.distance ')->queryAll();

@@ -16,12 +16,16 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/front_style.css" />
+    
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo Yii::app()->request->baseUrl; ?>/images/favicon.ico" />
+    <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/jquery.Jcrop.min.css" rel="stylesheet" type="text/css" />
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.js" type="text/javascript"></script>
     <script src="http://code.jquery.com/jquery-migrate-1.0.0.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/jqueryui/jquery-ui.min.js" type="text/javascript"></script>    
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/filter.js" type="text/javascript"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.validate.js" type="text/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.Jcrop.min.js"></script>
     <title><?php echo CHtml::encode($this->pageTitle)." | Admin"; ?></title>
 </head>
 <body>
@@ -54,6 +58,7 @@
     <div class="admin_body_content">
     <?php
     $company_controllers=array('company','membertype','services','member/services','member/events','resources','resourcecategory','brochures','member/articles','gallery','videos','member/jobs','member/resources','statistics');
+    $club_controllers=array('club','membertype','services','member/services','member/events','resources','resourcecategory','brochures','member/articles','gallery','videos','member/jobs','member/resources','statistics');
     $events_controllers = array('events', 'eventscategory', 'eventstype', 'eventsvisitors');
     $article_controllers = array('articles', 'tags');
     $newsletter_controller = array('newsletters', 'newslettertemplate', 'newslettersendlimit', 'subscriberslist', 'subscribers');
@@ -62,6 +67,9 @@
      
     if(in_array(Yii::app()->controller->id,$company_controllers)){?>
         <nav class='subMenu'><?php $this->widget('CompanyMainMenu');?></nav>
+    <?php
+    }elseif(in_array(Yii::app()->controller->id,$club_controllers)){?>
+        <nav class='subMenu'><?php $this->widget('ClubMenu');?></nav>
     <?php
     }elseif(in_array(Yii::app()->controller->id,$events_controllers)){?>
         <nav class='subMenu'><?php $this->widget('EventMenu');?></nav>

@@ -47,7 +47,7 @@ class Club extends CActiveRecord
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Company the static model class
+	 * @return Club the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -72,6 +72,7 @@ class Club extends CActiveRecord
 		return array(
 			//array('name, contact_person, number, email, password, password_real, fax, website, twitter, facebok, pinterest, google, tagline, detail, logo, display_address, street_add, suburb, province, latitude, longitude, status, slug, date_added, date_updated, seo_title, seo_desc, seo_keywords', 'required'),
             array('title,description,logo,cover,types,venue,town,province,latitude,longitude,trial_day,trial_time,trial_desc,contact_person,website,fb_page,twitter_page,google,contact_email,contact_number','required','on'=>'create,dashboard.index'),
+            array('status, date_updated','safe','on'=>'updatestatus'),
          
 		);
 	}
@@ -91,8 +92,8 @@ class Club extends CActiveRecord
             'articles'=>array(self::HAS_MANY, 'Articles', 'club_id'),
             'extras'=>array(self::HAS_MANY, 'ClubExtra','club_id'),
             'creator'=>array(self::BELONGS_TO,'Member','created_by')
-            //'jobs'=>array(self::HAS_MANY, 'Jobs', 'company_id'),
-            //'services'=>array(self::HAS_MANY,'CompanyServices','company_id'),
+            //'jobs'=>array(self::HAS_MANY, 'Jobs', 'Club_id'),
+            //'services'=>array(self::HAS_MANY,'ClubServices','Club_id'),
      
 		);
 	}
@@ -121,7 +122,7 @@ class Club extends CActiveRecord
 			'google' => 'Google+',
 			'tagline' => 'Tag Line',
 			'detail' => 'Description',
-			'logo' => 'Company Sign/Logo',
+			'logo' => 'Club Sign/Logo',
 			'display_address' => 'Display Address',
             'postal_address' => 'Postal Address',
 			'street_add' => 'Street Address 1',
@@ -196,18 +197,18 @@ class Club extends CActiveRecord
 		));
 	}
 
-    public function companyInfo($companyId)
+    public function ClubInfo($ClubId)
     {
-        return Company::model()->findByPk($companyId);
+        return Club::model()->findByPk($ClubId);
     }
     
     public function getAll()
     {
         $criteria = new CDbCriteria;
-        $criteria->select = array('id, fname');
-        $criteria->order = 'fname asc';
-        $rests = Company::model()->findAll($criteria);
-        return CHtml::listData($rests, 'id', 'fname');
+        $criteria->select = array('id, title');
+        $criteria->order = 'title asc';
+        $rests = Club::model()->findAll($criteria);
+        return CHtml::listData($rests, 'id', 'title');
     }
     
     public function createSeo($name,$desc,$address='')
@@ -228,21 +229,21 @@ class Club extends CActiveRecord
     public function getAllActiveClub()
     {
         $result = Club::model()->findAll("is_active=1");
-        $company = array();
+        $Club = array();
         foreach($result as $val){
-            $company[] = $val->id;
+            $Club[] = $val->id;
         }
         return CHtml::listData($result, 'id', 'title'); 
     }
     
-    public function getAllActiveCompanyForSpecials()
+    public function getAllActiveClubForSpecials()
     {
-        $result = Company::model()->findAll("status=1 AND rigger!=1 AND (valid_until >= curdate() OR never_expire=1)");
-        $company = array();
+        $result = Club::model()->findAll("status=1 AND rigger!=1 AND (valid_until >= curdate() OR never_expire=1)");
+        $Club = array();
         foreach($result as $val){
-            $company[] = $val->id;
+            $Club[] = $val->id;
         }
-        return $company; 
+        return $Club; 
     }
     
     public function Image($filename, $size='thumb', $alt='')
@@ -264,7 +265,7 @@ class Club extends CActiveRecord
     function testSlug($slug)
     {
         //echo $slug;
-        if($this->exists_company($slug))
+        if($this->exists_Club($slug))
         {
             $new_slug =  $slug.rand(0,1000);
             return $this->testSlug($new_slug);
@@ -273,116 +274,116 @@ class Club extends CActiveRecord
         else
             return $slug;
     }
-    public function exists_company($slug)
+    public function exists_Club($slug)
     {
         if(Club::model()->findByAttributes(array('slug'=>$slug))) return true;
         else return false;
     }
     
-    public function isCompleteAllSection($companyId)
+    public function isCompleteAllSection($ClubId)
     {
-        $model=self::model()->findByPk($companyId);
+        $model=self::model()->findByPk($ClubId);
         if($model->rigger==1) // light listing
         {
-            if(self::isCompleteCompanyInfoTab($companyId) && self::isCompleteProdSerBrandAssoc($companyId) && self::isCompleteGallery($companyId) && self::isCompleteVideo($companyId))
+            if(self::isCompleteClubInfoTab($ClubId) && self::isCompleteProdSerBrandAssoc($ClubId) && self::isCompleteGallery($ClubId) && self::isCompleteVideo($ClubId))
                 return true;
             else
                 return false;
         }
         else // full/complete listing
         {
-           if(self::isCompleteCompanyInfoTab($companyId) && self::isCompleteBranches($companyId) && self::isCompleteProdSerBrandAssoc($companyId) && self::isCompleteFeatured($companyId) && self::isCompleteBrochures($companyId) && self::isCompleteGallery($companyId) && self::isCompleteVideo($companyId) && self::isCompleteSpecials($companyId))
+           if(self::isCompleteClubInfoTab($ClubId) && self::isCompleteBranches($ClubId) && self::isCompleteProdSerBrandAssoc($ClubId) && self::isCompleteFeatured($ClubId) && self::isCompleteBrochures($ClubId) && self::isCompleteGallery($ClubId) && self::isCompleteVideo($ClubId) && self::isCompleteSpecials($ClubId))
                 return true;
             else
                 return false; 
         }
     }
         
-    public function isCompleteCompanyInfoTab($companyId)
+    public function isCompleteClubInfoTab($ClubId)
     {
-       $result = Company::model()->find('id = '.$companyId.' AND tagline<>""') ;
+       $result = Club::model()->find('id = '.$ClubId.' AND tagline<>""') ;
        if($result)return true;
        else return false;
     }
     
-    public function isCompleteBranches($companyId)
+    public function isCompleteBranches($ClubId)
     {
-        $result = Branches::model()->findAll('company_id = '.$companyId) ;
+        $result = Branches::model()->findAll('Club_id = '.$ClubId) ;
         if($result)return true;
         else return false; 
     }
     
-    public function isCompleteProdSerBrandAssoc($companyId)
+    public function isCompleteProdSerBrandAssoc($ClubId)
     {
-        $products = CompanyProducts::model()->findAll('company_id = '.$companyId);
-        $services = CompanyServices::model()->findAll('company_id = '.$companyId);
-        $brands = CompanyBrands::model()->findAll('company_id = '.$companyId);     
-        $associations = CompanyAssociations::model()->findAll('company_id = '.$companyId);
+        $products = ClubProducts::model()->findAll('Club_id = '.$ClubId);
+        $services = ClubServices::model()->findAll('Club_id = '.$ClubId);
+        $brands = ClubBrands::model()->findAll('Club_id = '.$ClubId);     
+        $associations = ClubAssociations::model()->findAll('Club_id = '.$ClubId);
         
         if($products || $services || $brands || $associations) return true;
         else return false;
     }
 
-    public function isCompleteFeatured($companyId)
+    public function isCompleteFeatured($ClubId)
     {
-        $result = Featured::model()->findAll('company_id = '.$companyId);        
+        $result = Featured::model()->findAll('Club_id = '.$ClubId);        
         if($result)return true;
         else return false;
     }
     
-    public function isCompleteBrochures($companyId)
+    public function isCompleteBrochures($ClubId)
     {
-        $result = Brochures::model()->findAll('company_id = '.$companyId) ;
+        $result = Brochures::model()->findAll('Club_id = '.$ClubId) ;
         if($result)return true;
         else return false; 
     }
     
-    public function isCompleteGallery($companyId)
+    public function isCompleteGallery($ClubId)
     {
-        $result = Gallery::model()->findAll('company_id='.$companyId) ;
+        $result = Gallery::model()->findAll('Club_id='.$ClubId) ;
         if($result)return true;
         else return false; 
     }
     
-    public function isCompleteVideo($companyId)
+    public function isCompleteVideo($ClubId)
     {
-        $result = Videos::model()->findAll('company_id='.$companyId) ;
+        $result = Videos::model()->findAll('Club_id='.$ClubId) ;
         if($result)return true;
         else return false; 
     }
     
-    public function isCompleteSpecials($companyId)
+    public function isCompleteSpecials($ClubId)
     {
-        $result = Specials::model()->findAll('company_id = '.$companyId) ;
+        $result = Specials::model()->findAll('Club_id = '.$ClubId) ;
         if($result)return true;
         else return false; 
     }
     
-    public function getAllCompany()
+    public function getAllClub()
     {
         $criteria = new CDbCriteria;
-        $criteria->select = array('id, fname');
-        $criteria->order = 'fname asc';
-        $company = Company::model()->findAll($criteria);
-        return $company;
+        $criteria->select = array('id, title');
+        $criteria->order = 'title asc';
+        $Club = Club::model()->findAll($criteria);
+        return $Club;
     }
     
     public function getVenues()
     {
         $criteria = new CDbCriteria;
-        $criteria->join = "LEFT JOIN tbl_company_member on tbl_company_member.company_id=t.id";
-        $criteria->condition = "tbl_company_member.member_id=3";
+        $criteria->join = "LEFT JOIN tbl_Club_member on tbl_Club_member.Club_id=t.id";
+        $criteria->condition = "tbl_Club_member.member_id=3";
         $criteria->order = 't.name asc';
-        return Company::model()->findAll($criteria);
+        return Club::model()->findAll($criteria);
     }
     
     public function getOrganizers()
     {
         $criteria = new CDbCriteria;
-        $criteria->join = "LEFT JOIN tbl_company_member on tbl_company_member.company_id=t.id";
-        $criteria->condition = "tbl_company_member.member_id=1";
+        $criteria->join = "LEFT JOIN tbl_Club_member on tbl_Club_member.Club_id=t.id";
+        $criteria->condition = "tbl_Club_member.member_id=1";
         $criteria->order = 't.name asc';
-        return Company::model()->findAll($criteria);
+        return Club::model()->findAll($criteria);
     }
     public function countByProvince($prov_id)
     {

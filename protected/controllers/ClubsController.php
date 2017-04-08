@@ -46,7 +46,7 @@ class ClubsController extends Controller
         }
 	    Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.js"));
         Yii::app()->clientScript->registerCssFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.css"));
-        Yii::app()->clientScript->registerCssFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.css"));
+        
         //Yii::app()->clientScript->registerScriptFile("http://maps.google.com/maps/api/js?key=AIzaSyDdlZuslizFva3XY9GZVyF_IDZTDI-7BD0&libraries=places");
         Yii::app()->clientScript->registerScriptFile("https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Gjdm_0nJk17UVBPoV5Im40uQeguoRAo&libraries=places");
         //Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::getPathOfAlias('application.components')."/gmap/gmap_new.js"));
@@ -182,34 +182,40 @@ class ClubsController extends Controller
         Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/jquery.infinitescroll.js"));
         //$club = Club::model()->with(['extras','member:recent'=>['together'=>true]])->findByAttributes(['slug'=>$slug],['limit'=>2]);
         $club = Club::model()->with(['extras','member:recent'=>['together'=>true]])->findByAttributes(['slug'=>$slug]);
-        //var_dump($club);
         
-        if($club->longitude!=0 && $club->latitude!=0)
+        if($club)
         {
-            //Yii::app()->clientScript->registerScriptFile("http://maps.google.com/maps/api/js?key=AIzaSyDdlZuslizFva3XY9GZVyF_IDZTDI-7BD0");
-            Yii::app()->clientScript->registerScriptFile("https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Gjdm_0nJk17UVBPoV5Im40uQeguoRAo&libraries=places");
-            //Yii::app()->clientScript->registerScriptFile("http://maps.google.com/maps/api/js?sensor=false");
-            Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::getPathOfAlias('application.components')."/gmap/gmap_new.js"));
-            Yii::app()->clientScript->registerScript('init','initialize();',CClientScript::POS_LOAD);
+            if($club->longitude!=0 && $club->latitude!=0)
+            {
+                //Yii::app()->clientScript->registerScriptFile("http://maps.google.com/maps/api/js?key=AIzaSyDdlZuslizFva3XY9GZVyF_IDZTDI-7BD0");
+                Yii::app()->clientScript->registerScriptFile("https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Gjdm_0nJk17UVBPoV5Im40uQeguoRAo&libraries=places");
+                //Yii::app()->clientScript->registerScriptFile("http://maps.google.com/maps/api/js?sensor=false");
+                Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::getPathOfAlias('application.components')."/gmap/gmap_new.js"));
+                Yii::app()->clientScript->registerScript('init','initialize();',CClientScript::POS_LOAD);
+            }
+            
+            $companyId = Yii::app()->user->id;
+            $criteria = new CDbCriteria;
+            $criteria->condition = 'company_id='.$club->id;
+            $criteria->order = 'publish_date DESC,t.id DESC';
+            
+            $pages='';
+           
+            $dataProvider= new CActiveDataProvider('Articles',array('criteria'=>$criteria, 'pagination'=>false));
+            $pages = new CPagination($dataProvider->totalItemCount);
+            $pages->pageSize = Yii::app()->params['articles_pers_page'];
+            $pages->applyLimit($criteria);
+        
+           
+                //$dataProvider= new CActiveDataProvider('Articles',array('criteria'=>$criteria));
+            $dataProvider = Articles::model()->findAll($criteria); 
+            $ismember = ClubMember::model()->ismember($club->id,Yii::app()->user->id);
+            $total_member = ClubMember::model()->totalMember($club->id);
         }
-        
-        $companyId = Yii::app()->user->id;
-        $criteria = new CDbCriteria;
-        $criteria->condition = 'company_id='.$club->id;
-        $criteria->order = 'publish_date DESC,t.id DESC';
-        
-        $pages='';
-       
-        $dataProvider= new CActiveDataProvider('Articles',array('criteria'=>$criteria, 'pagination'=>false));
-        $pages = new CPagination($dataProvider->totalItemCount);
-        $pages->pageSize = Yii::app()->params['articles_pers_page'];
-        $pages->applyLimit($criteria);
-    
-       
-            //$dataProvider= new CActiveDataProvider('Articles',array('criteria'=>$criteria));
-        $dataProvider = Articles::model()->findAll($criteria); 
-        $ismember = ClubMember::model()->ismember($club->id,Yii::app()->user->id);
-        $total_member = ClubMember::model()->totalMember($club->id);
+        else
+        {
+            $this->redirect(Yii::app()->request->baseUrl);
+        }
         $this->render('details', array('model'=>$club,'total'=>$total_member,'dataProvider'=>$dataProvider,'pages'=>$pages,'ismember'=>$ismember));
         
        

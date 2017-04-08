@@ -9,7 +9,7 @@ function initiateUpload1(index)
     new qq.FileUploader({'element':document.getElementById('uploadFile1'),
     'debug':true,
     'multiple':false,
-	'action':'<?php echo $this->createUrl('gallery/upload?type='.$type)?>',
+	'action':'<?php echo Yii::app()->request->baseUrl.'/gallery/upload?type='.$type;?>',
     'allowedExtensions':['jpg','jpeg','gif','png'],
     'sizeLimit':10485760,
    
@@ -55,7 +55,7 @@ function initiateUpload1(index)
     <div class="image_rows">
     <?php //echo CHtml::activeHiddenField($model, "[0]name")?>
     <input type="hidden" name="cover" class="main_cover" value=""/>
-    <input type="hidden" class="uploaded_cover" value="<?php echo $member->cover;?>"/>
+    <input type="hidden" class="uploaded_cover" value="<?php if(isset($model))echo $model->cover;?>"/>
      
    
     

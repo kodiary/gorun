@@ -103,6 +103,10 @@ class EventsType extends CActiveRecord
     
     public function titleName($id)
     {
-       return EventsType::model()->findByAttributes(array('id'=>$id))->title; 
+        $eventType = EventsType::model()->findByAttributes(array('id'=>$id));
+        if($eventType)
+       return $eventType->title; 
+       else
+        return false;
     }
 }
