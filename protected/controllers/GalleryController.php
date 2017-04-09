@@ -28,11 +28,11 @@ class GalleryController extends Controller
 		return array(
 			array('allow', // allow authenticated user to perform following actions
 				//'actions'=>array('index'),
-				'users'=>array('@'),
-			),
-			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
+			/*array('deny',  // deny all users
+				'users'=>array('*'),
+			),*/
 		);
 	}
 
@@ -462,12 +462,17 @@ class GalleryController extends Controller
     
     function actionCropPhoto()
     {
+        
         if($_POST['fileName']!="")
         {
-            if(file_exists(Yii::app()->basePath.'/../images/frontend/full/'.$_POST['fileName']))
-                $imageUrl = Yii::app()->baseUrl.'/images/frontend/full/'. $_POST['fileName'];
+            $file = explode("?",$_POST['fileName']);
+            $filename = $file[0];
+            if(file_exists(Yii::app()->basePath.'/../images/frontend/full/'.$filename))
+                $imageUrl = Yii::app()->baseUrl.'/images/frontend/full/'.$_POST['fileName'];
+            else if(file_exists(Yii::app()->basePath.'/../images/clubs/full/'.$filename))
+                $imageUrl = Yii::app()->baseUrl.'/images/clubs/full/'.$_POST['fileName'];
             else
-                $imageUrl = Yii::app()->baseUrl.'/images/temp/full/'. $_POST['fileName'];
+                $imageUrl = Yii::app()->baseUrl.'/images/temp/full/'.$_POST['fileName'];
         	$this->renderPartial('_cropImg', array('imageUrl'=>$imageUrl,'image'=>$_POST['fileName'],'id'=>$_POST['id']), false, true);
          }
          else
@@ -475,8 +480,8 @@ class GalleryController extends Controller
     } 
     public function actionCrop()
     {
-       $x=$_POST['cropX'];
-       $y=$_POST['cropY'];
+       $x=round($_POST['cropX']);
+       $y=round($_POST['cropY']);
        $width=round($_POST['cropW']);
        $height=round($_POST['cropH']);
        $file = (explode('?',$_POST['filename']));
@@ -489,6 +494,15 @@ class GalleryController extends Controller
             $temp_file=Yii::app()->basePath.'/../images/temp/'.$file;
             $save_path= Yii::app()->basePath.'/../images/temp/thumb/'.$file;
             $imgPath= Yii::app()->baseUrl.'/images/temp/thumb/'.$file;
+       
+       }
+       else if(file_exists(Yii::app()->basePath.'/../images/clubs/full/'.$file))
+       {
+            $src_file=Yii::app()->basePath.'/../images/clubs/full/'.$file;
+            $temp_file=Yii::app()->basePath.'/../images/clubs/'.$file;
+            $save_path= Yii::app()->basePath.'/../images/clubs/thumb/'.$file;
+            $imgPath= Yii::app()->baseUrl.'/images/clubs/thumb/'.$file;
+            
        
        }
        else

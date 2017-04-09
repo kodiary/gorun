@@ -65,7 +65,7 @@ class ClubsController extends Controller
         }
         Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.js"));
         Yii::app()->clientScript->registerCssFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.css"));
-         
+        $types = ''; 
         $club = new Club;
         //var_dump($_POST);
         if(isset($_POST['title']))
@@ -115,10 +115,10 @@ class ClubsController extends Controller
             $club->latitude = $_POST['latitude'];
             $club->longitude = $_POST['longitude'];
             $club->province =  $_POST['province'];
-            $club->trial_day =  $_POST['trial_day'];
-            $club->trial_time =  $_POST['trial_time'];
-            $club->trial_desc =  $_POST['trial_desc'];
-            $club->contact_person =  $_POST['contact_person'];
+            //$club->trial_day =  $_POST['trial_day'];
+            //$club->trial_time =  $_POST['trial_time'];
+            //$club->trial_desc =  $_POST['trial_desc'];
+            //$club->contact_person =  $_POST['contact_person'];
             $club->website =  $_POST['website'];
             $club->fb_page =  $_POST['fb_page'];
             $club->twitter_page =  $_POST['twitter_page'];

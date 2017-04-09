@@ -1,6 +1,11 @@
 <script src="//cdn.ckeditor.com/4.5.10/basic/ckeditor.js"></script>
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-<form action="<?php echo Yii::app()->request->baseUrl;?>/clubs/create" id="club-detail" method="post">
+<?php if($module = Yii::app()->controller->module)
+            $url = Yii::app()->request->requestUri;
+        else
+            $url = Yii::app()->request->baseUrl."/clubs/create";
+?>
+<form action="<?php echo $url;?>" id="club-detail" method="post">
     
     <div class="form-group white">
         <label class="col-md-12">CLUB NAME</label>
@@ -61,9 +66,9 @@
             <?php
             $img_url=''; 
             if(isset($model)){
-                if(file_exists(Yii::app()->basePath.'/../images/frontend/thumb/'.$model->logo) && $model->logo!='')
+                if(file_exists(Yii::app()->basePath.'/../images/clubs/thumb/'.$model->logo) && $model->logo!='')
                 {
-                    $img_url=Yii::app()->baseUrl.'/images/frontend/thumb/'.$model->logo;
+                    $img_url=Yii::app()->baseUrl.'/images/clubs/thumb/'.$model->logo;
                 }
             }
             
@@ -72,7 +77,7 @@
             
             </div>
             <div class="col-md-6 picact" style="margin-top: 20px;">
-            <?php echo $this->renderPartial('application.views.gallery._addImage',array('model'=>(isset($model))?$model:'','type'=>'club')); ?>
+            <?php echo $this->renderPartial('application.views.gallery._addImage',array('model'=>(isset($member))?$member:'','type'=>'club')); ?>
             
             
           
@@ -111,7 +116,7 @@
         <label class="col-md-12">Club Cover Image (R<span style="text-transform: lowercase;">ecomended</span>)
         <br /><span class="blue">Size is 760x220px</span></label>
          <div class="col-md-12 profilepic">
-            <div class="profile_cover" id="upimage_1">
+            <div class="profile_cover" id="upimage_1" style="max-width: 100%;">
             <?php
             $img_url = Yii::app()->baseUrl.'/images/no_img.jpg';
             if(isset($model)){
@@ -129,7 +134,7 @@
             </div>
          <div class="col-md-4" style="margin-right: 30px;"></div>
         <div class="col-md-6 picact" >
-            <?php echo $this->renderPartial('application.views.gallery._addImagecover',array('model'=>isset($model)?$model:'','type'=>'member_cover','id'=>1)); ?>
+            <?php echo $this->renderPartial('application.views.gallery._addImagecover',array('model'=>isset($member)?$member:'','type'=>'member_cover','id'=>1)); ?>
             <?php
                         
             //crop button
@@ -373,6 +378,7 @@
         
         <div class="clearfix"></div>
     </div>
+    <?php if(!isset(Yii::app()->controller->module)){?>
     <div class="white form-group">
         <label class="col-md-12">Visibility<br />
         <span class="blue">Events are subject to approval before going live and visible to public.</span></label>
@@ -387,6 +393,11 @@
         </div>
         <div class="clearfix"></div>
     </div>  
+    <?php }
+    else
+    {
+       echo  '<div class="col-md-6"><button type="submit" class="btn btn-submit">Save</button></div>';
+    }?>
     <div class="clearfix"></div>
 </form>
 <?php

@@ -1,4 +1,3 @@
-<div class="crop_outer">
 <?php echo CHtml::beginForm(Yii::app()->baseUrl.'/gallery/crop', 'POST');
     if(isset($_GET['crop_cover'])&& $_GET['crop_cover'] !='')
     {
@@ -13,6 +12,7 @@
     }
     
 ?>
+<div class="crop_outer">
  	<div class="crop_top">
     <p class="left">Select the area you wish to crop and click the crop button</p>
     <div class="right">
@@ -48,8 +48,8 @@
 	<?php echo CHtml::hiddenField('cropID');?>
 	<?php echo CHtml::hiddenField('cropX','0');?>
 	<?php echo CHtml::hiddenField('cropY', '0');?>
-	<?php echo CHtml::hiddenField('cropW', isset($_GET['width'])?$_GET['width']:'215');?>
-	<?php echo CHtml::hiddenField('cropH', isset($_GET['height'])?$_GET['height']:'215');?>
+	<?php echo CHtml::hiddenField('cropW', isset($_GET['width'])?round($_GET['width']):'215');?>
+	<?php echo CHtml::hiddenField('cropH', isset($_GET['height'])?round($_GET['height']):'215');?>
     
     
 	<?php $this->widget('ext.jcrop.jCropWidget',array(
@@ -59,8 +59,8 @@
     	'formElementWidth'=>'cropW',
     	'formElementHeight'=>'cropH',
     	'jCropOptions'=>array(
-        	'aspectRatio'=>(isset($_GET["width"])?$_GET["width"]:215)/(isset($_GET["height"])?$_GET["height"]:215), 
-        	'boxWidth'=>'auto',
+        	'aspectRatio'=>(isset($_GET["width"])?$_GET["width"]:215)/(isset($_GET["height"])?$_GET["height"]:215),
+            'boxWidth'=>1024,
         	'boxHeight'=>'auto',
             'minSize'=> array(isset($_GET["width"])?$_GET["width"]:215,isset($_GET["height"])?$_GET["height"]:215),
         	'setSelect'=>array(0, 0, isset($_GET["width"])?$_GET["width"]:215,isset($_GET["height"])?$_GET["height"]:215),
@@ -69,5 +69,6 @@
 	);
 	?>
     </div>
-<?php echo CHtml::endForm()?>
+
 </div>
+<?php echo CHtml::endForm()?>

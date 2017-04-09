@@ -117,77 +117,88 @@ class ClubController extends Controller
         Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::getPathOfAlias('application.components')."/gmap/gmap.js"));
         Yii::app()->clientScript->registerScript('init','initialize();',CClientScript::POS_LOAD);
         $events = EventsType::model()->findAll();
-		$model=$this->loadModel($id);
-        $model->scenario="ClubInfo";
-        //$tradinghours=Tradinghours::model()->findByAttributes(array('Club_id'=>$id));
-        //if($tradinghours==null)$tradinghours= new Tradinghours();
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-        /*if(isset($_POST['Tradinghours']))
-		{
-		  if($_POST['Club']['opentimes_type']==2)
-          {
-            $tradinghours->attributes=$_POST['Tradinghours'];
-            $tradinghours->Club_id=$id;
-            $tradinghours->save();
-          }
-        }*/
-        
-		if(isset($_POST['Club']))
-		{
-			$model->attributes=$_POST['Club'];
-            $model->editor_type = $_POST['Club']['editor_type'];
-            if($model->editor_type==0 && $_POST['Club']['basic_editor']!=''){
-                $model->detail = nl2br($_POST['Club']['basic_editor']);
-            }
-            $model->slug=CommonClass::getSlug($_POST['Club']['title']);
-            if($_POST['logo']!="")
+		$club=$this->loadModel($id);
+        $types ='';
+        //var_dump($_POST);die();
+        if(isset($_POST['title']))
+        {
+            $club->title = $_POST['title'];
+            $club->slug = $club->testSlug(CommonClass::getSlug($_POST['title']));
+            $club->description = $_POST['description'];
+            if($_POST['logo']!='')
             {
-                if(Yii::app()->file->set('images/temp/full/'.$_POST['logo'])->exists)
-                {
-                    $full = Yii::app()->file->set('images/temp/full/'.$_POST['logo']);
-                    $full->copy(Yii::app()->basePath.'/../images/frontend/full/'.$_POST['logo']);
-                }
-                if(Yii::app()->file->set('images/temp/main/'.$_POST['logo'])->exists)
-                {
-                    $main = Yii::app()->file->set('images/temp/main/'.$_POST['logo']);
-                    $main->copy(Yii::app()->basePath.'/../images/frontend/main/'.$_POST['logo']);
-                    $main->delete();
-                }
-                if(Yii::app()->file->set('images/temp/thumb/'.$_POST['logo'])->exists)
-                {
-                    $thumb1 = Yii::app()->file->set('images/temp/thumb/'.$_POST['logo']);
-                    $thumb1->copy(Yii::app()->basePath.'/../images/frontend/thumb/'.$_POST['logo']);
-                    $thumb1->delete();
-                }
-                $model->logo=$_POST['logo'];
+                $logo = explode("?rand",$_POST['logo']);
+                $_POST['logo'] = $logo[0];
+                @copy(Yii::app()->basePath.'/../images/temp/full/'.$_POST['logo'],Yii::app()->basePath.'/../images/clubs/full/'.$_POST['logo']);
+                @copy(Yii::app()->basePath.'/../images/temp/main/'.$_POST['logo'],Yii::app()->basePath.'/../images/clubs/main/'.$_POST['logo']);
+                @copy(Yii::app()->basePath.'/../images/temp/thumb/'.$_POST['logo'],Yii::app()->basePath.'/../images/clubs/thumb/'.$_POST['logo']);
+                
+                @unlink(Yii::app()->basePath."/../images/temp/full/".$_POST['logo']);
+                @unlink(Yii::app()->basePath."/../images/temp/main/".$_POST['logo']);
+                @unlink(Yii::app()->basePath."/../images/temp/thumb/".$_POST['logo']);
+                $club->logo = $_POST['logo'];                
             }
-            /*
-            if($_POST['Club']['opentimes_type']==1)
+            if($_POST['cover']!='')
             {
-                $model->opentimes=$_POST['Club']['opentimes'];
+                $logo = explode("?rand",$_POST['cover']);
+                $_POST['cover'] = $logo[0];
+                @copy(Yii::app()->basePath.'/../images/temp/full/'.$_POST['cover'],Yii::app()->basePath.'/../images/frontend/full/'.$_POST['cover']);
+                @copy(Yii::app()->basePath.'/../images/temp/main/'.$_POST['cover'],Yii::app()->basePath.'/../images/frontend/main/'.$_POST['cover']);
+                @copy(Yii::app()->basePath.'/../images/temp/thumb/'.$_POST['cover'],Yii::app()->basePath.'/../images/frontend/thumb/'.$_POST['cover']);
+                
+                @unlink(Yii::app()->basePath."/../images/temp/full/".$_POST['cover']);
+                @unlink(Yii::app()->basePath."/../images/temp/main/".$_POST['cover']);
+                @unlink(Yii::app()->basePath."/../images/temp/thumb/".$_POST['cover']);
+                $club->cover = $_POST['cover'];                
+            }
+            foreach($_POST['type'] as $type)
+            {
+                $t = explode('_',$type);
+                
+                $types.= $t[0].",";
+                
+                $eventCategory[]= $t[1];
+            }
+            $eventCategory = array_unique($eventCategory);
+            $club->event_category = implode(",",$eventCategory);
+            $club->types = $types;
+            $club->venue = $_POST['street_address'];
+            $club->town = $_POST['city'];
+            $club->latitude = $_POST['latitude'];
+            $club->longitude = $_POST['longitude'];
+            $club->province =  $_POST['province'];
+            //$club->trial_day =  $_POST['trial_day'];
+            //$club->trial_time =  $_POST['trial_time'];
+            //$club->trial_desc =  $_POST['trial_desc'];
+            //$club->contact_person =  $_POST['contact_person'];
+            $club->website =  $_POST['website'];
+            $club->fb_page =  $_POST['fb_page'];
+            $club->twitter_page =  $_POST['twitter_page'];
+            $club->created_by =  Yii::app()->user->id;
+            $club->contact_email = $_POST['contact_email'];
+            $club->google = $_POST['google'];
+            $club->contact_number = $_POST['contact_number'];
+            $club->date_updated=date('Y-m-d H:i:s');
+           //if($club->seo_title=="")$club->seo_title=$club->title." in Clubs | GoRun.co.za.";
+           //if($club->seo_desc=="")$club->seo_desc=CommonClass::limit_text($club->detail);
+            
+            if($club->save())
+            {
+                $id = $club->id;
+                Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - Club has been updated successfully!');
+				$this->redirect(Yii::app()->request->requestUri);
             }
             else
             {
-                $model->opentimes="";
-            }*/
-           $model->date_updated=date('Y-m-d H:i:s');
-           if($model->seo_title=="")$model->seo_title=$model->title." in Clubs | GoRun.co.za.";
-           if($model->seo_desc=="")$model->seo_desc=CommonClass::limit_text($model->detail);
-            if($model->save())
-            {
-                Yii::app()->user->setFlash('success', '<strong>SUCCESS! </strong> The changes have been successfully saved.');
-                $this->redirect(array('update','id'=>$model->id));
+                Yii::app()->user->setFlash('error', '<strong>Error</strong>!');
             }
-		}
-        
+	   }
         Yii::app()->clientScript->registerScriptFile("http://maps.google.com/maps/api/js?sensor=false");
         Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::getPathOfAlias('application.components')."/gmap/gmap.js"));
         Yii::app()->clientScript->registerScript('init','initialize();',CClientScript::POS_LOAD);
         
 		$this->render('update',array(
-			'model'=>$model,
+			'model'=>$club,
             'events'=>$events
             //'tradinghours'=>$tradinghours,
 		));

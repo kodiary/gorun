@@ -567,12 +567,7 @@ span.count_num{color:#1B5EA7;}
 
 .control-group a.selectBox{width:200px;}
 .control-group .sn_group a.selectBox {width:85px!important;}
-.crop_image_holders{border:1px solid #FFF; max-width:670px; border:1px solid #CCC; padding:15px; margin-bottom:10px;}
-.crop_image_holders .jcrop-holder{border:1px solid #FFF;}
-.crop_image_holders .select_buttons{margin-bottom:10px;}
-.crop_image_holders .select_buttons .lefts{width:405px; color:#333; font-size:13px; padding-top:5px; float:left;}
-.crop_image_holders .select_buttons .rights{width:150px; float:left;}
-.crop_image_holders .jcrop-holder{border:1px solid #CCC; background:#FFF;}
+
 
 ul.floating_lists li a.selectBox {width:200px;}
 ul.floating_lists li{margin-bottom:10px;}
@@ -584,13 +579,7 @@ ul.floating_lists li{margin-bottom:10px;}
 .body_content_right form.well{padding:15px!important;}
 /* .body_content_right form.well input#keyword{width:184px!important;} */
 
-.crop_outer{border:1px solid #CCC; padding:18px; background:#f2f2f2;}
-.crop_outer form{margin:0; padding:0;}
-.crop_top p.left{width:400px; padding-top:5px; float:left;}
-.crop_top{padding-bottom:15px;}
-.crop_top .right{width:160px; float:left;}
-.crop_img_sec{border:1px solid #CCC; background:#FFF; max-width:698px; max-height:598px; overflow:hidden;}
-.crop_img_sec img{max-width:698px; max-height:598px;}
+
 
 .ui-widget-content{background:none!important; border:0!important;}
 .ui-dialog-titlebar{background:none!important; border:0!important;}
