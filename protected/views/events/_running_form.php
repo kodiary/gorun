@@ -1,11 +1,11 @@
 <div class="form-group white distances">
     <label class="col-md-12">Distance, time & Cost</label>
     <div class="col-md-4 start">
-        Distance &nbsp; <input type="text" placeholder="000" class="three dist" /> , <input type="text" placeholder="0" class="one distance_decimal" name="EventsTime[distance2][]" />&nbsp; KM
+        Distance &nbsp; <input type="text" placeholder="000" class="three dist" /> , <input type="text" placeholder="0" class="one distance_decimal" name="" />&nbsp; KM
         <span class="blue small">Add distances for each item</span>
     </div>
     <div class="col-md-4">
-        Start Time &nbsp; <input type="text" placeholder="00" class="two start_hour" /> : <input type="text" placeholder="00" class="two start_min" name="EventsTime[event_from_min][]" />
+        Start Time &nbsp; <input type="text" placeholder="00" class="two start_hour" /> : <input type="text" placeholder="00" class="two start_min" name="" />
         <span class="blue small">Start hour in 24 hour format</span>
     </div>
     <div class="col-md-4">
@@ -22,7 +22,7 @@
             foreach($model as $m)
             {
                 ?>
-                <li><?php echo $m->distance1?><input name="EventsTime[distance1][]" value="<?php echo $m->distance1?>" type="hidden">,<?php echo $m->distance2?><input name="EventsTime[distance2][]" value="<?php echo $m->distance1?>" type="hidden">km &nbsp;|&nbsp; <span class="blue">Start</span> - <?php echo $m->event_from_hour?><input name="EventsTime[event_from_hour][]" value="<?php echo $m->event_from_hour?>" type="hidden">:<?php echo $m->event_from_min?><input name="EventsTime[event_from_min][]" value="<?php echo $m->event_from_min?>" type="hidden"> &nbsp;|&nbsp; <span class="blue">Cost</span> - R<?php echo $m->event_cost?><input name="EventsTime[event_cost][]" value="<?php echo $m->event_cost?>" type="hidden"><a href="#" class="cross"><span class="fa fa-times"></span></a></li>
+                <li><?php echo $m->distance1?><input name="EventsTime[distance1][]" value="<?php echo $m->distance1?>" type="hidden">,<?php echo $m->distance2?><input name="EventsTime[distance2][]" value="<?php echo $m->distance1?>" type="hidden">km &nbsp;|&nbsp; <span class="blue">Start</span> - <?php echo $m->event_from_hour?><input name="EventsTime[event_from_hour][]" value="<?php echo $m->event_from_hour?>" type="hidden">:<?php echo $m->event_from_min?><input name="EventsTime[event_from_min][]" value="<?php echo $m->event_from_min?>" type="hidden"> &nbsp;|&nbsp; <span class="blue">Cost</span> - R<?php echo $m->event_cost?><input name="EventsTime[event_cost][]" value="<?php echo $m->event_cost?>" type="hidden"><a href="javascript:void(0)" onclick="$(this).closest('li').remove();" class="cross"><span class="fa fa-times"></span></a></li>
                 <?php
             }
         }

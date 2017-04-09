@@ -150,10 +150,14 @@ class EventsController extends Controller
         Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.js"));
         Yii::app()->clientScript->registerCssFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.css"));
         //Yii::app()->clientScript->registerScript('init','initialize();',CClientScript::POS_LOAD);
-        if(!$id)
-        $model  = new Events;
-        else
-        $model = $this->loadModel($id);
+        if(!$id){
+                $model  = new Events;
+                $flash = "Your event has been created. You will be notified once your event in approved.";
+            }
+        else{
+                $model = $this->loadModel($id);
+                $flash = "Your event has been updated successfully";
+            }
         $model_type  = new EventsType;
         $event_type = EventsType::model()->findAll();
         
@@ -217,9 +221,10 @@ class EventsController extends Controller
 			if($model->save())
             {   
                 
-                $id = $model->id;                     
+                $id = $model->id;
+
                 if(isset($_POST['EventsTime'])){
-                
+                EventsTime::model()->deleteAllByAttributes(array('event_id'=>$id));
                 foreach($_POST['EventsTime'] as $k=>$p)
                 {
                     
@@ -229,7 +234,6 @@ class EventsController extends Controller
                     }
                     
                 }
-                
                 foreach($arr as $a)
                 {
                    $events_time= new EventsTime;
@@ -275,7 +279,7 @@ class EventsController extends Controller
                 
                 
                 
-                Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - A new event has been added successfully!');
+                Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - '.$flash);
                 if(!$id){
                                 $this->sendEventEmail($model->title,$model->slug,$model->created_by);
                                 $this->sendAdminEventEmail($model->title,$model->slug,$model->id);
@@ -1129,5 +1133,19 @@ class EventsController extends Controller
         $id = $_POST['event_time_id'];
         $result = EventResult::model()->findAllByAttributes(['event_time_id'=>$id],['limit'=>10,'order'=>'dist_time asc']);
         $this->renderPartial('/events/_ajax_board',array('result'=>$result));
+    }
+    public function actionMyResults()
+    {
+        $arr['user_id'] = Yii::app()->user->id;
+        if($arr['user_id'])
+        {
+            $data['results'] = EventResult::model()->findAllByAttributes($arr,['limit'=>10,'order'=>'dist_time asc']);
+            $data['event'] = Events::model();
+            $this->render('my_result',$data);
+        }
+        else
+        {
+            $this->redirect(array('/member/login'));
+        }
     }
 }

@@ -24,7 +24,7 @@ foreach($model as $m)
     <div class="listing">
         <div class="row">
             <div class="col-md-9">
-                <a href=" href="<?php echo Yii::app()->request->baseUrl; ?>/events/view/<?php echo $m->slug;?>">
+                <a href="<?php echo Yii::app()->request->baseUrl; ?>/events/view/<?php echo $m->slug;?>">
                 <div class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/frontend/events/<?php if($m->logo && file_exists(Yii::app()->basePath.'/../images/frontend/events/thumb/'.$m->logo)){?>thumb/<?php echo $m->logo?><?php }else{?>thumb/noimg.jpg<?php }?>"/></div>
                 <div class="txt">
                     <h3><?php echo $m->title;?></h3>

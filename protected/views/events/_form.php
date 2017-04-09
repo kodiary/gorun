@@ -210,7 +210,11 @@
                         <div class="clearfix"></div>
                     </div>
                 </div>
-                
+                <?php 
+                    if(!$model->visible)
+                    {
+                        ?>
+
                 <div class="form-group white">
                     <label class="col-md-12">Visibility<br /><span class="blue">Events are subject to approval before going live and visible to public.</span></label>
                     <div class="clearfix"></div>
@@ -224,7 +228,22 @@
                         <button type="submit" href="javascript:void(0)" class="btn btn-submit">SUBMIT FOR APPROVAL</button>
                     </div>
                     <div class="clearfix"></div>
-                </div>    
+                </div>  
+                <?php
+                    }
+                    else
+                    {
+                        ?>
+                        <div class="row">
+                            
+                            <div class="col-md-6">
+                                <button type="submit" href="javascript:void(0)" class="btn btn-submit">SAVE EVENT</button>
+                            </div>
+                        <div class="clearfix"></div>
+                </div> 
+                        <?php
+                    }
+                ?>  
             </form>
 <script>
 $(function(){
@@ -492,7 +511,7 @@ $('.add_distance1').live('click',function(){
     
     }
     
-    var str = dist1+'<input type="hidden" name="EventsTime[distance1][]" value="'+dist1+'" />,'+dist2+'<input type="hidden" name="EventsTime[distance2][]" value="'+dist2+'" />km &nbsp;|&nbsp; <span class="blue">Start</span> - '+start_hour+'<input type="hidden" name="EventsTime[event_from_hour][]" value="'+start_hour+'" />:'+start_min+'<input type="hidden" name="EventsTime[event_from_min][]" value="'+start_min+'" /> &nbsp;|&nbsp; '+ '<span class="blue">Cost</span> - '+cost + '<input type="hidden" name="EventsTime[event_cost][]" value="'+cost_val+'" /><a href="#" class="cross"><span class="fa fa-times"></span></a>'
+    var str = dist1+'<input type="hidden" name="EventsTime[distance1][]" value="'+dist1+'" />,'+dist2+'<input type="hidden" name="EventsTime[distance2][]" value="'+dist2+'" />km &nbsp;|&nbsp; <span class="blue">Start</span> - '+start_hour+'<input type="hidden" name="EventsTime[event_from_hour][]" value="'+start_hour+'" />:'+start_min+'<input type="hidden" name="EventsTime[event_from_min][]" value="'+start_min+'" /> &nbsp;|&nbsp; '+ '<span class="blue">Cost</span> - '+cost + '<input type="hidden" name="EventsTime[event_cost][]" value="'+cost_val+'" /><a href="javascript:void(0)" onclick="$(this).closest(\'li\').remove();" class="cross"><span class="fa fa-times"></span></a>'
     //alert(str);
     $('.distance_list').show()
     $('.distance_list').append('<li>'+str+'</li>');

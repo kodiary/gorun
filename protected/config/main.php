@@ -10,7 +10,7 @@ $db = array(
 			'connectionString' => 'mysql:host=localhost;dbname=gorun',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => '',
+			'password' => 'mysql',
 			'charset' => 'utf8',
 		);
         $hauth = "http://localhost/gorun/hybridauth";
@@ -257,7 +257,6 @@ return array(
             'bike'=>'bike/index',
             'triathlon'=>'triathlon/index',
             'examples'=>'examples',
-            'yuvraj'=>'yuvraj/index',
             '<slug>'=>'member/details/slug/<slug>',
             
             

@@ -471,7 +471,7 @@ $DATA = new CSqlDataProvider($sql, array('pagination'=>false));
 	 */
 	public function actionIndex($filter="")
 	{
-        $condition="(start_date<>'0000-00-00' AND (end_date <>'0000-00-00' AND end_date<>'1970-01-01') AND end_date >='".date('Y-m-d')."' ) OR  ((end_date ='0000-00-00' OR end_date<='1970-01-01') AND start_date>= '".date('Y-m-d')."')";
+        $condition="(start_date<>'0000-00-00' AND visible = 1 AND (end_date <>'0000-00-00' AND end_date<>'1970-01-01') AND end_date >='".date('Y-m-d')."' ) OR  ((end_date ='0000-00-00' OR end_date<='1970-01-01') AND start_date>= '".date('Y-m-d')."')";
         
         if(isset($_GET['keyword']))$condition=" title like '%".$_GET['keyword']."%' OR id ='".$_GET['keyword']."'";
         if($filter=="") $order='title ASC';
