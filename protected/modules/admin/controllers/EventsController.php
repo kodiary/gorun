@@ -50,109 +50,163 @@ class EventsController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
-	{
-		// Uncomment the following line if AJAX validation is needed
-		//$this->performAjaxValidation($model);
-        Yii::app()->clientScript->registerScriptFile("http://maps.google.com/maps/api/js?sensor=false");
-        Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::getPathOfAlias('application.components')."/gmap/gmap_events.js"));
+	public function actionCreate($id=0)
+    {
+       //$created_by=Yii::app()->user->getId();
+        //var_dump($_POST['EventsTime']);die();
+        
+               
+        // Uncomment the following line if AJAX validation is needed
+        //$this->performAjaxValidation($model);
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.js"));
+        Yii::app()->clientScript->registerCssFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.css"));
         //Yii::app()->clientScript->registerScript('init','initialize();',CClientScript::POS_LOAD);
+        if(!$id){
+                $model  = new Events;
+                $flash = "Your event has been created. You will be notified once your event in approved.";
+            }
+        else{
+                $model = $this->loadModel($id);
+                $flash = "Your event has been updated successfully";
+            }
+        $model_type  = new EventsType;
+        $event_type = EventsType::model()->findAll();
         
-        $model  = new Events;
-        $model->visible=1;
         
-        $venue  = new Venues;
-        $org    = new Organisers;
-        $org->setScenario('organiser');
-
-        $events_link= new EventsLink;
         
-		if(isset($_POST['Events']))
-		{
-		   $model->attributes=$_POST['Events'];
-           //$model->file = $_POST['file'];
-           $model->start_date = date('Y-m-d', strtotime($_POST['Events']['start_date']));
-           $model->end_date = date('Y-m-d', strtotime($_POST['Events']['end_date']));
-           if($model->start_date > $model->end_date){$model->end_date=$model->start_date;}
-           
-           if($model->editor_type==0 && $_POST['Events']['basic_editor']!=''){
-                $model->description = nl2br($_POST['Events']['basic_editor']);
+        
+        
+        
+        
+        if(isset($_POST['Events']['title']))
+        {
+          $model->created_by = Yii::app()->user->id;
+          if(!$id)
+          $model->visible=0;
+           foreach($_POST['Events'] as $k=>$p)
+           {
+            if($k == 'start_date' || $k == 'end_date')
+            $model->$k = date('Y-m-d', strtotime($p));
+            else
+            $model->$k = $p;
            }
-            
+           if($_POST['Events']['latitude'] && $_POST['Events']['longitude'])
+           {
+            $array = file_get_contents('http://maps.googleapis.com/maps/api/geocode/json?latlng='.$_POST['Events']['latitude'].','.$_POST['Events']['longitude'].'&sensor=false');
+            $array = json_decode($array);
+            $array = (array)$array;
+            //  = get_province($arr);
+            $model->province = $this->get_province($array);
+           }
+           
+           
+           
            //getSlug
            $slug=CommonClass::getSlug($_POST['Events']['title']);
            $count=0;
-           
-           $newSlug=$slug;
-           while(Events::model()->findAllByAttributes(array('slug'=>$newSlug)))
+           while(Events::model()->findAllByAttributes(array('slug'=>$slug)))
            {
                 $count++;
-                $newSlug=$slug."-".$count;
+                $slug=$slug."-".$count;
            }
-           $model->slug=$newSlug;
-
-            if($_POST['logo']!='')
-            {
-                @copy(Yii::app()->basePath.'/../images/temp/full/'.$_POST['logo'],Yii::app()->basePath.'/../images/frontend/full/'.$_POST['logo']);
-                @copy(Yii::app()->basePath.'/../images/temp/main/'.$_POST['logo'],Yii::app()->basePath.'/../images/frontend/main/'.$_POST['logo']);
-                @copy(Yii::app()->basePath.'/../images/temp/thumb/'.$_POST['logo'],Yii::app()->basePath.'/../images/frontend/thumb/'.$_POST['logo']);
+           if(!$id)
+           $model->slug=$slug;
+            if(isset($_POST['logo']) && $_POST['logo']){
+            $logo_arr = explode('?',$_POST['logo']);
+            $_POST['logo'] = $logo_arr[0];
+            
+            }
+            //echo Yii::app()->basePath.'/../images/temp/full/'.$_POST['logo'];die();    
+           if($_POST['logo']!='')
+           {
+                @copy(Yii::app()->basePath.'/../images/temp/full/'.$_POST['logo'],Yii::app()->basePath.'/../images/frontend/events/full/'.$_POST['logo']);
+                @copy(Yii::app()->basePath.'/../images/temp/main/'.$_POST['logo'],Yii::app()->basePath.'/../images/frontend/events/main/'.$_POST['logo']);
+                @copy(Yii::app()->basePath.'/../images/temp/thumb/'.$_POST['logo'],Yii::app()->basePath.'/../images/frontend/events/thumb/'.$_POST['logo']);
                 
                 @unlink(Yii::app()->basePath."/../images/temp/main/".$_POST['logo']);
                 @unlink(Yii::app()->basePath."/../images/temp/thumb/".$_POST['logo']);
                 $model->logo = $_POST['logo'];                
-            }
+           }
            
-            if($_POST['file']!="" )
-            {
-                @copy(Yii::app()->basePath.'/../documents/temp/'.$_POST['file'],Yii::app()->basePath.'/../documents/'.$_POST['file']);
-                @unlink(Yii::app()->basePath."/../documents/temp/".$_POST['file']);   
-                $model->file=$_POST['file'];
-            }  
-                      
-			if($model->save())
+                  
+            if($model->save())
             {   
-                $id = $model->id;                     
-                $events_link->attributes = $_POST['EventsLink'];
-                $events_link->event_id = $id;
-                $events_link->save();
-                               
                 
-                 if($model->venue_id=='0')
-                 {
-                    $venue->attributes = $_POST['Venues'];
-                    $venue->event_id = $id;
-                    $venue->save();
-                 } 
-                 if($model->organiser== '0')
-                 {
-                    $org->attributes = $_POST['Organisers'];
-                    $org->event_id = $id;
-                    $org->save();
+                $id = $model->id;
+
+                if(isset($_POST['EventsTime'])){
+                EventsTime::model()->deleteAllByAttributes(array('event_id'=>$id));
+                foreach($_POST['EventsTime'] as $k=>$p)
+                {
                     
-                 }  
-                
-                 if($_POST['times'] == 'on')
-                 {
-                    foreach($_POST['on_date'] as $key=>$date)
+                    foreach($p as $k1=>$v)
                     {
-                        $time = new EventsTime;
-                        $time->on_date = $date;
-                        $time->from = $_POST['from'][$key];
-                        $time->to = $_POST['to'][$key];
-                        $time->event_id = $id;
-                        $time->save();
+                        $arr[$k1][$k] = $v;
                     }
-                 }
-            
-				Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - A new event has been added successfully!');
+                    
+                }
+                foreach($arr as $a)
+                {
+                   $events_time= new EventsTime;
+                   $events_time->event_id = $model->id;
+                   foreach($a as $k=>$v)
+                   {
+                        $events_time->$k = $v;
+                   } 
+                   $events_time->save();
+                   
+                   unset($events_time);
+                }
+                if(isset($arr))
+                unset($arr);
+                }
+                
+                if(isset($_POST['EventsFile'])){
+                
+                foreach($_POST['EventsFile'] as $k=>$p)
+                {
+                    
+                    foreach($p as $k1=>$v)
+                    {
+                        $arr[$k1][$k] = $v;
+                    }
+                    
+                }
+                EventsFile::model()->deleteAllByAttributes(array('event_id'=>$id));
+                foreach($arr as $a)
+                {
+                   $events_file= new EventsFile;
+                   $events_file->event_id = $model->id;
+                   foreach($a as $k=>$v)
+                   {
+                        $events_file->$k = $v;
+                   } 
+                   $events_file->save();
+                   
+                   unset($events_file);
+                }
+                
+                }
+                
+                
+                
+                Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - '.$flash);
+                if(!$id){
+                                $this->sendEventEmail($model->title,$model->slug,$model->created_by);
+                                $this->sendAdminEventEmail($model->title,$model->slug,$model->id);
+                            }
                 $this->redirect(array('index'));
+            }
+            else
+            {
+                var_dump($model);
             }   
-		}
+        }
         
-		$this->render('create',array(
-			'model'=>$model,'venue'=>$venue,'org'=>$org,'events_link' =>$events_link
-		));
-	}
+        $this->render('create',array(
+            'model'=>$model,'event_type'=>$event_type
+        ));
+    }
     
    
 	/**

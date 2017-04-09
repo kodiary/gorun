@@ -12,7 +12,7 @@
                 
                 <div class="form-group white">
                     <label class="col-md-12">Date and time</label>
-                    <div class="col-md-12">Multiple Date Event &nbsp; <input type="checkbox" name="is_multiple_date" value="1" onchange="if($(this).is(':checked'))$('.hiddendate').show('slow');else {$('.hiddendate').hide('slow');$('#end_date')val('');}" <?php if($model->end_date){?>checked<?php }?> /></div>
+                    <div class="col-md-12">Multiple Date Event &nbsp; <input type="checkbox" name="is_multiple_date" value="1" onchange="if($(this).is(':checked'))$('.hiddendate').show('slow');else {$('.hiddendate').hide('slow');$('#end_date').val('');}" <?php if($model->end_date){?>checked<?php }?> /></div>
                     <div class="clearfix"></div>
                     <br />
                     
