@@ -6,7 +6,7 @@ if(isset($_GET['id']))$id=$_GET['id'];
 <?php $this->widget('bootstrap.widgets.BootAlert'); ?>
 <div class="company-bottom">
 <div class="col-md-8" style="background-color: #C4C4C4;;">
-    <?php echo $this->renderPartial('application.views.clubs._form',array('model'=>$model,'events'=>$events)); ?>
+    <?php echo $this->renderPartial('application.views.clubs._form',array('model'=>$model,'events'=>$events,'member'=>$model)); ?>
 </div>
 <div class="col-md-4">
     

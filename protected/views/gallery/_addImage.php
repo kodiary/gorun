@@ -63,8 +63,6 @@ function initiateUpload(index)
     <?php //echo CHtml::activeHiddenField($model, "[0]name")?>
     <input type="hidden" name="logo" class="main_logo" value=""/>
     <input type="hidden" class="uploaded_image" value="<?php echo (isset($model))?$model->logo:'';?>"/>
-     
-   
     
     <div class="button_rows">
      <div id="file-uploader_<?php echo isset($id)?$id:'0';?>">

@@ -1,7 +1,13 @@
 <script src="//cdn.ckeditor.com/4.5.10/basic/ckeditor.js"></script>
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-<?php if($module = Yii::app()->controller->module)
-            $url = Yii::app()->request->requestUri;
+<?php 
+    if($module = Yii::app()->controller->module)
+        {
+            if($this->action->id == 'addblank')
+                $url = Yii::app()->baseUrl."/admin/club/update/id/0";
+            else
+                $url = Yii::app()->request->requestUri;    
+        }
         else
             $url = Yii::app()->request->baseUrl."/clubs/create";
 ?>

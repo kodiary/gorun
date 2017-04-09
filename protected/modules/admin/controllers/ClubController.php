@@ -69,7 +69,16 @@ class ClubController extends Controller
     public function actionAddBlank()
     {
         $model=new Club('adminSignup');
-        if($_POST['Club'])
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.js"));
+        Yii::app()->clientScript->registerCssFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.css"));
+        Yii::app()->clientScript->registerCssFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.css"));
+        //Yii::app()->clientScript->registerScriptFile("http://maps.google.com/maps/api/js?key=AIzaSyDdlZuslizFva3XY9GZVyF_IDZTDI-7BD0&libraries=places");
+        Yii::app()->clientScript->registerScriptFile("https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Gjdm_0nJk17UVBPoV5Im40uQeguoRAo&libraries=places");
+        //Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::getPathOfAlias('application.components')."/gmap/gmap_new.js"));
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::getPathOfAlias('application.components')."/gmap/gmap.js"));
+        Yii::app()->clientScript->registerScript('init','initialize();',CClientScript::POS_LOAD);
+        $events = EventsType::model()->findAll();
+        /*if($_POST['Club'])
         {
              $model->attributes=$_POST['Club'];
              $model->slug=CommonClass::getSlug($_POST['Club']['title']);
@@ -83,8 +92,8 @@ class ClubController extends Controller
                 $this->notifyClub($_POST['Club']);
                 $this->redirect(array('/admin/Club/update/id/'.$model->id));
              }
-        }
-        $this->render('register',array('model'=>$model));
+        }*/
+        $this->render('update',array('model'=>$model,'events'=>$events));
     }
     
     private function notifyClub($info)
@@ -108,7 +117,7 @@ class ClubController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-	   Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.js"));
+	    Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.js"));
         Yii::app()->clientScript->registerCssFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.css"));
         Yii::app()->clientScript->registerCssFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.css"));
         //Yii::app()->clientScript->registerScriptFile("http://maps.google.com/maps/api/js?key=AIzaSyDdlZuslizFva3XY9GZVyF_IDZTDI-7BD0&libraries=places");
@@ -117,7 +126,11 @@ class ClubController extends Controller
         Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::getPathOfAlias('application.components')."/gmap/gmap.js"));
         Yii::app()->clientScript->registerScript('init','initialize();',CClientScript::POS_LOAD);
         $events = EventsType::model()->findAll();
-		$club=$this->loadModel($id);
+        //$member = User::model()->findByPk(1);
+        if($id == 0)
+            $club = new Club;
+        else
+		    $club=$this->loadModel($id);
         $types ='';
         //var_dump($_POST);die();
         if(isset($_POST['title']))
@@ -199,7 +212,8 @@ class ClubController extends Controller
         
 		$this->render('update',array(
 			'model'=>$club,
-            'events'=>$events
+            'events'=>$events,
+            //'member'=>$member
             //'tradinghours'=>$tradinghours,
 		));
 	}
