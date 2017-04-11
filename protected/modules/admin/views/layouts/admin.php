@@ -95,7 +95,7 @@
     <?php
     }?> 
     
-    
+    <div class="clear"></div>
     <div class="admin_setting_nav">
     	<?php if(Yii::app()->controller->id=='setting') $this->widget('SettingMenu');?>
         <?php if(Yii::app()->controller->id=='banner' || Yii::app()->controller->id=='slideshow' || Yii::app()->controller->id=='patronslider') $this->widget('BannerMenu');?>      

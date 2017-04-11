@@ -128,9 +128,16 @@ class ClubController extends Controller
         $events = EventsType::model()->findAll();
         //$member = User::model()->findByPk(1);
         if($id == 0)
+        {
             $club = new Club;
+            $club->created_by =  '0';
+            
+        }
         else
+        {
 		    $club=$this->loadModel($id);
+            $club->created_by =  Yii::app()->user->id;
+        }
         $types ='';
         //var_dump($_POST);die();
         if(isset($_POST['title']))
@@ -180,14 +187,14 @@ class ClubController extends Controller
             $club->latitude = $_POST['latitude'];
             $club->longitude = $_POST['longitude'];
             $club->province =  $_POST['province'];
-            //$club->trial_day =  $_POST['trial_day'];
-            //$club->trial_time =  $_POST['trial_time'];
-            //$club->trial_desc =  $_POST['trial_desc'];
-            //$club->contact_person =  $_POST['contact_person'];
+            $club->trial_day =  isset($_POST['trial_day'])?$_POST['trial_day']:'';
+            $club->trial_time =  isset($_POST['trial_time'])?$_POST['trial_time']:'';
+            $club->trial_desc =  isset($_POST['trial_desc'])?$_POST['trial_desc']:'';
+            $club->contact_person =  isset($_POST['contact_person'])?$_POST['contact_person']:'';
             $club->website =  $_POST['website'];
             $club->fb_page =  $_POST['fb_page'];
             $club->twitter_page =  $_POST['twitter_page'];
-            $club->created_by =  Yii::app()->user->id;
+            
             $club->contact_email = $_POST['contact_email'];
             $club->google = $_POST['google'];
             $club->contact_number = $_POST['contact_number'];
@@ -197,8 +204,9 @@ class ClubController extends Controller
             
             if($club->save())
             {
-                $id = $club->id;
+                //$id = $club->id;
                 Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - Club has been updated successfully!');
+                if($id != 0)
 				$this->redirect(Yii::app()->request->requestUri);
             }
             else
