@@ -48,7 +48,29 @@
                         }
 
                         ?>
-                        <a href="javascript:void(0)" class="dropdownselect"><span class="value"><?php if($event_type_name)echo $event_type_name;else{?>Event Type<?php }?></span> <span class="fa fa-sort"></span><span class="line">|</span></a>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-info dropdownselect2"><?php if($event_type_name)echo $event_type_name;else{?>Event Type<?php }?></button>
+                          <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="height: 34px;
+border-left: 1px solid #ddd;">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul class="dropdown-menu drop-option">
+                            <?php
+                            $type = array('','running','biking','triathlon');
+                            foreach($event_type as $et)
+                            {
+                                ?>
+                                <li><a href="javascript:void(0)" id="et_<?php echo $et->id;?>" class="<?php echo $type[$et->cat_id]?>"><?php echo $et->title;?></a></li>
+                                <?php
+                            }
+                            ?>
+                            <input type="hidden" name="Events[event_type]" class="event_type" value="<?php echo event_type_id;?>" />
+                            <input type="hidden" name="Events[event_cat]" class="event_category" value="<?php echo $cat_id;?>" />
+                          </ul>
+                        </div>
+
+                        <?php /*<a href="javascript:void(0)" class="dropdownselect"><span class="value"><?php if($event_type_name)echo $event_type_name;else{?>Event Type<?php }?></span> <span class="fa fa-sort"></span><span class="line">|</span></a>
                         <div class="drop-option" style="display:none;">
                             <?php
                             $type = array('','running','biking','triathlon');
@@ -61,7 +83,7 @@
                             ?>
                             <input type="hidden" name="Events[event_type]" class="event_type" value="<?php echo event_type_id;?>" />
                             <input type="hidden" name="Events[event_cat]" class="event_category" value="<?php echo $cat_id;?>" />
-                        </div>
+                        </div>*/?>
                     </div>
                     <div class="clearfix"></div>
                     <div class="errormsg_type errors col-md-12" style="display: none;">This field is required.</div><div class="clearfix"></div>
@@ -270,10 +292,9 @@ $(function(){
         var id = $(this).attr('id');
         if(id.replace('et_','') == '<?php echo $model->event_type;?>')
         {
-            //alert(id);
-            $('.drop-option').show(function(){
-                $('#'+id).click();
-            });
+                
+                renderForm($('#'+id));
+            
             
         }
     })
@@ -282,6 +303,7 @@ $(function(){
   ?>
   function renderForm($this)
   {
+    alert('test');
     $('.distance_list').html('');
         var cat = $this.attr('class');
         if(cat == 'running')
@@ -290,8 +312,8 @@ $(function(){
         $('.event_category').val('2');
         if(cat == 'triathlon')
         $('.event_category').val('3');
-        $('.drop-option').hide();
-        $('.dropdownselect .value').text($this.text());
+        //$('.drop-option').hide();
+        $('.dropdownselect2').text($this.text());
         var id = $this.attr('id').replace('et_','');
         $('.event_type').val(id);
         var class_form = $this.attr("class");
@@ -349,7 +371,7 @@ $(function(){
     {
         
         $('html,body').animate({
-                scrollTop: $(".dropdownselect").offset().top},
+                scrollTop: $(".dropdownselect2").offset().top},
                 'slow');
                 $('.errormsg_type').show();
                 $('.errormsg_type').fadeOut(7000);
@@ -409,7 +431,7 @@ $(function(){
   $( function() {
     initiateUpload2('flyer');
     $('.dropdownselect').click(function(){
-        $('.drop-option').toggle();
+        //$('.drop-option').toggle();
     });
     $('.drop-option a').click(function(){
         renderForm($(this));        
