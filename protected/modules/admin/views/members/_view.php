@@ -12,13 +12,13 @@ else $class='in_active';
     
     </div>
     <div class="text_desc_r">
-    <?php echo CHtml::link('Edit',array('/admin/company/update/id/'.$data->id),array('class'=>'btn btn-info'))?>
+    <?php echo CHtml::link('Edit',array('/admin/members/update/id/'.$data->id),array('class'=>'btn btn-info'))?>
     <?php echo CHtml::link('Delete','javascript:void(0);',array('onclick'=>'$("#div_del_'.$data->id.'").show();','class'=>'btn btn-danger'));?>
     </div>
     <div class="clear"></div>
 </div>
 <div id="div_del_<?php echo $data->id;?>" style="display: none;" class="warning_blocks">
 	<div class="fl_left">Cannot be undone - Are you sure you want to delete?</div>
-    <div class="fl_right"><?php echo CHtml::link('Delete', array('/admin/company/delete/id/'.$data->id),array('class'=>'btn btn-danger'));?> <?php echo CHtml::link('Cancel','javascript:void(0);',array('onclick'=>'$("#div_del_'.$data->id.'").hide();','class'=>'btn'));?></div>
+    <div class="fl_right"><?php echo CHtml::link('Delete', array('/admin/members/delete/id/'.$data->id),array('class'=>'btn btn-danger'));?> <?php echo CHtml::link('Cancel','javascript:void(0);',array('onclick'=>'$("#div_del_'.$data->id.'").hide();','class'=>'btn'));?></div>
     <div class="clear"></div>
 </div>

@@ -3,7 +3,7 @@
     'stacked'=>false, // whether this is a stacked menu
 	'htmlOptions'=>array('class'=>'admin_extra01'),
     'items'=>array(
-        array('label'=>'Members', 'url'=>array('/admin/company'), 'active'=>((Yii::app()->controller->id=='company' || Yii::app()->controller->id=='membertype' || Yii::app()->controller->id=='services' || Yii::app()->controller->id=='resources') && Yii::app()->controller->action->id!='newlisting')?true:false),
+        array('label'=>'Members', 'url'=>array('/admin/members'), 'active'=>((Yii::app()->controller->id=='members' || Yii::app()->controller->id=='membertype' || Yii::app()->controller->id=='services' || Yii::app()->controller->id=='resources') && Yii::app()->controller->action->id!='newlisting')?true:false),
         array('label'=>'Clubs', 'url'=>array('/admin/club'), 'active'=>((Yii::app()->controller->id=='club' ))?true:false),
         array('label'=>'Events', 'url'=>array('/admin/events'),'active'=>Yii::app()->controller->id=='events' || Yii::app()->controller->id=='eventstype' || Yii::app()->controller->id=='eventsvisitors' || Yii::app()->controller->id=='eventscategory'),
         array('label'=>'News', 'url'=>array('/admin/articles'), 'active'=>Yii::app()->controller->id=='articles' || Yii::app()->controller->id =='tags'),

@@ -491,32 +491,35 @@ class GalleryController extends Controller
        if(file_exists(Yii::app()->basePath.'/../images/temp/full/'.$file))
        {
             $src_file=Yii::app()->basePath.'/../images/temp/full/'.$file;
-            $temp_file=Yii::app()->basePath.'/../images/temp/'.$file;
-            $save_path= Yii::app()->basePath.'/../images/temp/thumb/'.$file;
-            $imgPath= Yii::app()->baseUrl.'/images/temp/thumb/'.$file;
+            //$temp_file=Yii::app()->basePath.'/../images/temp/'.$file;
+            //$save_path= Yii::app()->basePath.'/../images/temp/thumb/'.$file;
+            //$imgPath= Yii::app()->baseUrl.'/images/temp/thumb/'.$file;
        
        }
        else if(file_exists(Yii::app()->basePath.'/../images/clubs/full/'.$file))
        {
             $src_file=Yii::app()->basePath.'/../images/clubs/full/'.$file;
-            $temp_file=Yii::app()->basePath.'/../images/clubs/'.$file;
-            $save_path= Yii::app()->basePath.'/../images/clubs/thumb/'.$file;
-            $imgPath= Yii::app()->baseUrl.'/images/clubs/thumb/'.$file;
+            //$temp_file=Yii::app()->basePath.'/../images/clubs/'.$file;
+            //$save_path= Yii::app()->basePath.'/../images/clubs/thumb/'.$file;
+            //$imgPath= Yii::app()->baseUrl.'/images/clubs/thumb/'.$file;
             
        
        }
        else
        {
             $src_file=Yii::app()->basePath.'/../images/frontend/full/'.$file;
-            $temp_file=Yii::app()->basePath.'/../images/frontend/'.$file;
-            $save_path= Yii::app()->basePath.'/../images/frontend/thumb/'.$file;
-            $imgPath= Yii::app()->baseUrl.'/images/frontend/thumb/'.$file;
+            //$temp_file=Yii::app()->basePath.'/../images/frontend/'.$file;
+            //$save_path= Yii::app()->basePath.'/../images/frontend/thumb/'.$file;
+            //$imgPath= Yii::app()->baseUrl.'/images/frontend/thumb/'.$file;
             
        
        }
+            $temp_file=Yii::app()->basePath.'/../images/temp/'.$file;
+            $save_path= Yii::app()->basePath.'/../images/temp/thumb/'.$file;
+            $imgPath= Yii::app()->baseUrl.'/images/temp/thumb/'.$file;
        
        Yii::import('application.extensions.image.Image');
-       
+    //die($save_path);
        $image = new Image($src_file);
        if($image->crop($width,$height,$y,$x)->quality(90))
         @unlink($save_path);

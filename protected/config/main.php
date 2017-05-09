@@ -10,7 +10,7 @@ $db = array(
 			'connectionString' => 'mysql:host=localhost;dbname=gorun',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => '',
+			'password' => 'mysql',
 			'charset' => 'utf8',
 		);
         $hauth = "http://localhost/gorun/hybridauth";
@@ -29,7 +29,7 @@ else
         
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'EXSA - Exhibition & Event Association of South Africa',
+	'name'=>'GoRun - Atheletes of South Africa',
 
 	// preloading 'log' component
 	'preload'=>array('bootstrap','log'),

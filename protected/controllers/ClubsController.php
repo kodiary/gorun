@@ -362,7 +362,7 @@ class ClubsController extends Controller
             
             $criteria->addCondition('province='.$prov);
         }
-           
+        $criteria->addCondition('status=1');
         //$criteria->order = 'publish_date DESC,t.id DESC';
         $pages='';
        

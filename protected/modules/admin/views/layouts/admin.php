@@ -31,6 +31,8 @@
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.validate.js" type="text/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.Jcrop.min.js"></script>
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+
     <title><?php echo CHtml::encode($this->pageTitle)." | Admin"; ?></title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet"> 
@@ -101,6 +103,7 @@
         <?php if(Yii::app()->controller->id=='banner' || Yii::app()->controller->id=='slideshow' || Yii::app()->controller->id=='patronslider') $this->widget('BannerMenu');?>      
      </div>
     <?php echo $content; ?>
+    <div class="clearfix"></div>
     </div>
     
     <!--load footer -->

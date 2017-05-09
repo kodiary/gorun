@@ -42,7 +42,7 @@ class AdminModule extends CWebModule
 			// you may place customized code here
             $controller->layout = 'admin';
     		$route = $controller->id . '/' . $action->id;  
-            // echo $route;  
+            //echo $route;  die();
             $publicPages = array(  
                 'login/index',  
                 'default/error',  

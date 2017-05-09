@@ -54,12 +54,20 @@ class MemberController extends Controller
     {
         
         $member = new Member;
+        $httpReferer = $_SERVER["HTTP_REFERER"];
+        if(str_replace("id/","",$httpReferer)!=$httpReferer)
+            $id = end(explode('id/',$httpReferer));
         
         $cond = '';
         if(isset($_GET['type']) && isset($_POST) || $username!='')
         {
-            if(isset(Yii::app()->user->id))
-                $cond = 'id <> '.Yii::app()->user->id;
+            if(isset(Yii::app()->user->id) || isset($id)) {
+                if(isset($id))
+                       $cond = 'id <> '.$id;
+                   else
+                       $cond = 'id <> '.Yii::app()->user->id;
+            }
+            //die($cond);
             if($_GET['type']=='email'|| $_GET['type'] == 'sa_identity_no')
             {
                 if($member->findByAttributes([$_GET['type']=>$_POST[$_GET['type']]],$cond))

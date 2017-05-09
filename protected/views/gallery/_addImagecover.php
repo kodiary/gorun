@@ -16,7 +16,7 @@ function initiateUpload1(index)
     'onSubmit':function()
             {
                 //$(this).http://github.com/valums/file-uploader
-                $('.uploadControl1').text('Uploading...');
+                 $('#uploadFile1').children().find('.uploadControl').text('Uploading...');
                 $('#crop1').css({'pointer-events':'none'});
             },
     'onComplete':function(id, fileName, responseJSON){
@@ -43,7 +43,7 @@ function initiateUpload1(index)
             {
                 alert('something went wrong!');
             } */
-            $('.uploadControl1').text('Upload'); 
+            $('#uploadFile1').children().find('.uploadControl').text('Upload'); 
         },
         'messages':{'typeError':'{file} has invalid extension. Only {extensions} are allowed.','sizeError':'{file} is too large, maximum file size is {sizeLimit}.','minSizeError':'{file} is too small, minimum file size is {minSizeLimit}.','minHeightError': "{file} dimension is too small, minimum Height is {minHeight}.",
             'minWidthError': "{file} dimension is too small, minimum Width is {minWidth}.",'emptyError':'{file} is empty, please select files again without it.','onLeave':'The files are being uploaded, if you leave now the upload will be cancelled.'},'showMessage':function(message){ alert(message); }});

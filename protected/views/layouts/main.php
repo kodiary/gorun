@@ -59,6 +59,7 @@ if (!empty($this->metaKeys)) {
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/timepicki.js" type="text/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.validate.js" type="text/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.Jcrop.min.js"></script>
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
     
     
 </head>
