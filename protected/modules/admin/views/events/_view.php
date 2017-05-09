@@ -24,7 +24,7 @@ else
         'htmlOptions'=>array('id'=>'delete_'.$data->id,
         'onClick'=>'$("#show_'.$data->id.'").show(400);'),
     )); ?>
-    <?php echo CHtml::link('Edit',array('/admin/events/update/id/'.$data->id),array('class'=>'btn btn-info'))?>
+    <?php echo CHtml::link('Edit',array('/admin/events/create/id/'.$data->id),array('class'=>'btn btn-info'))?>
     </div>
     <div class="clear"></div>
 </div>
