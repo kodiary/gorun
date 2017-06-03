@@ -1,7 +1,7 @@
 <script src="//cdn.ckeditor.com/4.5.10/basic/ckeditor.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Gjdm_0nJk17UVBPoV5Im40uQeguoRAo"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/gmap.js"></script>
-<form action="<?php echo Yii::app()->request->baseUrl;?>/events/create/<?php if($model->id)echo $model->id;else echo '0';?>" id="profile-detail" method="post" onsubmit="return validate_form();">
+<form action="<?php echo Yii::app()->request->baseUrl;?>/admin/events/create/id/<?php if($model->id)echo $model->id;else echo '0';?>" id="profile-detail" method="post" onsubmit="return validate_form();">
                 <div class="form-group white">
                     <label class="col-md-12">Event title</label>
                     <div class="col-md-12"><input type="text" class="form-control" required="" placeholder="Your Event Title" name="Events[title]" value="<?php echo $model->title;?>" /></div>
@@ -232,40 +232,15 @@ border-left: 1px solid #ddd;">
                         <div class="clearfix"></div>
                     </div>
                 </div>
-                <?php 
-                    if(!$model->visible)
-                    {
-                        ?>
-
-                <div class="form-group white">
-                    <label class="col-md-12">Visibility<br /><span class="blue">Events are subject to approval before going live and visible to public.</span></label>
-                    <div class="clearfix"></div>
-                </div>
                 
-                <div class="submit_group">
+                <div class="row">
+                    
                     <div class="col-md-6">
-                        <strong>PLEASE NOTE: Submitting and event requires our approval before it will be displayed live.</strong>
-                    </div>
-                    <div class="col-md-6">
-                        <button type="submit" href="javascript:void(0)" class="btn btn-submit">SUBMIT FOR APPROVAL</button>
+                        <button type="submit" href="javascript:void(0)" class="btn btn-submit">SAVE EVENT</button>
                     </div>
                     <div class="clearfix"></div>
-                </div>  
-                <?php
-                    }
-                    else
-                    {
-                        ?>
-                        <div class="row">
-                            
-                            <div class="col-md-6">
-                                <button type="submit" href="javascript:void(0)" class="btn btn-submit">SAVE EVENT</button>
-                            </div>
-                        <div class="clearfix"></div>
                 </div> 
-                        <?php
-                    }
-                ?>  
+                        
             </form>
 <script>
 $(function(){

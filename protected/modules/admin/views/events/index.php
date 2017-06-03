@@ -16,7 +16,7 @@ $this->breadcrumbs=array(
         <?php }
     }else{
     ?>
-  <h1>Live Events - <span class="blue"><?php if(isset($_GET['keyword'])){ echo 'Results for "'.$_GET['keyword'].'"';}else{?>List Of Live Events<?php } ?></span></h1>
+  <h1><span class="blue"><?php if(isset($_GET['keyword'])){ echo 'Results for "'.$_GET['keyword'].'"';}else{?>Live Events - List Of Live Events<?php } ?></span></h1>
   <?php } ?>
   <div class="line"></div>
 
@@ -62,7 +62,7 @@ $this->breadcrumbs=array(
   <div class="mar-bot-10">
     <?php $this->widget('bootstrap.widgets.BootButton', array(
                     //'fn'=>'ajaxLink',
-                    'url' => array('events/create'),
+                    'url' => array('events/create/id/0'),
                     'label'=>'+Add Events',
                     'type'=>'', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
                     //'size'=>'small', // '', 'small' or 'large'

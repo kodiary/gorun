@@ -3,3 +3,4 @@ images/temp/*
 *.log
 protected/runtime/application.log
 protected/config/main.php
+/nbproject/private/

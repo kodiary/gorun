@@ -1060,7 +1060,7 @@ textarea.autotextarea{ width: 590px !important; min-height: 180px !important;}
 .border_line .text_desc_l, .greybg .text_desc_l{ float:left;width:405px; margin-top: 5px; font-size: 17px; color:#000;}
 .articleContent{ width: 100%; font-family: 'Helvetica',Arial; color:#333333; font-size:14px;}
 .articleDetail{ float: left; width: 450px;}
-.border_line .text_desc_r, .greybg .text_desc_r{width:140px; padding-right:5px; float:right; text-align:right;}
+.border_line .text_desc_r, .greybg .text_desc_r{width:145px; padding-right:5px; float:right; text-align:right;}
 .right_body .well form input[type="text"]{width:190px!important; float:left; margin-right:8px;}
 .right_body .well form .actions{width:71px; float:left;}
 .right_body form#ambience-form{margin:0!important;}
