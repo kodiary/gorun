@@ -568,7 +568,7 @@ $DATA = new CSqlDataProvider($sql, array('pagination'=>false));
         {
             $condition= "title like '%".$_GET['keyword']."%'";
         }
-
+        //echo $condition;
         $criteria = new CDbCriteria;
         $criteria->condition = $condition;
         $criteria->order = $order;
