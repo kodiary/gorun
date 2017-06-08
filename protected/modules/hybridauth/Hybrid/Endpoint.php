@@ -23,7 +23,7 @@ class Hybrid_Endpoint {
 	{
 		// Setup request variable
 		Hybrid_Endpoint::$request = $request;
-
+        
 		if ( is_null(Hybrid_Endpoint::$request) ){
 			// Fix a strange behavior when some provider call back ha endpoint
 			// with /index.php?hauth.done={provider}?{args}... 
@@ -36,7 +36,7 @@ class Hybrid_Endpoint {
 
 			Hybrid_Endpoint::$request = $_REQUEST;
 		}
-
+        //var_dump(Hybrid_Endpoint::$request); die();
 		// If windows_live_channel requested, we return our windows_live WRAP_CHANNEL_URL
 		if ( isset( Hybrid_Endpoint::$request["get"] ) && Hybrid_Endpoint::$request["get"] == "windows_live_channel" ) {
 			Hybrid_Endpoint::processWindowsLiveChannel();
@@ -174,7 +174,7 @@ class Hybrid_Endpoint {
 		$provider_id = trim( strip_tags( Hybrid_Endpoint::$request["hauth_done"] ) );
 
 		$hauth = Hybrid_Auth::setup( $provider_id );
-
+        //var_dump($hauth); die();
 		if( ! $hauth ) {
 			Hybrid_Logger::error( "Endpoint: Invalide parameter on hauth_done!" ); 
 

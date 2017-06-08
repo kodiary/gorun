@@ -97,7 +97,7 @@
         <hr class="" style="margin: 10px!important;" />
         <div class="center col-md-12">
         <a href="<?php echo Yii::app()->request->baseUrl;?>/hybridauth/default/login?provider=google"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/googlesign.png" /></a><br /><br />
-        <a href="<?php echo Yii::app()->request->baseUrl;?>/hybridauth/default/login?provider=facebook"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/fbsign.png" /></a>
+        <a href="javascript:void(0);" onclick="checkLoginState();"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/fbsign.png" /></a>
         </div>
         <div class="clearfix"></div>
         <hr />
