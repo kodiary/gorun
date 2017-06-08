@@ -45,6 +45,27 @@ class EventsController extends Controller
 			'model'=>$this->loadModel($id),
 		));
 	}
+    public function get_province($arr){
+        if(isset($arr['results']) && count($arr['results']))
+        foreach($arr['results'] as $a)
+        {
+            $a = (array)$a;
+            $b[] =$a;
+        }
+        if(isset($b[0]['address_components']) && count($b[0]['address_components']))
+        foreach($b[0]['address_components'] as $c)
+        {
+            $c = (array)$c;
+            $d[] = $c;
+        }
+        if(isset($d) && count($d))
+        foreach($d as $e)
+        {
+            if($e['types']['0'] =='administrative_area_level_1')
+            return $e['short_name'];
+        }
+        return false;
+    }
 
 	/**
 	 * Creates a new model.
@@ -202,9 +223,8 @@ class EventsController extends Controller
                 var_dump($model);
             }   
         }
-        
         $this->render('create',array(
-            'model'=>$model,'event_type'=>$event_type
+            'model'=>$model,'event_type'=>$event_type,'is_admin'=>'1'
         ));
     }
     
@@ -525,23 +545,30 @@ $DATA = new CSqlDataProvider($sql, array('pagination'=>false));
 	 */
 	public function actionIndex($filter="")
 	{
+
         $condition="(start_date<>'0000-00-00' AND visible = 1 AND (end_date <>'0000-00-00' AND end_date<>'1970-01-01') AND end_date >='".date('Y-m-d')."' ) OR  ((end_date ='0000-00-00' OR end_date<='1970-01-01') AND start_date>= '".date('Y-m-d')."')";
         
-        if(isset($_GET['keyword']))$condition=" title like '%".$_GET['keyword']."%' OR id ='".$_GET['keyword']."'";
+        
         if($filter=="") $order='title ASC';
+
         if($filter=="expired")
         {
           $condition="(start_date<>'0000-00-00' AND (end_date <>'0000-00-00' AND end_date<>'1970-01-01') AND end_date < '".date('Y-m-d')."' ) OR  ((end_date ='0000-00-00' OR end_date<='1970-01-01') AND start_date< '".date('Y-m-d')."')";
           $order='title ASC';
         } 
+
         if($filter=="oldest") $order='id ASC';
 
         if($filter=="draft")
         {
-            $condition="visible = 0";
+            $condition="visible = 0 AND start_date >= '".date('Y-m-d')."'";
             $order='title ASC';
         } 
-        
+        if(isset($_GET['keyword']))
+        {
+            $condition= "title like '%".$_GET['keyword']."%'";
+        }
+        //echo $condition;
         $criteria = new CDbCriteria;
         $criteria->condition = $condition;
         $criteria->order = $order;
