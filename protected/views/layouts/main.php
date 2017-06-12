@@ -70,7 +70,7 @@ if (!empty($this->metaKeys)) {
     
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '1311325642274761',
+      appId      : '1778078242453264',
       cookie     : true,
       xfbml      : true,
       version    : 'v2.8',
@@ -105,13 +105,16 @@ function statusChangeCallback(response) {
       // Logged into your app and Facebook.
       testAPI();
     } else {
-             FB.login(function(response) {
+
+        FB.login(function(response) {
+
         if (response.authResponse) {
          testAPI();
     } else {
      console.log('User cancelled login or did not fully authorize.');
     }
 });
+
     }
   }
   function testAPI() {
