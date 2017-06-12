@@ -105,9 +105,13 @@ function statusChangeCallback(response) {
       // Logged into your app and Facebook.
       testAPI();
     } else {
-      // The person is not logged into your app or we are unable to tell.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
+             FB.login(function(response) {
+        if (response.authResponse) {
+         testAPI();
+    } else {
+     console.log('User cancelled login or did not fully authorize.');
+    }
+});
     }
   }
   function testAPI() {

@@ -69,13 +69,13 @@
             <div class="clearfix"></div>
         </div>
         <div class="form-group col-md-12">
-            <div class="col-md-6 whitebg f_male">
+            <div class="col-md-6 col-xs-12 whitebg f_male">
             <label class="control control--radio">Male
               <input type="radio" name="gender" value="1"/>
               <div class="control__indicator"></div>
             </label>
             </div>
-            <div class="col-md-6 whitebg f_gender">
+            <div class="col-md-6 col-xs-12 whitebg f_gender">
                 <label class="control control--radio">Female
                     <input type="radio" name="gender" value="0"/>
                     <div class="control__indicator"></div>

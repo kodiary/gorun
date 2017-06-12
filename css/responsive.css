@@ -10,4 +10,9 @@
     .maindiv{width:100%;}
     .footerin{width:100%;}
     .footer-low-in{width:100%;}
+    /*.f_male, .f_gender { margin: 0!important;}*/
 }
+/*
+@media only screen and (max-width: 320px) {
+    .f_male, .f_gender { margin: 0!important;}
+}*/
