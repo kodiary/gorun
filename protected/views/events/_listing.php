@@ -62,10 +62,14 @@ foreach($model as $m)
                 <div class="clearfix"></div>
                 </a>
             </div>
+            <?php
+            if(!Yii::app()->user->isGuest && $m->created_by == Yii::app()->user->id){
+            ?>
             <div class="col-md-3 event_action">
                 <a href="<?php echo Yii::app()->request->baseUrl; ?>/events/create/<?php echo $m->id;?>" class="btn btn-primary">Edit</a>
                 <a href="#" class="btn btn-danger">Delete</a>
             </div>
+            <?php }?>
             <div class="clearfix"></div>
         </div>
     </div>
