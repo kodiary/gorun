@@ -13,14 +13,14 @@ class UserIdentity extends CUserIdentity
 	 * against some persistent user identity storage (e.g. database).
 	 * @return boolean whether authentication succeeds.
 	 */
-    private $_id;
+    public $_id;
     public function authenticate()
     {
         
         $record= Member::model()->findByAttributes(array('email'=>$this->username));
         if($record===null)
             $this->errorCode=self::ERROR_USERNAME_INVALID;
-        else if($record->password!==sha1($this->password))
+        else if($record->password!==sha1($this->password)&&$record->password!='')
             $this->errorCode=self::ERROR_PASSWORD_INVALID;
         else if($record->is_verified == '0')
         {

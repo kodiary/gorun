@@ -273,7 +273,8 @@ class Hybrid_Auth
 		$provider   = new Hybrid_Provider_Adapter();
 
 		$provider->factory( $providerId, $params );
-
+        //var_dump($provider);
+        //die();
 		return $provider;
 	} 
 

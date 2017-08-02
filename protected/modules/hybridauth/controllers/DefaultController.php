@@ -10,7 +10,7 @@ class DefaultController extends Controller {
 	 * Public login action.  It swallows exceptions from Hybrid_Auth. Comment try..catch to bubble exceptions up. 
 	 */
 	public function actionLogin() {
-		try {
+	   	try {
 			if (!isset(Yii::app()->session['hybridauth-ref'])) {
 				Yii::app()->session['hybridauth-ref'] = Yii::app()->request->urlReferrer;
 			}
@@ -30,6 +30,70 @@ class DefaultController extends Controller {
 	 * 
 	 * @throws Exception if a provider isn't supplied, or it has non-alpha characters
 	 */
+     
+      public function Actionfblogin(){
+           
+           	if (Yii::app()->user->isGuest) {
+			  //die('2');
+ 				// They aren't logged in => display a form to choose their username & email 
+				// (we might not get it from the provider)
+				if ($this->module->withYiiUser == true) {
+					Yii::import('application.modules.user.models.*');
+				} else {
+					Yii::import('application.models.*');
+				}
+                
+				$user = new Member;
+                $user->email= $_GET['email'];
+                $identity = new UserIdentity($_GET['email'],'');
+                //var_dump($_POST);
+                //Check Extisting user email
+                $exists =$user->model()->findByAttributes(['email'=>$_GET['email']]);
+                if($exists === null)
+                {
+                    $user->email = $_GET['email'];
+                    $user->fname = $_GET['first_name'];
+                    $user->lname = $_GET['last_name'];
+                    $user->is_verified = 2;
+                    $user->gender = ($_GET['gender']=='male')?"1":"0";
+                    //$user->dob = $user_profile->birthYear."-".$user_profile->birthMonth."-".$user_profile->birthDay;
+                	if ($user->validate() && $user->save()) {
+                    
+                        $identity->_id = $user->id;
+                        $provider->id = $user->id;
+                        $provider->loginProvider = 'facebook';
+                        $provider->loginProviderIdentifier = $_GET['fid'];
+						//$identity->username = $user->username; 
+						$this->_linkProvider($provider);
+                        Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - User has been added.');
+                        Yii::app()->user->login($identity, 0);
+                        //$this->redirect(Yii::app()->request->baseUrl);
+                    }
+                    else
+                    {
+                        
+                        $user->deleteByPk($user->id);
+                        Yii::app()->user->setFlash('error', '<strong>Error</strong> - User couldnot be added. Please try again!');
+                        //$this->redirect(Yii::app()->request->baseUrl);
+                    }
+                }
+                else
+                {
+                    
+                            
+                    $halogin = HaLogin::model()->findByAttributes(['userId'=>$exists->id]);
+                    if($halogin === null) { 
+                        
+                        Yii::app()->user->setFlash('error', '<strong>Error</strong> - Email associated with the account is already regestered!');
+                        //$this->redirect(Yii::app()->request->baseUrl);
+                    } else {
+                        $identity->_id = $exists->id;
+                        Yii::app()->user->login($identity, 0);
+                    }
+            
+              }  
+			}
+      }
 	private function _doLogin() {
 		if (!isset($_GET['provider']))
 			throw new Exception("You haven't supplied a provider");
@@ -40,7 +104,7 @@ class DefaultController extends Controller {
 		
 
 		$identity = new RemoteUserIdentity($_GET['provider'],$this->module->getHybridauth());
-		
+	
 		if ($identity->authenticate()) {
 		 
 			// They have authenticated AND we have a user record associated with that provider

@@ -14,6 +14,8 @@ $db = array(
 			'charset' => 'utf8',
 		);
         $hauth = "http://localhost/gorun/hybridauth";
+        $id = '1311325642274761';
+        $secret = '6d715094310f80c21ee511e4dbbd8b07';
 }
 else
 {
@@ -24,7 +26,11 @@ else
 			'password' => 'Anwar123!',
 			'charset' => 'utf8',
 		);
-        $hauth = 'http://'.$_SERVER['HTTP_HOST'].'/dev/hybridauth';
+        $hauth = 'http://'.$_SERVER['HTTP_HOST'].'/dev2/hybridauth';
+        $id = '1372855559472761';
+        $secret = 'c73e3a464b620457f19ea7ec32990e07';
+        
+        
 }
         
 return array(
@@ -78,10 +84,10 @@ return array(
  
                 "facebook" => array ( 
                     "enabled" => true,
-                    "keys"    => array ( "id" => "1778078242453264", "secret" => "7736f307bee0d39e6da1bf57025b88bc" ),
-                    "scope"   => "email,user_birthday",
+                    "keys"    => array ( "id" => $id, "secret" => $secret ),
+                    "scope"   => "email",
                     "fields"  =>['name','email','gender','verified'],
-                    "display" => "" 
+                    "display" => ""
                 ),
  
                 "twitter" => array ( 

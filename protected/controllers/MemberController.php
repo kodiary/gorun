@@ -63,9 +63,15 @@ class MemberController extends Controller
         {
             if(isset(Yii::app()->user->id) || isset($id)) {
                 if(isset($id))
+                {
                        $cond = 'id <> '.$id;
-                   else
+                       $cond_extra = 'member_id <> '.$id;
+                }
+                else
+                {
                        $cond = 'id <> '.Yii::app()->user->id;
+                       $cond_extra = 'member_id <> '.Yii::app()->user->id;
+                }
             }
             //die($cond);
             if($_GET['type']=='email'|| $_GET['type'] == 'sa_identity_no')
@@ -79,7 +85,7 @@ class MemberController extends Controller
             }
             else if($_GET['type']=='championchip' || $_GET['type']=='tracetec'){
                 $member = new MemberExtra;
-               if($member->findByAttributes(['type'=>$_GET['type'],'value'=>$_POST[$_GET['type']]],$cond))
+               if($member->findByAttributes(['type'=>$_GET['type'],'value'=>$_POST[$_GET['type']]],$cond_extra))
                 {
                    echo "false";
                 }

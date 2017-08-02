@@ -69,13 +69,13 @@
             <div class="clearfix"></div>
         </div>
         <div class="form-group col-md-12">
-            <div class="col-md-6 whitebg f_male">
+            <div class="col-md-6 col-xs-12 whitebg f_male">
             <label class="control control--radio">Male
               <input type="radio" name="gender" value="1"/>
               <div class="control__indicator"></div>
             </label>
             </div>
-            <div class="col-md-6 whitebg f_gender">
+            <div class="col-md-6 col-xs-12 whitebg f_gender">
                 <label class="control control--radio">Female
                     <input type="radio" name="gender" value="0"/>
                     <div class="control__indicator"></div>
@@ -97,7 +97,7 @@
         <hr class="" style="margin: 10px!important;" />
         <div class="center col-md-12">
         <a href="<?php echo Yii::app()->request->baseUrl;?>/hybridauth/default/login?provider=google"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/googlesign.png" /></a><br /><br />
-        <a href="<?php echo Yii::app()->request->baseUrl;?>/hybridauth/default/login?provider=facebook"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/fbsign.png" /></a>
+        <a href="javascript:void(0);" onclick="checkLoginState();"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/fbsign.png" /></a>
         </div>
         <div class="clearfix"></div>
         <hr />

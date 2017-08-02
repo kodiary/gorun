@@ -59,12 +59,85 @@ if (!empty($this->metaKeys)) {
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/timepicki.js" type="text/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.validate.js" type="text/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.Jcrop.min.js"></script>
+    
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
     
     
 </head>
 
 <body>
+<script>
+    
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1778078242453264',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v2.8',
+      
+    });
+    FB.AppEvents.logPageView();  
+    
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+   function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+    
+    statusChangeCallback(response);
+  });
+}
+
+function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+      testAPI();
+    } else {
+
+        FB.login(function(response) {
+
+        if (response.authResponse) {
+         testAPI();
+    } else {
+     console.log('User cancelled login or did not fully authorize.');
+    }
+});
+
+    }
+  }
+  function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me?fields=email,name,first_name,last_name,gender', function(response) {
+        
+        $.ajax({
+            type: 'post',
+            url: '<?php echo Yii::app()->request->baseUrl; ?>/hybridauth/default/fblogin?provider=facebook&fid='+response.id+
+                    '&email='+response.email+'&gender='+response.gender+'&first_name='+response.first_name+'&last_name='+response.last_name,
+            success: function(msg){
+                //alert(msg);
+               window.location.href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard";
+            }
+        })
+      //console.log(response);
+    
+    });
+  }
+</script>
+
+<div id="status">
+</div>
 <?php $this->widget('application.extensions.email.debug'); ?>
 <div class="wrapper">
     <div class="header">
@@ -251,6 +324,7 @@ if (!empty($this->metaKeys)) {
 
 </body>
 </html>
+
 <script>
 $(function(){
     

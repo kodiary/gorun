@@ -244,7 +244,7 @@
     ?><br />
     
                 
-                <a href="javascript:void(0)" class="btn btn-remove" onclick="return confirm_delete('Are you sure that you want to remove the image?'); "><span class="fa fa-times" style="color: #E00000;"></span> Remove</a><br />
+                <a href="javascript:void(0)" class="btn btn-remove" onclick="return confirm_delete('Are you sure that you want to remove the image?','profile_img'); "><span class="fa fa-times" style="color: #E00000;"></span> Remove</a><br />
             </div>
                 
             </div>
@@ -308,7 +308,7 @@
     ?><br />
     
                 
-                <a href="javascript:void(0)" class="btn btn-remove" onclick="return confirm_delete('Are you sure that you want to remove the image?'); "><span class="fa fa-times" style="color: #E00000;"></span> Remove</a><br />
+                <a href="javascript:void(0)" class="btn btn-remove" onclick="return confirm_delete('Are you sure that you want to remove the image?','profile_cover'); "><span class="fa fa-times" style="color: #E00000;"></span> Remove</a><br />
             </div>
             <div class="clearfix"></div>
                 
@@ -417,7 +417,7 @@
                 ?>
                  <div class="form-group Championchip_Number">
                     <label class="col-md-2">Championchip</label>
-                    <div class="col-md-7"><input type="text" class="form-control" placeholder="Your Championchip Number" name="championchip[]" value="<?php echo $member->championchip;?>" /></div>
+                    <div class="col-md-7"><input type="text" class="form-control" placeholder="Your Championchip Number" name="championchip[]" value="<?php echo $championchip->value;?>" /></div>
                     <div class="col-md-2"><button type="button" class="add_chamionchip btn btn-outline-secondary" onclick="addmore('Championchip_Number','championchip');">ADD +</button></div>
                     <div class="clearfix"></div>
                  </div>
@@ -442,7 +442,7 @@
             ?>
                 <div class="form-group Championchip_Number">
                 <label class="col-md-2">Championchip</label>
-                <div class="col-md-7"><input type="text" class="form-control" placeholder="Your Championchip Number" name="championchip[]" value="<?php echo $member->championchip;?>" /></div>
+                <div class="col-md-7"><input type="text" class="form-control" placeholder="Your Championchip Number" name="championchip[]" value="" /></div>
                 <div class="col-md-2"><button type="button" class="add_chamionchip btn btn-outline-secondary" onclick="addmore('Championchip_Number','championchip');">ADD +</button></div>
                 <div class="clearfix"></div>
                 </div>
@@ -492,7 +492,7 @@
                     ?>
                 <div class="form-group RaceTec_Number">
                     <label class="col-md-2">RaceTec Chip</label>
-                    <div class="col-md-7"><input type="text" class="form-control" placeholder="RaceTec Number" name="tracetec[]" value="<?php echo $member->tracetec;?>"  /></div>
+                    <div class="col-md-7"><input type="text" class="form-control" placeholder="RaceTec Number" name="tracetec[]" value=""  /></div>
                     <div class="col-md-2"><button type="button" class="add_racetec btn btn-secondary" onclick="addmore('RaceTec_Number','tracetec');">ADD +</button></div>
                     <div class="clearfix"></div>
                 </div>
@@ -551,11 +551,11 @@
                     '</div>');
         
     }
-    function confirm_delete(ques)
+    function confirm_delete(ques,cls)
     {
         if(confirm(ques))
         {
-            $('.profile_img').html('');
+            $('.'+cls).html('');
             $('.image_rows input').val('');
         }
         else

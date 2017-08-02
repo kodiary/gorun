@@ -57,7 +57,7 @@ class Hybrid_Providers_Facebook extends Hybrid_Provider_Model
 	{
 		// get the login url 
 		$url = $this->api->getLoginUrl( array( 'scope' => $this->scope, 'display' => $this->display, 'redirect_uri' => $this->endpoint ) );
-
+        //die();
 		// redirect to facebook
 		Hybrid_Auth::redirect( $url );
 	}
@@ -67,6 +67,7 @@ class Hybrid_Providers_Facebook extends Hybrid_Provider_Model
 	*/
 	function loginFinish()
 	{ 
+	   var_dump($this->api); die();
 		// in case we get error_reason=user_denied&error=access_denied
 		if ( isset( $_REQUEST['error'] ) && $_REQUEST['error'] == "access_denied" ){ 
 			throw new Exception( "Authentification failed! The user denied your request.", 5 );
@@ -103,7 +104,7 @@ class Hybrid_Providers_Facebook extends Hybrid_Provider_Model
 	{
 		// request user profile from fb api
 		try{ 
-			$data = $this->api->api('/me?fields=email,name,birthday,first_name,last_name,gender'); 
+			$data = $this->api->api('/me?fields=email,name,first_name,last_name,gender'); 
 		}
 		catch( FacebookApiException $e ){
 			throw new Exception( "User profile request failed! {$this->providerId} returned an error: $e", 6 );
