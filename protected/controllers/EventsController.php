@@ -807,26 +807,28 @@ class EventsController extends Controller
     
     public function actionRenderForm($id=0)
     {
+        if(isset($_POST['type']))
+        $type= $_POST['type'];
+        else
+        $type = 'running';
         if($id)
             $event = Events::model()->findByPk($id);
         else
             $event  = false;
         if($id)
         {
-            $model = EventsTime::model()->findAllByAttributes(array('event_id'=>$id));
+            $model = EventsTime::model()->findAllByAttributes(array('event_id'=>$id),array('order'=>'distance1 asc'));
         }
         else
             $model = false;
 
-        if(isset($_POST['type']))
-        $type= $_POST['type'];
-        else
-        $type = 'running';
+        
         
         if($type!='triathlon')
         $type = 'running';
         $this->renderPartial('_'.$type.'_form',array('model'=>$model,'event'=>$event));
     }
+
     public function get_province($arr){
         if(isset($arr['results']) && count($arr['results']))
         foreach($arr['results'] as $a)
