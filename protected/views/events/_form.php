@@ -4,8 +4,11 @@
 <form action="<?php echo Yii::app()->request->baseUrl;?>/events/create/<?php if($model->id)echo $model->id;else echo '0';?>" id="profile-detail" method="post" onsubmit="return validate_form();">
                 <div class="form-group white">
                     <label class="col-md-12">Event title</label>
-                    <div class="col-md-12"><input type="text" class="form-control" required="" placeholder="Your Event Title" name="Events[title]" value="<?php echo $model->title;?>" /></div>
+                    <div class="col-md-12"><input type="text" class="form-control" required="" placeholder="Your Event Title" name="Events[title]" value="<?php echo $model->title;?>" onkeyup="generateVanity($(this));" />
+                    <span class="blue vanity" style="font-weight: bold;">Vanity URL: <?php echo Yii::app()->createAbsoluteUrl('events/view');?>/</span>
+                    </div>
                     <div class="clearfix"></div>
+                    
                 </div>
                 
                 
@@ -262,6 +265,10 @@ $(function(){
 .btn-black{padding:5px;font-size:20px;text-transform: uppercase;background:#FFF!important;width:200px!important;color:#000;}
 </style>
 <script>
+  function generateVanity($this)
+  {
+    $('.vanity').text('Vanity URL: <?php echo Yii::app()->createAbsoluteUrl('events/view');?>/'+$this.val().replace(/[^a-z0-9]+/gi,"-"));
+  }  
   <?php
   if($model->id)
   {
