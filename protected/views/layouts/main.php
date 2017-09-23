@@ -70,7 +70,8 @@ if (!empty($this->metaKeys)) {
     
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '1778078242453264',
+      //appId      : '1778078242453264',
+      appId      : '1311325642274761',
       cookie     : true,
       xfbml      : true,
       version    : 'v2.8',
@@ -177,7 +178,8 @@ function statusChangeCallback(response) {
         <div class="subnav col-md-6 right">
         <?php if(Yii::app()->user->isGuest){?>   
         <!-- IF not logged in -->
-        <div class="registration">Not a member? <a href="<?php echo Yii::app()->request->baseUrl; ?>/signup" class="blue">Join now</a> <a href="#" class="btn btn-default bgblue ml15" data-toggle="modal" data-target="#loginModal">Login</a></div>
+        <div class="registration">Not a member? <a href="<?php echo Yii::app()->request->baseUrl; ?>/signup" class="blue">Join now</a> 
+        <a href="#" class="btn btn-default bgblue ml15" data-toggle="modal" data-target="#loginModal">Login</a></div>
         <?php }else
         {?>
          <!--IF logged in have the code below uncommented -->

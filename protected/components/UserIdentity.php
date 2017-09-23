@@ -33,7 +33,13 @@ class UserIdentity extends CUserIdentity
             $this->setState('email', $record->email);
             $this->errorCode=self::ERROR_NONE;
             $record->total_logins=$record->total_logins+1;
-            $record->save(false);                             
+            $record->save(false); 
+            $memberLogin = new MemberLogin;
+            $memberLogin->member_id = $record->id;
+            $memberLogin->login_date = date('Y-m-d H:i:s');
+            $memberLogin->save();
+            
+                                        
         }
         return !$this->errorCode;
     }

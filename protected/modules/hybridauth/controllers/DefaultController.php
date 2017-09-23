@@ -67,6 +67,10 @@ class DefaultController extends Controller {
 						$this->_linkProvider($provider);
                         Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - User has been added.');
                         Yii::app()->user->login($identity, 0);
+                        $memberLogin = new MemberLogin;
+                        $memberLogin->member_id = $user->id;
+                        $memberLogin->login_date = date('Y-m-d H:i:s');
+                        $memberLogin->save();   
                         //$this->redirect(Yii::app()->request->baseUrl);
                     }
                     else
@@ -89,6 +93,10 @@ class DefaultController extends Controller {
                     } else {
                         $identity->_id = $exists->id;
                         Yii::app()->user->login($identity, 0);
+                        $memberLogin = new MemberLogin;
+                        $memberLogin->member_id = $exists->id;
+                        $memberLogin->login_date = date('Y-m-d H:i:s');
+                        $memberLogin->save();
                     }
             
               }  
