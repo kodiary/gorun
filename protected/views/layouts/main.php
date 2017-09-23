@@ -70,8 +70,12 @@ if (!empty($this->metaKeys)) {
     
   window.fbAsyncInit = function() {
     FB.init({
-      //appId      : '1778078242453264',
+      <?php 
+      if($_SERVER['SERVER_NAME'] == 'localhost'){?>
       appId      : '1311325642274761',
+      <?php }else{?>
+      appId      : '1778078242453264',
+      <?php }?>
       cookie     : true,
       xfbml      : true,
       version    : 'v2.8',
