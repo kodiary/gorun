@@ -203,12 +203,12 @@
                 <div class="e_dis"><?php echo $model->organizer_email;?></div>
                 
                 <span class="blue small_bold">ORGANIZER NUMBER</span>
-                <div class="e_dis"><?php echo $model->organizer_contact?></div>
+                <div class="e_dis"><a style="color: #000" href="tel:<?php echo $model->organizer_contact?>"><?php echo $model->organizer_contact?></a></div>
                 
                 <span class="blue small_bold">ORGANIZER WEBSITE</span>
-                <div class="e_dis"><?php echo $model->organizer_website?></div>
+                <div class="e_dis"><a href="<?php echo (str_replace('http', '', $model->organizer_website)==$model->organizer_website)?'http://'.$model->organizer_website:$model->organizer_website;?>" target="_blank" style="color:#000;"><?php echo $model->organizer_website?></a></div>
                 <div class="clearfix"></div>
-                <a class="contact_organizer" href="mailto:<?php echo $model->organizer_email;?>"><span class="fa fa-envelope"></span> Contact Organizer</a>
+                <a class="contact_organizer" href="javascript:void(0)" onclick="window.location='mailto:<?php echo $model->organizer_email;?>'"><span class="fa fa-envelope"></span> Contact Organizer</a>
             </div>
             <div class="clearfix"></div>
         </div>
