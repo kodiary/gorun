@@ -16,6 +16,7 @@ $db = array(
         $hauth = "http://localhost/gorun/hybridauth";
         $id = '1311325642274761';
         $secret = '6d715094310f80c21ee511e4dbbd8b07';
+        $preload = array('bootstrap','log');
 }
 else
 {
@@ -26,9 +27,10 @@ else
 			'password' => 'Anwar123!',
 			'charset' => 'utf8',
 		);
-        $hauth = 'http://'.$_SERVER['HTTP_HOST'].'/dev2/hybridauth';
+        $hauth = 'http://'.$_SERVER['HTTP_HOST'].'/dev2/hybridauth/';
         $id = '1372855559472761';
         $secret = 'c73e3a464b620457f19ea7ec32990e07';
+        $preload = array('bootstrap');
         
         
 }
@@ -38,7 +40,8 @@ return array(
 	'name'=>'GoRun - Atheletes of South Africa',
 
 	// preloading 'log' component
-	'preload'=>array('bootstrap','log'),
+    
+	'preload'=> $preload,
     //'onBeginRequest'=>create_function('$event', 'return ob_start("ob_gzhandler");'),
     //'onEndRequest'=>create_function('$event', 'return ob_end_flush();'),
 
@@ -296,9 +299,9 @@ return array(
 				),
 				// uncomment the following to show log messages on web pages
 			
-				/*array(
+				array(
 					'class'=>'CWebLogRoute',
-				),*/
+				),
 				
 			),
 		),

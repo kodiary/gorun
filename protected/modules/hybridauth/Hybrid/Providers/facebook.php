@@ -67,7 +67,7 @@ class Hybrid_Providers_Facebook extends Hybrid_Provider_Model
 	*/
 	function loginFinish()
 	{ 
-	   var_dump($this->api); die();
+	   //var_dump($this->api); die();
 		// in case we get error_reason=user_denied&error=access_denied
 		if ( isset( $_REQUEST['error'] ) && $_REQUEST['error'] == "access_denied" ){ 
 			throw new Exception( "Authentification failed! The user denied your request.", 5 );

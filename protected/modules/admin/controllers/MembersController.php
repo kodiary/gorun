@@ -334,11 +334,20 @@ class MembersController extends Controller
         }
         else
     	$dataProvider=new CActiveDataProvider('Member',array('criteria'=>$c1));
-      
+        $criteria = new CDbCriteria;
+       
+        $criteria->condition = "login_date <> '0000-00-00 00:00:00'";
+        $criteria->group = "t.member_id";
+        $criteria->order = 't.id DESC';
+        $criteria->limit = '21';
+        $criteria->with = array ('member');
+        $memberLogins = MemberLogin::model()->findAll($criteria);
+        
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
             'filter' =>$filter,
             'pages'=>$pages,
+            'memberlogins' => $memberLogins
 		));
 	}
      public function actionNewListings()

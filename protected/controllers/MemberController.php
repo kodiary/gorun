@@ -309,7 +309,12 @@ class MemberController extends Controller
     }
     public function actionLogout()
 	{
-		Yii::app()->user->logout();
+		
+        $memberLogin = new MemberLogin;
+        $memberLogin->member_id = Yii::app()->user->id;
+        $memberLogin->logout_date = date('Y-m-d H:i:s');
+        $memberLogin->save();
+        Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
     

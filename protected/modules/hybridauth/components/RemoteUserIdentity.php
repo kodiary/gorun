@@ -47,8 +47,13 @@ class RemoteUserIdentity extends CBaseUserIdentity {
 				$this->errorCode = self::ERROR_USERNAME_INVALID;
 			} else {
 				$this->id = $user->id;
+                
 				$this->username = $user->username;
 				$this->errorCode = self::ERROR_NONE;
+                $memberLogin = new MemberLogin;
+                $memberLogin->member_id = $user->id;
+                $memberLogin->login_date = date('Y-m-d H:i:s');
+                $memberLogin->save();
 			}
 			return $this->errorCode == self::ERROR_NONE;
 		}
