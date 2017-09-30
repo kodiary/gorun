@@ -502,8 +502,10 @@ $('.add_distance1').live('click',function(){
     
     if(!dist1)
     dist1 = '000';
-    if(!dist2)
-    dist2 = '0';
+    if(!dist2 || dist2=='0')
+        dist2 = '';
+    else
+        dist2 = ','+dist2;
     if(!start_hour)
     start_hour = '00';
     if(!start_min)
@@ -518,7 +520,7 @@ $('.add_distance1').live('click',function(){
     
     }
     
-    var str = dist1+'<input type="hidden" name="EventsTime[distance1][]" value="'+dist1+'" />,'+dist2+'<input type="hidden" name="EventsTime[distance2][]" value="'+dist2+'" />km &nbsp;|&nbsp; <span class="blue">Start</span> - '+start_hour+'<input type="hidden" name="EventsTime[event_from_hour][]" value="'+start_hour+'" />:'+start_min+'<input type="hidden" name="EventsTime[event_from_min][]" value="'+start_min+'" /> &nbsp;|&nbsp; '+ '<span class="blue">Cost</span> - '+cost + '<input type="hidden" name="EventsTime[event_cost][]" value="'+cost_val+'" /><a href="javascript:void(0)" onclick="$(this).closest(\'li\').remove();" class="cross"><span class="fa fa-times"></span></a>'
+    var str = dist1+'<input type="hidden" name="EventsTime[distance1][]" value="'+dist1+'" />'+dist2+'<input type="hidden" name="EventsTime[distance2][]" value="'+dist2.replace(',','')+'" />km &nbsp;|&nbsp; <span class="blue">Start</span> - '+start_hour+'<input type="hidden" name="EventsTime[event_from_hour][]" value="'+start_hour+'" />:'+start_min+'<input type="hidden" name="EventsTime[event_from_min][]" value="'+start_min+'" /> &nbsp;|&nbsp; '+ '<span class="blue">Cost</span> - '+cost + '<input type="hidden" name="EventsTime[event_cost][]" value="'+cost_val+'" /><a href="javascript:void(0)" onclick="$(this).closest(\'li\').remove();" class="cross"><span class="fa fa-times"></span></a>'
     //alert(str);
     $('.distance_list').show()
     $('.distance_list').append('<li>'+str+'</li>');
