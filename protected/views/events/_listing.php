@@ -45,7 +45,7 @@ foreach($model as $m)
                             {
                                 if($mt->distance1){
                                 ?>
-                                <span class="distance"><?php echo $mt->distance1?>, <?php echo $mt->distance2?>k</span>
+                                <span class="distance"><?php echo $mt->distance1?> <?php if($mt->distance2)echo ','.$mt->distance2?>k</span>
                                 <?php
                                 }
                                 else
