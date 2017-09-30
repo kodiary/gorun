@@ -191,24 +191,24 @@
         
         <div class="white padtopbot5">
             <a class="expand_block col-md-12" href="javascript:void(0)">
-                <div class="floatLeft">ORGANIZER DETAILS</div>
+                <div class="floatLeft">ORGANISER DETAILS</div>
                 <div class="floatRight"><span class="fa fa-angle-down"></span></div>
                 <div class="clearfix"></div>
             </a>
             <div class="content col-md-12" style="display: none;">
-                <span class="blue small_bold">ORGANIZER NAME</span>
+                <span class="blue small_bold">ORGANISER NAME</span>
                 <div class="e_dis"><?php echo $model->organizer?></div>
                 
-                <span class="blue small_bold">ORGANIZER EMAIL</span>
+                <span class="blue small_bold">ORGANISER EMAIL</span>
                 <div class="e_dis"><?php echo $model->organizer_email;?></div>
                 
-                <span class="blue small_bold">ORGANIZER NUMBER</span>
+                <span class="blue small_bold">ORGANISER NUMBER</span>
                 <div class="e_dis"><a style="color: #000" href="tel:<?php echo $model->organizer_contact?>"><?php echo $model->organizer_contact?></a></div>
                 
-                <span class="blue small_bold">ORGANIZER WEBSITE</span>
+                <span class="blue small_bold">ORGANISER WEBSITE</span>
                 <div class="e_dis"><a href="<?php echo (str_replace('http', '', $model->organizer_website)==$model->organizer_website)?'http://'.$model->organizer_website:$model->organizer_website;?>" target="_blank" style="color:#000;"><?php echo $model->organizer_website?></a></div>
                 <div class="clearfix"></div>
-                <a class="contact_organizer" href="javascript:void(0)" onclick="window.location='mailto:<?php echo $model->organizer_email;?>'"><span class="fa fa-envelope"></span> Contact Organizer</a>
+                <a class="contact_organizer" href="javascript:void(0)" onclick="window.location='mailto:<?php echo $model->organizer_email;?>'"><span class="fa fa-envelope"></span> Contact Organiser</a>
             </div>
             <div class="clearfix"></div>
         </div>

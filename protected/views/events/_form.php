@@ -187,11 +187,11 @@
                 </div>
                 
                 <div class="form-group white">
-                    <label class="col-md-12">Event Organizer (Optional)<br /><span class="blue">Displayed contact details of the event organizer.</span></label>
+                    <label class="col-md-12">Event Organiser (Optional)<br /><span class="blue">Displayed contact details of the event organiser.</span></label>
                     <div class="org_group">
-                        <div class="col-md-12">Organizer Name</div>
+                        <div class="col-md-12">Organiser Name</div>
                         <div class="col-md-7">
-                            <input type="text" class="form-control" placeholder="Organizer Name" name="Events[organizer]" value="<?php echo $model->organizer;?>" />
+                            <input type="text" class="form-control" placeholder="Organiser Name" name="Events[organizer]" value="<?php echo $model->organizer;?>" />
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -212,7 +212,7 @@
                     <div class="org_group">
                         <div class="col-md-12">Website address</div>
                         <div class="col-md-7">
-                            <input type="text" class="form-control" placeholder="Organizer website address" name="Events[organizer_website]" value="<?php echo $model->organizer_website;?>" />
+                            <input type="text" class="form-control" placeholder="Organiser website address" name="Events[organizer_website]" value="<?php echo $model->organizer_website;?>" />
                         </div>
                         <div class="clearfix"></div>
                     </div>
