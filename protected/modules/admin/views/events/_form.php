@@ -1,5 +1,5 @@
 <script src="//cdn.ckeditor.com/4.5.10/basic/ckeditor.js"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Gjdm_0nJk17UVBPoV5Im40uQeguoRAo"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Gjdm_0nJk17UVBPoV5Im40uQeguoRAo&libraries=places"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/gmap.js"></script>
 <form action="<?php echo Yii::app()->request->baseUrl;?>/admin/events/create/id/<?php if($model->id)echo $model->id;else echo '0';?>" id="profile-detail" method="post" onsubmit="return validate_form();">
                 <div class="form-group white">
@@ -192,21 +192,25 @@ border-left: 1px solid #ddd;">
                 <div class="form-group white">
                     <label class="col-md-12">Event Location (Required)<br /><span class="blue">Input the venue name or address below to find it on google map. Drag pin to desired located if required.</span></label>
                     
-                    <div class="col-md-12"><input type="text" required="" onblur='codeAddress()' id="formattedAddress" class="form-control venue" placeholder="Enter venue name or street address" name="Events[venue]" value="<?php echo $model->venue;?>" /></div>
+                    <div class="col-md-12">
+                        <input type="text" required="" onblur='codeAddress()' id="formattedAddress" class="form-control venue" placeholder="Enter venue name or street address" name="Events[venue]" value="<?php if($model->venue)echo $model->venue;else echo "South Africa";?>" />
+                        
+
+                    </div>
                     <div class="clearfix"></div>
-                    <input id="Company_latitude" type="hidden" name="Events[latitude]" onchange='updateMapPinPosition()' value="-26.2041028" />
-                    <input id="Company_longitude" type="hidden" name="Events[longitude]" onchange='updateMapPinPosition()' value="28.047305100000017" />
+                    <input id="Company_latitude" type="hidden" name="Events[latitude]" onchange='updateMapPinPosition()' value="<?php if(!$model->latitude)echo "-30.876754796068123";else echo $model->latitude;?>" />
+                    <input id="Company_longitude" type="hidden" name="Events[longitude]" onchange='updateMapPinPosition()' value="<?php if(!$model->longitude)echo "24.293892525000047";else echo $model->longitude;?>" />
                             
                     <div id="map_canvas" style="height: 200px;background:#e5e5e5;margin-top:15px;"></div>
                     
                 </div>
                 
                 <div class="form-group white">
-                    <label class="col-md-12">Event Organizer (Optional)<br /><span class="blue">Displayed contact details of the event organizer.</span></label>
+                    <label class="col-md-12">Event Organiser (Optional)<br /><span class="blue">Displayed contact details of the event organiser.</span></label>
                     <div class="org_group">
-                        <div class="col-md-12">Organizer Name</div>
+                        <div class="col-md-12">Organiser Name</div>
                         <div class="col-md-7">
-                            <input type="text" class="form-control" placeholder="Organizer Name" name="Events[organizer]" value="<?php echo $model->organizer;?>" />
+                            <input type="text" class="form-control" placeholder="Organiser Name" name="Events[organizer]" value="<?php echo $model->organizer;?>" />
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -227,7 +231,7 @@ border-left: 1px solid #ddd;">
                     <div class="org_group">
                         <div class="col-md-12">Website address</div>
                         <div class="col-md-7">
-                            <input type="text" class="form-control" placeholder="Organizer website address" name="Events[organizer_website]" value="<?php echo $model->organizer_website;?>" />
+                            <input type="text" class="form-control" placeholder="Organiser website address" name="Events[organizer_website]" value="<?php echo $model->organizer_website;?>" />
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -236,7 +240,8 @@ border-left: 1px solid #ddd;">
                 <div class="row">
                     
                     <div class="col-md-6">
-                        <button type="submit" href="javascript:void(0)" class="btn btn-submit">SAVE EVENT</button>
+                        <input type="hidden" class="form-control" placeholder="Contact Email" name="Events[visible]" value="1" />
+                        <button type="submit" href="javascript:void(0)" class="btn btn-submit">APPROVE</button>
                     </div>
                     <div class="clearfix"></div>
                 </div> 
@@ -278,7 +283,6 @@ $(function(){
   ?>
   function renderForm($this)
   {
-    alert('test');
     $('.distance_list').html('');
         var cat = $this.attr('class');
         if(cat == 'running')

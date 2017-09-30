@@ -216,3 +216,32 @@ hr{
     padding: 5px;
     display: inline-block;
 }
+.btn-submitted {
+    background: #008ECC;
+    color: #FFF;
+    border-radius: 0;
+    font-size: 19px;
+    margin-bottom: 15px;
+    width: 390px;
+}
+.btn-submitted .fa{color:#FFF;}
+
+.btn-pending {
+    background: #FF7F00;
+    color: #FFF;
+    border-radius: 0;
+    font-size: 19px;
+    margin-bottom: 15px;
+    width: 390px;
+}
+.btn-pending .fa{color:#FFF;}
+
+.btn-approved {
+    background: #8EBC02;
+    color: #FFF;
+    border-radius: 0;
+    font-size: 19px;
+    margin-bottom: 15px;
+    width: 390px;
+}
+.btn-approved .fa{color:#FFF;}

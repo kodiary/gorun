@@ -170,6 +170,7 @@ class EventsController extends Controller
 		if(isset($_POST['Events']['title']))
 		{
 		  $model->created_by = Yii::app()->user->id;
+          $model->submitted_at = date('Y-m-d H:i:s');
           if(!$id)
           $model->visible=0;
 		   foreach($_POST['Events'] as $k=>$p)
@@ -599,7 +600,7 @@ class EventsController extends Controller
         $condition="organiser='$id'";
         $order='start_date DESC';      
       
-    	$events = Events::model()->findAllByAttributes(array('visible'=>1,'created_by'=>$id),array('order'=>'id desc'));
+    	$events = Events::model()->findAllByAttributes(array('created_by'=>$id),array('order'=>'id desc'));
 		$this->render('index',array(
 			'dataProvider'=>$events,
 

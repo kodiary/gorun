@@ -217,16 +217,34 @@
                         <div class="clearfix"></div>
                     </div>
                 </div>
-                <?php 
-                    if(!$model->visible)
-                    {
-                        ?>
+                
 
                 <div class="form-group white">
                     <label class="col-md-12">Visibility<br /><span class="blue">Events are subject to approval before going live and visible to public.</span></label>
                     <div class="clearfix"></div>
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-submitted"><span class="fa fa-check-square-o"></span> SUBMITTED <?php if($model->submitted_at)echo date("Y/m/d \a\\t H:i:s", strtotime($model->submitted_at));?></button> 
+                    </div>
+                    <?php 
+                    if($model->visible)
+                    {
+                        ?>
+                    <div class="clearfix"></div>
+                     <div class="col-md-12">
+                        <button type="button" class="btn btn-approved"><span class="fa fa-check-square-o"></span> APPROVED <?php if($model->approved_at)echo date("Y/m/d \a\\t H:i:s", strtotime($model->approved_at));?></button> 
+                    </div>
+                    <div class="clearfix"></div>
+                    <?php }else{?>
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-pending"><span class="fa fa-clock-o"></span> PENDING APPROVAL</button> 
+                    </div>
+                    <div class="clearfix"></div>
+                    <?php }?>
                 </div>
-                
+                <?php 
+                    if(!$model->id)
+                    {
+                        ?>
                 <div class="submit_group">
                     <div class="col-md-6">
                         <strong>PLEASE NOTE: Submitting and event requires our approval before it will be displayed live.</strong>
@@ -241,13 +259,16 @@
                     else
                     {
                         ?>
-                        <div class="row">
-                            
-                            <div class="col-md-6">
-                                <button type="submit" href="javascript:void(0)" class="btn btn-submit">SAVE EVENT</button>
-                            </div>
-                        <div class="clearfix"></div>
-                </div> 
+                <div class="submit_group">
+                    <div class="col-md-6">
+                        <strong>NOTE: Deleting an event will remove it from upcoming events and you will need to resubmit.</strong><br><br>
+                        <a href="" class="btn btn-sm btn-danger">Delete</a>
+                    </div>
+                    <div class="col-md-6">
+                        <button type="submit" href="javascript:void(0)" class="btn btn-submit">SUBMIT AND SAVE CHANGE</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>  
                         <?php
                     }
                 ?>  

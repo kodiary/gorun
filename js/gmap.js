@@ -105,6 +105,7 @@ function updateMarkerAddress(str) {
             map.setZoom(17);  // Why 17? Because it looks good.
           }
           marker.setPosition(place.geometry.location);
+          updateMarkerPosition(place.geometry.location);
           marker.setVisible(true);
 
           var address = '';
@@ -119,6 +120,8 @@ function updateMarkerAddress(str) {
           infowindowContent.children['place-name'].textContent = place.name;
           infowindowContent.children['place-address'].textContent = address;
           infowindow.open(map, marker);
+
+
         });
 
 
@@ -185,7 +188,6 @@ function updateMarkerAddress(str) {
   
   function updateMapPinPosition()
   {
-    alert('test');
      marker.setMap(null);//clear the previous marker from the map
      var latlng=new google.maps.LatLng(document.getElementById('Company_latitude').value,document.getElementById('Company_longitude').value);
       map.setCenter(latlng);

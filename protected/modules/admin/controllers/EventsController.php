@@ -101,9 +101,8 @@ class EventsController extends Controller
         
         if(isset($_POST['Events']['title']))
         {
-          $model->created_by = Yii::app()->user->id;
-          if(!$id)
-          $model->visible=0;
+          $model->approved_at = date('Y-m-d H:i:s');
+          
            foreach($_POST['Events'] as $k=>$p)
            {
             if($k == 'start_date' || $k == 'end_date')
