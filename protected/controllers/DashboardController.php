@@ -143,6 +143,12 @@ class DashboardController extends Controller
         $this->render('clubs',['clubs'=>$clubs]);
     }
     
+    public function actionAthletes()
+    {
+        $members = MemberFollow::model()->with('member')->findAll(['condition'=>'member_id='.Yii::app()->user->id,'order'=>'member.lname']);
+        $this->render('members',['members'=>$members]);
+    }
+    
     public function actionPassword()
     {
         

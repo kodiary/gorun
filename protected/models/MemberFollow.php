@@ -43,6 +43,14 @@ class MemberFollow extends CActiveRecord
 		);
 	}
     
+    public function relations()
+    {
+        return array(
+            'member'=>array(self::BELONGS_TO, 'Member', 'follower_id'),
+            
+     
+		);
+    }
     public function attributeLabels()
 	{
 		return array(

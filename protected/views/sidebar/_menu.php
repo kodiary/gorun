@@ -6,7 +6,7 @@
         <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard" class="<?php echo (Yii::app()->controller->action->id=='settings')?'active':'';?>">Settings</a></li>
         <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard/club" class="<?php echo (Yii::app()->controller->action->id=='club')?'active':'';?>">Your Clubs</a></li>
         <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard" class="<?php echo (Yii::app()->controller->action->id=='result')?'active':'';?>">Your Resuts</a></li>
-        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard" class="<?php echo (Yii::app()->controller->action->id=='result')?'active':'';?>">Your Athletes</a></li>
+        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard/athletes" class="<?php echo (Yii::app()->controller->action->id=='result')?'active':'';?>">Your Athletes</a></li>
         <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard" class="<?php echo (Yii::app()->controller->action->id=='review')?'active':'';?>">Your Race Reviews</a></li>
         <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/events" class="<?php echo (Yii::app()->controller->id=='events')?'active':'';?>">Your Events</a></li>
     </ul>

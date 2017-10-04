@@ -101,7 +101,8 @@ class Member extends CActiveRecord
             'articles'=>array(self::HAS_MANY, 'Articles', 'member_id'),
             'extras'=>array(self::HAS_MANY, 'MemberExtra','member_id'),
             'haLogin'=>array(self::HAS_ONE,'HaLogin','userId'),
-            'memberLogin'=>array(self::HAS_MANY,'MemberLogin','member_id')
+            'memberLogin'=>array(self::HAS_MANY,'MemberLogin','member_id'),
+            'memberFollower'=>array(self::HAS_MANY, 'MemberFollow','member_id')
             //'jobs'=>array(self::HAS_MANY, 'Jobs', 'company_id'),
             //'services'=>array(self::HAS_MANY,'CompanyServices','company_id'),
      
