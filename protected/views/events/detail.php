@@ -162,7 +162,9 @@
             foreach($flyer as $fl)
             {
                 ?>
-                <a class="pdf-anc" href="javascript:void(0)" onclick="$('.popover2 .modal-body').html('<iframe src=\'https://docs.google.com/gview?url=<?php echo urlencode(Yii::app()->createAbsoluteUrl('files/events').'/'.$fl->file);?>&embedded=true\' style=\'width:100%; height:700px;\' frameborder=\'0\'></iframe><p>');$('.popover2 .modal-title').html('<?php echo $fl->file;?>');" data-toggle="modal" data-target="#docModal"><span class="fa fa-file-pdf-o"></span><br /><?php echo $fl->file;?></a>
+                <a class="pdf-anc" href="javascript:void(0)" onclick="$('.popover2 .modal-body').html('<iframe src=\'https://docs.google.com/gview?url=<?php echo urlencode(Yii::app()->createAbsoluteUrl('files/events').'/'.$fl->file);?>&embedded=true\' style=\'width:100%; height:700px;\' frameborder=\'0\'></iframe><p>');$('.popover2 .modal-title').html('<?php echo $fl->file;?>');" data-toggle="modal" data-target="#docModal">
+                    <img src="<?php echo Yii::app()->createAbsoluteUrl('pdf.php');?>?pdf=<?php echo $fl->file;?>"/>
+                    <br /><?php echo $fl->file;?></a>
                 <?php
             }
             ?>
