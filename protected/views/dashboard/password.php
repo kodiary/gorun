@@ -12,7 +12,7 @@
     <hr />
       <form action="<?php echo Yii::app()->request->baseUrl;?>/dashboard/password" id="change_password" method="post">
         <div class="form-group">
-            <label class="col-md-4"><strong>Old Password:</strong></label>
+            <label class="col-md-4"><b>Old Password:</b></label>
             <div class="col-md-6"><?php echo $password;?></div>
             <div class="clearfix"></div>
         </div>

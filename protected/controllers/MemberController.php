@@ -74,9 +74,10 @@ class MemberController extends Controller
                 }
             }
             //die($cond);
+           
             if($_GET['type']=='email'|| $_GET['type'] == 'sa_identity_no')
             {
-                if($member->findByAttributes([$_GET['type']=>$_POST[$_GET['type']]],$cond))
+                if($member->findByAttributes([$_GET['type']=>$_POST[$_GET['type']][0]],$cond))
                 {
                    echo "false";
                 }
@@ -85,7 +86,8 @@ class MemberController extends Controller
             }
             else if($_GET['type']=='championchip' || $_GET['type']=='tracetec'){
                 $member = new MemberExtra;
-               if($member->findByAttributes(['type'=>$_GET['type'],'value'=>$_POST[$_GET['type']]],$cond_extra))
+               //if($member->findByAttributes(['type'=>$_GET['type'],'value'=>$_POST[$_GET['type']][0]],$cond_extra))
+               if($member->findByAttributes(['value'=>$_POST[$_GET['type']][0]],$cond_extra))
                 {
                    echo "false";
                 }

@@ -65,14 +65,15 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
             <a href="mailto:<?php echo $model->email;?>?Subject=Hello" target="_top" class="btn-submit" style="border: 2px solid #878787;color: #878787;font-size: 16px;"><i class="fa fa-envelope-o"></i> CONTACT ATHLETE</a>
             </div>
             <div class="icons follow_icons">
-                <a href="<?php echo $model->facebook;?>" target="_blank">
-                    <span class="fa fa-facebook"></span>
+                
+                <a href="<?php echo ($model->twitter!='')?$model->twitter:'javascript:void(0)';?>" <?php if($model->twitter!='')echo 'target="_blank"';?>>
+                    <span class="fa fa-twitter" style="font-size: 1.25em; <?php echo ($model->twitter=='')?'color: #c4c4c4;':'';?>"></span>
                 </a>
-                <a href="<?php echo $model->twitter;?>" target="_blank">
-                    <span class="fa fa-twitter"></span>
+                <a href="<?php echo ($model->facebook!='')?$model->facebook:'javascript:void(0)';?>" <?php if($model->facebook!='')echo 'target="_blank"';?>>
+                    <span class="fa fa-facebook" style="font-size: 1.25em; <?php echo ($model->facebook=='')?'color: #c4c4c4;':'';?>" ></span>
                 </a>
-                <a href="<?php echo $model->google;?>" target="_blank">
-                    <span class="fa fa-google-plus"></span>
+                <a href="<?php echo ($model->google!='')?$model->google:'javascript:void(0)';?>" <?php if($model->google!='')echo 'target="_blank"';?>>
+                    <span class="fa fa-google-plus" style="font-size: 1.25em; <?php echo ($model->google=='')?'color: #c4c4c4;':'';?>"></span>
                 </a>
             </div>
             <?php

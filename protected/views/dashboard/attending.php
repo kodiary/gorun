@@ -3,14 +3,13 @@
 </div>
 <div class="col-md-7 right-content profile_detail">
   <div class="col-md-12">
-        <h1>YOUR ATHLETES</h1>
-        All your athletes. Listed in alphabetical order of surname.
+        <h1>EVENTS ATTENDING</h1>
+        All your events that you showed intrest in attending
     </div>
     <div class="clearfix"></div>
     <hr />
 <?php 
 //var_dump($clubs);
-if(count($members)>0) {
 foreach($members as $member)
 {
    //echo "<pre>";
@@ -50,11 +49,6 @@ foreach($members as $member)
     </div>
     
     
-<?php
-}
-} else {
-?>
-<span class="blue col-md-12"><strong>YOU ARE FOLLOWING NO ATHLETES</strong></span>
 <?php
 }
 ?>
