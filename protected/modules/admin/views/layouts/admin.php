@@ -68,6 +68,7 @@
     <div class="admin_body_content">
     <?php
     $company_controllers=array('company','membertype','services','member/services','member/events','resources','resourcecategory','brochures','member/articles','gallery','videos','member/jobs','member/resources','statistics');
+    $members_controllers=array('members','membertype','services','member/services','member/events','resources','resourcecategory','brochures','member/articles','gallery','videos','member/jobs','member/resources','statistics');
     $club_controllers=array('club','membertype','services','member/services','member/events','resources','resourcecategory','brochures','member/articles','gallery','videos','member/jobs','member/resources','statistics');
     $events_controllers = array('events', 'eventscategory', 'eventstype', 'eventsvisitors');
     $article_controllers = array('articles', 'tags');
@@ -77,6 +78,9 @@
      
     if(in_array(Yii::app()->controller->id,$company_controllers)){?>
         <nav class='subMenu'><?php $this->widget('CompanyMainMenu');?></nav>
+    <?php
+    }elseif(in_array(Yii::app()->controller->id,$members_controllers)){?>
+        <nav class='subMenu'><?php $this->widget('MembersMenu');?></nav>
     <?php
     }elseif(in_array(Yii::app()->controller->id,$club_controllers)){?>
         <nav class='subMenu'><?php $this->widget('ClubMenu');?></nav>

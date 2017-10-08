@@ -112,6 +112,7 @@ class MembersController extends Controller
         Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.js"));
         Yii::app()->clientScript->registerCssFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.css"));
 		$member=$this->loadModel($id);
+        //var_dump($member);die();
         //$member->scenario="MemberInfo";
         //$tradinghours=Tradinghours::model()->findByAttributes(array('Member_id'=>$id));
         //if($tradinghours==null)$tradinghours= new Tradinghours();
@@ -214,6 +215,37 @@ class MembersController extends Controller
             'tradinghours'=>$tradinghours,
 		));
 	}
+    public function actionSearch()
+    {
+        $members = NULL;
+        if(isset($_GET['key']))
+        {
+            $c1 = new CDbCriteria;
+            if(isset($_GET['key']))
+            {
+                $key=trim($_GET['key']);
+                $c1->addSearchCondition('fname',$key,true,'OR');
+                $c1->addSearchCondition('lname',$key,true,'OR');
+                $c1->addSearchCondition('username',$key,true,'OR');
+                $c1->addSearchCondition('display_address',$key,true,'OR');
+                $c1->addSearchCondition('email',$key,true,'OR');
+                $c1->addSearchCondition('detail',$key,true,'OR');
+            }
+            
+         $c1->addCondition('is_verified!=0');
+         $c1->with = array ('memberLogin' => array('order'=>'memberLogin.id DESC'));   
+           
+            $members = Member::model()->findAll($c1);
+        }
+        $c = new CDbCriteria;
+        $c->condition = 'is_verified <> 0';
+        $count = Member::model()->count($c);
+        //die($count);
+        $this->render('search',array(
+            'members'=>$members,
+            'count'=>$count
+        ));
+    }
     public function actionUpdatestatus($id)
     {
        $model=$this->loadModel($id);

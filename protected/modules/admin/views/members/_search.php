@@ -1,5 +1,5 @@
 <div class="admin_search_form">
-<?php  $model=new Company;?>
+<?php  $model=new Member;?>
 <?php /** @var BootActiveForm $form */
 $form = $this->beginWidget('bootstrap.widgets.BootActiveForm', array(
     'id'=>'searchForm',

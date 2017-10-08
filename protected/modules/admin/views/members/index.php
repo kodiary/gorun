@@ -1,15 +1,15 @@
 <div class="col-md-8">
 <div class="line"></div>
-<h1>Members - <span class="blue">Manage members Here</span></h1>
+<h1>Last 21 Log-ins</h1>
 <div class="line"></div>
 
 <?php
 if(Yii::app()->controller->action->id!='newlisting')
 {
 ?>
-<ul class="admin_top_navs">
+<!--ul class="admin_top_navs">
     <li><strong>Last 21 Log-ins</strong></li>
-</ul>
+</ul-->
 <?php
 }
 else
@@ -23,7 +23,7 @@ else
 <?php
 foreach($memberlogins as $m)
 {
-    $li = "<b>".$m->member['fname']." ".$m->member['lname']."</b> - ".$m->member['email']." - <span class='blue'>Last Login ".date('d F Y * H:i',strtotime($m->login_date))."</span>";
+    $li = "<b>".$m->member['fname']." ".$m->member['lname']."</b> - ".$m->member['email']." - <a href='".$this->createUrl('members/update/id/'.$m->member['id'])."' class='blue'>Last Login ".date('d F Y * H:i',strtotime($m->login_date))."</a>";
     echo str_replace("*",'at',$li);
     echo "<hr/>";
 }
