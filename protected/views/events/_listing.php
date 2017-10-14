@@ -81,7 +81,9 @@ foreach($model as $m)
 
 </div>
 <hr />
+<?php if(count($model)>'2'){?>
 <a class="btn btn-default btn-lg loadmore">Load More</a>
+<?php }?>
 <script>
 $('.loadmore').click(function(){
    var cat =  '<?php echo $act;?>';

@@ -606,6 +606,22 @@ class EventsController extends Controller
 
 		));
 	}
+    public function actionAttending()
+	{
+        //die('here');
+        $id=Yii::app()->user->getId();
+        $condition="organiser='$id'";
+        $order='start_date DESC';      
+      
+    	$events = Events::model()->with(['attending'=>['condition'=>'attending.id='.$id]])->findAll();
+        //$memberevent = MemberEvent::model()->findAllByAttributes(['member_id'=>$id]);
+        
+        //var_dump($events);
+		$this->render('attending',array(
+			'dataProvider'=>$events,
+
+		));
+	}
 
 	/**
 	 * Manages all models.

@@ -18,9 +18,10 @@ class UserIdentity extends CUserIdentity
     {
         
         $record= Member::model()->findByAttributes(array('email'=>$this->username));
+        
         if($record===null)
             $this->errorCode=self::ERROR_USERNAME_INVALID;
-        else if($record->password!==sha1($this->password)&&$record->password!='')
+        else if($record->password!==sha1($this->password) || $record->password=='')
             $this->errorCode=self::ERROR_PASSWORD_INVALID;
         else if($record->is_verified == '0')
         {
