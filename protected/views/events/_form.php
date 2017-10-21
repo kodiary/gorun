@@ -222,8 +222,14 @@
                 <div class="form-group white">
                     <label class="col-md-12">Visibility<br /><span class="blue">Events are subject to approval before going live and visible to public.</span></label>
                     <div class="clearfix"></div>
+                    <?php
+                     if($model->submitted_at && $model->submitted_at!='CURRENT_TIMESTAMP')
+                     {
+                        ?>
+
                     <div class="col-md-12">
-                        <button type="button" class="btn btn-submitted"><span class="fa fa-check-square-o"></span> SUBMITTED <?php if($model->submitted_at)echo date("Y/m/d \a\\t H:i:s", strtotime($model->submitted_at));?></button> 
+
+                        <button type="button" class="btn btn-submitted"><span class="fa fa-check-square-o"></span> SUBMITTED <?php echo date("Y/m/d \a\\t H:i:s", strtotime($model->submitted_at));?></button> 
                     </div>
                     <?php 
                     if($model->visible)
@@ -239,6 +245,9 @@
                         <button type="button" class="btn btn-pending"><span class="fa fa-clock-o"></span> PENDING APPROVAL</button> 
                     </div>
                     <div class="clearfix"></div>
+                    <?php
+                     }
+                    ?>
                     <?php }?>
                 </div>
                 <?php 
@@ -247,10 +256,9 @@
                         ?>
                 <div class="submit_group">
                     <div class="col-md-6">
-                        <strong>PLEASE NOTE: Submitting and event requires our approval before it will be displayed live.</strong>
+                        <strong>PLEASE NOTE: Submitting an event requires our approval before it will be displayed live.</strong>
                     </div>
-                    <div class="col-md-6">
-                        <button type="submit" href="javascript:void(0)" class="btn btn-submit">SUBMIT FOR APPROVAL</button>
+                    <div class="col-md-6"><button type="submit" class="btn btn-submit">SUBMIT FOR APPROVAL</button>
                     </div>
                     <div class="clearfix"></div>
                 </div>  
@@ -265,7 +273,7 @@
                         <a href="" class="btn btn-sm btn-danger">Delete</a>
                     </div>
                     <div class="col-md-6">
-                        <button type="submit" href="javascript:void(0)" class="btn btn-submit">SUBMIT AND SAVE CHANGE</button>
+                        <button type="submit" class="btn btn-submit">SUBMIT AND SAVE CHANGE</button>
                     </div>
                     <div class="clearfix"></div>
                 </div>  

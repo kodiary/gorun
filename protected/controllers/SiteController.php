@@ -1,35 +1,35 @@
 <?php
 class SiteController extends Controller
 {
-	/**
-	 * Declares class-based actions.
-	 */
- 	public $layout='column2';
+    /**
+     * Declares class-based actions.
+     */
+    public $layout='column2';
     public $metaDesc;
     public $metaKeys;
-	public function actions()
-	{
-		return array(
-			// captcha action renders the CAPTCHA image displayed on the contact page
-			'captcha'=>array(
-				'class'=>'CCaptchaAction',
-				'backColor'=>0xFFFFFF,
-			),
-			// page action renders "static" pages stored under 'protected/views/site/pages'
-			// They can be accessed via: index.php?r=site/page&view=FileName
-			'page'=>array(
-				'class'=>'CViewAction',
-			),
-		);
-	}
+    public function actions()
+    {
+        return array(
+            // captcha action renders the CAPTCHA image displayed on the contact page
+            'captcha'=>array(
+                'class'=>'CCaptchaAction',
+                'backColor'=>0xFFFFFF,
+            ),
+            // page action renders "static" pages stored under 'protected/views/site/pages'
+            // They can be accessed via: index.php?r=site/page&view=FileName
+            'page'=>array(
+                'class'=>'CViewAction',
+            ),
+        );
+    }
 
-	
-	/**
-	 * This is the default 'index' action that is invoked
-	 * when an action is not explicitly requested by users.
-	 */
-		public function actionIndex()
-    	{
+    
+    /**
+     * This is the default 'index' action that is invoked
+     * when an action is not explicitly requested by users.
+     */
+        public function actionIndex()
+        {
            $seo=CommonClass::getSeoByPage('home-page');
            $this->metaDesc=$seo['desc'];
            $this->metaKeys=$seo['keys'];
@@ -51,31 +51,28 @@ class SiteController extends Controller
 
            $sliders = Slideshow::model()->findAll(array('order'=>'display_order ASC'));
            $model = Contents::model()->getBySlug('home-page');
-           
-           $events = Events::model()->findAllByAttributes(array('visible'=>1),array('order'=>'id desc','limit'=>10));
-                      
            $criteria = new CDbCriteria;
-           $criteria->addCondition('t.is_approved=1 AND t.visible=1 AND publish_date<=CURDATE()');
-           $criteria->order = 't.publish_date DESC,t.id DESC'; 
-           $criteria->limit=10;
-
-           $articlesData = new CActiveDataProvider('Articles', array('criteria'=>$criteria, 'pagination'=>false));
-           $this->render('index', array('model'=>$model, 'sliders'=>$sliders, 'articlesData'=>$articlesData, 'patronslider'=>$patronslider,'events'=>$events));
+           $criteria->condition="visible=1 AND start_date>=CURDATE()";
+           $criteria->order='id DESC';
+           $criteria->limit = 10;
+           $events = Events::model()->findAll($criteria);  
+           
+           $this->render('index', array('model'=>$model, 'sliders'=>$sliders, 'patronslider'=>$patronslider,'events'=>$events));
         }
 
-	/**
-	 * This is the action to handle external exceptions.
-	 */
-	public function actionError()
-	{
-	    if($error=Yii::app()->errorHandler->error)
-	    {
-	    	if(Yii::app()->request->isAjaxRequest)
-	    		echo $error['message'];
-	    	else
-	        	$this->renderPartial('error', $error);
-	    }
-	}
+    /**
+     * This is the action to handle external exceptions.
+     */
+    public function actionError()
+    {
+        if($error=Yii::app()->errorHandler->error)
+        {
+            if(Yii::app()->request->isAjaxRequest)
+                echo $error['message'];
+            else
+                $this->renderPartial('error', $error);
+        }
+    }
     //load the google doc in external page
     public function actionMenu($url, $title,$filename)
     {
@@ -221,8 +218,8 @@ class SiteController extends Controller
          }
     }
     
-	public function actionSupplierList()
-	{
+    public function actionSupplierList()
+    {
         if(isset($_GET['page']))
         {
             $this->pageTitle="Page ".$_GET['page'].": ".$this->pageTitle;    

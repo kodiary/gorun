@@ -2,60 +2,60 @@
 
 class EventsController extends Controller
 {
-	/**
-	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
-	 * using two-column layout. See 'protected/views/layouts/column2.php'.
-	 */
-	public $layout='column2';
+    /**
+     * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
+     * using two-column layout. See 'protected/views/layouts/column2.php'.
+     */
+    public $layout='column2';
 
-	/**
-	 * @return array action filters
-	 */
-	public function filters()
-	{
-	   return array(
-			'accessControl', // perform access control for CRUD operations
-		);
-	}
+    /**
+     * @return array action filters
+     */
+    public function filters()
+    {
+       return array(
+            'accessControl', // perform access control for CRUD operations
+        );
+    }
 
-	/**
-	 * Specifies the access control rules.
-	 * This method is used by the 'accessControl' filter.
-	 * @return array access control rules
-	 */
-	public function accessRules()
-	{
-	   $for = array('create','update','delete');
+    /**
+     * Specifies the access control rules.
+     * This method is used by the 'accessControl' filter.
+     * @return array access control rules
+     */
+    public function accessRules()
+    {
+       $for = array('create','update','delete');
        
-	   if(in_array(Yii::app()->controller->action->id,$for)){
-		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'users'=>array('@'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
-		);
+       if(in_array(Yii::app()->controller->action->id,$for)){
+        return array(
+            array('allow',  // allow all users to perform 'index' and 'view' actions
+                'users'=>array('@'),
+            ),
+            array('deny',  // deny all users
+                'users'=>array('*'),
+            ),
+        );
         }
         else
         {
             return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'users'=>array('@'),
-			)
-		);
+            array('allow',  // allow all users to perform 'index' and 'view' actions
+                'users'=>array('@'),
+            )
+        );
         }
         
-	}
+    }
 
-	/**
-	 * Displays a particular model.
-	 * @param integer $id the ID of the model to be displayed
-	 */
-	public function actionView($slug)
-	{
-	   //die('here');
-	   $e = Events::model()->findByAttributes(array('slug'=>$slug));
+    /**
+     * Displays a particular model.
+     * @param integer $id the ID of the model to be displayed
+     */
+    public function actionView($slug)
+    {
+       //die('here');
+       $e = Events::model()->findByAttributes(array('slug'=>$slug));
        if(Yii::app()->user->id)
        $rating = Review::model()->findByAttributes(array('event_id'=>$e->id,'user_id'=>Yii::app()->user->id));
        else
@@ -114,8 +114,8 @@ class EventsController extends Controller
        }
        }
        $etime = EventsTime::model()->findAllByAttributes(array('event_id'=>$e->id));
-		$this->render('detail',array(
-			'model'=>$this->loadModel($e->id),
+        $this->render('detail',array(
+            'model'=>$this->loadModel($e->id),
             'm_type'=>$et,
             'm_time'=>$etime,
             'past'=>$past,
@@ -129,24 +129,24 @@ class EventsController extends Controller
             'members'=>Member::model(),
             'pics'=>ReviewPics::model(),
             'files'=>EventsFile::model()
-		));
+        ));
         
-	}
+    }
     
     
 
-	/**
-	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 */
-	public function actionCreate($id=0)
-	{
-	   //$created_by=Yii::app()->user->getId();
-		//var_dump($_POST['EventsTime']);die();
+    /**
+     * Creates a new model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     */
+    public function actionCreate($id=0)
+    {
+       //$created_by=Yii::app()->user->getId();
+        //var_dump($_POST['EventsTime']);die();
         
                
-		// Uncomment the following line if AJAX validation is needed
-		//$this->performAjaxValidation($model);
+        // Uncomment the following line if AJAX validation is needed
+        //$this->performAjaxValidation($model);
         Yii::app()->clientScript->registerScriptFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.js"));
         Yii::app()->clientScript->registerCssFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.css"));
         //Yii::app()->clientScript->registerScript('init','initialize();',CClientScript::POS_LOAD);
@@ -167,13 +167,13 @@ class EventsController extends Controller
         
         
         
-		if(isset($_POST['Events']['title']))
-		{
-		  $model->created_by = Yii::app()->user->id;
+        if(isset($_POST['Events']['title']))
+        {
+          $model->created_by = Yii::app()->user->id;
           $model->submitted_at = date('Y-m-d H:i:s');
           if(!$id)
           $model->visible=0;
-		   foreach($_POST['Events'] as $k=>$p)
+           foreach($_POST['Events'] as $k=>$p)
            {
             if($k == 'start_date' || $k == 'end_date')
             $model->$k = date('Y-m-d', strtotime($p));
@@ -188,7 +188,7 @@ class EventsController extends Controller
             //  = get_province($arr);
             $model->province = $this->get_province($array);
            }
-		   
+           
            
            
            //getSlug
@@ -219,7 +219,7 @@ class EventsController extends Controller
            }
            
                   
-			if($model->save())
+            if($model->save())
             {   
                 
                 $id = $model->id;
@@ -285,25 +285,25 @@ class EventsController extends Controller
                                 $this->sendEventEmail($model->title,$model->slug,$model->created_by);
                                 $this->sendAdminEventEmail($model->title,$model->slug,$model->id);
                             }
-				$this->redirect(array('index'));
+                $this->redirect(array('index'));
             }
             else
             {
                 var_dump($model);
             }   
-		}
+        }
         
-		$this->render('create',array(
-			'model'=>$model,'event_type'=>$event_type
-		));
-	}
+        $this->render('create',array(
+            'model'=>$model,'event_type'=>$event_type
+        ));
+    }
     
    
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-	 */
+    /**
+     * Updates a particular model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id the ID of the model to be updated
+     */
     public function sendEventEmail($title='',$slug='',$user_id='')
     {
         $mem = Member::model()->findByPk($user_id);
@@ -361,11 +361,11 @@ class EventsController extends Controller
             Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - The event has been declined!');
             $this->redirect(array('/'));
     }
-	public function actionUpdate($id)
-	{
-	   //get company id
+    public function actionUpdate($id)
+    {
+       //get company id
         $company_id=Yii::app()->user->getId();
-		
+        
         //get event id
         $model=$this->loadModel($id);
        
@@ -390,9 +390,9 @@ class EventsController extends Controller
             $events_link=new EventsLink;
         }
         
-		if(isset($_POST['Events']))
-		{
-			$model->attributes=$_POST['Events'];
+        if(isset($_POST['Events']))
+        {
+            $model->attributes=$_POST['Events'];
             $model->start_date = date('Y-m-d', strtotime($_POST['Events']['start_date']));
             $model->end_date = date('Y-m-d', strtotime($_POST['Events']['end_date']));
             $model->organiser=$company_id;
@@ -483,12 +483,12 @@ class EventsController extends Controller
             Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - The event has been updated successfully!');
             $this->redirect(array('update','id'=>$model->id));
             }  
-		}
+        }
         
-		$this->render('create',array(
-			'model'=>$model,'venue'=>$venue,'events_link' =>$events_link
-		));
-	}
+        $this->render('create',array(
+            'model'=>$model,'venue'=>$venue,'events_link' =>$events_link
+        ));
+    }
 
     public function actionEvent_time()
     {
@@ -505,39 +505,39 @@ class EventsController extends Controller
         ));        
     }
 
-	/**
-	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
-	 * @param integer $id the ID of the model to be deleted
-	 */
-	public function actionDelete($id)
-	{
+    /**
+     * Deletes a particular model.
+     * If deletion is successful, the browser will be redirected to the 'admin' page.
+     * @param integer $id the ID of the model to be deleted
+     */
+    public function actionDelete($id)
+    {
        //echo $id;die();
-		if($id)//Yii::app()->request->isPostRequest)
-		{
-			// we only allow deletion via POST request
+        if($id)//Yii::app()->request->isPostRequest)
+        {
+            // we only allow deletion via POST request
             Venues::model()->deleteAllByAttributes(array('event_id'=>$id));
             Organisers::model()->deleteAllByAttributes(array('event_id'=>$id));
             EventsTime::model()->deleteAllByAttributes(array('event_id'=>$id)); 
             EventsLink::model()->deleteAllByAttributes(array('event_id'=>$id));
             $this->actionDeleteImages($id);
             $this->actionDeleteDocuments($id);
-			$this->loadModel($id)->delete();
+            $this->loadModel($id)->delete();
 
-			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+            // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
             Yii::app()->user->setFlash('success', '<strong>SUCCESS</strong> - The event has been deleted successfully!'); 
-			
+            
             if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('/company/events/'));
-		}
-		else
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
-	}
+                $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('/company/events/'));
+        }
+        else
+            throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+    }
 
     public function actionDeleteImages($id)
-	{
-		if($id)
-		{
+    {
+        if($id)
+        {
             $filepath = Yii::app()->basePath.'/../images/frontend/';
             $temppath = Yii::app()->basePath.'/../images/temp/';
             
@@ -563,14 +563,14 @@ class EventsController extends Controller
                 }
             }
         }
-		else
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
-	}
+        else
+            throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+    }
 
     public function actionDeleteDocuments($id)
-	{
-		if($id)
-		{
+    {
+        if($id)
+        {
             $filepath = Yii::app()->basePath.'/../documents/';
             $temppath = Yii::app()->basePath.'/../documents/temp/';
             
@@ -586,64 +586,64 @@ class EventsController extends Controller
                 }
             }
         }
-		else
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
-	}
+        else
+            throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+    }
     
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
+    /**
+     * Lists all models.
+     */
+    public function actionIndex()
+    {
         //die('here');
         $id=Yii::app()->user->getId();
         $condition="organiser='$id'";
         $order='start_date DESC';      
       
-    	$events = Events::model()->findAllByAttributes(array('created_by'=>$id),array('order'=>'id desc'));
-		$this->render('index',array(
-			'dataProvider'=>$events,
+        $events = Events::model()->findAllByAttributes(array('created_by'=>$id),array('order'=>'id desc'));
+        $this->render('index',array(
+            'dataProvider'=>$events,
 
-		));
-	}
+        ));
+    }
 
-	/**
-	 * Manages all models.
-	 */
-	public function actionAdmin()
-	{
-		$model=new Events('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Events']))
-			$model->attributes=$_GET['Events'];
+    /**
+     * Manages all models.
+     */
+    public function actionAdmin()
+    {
+        $model=new Events('search');
+        $model->unsetAttributes();  // clear any default values
+        if(isset($_GET['Events']))
+            $model->attributes=$_GET['Events'];
 
-		$this->render('admin',array(
-			'model'=>$model,
-		));
-	}
+        $this->render('admin',array(
+            'model'=>$model,
+        ));
+    }
 
-	/**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer the ID of the model to be loaded
-	 */
-	public function loadModel($id)
-	{
-		$model=Events::model()->findByPk($id);
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
-		return $model;
-	}
+    /**
+     * Returns the data model based on the primary key given in the GET variable.
+     * If the data model is not found, an HTTP exception will be raised.
+     * @param integer the ID of the model to be loaded
+     */
+    public function loadModel($id)
+    {
+        $model=Events::model()->findByPk($id);
+        if($model===null)
+            throw new CHttpException(404,'The requested page does not exist.');
+        return $model;
+    }
     
     function actionCropLogo()
     {
         if($_POST['fileName']!="")
         {
             Yii::app()->clientScript->scriptMap=array(
-        	   (YII_DEBUG ?  'jquery.js':'jquery.min.js')=>false,
-        	);
-        	$imageUrl = Yii::app()->baseUrl.'/images/temp/original/'. $_POST['fileName'];
-        	$this->renderPartial('_cropImg', array('imageUrl'=>$imageUrl,'image'=>$_POST['fileName']), false, true);
+               (YII_DEBUG ?  'jquery.js':'jquery.min.js')=>false,
+            );
+            $imageUrl = Yii::app()->baseUrl.'/images/temp/original/'. $_POST['fileName'];
+            $this->renderPartial('_cropImg', array('imageUrl'=>$imageUrl,'image'=>$_POST['fileName']), false, true);
          }
          else
             echo "";
@@ -768,18 +768,18 @@ class EventsController extends Controller
         }
     }        
     
-	/**
-	 * Performs the AJAX validation.
-	 * @param CModel the model to be validated
-	 */
-	protected function performAjaxValidation($model)
-	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='events-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
-	}
+    /**
+     * Performs the AJAX validation.
+     * @param CModel the model to be validated
+     */
+    protected function performAjaxValidation($model)
+    {
+        if(isset($_POST['ajax']) && $_POST['ajax']==='events-form')
+        {
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
+        }
+    }
     
     public function actionLoadVenueForm()
     {
