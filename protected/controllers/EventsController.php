@@ -968,7 +968,13 @@ class EventsController extends Controller
     {
         $offset = $_POST['offset'];
         $cat = $_POST['cat'];
-        $model = Events::model()->findAllByAttributes(array('event_cat'=>$cat,'visible'=>1),array('order'=>'id desc','limit'=>10,'offset'=>$offset));
+        $criteria = new CDbCriteria;
+           $criteria->condition="visible=1 AND start_date>=CURDATE() AND event_cat = ".$cat;
+           $criteria->order='id DESC';
+           $criteria->limit = 10;
+           $criteria->offset = $offset;
+           $model = Events::model()->findAll($criteria);  
+        //$model = Events::model()->findAllByAttributes(array('event_cat'=>$cat,'visible'=>1),array('order'=>'id desc','limit'=>10,'offset'=>$offset));
         //var_dump($all_review);
         $this->renderPartial('application.views.events._ajax_listing',array(
             'model'=>$model
@@ -1143,7 +1149,6 @@ class EventsController extends Controller
     }
     else
     $events= array();
-        //var_dump($events);die();
         $this->renderPartial('/events/_calendar_list',array('events'=>$events,'et'=>EventsTime::model())); 
     }
     public function actionLoadBoard()
