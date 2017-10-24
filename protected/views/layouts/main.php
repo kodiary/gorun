@@ -94,6 +94,15 @@ if (!empty($this->metaKeys)) {
   });
  });
    function checkLoginState() {
+    FB.login(function(response) {
+            if (response.authResponse) {
+                //resolve(response.authResponse.accessToken);
+                 testAPI();
+            } else {
+             console.log('User cancelled login or did not fully authorize.');
+            }
+            },{'scope':'email',return_scopes: true}
+        );
   FB.getLoginStatus(function(response) {
     
     statusChangeCallback(response);
