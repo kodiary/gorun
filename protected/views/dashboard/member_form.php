@@ -210,6 +210,7 @@
                 $img_url=Yii::app()->baseUrl.'/images/frontend/thumb/'.$member->logo;
                 
             }
+            //$img_url = "http://graph.facebook.com/10213416817447407/picture?type=large";
             echo '<img src="'.$img_url.'" class="img-circle" width="100%" height="100%"/>';
             ?>
                 

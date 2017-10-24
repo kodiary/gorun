@@ -54,6 +54,12 @@ class DefaultController extends Controller {
                     $user->email = $_GET['email'];
                     $user->fname = $_GET['first_name'];
                     $user->lname = $_GET['last_name'];
+                    $filename = time().".jpg";
+                    @copy('http://graph.facebook.com/'.$_GET['fid'].'/picture?height=720&width=720', Yii::app()->basePath.'/../images/frontend/full/'.$filename);
+                    @copy('http://graph.facebook.com/'.$_GET['fid'].'/picture?height=340&width=240', Yii::app()->basePath.'/../images/frontend/main/'.$filename);
+                    @copy('http://graph.facebook.com/'.$_GET['fid'].'/picture?height=215&width=215', Yii::app()->basePath.'/../images/frontend/thumb/'.$filename);
+                    
+                    $user->logo = $filename;
                     $user->is_verified = 2;
                     $user->gender = ($_GET['gender']=='male')?"1":"0";
                     //$user->dob = $user_profile->birthYear."-".$user_profile->birthMonth."-".$user_profile->birthDay;

@@ -66,8 +66,84 @@ if (!empty($this->metaKeys)) {
 </head>
 
 <body>
+<div id="preloader"></div>
+<style>
+#preloader { display:none;position: fixed;
+     left: 0; top: 0; z-index: 999999; width: 100%; height: 100%;
+     overflow: visible; opacity:0.6;
+     background: #333 url('<?php echo Yii::app()->request->baseUrl; ?>/images/main-loading.gif') no-repeat center center; }
+</style>
 <script>
+ var FB;
+    $(document).ready(function() {
+        
+  $.ajaxSetup({ cache: true });
+  $.getScript('//connect.facebook.net/en_US/sdk.js', function(){
+    FB.init({
+        <?php if($_SERVER['SERVER_NAME'] == 'localhost'){?>
+      appId      : '1311325642274761',
+      <?php }else{?>
+      appId      : '1778078242453264',
+      <?php }?>
+      xfbml      : true,
+      oauth      : true,
+      version: 'v2.8' // or v2.1, v2.2, v2.3, ...
+    });     
     
+    
+  });
+ });
+   function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+    
+    statusChangeCallback(response);
+  });
+}
+
+function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+      testAPI();
+    } else {
+
+        FB.login(function(response) {
+            if (response.authResponse) {
+                //resolve(response.authResponse.accessToken);
+                 testAPI();
+            } else {
+             console.log('User cancelled login or did not fully authorize.');
+            }
+            },{'scope':'email',return_scopes: true}
+        );
+
+    }
+  }
+  function testAPI() {
+    $('#preloader').show();
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me?fields=email,name,first_name,last_name,gender', function(response) {
+        console.log(response);
+        
+        $.ajax({
+            type: 'post',
+            url: '<?php echo Yii::app()->request->baseUrl; ?>/hybridauth/default/fblogin?provider=facebook&fid='+response.id+
+                    '&email='+response.email+'&gender='+response.gender+'&first_name='+response.first_name+'&last_name='+response.last_name,
+            success: function(msg){
+                //alert(msg);
+               window.location.href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard";
+            }
+        })
+      //console.log(response);
+    
+    });
+  }
+/*
   window.fbAsyncInit = function() {
     FB.init({
       <?php 
@@ -92,53 +168,8 @@ if (!empty($this->metaKeys)) {
      js.src = "//connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
-   function checkLoginState() {
-  FB.getLoginStatus(function(response) {
-    
-    statusChangeCallback(response);
-  });
-}
-
-function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
-    // The response object is returned with a status field that lets the
-    // app know the current login status of the person.
-    // Full docs on the response object can be found in the documentation
-    // for FB.getLoginStatus().
-    if (response.status === 'connected') {
-      // Logged into your app and Facebook.
-      testAPI();
-    } else {
-
-        FB.login(function(response) {
-
-        if (response.authResponse) {
-         testAPI();
-    } else {
-     console.log('User cancelled login or did not fully authorize.');
-    }
-});
-
-    }
-  }
-  function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me?fields=email,name,first_name,last_name,gender', function(response) {
-        
-        $.ajax({
-            type: 'post',
-            url: '<?php echo Yii::app()->request->baseUrl; ?>/hybridauth/default/fblogin?provider=facebook&fid='+response.id+
-                    '&email='+response.email+'&gender='+response.gender+'&first_name='+response.first_name+'&last_name='+response.last_name,
-            success: function(msg){
-                //alert(msg);
-               window.location.href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard";
-            }
-        })
-      //console.log(response);
-    
-    });
-  }
+   
+  */
 </script>
 
 <div id="status">
