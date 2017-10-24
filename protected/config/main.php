@@ -27,7 +27,7 @@ else
 			'password' => 'Anwar123!',
 			'charset' => 'utf8',
 		);
-        $hauth = 'http://'.$_SERVER['HTTP_HOST'].'/dev2/hybridauth/';
+        $hauth = 'http://'.$_SERVER['HTTP_HOST'].'/dev2/hybridauth';
         $id = '1372855559472761';
         $secret = 'c73e3a464b620457f19ea7ec32990e07';
         $preload = array('bootstrap');
