@@ -145,6 +145,7 @@ function statusChangeCallback(response) {
 </div>
 <?php $this->widget('application.extensions.email.debug'); ?>
 <div class="wrapper">
+    <div class="headerbg">
     <div class="header">
         <a class="logo" href="<?php echo Yii::app()->request->baseUrl; ?>">
             <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo.png" alt="LOGO" />
@@ -209,6 +210,7 @@ function statusChangeCallback(response) {
         <div class="clearfix"></div>
         
         
+    </div>
     </div>
     <div class="mainnav">
         <ul class="anchors">
