@@ -42,8 +42,8 @@
 	<?php echo CHtml::hiddenField('cropID');?>
 	<?php echo CHtml::hiddenField('cropX','0');?>
 	<?php echo CHtml::hiddenField('cropY', '0');?>
-	<?php echo CHtml::hiddenField('cropW', '980');?>
-	<?php echo CHtml::hiddenField('cropH', '270');?>
+	<?php echo CHtml::hiddenField('cropW', '800');?>
+	<?php echo CHtml::hiddenField('cropH', '340');?>
     
     
 	<?php $this->widget('ext.jcrop.jCropWidget',array(
@@ -53,12 +53,12 @@
     	'formElementWidth'=>'cropW',
     	'formElementHeight'=>'cropH',
     	'jCropOptions'=>array(
-        	'aspectRatio'=>3.6296, 
-        	'boxWidth'=>600,
+        	'aspectRatio'=>2.353, 
+        	'boxWidth'=>800,
         	//'boxHeight'=>350,
-            'minSize'=> array(255,70),
-            'maxSize'=> array(980,270),
-        	'setSelect'=>array(0, 0, 980, 270),
+            'minSize'=> array(200,85),
+            'maxSize'=> array(800,340),
+        	'setSelect'=>array(0, 0, 800, ),
     	),
 	)
 	);

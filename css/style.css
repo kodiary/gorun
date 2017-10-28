@@ -247,7 +247,7 @@ ul.floating_lists li{margin-bottom:10px;}
 .crop_img_sec{border:1px solid #CCC; background:#FFF;  overflow:hidden;}
 .crop_img_sec img{width:auto; height:auto;}
 
-.ui-widget-content{background:none!important; border:0!important;}
+.ui-widget-content{background:none!important; border:0!important; z-index:9!important}
 .ui-dialog-titlebar{background:none!important; border:0!important;}
 /*.ui-widget-header .ui-icon{background:url(../images/cancel_button.png) no-repeat!important; width:35px; height:35px;}*/
 a.ui-dialog-titlebar-close{width:35px!important; height:35px!important; z-index:99999; top:35px!important; display:none!important;}

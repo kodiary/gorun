@@ -100,11 +100,11 @@ $transitionArray = array(
   
   <?php echo CHtml::activeLabel($modelImages, "[$index]target", array('class'=>'fl_left sliderLinklabel'));?>
   <?php echo CHtml::activeDropDownList($modelImages, "[$index]target", array(0=>'Same Window', 1=>'New Window'));?>
-  <span class='fl_right sliderclicks'><?php echo Slideshow::countClicks($index);?> Clicks </span>
+  <!--span class='fl_right sliderclicks'><?php echo Slideshow::countClicks($index);?> Clicks </span-->
   <div class="clear"></div>
   
     <!--new customized slider changes-->
-    <div class="margintopbot10 image_option">
+    <!--div class="margintopbot10 image_option">
         <?php echo CHtml::activeLabel($modelImages, "[$index]transition", array('class'=>'fl_left'));?>
         <?php echo CHtml::activeDropDownList($modelImages, "[$index]transition", $transitionArray);?>
         <div class="clear"></div>
@@ -116,7 +116,7 @@ $transitionArray = array(
         <?php echo CHtml::error($modelImages, "[$index]slot_amount");?>
         <div class="erroSlotAmount"></div>
         <div class="clear"></div>
-    </div>               
+    </div-->               
     <!--new customized slider changes-->
   
   <div id="cropImg" style="display:none;"></div>

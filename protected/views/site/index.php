@@ -4,16 +4,23 @@
         <div class="col-md-9 right-content">
             <div class="banner">
                 <ul id="slippry-demo">
-                  <li>
-                    <a href="#slide1"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/banner.jpg" alt="#test title" /></a>
-                    <div class="sl-desc-wrap">
-                        <div class="sl-desc">It's Free To Join!</div>
-                    </div>
-                    <div class="btn-wrap">
-                        <a href="#" class="btn btn-primary bright">View More</a>
-                    </div>
-                  </li>
-                  <li>
+                <?php
+                    foreach($sliders  as $k=>$slider){?>
+                
+                      <li>
+                        <a href="#slide<?php echo $k;?>">
+                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/frontend/main/<?php echo $slider['image'];?>" alt="#<?php echo $slider['caption'];?>" /></a>
+                        <div class="sl-desc-wrap">
+                            <div class="sl-desc"><?php echo $slider['sub_caption'];?></div>
+                        </div>
+                        <?php if($slider['slide_link']!=''){?>
+                        <div class="btn-wrap">
+                            <a href="<?php echo $slider['slide_link'];?>" class="btn btn-primary bright" <?php echo ($slider['target'])?"target='_blank'":"";?>>View More</a>
+                        </div>
+                        <?php }?>
+                      </li>
+                  <?php }?>
+                  <!--li>
                     <a href="#slide2"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/banner.jpg" alt="#test title" /></a>
                     <div class="sl-desc-wrap">
                         <div class="sl-desc">It's Free To Join!</div>
@@ -30,7 +37,7 @@
                     <div class="btn-wrap">
                         <a href="#" class="btn btn-primary bright">View More</a>
                     </div>
-                  </li>
+                  </li-->
                 </ul>
 
                 

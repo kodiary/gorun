@@ -50,7 +50,7 @@ class Slideshow extends CActiveRecord
 			array('slide_link, image, caption, sub_caption, target, display_order, count_click', 'safe'),
 			array('target, display_order, count_click, slot_amount', 'numerical', 'integerOnly'=>true),
 			array('slide_link, image', 'length', 'max'=>100),
-            array('slide_link', 'url', 'defaultScheme' => 'http'),
+            //array('slide_link', 'url', 'defaultScheme' => 'http'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, slide_link, image, caption, sub_caption, target, display_order, count_click', 'safe', 'on'=>'search'),

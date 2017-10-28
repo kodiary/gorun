@@ -102,24 +102,24 @@ $transitionArray = array(
         <div class="image_option">
         <?php echo CHtml::activeLabel($modelImages, "[$index]target", array('class'=>'fl_left sliderLinklabel'));?>
         <?php echo CHtml::activeDropDownList($modelImages, "[$index]target", array(0=>'Same Window', 1=>'New Window'));?>
-        <span class="fl_right sliderclicks">0 Clicks</span>
+        <!--span class="fl_right sliderclicks">0 Clicks</span-->
         <div class="clear"></div>
         </div>
         
         <!--new customized slider changes-->
-        <div class="margintopbot10 image_option">
+        <!--div class="margintopbot10 image_option">
             <?php echo CHtml::activeLabel($modelImages, "[$index]transition", array('class'=>'fl_left'));?>
             <?php echo CHtml::activeDropDownList($modelImages, "[$index]transition", $transitionArray);?>
             <div class="clear"></div>
-        </div>
+        </div-->
         
-        <div class="margintopbot10 slideLink">
+        <!--div class="margintopbot10 slideLink">
             <?php echo CHtml::activeLabel($modelImages, "[$index]slot_amount", array('class'=>'fl_left sliderLinklabel'));?>
             <?php echo CHtml::activeTextField($modelImages, "[$index]slot_amount", array('class'=>'span1 slot_amount'));?>
             <?php echo CHtml::error($modelImages, "[$index]slot_amount");?>
             <div class="erroSlotAmount"></div>
             <div class="clear"></div>
-        </div>               
+        </div-->               
         <!--new customized slider changes--> 
 
         <div class="clear"></div>
