@@ -61,6 +61,8 @@ if (!empty($this->metaKeys)) {
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.Jcrop.min.js"></script>
     
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/slippery/dist/slippry.min.js"></script>
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/slippery/dist/slippry.css" />
     
     
 </head>

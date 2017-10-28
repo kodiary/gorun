@@ -3,13 +3,48 @@
         </div>
         <div class="col-md-9 right-content">
             <div class="banner">
-                <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/banner.jpg" />
+                <ul id="slippry-demo">
+                  <li>
+                    <a href="#slide1"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/banner.jpg" alt="#test title" /></a>
+                    <div class="sl-desc-wrap">
+                        <div class="sl-desc">It's Free To Join!</div>
+                    </div>
+                    <div class="btn-wrap">
+                        <a href="#" class="btn btn-primary bright">View More</a>
+                    </div>
+                  </li>
+                  <li>
+                    <a href="#slide2"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/banner.jpg" alt="#test title" /></a>
+                    <div class="sl-desc-wrap">
+                        <div class="sl-desc">It's Free To Join!</div>
+                    </div>
+                    <div class="btn-wrap">
+                        <a href="#" class="btn btn-primary bright">View More</a>
+                    </div>
+                  </li>
+                  <li>
+                    <a href="#slide3"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/banner.jpg" alt="#test title" /></a>
+                    <div class="sl-desc-wrap">
+                        <div class="sl-desc">It's Free To Join!</div>
+                    </div>
+                    <div class="btn-wrap">
+                        <a href="#" class="btn btn-primary bright">View More</a>
+                    </div>
+                  </li>
+                </ul>
+
+                
             </div>
             <?php echo $this->renderPartial('/events/_listing',['model'=>$events]); ?>
             
             
         </div>
         <div class="clearfix"></div>
+        <script type="text/javascript">
+            $(function(){
+                jQuery('#slippry-demo').slippry()
+            })
+        </script>
 <?php /*$this->breadcrumbs=array('Welcome to the exhibition and event association of southern africa');?>
 <div id="fb-root"></div>
  <?php
