@@ -71,22 +71,27 @@ class SlideshowController extends Controller
         Yii::app()->clientScript->registerCssFile(Yii::app()->assetManager->publish(Yii::app()->basePath."/../js/fileuploader.css"));
         if(isset($_POST['Slideshow']))
         {
+            //var_dump($_POST['Slideshow']); die();
             Slideshow::model()->deleteAll();
 			foreach($_POST['Slideshow'] as $imageData)
 			{
+			     
                 $modelImages = new Slideshow();
                 $modelImages->attributes=$imageData;
+                //var_dump($modelImages); die();
                 if($modelImages->image!="")
                 {
                        if(Yii::app()->file->set('images/temp/full/'.$modelImages->image)->exists)
                        {
                             $full = Yii::app()->file->set('images/temp/full/'.$modelImages->image);
                             $full->copy(Yii::app()->basePath.'/../images/frontend/full/'.$modelImages->image);
+                            $full->delete();
                        }
                        if(Yii::app()->file->set('images/temp/main/'.$modelImages->image)->exists)
                        {
                             $full = Yii::app()->file->set('images/temp/main/'.$modelImages->image);
                             $full->copy(Yii::app()->basePath.'/../images/frontend/main/'.$modelImages->image);
+                            $full->delete();
                        }              
                        if(Yii::app()->file->set('images/temp/thumb/'.$modelImages->image)->exists)
                        {
@@ -94,9 +99,15 @@ class SlideshowController extends Controller
                             $thumb->copy(Yii::app()->basePath.'/../images/frontend/thumb/'.$modelImages->image);
                             $thumb->delete();
                        }
-                    $modelImages->display_order = Slideshow::displayMax();
+                    $modelImages->display_order = Slideshow::model()->displayMax();
+                    //var_dump($modelImages); 
     				if($modelImages->save())
+                    {
+                        //echo $modelImages->id;
                         $success = 1;
+                        unset($modelImages);
+                    }
+                        
                 }
 			}
              if($success==1) Yii::app()->user->setFlash('success', '<strong>Success!</strong> Slider updated successfully.');
@@ -136,7 +147,7 @@ class SlideshowController extends Controller
              $file=$folder.$result['filename'];
              $result['imageFull']=Yii::app()->baseUrl.'/images/temp/full/'.$result['filename'];
              list($fwidth,$fheight)=getimagesize($folder.$result['filename']);
-             if($fwidth<980 || $fheight<269)
+             if($fwidth<800 || $fheight<340)
                 {
                     $result['errorSize']=true;
                     $result['errorMsg']="Image Size Error - You must upload atleast 980x270 image!";
@@ -152,6 +163,11 @@ class SlideshowController extends Controller
                 foreach($resize_detail as $resize_item)
                 {
                     list($width,$height) = getimagesize($file);
+                    if($resize_item['width']=='' && $resize_item['height']=='')
+                    {
+                        $resize_item['width'] = $width;
+                        $resize_item['height'] = $height;
+                    }
                     list($resize_width,$resize_height)=CommonClass::get_resized_width_height($width, $height,$resize_item);
                     if($width < $resize_item["width"])
                     {
@@ -199,7 +215,12 @@ class SlideshowController extends Controller
         Yii::app()->clientScript->scriptMap=array(
             (YII_DEBUG ?  'jquery.js':'jquery.min.js')=>false,
         );
-    	$imageUrl = Yii::app()->baseUrl.'/images/temp/full/'. $_POST['fileName']; 
+        if(file_exists(Yii::app()->basePath.'/../images/frontend/full/'.$_POST['fileName']))
+            $imageUrl = Yii::app()->baseUrl.'/images/frontend/full/'.$_POST['fileName'];
+        else
+            $imageUrl = Yii::app()->baseUrl.'/images/temp/full/'.$_POST['fileName'];
+ 
+    	//$imageUrl = Yii::app()->baseUrl.'/images/temp/full/'. $_POST['fileName']; 
     	$this->renderPartial('_cropImg', array('imageUrl'=>$imageUrl, 'filename'=>$_POST['fileName'],'index'=>$_POST['index']), false, true);
     }
     
@@ -212,9 +233,13 @@ class SlideshowController extends Controller
        $height=$_POST['cropH'];
        $resize_detail=CommonClass::get_resize_details('slideshow');
        
-       $src_file=Yii::app()->basePath.'/../images/temp/full/'.$_POST['filename'];
+       if(file_exists(Yii::app()->basePath.'/../images/temp/full/'.$_POST['filename']))
+            $src_file = Yii::app()->basePath.'/../images/temp/full/'.$_POST['filename'];
+        else
+            $src_file = Yii::app()->basePath.'/../images/frontend/full/'.$_POST['filename'];
+       //$src_file=Yii::app()->basePath.'/../images/temp/full/'.$_POST['filename'];
        $temp_file=Yii::app()->basePath.'/../images/temp/'.$_POST['filename'];
-       
+       //die($src_file);
        Yii::import('application.extensions.image.Image');
       
        $image = new Image($src_file);

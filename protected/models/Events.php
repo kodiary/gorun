@@ -69,6 +69,7 @@ class Events extends CActiveRecord
             'attending'=>array(self::MANY_MANY,'Member','tbl_member_event(event_id, member_id)'),
             //'members'=>array(self::HAS_MANY,'MemberEvent','event_id'),
             'results'=>array(self::HAS_MANY,'EventResult','event_id'),
+            'member_results'=>array(self::MANY_MANY,'Member','tbl_event_result(event_id, member_id)')
 		);
 	}
 

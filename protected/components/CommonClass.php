@@ -279,22 +279,22 @@ class CommonClass extends CComponent
              case "slideshow":
                 return array(
                     0=>array(
-                        "width"=>"255",
-                        "height"=>"70",
+                        "width"=>"200",
+                        "height"=>"85",
                         "new_path"=>Yii::app()->basePath.'/../images/temp/thumb/',
                         "crop"=>"true",
                         "crop_type"=>"center",
                     ),
                     1=>array(
-                        "width"=>"980",
-                        "height"=>"270",
+                        "width"=>"800",
+                        "height"=>"340",
                         "new_path"=>Yii::app()->basePath.'/../images/temp/main/',
                         "crop"=>"true",
                         "crop_type"=>"center",
                     ),
                     2=>array(
-                        "width"=>"1120",
-                        "height"=>"330",
+                        "width"=>"",
+                        "height"=>"",
                         "new_path"=>Yii::app()->basePath.'/../images/temp/full/',
                         "crop"=>"false",
                     )
